@@ -29,11 +29,6 @@ public class AddEmployeeDetails extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("</head>");
-		out.println("<title>Insert title here</title></head><body>");
-		out.println("<h3>HRIS</h3>");
-		out.println("</body></html>");
 	}
 
 	/**

@@ -135,7 +135,7 @@
 			<fileset dir="${buildDir}/${hra_employer.war.name}" includes="**/*.*" /> 
 		</copy> 
 		
-		<jar jarfile="${buildDir}/${hra.ear.name}/${hra.jar.name}" basedir="${buildDir}/${hra_employer.jar.name}" />
+		<jar jarfile="${buildDir}/${hra.ear.name}/${hra_employer.jar.name}" basedir="${buildDir}/${hra_employer.jar.name}" />
 		
 	</target>
 	
