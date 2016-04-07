@@ -1,0 +1,1 @@
+redirect from this page to whatever page or servlet u want.
