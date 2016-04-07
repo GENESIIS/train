@@ -4,13 +4,19 @@ CREATE TABLE IF NOT EXISTS `department` (
   `departmentName` varchar(20) DEFAULT NULL,
   `departmentLocation` varchar(20) DEFAULT NULL,
   `managerID` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`departmentTblID`)
+  `addedBy` varchar(10) DEFAULT NULL,
+  `updatedBy` varchar(10) DEFAULT NULL,
+  `addedOn` varchar(10) DEFAULT NULL,
+  `updatedOn` varchar(10) DEFAULT NULL,
+  `envCode` varchar(10) DEFAULT NULL,  
+  PRIMARY KEY (`departmentTblID`),
+  FOREIGN KEY (managerID) REFERENCES employee(employeeID)
 );
 
 CREATE TABLE IF NOT EXISTS `employee` (
   `employeeTblID` int(11) NOT NULL AUTO_INCREMENT,
   `employeeID` varchar(6) DEFAULT NULL,
-  `employeeName` varchar(150) DEFAULT NULL,
+  `employeeName` varchar(100) DEFAULT NULL,
   `employeeDesignation` varchar(50) DEFAULT NULL,
   `employeeEmail` varchar(50) DEFAULT NULL,
   `employeeDOB` date DEFAULT NULL,
@@ -20,5 +26,26 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `employeeOtherNO` varchar(10) DEFAULT NULL,
   `departmentID` varchar(5) DEFAULT NULL,
   `dateOfJoin` date DEFAULT NULL,
-  PRIMARY KEY (`employeeTblID`)
+  `addedBy` varchar(10) DEFAULT NULL,
+  `updatedBy` varchar(10) DEFAULT NULL,
+  `addedOn` varchar(10) DEFAULT NULL,
+  `updatedOn` varchar(10) DEFAULT NULL,
+  `envCode` varchar(10) DEFAULT NULL, 
+  PRIMARY KEY (`employeeTblID`),
+  FOREIGN KEY (departmentID) REFERENCES department(departmentID)
+);
+
+CREATE TABLE IF NOT EXISTS `dependent` (
+  `dependentTblID` int(11) NOT NULL AUTO_INCREMENT,
+  `dependentID` varchar(5) DEFAULT NULL,
+  `dependentName` varchar(100) DEFAULT NULL,
+  `dependentDOB` date DEFAULT NULL,
+  `employeeID` varchar(6) DEFAULT NULL,
+  `addedBy` varchar(10) DEFAULT NULL,
+  `updatedBy` varchar(10) DEFAULT NULL,
+  `addedOn` varchar(10) DEFAULT NULL,
+  `updatedOn` varchar(10) DEFAULT NULL,
+  `envCode` varchar(10) DEFAULT NULL,  
+  PRIMARY KEY (`dependentID`),
+  FOREIGN KEY (employeeID) REFERENCES employee(employeeID)
 );
