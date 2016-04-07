@@ -1,20 +1,50 @@
-#hra_employer.jar.dir=${basedir}/${hra_employer.jar.name}
-#hra_employer.war.dir=${basedir}/${hra_employer.war.name}
+## RENAME THIS FILE TO BUILD.PROPERTIES.  CUSTOMISE BUILD.PROPERTIES TO SUIT YOU.
+		
+# these are the names of the JEE modules
 
+#sdb.ear.name=sdb.ear
+#sdb.war.name=sdb.war
+#sdb.jar.name=sdb.jar
+#sdb_service.sar.name=sdb_service.sar
+
+# rename the sar to deploy as a jar 
+#sdb_service.sar.rename=sdb_service.jar
+#sdb_public.war.name=sdb_public.war
+#sdb_classified.war.name=sdb_classified.war
+#sdb_admin.jar.name = sdb_admin.jar
+# sdb_jobseeker.war.name=sdb_jobseeker.war
+# sdb_employer.war.name=sdb_employer.war
+
+###### directories where source code is kept (relative to where this file is)
+
+#sdb.ear.dir=${basedir}/${sdb.ear.name}
+#sdb.war.dir=${basedir}/${sdb.war.name}
+#sdb.jar.dir=${basedir}/${sdb.jar.name}
+
+hra.ear.name=hra.ear
+hra_employer.war.name=hra_employer.war
+hra_employer.jar.name=hra_employer.jar
+
+hra.ear.dir=${basedir}/${hra.ear.name}
+hra_employer.jar.dir=${basedir}/${hra_employer.jar.name}
+hra_employer.war.dir=${basedir}/${hra_employer.war.name}
+# sdb_employer.war.dir=${basedir}/${sdb_employer.war.name}
 
 # directories for third-party libraries
-thirdPartyDir=${basedir}/../third_party
+
+#thirdPartyDir=${basedir}/../3p
 
 # directories for building
+
 buildDir=${basedir}/build
 targetEarName=hra.ear
 
 # JBOSS Server Directories
+
 jbossHome=C:/JBAP643GA
-jbossLibDir=${jbossHome}/common/lib
-jbossServerDir=${jbossHome}/server/sdb
-jbossDeployDir=${jbossServerDir}/deploy
-jbossAppLibDir=${jbossServerDir}/lib
+jbossLibDir=${jbossHome}/modules
+jbossDeployDir=${jbossHome}/standalone/deployments
+jbossClientLib=${jbossHome}/bin/client
 
 # java settings
 javadebug=true
