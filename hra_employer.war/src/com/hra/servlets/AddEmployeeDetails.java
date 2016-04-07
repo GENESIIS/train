@@ -1,4 +1,4 @@
-package employee_servlets;
+package com.hra.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;

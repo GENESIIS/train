@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="Department" table="department">
+		<meta attribute="class-description">
+			This class contains the Department detail.
+		</meta>
+		<id name="departmentID" column="ID" type="string" />
+		<property name="departmentName" column="NAME" type="string" />
+		<property name="departmentLocation" column="LOCATION" type="string" />
+		<property name="managerID" column="MANAGER_FK_ID" type="string" />
+		<property name="addedOn" column="UPDATED_BY" type="date" />
+		<property name="updatedOn" column="UPDATED_ON" type="date" />
+	</class>
+</hibernate-mapping>
