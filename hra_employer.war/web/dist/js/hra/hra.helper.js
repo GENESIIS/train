@@ -22,3 +22,27 @@ function addedAlert(){
 function updatedAlert(){
 	alert("Data Updated Successfully.");
 }
+
+//Get data to sent to Servlet
+function addEmployeeDetailsA(){
+	var employeeNumber = $("#employeeNumber").value();
+	var employeeName = $("#employeeName").value();
+	var employeeDesignation = $("#employeeDesignation").value();
+	var employeeDateofBoth = $("#employeeDateofBoth").value();
+	var employeeGender = $("#employeeGender").value();
+	var employeeAddress = $("#employeeAddress").value();
+	var employeeMobileNumber = $("#employeeMobileNumber").value();
+	var employeeOtherNumber = $("#employeeOtherNumber").value();
+	var employeeEmail = $("#employeeEmail").value();
+	var employeeDepartment = $("#employeeDepartment").value();
+	var employeeJoinDate = $("#employeeJoinDate").value();
+
+	$.get('AddEmployeeDetails', {
+		employeeNumber: employeeNumber,employeeName: employeeName, employeeDesignation: employeeDesignation, employeeDateofBoth: employeeDateofBoth,
+		employeeGender: employeeGender,employeeAddress: employeeAddress,employeeMobileNumber: employeeMobileNumber, employeeOtherNumber: employeeOtherNumber,
+		employeeEmail: employeeEmail, employeeDepartment: employeeDepartment, employeeJoinDate: employeeJoinDate
+    }, function (response) {
+        var str = response;        
+    });
+	
+}

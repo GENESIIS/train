@@ -11,11 +11,11 @@
 		<id name="dependentTblID" type="int" column="dependentTblID">
 			<generator class="native" />
 		</id>
-		<property name="dependentID" column="dependentID" type="string" />
-		<property name="dependentName" column="dependentName" type="string" />
-		<property name="dependentDOB" column="dependentDOB" type="date" />
-		<property name="employeeID" column="employeeID" type="string" />
-		<property name="updatedBy" column="updatedBy" type="string" />
-		<property name="updatedOn" column="updatedOn" type="date" />
+		<property name="dependentID" column="ID" type="string" />
+		<property name="dependentName" column="NAME" type="string" />
+		<property name="dependentDOB" column="DOB" type="date" />
+		<property name="employeeID" column="EMPLOYEE_FK_ID" type="string" />
+		<property name="updatedBy" column="UPDATED_BY" type="string" />
+		<property name="updatedOn" column="UPDATED_ON" type="date" />
 	</class>
 </hibernate-mapping>
