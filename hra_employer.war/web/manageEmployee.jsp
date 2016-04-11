@@ -1,6 +1,8 @@
 <!-- 20160407 PN HRA-2 created manageEmployee.jsp class -->
 
 <!-- JavaScripts to help to load  -->
+
+<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {

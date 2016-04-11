@@ -36,13 +36,38 @@ function addEmployeeDetailsA(){
 	var employeeEmail = $("#employeeEmail").value();
 	var employeeDepartment = $("#employeeDepartment").value();
 	var employeeJoinDate = $("#employeeJoinDate").value();
+	
+	var employeeData = {
+            "employeedata": {
+                "employeeNumber": employeeNumber,
+                "employeeName": employeeName,
+                "employeeDesignation": employeeDesignation,
+                "employeeDateofBoth": employeeDateofBoth,
+                "employeeGender": employeeGender,
+                "employeeAddress": employeeAddress,
+                "employeeMobileNumber": employeeMobileNumber,
+                "employeeOtherNumber": employeeOtherNumber,
+                "employeeEmail": employeeEmail,
+                "employeeDepartment": employeeDepartment,
+                "employeeJoinDate": employeeJoinDate
+            }
+        };
 
-	$.get('AddEmployeeDetails', {
-		employeeNumber: employeeNumber,employeeName: employeeName, employeeDesignation: employeeDesignation, employeeDateofBoth: employeeDateofBoth,
-		employeeGender: employeeGender,employeeAddress: employeeAddress,employeeMobileNumber: employeeMobileNumber, employeeOtherNumber: employeeOtherNumber,
-		employeeEmail: employeeEmail, employeeDepartment: employeeDepartment, employeeJoinDate: employeeJoinDate
-    }, function (response) {
-        var str = response;        
+	$.ajax({
+        type: "GET",
+        url: 'AddEmployeeDetails',
+        data: {
+            jsonData: JSON.stringify(employeeData)
+        },
+        dataType: "json",
+        //if received a response from the server
+        success: function (json) {
+            //our country code was correct so we have some information to display
+            console.log(json);
+            //var json = JSON.parse(data);
+            alert(json.data);
+            /*document.getElementById('number1').value = data.*/
+        }
     });
 	
 }
