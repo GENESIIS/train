@@ -1,6 +1,8 @@
 <!-- 20160407 PN HRA-2 created manageEmployee.jsp class -->
 
 <!-- JavaScripts to help to load  -->
+
+<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
@@ -211,7 +213,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-left"
-					data-dismiss="modal" onclick="addedAlert()">Add Details</button>
+					data-dismiss="modal" onclick="addEmployeeDetailsA()">Add Details</button>
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -328,9 +330,9 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left"
-					onclick="updatedAlert()" data-dismiss="modal">Edit Details</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-success pull-side"
+					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
@@ -373,9 +375,9 @@
 			</div>
 			<div class="modal-body">Are you sure to delete this Employee?</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left"
+				<button type="button" class="btn btn-success pull-side"
 					onclick="deleteAlert()" data-dismiss="modal">Delete</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>

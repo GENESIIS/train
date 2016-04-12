@@ -45,12 +45,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-flag"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Admin</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-envelope" title="Messages"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-flag" title="Notifications"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-cog" title="Settings"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-user" title="Profile"></i> Admin</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-log-out" title="Logout"></i></a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
