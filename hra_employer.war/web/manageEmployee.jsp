@@ -213,7 +213,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-left"
-					data-dismiss="modal" onclick="addedAlert()">Add Details</button>
+					data-dismiss="modal" onclick="addEmployeeDetailsA()">Add Details</button>
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -330,9 +330,9 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left"
-					onclick="updatedAlert()" data-dismiss="modal">Edit Details</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-success pull-side"
+					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
@@ -375,9 +375,9 @@
 			</div>
 			<div class="modal-body">Are you sure to delete this Employee?</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left"
+				<button type="button" class="btn btn-success pull-side"
 					onclick="deleteAlert()" data-dismiss="modal">Delete</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>

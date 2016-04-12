@@ -2,6 +2,7 @@ package com.genesiis.hra.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ public class AddEmployeeDetails extends HttpServlet {
 	@EJB
 	private IEmployeeDaoLocal employeeDao;
 	private static final long serialVersionUID = 1L;
+	static Logger log = Logger.getLogger(AddEmployeeDetails.class.getName());
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -28,7 +30,7 @@ public class AddEmployeeDetails extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String employeeNumber = request.getParameter("employeeNumber");
-		System.out.print(employeeNumber);
+		log.info(employeeNumber);
 	}
 
 	/**
