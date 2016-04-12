@@ -25,18 +25,19 @@ function updatedAlert(){
 
 //Get data to sent to Servlet
 function addEmployeeDetailsA(){
-	var employeeNumber = $("#employeeNumber").value();
-	var employeeName = $("#employeeName").value();
-	var employeeDesignation = $("#employeeDesignation").value();
-	var employeeDateofBoth = $("#employeeDateofBoth").value();
-	var employeeGender = $("#employeeGender").value();
-	var employeeAddress = $("#employeeAddress").value();
-	var employeeMobileNumber = $("#employeeMobileNumber").value();
-	var employeeOtherNumber = $("#employeeOtherNumber").value();
-	var employeeEmail = $("#employeeEmail").value();
-	var employeeDepartment = $("#employeeDepartment").value();
-	var employeeJoinDate = $("#employeeJoinDate").value();
+	var employeeNumber = $("#employeeNumber").val();
+	var employeeName = $("#employeeName").val();
+	var employeeDesignation = $("#employeeDesignation").val();
+	var employeeDateofBoth = $("#employeeDateofBoth").val();
+	var employeeGender = $("#employeeGender").val();
+	var employeeAddress = $("#employeeAddress").val();
+	var employeeMobileNumber = $("#employeeMobileNumber").val();
+	var employeeOtherNumber = $("#employeeOtherNumber").val();
+	var employeeEmail = $("#employeeEmail").val();
+	var employeeDepartment = $("#employeeDepartment").val();
+	var employeeJoinDate = $("#employeeJoinDate").val();
 	
+	alert(employeeNumber);
 	var employeeData = {
             "employeedata": {
                 "employeeNumber": employeeNumber,
