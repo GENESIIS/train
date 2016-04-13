@@ -1,14 +1,14 @@
 <!-- 20160407 PN HRA-2 created manageEmployee.jsp class -->
 
-	<!-- JavaScripts to help to load  -->
-	<script type="text/javascript">
-		//To load the Datatable
-		$(document).ready(function() {
-			$('#employeeDetails').DataTable();
-		} );	
-	</script>
-	
+<!-- JavaScripts to help to load  -->
 
+
+<script type="text/javascript">
+	//To load the Datatable
+	$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+	});
+</script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
@@ -45,16 +45,42 @@
 			</tfoot>
 			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td align="center"><button type="button" class="btn btn-info" data-toggle="modal"
-							data-target="#viewEmployeeDetailsForm">
+					<td>EMP001</td>
+					<td>Dammika Nawarathna</td>
+					<td>AGM - HR</td>
+					<td>0711111111<br>
+					0112222222<br>
+					dammika@gmail.com
+					</td>
+					<td align="center"><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
 					<td align="center"><button type="button"
-							class="btn btn-success" data-toggle="modal"
+							class="btn btn-warning" data-toggle="modal"
+							data-target="#editEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-edit"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-danger" data-toggle="modal"
+							data-target="#deleteEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button></td>
+				</tr>
+				<tr>
+					<td>EMP002</td>
+					<td>Chamara Withanachchi</td>
+					<td>DGM - IT</td>
+					<td>0712222222<br>
+					0113333333<br>
+					chamaraw@gmail.com
+					</td>
+					<td align="center"><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-modal-window"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-warning" data-toggle="modal"
 							data-target="#editEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-edit"></i>
 						</button></td>
@@ -88,7 +114,7 @@
 						<div class="form-group">
 							<label for="employeeNumber">Employee Number</label> <input
 								type="text" class="form-control" id="employeeNumber"
-								name="employeeNumber" placeholder="">
+								name="employeeNumber" placeholder="" value="EMP003">
 						</div>
 					</div>
 				</div>
@@ -96,13 +122,13 @@
 				<div class="form-group">
 					<label for="employeeName">Name</label> <input type="text"
 						class="form-control" id="employeeName" name="employeeName"
-						placeholder="">
+						placeholder="" value="Lakmal Baalasooriya">
 				</div>
 
 				<div class="form-group">
 					<label for="employeeDesignation">Designation</label> <input
 						type="text" class="form-control" id="employeeDesignation"
-						name="employeeDesignation" placeholder="">
+						name="employeeDesignation" placeholder="" value="Junior Executive">
 				</div>
 
 				<div class="row">
@@ -128,7 +154,7 @@
 				<div class="form-group">
 					<label for="employeeAddress">Address</label> <input type="text"
 						class="form-control" id="employeeAddress" name="employeeAddress"
-						placeholder="">
+						value="53/A, Temple Road, Nugegoda.">
 				</div>
 
 				<div class="row">
@@ -136,14 +162,14 @@
 						<div class="form-group">
 							<label for="employeeMobileNumber">Mobile Number</label> <input
 								type="text" class="form-control" id="employeeMobileNumber"
-								name="employeeMobileNumber" placeholder="">
+								name="employeeMobileNumber" placeholder="" value="0713967259">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="employeeOtherNumber">Other Number</label> <input
 								type="text" class="form-control" id="employeeOtherNumber"
-								name="employeeOtherNumber" placeholder="">
+								name="employeeOtherNumber" placeholder="" value="0117411411">
 						</div>
 					</div>
 				</div>
@@ -151,7 +177,7 @@
 				<div class="form-group">
 					<label for="employeeEmail">Email</label> <input type="text"
 						class="form-control" id="employeeEmail" name="employeeEmail"
-						placeholder="">
+						placeholder="" value="lakmalu@gmail.com">
 				</div>
 
 				<div class="row">
@@ -161,6 +187,10 @@
 								class="form-control" id="employeeDepartment"
 								name="employeeDepartment">
 								<option>-Select-</option>
+								<option>HR</option>
+								<option>IT</option>
+								<option>Marketing</option>
+								<option>Legal</option>
 							</select>
 						</div>
 					</div>
@@ -183,7 +213,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-left"
-					data-dismiss="modal" onclick="addedAlert()">Add Details</button>
+					data-dismiss="modal" onclick="addEmployeeDetailsA()">Add Details</button>
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -283,6 +313,10 @@
 								class="form-control" id="employeeDepartmentEdit"
 								name="employeeDepartmentEdit">
 								<option>-Select-</option>
+								<option>HR</option>
+								<option>IT</option>
+								<option>Marketing</option>
+								<option>Legal</option>
 							</select>
 						</div>
 					</div>
@@ -296,15 +330,16 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left" onclick="updatedAlert()">Edit Details</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-success pull-side"
+					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!--"Edit Employee Details Form" Modal -->
+<!--"View Employee Details Form" Modal -->
 <div class="modal fade" id="viewEmployeeDetailsForm" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
@@ -325,8 +360,9 @@
 	</div>
 </div>
 
-<!-- Delete/Add Employee Details -->
-<div class="modal fade bs-example-modal-sm" id="deleteEmployeeDetailsForm" role="dialog">
+<!-- Delete Employee Details -->
+<div class="modal fade bs-example-modal-sm"
+	id="deleteEmployeeDetailsForm" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -337,14 +373,14 @@
 				</h3>
 
 			</div>
-			<div class="modal-body">
-			Are you sure to delete this Employee?
-			</div>
+			<div class="modal-body">Are you sure to delete this Employee?</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-left" onclick="deleteAlert()">Delete</button>
-				<button type="button" class="btn btn-danger pull-side"
+				<button type="button" class="btn btn-success pull-side"
+					onclick="deleteAlert()" data-dismiss="modal">Delete</button>
+				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
 </div>
+

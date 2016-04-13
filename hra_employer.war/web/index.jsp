@@ -25,7 +25,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
-    
+    <script src="dist/js/jquery-2.2.3.min.js" type="text/javascript"></script>
     
     <!-- Importing hra.helper.js file -->
     <script src="dist/js/hra/hra.helper.js"></script>
@@ -45,12 +45,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-envelope"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-flag"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Admin</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-envelope" title="Messages"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-flag" title="Notifications"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-cog" title="Settings"></i></a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-user" title="Profile"></i> Admin</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-log-out" title="Logout"></i></a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -79,7 +78,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <script>window.jQuery || document.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>
@@ -89,5 +88,11 @@
     <script src="dist/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    
+    <script>
+    //Demo On
+    </script>
+    
   </body>
 </html>
