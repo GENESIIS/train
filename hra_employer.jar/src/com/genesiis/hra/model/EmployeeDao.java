@@ -46,6 +46,9 @@ public class EmployeeDao implements IEmployeeDaoLocal {
 		}
 		return message;
 	}
+//    ProfessorService service = new ProfessorService(em);
+//	private EntityManager entityManager;
+
 
 	@Override
 	public void updateEmployee(Employee employee) {
@@ -66,7 +69,5 @@ public class EmployeeDao implements IEmployeeDaoLocal {
 	public List<Employee> getAllEmployees() {
 		return null; //entityManager.createNamedQuery("Employee.getAll").getResultList();
 	}
-	
-	
 
 }

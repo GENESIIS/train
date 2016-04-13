@@ -1,11 +1,16 @@
 package com.genesiis.hra.controller;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+=======
+import java.io.IOException;
+import java.io.PrintWriter;
+>>>>>>> 26755d79db48485578062c039b4f9a23f2fd85b4
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
@@ -15,12 +20,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeDao;
 import com.genesiis.hra.model.IEmployeeDaoLocal;
 
 
+=======
+import com.genesiis.hra.model.IEmployeeDaoLocal;
+
+>>>>>>> 26755d79db48485578062c039b4f9a23f2fd85b4
 /**
  * Servlet implementation class AddEmployeeDetails
  */
@@ -37,6 +47,7 @@ public class AddEmployeeDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+<<<<<<< HEAD
 		String employeeNumber = request.getParameter("jsonData");
 		String message ="";
 		Gson gson = new Gson();
@@ -53,6 +64,10 @@ public class AddEmployeeDetails extends HttpServlet {
 		}
 		
 		response.getWriter().write(message);
+=======
+		String employeeNumber = request.getParameter("employeeNumber");
+		log.info(employeeNumber);
+>>>>>>> 26755d79db48485578062c039b4f9a23f2fd85b4
 	}
 
 	/**
@@ -61,6 +76,13 @@ public class AddEmployeeDetails extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 	}
 
+=======
+
+	}
+
+	
+>>>>>>> 26755d79db48485578062c039b4f9a23f2fd85b4
 }
