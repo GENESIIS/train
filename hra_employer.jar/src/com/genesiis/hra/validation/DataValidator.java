@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 public class DataValidator {
 	Date date = new Date();
 	boolean status = false;
@@ -59,6 +61,14 @@ public class DataValidator {
 			if ((numaric == true) && (letter == true)) {
 				status = true;
 			}
+		}
+		return status;
+	}
+	
+	public boolean isValidString(String text){
+		boolean status = false;
+		if(!text.isEmpty() && text != null){
+			status = true;
 		}
 		return status;
 	}

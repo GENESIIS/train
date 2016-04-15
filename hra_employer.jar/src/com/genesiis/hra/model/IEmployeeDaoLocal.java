@@ -24,5 +24,5 @@ public interface IEmployeeDaoLocal {
 	
 	public Employee getEmployee(String employeeId);
 	
-	public List<Employee> getAllEmployees();
+	public List<Employee> getAllemployees();
 }

@@ -1,5 +1,6 @@
 /**
  * <!-- 20160407 PN HRA-1 created hra.helper.js class -->
+ * <!-- 20160415 PN HRA-1 Modified addEmployeeDetails() Function -->
  */
 
 function loadContentDashboard() {
@@ -24,7 +25,7 @@ function updatedAlert(){
 }
 
 //Get data to sent to Servlet
-function addEmployeeDetailsA(){
+function addEmployeeDetails(){
 	var employeeNumber = $("#employeeNumber").val();
 	var employeeName = $("#employeeName").val();
 	var employeeDesignation = $("#employeeDesignation").val();
@@ -55,7 +56,7 @@ function addEmployeeDetailsA(){
 
 	$.ajax({
         type: "POST",
-        url: 'AddEmployeeDetails',
+        url: 'EmployerController',
         data: {
         	jsonData: JSON.stringify(employeeData)
         },

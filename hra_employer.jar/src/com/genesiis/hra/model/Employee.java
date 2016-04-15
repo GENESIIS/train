@@ -37,136 +37,136 @@ public class Employee {
 //	@Column
 	private String employeeAddress;
 //	@Column
-	private String employeeMobileNo;
+	private String employeeMobileno;
 //	@Column
-	private String employeeOtherNo;
+	private String employeeOtherno;
 //	@Column
 	private String departmentId;
 //	@Column
-	private String dateOfJoin;
+	private String dateOfjoin;
 //	@Column
 	private String modOn;
 //	@Column
-	private String ModBy;
+	private String modBy;
 
-	public String getEmployeeId() {
+	public String getEmployeeid() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeid(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	public String getEmployeeName() {
+	public String getEmployeename() {
 		return employeeName;
 	}
 
-	public void setEmployeeName(String employeeName) {
+	public void setEmployeename(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
-	public String getEmployeeDesignation() {
+	public String getEmployeedesignation() {
 		return employeeDesignation;
 	}
 
-	public void setEmployeeDesignation(String employeeDesignation) {
+	public void setEmployeedesignation(String employeeDesignation) {
 		this.employeeDesignation = employeeDesignation;
 	}
 
-	public float getEmployeeSalary() {
+	public float getEmployeesalary() {
 		return employeeSalary;
 	}
 
-	public void setEmployeeSalary(float employeeSalary) {
+	public void setEmployeesalary(float employeeSalary) {
 		this.employeeSalary = employeeSalary;
 	}
 
-	public String getEmployeeEmail() {
+	public String getEmployeeemail() {
 		return employeeEmail;
 	}
 
-	public void setEmployeeEmail(String employeeEmail) {
+	public void setEmployeeemail(String employeeEmail) {
 		this.employeeEmail = employeeEmail;
 	}
 
-	public String getEmployeeDob() {
+	public String getEmployeedob() {
 		return employeeDob;
 	}
 
-	public void setEmployeeDob(String employeeDob) {
+	public void setEmployeedob(String employeeDob) {
 		this.employeeDob = employeeDob;
 	}
 
-	public String getEmployeeNic() {
+	public String getEmployeenic() {
 		return employeeNic;
 	}
 
-	public void setEmployeeNic(String employeeNic) {
+	public void setEmployeenic(String employeeNic) {
 		this.employeeNic = employeeNic;
 	}
 
-	public String getEmployeeGender() {
+	public String getEmployeegender() {
 		return employeeGender;
 	}
 
-	public void setEmployeeGender(String employeeGender) {
+	public void setEmployeegender(String employeeGender) {
 		this.employeeGender = employeeGender;
 	}
 
-	public String getEmployeeAddress() {
+	public String getEmployeedddress() {
 		return employeeAddress;
 	}
 
-	public void setEmployeeAddress(String employeeAddress) {
+	public void setEmployeedddress(String employeeAddress) {
 		this.employeeAddress = employeeAddress;
 	}
 
-	public String getEmployeeMobileNo() {
-		return employeeMobileNo;
+	public String getEmployeemobileno() {
+		return employeeMobileno;
 	}
 
-	public void setEmployeeMobileNo(String employeeMobileNo) {
-		this.employeeMobileNo = employeeMobileNo;
+	public void setEmployeemobileno(String employeeMobileno) {
+		this.employeeMobileno = employeeMobileno;
 	}
 
-	public String getEmployeeOtherNo() {
-		return employeeOtherNo;
+	public String getEmployeeotherno() {
+		return employeeOtherno;
 	}
 
-	public void setEmployeeOtherNo(String employeeOtherNo) {
-		this.employeeOtherNo = employeeOtherNo;
+	public void setEmployeeotherno(String employeeOtherno) {
+		this.employeeOtherno = employeeOtherno;
 	}
 
-	public String getDepartmentId() {
+	public String getDepartmentid() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(String departmentId) {
+	public void setDepartmentid(String departmentId) {
 		this.departmentId = departmentId;
 	}
 
-	public String getDateOfJoin() {
-		return dateOfJoin;
+	public String getDateofjoin() {
+		return dateOfjoin;
 	}
 
-	public void setDateOfJoin(String dateOfJoin) {
-		this.dateOfJoin = dateOfJoin;
+	public void setDateOfJoin(String dateOfjoin) {
+		this.dateOfjoin = dateOfjoin;
 	}
 
-	public String getModOn() {
+	public String getModon() {
 		return modOn;
 	}
 
-	public void setModOn(String modOn) {
+	public void setModon(String modOn) {
 		this.modOn = modOn;
 	}
 
-	public String getModBy() {
-		return ModBy;
+	public String getModby() {
+		return modBy;
 	}
 
-	public void setModBy(String modBy) {
-		ModBy = modBy;
+	public void setModby(String modBy) {
+		this.modBy = modBy;
 	}
 
 	public Employee() {
@@ -176,8 +176,8 @@ public class Employee {
 			String employeeDesignation, float employeeSalary,
 			String employeeEmail, String employeeDob, String employeeNic,
 			String employeeGender, String employeeAddress,
-			String employeeMobileNo, String employeeOtherNo,
-			String departmentId, String dateOfJoin, String modOn, String modBy) {
+			String employeeMobileno, String employeeOtherno,
+			String departmentId, String dateOfjoin, String modOn, String modBy) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
@@ -188,12 +188,14 @@ public class Employee {
 		this.employeeNic = employeeNic;
 		this.employeeGender = employeeGender;
 		this.employeeAddress = employeeAddress;
-		this.employeeMobileNo = employeeMobileNo;
-		this.employeeOtherNo = employeeOtherNo;
+		this.employeeMobileno = employeeMobileno;
+		this.employeeOtherno = employeeOtherno;
 		this.departmentId = departmentId;
-		this.dateOfJoin = dateOfJoin;
+		this.dateOfjoin = dateOfjoin;
 		this.modOn = modOn;
-		ModBy = modBy;
+		this.modBy = modBy;
 	}
+
+	
 
 }
