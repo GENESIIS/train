@@ -2,7 +2,7 @@
 
 <!-- JavaScripts to help to load  -->
 
-<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
@@ -112,8 +112,8 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="employeeNumber">Employee Number</label> <input
-								type="text" class="form-control" id="employeeNumber"
+							<label for="employeeId">Employee Number</label> <input
+								type="text" class="form-control" id="employeeId"
 								name="employeeNumber" placeholder="" value="EMP003">
 						</div>
 					</div>
@@ -203,17 +203,17 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="employeeI">User Image</label> <input id="file-0a"
-						class="file" type="file" multiple data-min-file-count="1">
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="employeeI">User Image</label> <input id="file-0a" -->
+<!-- 						class="file" type="file" multiple data-min-file-count="1"> -->
+<!-- 				</div> -->
 
 
 
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-left"
-					data-dismiss="modal" onclick="addEmployeeDetailsA()">Add Details</button>
+					data-dismiss="modal" onclick="addEmployeeDetails()">Add Details</button>
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -383,3 +383,4 @@
 		</div>
 	</div>
 </div>
+
