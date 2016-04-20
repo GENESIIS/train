@@ -11,6 +11,10 @@ function loadContentEmployee() {
 	$("#mainContent").load("manageEmployee.jsp");
 }
 
+function loadContentDepartment() {
+	$("#mainContent").load("manageDepartment.jsp");
+}
+
 //Only for Sprint -1 demo.
 function deleteAlert(){
 	alert("Data Deleted Successfully.");
