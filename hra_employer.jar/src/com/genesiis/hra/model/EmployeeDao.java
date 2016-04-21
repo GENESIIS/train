@@ -1,6 +1,5 @@
 package com.genesiis.hra.model;
 
-import java.text.ParseException;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,11 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-
-import jdk.nashorn.internal.scripts.JO;
-
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 
@@ -31,8 +25,8 @@ public class EmployeeDao implements IEmployeeDaoLocal {
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");
 	EntityManager entityManager = emf.createEntityManager();
-	
-	//This message is to return only when the scenario is successful.
+
+	// This message is to return only when the scenario is successful.
 	final String successfullMessage = "Employee Details added Successfully.";
 
 	@Override
@@ -79,7 +73,7 @@ public class EmployeeDao implements IEmployeeDaoLocal {
 	}
 
 	private String validateEmployeedetails(Employee employee) {
-		String message = "";
+		String message = "DDDDDD";
 		DataValidator validator = new DataValidator();
 		try {
 			boolean employeeNamestatus = validator.isValidString(employee

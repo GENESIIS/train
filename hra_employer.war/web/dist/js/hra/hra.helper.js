@@ -11,6 +11,10 @@ function loadContentEmployee() {
 	$("#mainContent").load("manageEmployee.jsp");
 }
 
+function loadContentDepartment() {
+	$("#mainContent").load("manageDepartment.jsp");
+}
+
 //Only for Sprint -1 demo.
 function deleteAlert(){
 	alert("Data Deleted Successfully.");
@@ -63,6 +67,10 @@ function addEmployeeDetails(){
         dataType: "json",
         success: function (data) {
             alert(data);
+        },
+        error: function (e) {
+            alert("Error "+e);
+            console.log(e);
         }
     });
 }
