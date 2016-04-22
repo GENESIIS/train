@@ -69,4 +69,14 @@ public class EmployerController extends HttpServlet {
 		// ToTest
 		log.info("EMPLOYEE: " + employeeDetails);
 	}
+	
+	public void extractEmployeeDetails() {		
+		try {
+			
+		} catch (Exception e) {
+
+		}
+		
+	}
+	
 }

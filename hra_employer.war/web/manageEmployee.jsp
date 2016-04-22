@@ -53,7 +53,7 @@
 					dammika@gmail.com
 					</td>
 					<td align="center"><button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
+							data-toggle="modal" href = "EmployerController" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
 					<td align="center"><button type="button"
@@ -230,7 +230,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> Edit Employee Details
+					<i class="glyphicon glyphicon-edit"></i> Edit Employee Details
 				</h3>
 
 			</div>
@@ -347,11 +347,16 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> View Employee Details
+					<i class="glyphicon glyphicon-modal-window"></i> View Employee Details
 				</h3>
 
 			</div>
-			<div class="modal-body"></div>
+			<div class="modal-body">
+			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
+									alt="User" width="150" height="150">
+            <p>ID : ${emp.id}</p>
+            <p>Name : ${emp.name}</p>
+			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
@@ -369,7 +374,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> Delete Employee Details
+					<i class="glyphicon glyphicon-trash"></i> Delete Employee Details
 				</h3>
 
 			</div>

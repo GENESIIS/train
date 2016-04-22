@@ -67,7 +67,7 @@
           <ul class="nav nav-sidebar">
             <li>Configuration</li>
             <li><a href="#" onclick="loadContentEmployee()">- Employee</a></li>
-            <li><a href="#" onclick="">- Department</a></li>
+            <li><a href="#" onclick="loadContentDepartment()">- Department</a></li>
           </ul>
         </div>
         
