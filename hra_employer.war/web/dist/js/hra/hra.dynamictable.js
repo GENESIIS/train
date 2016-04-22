@@ -2,9 +2,10 @@
  * 20160420 PN HRA-2 created hra.dynamictable.js class
  */
 
-function addRowToTable(columnCount,tableId) {
+function addRowToTable(names, tableId, dates, selections, options) {
 	var tbl = document.getElementById(tableId);
 	var lastRow = tbl.rows.length;
+	alert(dates);
 
 	// if there's no header row in the table, then iteration = lastRow + 1
 	var iteration = lastRow;
@@ -18,16 +19,31 @@ function addRowToTable(columnCount,tableId) {
 	// right cell
 	var element = {};
 
-	for (var i = 0; i < columnCount; i++) {
+	for (var i = 0; i < names.length; i++) {
 		var cellRight = row.insertCell(1 + i);
-		element[i] = document.createElement('input');
-		element[i].type = 'text';
-		element[i].name = 'txtRow' + i + iteration;
-		element[i].id = 'txtRow' + i + iteration;
 
-		element[i].onkeypress = keyPressTest;
+		element[i] = document.createElement('input');
+
+		if (jQuery.inArray(i.toString(), dates) !== -1) {
+			element[i].type = 'date';
+		} else {
+			element[i].type = 'text';
+		}
+
+		if (jQuery.inArray(i.toString(), selections) !== -1) {
+			element[i] = document.createElement('select');
+			for (var x = 0; x < options.length; x++) {
+				element[i].options[x] = new Option(options[x], options[x]);
+			}
+		}
+
+		element[i].name = names[i] + i + iteration;
+		element[i].id = names[i] + i + iteration;
+		element[i].className = 'form-control';
+		// element[i].onkeypress = keyPressTest;
 		cellRight.appendChild(element[i]);
 	}
+
 }
 
 function keyPressTest(e, obj) {

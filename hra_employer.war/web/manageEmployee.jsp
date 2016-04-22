@@ -496,22 +496,27 @@
 											</tr>
 											<tr>
 												<td>1</td>
-												<td><input type="text" name="schoolAttended"
-													id="schoolAttended" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="yearAdmission"
-													id="yearAdmission" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="yearLeaving"
-													id="yearLeaving" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="mediumStudied"
-													id="mediumStudied" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="qualification"
-													id="qualification" onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="schoolAttended" id="schoolAttended"
+													onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="yearAdmission" id="yearAdmission"
+													onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="yearLeaving" id="yearLeaving"
+													onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="mediumStudied" id="mediumStudied"
+													onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="qualification" id="qualification"
+													onkeypress="keyPressTest(event, this);" /></td>
 											</tr>
 										</table>
 									</div>
 									<p>
 										<input class="btn btn-default" type="button" value=" + "
-											onclick="addRowToTable('5','educationalAndprofessionalqualification');" />
+											onclick="addRowToTable(['schoolAttended','yearAdmission','yearLeaving','mediumStudied','qualification'],'educationalAndprofessionalqualification',[''],[''],['']);" />
 										<input class="btn btn-default" type="button" value=" - "
 											onclick="removeRowFromTable('educationalAndprofessionalqualification');" />
 									</p>
@@ -541,24 +546,28 @@
 											</tr>
 											<tr>
 												<td>1</td>
-												<td><input type="text" name="nameOfinstitiution"
-													id="nameOfinstitiution"
+												<td><input class="form-control" type="text"
+													name="nameOfinstitiution" id="nameOfinstitiution"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="typeOfcourse"
-													id="typeOfcourse" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="dateOfddmission"
-													id="dateOfddmission"
+												<td><input class="form-control" type="text"
+													name="typeOfcourse" id="typeOfcourse"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="duration" id="duration"
+												<td><input class="form-control" type="text"
+													name="dateOfddmission" id="dateOfddmission"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="classesAreon"
-													id="classesAreon" onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text"
+													name="duration" id="duration"
+													onkeypress="keyPressTest(event, this);" /></td>
+												<td><select class="form-control" name="classesAreon" id="classesAreon">
+														<option value="Weekdays">Weekdays</option>
+														<option value="Weekend">Weekend</option>
+												</select></td>
 											</tr>
 										</table>
 									</div>
 									<p>
 										<input class="btn btn-default" type="button" value=" + "
-											onclick="addRowToTable('5','currentInvolvedstudyprogram');" />
+											onclick="addRowToTable(['nameOfinstitiution','typeOfcourse','dateOfddmission','duration','classesAreon'],'currentInvolvedstudyprogram',['2'],['4'],['Weekdays','Weekends']);" />
 										<input class="btn btn-default" type="button" value=" - "
 											onclick="removeRowFromTable('currentInvolvedstudyprogram');" />
 									</p>
@@ -589,23 +598,23 @@
 											</tr>
 											<tr>
 												<td>1</td>
-												<td><input type="text" name="nameOfemployee"
+												<td><input class="form-control" type="text" name="nameOfemployee"
 													id="nameOfemployee" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="startedYear"
+												<td><input class="form-control" type="text" name="startedYear"
 													id="startedYear" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="endYear" id="endYear"
+												<td><input class="form-control" type="text" name="endYear" id="endYear"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="designation"
+												<td><input class="form-control" type="text" name="designation"
 													id="designation" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="basis" id="basis"
+												<td><inpu class="form-control"t type="text" name="basis" id="basis"
 													onkeypress="keyPressTest(event, this);" /></td>
 											</tr>
 										</table>
 									</div>
 									<p>
 										<input class="btn btn-default" type="button" value=" + "
-											onclick="addRowToTable('5','employeementHistory');" /> <input
-											class="btn btn-default" type="button" value=" - "
+											onclick="addRowToTable(['nameOfemployee','startedYear','endYear','designation','basis'],'employeementHistory',[''],[''],['']);" />
+										<input class="btn btn-default" type="button" value=" - "
 											onclick="removeRowFromTable('employeementHistory');" />
 									</p>
 
@@ -635,22 +644,22 @@
 											</tr>
 											<tr>
 												<td>1</td>
-												<td><input type="text" name="outstandingAmount"
+												<td><input class="form-control" type="text" name="outstandingAmount"
 													id="outstandingAmount"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="borrowers" id="borrowers"
+												<td><input class="form-control" type="text" name="borrowers" id="borrowers"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="monthlyPayment"
+												<td><input class="form-control" type="text" name="monthlyPayment"
 													id="monthlyPayment" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="dueDate"
-													id="dueDate" onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text" name="dueDate" id="dueDate"
+													onkeypress="keyPressTest(event, this);" /></td>
 											</tr>
 										</table>
 									</div>
 									<p>
 										<input class="btn btn-default" type="button" value=" + "
-											onclick="addRowToTable('4','employeeLoan');" /> <input
-											class="btn btn-default" type="button" value=" - "
+											onclick="addRowToTable(['outstandingAmount','borrowers','monthlyPayment','dueDate'],'employeeLoan',['4'],[''],['']);" />
+										<input class="btn btn-default" type="button" value=" - "
 											onclick="removeRowFromTable('employeeLoan');" />
 									</p>
 
@@ -681,24 +690,34 @@
 											</tr>
 											<tr>
 												<td>1</td>
-												<td><input type="text" name="relationship"
-													id="relationship"
+												<td><select class="form-control" name="relationship" id="relationship">
+												<option value="Father">Father</option>
+												<option value="Mother">Mother</option>
+												<option value="Wife">Wife</option>
+												<option value="Husband">Husband</option>
+												<option value="Sister">Sister</option>
+												<option value="Brother">Brother</option>
+												<option value="Daughter">Daughter</option>
+												<option value="Son">Son</option>
+												</select>
+												</td>
+												<td><input class="form-control" type="text" name="relationName"
+													id="relationName" onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text" name="relationDateofbirth"
+													id="relationDateofbirth"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="relationName" id="relationName"
+												<td><input class="form-control" type="text" name="relationOccupation"
+													id="relationOccupation"
 													onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="relationDateofbirth"
-													id="relationDateofbirth" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name="relationOccupation"
-													id="relationOccupation" onkeypress="keyPressTest(event, this);" /></td>
-												<td><input type="text" name=""workingPlace"" id=""workingPlace""
-													onkeypress="keyPressTest(event, this);" /></td>
+												<td><input class="form-control" type="text" name="workingPlace"
+													id="workingPlace" onkeypress="keyPressTest(event, this);" /></td>
 											</tr>
 										</table>
 									</div>
 									<p>
 										<input class="btn btn-default" type="button" value=" + "
-											onclick="addRowToTable('5','employeeFamilydetails');" /> <input
-											class="btn btn-default" type="button" value=" - "
+											onclick="addRowToTable(['relationship','relationName','relationDateofbirth','relationOccupation','workingPlace'],'employeeFamilydetails',['3'],['0'],['Father','Mother','Wife','Husband','Sister','Brother','Daughter','Son']);" />
+										<input class="btn btn-default" type="button" value=" - "
 											onclick="removeRowFromTable('employeeFamilydetails');" />
 									</p>
 
