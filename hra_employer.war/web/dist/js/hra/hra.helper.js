@@ -74,3 +74,40 @@ function addEmployeeDetails(){
         }
     });
 }
+
+
+//Get data to sent to Servlet
+function addDepartmentDetails(){	
+	var departmentNumber = $("#departmentNumber").val(); 
+	var departmentName = $("#departmentName").val();
+	var departmentLocation = $("#departmentLocation").val();
+	var departmentHead = $("#departmentHead").val();
+	
+	
+	var jsonData = {
+            "jsonData": {
+                "departmentNumber": departmentNumber,
+                "departmentName": departmentName,
+                "departmentLocation": departmentLocation,
+                "departmentHead": departmentHead
+            }
+        };
+
+	alert(jsonData);
+	
+	$.ajax({
+        type: "POST",
+        url: 'DepartmentController',
+        data: {
+        	jsonData: JSON.stringify(jsonData)
+        },
+        dataType: "json",
+        success: function (data) {
+            alert(data);
+        },
+        error: function (e) {
+            alert("Error "+e);
+            console.log(e);
+        }
+    });
+}

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-//com.genesiis.hra.model.Employee
 
 ///***********************************************
 // * 20160407 PN HRA-1 created Employee.java class

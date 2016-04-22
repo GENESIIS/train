@@ -4,12 +4,33 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.sun.org.apache.regexp.internal.recompile;
+///***********************************************
+//* 20160422 PN HRA-3 created DataValidator.java class
+//* This class is to validate user inputs.
+//***********************************************/
+
 
 public class DataValidator {
 	Date date = new Date();
 	boolean status = false;
 
+	public enum ValidationErrors {
+	    EMPTYFIELD("Details added successfully."),
+	    SUCCESS("Successfull"),
+	    UNKNOWN("");
+
+	    private String message;
+
+	    ValidationErrors(String message) {
+	        this.message = message;
+	    }
+
+	    public String message() {
+	        return message;
+	    }
+	}
+	
+	
 	public boolean isPastDate(String day) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));

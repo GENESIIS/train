@@ -71,15 +71,13 @@
 
 <!--"Add Department Details Form" Modal -->
 <div class="modal fade" id="addDepartmentDetailsForm" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
 					<i class="glyphicon glyphicon-home"></i> Add Department Details
 				</h3>
-
 			</div>
 			<div class="modal-body">
 				<div class="row">
@@ -87,30 +85,82 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="EMP003">
+								name="departmentNumber" placeholder="" value="">
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="departmentName">Name</label> <input type="text"
-						class="form-control" id="departmentName" name="departmentName"
-						placeholder="" value="Lakmal Baalasooriya">
+					<label for="departmentName">Department Name</label> <input
+						type="text" class="form-control" id="departmentName"
+						name="departmentName" placeholder="" value="DEPT01"
+						readonly="true">
 				</div>
 
 				<div class="form-group">
 					<label for="departmentLocation">Department Location</label> <input
 						type="text" class="form-control" id="departmentLocation"
-						name="departmentLocation" placeholder=""
+						name="departmentLocation" placeholder="" value="Head Office">
+				</div>
+				<div class="form-group">
+					<label for="departmentHead">Department Head</label> <select
+						class="form-control" id="departmentHead" name="departmentHead">
+						<option>-Select-</option>
+						<option value="Chamara Withanachchi">Chamara Withanachchi</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success pull-side"
+					data-dismiss="modal" onclick="addDepartmentDetails()">Add
+					Details</button>
+				<button type="button" class="btn btn-danger pull-left"
+					data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--"Edit department Details Form" Modal -->
+<div class="modal fade" id="editdepartmentDetailsForm" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-home"></i> Add Department Details
+				</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="departmentNumberedit">Department Number</label> <input
+								type="text" class="form-control" id="departmentNumberedit"
+								name="departmentNumberedit" placeholder="" value="">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="departmentNameedit">Name</label> <input type="text"
+						class="form-control" id="departmentNameedit"
+						name="departmentNameedit" placeholder="" value="">
+				</div>
+
+				<div class="form-group">
+					<label for="departmentLocationedit">Department Location</label> <input
+						type="text" class="form-control" id="departmentLocationedit"
+						name="departmentLocationedit" placeholder=""
 						value="Lakmal Baalasooriya">
 				</div>
 
 				<!-- 				<div class="row"> -->
 				<!-- 					<div class="col-md-6"> -->
 				<div class="form-group">
-					<label for="departmentHead">Department Head</label> <select
-						class="form-control" id="departmentHead"
-						name="employeeDepartmentEdit">
+					<label for="departmentHeadedit">Department Head</label> <select
+						class="form-control" id="departmentHeadedit"
+						name="departmentHeadedit">
 						<option>-Select-</option>
 					</select>
 				</div>
@@ -126,64 +176,6 @@
 					data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
-
-	</div>
-</div>
-
-<!--"Edit department Details Form" Modal -->
-<div class="modal fade" id="editdepartmentDetailsForm" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-edit"></i> Edit department Details
-				</h3>
-
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="editdepartmentNumber">Department Number</label> <input
-								type="text" class="form-control" id="editdepartmentNumber"
-								name="editdepartmentNumber" placeholder="" value="DEPT003">
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="editdepartmentName">Name</label> <input type="text"
-						class="form-control" id="editdepartmentName"
-						name="editdepartmentName" placeholder="" value="HR">
-				</div>
-
-				<div class="form-group">
-					<label for="editdepartmentLocation">Department Location</label> <input
-						type="text" class="form-control" id="editdepartmentLocation"
-						name="editdepartmentLocation" placeholder="" value="Head Office">
-				</div>
-
-				<!-- 				<div class="row"> -->
-				<!-- 					<div class="col-md-6"> -->
-				<div class="form-group">
-					<label for="editdepartmentHead">Department Head</label> <select
-						class="form-control" id="editdepartmentHead"
-						name="editemployeeDepartment">
-						<option>-Select-</option>
-					</select>
-				</div>
-				<!-- 					</div> -->
-				<!-- 				</div> -->
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-side"
-					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
-				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
 	</div>
 </div>
 
@@ -195,7 +187,8 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-modal-window"></i> View department Details
+					<i class="glyphicon glyphicon-modal-window"></i> View department
+					Details
 				</h3>
 
 			</div>
