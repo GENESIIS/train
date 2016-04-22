@@ -93,7 +93,7 @@ function addDepartmentDetails(){
             }
         };
 
-	alert(jsonData);
+	//alert(jsonData);
 	
 	$.ajax({
         type: "POST",

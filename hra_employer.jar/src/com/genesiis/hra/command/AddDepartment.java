@@ -1,7 +1,5 @@
 package com.genesiis.hra.command;
 
-import java.io.Reader;
-import java.io.StringReader;
 import java.util.logging.Logger;
 
 import com.genesiis.hra.model.ClassFactory;
@@ -40,14 +38,12 @@ public class AddDepartment {
 		}
 	}
 
-	//Method to extract DepartmentDetails from jsonData.
+	// Method to extract DepartmentDetails from jsonData.
 	public Department extractFromgson(String gsonData) {
 		Gson gson = new GsonBuilder().create();
 		Department department = null;
 		try {
-			Reader targetReader = new StringReader(gsonData);
-			department = gson.fromJson(targetReader, Department.class);
-
+			department = gson.fromJson(gsonData, Department.class);
 			log.info("Department department" + department);
 		} catch (Exception e) {
 			log.info("ExtractFromgson - Exception " + e);

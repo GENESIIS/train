@@ -85,7 +85,8 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="">
+								name="departmentNumber" placeholder="" value="DEPT02" 
+						readonly="true">
 						</div>
 					</div>
 				</div>
@@ -93,8 +94,7 @@
 				<div class="form-group">
 					<label for="departmentName">Department Name</label> <input
 						type="text" class="form-control" id="departmentName"
-						name="departmentName" placeholder="" value="DEPT01"
-						readonly="true">
+						name="departmentName" placeholder="" value="Legal">
 				</div>
 
 				<div class="form-group">

@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries(@NamedQuery(name="Department.getAll",query="SELECE e from DEPARTMENT e"))
 public class Department {
+	
 	private String departmentNumber;
 	private String departmentName;
 	private String departmentLocation;
