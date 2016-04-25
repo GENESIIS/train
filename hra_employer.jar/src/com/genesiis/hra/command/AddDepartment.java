@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import com.genesiis.hra.model.ClassFactory;
 import com.genesiis.hra.model.Department;
 import com.genesiis.hra.model.IFactory;
-import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -76,12 +75,13 @@ public class AddDepartment {
 	}
 
 	public String validDepartment(Department department) {
-		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentName())) {
-			return DataValidator.ValidationErrors.SUCCESS.message();
-		} else {
-			return DataValidator.ValidationErrors.EMPTYFIELD.message();
-		}
+//		DataValidator validator = new DataValidator();
+//		if (validator.isValidString(department.getDepartmentName())) {
+//			return DataValidator.ValidationErrors.SUCCESS.message();
+//		} else {
+//			return DataValidator.ValidationErrors.EMPTYFIELD.message();
+//		}
+		return null;
 	}
 
 }

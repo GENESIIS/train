@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeDao;
+//import com.genesiis.hra.model.Employee;
+//import com.genesiis.hra.model.EmployeeDao;
 import com.genesiis.hra.model.IEmployeeDaoLocal;
 
 /**
@@ -25,10 +25,10 @@ import com.genesiis.hra.model.IEmployeeDaoLocal;
  */
 @WebServlet("/EmployerController")
 public class EmployerController extends HttpServlet {
-	@EJB
-	private IEmployeeDaoLocal employeeDao;
-	private static final long serialVersionUID = 1L;
-	static Logger log = Logger.getLogger(EmployerController.class.getName());
+//	@EJB
+//	private IEmployeeDaoLocal employeeDao;
+//	private static final long serialVersionUID = 1L;
+//	static Logger log = Logger.getLogger(EmployerController.class.getName());
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,28 +46,28 @@ public class EmployerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String employeeDetails = request.getParameter("jsonData");
-		String message = "";
-		Gson gson = new Gson();
-		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new ByteArrayInputStream(
-							employeeDetails.getBytes(StandardCharsets.UTF_8))));
-			// convert the json string back to object
-			Employee employee = gson.fromJson(br, Employee.class);
-			EmployeeDao employeeDao = new EmployeeDao();
-			message = employeeDao.addEmployee(employee);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		String json = gson.toJson("Hello");
-		response.getWriter().write(json);
-		// response.getWriter().print(message);
-		response.getWriter().close();
+//		String employeeDetails = request.getParameter("jsonData");
+//		String message = "";
+//		Gson gson = new Gson();
+//		try {
+//			BufferedReader br = new BufferedReader(new InputStreamReader(
+//					new ByteArrayInputStream(
+//							employeeDetails.getBytes(StandardCharsets.UTF_8))));
+//			// convert the json string back to object
+//			Employee employee = gson.fromJson(br, Employee.class);
+//			EmployeeDao employeeDao = new EmployeeDao();
+//			message = employeeDao.addEmployee(employee);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		String json = gson.toJson("Hello");
+//		response.getWriter().write(json);
+//		// response.getWriter().print(message);
+//		response.getWriter().close();
 
 		// ToTest
-		log.info("EMPLOYEE: " + employeeDetails);
+//		log.info("EMPLOYEE: " + employeeDetails);
 	}
 	
 	public void extractEmployeeDetails() {		
