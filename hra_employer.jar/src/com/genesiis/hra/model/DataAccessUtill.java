@@ -12,15 +12,15 @@ import com.genesiis.hra.validation.MessageList;
 
 
 ///***********************************************
-//* 20160422 PN HRA-3 created Department.java class
-//* 
+//* 20160422 PN HRA-3 created DataAccessUtill.java class
+//* 20160425 PN HRA-3 Modified add(Object object), method.
 //***********************************************/
 
 /**
  * Session Bean implementation class DepartmentDao
  */
 @Stateless
-public class DataAccessObject implements IDataAccessor {
+public class DataAccessUtill implements IDataAccessor {
 
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");
