@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import com.genesiis.hra.validation.MessageList;
+
 
 ///***********************************************
 //* 20160422 PN HRA-3 created Department.java class
@@ -18,7 +20,7 @@ import javax.persistence.Persistence;
  * Session Bean implementation class DepartmentDao
  */
 @Stateless
-public class DepartmentDao implements IFactory {
+public class DataAccessObject implements IDataAccessor {
 
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");

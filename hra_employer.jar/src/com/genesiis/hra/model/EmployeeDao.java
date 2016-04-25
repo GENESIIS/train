@@ -22,7 +22,7 @@ import com.genesiis.hra.validation.DataValidator;
  * Session Bean implementation class EmployeeDao
  */
 @Stateless
-public class EmployeeDao implements IFactory{
+public class EmployeeDao implements IDataAccessor{
 //	EntityManagerFactory emf = Persistence
 //			.createEntityManagerFactory("hra_employer");
 //	EntityManager entityManager = emf.createEntityManager();

@@ -40,7 +40,7 @@ public class DepartmentController extends HttpServlet {
 		AddDepartment addDepartment = new AddDepartment();
 		try {
 			log.info("departmentDetails1: " + departmentDetails);
-			addDepartment.execute(departmentDetails);
+			addDepartment.executeAdddepartment(departmentDetails);
 		} catch (Exception e) {
 			log.info("Exception: DepartmentController" + e);
 		}

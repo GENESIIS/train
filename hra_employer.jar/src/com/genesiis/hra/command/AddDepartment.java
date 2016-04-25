@@ -2,9 +2,9 @@ package com.genesiis.hra.command;
 
 import java.util.logging.Logger;
 
-import com.genesiis.hra.model.ClassFactory;
+import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.model.DataAccessObject;
 import com.genesiis.hra.model.Department;
-import com.genesiis.hra.model.IFactory;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,13 +15,12 @@ import com.google.gson.GsonBuilder;
 //***********************************************/
 
 public class AddDepartment {
-	private static final String DEPARTMENTDAO_CLASS = "DepartmentDao";
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 
-	public void execute(String gsonData) {
+	public void executeAdddepartment(String gsonData) {
 		log.info("gsonData " + gsonData);
-		ClassFactory classFactory = new ClassFactory();
-		IFactory iFactory = classFactory.getClassfactory(DEPARTMENTDAO_CLASS);
+		DataAccessObject dataAccessObject = new DataAccessObject();
+		
 		String message = "";
 
 		try {
@@ -29,9 +28,9 @@ public class AddDepartment {
 			if (validDepartment(department).equalsIgnoreCase("Successfull")) {
 				log.info("validDepartment(department) "
 						+ validDepartment(department));
-				// message = iFactory.add(department);
+				message = dataAccessObject.add(department);
 			} else {
-				message = validDepartment(department);
+				message = MessageList.ERROR.message();
 			}
 		} catch (Exception e) {
 			log.info("Exception-department: " + e);
@@ -54,9 +53,9 @@ public class AddDepartment {
 	public String validDepartment(Department department) {
 		DataValidator validator = new DataValidator();
 		if (validator.isValidString(department.getDepartmentName())) {
-			return DataValidator.ValidationErrors.SUCCESS.message();
+			return MessageList.SUCCESS.message();
 		} else {
-			return DataValidator.ValidationErrors.EMPTYFIELD.message();
+			return MessageList.EMPTYFIELD.message();
 		}
 	}
 
