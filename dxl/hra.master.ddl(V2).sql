@@ -4,7 +4,7 @@
 *
 */
 
-CREATE TABLE IF NOT EXISTS `EMPLOYEE` (
+CREATE TABLE IF NOT EXISTS `HRA.EMPLOYEE` (
   `ID` varchar(6) DEFAULT "-",
   `NAME` varchar(100) DEFAULT "-",
   `DESIGNATION` varchar(50) DEFAULT "-",
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `EMPLOYEE` (
 -- ----------------------------
 -- Table structure for `DEPARTMENT`
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `DEPARTMENT`` (
+CREATE TABLE IF NOT EXISTS `HRA.DEPARTMENT` (
   `ID` varchar(5) DEFAULT "-",
   `NAME` varchar(20) DEFAULT "-",
   `LOCATION` varchar(20) DEFAULT "-",
@@ -51,8 +51,7 @@ CREATE TABLE IF NOT EXISTS `DEPARTMENT`` (
 -- ----------------------------
 -- Table structure for `EMPLOYMENTHISTORY`
 -- ----------------------------
-DROP TABLE IF EXISTS `EMPLOYMENTHISTORY`;
-CREATE TABLE `EMPLOYMENTHISTORY` (
+CREATE TABLE `HRA.EMPLOYMENTHISTORY` (
   `ID` int(11) NOT NULL,
   `EMPLOYEEID` varchar(10) DEFAULT '-',
   `EMPLOYERNAME` varchar(100) DEFAULT '-',
@@ -76,8 +75,7 @@ CREATE TABLE `EMPLOYMENTHISTORY` (
 -- ----------------------------
 -- Table structure for `FAMILY`
 -- ----------------------------
-DROP TABLE IF EXISTS `FAMILY`;
-CREATE TABLE `FAMILY` (
+CREATE TABLE `HRA.FAMILY` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `EMPLOYEEID` varchar(10) DEFAULT '-',
   `NAME` varchar(200) DEFAULT '-',
@@ -94,8 +92,7 @@ CREATE TABLE `FAMILY` (
 -- ----------------------------
 -- Table structure for `LOAN`
 -- ----------------------------
-DROP TABLE IF EXISTS `LOAN`;
-CREATE TABLE `LOAN` (
+CREATE TABLE `HRA.LOAN` (
   `ID` int(11) NOT NULL,
   `EMPLOYEEID` varchar(10) DEFAULT '-',
   `DUEDATE` date DEFAULT GETDATE(),
@@ -111,8 +108,7 @@ CREATE TABLE `LOAN` (
 -- ----------------------------
 -- Table structure for `QUALIFICATION`
 -- ----------------------------
-DROP TABLE IF EXISTS `QUALIFICATION`;
-CREATE TABLE `QUALIFICATION` (
+CREATE TABLE `HRA.QUALIFICATION` (
   `ID` int(11) NOT NULL,
   `EMPLOYEEID` varchar(10) DEFAULT '-',
   `STUDYPLACE` varchar(100) DEFAULT '-',
@@ -129,8 +125,7 @@ CREATE TABLE `QUALIFICATION` (
 -- ----------------------------
 -- Table structure for `studyprogram`
 -- ----------------------------
-DROP TABLE IF EXISTS `STUDYPROGRAM`;
-CREATE TABLE `STUDYPROGRAM` (
+CREATE TABLE `HRA.STUDYPROGRAM` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `EMPLOYEEID` varchar(10) DEFAULT '-',
   `TIME` varchar(10) DEFAULT '-',
