@@ -8,7 +8,7 @@ function loadContentDashboard() {
 }
 
 function loadContentEmployee() {
-	$("#mainContent").load("manageEmployee.jsp");
+	$("#mainContent").load("createEmployee.jsp");
 }
 
 function loadContentDepartment() {
@@ -26,6 +26,7 @@ function addedAlert() {
 
 function updatedAlert() {
 	alert("Data Updated Successfully.");
+	document.getElementById("moredetails").disabled = false;
 }
 
 // Get data to sent to Servlet
@@ -140,6 +141,11 @@ function loadContentfamilydetails() {
 function loadContentemergencycontacts() {
 	$("#employeeContent").load("employeeDetails/emergencyContacts.jsp");
 }
+function loadContentmoreDetails() {
+	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
+}
+
+
 function loadContentmoreDetails() {
 	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
 }
