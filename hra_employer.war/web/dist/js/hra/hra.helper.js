@@ -8,7 +8,7 @@ function loadContentDashboard() {
 }
 
 function loadContentEmployee() {
-	$("#mainContent").load("manageEmployee.jsp");
+	$("#mainContent").load("createEmployee.jsp");
 }
 
 function loadContentDepartment() {
@@ -26,6 +26,7 @@ function addedAlert() {
 
 function updatedAlert() {
 	alert("Data Updated Successfully.");
+	document.getElementById("moredetails").disabled = false;
 }
 
 // Get data to sent to Servlet
@@ -112,34 +113,39 @@ function addDepartmentDetails() {
 
 // Load Employee Contents
 function loadContentbasicdata() {
-	$("#employeeContent").load("employeeDetails/basicData.jsp");
+	$("#modelrest").load("employeeDetails/basicData.jsp");
 }
 
 function loadContentqualifications() {
-	$("#employeeContent").load("employeeDetails/educationalDetails.jsp");
+	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
 }
 
 function loadContentemployementhistory() {
-	$("#employeeContent").load("employeeDetails/employementHistory.jsp");
+	$("#modelrest").load("employeeDetails/employementHistory.jsp");
 }
 
 function loadContentstudyprograms() {
-	$("#employeeContent").load("employeeDetails/studyPrograms.jsp");
+	$("#modelrest").load("employeeDetails/studyPrograms.jsp");
 }
 
 function loadContentlanguages() {
-	$("#employeeContent").load("employeeDetails/languageProficiency.jsp");
+	$("#modelrest").load("employeeDetails/languageProficiency.jsp");
 }
 
 function loadContentloandetails() {
-	$("#employeeContent").load("employeeDetails/loanDetails.jsp");
+	$("#modelrest").load("employeeDetails/loanDetails.jsp");
 }
 function loadContentfamilydetails() {
-	$("#employeeContent").load("employeeDetails/familyDetails.jsp");
+	$("#modelrest").load("employeeDetails/familyDetails.jsp");
 }
 function loadContentemergencycontacts() {
-	$("#employeeContent").load("employeeDetails/emergencyContacts.jsp");
+	$("#modelrest").load("employeeDetails/emergencyContacts.jsp");
 }
+function loadContentmoreDetails() {
+	$("#modelrest").load("employeeDetails/moreDetails.jsp");
+}
+
+
 function loadContentmoreDetails() {
 	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
 }

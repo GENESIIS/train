@@ -6,6 +6,8 @@
 </script>
 
 <div>
+<label><h2>Family Details</h2> </label>
+	
 	<button type="button" class="btn btn-primary pull-side"
 		data-toggle="modal" data-target="#addFamilydetails">
 		<i class="glyphicon glyphicon-plus"></i> Add New
@@ -199,9 +201,9 @@
 					onclick="updatedAlert()" data-dismiss="modal">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
-				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal">
-					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				<button type="button" class="btn btn-success pull-side"
+					onclick="updatedAlert()" data-dismiss="modal">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 			</div>
 		</div>
