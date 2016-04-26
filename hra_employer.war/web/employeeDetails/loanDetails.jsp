@@ -6,6 +6,8 @@
 </script>
 
 <div>
+	<label><h2>Loan Details</h2> </label>
+
 	<button type="button" class="btn btn-primary pull-side"
 		data-toggle="modal" data-target="#addLoandetails">
 		<i class="glyphicon glyphicon-plus"></i> Add New
@@ -43,6 +45,7 @@
 		</tfoot>
 		<tbody>
 			<tr>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -104,8 +107,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="dueDate">Due Date</label> <input type="date"
-								class="form-control" id="dueDate" name="dueDate"
-								placeholder="">
+								class="form-control" id="dueDate" name="dueDate" placeholder="">
 						</div>
 					</div>
 				</div>
@@ -146,8 +148,8 @@
 						placeholder="">
 				</div>
 				<div class="form-group">
-					<label for="edittotalOutstanding">Total Outstanding Amount</label> <input
-						type="text" class="form-control" id="edittotalOutstanding"
+					<label for="edittotalOutstanding">Total Outstanding Amount</label>
+					<input type="text" class="form-control" id="edittotalOutstanding"
 						name="edittotalOutstanding" placeholder="">
 				</div>
 				<div class="form-group">

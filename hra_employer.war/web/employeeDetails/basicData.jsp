@@ -1,9 +1,12 @@
 <div>
+	<label><h2>General Details</h2> </label>
+
 	<button type="button" class="btn btn-primary pull-side"
-		data-toggle="modal" data-target="#addEmployeeDetailsForm"><i class="glyphicon glyphicon-plus"></i>
-		 Add New</button>
+		data-toggle="modal" data-target="#addEmployeeDetailsForm">
+		<i class="glyphicon glyphicon-plus"></i> Add New
+	</button>
 </div>
-<br/>
+<br />
 
 <div class="table-responsive">
 	<table id="employeeDetails"

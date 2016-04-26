@@ -6,6 +6,7 @@
 </script>
 
 <div>
+	<label><h2>Educational & Professional Qualifications</h2> </label>
 	<button type="button" class="btn btn-primary pull-side"
 		data-toggle="modal" data-target="#addEducationaldetails">
 		<i class="glyphicon glyphicon-plus"></i> Add New
@@ -57,7 +58,8 @@
 						<i class="glyphicon glyphicon-modal-window"></i>
 					</button></td>
 				<td align="center"><button type="button"
-						class="btn btn-warning" data-toggle="modal" data-target="editEducationaldetails">
+						class="btn btn-warning" data-toggle="modal"
+						data-target="editEducationaldetails">
 						<i class="glyphicon glyphicon-edit"></i>
 					</button></td>
 				<td align="center"><button type="button" class="btn btn-danger"
@@ -173,8 +175,8 @@
 				</div>
 				<div class="form-group">
 					<label for="editmediumStudied">Medium</label> <input type="text"
-						class="form-control" id="editmediumStudied" name="editmediumStudied"
-						placeholder="">
+						class="form-control" id="editmediumStudied"
+						name="editmediumStudied" placeholder="">
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -186,9 +188,9 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="editcompleatedOn">Completed On</label> <input type="date"
-								class="form-control" id="editcompleatedOn" name="editcompleatedOn"
-								placeholder="">
+							<label for="editcompleatedOn">Completed On</label> <input
+								type="date" class="form-control" id="editcompleatedOn"
+								name="editcompleatedOn" placeholder="">
 						</div>
 					</div>
 				</div>

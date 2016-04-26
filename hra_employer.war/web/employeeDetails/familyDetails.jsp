@@ -6,6 +6,8 @@
 </script>
 
 <div>
+<label><h2>Family Details</h2> </label>
+	
 	<button type="button" class="btn btn-primary pull-side"
 		data-toggle="modal" data-target="#addFamilydetails">
 		<i class="glyphicon glyphicon-plus"></i> Add New

@@ -17,24 +17,32 @@
 		<ul class="dropdown-menu">
 			<li><a href="#" onclick="loadContentbasicdata()">Basic Data</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentqualifications()">Educational Qualifications</a></li>
+			<li><a href="#" onclick="loadContentqualifications()">Educational
+					Qualifications</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentemployementhistory()">Study Programs</a></li>
+			<li><a href="#" onclick="loadContentstudyprograms()">Study
+					Programs</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentstudyprograms()">Employment History</a></li>
+			<li><a href="#" onclick="loadContentstudyprograms()">Employment
+					History</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentlanguages()">Language Proficiency</a></li>
+			<li><a href="#" onclick="loadContentlanguages()">Language
+					Proficiency</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentloandetails()">Loan Details</a></li>
+			<li><a href="#" onclick="loadContentloandetails()">Loan
+					Details</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentfamilydetails()">Family Details</a></li>
+			<li><a href="#" onclick="loadContentfamilydetails()">Family
+					Details</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentemergencycontacts()">Emergency Contacts</a></li>
+			<li><a href="#" onclick="loadContentemergencycontacts()">Emergency
+					Contacts</a></li>
 			<li class="divider"></li>
-			<li><a href="#" onclick="loadContentmoreDetails()">More Details</a></li>
+			<li><a href="#" onclick="loadContentmoreDetails()">More
+					Details</a></li>
 		</ul>
 	</div>
-	<br/>
-	<div id="employeeContent"></div>
+	<br />
+	<div class="well" id="employeeContent"></div>
 </div>
 
