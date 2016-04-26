@@ -74,3 +74,38 @@ function addEmployeeDetails(){
         }
     });
 }
+/////////////////////////////////////////////////
+$(document).on("click", "#vbutton", function () {
+	
+	$.get("EmployerController", function(data, status){
+		//$('#viewEmployeeDetailsForm').text
+		json = JSON.parse(data);
+		$(".modal-body #userid").val( json.employeeId);
+		$(".modal-body #username").val( json.employeeName);
+		$(".modal-body #disignation").val( json.employeeDesignation);
+		$(".modal-body #salary").val( json.employeeSalary);
+		$(".modal-body #userid").val( json.employeeEmail);
+		$(".modal-body #userid").val( json.employeeDob);
+		$(".modal-body #userid").val( json.employeeNic);
+		$(".modal-body #userid").val( json.employeeGender);
+		$(".modal-body #userid").val( json.employeeAddress);
+		$(".modal-body #userid").val( json.employeeMobileno);
+		$(".modal-body #userid").val( json.employeeOtherno);
+		$(".modal-body #userid").val( json.departmentId);
+		$(".modal-body #userid").val( json.dateOfjoin);
+		$(".modal-body #userid").val( json.modOn);
+		$(".modal-body #userid").val( json.modBy);
+		
+	});
+
+     
+});
+$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+		
+});
+
+
+
+
+

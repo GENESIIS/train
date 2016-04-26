@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 
+
+
 /***********************************************
  * 20160411 PN HRA-1 created EmployeeDao.java class
  * 20160412 PN HRA-1 created addEmployee() method

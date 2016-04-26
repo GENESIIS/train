@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeDao;
 import com.genesiis.hra.model.IEmployeeDaoLocal;
-
 /**
  * Servlet implementation class AddEmployeeDetails
  */
@@ -36,6 +36,12 @@ public class EmployerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		
+		//Integer userId =null;
+		//userId = Integer.parseInt(request.getParameter("user_id"));
+		GetEmployee empgson= new GetEmployee();
+		response.setContentType("text/plain");
+		response.getWriter().write(empgson.createGson());
 
 	}
 

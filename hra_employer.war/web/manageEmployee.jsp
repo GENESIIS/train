@@ -5,17 +5,15 @@
 
 <script type="text/javascript">
 	//To load the Datatable
-	$(document).ready(function() {
-		$('#employeeDetails').DataTable();
-	});
 </script>
-
+<script src="dist\js\jquery-2.2.3.min.js"
+    type="text/javascript"></script>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addEmployeeDetailsForm">
 		<i class="glyphicon glyphicon-user"></i> Create Employee
-	</button>
+	</button>	
 	<br></br>
 	<div class="table-responsive">
 		<table id="employeeDetails"
@@ -52,8 +50,8 @@
 					0112222222<br>
 					dammika@gmail.com
 					</td>
-					<td align="center"><button type="button" class="btn btn-info"
-							data-toggle="modal" href = "EmployerController" data-target="#viewEmployeeDetailsForm">
+					<td align="center"><button id="vbutton" type="button" class="btn btn-info"
+							 data-toggle="modal" data-target="#viewEmployeeDetailsForm" >
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
 					<td align="center"><button type="button"
@@ -75,7 +73,7 @@
 					0113333333<br>
 					chamaraw@gmail.com
 					</td>
-					<td align="center"><button type="button" class="btn btn-info"
+					<td align="center"><button id = "vbutton1" type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
@@ -354,8 +352,11 @@
 			<div class="modal-body">
 			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
 									alt="User" width="150" height="150">
-            <p>ID : ${emp.id}</p>
-            <p>Name : ${emp.name}</p>
+            <p>ID :</p> <p id="userid"></p>
+            <p>Name :</p><input type="text" id="username"></input>
+            <p>Disignation :</p><input type="text" id="disignation "></input>
+            <p>Salary :</p><input type="text" id="salary"></input>
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger pull-side"
