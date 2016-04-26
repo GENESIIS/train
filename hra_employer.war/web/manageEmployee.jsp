@@ -54,7 +54,7 @@
 							 data-toggle="modal" data-target="#viewEmployeeDetailsForm" >
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
-					<td align="center"><button type="button"
+					<td align="center"><button  id="ebutton" type="button"
 							class="btn btn-warning" data-toggle="modal"
 							data-target="#editEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-edit"></i>
@@ -196,7 +196,7 @@
 						<div class="form-group">
 							<label for="employeeJoinDate">Join Date</label> <input
 								type="date" class="form-control" id="employeeJoinDate"
-								name="employeeJoinDate" placeholder="">
+								name="employeeJoinDate">
 						</div>
 					</div>
 				</div>
@@ -238,7 +238,7 @@
 						<div class="form-group">
 							<label for="employeeNumberEdit">Employee Number</label> <input
 								type="text" class="form-control" id="employeeNumberEdit"
-								name="employeeNumberEdit" placeholder="">
+								name="employeeNumberEdit" >
 						</div>
 					</div>
 				</div>
@@ -246,21 +246,21 @@
 				<div class="form-group">
 					<label for="employeeNameEdit">Name</label> <input type="text"
 						class="form-control" id="employeeNameEdit" name="employeeNameEdit"
-						placeholder="">
+						>
 				</div>
 
 				<div class="form-group">
 					<label for="employeeDesignationEdit">Designation</label> <input
 						type="text" class="form-control" id="employeeDesignationEdit"
-						name="employeeDesignationEdit" placeholder="">
+						name="employeeDesignationEdit">
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="employeeDateofBothEdit">Date Of Birth</label> <input
-								type="date" class="form-control" id="employeeDateofBothEdit"
-								name="employeeDateofBothEdit" placeholder="">
+								type="text" class="form-control" id="employeeDateofBothEdit"
+								name="employeeDateofBothEdit">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -293,7 +293,7 @@
 						<div class="form-group">
 							<label for="employeeOtherNumberEdit">Other Number</label> <input
 								type="text" class="form-control" id="employeeOtherNumberEdit"
-								name="employeeOtherNumberEdit" placeholder="">
+								name="employeeOtherNumberEdit">
 						</div>
 					</div>
 				</div>
@@ -301,7 +301,7 @@
 				<div class="form-group">
 					<label for="employeeEmailEdit">Email</label> <input type="text"
 						class="form-control" id="employeeEmailEdit"
-						name="employeeEmailEdit" placeholder="">
+						name="employeeEmailEdit">
 				</div>
 
 				<div class="row">
@@ -329,7 +329,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-side"
-					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
+					onclick="updateEmployeeDetails()()" data-dismiss="modal">Save Details</button>
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -352,7 +352,7 @@
 			<div class="modal-body">
 			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
 									alt="User" width="150" height="150">
-            <p>ID :</p> <p id="userid"></p>
+            <p>ID :</p><input type="text" id="userid"></input>
             <p>Name :</p><input type="text" id="username"></input>
             <p>Disignation :</p><input type="text" id="disignation "></input>
             <p>Salary :</p><input type="text" id="salary"></input>

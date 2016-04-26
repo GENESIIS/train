@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeDao;
+import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.model.IEmployeeDaoLocal;
 /**
  * Servlet implementation class AddEmployeeDetails
@@ -51,29 +51,32 @@ public class EmployerController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		
+        
 		String employeeDetails = request.getParameter("jsonData");
-		String message = "";
-		Gson gson = new Gson();
+		
+		AddEmployee addEmployee = new AddEmployee();
+		
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new ByteArrayInputStream(
-							employeeDetails.getBytes(StandardCharsets.UTF_8))));
-			// convert the json string back to object
-			Employee employee = gson.fromJson(br, Employee.class);
-			EmployeeDao employeeDao = new EmployeeDao();
-			message = employeeDao.addEmployee(employee);
+			
+			
+			
+			
+			String upaDate = request.getParameter("update");
+	        if (upaDate.equalsIgnoreCase("true"))
+	        {
+	        	addEmployee.executeAddEmployee(employeeDetails);
+	        }
+	        else
+	        {
+	        	addEmployee.executeAddEmployee(employeeDetails);
+	        	
+	        }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		String json = gson.toJson("Hello");
-		response.getWriter().write(json);
-		// response.getWriter().print(message);
-		response.getWriter().close();
-
-		// ToTest
-		log.info("EMPLOYEE: " + employeeDetails);
+		
 	}
 	
 	public void extractEmployeeDetails() {		
