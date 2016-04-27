@@ -21,6 +21,7 @@ function deleteAlert() {
 }
 
 function addedAlert() {
+	document.getElementById("moredetails").disabled = false;
 	alert("Data Added Successfully.");
 }
 
@@ -145,11 +146,9 @@ function loadContentmoreDetails() {
 	$("#modelrest").load("employeeDetails/moreDetails.jsp");
 }
 
-
 function loadContentmoreDetails() {
 	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
 }
-
 
 function loadContentmoreDetails() {
 	$("#employeeContent").load("employeeDetails/moreDetails.jsp");

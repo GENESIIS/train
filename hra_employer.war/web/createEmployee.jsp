@@ -253,7 +253,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success pull-side"
-						onclick="updatedAlert()" data-dismiss="">
+						onclick="addedAlert()" data-dismiss="">
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-warning " id="moredetails"
@@ -282,7 +282,7 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Daa</a> 
+					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 
 					<a onclick="loadContentstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
 					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan Details</a> 
 					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
