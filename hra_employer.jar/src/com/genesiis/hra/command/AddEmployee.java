@@ -22,7 +22,7 @@ public class AddEmployee {
 		String jsonObject = gsonData.substring(12, gsonData.length()-1);
 		log.info("jsonObject" + jsonObject);
 		
-		try {
+		try { 
 			//Get employee object extract from Gson object.
 			Employee employee = extractFromgson(gsonData);
 			if (validEmployee(employee).equalsIgnoreCase("Successfull")) {

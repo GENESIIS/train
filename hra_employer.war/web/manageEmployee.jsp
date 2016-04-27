@@ -359,7 +359,7 @@
 			<p>Email              : <input type="text" id="email"></input></p>
             <p>Date of Birth      : <input type="text" id="dob"></input></p>
             <p>NIC Number         : <input type="text" id="Nic"></input></p>
-			<p>Gender             : <input type="text" id="gender"></input></p>
+		 	<p>Gender             : <input type="text" id="gender"></input></p>
 			<p>Address            : <input type="text" id="adress"></input></p>
             <p>Mobile Number      : <input type="text" id="MobNumber"></input></p>
             <p>Other Number       : <input type="text" id="OthNumber"></input></p>

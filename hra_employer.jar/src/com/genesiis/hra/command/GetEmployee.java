@@ -12,7 +12,7 @@ public class GetEmployee {
 		Employee employee = new Employee();
 		employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
-		employee.setEmployeedesignation("Eng");
+		employee.setEmployeedesignation("Eng"); 
 		employee.setEmployeesalary(1000);
 		employee.setEmployeeemail("we@mail");
 		employee.setEmployeedob("2000.01.01");
@@ -26,8 +26,8 @@ public class GetEmployee {
 		employee.setModon("mod");
 		employee.setModby("modby");
 		
-		Gson gson = new Gson();
-		
+		Gson gson = new Gson();  
+		 
 		String employeD = null;
 		
 		try {

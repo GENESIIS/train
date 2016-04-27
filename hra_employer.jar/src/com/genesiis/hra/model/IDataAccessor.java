@@ -18,3 +18,4 @@ public interface IDataAccessor {
 
 	public List<Object> getAll();
 }
+ 

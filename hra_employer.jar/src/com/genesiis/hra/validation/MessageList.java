@@ -18,10 +18,10 @@ public enum MessageList {
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
     FAILED_TO_CREATE("Object not created");
-
+ 
 	private String message;
 
-	MessageList(String message) {
+	MessageList(String message) { 
 		this.message = message;
 	}
 

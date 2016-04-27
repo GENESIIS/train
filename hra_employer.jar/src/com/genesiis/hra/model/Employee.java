@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 
 public class Employee {
 //	@Id
-//	@Column
+//	@Column 
 	private String employeeId;
 //	@Column
 	private String employeeName;

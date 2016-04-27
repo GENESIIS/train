@@ -32,7 +32,7 @@ public class EmployerController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request,
+	protected void doGet(HttpServletRequest request,  
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		

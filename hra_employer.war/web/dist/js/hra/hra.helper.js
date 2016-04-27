@@ -56,7 +56,7 @@ function addEmployeeDetails(){
                 "employeeDepartment": employeeDepartment,
                 "employeeJoinDate": employeeJoinDate
             }
-        };
+        }; 
 
 	$.ajax({
         type: "POST",

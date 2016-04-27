@@ -20,7 +20,7 @@ import com.genesiis.hra.validation.MessageList;
  * Session Bean implementation class DepartmentDao
  */
 @Stateless
-public class DataAccessUtill implements IDataAccessor {
+public class DataAccessUtill implements IDataAccessor { 
 
 	EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");
