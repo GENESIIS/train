@@ -42,7 +42,7 @@ public class AddEmployee {
 			Employee employee = null;
 			try {
 				employee = gson.fromJson(gsonData, Employee.class);
-				log.info("Department department" + employee);
+				log.info("Employee department" + employee);
 			} catch (Exception e) {
 				log.info("ExtractFromgson - Exception " + e);
 			}

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,14 +19,13 @@ import com.google.gson.Gson;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.model.IEmployeeDaoLocal;
+
 /**
  * Servlet implementation class AddEmployeeDetails
  */
 @WebServlet("/EmployerController")
 public class EmployerController extends HttpServlet {
-	@EJB
-	private IEmployeeDaoLocal employeeDao;
+	
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployerController.class.getName());
 
@@ -62,16 +61,16 @@ public class EmployerController extends HttpServlet {
 			
 			
 			
-			String upaDate = request.getParameter("update");
-	        if (upaDate.equalsIgnoreCase("true"))
-	        {
+			//String upaDate = request.getParameter("update");
+	       // if (upaDate.equalsIgnoreCase("true"))
+	      //  {
 	        	addEmployee.executeAddEmployee(employeeDetails);
-	        }
-	        else
-	        {
-	        	addEmployee.executeAddEmployee(employeeDetails);
+	      //  }
+	       // else
+	       // {
+	        //	addEmployee.executeAddEmployee(employeeDetails);
 	        	
-	        }
+	       // }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

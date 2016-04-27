@@ -1,3 +1,5 @@
+package com.genesiis.hra.model;
+
 import java.util.List;
 
 import javax.ejb.Stateless;

@@ -85,17 +85,17 @@ $(document).on("click", "#vbutton", function () {
 		$(".modal-body #username").val( json.employeeName);
 		$(".modal-body #disignation").val( json.employeeDesignation);
 		$(".modal-body #salary").val( json.employeeSalary);
-		$(".modal-body #userid").val( json.employeeEmail);
-		$(".modal-body #userid").val( json.employeeDob);
-		$(".modal-body #userid").val( json.employeeNic);
-		$(".modal-body #userid").val( json.employeeGender);
-		$(".modal-body #userid").val( json.employeeAddress);
-		$(".modal-body #userid").val( json.employeeMobileno);
-		$(".modal-body #userid").val( json.employeeOtherno);
-		$(".modal-body #userid").val( json.departmentId);
-		$(".modal-body #userid").val( json.dateOfjoin);
-		$(".modal-body #userid").val( json.modOn);
-		$(".modal-body #userid").val( json.modBy);
+		$(".modal-body #email").val( json.employeeEmail);
+		$(".modal-body #dob").val( json.employeeDob);
+		$(".modal-body #Nic").val( json.employeeNic);
+		$(".modal-body #gender").val( json.employeeGender);
+		$(".modal-body #adress").val( json.employeeAddress);
+		$(".modal-body #MobNumber").val( json.employeeMobileno);
+		$(".modal-body #OthNumber").val( json.employeeOtherno);
+		$(".modal-body #depid").val( json.departmentId);
+		$(".modal-body #doj").val( json.dateOfjoin);
+		//$(".modal-body #userid").val( json.modOn);
+		//$(".modal-body #userid").val( json.modBy);
 		
 	});
 
@@ -155,12 +155,12 @@ function updateEmployeeDetails(){
                 "employeeJoinDate": employeeJoinDate
             }
         };
-	String update = "true";
+	
 	$.ajax({
         type: "POST",
         url: 'EmployerController',
         data: {
-        	update : update ,
+        	
         	jsonData: JSON.stringify(employeeData) 
         },
         dataType: "json",

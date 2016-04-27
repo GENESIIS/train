@@ -329,7 +329,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-side"
-					onclick="updateEmployeeDetails()()" data-dismiss="modal">Save Details</button>
+					onclick="updateEmployeeDetails()" data-dismiss="modal">Save Details</button>
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>
@@ -352,10 +352,20 @@
 			<div class="modal-body">
 			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
 									alt="User" width="150" height="150">
-            <p>ID :</p><input type="text" id="userid"></input>
-            <p>Name :</p><input type="text" id="username"></input>
-            <p>Disignation :</p><input type="text" id="disignation "></input>
-            <p>Salary :</p><input type="text" id="salary"></input>
+            <p>ID                 : <input type="text" id="userid"></input></p>
+            <p>Name               : <input type="text" id="username"></input></p>
+            <p>Disignation        : <input type="text" id="disignation"></input></p>
+            <p>Salary             : <input type="text" id="salary"></input></p>
+			<p>Email              : <input type="text" id="email"></input></p>
+            <p>Date of Birth      : <input type="text" id="dob"></input></p>
+            <p>NIC Number         : <input type="text" id="Nic"></input></p>
+			<p>Gender             : <input type="text" id="gender"></input></p>
+			<p>Address            : <input type="text" id="adress"></input></p>
+            <p>Mobile Number      : <input type="text" id="MobNumber"></input></p>
+            <p>Other Number       : <input type="text" id="OthNumber"></input></p>
+			<p>Departmentpartment : <input type="text" id="depid"></input></p>
+			<p>Date of Join       : <input type="text" id="doj"></input></p>
+            
 
 			</div>
 			<div class="modal-footer">
