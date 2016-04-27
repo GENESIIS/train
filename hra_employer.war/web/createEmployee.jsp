@@ -5,6 +5,14 @@
 
 <!-- JavaScripts to help to load  -->
 
+<script type="text/javascript">
+	//To load the Datatable
+	$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+	});
+</script>
+
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
 
@@ -13,6 +21,80 @@
 		<i class="glyphicon glyphicon-plus"></i> New Employee
 	</button>
 
+
+	<br></br>
+	<div class="table-responsive">
+		<table id="employeeDetails"
+			class="table table-striped table-bordered table-responsive"
+			cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Employee Number</th>
+					<th>Employee Name</th>
+					<th>Designation</th>
+					<th>Contact Details</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Employee Number</th>
+					<th>Employee Name</th>
+					<th>Designation</th>
+					<th>Contact Details</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>EMP001</td>
+					<td>Dammika Nawarathna</td>
+					<td>AGM - HR</td>
+					<td>0711111111<br> 0112222222<br> dammika@gmail.com
+					</td>
+					<td align="center"><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-modal-window"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-warning" data-toggle="modal"
+							data-target="#editEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-edit"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-danger" data-toggle="modal"
+							data-target="#deleteEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button></td>
+				</tr>
+				<tr>
+					<td>EMP002</td>
+					<td>Chamara Withanachchi</td>
+					<td>DGM - IT</td>
+					<td>0712222222<br> 0113333333<br> chamaraw@gmail.com
+					</td>
+					<td align="center"><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-modal-window"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-warning" data-toggle="modal"
+							data-target="#editEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-edit"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-danger" data-toggle="modal"
+							data-target="#deleteEmployeeDetailsForm">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<!-- Modal -->
 	<div class="modal fade" id="addEmployeedetails" role="dialog">
@@ -175,7 +257,7 @@
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-warning " id="moredetails"
-						name="moredetails" onclick="" data-dismiss="" disabled="true"
+						name="moredetails" onclick="" data-dismiss="modal" disabled="true"
 						data-toggle="modal" data-target="#addmoreEmployeedetails">
 						<i class="glyphicon glyphicon-file"></i> More Details
 					</button>
@@ -198,43 +280,26 @@
 				</h3>
 			</div>
 			<div class="modal-body">
-				<div class="">
-					<div class="row">
-						<div class="col-sm-6">
-							<button type="button" class="btn btn-success pull-side"
-								onclick="updatedAlert()" data-dismiss="">
-								<i class="glyphicon glyphicon-floppy-disk"></i> Save
-							</button>
-						</div>
-						<div class="col-sm-6">
-							<button type="button" class="btn btn-success pull-side"
-								onclick="updatedAlert()" data-dismiss="">
-								<i class="glyphicon glyphicon-floppy-disk"></i> Save
-							</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-4 btn btn-primary">Study Programs</div>
-						<div class="col-sm-4 btn btn-primary">Loan Details</div>
-						<div class="col-sm-4 btn btn-primary">Family Details</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6 btn btn-primary">Language Proficiency</div>
-						<div class="col-sm-6 btn btn-primary">Emergency Contacts</div>
-					</div>
+
+				<div class="btn-group btn-group-justified">
+					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Daa</a> 
+					<a onclick="loadContentstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
+					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan Details</a> 
+					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
 				</div>
+				<div id="modelrest" name="modelrest"></div>
+
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-side"
-					onclick="updatedAlert()" data-dismiss="">
-					<i class="glyphicon glyphicon-floppy-disk"></i> Save
-				</button>
-				<button type="button" class="btn btn-warning " id="moredetails"
-					name="moredetails" onclick="" data-dismiss="modal" disabled="true">
-					<i class="glyphicon glyphicon-file"></i> More Details
-				</button>
-			</div>
+			<!-- 			<div class="modal-footer"> -->
+			<!-- 				<button type="button" class="btn btn-success pull-side" -->
+			<!-- 					onclick="updatedAlert()" data-dismiss=""> -->
+			<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
+			<!-- 				</button> -->
+			<!-- 				<button type="button" class="btn btn-warning " id="moredetails" -->
+			<!-- 					name="moredetails" onclick="" data-dismiss="modal" disabled="true"> -->
+			<!-- 					<i class="glyphicon glyphicon-file"></i> More Details -->
+			<!-- 				</button> -->
+			<!-- 			</div> -->
 		</div>
 	</div>
 </div>
-
