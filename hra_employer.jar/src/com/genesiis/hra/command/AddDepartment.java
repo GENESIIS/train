@@ -1,87 +1,65 @@
 package com.genesiis.hra.command;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-import com.genesiis.hra.model.ClassFactory;
+import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.model.DataAccessUtill;
 import com.genesiis.hra.model.Department;
-import com.genesiis.hra.model.IFactory;
+import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 ///***********************************************
 //* 20160422 PN HRA-3 created AddDepartment.java class
-//* 
+//* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method
 //***********************************************/
 
 public class AddDepartment {
-	private static final String DEPARTMENT_CLASS = "Department";
-	private static final String DEPARTMENTDAO_CLASS = "DepartmentDao";
-
-	//private Department department = null;
-
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 
-	public void execute(String gsonData) {
-		log.info("gsonData " + gsonData);
-		ClassFactory classFactory = new ClassFactory();
-		IFactory iFactory = classFactory.getClassfactory(DEPARTMENTDAO_CLASS);
+	public void executeAdddepartment(String gsonData) {
+		DataAccessUtill accessUtill = new DataAccessUtill();		
 		String message = "";
 
+		//Format the JsonData Object.
+		String jsonObject = gsonData.substring(12, gsonData.length()-1);
+		log.info("jsonObject" + jsonObject);
+		
 		try {
-			Department department = (Department) extractFromgson(gsonData, DEPARTMENT_CLASS,DEPARTMENTDAO_CLASS);
-			log.info("department.getDepartmentName() " + department.getDepartmentName());
+			//Get department object extract from Gson object.
+			Department department = extractFromgson(gsonData);
+			if (validDepartment(department).equalsIgnoreCase("Successfull")) {
+				log.info("validDepartment(department) "
+						+ validDepartment(department));
+				//message = accessUtill.add(department);
+			} else {
+				message = MessageList.ERROR.message();
+			}
 		} catch (Exception e) {
-			log.info("Exception-department.getDepartmentName(): " + e);
+			log.info("Exception-department: " + e);
 		}
-
-		
-		
-
-//		if (validDepartment(department).equalsIgnoreCase("Successfull")) {
-//			log.info("validDepartment(department) "
-//					+ validDepartment(department));
-//			// message = iFactory.add(department);
-//		} else {
-//			message = validDepartment(department);
-//		}
 	}
 
-	public Department extractFromgson(String gsonData, String entityClass,	String daoClass) {
-		Gson gson = new Gson();
-		String message = "";
-		Object entityClassobject = null;
-		Object dataAccessclassobject = null;
-
+	// Method to extract DepartmentDetails from jsonData.
+	public Department extractFromgson(String gsonData) {
+		Gson gson = new GsonBuilder().create();
+		Department department = null;
 		try {
-			BufferedReader brReader = new BufferedReader(new InputStreamReader(
-					new ByteArrayInputStream(
-							gsonData.getBytes(StandardCharsets.UTF_8))));
-
-			Class entity = Class.forName(entityClass);
-			entityClassobject = entity.newInstance();
-
-			Class dataAccess = Class.forName(daoClass);
-			dataAccessclassobject = dataAccess.newInstance();
-			
-
-			entityClassobject = gson.fromJson(brReader, Department.class);
+			department = gson.fromJson(gsonData, Department.class);
+			log.info("Department department" + department);
 		} catch (Exception e) {
-			log.info("extractFromgson " + e);
+			log.info("ExtractFromgson - Exception " + e);
 		}
-		return (Department) entityClassobject;
+		return department;
 	}
 
 	public String validDepartment(Department department) {
-//		DataValidator validator = new DataValidator();
-//		if (validator.isValidString(department.getDepartmentName())) {
-//			return DataValidator.ValidationErrors.SUCCESS.message();
-//		} else {
-//			return DataValidator.ValidationErrors.EMPTYFIELD.message();
-//		}
-		return null;
+		DataValidator validator = new DataValidator();
+		if (validator.isValidString(department.getDepartmentName())) {
+			return MessageList.SUCCESS.message();
+		} else {
+			return MessageList.EMPTYFIELD.message();
+		}
 	}
 
 }

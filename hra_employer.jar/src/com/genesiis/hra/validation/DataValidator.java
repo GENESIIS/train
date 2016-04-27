@@ -9,7 +9,7 @@ import com.sun.org.apache.regexp.internal.recompile;
 public class DataValidator {
 	Date date = new Date();
 	boolean status = false;
-
+	
 	public boolean isPastDate(String day) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
@@ -72,5 +72,4 @@ public class DataValidator {
 		}
 		return status;
 	}
-
 }

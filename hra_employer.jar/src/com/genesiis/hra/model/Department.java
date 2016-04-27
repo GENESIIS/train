@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries(@NamedQuery(name="Department.getAll",query="SELECE e from DEPARTMENT e"))
 public class Department {
+	
 	private String departmentNumber;
 	private String departmentName;
 	private String departmentLocation;
@@ -60,4 +61,9 @@ public class Department {
 		this.departmentLocation = departmentLocation;
 		this.departmentHead = departmentHead;
 	}
+	
+	@Override
+    public String toString() {
+        return departmentNumber + " - " + departmentName+ " - " +departmentLocation+ " - " +departmentHead;
+    }
 }

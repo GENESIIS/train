@@ -25,6 +25,11 @@ function addedAlert() {
 	alert("Data Added Successfully.");
 }
 
+function addedDept() {
+	alert("Data Added Successfully.");
+}
+
+
 function updatedAlert() {
 	alert("Data Updated Successfully.");
 	document.getElementById("moredetails").disabled = false;
@@ -93,6 +98,8 @@ function addDepartmentDetails() {
 		}
 	};
 
+
+
 	alert(jsonData);
 
 	$.ajax({
@@ -152,4 +159,35 @@ function loadContentmoreDetails() {
 
 function loadContentmoreDetails() {
 	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
+
+	// ///////////////////////////////////////////////
+	$(document).on("click", "#vbutton", function() {
+
+		$.get("EmployerController", function(data, status){
+			
+			alert(data);
+			json = JSON.parse(data);
+			$(".modal-body #userid").val( json.employeeId);
+			$(".modal-body #username").val( json.employeeName);
+			$(".modal-body #disignation").val( json.employeeDesignation);
+			$(".modal-body #salary").val( json.employeeSalary);
+			$(".modal-body #email").val( json.employeeEmail);
+			$(".modal-body #dob").val( json.employeeDob);
+			$(".modal-body #Nic").val( json.employeeNic);
+			$(".modal-body #gender").val( json.employeeGender);
+			$(".modal-body #adress").val( json.employeeAddress);
+			$(".modal-body #MobNumber").val( json.employeeMobileno);
+			$(".modal-body #OthNumber").val( json.employeeOtherno);
+			$(".modal-body #depid").val( json.departmentId);
+			$(".modal-body #doj").val( json.dateOfjoin);
+			//$(".modal-body #userid").val( json.modOn);
+			//$(".modal-body #userid").val( json.modBy);
+			
+		});
+
+	});
+	$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+
+	});
 }

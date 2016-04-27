@@ -70,28 +70,7 @@
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
-				</tr>
-				<tr>
-					<td>EMP002</td>
-					<td>Chamara Withanachchi</td>
-					<td>DGM - IT</td>
-					<td>0712222222<br> 0113333333<br> chamaraw@gmail.com
-					</td>
-					<td align="center"><button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-modal-window"></i>
-						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-warning" data-toggle="modal"
-							data-target="#editEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-edit"></i>
-						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-danger" data-toggle="modal"
-							data-target="#deleteEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
-				</tr>
+				</tr>				
 			</tbody>
 		</table>
 	</div>
@@ -303,3 +282,161 @@
 		</div>
 	</div>
 </div>
+
+
+<!--"View Employee Details Form" Modal -->
+<div class="modal fade" id="viewEmployeeDetailsForm" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-modal-window"></i> View Employee Details
+				</h3>
+
+			</div>
+			<div class="modal-body">
+			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
+									alt="User" width="150" height="150">
+            <p>ID                 : <input type="text" id="userid"></input></p>
+            <p>Name               : <input type="text" id="username"></input></p>
+            <p>Disignation        : <input type="text" id="disignation"></input></p>
+            <p>Salary             : <input type="text" id="salary"></input></p>
+			<p>Email              : <input type="text" id="email"></input></p>
+            <p>Date of Birth      : <input type="text" id="dob"></input></p>
+            <p>NIC Number         : <input type="text" id="Nic"></input></p>
+			<p>Gender             : <input type="text" id="gender"></input></p>
+			<p>Address            : <input type="text" id="adress"></input></p>
+            <p>Mobile Number      : <input type="text" id="MobNumber"></input></p>
+            <p>Other Number       : <input type="text" id="OthNumber"></input></p>
+			<p>Departmentpartment : <input type="text" id="depid"></input></p>
+			<p>Date of Join       : <input type="text" id="doj"></input></p>
+            
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger pull-side"
+					data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--"Edit Employee Details Form" Modal -->
+<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-edit"></i> Edit Employee Details
+				</h3>
+
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeNumberEdit">Employee Number</label> <input
+								type="text" class="form-control" id="employeeNumberEdit"
+								name="employeeNumberEdit" placeholder="">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="employeeNameEdit">Name</label> <input type="text"
+						class="form-control" id="employeeNameEdit" name="employeeNameEdit"
+						placeholder="">
+				</div>
+
+				<div class="form-group">
+					<label for="employeeDesignationEdit">Designation</label> <input
+						type="text" class="form-control" id="employeeDesignationEdit"
+						name="employeeDesignationEdit" placeholder="">
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeDateofBothEdit">Date Of Birth</label> <input
+								type="date" class="form-control" id="employeeDateofBothEdit"
+								name="employeeDateofBothEdit" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeGenderEdit">Gender</label> <select
+								class="form-control" id="employeeGenderEdit"
+								name="employeeGenderEdit">
+								<option>-Select-</option>
+								<option>Female</option>
+								<option>Male</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="employeeAddressEdit">Address</label> <input type="text"
+						class="form-control" id="employeeAddressEdit"
+						name="employeeAddressEdit" placeholder="">
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeMobileNumberEdit">Mobile Number</label> <input
+								type="text" class="form-control" id="employeeMobileNumberEdit"
+								name="employeeMobileNumberEdit" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeOtherNumberEdit">Other Number</label> <input
+								type="text" class="form-control" id="employeeOtherNumberEdit"
+								name="employeeOtherNumberEdit" placeholder="">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="employeeEmailEdit">Email</label> <input type="text"
+						class="form-control" id="employeeEmailEdit"
+						name="employeeEmailEdit" placeholder="">
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeDepartmentEdit">Department</label> <select
+								class="form-control" id="employeeDepartmentEdit"
+								name="employeeDepartmentEdit">
+								<option>-Select-</option>
+								<option>HR</option>
+								<option>IT</option>
+								<option>Marketing</option>
+								<option>Legal</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="employeeJoinDateEdit">Join Date</label> <input
+								type="date" class="form-control" id="employeeJoinDateEdit"
+								name="employeeJoinDateEdit" placeholder="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success pull-side"
+					onclick="updatedAlert()" data-dismiss="modal">Save Details</button>
+				<button type="button" class="btn btn-danger pull-left"
+					data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
