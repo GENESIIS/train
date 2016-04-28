@@ -211,7 +211,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-left"
-					data-dismiss="modal" onclick="addedAlert()">Add Details</button>
+					data-dismiss="modal" onclick="databaseTest()">Add Details</button>
 				<button type="button" class="btn btn-danger pull-side"
 					data-dismiss="modal">Cancel</button>
 			</div>
