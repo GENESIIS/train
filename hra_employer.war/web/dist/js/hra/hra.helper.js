@@ -81,25 +81,25 @@ $(document).on("click", "#vbutton", function () {
 		
 		alert(data);
 		json = JSON.parse(data);
-		$(".modal-body #userid").val( json.employeeId);
-		$(".modal-body #username").val( json.employeeName);
-		$(".modal-body #disignation").val( json.employeeDesignation);
-		$(".modal-body #salary").val( json.employeeSalary);
-		$(".modal-body #email").val( json.employeeEmail);
-		$(".modal-body #dob").val( json.employeeDob);
-		$(".modal-body #Nic").val( json.employeeNic);
-		$(".modal-body #gender").val( json.employeeGender);
-		$(".modal-body #adress").val( json.employeeAddress);
-		$(".modal-body #MobNumber").val( json.employeeMobileno);
-		$(".modal-body #OthNumber").val( json.employeeOtherno);
-		$(".modal-body #depid").val( json.departmentId);
-		$(".modal-body #doj").val( json.dateOfjoin);
+		$(".modal-body #userid").text( " Employee ID : "+ json.employeeId);
+		$(".modal-body #username").text( " Employee Name : " + json.employeeName);
+		$(".modal-body #disignation").text(" Employee Designation : " + json.employeeDesignation);
+		$(".modal-body #salary").text( " Employee Salary : " + json.employeeSalary);
+		$(".modal-body #email").text( " Employee Email : " + json.employeeEmail);
+		$(".modal-body #dob").text( " Employee Date of Birth : " + json.employeeDob);
+		$(".modal-body #Nic").text( " Employee NIC : " + json.employeeNic);
+		$(".modal-body #gender").text( " Employee Gender : " + json.employeeGender);
+		$(".modal-body #adress").text( " Employee Address : " + json.employeeAddress);
+		$(".modal-body #MobNumber").text( " Employee Mobile Number : " + json.employeeMobileno);
+		$(".modal-body #OthNumber").text( " Employee Other Number : " + json.employeeOtherno);
+		$(".modal-body #depid").text( " Employee Department : " + json.departmentId);
+		$(".modal-body #doj").text( " Employee Date of Join : " + json.dateOfjoin);
 		//$(".modal-body #userid").val( json.modOn);
 		//$(".modal-body #userid").val( json.modBy);
 		
 	});
 
-     
+	//$("#view").load("viewEmployee.jsp");
 });
 $(document).on("click", "#ebutton", function () {
 $.get("EmployerController", function(data, status){
