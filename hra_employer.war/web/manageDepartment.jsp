@@ -76,7 +76,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-Home"></i> Add Department Details
+					<i class="glyphicon glyphicon-home"></i> Add Department Details
 				</h3>
 			</div>
 			<div class="modal-body">
@@ -111,10 +111,17 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"
-					data-dismiss="modal" onclick="addDepartmentDetails()">Save</button>
-				<button type="button" class="btn btn-warning pull-left" onclick="clearDepartmentform()">Clear</button>
+					data-dismiss="modal" onclick="addDepartmentDetails()">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				</button>
+				<button type="button" class="btn btn-warning pull-left"
+					onclick="clearDepartmentform()">
+					<i class="glyphicon glyphicon-refresh"></i> Clear
+				</button>
 				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal">Cancel</button>
+					data-dismiss="modal" onclick="clearDepartmentform()">
+					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				</button>
 			</div>
 		</div>
 	</div>
