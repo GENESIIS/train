@@ -13,7 +13,7 @@
 	<h2 class="sub-header">Department Management</h2>
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addDepartmentDetailsForm">
-		<i class="glyphicon glyphicon-home"></i> Create Department
+		<i class="glyphicon glyphicon-plus"></i> New Department
 	</button>
 	<br></br>
 	<div class="table-responsive">
@@ -76,7 +76,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-home"></i> Add Department Details
+					<i class="glyphicon glyphicon-Home"></i> Add Department Details
 				</h3>
 			</div>
 			<div class="modal-body">
@@ -85,8 +85,7 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="DEPT02" 
-						readonly="true">
+								name="departmentNumber" placeholder="" value="">
 						</div>
 					</div>
 				</div>
@@ -106,14 +105,14 @@
 					<label for="departmentHead">Department Head</label> <select
 						class="form-control" id="departmentHead" name="departmentHead">
 						<option>-Select-</option>
-						<option value="Chamara Withanachchi">Chamara Withanachchi</option>
+						<option value="EMP011">Chamara Withanachchi</option>
 					</select>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-side"
-					data-dismiss="modal" onclick="addDepartmentDetails()">Add
-					Details</button>
+				<button type="button" class="btn btn-success pull-right"
+					data-dismiss="modal" onclick="addDepartmentDetails()">Save</button>
+				<button type="button" class="btn btn-warning pull-left" onclick="clearDepartmentform()">Clear</button>
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal">Cancel</button>
 			</div>

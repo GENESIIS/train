@@ -1,6 +1,7 @@
 /**
- * <!-- 20160407 PN HRA-1 created hra.helper.js class -->
- * <!-- 20160415 PN HRA-1 Modified addEmployeeDetails() Function -->
+ * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
+ * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
+ * function Modified.
  */
 
 function loadContentDashboard() {
@@ -15,21 +16,21 @@ function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 }
 
-//Only for Sprint -1 demo.
-function deleteAlert(){
+// Only for Sprint -1 demo.
+function deleteAlert() {
 	alert("Data Deleted Successfully.");
 }
 
-function addedAlert(){
+function addedAlert() {
 	alert("Data Added Successfully.");
 }
 
-function updatedAlert(){
+function updatedAlert() {
 	alert("Data Updated Successfully.");
 }
 
-//Get data to sent to Servlet
-function addEmployeeDetails(){
+// Get data to sent to Servlet
+function addEmployeeDetails() {
 	var employeeNumber = $("#employeeNumber").val();
 	var employeeName = $("#employeeName").val();
 	var employeeDesignation = $("#employeeDesignation").val();
@@ -41,73 +42,74 @@ function addEmployeeDetails(){
 	var employeeEmail = $("#employeeEmail").val();
 	var employeeDepartment = $("#employeeDepartment").val();
 	var employeeJoinDate = $("#employeeJoinDate").val();
-	
+
 	var employeeData = {
-            "employeedata": {
-                "employeeNumber": employeeNumber,
-                "employeeName": employeeName,
-                "employeeDesignation": employeeDesignation,
-                "employeeDateofBoth": employeeDateofBoth,
-                "employeeGender": employeeGender,
-                "employeeAddress": employeeAddress,
-                "employeeMobileNumber": employeeMobileNumber,
-                "employeeOtherNumber": employeeOtherNumber,
-                "employeeEmail": employeeEmail,
-                "employeeDepartment": employeeDepartment,
-                "employeeJoinDate": employeeJoinDate
-            }
-        };
+		"employeedata" : {
+			"employeeNumber" : employeeNumber,
+			"employeeName" : employeeName,
+			"employeeDesignation" : employeeDesignation,
+			"employeeDateofBoth" : employeeDateofBoth,
+			"employeeGender" : employeeGender,
+			"employeeAddress" : employeeAddress,
+			"employeeMobileNumber" : employeeMobileNumber,
+			"employeeOtherNumber" : employeeOtherNumber,
+			"employeeEmail" : employeeEmail,
+			"employeeDepartment" : employeeDepartment,
+			"employeeJoinDate" : employeeJoinDate
+		}
+	};
 
 	$.ajax({
-        type: "POST",
-        url: 'EmployerController',
-        data: {
-        	jsonData: JSON.stringify(employeeData)
-        },
-        dataType: "json",
-        success: function (data) {
-            alert(data);
-        },
-        error: function (e) {
-            alert("Error "+e);
-            console.log(e);
-        }
-    });
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify(employeeData)
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
 }
 
-
-//Get data to sent to Servlet
-function addDepartmentDetails(){	
-	var departmentNumber = $("#departmentNumber").val(); 
+// Get data and sent to DepartmentController.java.
+function addDepartmentDetails() {
+	var departmentNumber = $("#departmentNumber").val();
 	var departmentName = $("#departmentName").val();
 	var departmentLocation = $("#departmentLocation").val();
 	var departmentHead = $("#departmentHead").val();
-	
-	
-	var jsonData = {
-            "jsonData": {
-                "departmentNumber": departmentNumber,
-                "departmentName": departmentName,
-                "departmentLocation": departmentLocation,
-                "departmentHead": departmentHead
-            }
-        };
 
-	alert(jsonData);
-	
+	var jsonData = {
+		"departmentNumber" : departmentNumber,
+		"departmentName" : departmentName,
+		"departmentLocation" : departmentLocation,
+		"departmentHead" : departmentHead
+	};
+
 	$.ajax({
-        type: "POST",
-        url: 'DepartmentController',
-        data: {
-        	jsonData: JSON.stringify(jsonData)
-        },
-        dataType: "json",
-        success: function (data) {
-            alert(data);
-        },
-        error: function (e) {
-            alert("Error "+e);
-            console.log(e);
-        }
-    });
+		type : "POST",
+		url : 'DepartmentController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}
+
+function clearDepartmentform() {
+	$("#departmentName").val("");
+	$("#departmentLocation").val("");
+	$("#departmentHead").val("");
 }

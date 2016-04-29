@@ -1,65 +1,35 @@
 package com.genesiis.hra.command;
 
-import java.util.logging.Logger;
+import org.jboss.logging.Logger;
 
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.model.DataAccessUtill;
 import com.genesiis.hra.model.Department;
-import com.genesiis.hra.validation.DataValidator;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.genesiis.hra.model.DepartmentManager;
 
 ///***********************************************
-//* 20160422 PN HRA-3 created AddDepartment.java class
-//* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method
+//* 20160422 PN HRA-3 created AddDepartment.java class.
+//* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method.
+//* 20160429 PN HRA-3 modified executeAdddepartment(String gsonData), method with providing proper error messages.
 //***********************************************/
 
 public class AddDepartment {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
+	DepartmentManager departmentManager = new DepartmentManager();
 
-	public void executeAdddepartment(String gsonData) {
-		DataAccessUtill accessUtill = new DataAccessUtill();		
+	public String executeAdddepartment(String gsonData) {
 		String message = "";
-
-		//Format the JsonData Object.
-		String jsonObject = gsonData.substring(12, gsonData.length()-1);
-		log.info("jsonObject" + jsonObject);
-		
+		DepartmentManager transaction = new DepartmentManager();
 		try {
-			//Get department object extract from Gson object.
-			Department department = extractFromgson(gsonData);
-			if (validDepartment(department).equalsIgnoreCase("Successfull")) {
-				log.info("validDepartment(department) "
-						+ validDepartment(department));
-				//message = accessUtill.add(department);
+			// Get department object extract from Gson object.
+			Department department = departmentManager.extractFromgson(gsonData);
+			if (departmentManager.validDepartment(department).equalsIgnoreCase("Successfull")) {
+				message = transaction.add(department);
 			} else {
 				message = MessageList.ERROR.message();
 			}
 		} catch (Exception e) {
 			log.info("Exception-department: " + e);
 		}
+		return message;
 	}
-
-	// Method to extract DepartmentDetails from jsonData.
-	public Department extractFromgson(String gsonData) {
-		Gson gson = new GsonBuilder().create();
-		Department department = null;
-		try {
-			department = gson.fromJson(gsonData, Department.class);
-			log.info("Department department" + department);
-		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
-		}
-		return department;
-	}
-
-	public String validDepartment(Department department) {
-		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentName())) {
-			return MessageList.SUCCESS.message();
-		} else {
-			return MessageList.EMPTYFIELD.message();
-		}
-	}
-
 }

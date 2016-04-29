@@ -17,7 +17,12 @@ public enum MessageList {
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
-    FAILED_TO_CREATE("Object not created");
+    FAILED_TO_CREATE("Object not created"),
+	ADD("ADD"),
+	UPDATE("UPDATE"),
+	DELETE("DELETE"),
+	FIND("FIND"),
+	GETALL("GETALL");
 
 	private String message;
 

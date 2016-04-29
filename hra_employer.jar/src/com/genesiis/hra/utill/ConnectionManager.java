@@ -3,12 +3,10 @@ package com.genesiis.hra.utill;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.genesiis.hra.exception.ConnectionErrorException;
 
 ///***********************************************
 //* 20160427 PN HRA-9 created SqlServerConnectionManager.java class
@@ -29,7 +27,7 @@ public class ConnectionManager {
 		}
 	}
 
-	static Connection getConnection() throws SQLException{
+	public static Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
 	}
 }
