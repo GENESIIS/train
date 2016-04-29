@@ -14,7 +14,7 @@ public interface IDataAccessor {
 
 	public String delete(Object object);
 
-	public String getObjectid(String id);
+	public Employee getObjectid(String id);
 
 	public List<Object> getAll();
 }

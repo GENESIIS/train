@@ -79,32 +79,34 @@ $(document).on("click", "#vbutton", function () {
 	
 	$.get("EmployerController", function(data, status){
 		
-		alert(data);
+		
+		
 		json = JSON.parse(data);
-		$(".modal-body #userid").text( " Employee ID : "+ json.employeeId);
-		$(".modal-body #username").text( " Employee Name : " + json.employeeName);
-		$(".modal-body #disignation").text(" Employee Designation : " + json.employeeDesignation);
-		$(".modal-body #salary").text( " Employee Salary : " + json.employeeSalary);
-		$(".modal-body #email").text( " Employee Email : " + json.employeeEmail);
-		$(".modal-body #dob").text( " Employee Date of Birth : " + json.employeeDob);
-		$(".modal-body #Nic").text( " Employee NIC : " + json.employeeNic);
-		$(".modal-body #gender").text( " Employee Gender : " + json.employeeGender);
-		$(".modal-body #adress").text( " Employee Address : " + json.employeeAddress);
-		$(".modal-body #MobNumber").text( " Employee Mobile Number : " + json.employeeMobileno);
-		$(".modal-body #OthNumber").text( " Employee Other Number : " + json.employeeOtherno);
-		$(".modal-body #depid").text( " Employee Department : " + json.departmentId);
-		$(".modal-body #doj").text( " Employee Date of Join : " + json.dateOfjoin);
+		$("#userid").text(json.employeeId);
+		$(".panel-body #username").text(json.employeeName);
+		$(".panel-body #disignation").text( json.employeeDesignation);
+		$(".panel-body #salary").text( json.employeeSalary);
+		$(".panel-body #email").text( json.employeeEmail);
+		$(".panel-body #dob").text( json.employeeDob);
+		$(".panel-body #Nic").text( json.employeeNic);
+		$(".panel-body #gender").text(json.employeeGender);
+		$(".panel-body #adress").text(json.employeeAddress);
+		$(".panel-body #MobNumber").text( json.employeeMobileno);
+		$(".panel-body #OthNumber").text(  json.employeeOtherno);
+		$(".panel-body #depid").text(  json.departmentId);
+		$(".panel-body #doj").text(json.dateOfjoin);
 		//$(".modal-body #userid").val( json.modOn);
 		//$(".modal-body #userid").val( json.modBy);
 		
+		alert(data);
 	});
-
-	//$("#view").load("viewEmployee.jsp");
+	$("#view").load("viewEmployee.jsp");
+	
 });
 $(document).on("click", "#ebutton", function () {
 $.get("EmployerController", function(data, status){
 	
-	alert("awa");
+	//alert("awa");
 	json = JSON.parse(data);
 	$(".modal-body #employeeNumberEdit").val( json.employeeId);
 	$(".modal-body #employeeNameEdit").val( json.employeeName);

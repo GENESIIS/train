@@ -349,8 +349,8 @@
 				</h3>
 
 			</div>
-			<div id ="view" class="modal-body">  
-            <img src="dist/demoimages/photo.jpg" class="img-thumbnail"
+			<div id ="view">  
+           <!-- <img src="dist/demoimages/photo.jpg" class="img-thumbnail"
 									alt="User" width="150" height="150">
             <p id="userid"></p>
             <p id="username"></p>
@@ -364,7 +364,7 @@
             <p id="MobNumber"></p>
             <p id="OthNumber"></p>
 			<p id="depid"></p>
-			<p id="doj"></p>
+			<p id="doj"></p> -->
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger pull-side"

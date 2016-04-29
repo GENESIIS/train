@@ -78,9 +78,17 @@ public class DataAccessUtill implements IDataAccessor {
 	}
 
 	@Override
-	public String getObjectid(String id) {
+	public Employee getObjectid(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("hra_employer");
+		EntityManager entityManager = emf.createEntityManager();
+		
+		
+		 Employee empl = entityManager.find( Employee.class, 1 );
+
+		return empl;
 	}
 
 	@Override

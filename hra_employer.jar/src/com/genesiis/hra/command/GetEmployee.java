@@ -1,15 +1,33 @@
 package com.genesiis.hra.command;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
 import com.genesiis.hra.model.Employee;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.logging.Logger;
+import com.genesiis.hra.model.DataAccessUtill;
+
 
 public class GetEmployee {
 
+	static Logger log = Logger.getLogger(GetEmployee.class.getName());
+	
 	public String createGson() {
 		
+		
+				
 		Employee employee = new Employee();
+		try{
+		
+		}catch(Exception e){
+			
+		}
 		employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
 		employee.setEmployeedesignation("Eng"); 
@@ -25,6 +43,7 @@ public class GetEmployee {
 		employee.setDateOfJoin("2016.04.25"); 
 		employee.setModon("mod");
 		employee.setModby("modby");
+		
 		
 		Gson gson = new Gson();  
 		 
