@@ -1,6 +1,7 @@
 /**
- * <!-- 20160407 PN HRA-1 created hra.helper.js class --> <!-- 20160415 PN HRA-1
- * Modified addEmployeeDetails() Function -->
+ * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
+ * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
+ * function Modified.
  */
 
 function loadContentDashboard() {
@@ -8,7 +9,7 @@ function loadContentDashboard() {
 }
 
 function loadContentEmployee() {
-	$("#mainContent").load("createEmployee.jsp");
+	$("#mainContent").load("manageEmployee.jsp");
 }
 
 function loadContentDepartment() {
@@ -21,18 +22,11 @@ function deleteAlert() {
 }
 
 function addedAlert() {
-	document.getElementById("moredetails").disabled = false;
 	alert("Data Added Successfully.");
 }
-
-function addedDept() {
-	alert("Data Added Successfully.");
-}
-
 
 function updatedAlert() {
 	alert("Data Updated Successfully.");
-	document.getElementById("moredetails").disabled = false;
 }
 
 // Get data to sent to Servlet
@@ -82,7 +76,7 @@ function addEmployeeDetails() {
 	});
 }
 
-// Get data to sent to Servlet
+// Get data and sent to DepartmentController.java.
 function addDepartmentDetails() {
 	var departmentNumber = $("#departmentNumber").val();
 	var departmentName = $("#departmentName").val();
@@ -90,23 +84,18 @@ function addDepartmentDetails() {
 	var departmentHead = $("#departmentHead").val();
 
 	var jsonData = {
-		"jsonData" : {
-			"departmentNumber" : departmentNumber,
-			"departmentName" : departmentName,
-			"departmentLocation" : departmentLocation,
-			"departmentHead" : departmentHead
-		}
+		"departmentNumber" : departmentNumber,
+		"departmentName" : departmentName,
+		"departmentLocation" : departmentLocation,
+		"departmentHead" : departmentHead
 	};
-
-
-
-	alert(jsonData);
 
 	$.ajax({
 		type : "POST",
 		url : 'DepartmentController',
 		data : {
-			jsonData : JSON.stringify(jsonData)
+			jsonData : JSON.stringify(jsonData),
+			task : "ADD"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -119,75 +108,8 @@ function addDepartmentDetails() {
 	});
 }
 
-// Load Employee Contents
-function loadContentbasicdata() {
-	$("#modelrest").load("employeeDetails/basicData.jsp");
-}
-
-function loadContentqualifications() {
-	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
-}
-
-function loadContentemployementhistory() {
-	$("#modelrest").load("employeeDetails/employementHistory.jsp");
-}
-
-function loadContentstudyprograms() {
-	$("#modelrest").load("employeeDetails/studyPrograms.jsp");
-}
-
-function loadContentlanguages() {
-	$("#modelrest").load("employeeDetails/languageProficiency.jsp");
-}
-
-function loadContentloandetails() {
-	$("#modelrest").load("employeeDetails/loanDetails.jsp");
-}
-function loadContentfamilydetails() {
-	$("#modelrest").load("employeeDetails/familyDetails.jsp");
-}
-function loadContentemergencycontacts() {
-	$("#modelrest").load("employeeDetails/emergencyContacts.jsp");
-}
-function loadContentmoreDetails() {
-	$("#modelrest").load("employeeDetails/moreDetails.jsp");
-}
-
-function loadContentmoreDetails() {
-	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
-}
-
-function loadContentmoreDetails() {
-	$("#employeeContent").load("employeeDetails/moreDetails.jsp");
-
-	// ///////////////////////////////////////////////
-	$(document).on("click", "#vbutton", function() {
-
-		$.get("EmployerController", function(data, status){
-			
-			alert(data);
-			json = JSON.parse(data);
-			$(".modal-body #userid").val( json.employeeId);
-			$(".modal-body #username").val( json.employeeName);
-			$(".modal-body #disignation").val( json.employeeDesignation);
-			$(".modal-body #salary").val( json.employeeSalary);
-			$(".modal-body #email").val( json.employeeEmail);
-			$(".modal-body #dob").val( json.employeeDob);
-			$(".modal-body #Nic").val( json.employeeNic);
-			$(".modal-body #gender").val( json.employeeGender);
-			$(".modal-body #adress").val( json.employeeAddress);
-			$(".modal-body #MobNumber").val( json.employeeMobileno);
-			$(".modal-body #OthNumber").val( json.employeeOtherno);
-			$(".modal-body #depid").val( json.departmentId);
-			$(".modal-body #doj").val( json.dateOfjoin);
-			//$(".modal-body #userid").val( json.modOn);
-			//$(".modal-body #userid").val( json.modBy);
-			
-		});
-
-	});
-	$(document).ready(function() {
-		$('#employeeDetails').DataTable();
-
-	});
+function clearDepartmentform() {
+	$("#departmentName").val("");
+	$("#departmentLocation").val("");
+	$("#departmentHead").val("");
 }
