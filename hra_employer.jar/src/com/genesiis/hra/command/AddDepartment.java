@@ -18,12 +18,11 @@ public class AddDepartment {
 
 	public String executeAdddepartment(String gsonData) {
 		String message = "";
-		DepartmentManager transaction = new DepartmentManager();
 		try {
 			// Get department object extract from Gson object.
 			Department department = departmentManager.extractFromgson(gsonData);
 			if (departmentManager.validDepartment(department).equalsIgnoreCase("Successfull")) {
-				message = transaction.add(department);
+				message = departmentManager.add(department);
 			} else {
 				message = MessageList.ERROR.message();
 			}
