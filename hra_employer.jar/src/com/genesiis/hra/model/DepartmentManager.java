@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 //* 20160422 PN HRA-3 created JDBCTransaction.java class
 //* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method, Renamed the class to DepartmentManager.java
 //* 20160429 PN Modified the add(Object object) Method.
+//* 20160430 PN Created getDipartments() Method.
 //***********************************************/
 
 public class DepartmentManager implements IDataAccessor {

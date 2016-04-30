@@ -6,6 +6,10 @@ import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeManager;
 import com.genesiis.hra.validation.MessageList;
 
+///***********************************************
+//* 20160430 PN HRA-2 created AddEmployee.java class
+//***********************************************/
+
 
 public class AddEmployee {
 	static Logger log = Logger.getLogger(AddEmployee.class.getName());

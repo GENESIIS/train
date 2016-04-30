@@ -162,14 +162,14 @@
 					<div class="well">
 						<h3 class="">Job Details</h3>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeEpf">EPF Number</label> <input type="text"
 										class="form-control" id="employeeEpf" name="employeeEpf"
 										placeholder="">
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeBasis">Employment Basis</label> <select
 										class="form-control" id="employeeBasis" name="employeeBasis">
@@ -177,8 +177,14 @@
 										<option value="Permanent">Permanent</option>
 										<option value="Contract">Contract</option>
 										<option value="Trainee">Trainee</option>
-
 									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="employeeJoindate">Joined Date</label> <input type="date"
+										class="form-control" id="employeeJoindate" name="employeeJoindate"
+										placeholder="">
 								</div>
 							</div>
 						</div>
@@ -248,7 +254,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success pull-right"
-						onclick="addedAlert()" data-dismiss="">
+						onclick="addEmployeeDetails()" data-dismiss="">
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-info pull-left"

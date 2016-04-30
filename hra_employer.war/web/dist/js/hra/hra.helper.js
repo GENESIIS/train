@@ -26,56 +26,65 @@ function addedAlert() {
 // Get Departments for Add Employee Form
 function getDepartment() {
 	$.get('EmployeeController', {}, function(data) {
-		alert(data);
 		var select = $('#employeeDepartment');
 		select.find('option').remove();
 		$('<option>').val("").text("--Select--").appendTo(select);
 		$.each(data, function(index, value) {
-			var result = value.toString().split("#");
-			$('<option>').val(index).text(result[0]).appendTo(result[1]);
+			var result = value.split("#");
+			$('<option>').val(result[0]).text(result[1]).appendTo(select);
 		});
 	});
 }
 
-// Get data to sent to Servlet
+// Get data and sent to EmployeeController.java.
 function addEmployeeDetails() {
-	var employeeNumber = $("#employeeNumber").val();
-	var employeeName = $("#employeeName").val();
-	var employeeDesignation = $("#employeeDesignation").val();
-	var employeeDateofBoth = $("#employeeDateofBoth").val();
+	var employeeFirstname = $("#employeeFirstname").val() + ","
+			+ $("#employeeMiddlename").val() + ","
+			+ $("#employeeLastname").val();
+	var employeeDateofbirth = $("#employeeDateofbirth").val();
+	var employeeNic = $("#employeeNic").val();
 	var employeeGender = $("#employeeGender").val();
-	var employeeAddress = $("#employeeAddress").val();
-	var employeeMobileNumber = $("#employeeMobileNumber").val();
-	var employeeOtherNumber = $("#employeeOtherNumber").val();
-	var employeeEmail = $("#employeeEmail").val();
+	var employeeMaritalstatus = $("#employeeMaritalstatus").val();
+	var employeeEpf = $("#employeeEpf").val();
+	var employeeBasis = $("#employeeBasis").val();
+	var employeeDesignation = $("#employeeDesignation").val();
 	var employeeDepartment = $("#employeeDepartment").val();
-	var employeeJoinDate = $("#employeeJoinDate").val();
+	var employeePermenetaddress = $("#employeePermenetaddress").val();
+	var employeeTemporaryaddress = $("#employeeTemporaryaddress").val();
+	var employeeTelephone = $("#employeeTelephone").val();
+	var employeeMobile = $("#employeeMobile").val();
+	var employeeEmail = $("#employeeEmail").val();
+	var employeeJoindate = $("#employeeJoindate").val();
 
 	var employeeData = {
-		"employeedata" : {
-			"employeeNumber" : employeeNumber,
-			"employeeName" : employeeName,
-			"employeeDesignation" : employeeDesignation,
-			"employeeDateofBoth" : employeeDateofBoth,
-			"employeeGender" : employeeGender,
-			"employeeAddress" : employeeAddress,
-			"employeeMobileNumber" : employeeMobileNumber,
-			"employeeOtherNumber" : employeeOtherNumber,
-			"employeeEmail" : employeeEmail,
-			"employeeDepartment" : employeeDepartment,
-			"employeeJoinDate" : employeeJoinDate
-		}
+		"employeeName" : employeeFirstname,
+		"employeeDateofbirth" : employeeDateofbirth,
+		"employeeNic" : employeeNic,
+		"employeeGender" : employeeGender,
+		"employeeMaritalstatus" : employeeMaritalstatus,
+		"employeeEpf" : employeeEpf,
+		"employeeBasis" : employeeBasis,
+		"employeeDesignation" : employeeDesignation,
+		"employeeDepartment" : employeeDepartment,
+		"employeePermenetaddress" : employeePermenetaddress,
+		"employeeTemporaryaddress" : employeeTemporaryaddress,
+		"employeeTelephone" : employeeTelephone,
+		"employeeMobile" : employeeMobile,
+		"employeeEmail" : employeeEmail,
+		"employeeJoindate" : employeeJoindate
 	};
 
 	$.ajax({
 		type : "POST",
-		url : 'EmployerController',
+		url : 'EmployeeController',
 		data : {
-			jsonData : JSON.stringify(employeeData)
+			jsonData : JSON.stringify(employeeData),
+			task : "ADD"
 		},
 		dataType : "json",
 		success : function(data) {
 			alert(data);
+			// document.getElementById("moredetails").disabled = false;
 		},
 		error : function(e) {
 			alert("Error " + e);
