@@ -70,7 +70,7 @@
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
-				</tr>				
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -116,7 +116,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Date of Birth</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="date" class="form-control" id="editemployeeId"
 										name="editemployeeId" placeholder="">
 								</div>
 							</div>
@@ -231,14 +231,22 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success pull-side"
+					<button type="button" class="btn btn-success pull-right"
 						onclick="addedAlert()" data-dismiss="">
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
-					<button type="button" class="btn btn-warning " id="moredetails"
+					<button type="button" class="btn btn-warning pull-right" id="moredetails"
 						name="moredetails" onclick="" data-dismiss="modal" disabled="true"
 						data-toggle="modal" data-target="#addmoreEmployeedetails">
 						<i class="glyphicon glyphicon-file"></i> More Details
+					</button>
+					<button type="button" class="btn btn-warning pull-left"
+						onclick="">
+						<i class="glyphicon glyphicon-refresh"></i> Clear
+					</button>
+					<button type="button" class="btn btn-danger pull-left"
+						data-dismiss="modal" onclick="">
+						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 					</button>
 				</div>
 			</div>
@@ -261,10 +269,13 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 
-					<a onclick="loadContentstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
-					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan Details</a> 
-					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
+					<a href="#" onclick="loadContentqualifications()"
+						class="btn btn-primary">Educaional Data</a> <a
+						onclick="loadContentstudyprograms()" href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
+						onclick="loadContentloandetails()" class="btn btn-primary">Loan
+						Details</a> <a href="#" onclick="loadContentfamilydetails()"
+						class="btn btn-primary">Family Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -292,27 +303,54 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-modal-window"></i> View Employee Details
+					<i class="glyphicon glyphicon-modal-window"></i> View Employee
+					Details
 				</h3>
 
 			</div>
 			<div class="modal-body">
-			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
-									alt="User" width="150" height="150">
-            <p>ID                 : <input type="text" id="userid"></input></p>
-            <p>Name               : <input type="text" id="username"></input></p>
-            <p>Disignation        : <input type="text" id="disignation"></input></p>
-            <p>Salary             : <input type="text" id="salary"></input></p>
-			<p>Email              : <input type="text" id="email"></input></p>
-            <p>Date of Birth      : <input type="text" id="dob"></input></p>
-            <p>NIC Number         : <input type="text" id="Nic"></input></p>
-			<p>Gender             : <input type="text" id="gender"></input></p>
-			<p>Address            : <input type="text" id="adress"></input></p>
-            <p>Mobile Number      : <input type="text" id="MobNumber"></input></p>
-            <p>Other Number       : <input type="text" id="OthNumber"></input></p>
-			<p>Departmentpartment : <input type="text" id="depid"></input></p>
-			<p>Date of Join       : <input type="text" id="doj"></input></p>
-            
+				<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
+					alt="User" width="150" height="150">
+				<p>
+					ID : <input type="text" id="userid"></input>
+				</p>
+				<p>
+					Name : <input type="text" id="username"></input>
+				</p>
+				<p>
+					Disignation : <input type="text" id="disignation"></input>
+				</p>
+				<p>
+					Salary : <input type="text" id="salary"></input>
+				</p>
+				<p>
+					Email : <input type="text" id="email"></input>
+				</p>
+				<p>
+					Date of Birth : <input type="text" id="dob"></input>
+				</p>
+				<p>
+					NIC Number : <input type="text" id="Nic"></input>
+				</p>
+				<p>
+					Gender : <input type="text" id="gender"></input>
+				</p>
+				<p>
+					Address : <input type="text" id="adress"></input>
+				</p>
+				<p>
+					Mobile Number : <input type="text" id="MobNumber"></input>
+				</p>
+				<p>
+					Other Number : <input type="text" id="OthNumber"></input>
+				</p>
+				<p>
+					Departmentpartment : <input type="text" id="depid"></input>
+				</p>
+				<p>
+					Date of Join : <input type="text" id="doj"></input>
+				</p>
+
 
 			</div>
 			<div class="modal-footer">

@@ -1,22 +1,16 @@
 <persistence version="1.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-	<persistence-unit name="hra_employer"
-		transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="hra_employer" transaction-type="RESOURCE_LOCAL">
 		<description>JBOSS Hibernate Provider</description>
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source></non-jta-data-source>
 
-		<!-- <class>com.genesiis.hra.Employee</class> -->
+<!-- 		<class>com.genesiis.hra.Employee</class> -->
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-			<property name="javax.persistence.jdbc.driver"
-				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:sqlserver://220.247.201.82:20020;DatabaseName=hra-1" />
-			<property name="javax.persistence.jdbc.user" value="pn" />
-			<property name="javax.persistence.jdbc.password" value="M!ydayMH320" />
+<!-- 			<property name="hibernate.archive.autodetection" value="" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>

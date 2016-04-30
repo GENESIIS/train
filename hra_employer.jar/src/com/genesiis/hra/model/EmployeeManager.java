@@ -1,8 +1,15 @@
 package com.genesiis.hra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.jboss.logging.Logger;
+
+import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class EmployeeManager implements IDataAccessor {
@@ -35,7 +42,6 @@ public class EmployeeManager implements IDataAccessor {
 
 	@Override
 	public List<Object> getAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

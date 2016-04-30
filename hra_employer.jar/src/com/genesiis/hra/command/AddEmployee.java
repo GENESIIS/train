@@ -8,7 +8,6 @@ import com.genesiis.hra.validation.MessageList;
 
 
 public class AddEmployee {
-
 	static Logger log = Logger.getLogger(AddEmployee.class.getName());
 	EmployeeManager employeeManager = new EmployeeManager();
 

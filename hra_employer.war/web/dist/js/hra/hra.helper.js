@@ -17,16 +17,24 @@ function loadContentDepartment() {
 }
 
 // Only for Sprint -1 demo.
-function deleteAlert() {
-	alert("Data Deleted Successfully.");
-}
 
 function addedAlert() {
 	alert("Data Added Successfully.");
+	document.getElementById("moredetails").disabled = false;
 }
 
-function updatedAlert() {
-	alert("Data Updated Successfully.");
+// Get Departments for Add Employee Form
+function getDepartment() {
+	$.get('EmployeeController', {}, function(data) {
+		alert(data);
+		var select = $('#employeeDepartment');
+		select.find('option').remove();
+		$('<option>').val("").text("--Select--").appendTo(select);
+		$.each(data, function(index, value) {
+			var result = value.toString().split("#");
+			$('<option>').val(index).text(result[0]).appendTo(result[1]);
+		});
+	});
 }
 
 // Get data to sent to Servlet
@@ -106,10 +114,4 @@ function addDepartmentDetails() {
 			console.log(e);
 		}
 	});
-}
-
-function clearDepartmentform() {
-	$("#departmentName").val("");
-	$("#departmentLocation").val("");
-	$("#departmentHead").val("");
 }
