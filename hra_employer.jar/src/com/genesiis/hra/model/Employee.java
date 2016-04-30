@@ -35,131 +35,131 @@ public class Employee {
 	public Employee() {
 	}
 
-	public String getEmployeeId() {
+	public String getEmployeeid() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeid(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	public String getEmployeeName() {
+	public String getEmployeename() {
 		return employeeName;
 	}
 
-	public void setEmployeeName(String employeeName) {
+	public void setEmployeename(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
-	public String getEmployeeDesignation() {
+	public String getEmployeedesignation() {
 		return employeeDesignation;
 	}
 
-	public void setEmployeeDesignation(String employeeDesignation) {
+	public void setEmployeedesignation(String employeeDesignation) {
 		this.employeeDesignation = employeeDesignation;
 	}
 
-	public String getEmployeeEmail() {
+	public String getEmployeeemail() {
 		return employeeEmail;
 	}
 
-	public void setEmployeeEmail(String employeeEmail) {
+	public void setEmployeeemail(String employeeEmail) {
 		this.employeeEmail = employeeEmail;
 	}
 
-	public String getEmployeeDateofbirth() {
+	public String getEmployeedateofbirth() {
 		return employeeDateofbirth;
 	}
 
-	public void setEmployeeDateofbirth(String employeeDateofbirth) {
+	public void setEmployeedateofbirth(String employeeDateofbirth) {
 		this.employeeDateofbirth = employeeDateofbirth;
 	}
 
-	public String getEmployeeNic() {
+	public String getEmployeenic() {
 		return employeeNic;
 	}
 
-	public void setEmployeeNic(String employeeNic) {
+	public void setEmployeenic(String employeeNic) {
 		this.employeeNic = employeeNic;
 	}
 
-	public String getEmployeeGender() {
+	public String getEmployeegender() {
 		return employeeGender;
 	}
 
-	public void setEmployeeGender(String employeeGender) {
+	public void setEmployeegender(String employeeGender) {
 		this.employeeGender = employeeGender;
 	}
 
-	public String getEmployeePermenetaddress() {
+	public String getEmployeepermenetaddress() {
 		return employeePermenetaddress;
 	}
 
-	public void setEmployeePermenetaddress(String employeePermenetaddress) {
+	public void setEmployeepermenetaddress(String employeePermenetaddress) {
 		this.employeePermenetaddress = employeePermenetaddress;
 	}
 
-	public String getEmployeeTemporaryaddress() {
+	public String getEmployeetemporaryaddress() {
 		return employeeTemporaryaddress;
 	}
 
-	public void setEmployeeTemporaryaddress(String employeeTemporaryaddress) {
+	public void setEmployeetemporaryaddress(String employeeTemporaryaddress) {
 		this.employeeTemporaryaddress = employeeTemporaryaddress;
 	}
 
-	public String getEmployeeMobile() {
+	public String getEmployeemobile() {
 		return employeeMobile;
 	}
 
-	public void setEmployeeMobile(String employeeMobile) {
+	public void setEmployeemobile(String employeeMobile) {
 		this.employeeMobile = employeeMobile;
 	}
 
-	public String getEmployeeTelephone() {
+	public String getEmployeetelephone() {
 		return employeeTelephone;
 	}
 
-	public void setEmployeeTelephone(String employeeTelephone) {
+	public void setEmployeetelephone(String employeeTelephone) {
 		this.employeeTelephone = employeeTelephone;
 	}
 
-	public String getEmployeeDepartment() {
+	public String getEmployeedepartment() {
 		return employeeDepartment;
 	}
 
-	public void setEmployeeDepartment(String employeeDepartment) {
+	public void setEmployeedepartment(String employeeDepartment) {
 		this.employeeDepartment = employeeDepartment;
 	}
 
-	public String getEmployeeMaritalstatus() {
+	public String getEmployeemaritalstatus() {
 		return employeeMaritalstatus;
 	}
 
-	public void setEmployeeMaritalstatus(String employeeMaritalstatus) {
+	public void setEmployeemaritalstatus(String employeeMaritalstatus) {
 		this.employeeMaritalstatus = employeeMaritalstatus;
 	}
 
-	public String getEmployeeJoindate() {
+	public String getEmployeejoindate() {
 		return employeeJoindate;
 	}
 
-	public void setEmployeeJoindate(String employeeJoindate) {
+	public void setEmployeejoindate(String employeeJoindate) {
 		this.employeeJoindate = employeeJoindate;
 	}
 
-	public String getEmployeeEpf() {
+	public String getEmployeeepf() {
 		return employeeEpf;
 	}
 
-	public void setEmployeeEpf(String employeeEpf) {
+	public void setEmployeeepf(String employeeEpf) {
 		this.employeeEpf = employeeEpf;
 	}
 
-	public String getEmployeeBasis() {
+	public String getEmployeebasis() {
 		return employeeBasis;
 	}
 
-	public void setEmployeeBasis(String employeeBasis) {
+	public void setEmployeebasis(String employeeBasis) {
 		this.employeeBasis = employeeBasis;
 	}
 

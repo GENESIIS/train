@@ -36,25 +36,25 @@ public class EmployeeManager implements IDataAccessor {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, "EMP001");
-			preparedStatement.setString(2, employee.getEmployeeName());
-			preparedStatement.setString(3, employee.getEmployeeDesignation());
-			preparedStatement.setString(4, employee.getEmployeeEmail());
-			preparedStatement.setString(5, employee.getEmployeeDateofbirth());
-			preparedStatement.setString(6, employee.getEmployeeNic());
-			preparedStatement.setString(7, employee.getEmployeeGender());
+			preparedStatement.setString(2, employee.getEmployeename());
+			preparedStatement.setString(3, employee.getEmployeedesignation());
+			preparedStatement.setString(4, employee.getEmployeeemail());
+			preparedStatement.setString(5, employee.getEmployeedateofbirth());
+			preparedStatement.setString(6, employee.getEmployeenic());
+			preparedStatement.setString(7, employee.getEmployeegender());
 			preparedStatement.setString(8,
-					employee.getEmployeePermenetaddress());
+					employee.getEmployeepermenetaddress());
 			preparedStatement.setString(9,
-					employee.getEmployeeTemporaryaddress());
-			preparedStatement.setString(10, employee.getEmployeeMobile());
-			preparedStatement.setString(11, employee.getEmployeeTelephone());
-			preparedStatement.setString(12, employee.getEmployeeDepartment());
+					employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(10, employee.getEmployeemobile());
+			preparedStatement.setString(11, employee.getEmployeetelephone());
+			preparedStatement.setString(12, employee.getEmployeedepartment());
 			preparedStatement
-					.setString(13, employee.getEmployeeMaritalstatus());
-			preparedStatement.setString(14, employee.getEmployeeJoindate());
+					.setString(13, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(14, employee.getEmployeejoindate());
 			preparedStatement.setString(15, "SYSTEM");
-			preparedStatement.setString(16, employee.getEmployeeEpf());
-			preparedStatement.setString(17, employee.getEmployeeBasis());
+			preparedStatement.setString(16, employee.getEmployeeepf());
+			preparedStatement.setString(17, employee.getEmployeebasis());
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
@@ -106,11 +106,11 @@ public class EmployeeManager implements IDataAccessor {
 
 	public String validEmployee(Employee employee) throws ParseException {
 		DataValidator validator = new DataValidator();
-		if (validator.isValidString(employee.getEmployeeName())
-				&& validator.isValidNic(employee.getEmployeeNic())
-				&& validator.isValidString(employee.getEmployeeEpf())
-				&& validator.isPastDate(employee.getEmployeeDateofbirth())
-				&& validator.isValidString(employee.getEmployeeDepartment())) {
+		if (validator.isValidString(employee.getEmployeename())
+				&& validator.isValidNic(employee.getEmployeenic())
+				&& validator.isValidString(employee.getEmployeeepf())
+				&& validator.isPastDate(employee.getEmployeedateofbirth())
+				&& validator.isValidString(employee.getEmployeedepartment())) {
 			return MessageList.SUCCESS.message();
 		} else {
 			return MessageList.EMPTYFIELD.message();
