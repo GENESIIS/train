@@ -35,8 +35,8 @@ public class DepartmentManager implements IDataAccessor {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, department.getDepartmentNumber());
-			preparedStatement.setString(2, department.getDepartmentName());
-			preparedStatement.setString(3, department.getDepartmentLocation());
+			preparedStatement.setString(2, department.getDepartmentname());
+			preparedStatement.setString(3, department.getDepartmentlocation());
 			preparedStatement.setString(4, department.getDepartmentHead());
 			preparedStatement.setString(5, "SYSTEM");
 
@@ -87,7 +87,7 @@ public class DepartmentManager implements IDataAccessor {
 
 	public String validDepartment(Department department) {
 		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentName())) {
+		if (validator.isValidString(department.getDepartmentname())) {
 			return MessageList.SUCCESS.message();
 		} else {
 			return MessageList.EMPTYFIELD.message();

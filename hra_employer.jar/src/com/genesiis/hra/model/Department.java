@@ -22,23 +22,23 @@ public class Department {
 		return departmentNumber;
 	}
 
-	public void setDepartmentNumber(String departmentNumber) {
+	public void setDepartmentnumber(String departmentNumber) {
 		this.departmentNumber = departmentNumber;
 	}
 
-	public String getDepartmentName() {
+	public String getDepartmentname() {
 		return departmentName;
 	}
 
-	public void setDepartmentName(String departmentName) {
+	public void setDepartmentname(String departmentName) {
 		this.departmentName = departmentName;
 	}
 
-	public String getDepartmentLocation() {
+	public String getDepartmentlocation() {
 		return departmentLocation;
 	}
 
-	public void setDepartmentLocation(String departmentLocation) {
+	public void setDepartmentlocation(String departmentLocation) {
 		this.departmentLocation = departmentLocation;
 	}
 
@@ -46,7 +46,7 @@ public class Department {
 		return departmentHead;
 	}
 
-	public void setDepartmentHead(String departmentHead) {
+	public void setDepartmenthead(String departmentHead) {
 		this.departmentHead = departmentHead;
 	}
 
