@@ -182,9 +182,9 @@
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="employeeJoindate">Joined Date</label> <input type="date"
-										class="form-control" id="employeeJoindate" name="employeeJoindate"
-										placeholder="">
+									<label for="employeeJoindate">Joined Date</label> <input
+										type="date" class="form-control" id="employeeJoindate"
+										name="employeeJoindate" placeholder="">
 								</div>
 							</div>
 						</div>
@@ -258,16 +258,16 @@
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-info pull-left"
-						id="moredetails" name="moredetails" onclick=""
-						data-dismiss="modal" disabled="true" data-toggle="modal"
-						data-target="#addmoreEmployeedetails">
+						id="moredetails" name="moredetails" onclick="" disabled="true"
+						data-toggle="modal" data-target="#addmoreEmployeedetails">
 						<i class="glyphicon glyphicon-file"></i> More Details
 					</button>
-					<button type="button" class="btn btn-warning pull-left" onclick="">
+					<button type="button" class="btn btn-warning pull-left"
+						onclick="clearAddemployeeform()">
 						<i class="glyphicon glyphicon-refresh"></i> Clear
 					</button>
 					<button type="button" class="btn btn-danger pull-left"
-						data-dismiss="modal" onclick="">
+						data-dismiss="modal" onclick="clearAddemployeeform()">
 						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 					</button>
 				</div>

@@ -84,7 +84,8 @@ function addEmployeeDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
-			// document.getElementById("moredetails").disabled = false;
+			clearAddemployeeform();
+			document.getElementById("moredetails").disabled = false;
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -123,4 +124,23 @@ function addDepartmentDetails() {
 			console.log(e);
 		}
 	});
+}
+
+function clearAddemployeeform() {
+	$("#employeeFirstname").val("");
+	$("#employeeMiddlename").val("");
+	$("#employeeLastname").val("");
+	$("#employeeDateofbirth").val("");
+	$("#employeeNic").val("");
+	$("#employeeGender").val("");
+	$("#employeeMaritalstatus").val("");
+	$("#employeeEpf").val("");
+	$("#employeeBasis").val("");
+	$("#employeeDesignation").val("");
+	$("#employeePermenetaddress").val("");
+	$("#employeeTemporaryaddress").val("");
+	$("#employeeTelephone").val("");
+	$("#employeeMobile").val("");
+	$("#employeeEmail").val("");
+	$("#employeeJoindate").val("");
 }
