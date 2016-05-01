@@ -86,7 +86,7 @@ public class DataAccessUtill implements IDataAccessor {
 		EntityManager entityManager = emf.createEntityManager();
 		
 		
-		 Employee empl = entityManager.find( Employee.class, 1 );
+		 Employee empl = entityManager.find( Employee.class, "1");
 
 		return empl;
 	}

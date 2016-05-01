@@ -1,8 +1,9 @@
 package com.genesiis.hra.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.Id;
+
 
 //com.genesiis.hra.model.Employee
 
@@ -12,39 +13,37 @@ import javax.persistence.NamedQuery;
 // * 
 // ***********************************************/
 @Entity
-@NamedQueries(@NamedQuery(name="Employee.getAll",query="SELECE e from EMPLOYEE e"))
-
 public class Employee {
-//	@Id
-//	@Column 
+	@Id
+	@Column 
 	private String employeeId;
-//	@Column
+	@Column
 	private String employeeName;
-//	@Column
+	@Column
 	private String employeeDesignation;
-//	@Column
+	@Column
 	private float employeeSalary;
-//	@Column
+	@Column
 	private String employeeEmail;
-//	@Column
+	@Column
 	private String employeeDob;
-//	@Column
+	@Column
 	private String employeeNic;
-//	@Column
+	@Column
 	private String employeeGender;
-//	@Column
+	@Column
 	private String employeeAddress;
-//	@Column
+	@Column
 	private String employeeMobileno;
-//	@Column
+	@Column
 	private String employeeOtherno;
-//	@Column
+	@Column
 	private String departmentId;
-//	@Column
+	@Column
 	private String dateOfjoin;
-//	@Column
+	@Column
 	private String modOn;
-//	@Column
+	@Column
 	private String modBy;
 
 	public String getEmployeeid() {
