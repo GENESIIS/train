@@ -26,7 +26,7 @@
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
-<script src="dist/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
 
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
@@ -110,7 +110,7 @@ select {
 	<script>
 		window.jQuery
 				|| document
-						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')
+						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>');
 	</script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>

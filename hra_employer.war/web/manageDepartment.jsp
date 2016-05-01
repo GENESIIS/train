@@ -7,6 +7,7 @@
 	$(document).ready(function() {
 		$('#departmentDetails').DataTable();
 	});
+	getManager();
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -104,8 +105,7 @@
 				<div class="form-group">
 					<label for="departmentHead">Department Head</label> <select
 						class="form-control" id="departmentHead" name="departmentHead">
-						<option>-Select-</option>
-						<option value="EMP011">Chamara Withanachchi</option>
+						<option>-Select-</option>						
 					</select>
 				</div>
 			</div>

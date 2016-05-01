@@ -29,6 +29,20 @@ function updatedAlert() {
 	alert("Data Updated Successfully.");
 }
 
+//Get Employees for Add Department Form
+function getManager() {
+	alert("Hello");
+	$.get('DepartmentController', {}, function(data) {
+		var select = $('#departmentHead');
+		select.find('option').remove();
+		$('<option>').val("").text("--Select--").appendTo(select);
+		$.each(data, function(index, value) {
+			var result = value.split("#");
+			$('<option>').val(result[0]).text(result[1]).appendTo(select);
+		});
+	});
+}
+
 // Get data to sent to Servlet
 function addEmployeeDetails() {
 	var employeeNumber = $("#employeeNumber").val();
@@ -109,7 +123,8 @@ function addDepartmentDetails() {
 }
 
 function clearDepartmentform() {
+	$("#departmentNumber").val("");
 	$("#departmentName").val("");
 	$("#departmentLocation").val("");
-	$("#departmentHead").val("");
+	getManager();
 }

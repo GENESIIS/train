@@ -1,6 +1,7 @@
 package com.genesiis.hra.department;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddDepartment;
+import com.genesiis.hra.model.EmployeeManager;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -18,6 +20,7 @@ import com.google.gson.Gson;
 //* 20160416 PN HRA-3 DepartmentController.java class
 //* 20160425 PN HRA-3 modified doPost()
 //* 20160429 PN Modified the doPost() by separating the execute method for ADD,UPDATE,DELETE etc.
+//* 20160501 PN Modified the doGet() method to display managers for Departments.
 //***********************************************/
 
 /**
@@ -35,7 +38,15 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		try {
+			EmployeeManager employeeManager = new EmployeeManager();
+			List<String> list = employeeManager.getManagers();
+			String gson = null;
+			gson = new Gson().toJson(list);
+			response.getWriter().write(gson);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
