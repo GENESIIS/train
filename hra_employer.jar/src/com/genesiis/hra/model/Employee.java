@@ -16,138 +16,138 @@ import javax.persistence.Id;
 public class Employee {
 	@Id
 	@Column 
-	private String employeeId;
+	private String EmployeeId;
 	@Column
-	private String employeeName;
+	private String FirstName;
 	@Column
-	private String employeeDesignation;
+	private String Designation;
 	@Column
-	private float employeeSalary;
+	private float Salary;
 	@Column
-	private String employeeEmail;
+	private String Email;
 	@Column
-	private String employeeDob;
+	private String DoB;
 	@Column
-	private String employeeNic;
+	private String NIC;
 	@Column
-	private String employeeGender;
+	private String Gender;
 	@Column
-	private String employeeAddress;
+	private String Address;
 	@Column
-	private String employeeMobileno;
+	private String MobNumber;
 	@Column
-	private String employeeOtherno;
+	private String OtherNumber;
 	@Column
-	private String departmentId;
+	private String Department;
 	@Column
-	private String dateOfjoin;
+	private String DoJ;
 	@Column
 	private String modOn;
 	@Column
 	private String modBy;
 
 	public String getEmployeeid() {
-		return employeeId;
+		return EmployeeId;
 	}
 
 	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
+		this.EmployeeId = employeeId;
 	}
 
 	public String getEmployeename() {
-		return employeeName;
+		return FirstName;
 	}
 
 	public void setEmployeename(String employeeName) {
-		this.employeeName = employeeName;
+		this.FirstName = employeeName;
 	}
 
 	public String getEmployeedesignation() {
-		return employeeDesignation;
+		return Designation;
 	}
 
 	public void setEmployeedesignation(String employeeDesignation) {
-		this.employeeDesignation = employeeDesignation;
+		this.Designation = employeeDesignation;
 	}
 
 	public float getEmployeesalary() {
-		return employeeSalary;
+		return Salary;
 	}
 
 	public void setEmployeesalary(float employeeSalary) {
-		this.employeeSalary = employeeSalary;
+		this.Salary = employeeSalary;
 	}
 
 	public String getEmployeeemail() {
-		return employeeEmail;
+		return Email;
 	}
 
 	public void setEmployeeemail(String employeeEmail) {
-		this.employeeEmail = employeeEmail;
+		this.Email = employeeEmail;
 	}
 
 	public String getEmployeedob() {
-		return employeeDob;
+		return DoB;
 	}
 
 	public void setEmployeedob(String employeeDob) {
-		this.employeeDob = employeeDob;
+		this.DoB = employeeDob;
 	}
 
 	public String getEmployeenic() {
-		return employeeNic;
+		return NIC;
 	}
 
 	public void setEmployeenic(String employeeNic) {
-		this.employeeNic = employeeNic;
+		this.NIC = employeeNic;
 	}
 
 	public String getEmployeegender() {
-		return employeeGender;
+		return Gender;
 	}
 
 	public void setEmployeegender(String employeeGender) {
-		this.employeeGender = employeeGender;
+		this.Gender = employeeGender;
 	}
 
 	public String getEmployeedddress() {
-		return employeeAddress;
+		return Address;
 	}
 
 	public void setEmployeedddress(String employeeAddress) {
-		this.employeeAddress = employeeAddress;
+		this.Address = employeeAddress;
 	}
 
 	public String getEmployeemobileno() {
-		return employeeMobileno;
+		return MobNumber;
 	}
 
 	public void setEmployeemobileno(String employeeMobileno) {
-		this.employeeMobileno = employeeMobileno;
+		this.MobNumber = employeeMobileno;
 	}
 
 	public String getEmployeeotherno() {
-		return employeeOtherno;
+		return OtherNumber;
 	}
 
 	public void setEmployeeotherno(String employeeOtherno) {
-		this.employeeOtherno = employeeOtherno;
+		this.OtherNumber = employeeOtherno;
 	}
 
 	public String getDepartmentid() {
-		return departmentId;
+		return Department;
 	}
 
 	public void setDepartmentid(String departmentId) {
-		this.departmentId = departmentId;
+		this.Department = departmentId;
 	}
 
 	public String getDateofjoin() {
-		return dateOfjoin;
+		return DoJ;
 	}
 
-	public void setDateOfJoin(String dateOfjoin) {
-		this.dateOfjoin = dateOfjoin;
+	public void setDateOfJoin(String DoJ) {
+		this.DoJ = DoJ;
 	}
 
 	public String getModon() {
@@ -176,19 +176,19 @@ public class Employee {
 			String employeeMobileno, String employeeOtherno,
 			String departmentId, String dateOfjoin, String modOn, String modBy) {
 		super();
-		this.employeeId = employeeId;
-		this.employeeName = employeeName;
-		this.employeeDesignation = employeeDesignation;
-		this.employeeSalary = employeeSalary;
-		this.employeeEmail = employeeEmail;
-		this.employeeDob = employeeDob;
-		this.employeeNic = employeeNic;
-		this.employeeGender = employeeGender;
-		this.employeeAddress = employeeAddress;
-		this.employeeMobileno = employeeMobileno;
-		this.employeeOtherno = employeeOtherno;
-		this.departmentId = departmentId;
-		this.dateOfjoin = dateOfjoin;
+		this.EmployeeId = employeeId;
+		this.FirstName = employeeName;
+		this.Designation = employeeDesignation;
+		this.Salary = employeeSalary;
+		this.Email = employeeEmail;
+		this.DoB = employeeDob;
+		this.NIC = employeeNic;
+		this.Gender = employeeGender;
+		this.Address = employeeAddress;
+		this.MobNumber = employeeMobileno;
+		this.OtherNumber = employeeOtherno;
+		this.Department = departmentId;
+		this.DoJ = dateOfjoin;
 		this.modOn = modOn;
 		this.modBy = modBy;
 	}
