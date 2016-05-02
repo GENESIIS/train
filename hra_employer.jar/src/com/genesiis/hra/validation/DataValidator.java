@@ -4,14 +4,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.sun.org.apache.regexp.internal.recompile;
+import org.jboss.logging.Logger;
+
+
+///***********************************************
+//* 20160415 PN HRA-2 created DataValidator.java class
+//* 20160430 PN created isValidnic() method.
+//***********************************************/
 
 public class DataValidator {
+	static Logger log = Logger.getLogger(DataValidator.class.getName());
+
 	Date date = new Date();
 	boolean status = false;
-	
-	public boolean isPastDate(String day) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+	public boolean isFutureDate(String day) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
 		Date date2 = dateFormat.parse(day);
 		if (date1.before(date2)) {
@@ -20,8 +28,8 @@ public class DataValidator {
 		return status;
 	}
 
-	public boolean isFutureDate(String day) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public boolean isPastDate(String day) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
 		Date date2 = dateFormat.parse(day);
 
@@ -32,7 +40,8 @@ public class DataValidator {
 	}
 
 	public boolean isEqualDate(String day) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		log.info("day" + day);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
 		Date date2 = dateFormat.parse(day);
 
@@ -48,10 +57,8 @@ public class DataValidator {
 		boolean letter = true;
 
 		if (nic.length() == 10) {
-			for (int i = 0; i < nic.length() - 2; i++) {
+			for (int i = 0; i < nic.length() - 1; i++) {
 				if (!Character.isDigit(nic.charAt(i))) {
-
-				} else {
 					numaric = false;
 				}
 			}
@@ -64,10 +71,10 @@ public class DataValidator {
 		}
 		return status;
 	}
-	
-	public boolean isValidString(String text){
+
+	public boolean isValidString(String text) {
 		boolean status = false;
-		if(!text.isEmpty() && text != null){
+		if (!text.isEmpty() && text != null) {
 			status = true;
 		}
 		return status;

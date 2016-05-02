@@ -70,7 +70,7 @@
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
-				</tr>				
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -226,7 +226,7 @@
 							<label for="editemployeeId">Email</label> <input type="text"
 								class="form-control" id="editemployeeId" name="editemployeeId"
 								placeholder="">
-						</div>
+						</div>glyphicon glyphicon-floppy-remove
 					</div>
 				</div>
 
@@ -235,6 +235,8 @@
 						onclick="addedAlert()" data-dismiss="">
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
+					<button type="button" class="btn btn-warning pull-left" onclick="">Clear</button>
+					<button type="button" class="btn btn-warning pull-left" onclick="">Cancel</button>
 					<button type="button" class="btn btn-warning " id="moredetails"
 						name="moredetails" onclick="" data-dismiss="modal" disabled="true"
 						data-toggle="modal" data-target="#addmoreEmployeedetails">
@@ -261,10 +263,13 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 
-					<a onclick="loadContentstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
-					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan Details</a> 
-					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
+					<a href="#" onclick="loadContentqualifications()"
+						class="btn btn-primary">Educaional Data</a> <a
+						onclick="loadContentstudyprograms()" href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
+						onclick="loadContentloandetails()" class="btn btn-primary">Loan
+						Details</a> <a href="#" onclick="loadContentfamilydetails()"
+						class="btn btn-primary">Family Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -284,44 +289,6 @@
 </div>
 
 
-<!--"View Employee Details Form" Modal -->
-<div class="modal fade" id="viewEmployeeDetailsForm" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-modal-window"></i> View Employee Details
-				</h3>
-
-			</div>
-			<div class="modal-body">
-			<img src="dist/demoimages/photo.jpg" class="img-thumbnail"
-									alt="User" width="150" height="150">
-            <p>ID                 : <input type="text" id="userid"></input></p>
-            <p>Name               : <input type="text" id="username"></input></p>
-            <p>Disignation        : <input type="text" id="disignation"></input></p>
-            <p>Salary             : <input type="text" id="salary"></input></p>
-			<p>Email              : <input type="text" id="email"></input></p>
-            <p>Date of Birth      : <input type="text" id="dob"></input></p>
-            <p>NIC Number         : <input type="text" id="Nic"></input></p>
-			<p>Gender             : <input type="text" id="gender"></input></p>
-			<p>Address            : <input type="text" id="adress"></input></p>
-            <p>Mobile Number      : <input type="text" id="MobNumber"></input></p>
-            <p>Other Number       : <input type="text" id="OthNumber"></input></p>
-			<p>Departmentpartment : <input type="text" id="depid"></input></p>
-			<p>Date of Join       : <input type="text" id="doj"></input></p>
-            
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger pull-side"
-					data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>
 
 <!--"Edit Employee Details Form" Modal -->
 <div class="modal fade" id="editEmployeeDetailsForm" role="dialog">

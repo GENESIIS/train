@@ -4,48 +4,36 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-//com.genesiis.hra.model.Employee
-
 ///***********************************************
 // * 20160407 PN HRA-1 created Employee.java class
 // * 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
 // * 
 // ***********************************************/
-@Entity
-@NamedQueries(@NamedQuery(name="Employee.getAll",query="SELECE e from EMPLOYEE e"))
+//@Entity
+//@NamedQueries(@NamedQuery(name="Employee.getAll",query="SELECE e from EMPLOYEE e"))
 
 public class Employee {
-//	@Id
-//	@Column
 	private String employeeId;
-//	@Column
 	private String employeeName;
-//	@Column
 	private String employeeDesignation;
-//	@Column
-	private float employeeSalary;
-//	@Column
 	private String employeeEmail;
-//	@Column
-	private String employeeDob;
-//	@Column
+	private String employeeDateofbirth;
 	private String employeeNic;
-//	@Column
 	private String employeeGender;
-//	@Column
-	private String employeeAddress;
-//	@Column
-	private String employeeMobileno;
-//	@Column
-	private String employeeOtherno;
-//	@Column
-	private String departmentId;
-//	@Column
-	private String dateOfjoin;
-//	@Column
-	private String modOn;
-//	@Column
-	private String modBy;
+	private String employeePermenetaddress;
+	private String employeeTemporaryaddress;
+	private String employeeMobile;
+	private String employeeTelephone;
+	private String employeeDepartment;
+	private String employeeMaritalstatus;
+	private String employeeJoindate;
+	private String employeeEpf;
+	private String employeeBasis;
+
+	
+	
+	public Employee() {
+	}
 
 	public String getEmployeeid() {
 		return employeeId;
@@ -71,14 +59,6 @@ public class Employee {
 		this.employeeDesignation = employeeDesignation;
 	}
 
-	public float getEmployeesalary() {
-		return employeeSalary;
-	}
-
-	public void setEmployeesalary(float employeeSalary) {
-		this.employeeSalary = employeeSalary;
-	}
-
 	public String getEmployeeemail() {
 		return employeeEmail;
 	}
@@ -87,12 +67,12 @@ public class Employee {
 		this.employeeEmail = employeeEmail;
 	}
 
-	public String getEmployeedob() {
-		return employeeDob;
+	public String getEmployeedateofbirth() {
+		return employeeDateofbirth;
 	}
 
-	public void setEmployeedob(String employeeDob) {
-		this.employeeDob = employeeDob;
+	public void setEmployeedateofbirth(String employeeDateofbirth) {
+		this.employeeDateofbirth = employeeDateofbirth;
 	}
 
 	public String getEmployeenic() {
@@ -111,89 +91,103 @@ public class Employee {
 		this.employeeGender = employeeGender;
 	}
 
-	public String getEmployeedddress() {
-		return employeeAddress;
+	public String getEmployeepermenetaddress() {
+		return employeePermenetaddress;
 	}
 
-	public void setEmployeedddress(String employeeAddress) {
-		this.employeeAddress = employeeAddress;
+	public void setEmployeepermenetaddress(String employeePermenetaddress) {
+		this.employeePermenetaddress = employeePermenetaddress;
 	}
 
-	public String getEmployeemobileno() {
-		return employeeMobileno;
+	public String getEmployeetemporaryaddress() {
+		return employeeTemporaryaddress;
 	}
 
-	public void setEmployeemobileno(String employeeMobileno) {
-		this.employeeMobileno = employeeMobileno;
+	public void setEmployeetemporaryaddress(String employeeTemporaryaddress) {
+		this.employeeTemporaryaddress = employeeTemporaryaddress;
 	}
 
-	public String getEmployeeotherno() {
-		return employeeOtherno;
+	public String getEmployeemobile() {
+		return employeeMobile;
 	}
 
-	public void setEmployeeotherno(String employeeOtherno) {
-		this.employeeOtherno = employeeOtherno;
+	public void setEmployeemobile(String employeeMobile) {
+		this.employeeMobile = employeeMobile;
 	}
 
-	public String getDepartmentid() {
-		return departmentId;
+	public String getEmployeetelephone() {
+		return employeeTelephone;
 	}
 
-	public void setDepartmentid(String departmentId) {
-		this.departmentId = departmentId;
+	public void setEmployeetelephone(String employeeTelephone) {
+		this.employeeTelephone = employeeTelephone;
 	}
 
-	public String getDateofjoin() {
-		return dateOfjoin;
+	public String getEmployeedepartment() {
+		return employeeDepartment;
 	}
 
-	public void setDateOfJoin(String dateOfjoin) {
-		this.dateOfjoin = dateOfjoin;
+	public void setEmployeedepartment(String employeeDepartment) {
+		this.employeeDepartment = employeeDepartment;
 	}
 
-	public String getModon() {
-		return modOn;
+	public String getEmployeemaritalstatus() {
+		return employeeMaritalstatus;
 	}
 
-	public void setModon(String modOn) {
-		this.modOn = modOn;
+	public void setEmployeemaritalstatus(String employeeMaritalstatus) {
+		this.employeeMaritalstatus = employeeMaritalstatus;
 	}
 
-	public String getModby() {
-		return modBy;
+	public String getEmployeejoindate() {
+		return employeeJoindate;
 	}
 
-	public void setModby(String modBy) {
-		this.modBy = modBy;
+	public void setEmployeejoindate(String employeeJoindate) {
+		this.employeeJoindate = employeeJoindate;
 	}
 
-	public Employee() {
+	public String getEmployeeepf() {
+		return employeeEpf;
+	}
+
+	public void setEmployeeepf(String employeeEpf) {
+		this.employeeEpf = employeeEpf;
+	}
+
+	public String getEmployeebasis() {
+		return employeeBasis;
+	}
+
+	public void setEmployeebasis(String employeeBasis) {
+		this.employeeBasis = employeeBasis;
 	}
 
 	public Employee(String employeeId, String employeeName,
-			String employeeDesignation, float employeeSalary,
-			String employeeEmail, String employeeDob, String employeeNic,
-			String employeeGender, String employeeAddress,
-			String employeeMobileno, String employeeOtherno,
-			String departmentId, String dateOfjoin, String modOn, String modBy) {
+			String employeeDesignation, String employeeEmail,
+			String employeeDateofbirth, String employeeNic,
+			String employeeGender, String employeePermenetaddress,
+			String employeeTemporaryaddress, String employeeMobile,
+			String employeeTelephone, String employeeDepartment,
+			String employeeMaritalstatus, String employeeJoindate,
+			String employeeEpf, String employeeBasis) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeeDesignation = employeeDesignation;
-		this.employeeSalary = employeeSalary;
 		this.employeeEmail = employeeEmail;
-		this.employeeDob = employeeDob;
+		this.employeeDateofbirth = employeeDateofbirth;
 		this.employeeNic = employeeNic;
 		this.employeeGender = employeeGender;
-		this.employeeAddress = employeeAddress;
-		this.employeeMobileno = employeeMobileno;
-		this.employeeOtherno = employeeOtherno;
-		this.departmentId = departmentId;
-		this.dateOfjoin = dateOfjoin;
-		this.modOn = modOn;
-		this.modBy = modBy;
+		this.employeePermenetaddress = employeePermenetaddress;
+		this.employeeTemporaryaddress = employeeTemporaryaddress;
+		this.employeeMobile = employeeMobile;
+		this.employeeTelephone = employeeTelephone;
+		this.employeeDepartment = employeeDepartment;
+		this.employeeMaritalstatus = employeeMaritalstatus;
+		this.employeeJoindate = employeeJoindate;
+		this.employeeEpf = employeeEpf;
+		this.employeeBasis = employeeBasis;
 	}
-
-	
 
 }
