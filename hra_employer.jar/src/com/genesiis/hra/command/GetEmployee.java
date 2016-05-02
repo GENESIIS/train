@@ -1,18 +1,39 @@
 package com.genesiis.hra.command;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
 import com.genesiis.hra.model.Employee;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.logging.Logger;
+import com.genesiis.hra.model.DataAccessUtill;
+
 
 public class GetEmployee {
 
+	static Logger log = Logger.getLogger(GetEmployee.class.getName());
+	
+	DataAccessUtill dataAcse = new DataAccessUtill();
+	
 	public String createGson() {
 		
-		Employee employee = new Employee();
-		employee.setEmployeeid("1");
+		
+		
+		//Employee employee = da.getObjectid("saf");
+		//Employee employee = new Employee();
+		try{
+		
+		}catch(Exception e){
+			
+		}
+		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
-		employee.setEmployeedesignation("Eng");
+		employee.setEmployeedesignation("Eng"); 
 		employee.setEmployeesalary(1000);
 		employee.setEmployeeemail("we@mail");
 		employee.setEmployeedob("2000.01.01");
@@ -24,19 +45,22 @@ public class GetEmployee {
 		employee.setEmployeeotherno("e5");
 		employee.setDateOfJoin("2016.04.25"); 
 		employee.setModon("mod");
-		employee.setModby("modby");
+		employee.setModby("modby");*/
 		
-		Gson gson = new Gson();
 		
+		Gson gson = new Gson();  
+		 
 		String employeD = null;
 		
 		try {
-			 employeD = gson.toJson(employee);
+			 employeD = gson.toJson(dataAcse.getObjectid("1"));
 			
 		} catch (Exception e) {
 			
 		}
 		return employeD;
 	}
+	
+	
 	
 }

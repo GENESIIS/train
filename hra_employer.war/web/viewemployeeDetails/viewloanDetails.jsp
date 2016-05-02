@@ -32,7 +32,7 @@
                       </tr>
                       <tr>
                         <td>NIC</td>
-                        <td><p id="Nic"></p></td>
+                        <td><p id="salary"></p></td>
                       </tr>
 					  <tr>
                         <td>Department ID</td>
@@ -52,7 +52,7 @@
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><p id="email"></p></td>
+                        <td><a href= <p id="userid"></p></a></td>
                       </tr>
                         <td>Phone Number</td>
                         <td><p id="MobNumber"></p><br>
@@ -63,7 +63,7 @@
                         <td><p id="gender"></p></td>
                       </tr>
 					  <tr>
-                        <td>Address</td>
+                        <td>Adress</td>
                         <td><p id="adress"></p></td>
                       </tr>
                     </tbody>

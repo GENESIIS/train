@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="dist/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="dist/css/bootsnipp.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="dist/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -26,6 +27,7 @@
     <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
     <script src="dist/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+	<script src="dist/js/bootsnipp.js" type="text/javascript"></script>
     
     <!-- Importing hra.helper.js file -->
     <script src="dist/js/hra/hra.helper.js"></script>

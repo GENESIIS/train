@@ -8,7 +8,7 @@ function loadContentDashboard() {
 }
 
 function loadContentEmployee() {
-	$("#mainContent").load("manageEmployee.jsp");
+	$("#mainContent").load("createEmployee.jsp");
 }
 
 function loadContentDepartment() {
@@ -20,7 +20,8 @@ function deleteAlert(){
 	alert("Data Deleted Successfully.");
 }
 
-function addedAlert(){
+function addedAlert() {
+	document.getElementById("moredetails").disabled = false;
 	alert("Data Added Successfully.");
 }
 
@@ -79,32 +80,36 @@ $(document).on("click", "#vbutton", function () {
 	
 	$.get("EmployerController", function(data, status){
 		
-		alert(data);
-		json = JSON.parse(data);
-		$(".modal-body #userid").text( " Employee ID : "+ json.employeeId);
-		$(".modal-body #username").text( " Employee Name : " + json.employeeName);
-		$(".modal-body #disignation").text(" Employee Designation : " + json.employeeDesignation);
-		$(".modal-body #salary").text( " Employee Salary : " + json.employeeSalary);
-		$(".modal-body #email").text( " Employee Email : " + json.employeeEmail);
-		$(".modal-body #dob").text( " Employee Date of Birth : " + json.employeeDob);
-		$(".modal-body #Nic").text( " Employee NIC : " + json.employeeNic);
-		$(".modal-body #gender").text( " Employee Gender : " + json.employeeGender);
-		$(".modal-body #adress").text( " Employee Address : " + json.employeeAddress);
-		$(".modal-body #MobNumber").text( " Employee Mobile Number : " + json.employeeMobileno);
-		$(".modal-body #OthNumber").text( " Employee Other Number : " + json.employeeOtherno);
-		$(".modal-body #depid").text( " Employee Department : " + json.departmentId);
-		$(".modal-body #doj").text( " Employee Date of Join : " + json.dateOfjoin);
-		//$(".modal-body #userid").val( json.modOn);
-		//$(".modal-body #userid").val( json.modBy);
+		$("#view").load("viewEmployee.jsp",function(datatl){
+			json = JSON.parse(data);
+			$("#userid").text(json.EmployeeId);
+			$(".panel-body #username").text(json.FirstName);
+			$(".panel-body #disignation").text( json.Designation);
+			$(".panel-body #salary").text( json.Salary);
+			$(".panel-body #email").text( json.Email);
+			$(".panel-body #dob").text( json.DoB);
+			$(".panel-body #Nic").text( json.NIC);
+			$(".panel-body #gender").text(json.Gender);
+			$(".panel-body #adress").text(json.Address);
+			$(".panel-body #MobNumber").text( json.MobNumber);
+			$(".panel-body #OthNumber").text(  json.OtherNumber);
+			$(".panel-body #depid").text(  json.Department);
+			$(".panel-body #doj").text(json.DoJ);
+			//$(".modal-body #userid").val( json.modOn);
+			//$(".modal-body #userid").val( json.modBy);
+			
+			alert(data);
+		});
+		
 		
 	});
-
-	//$("#view").load("viewEmployee.jsp");
+	
+	
 });
 $(document).on("click", "#ebutton", function () {
 $.get("EmployerController", function(data, status){
 	
-	alert("awa");
+	//alert("awa");
 	json = JSON.parse(data);
 	$(".modal-body #employeeNumberEdit").val( json.employeeId);
 	$(".modal-body #employeeNameEdit").val( json.employeeName);
@@ -174,7 +179,65 @@ function updateEmployeeDetails(){
     });
 }
 
+/////load more employee views/////////////////////////////////////
 
+function loadviewqlifications() {
+	$("#viewmodelrest").load("viewemployeeDetails/vieweducationalDetails.jsp");
+}
+
+function loadviewemployementhistory() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
+}
+
+function loadviewstudyprograms() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewstudyPrograms.jsp");
+}
+
+function loadviewlanguages() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewlanguageProficiency.jsp");
+}
+
+function loadviewloandetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
+}
+function loadviewfamilydetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewfamilyDetails.jsp");
+}
+function loadviewemergencycontacts() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemergencyContacts.jsp");
+}
+
+////////////////////////////////////////////////
+
+//////load more edit Employeee Detail///////////////
+
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
+}
+
+function loadEditemployementhistory() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
+}
+
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
+}
+
+function loadEditlanguages() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
+}
+
+function loadEditContentloandetails() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp");
+}
+function loadEditContentfamilydetails() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditfamilyDetails.jsp");
+}
+function loadEditemergencycontacts() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
+}
+
+//////////////////////////////////////////////////////////
 $(document).ready(function() {
 		$('#employeeDetails').DataTable();
 		
