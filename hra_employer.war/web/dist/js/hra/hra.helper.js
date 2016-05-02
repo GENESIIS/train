@@ -31,7 +31,6 @@ function updatedAlert() {
 
 //Get Employees for Add Department Form
 function getManager() {
-	alert("Hello");
 	$.getJSON('DepartmentController', {}, function(data) {
 		var select = $('#departmentHead');
 		select.find('option').remove();
