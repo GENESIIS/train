@@ -20,16 +20,16 @@ public class GetEmployee {
 	
 	public String createGson() {
 		
-		//DataAccessUtill da = new DataAccessUtill();
+		DataAccessUtill dataAcse  = new DataAccessUtill();
 		
-		//Employee employee = da.getObjectid("saf");
-		Employee employee = new Employee();
+		Employee employee = da.getObjectid("saf");
+		//Employee employee = new Employee();
 		try{
 		
 		}catch(Exception e){
 			
 		}
-		employee.setEmployeeid("1");
+		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
 		employee.setEmployeedesignation("Eng"); 
 		employee.setEmployeeemail("we@mail");
@@ -42,7 +42,7 @@ public class GetEmployee {
 		employee.setEmployeeotherno("e5");
 		employee.setDateOfJoin("2016.04.25"); 
 		employee.setModon("mod");
-		employee.setModby("modby");
+		employee.setModby("modby");*/
 		
 		
 		Gson gson = new Gson();  

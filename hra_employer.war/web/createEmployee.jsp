@@ -264,14 +264,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Date of Birth</label> <input
-										type="date" class="form-control" id="editemployeeId"
+										type="date" class="form-control" id="employeeDateofBothEdit"
 										name="employeeDateofBothEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">NIC</label> <input type="text"
-										class="form-control" id="editemployeeId" name="editemployeeId"
+										class="form-control" id="employeeNICEdit" name="editemployeeNIC"
 										placeholder="">
 								</div>
 							</div>
@@ -281,14 +281,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Gender</label> <input type="text"
-										class="form-control" id="employeeGenderEdit" name="editemployeeId"
+										class="form-control" id="employeeGenderEdit" name="employeeGenderEdit"
 										placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Marital Status</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="text" class="form-control" id="employeeMaritalEdit"
 										name="editemployeeId" placeholder="">
 								</div>
 							</div>
@@ -301,15 +301,15 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">EPF Number</label> <input
-										type="text" class="form-control" id="editemployeeId"
-										name="editemployeeId" placeholder="">
+										type="text" class="form-control" id="employeeEPFEdit"
+										name="employeeEPFEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Employment Status</label> <input
-										type="text" class="form-control" id="editemployeeId"
-										name="editemployeeId" placeholder="">
+										type="text" class="form-control" id="employeeStatusEdit"
+										name="employeeStatusEdit" placeholder="">
 								</div>
 							</div>
 						</div>
@@ -319,14 +319,14 @@
 								<div class="form-group">
 
 									<label for="editemployeeId">Designation</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="text" class="form-control" id="employeeDesignationEdit"
 										name="employeeDesignationEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Department</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="text" class="form-control" id="employeeDepartmentEdit"
 										name="employeeDepartmentEdit" placeholder="">
 								</div>
 							</div>
@@ -339,15 +339,15 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Permanent Address</label>
-									<textarea class="form-control" id="editemployeeId"
-										name="editemployeeId" placeholder=""></textarea>
+									<textarea class="form-control" id="employeeAddressEdit"
+										name="employeeAddressEdit" placeholder=""></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Temporary Address</label>
-									<textarea class="form-control" id="editemployeeId"
-										name="editemployeeId" placeholder=""></textarea>
+									<textarea class="form-control" id="employeeTempADDEdit"
+										name="employeeTempADDEdit" placeholder=""></textarea>
 								</div>
 							</div>
 						</div>
@@ -356,14 +356,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Telephone</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="text" class="form-control" id="employeeOtherNumberEdit"
 										name="employeeOtherNumberEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Mobile Number</label> <input
-										type="text" class="form-control" id="editemployeeId"
+										type="text" class="form-control" id="employeeMobileNumberEdit"
 										name="employeeMobileNumberEdit" placeholder="">
 								</div>
 							</div>

@@ -111,20 +111,20 @@ $.get("EmployerController", function(data, status){
 	
 	//alert("awa");
 	json = JSON.parse(data);
-	$(".modal-body #employeeNumberEdit").val( json.EmployeeId);
-	$(".modal-body #employeeNameEdit").val( json.FirstName);
-	$(".modal-body #employeeDesignationEdit").val( json.Designation);
+	$(".modal-body #employeeNumberEdit").val( json.ID);
+	$(".modal-body #employeeNameEdit").val( json.NAME);
+	$(".modal-body #employeeDesignationEdit").val( json.DESIGNATION);
 	//$(".modal-body #employeeDateofBothEdit").val( json.Salary);
-	$(".modal-body #employeeEmailEdit").val( json.Email);
-	$(".modal-body #employeeDateofBothEdit").val( json.DoB);
+	$(".modal-body #employeeEmailEdit").val( json.EMAIL);
+	$(".modal-body #employeeDateofBothEdit").val( json.DOB);
 	//$(".modal-body #employeeMobileNumber").val( json.NIC);
-	$(".modal-body #employeeGenderEdit").val( json.Gender);
-	$(".modal-body #employeeAddressEdit").val( json.Address);
-	$(".modal-body #employeeMobileNumberEdit").val( json.MobNumber);
-	$(".modal-body #employeeOtherNumberEdit").val( json.OtherNumber);
-	$(".modal-body #employeeDepartmentEdit").val( json.Department);
-	$(".modal-body #employeeJoinDateEdit").val( json.DoJ);
-	//$(".modal-body #userid").val( json.modOn);
+	$(".modal-body #employeeGenderEdit").val( json.GENDER);
+	$(".modal-body #employeeAddressEdit").val( json.PERMENENTADDRESS);
+	$(".modal-body #employeeMobileNumberEdit").val( json.MOBILENO);
+	$(".modal-body #employeeOtherNumberEdit").val( json.OTHERNO);
+	$(".modal-body #employeeDepartmentEdit").val( json.DEPTID);
+	$(".modal-body #employeeJoinDateEdit").val( json.DATEOFJOIN);
+	$(".modal-body #employeeMaritalEdit").val( json.MARITALSTATUS);
 	//$(".modal-body #userid").val( json.modBy);
 	
 });
@@ -144,10 +144,10 @@ function updateEmployeeDetails(){
 	var employeeEmail = $("#employeeEmailEdit").val();
 	var employeeDepartment = $("#employeeDepartmentEdit").val();
 	var employeeJoinDate = $("#employeeJoinDateEdit").val();
-	var MARITALSTATUS =null;
+	var MARITALSTATUS =$("employeeMaritalEdit").val;
 	var MODBY =null;
 	var MODON =null ;
-	var EPF =null;
+	var EPF =$("employeeEPFEdit").val;
 	var BASIS =null;
 	
 	var employeeData = {

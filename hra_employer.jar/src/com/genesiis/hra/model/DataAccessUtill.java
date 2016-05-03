@@ -2,8 +2,10 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,6 +28,8 @@ import com.genesiis.hra.validation.MessageList;
 @Stateless
 public class DataAccessUtill implements IDataAccessor { 
 
+	static Logger log = Logger.getLogger(DataAccessUtill.class.getName());
+	
 	/*EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");
 	EntityManager entityManager = emf.createEntityManager();*/
@@ -83,6 +87,53 @@ public class DataAccessUtill implements IDataAccessor {
 	public Employee getObjectid(String id) {
 		// TODO Auto-generated method stub
 		
+		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet retriveData = null;
+		Employee employee = new Employee();
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, "1");
+			
+			 retriveData = preparedStatement.executeQuery();
+		
+			 
+				
+				try{
+					if (retriveData.next()) {
+						employee.setEmployeeid(retriveData.getString("ID"));
+						employee.setEmployeename(retriveData.getString("NAME"));
+						employee.setEmployeedesignation(retriveData.getString("DESIGNATION")); 						
+						employee.setEmployeeemail(retriveData.getString("EMAIL"));
+						employee.setEmployeedob(retriveData.getString("DOB"));
+						employee.setEmployeenic(retriveData.getString("NIC"));
+						employee.setEmployeegender(retriveData.getString("GENDER"));
+						employee.setEmployeedddress(retriveData.getString("PERMENENTADDRESS"));
+						employee.setEmployeemobileno(retriveData.getString("MOBILENO"));
+						employee.setDepartmentid(retriveData.getString("OTHERNO"));
+						employee.setEmployeeotherno(retriveData.getString("DEPTID"));
+						employee.setDateOfJoin(retriveData.getString("DATEOFJOIN")); 
+						employee.setModon("MODON");
+						employee.setModby("EPF");
+						employee.setMARITALSTATUS("MARITALSTATUS");
+						employee.setBASIS("BASIS");
+						employee.setModby("modBy");
+						
+						log.info(retriveData.getString("EmployeeId")+"////////////////////////////////////////////////////////");
+					}
+				}catch(Exception e){
+					log.info(e.toString());
+				}
+				
+			preparedStatement.close();
+			conn.close();
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			
+		}
 		/*EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("hra_employer");
 		EntityManager entityManager = emf.createEntityManager();
