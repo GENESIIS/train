@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import com.genesiis.hra.model.Employee;
 
 
-
+  
 public class DatLoader implements IDataLoader {
 	
     public String  InsertData(){
