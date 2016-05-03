@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 //* 20160501 PN HRA-3 getManagers() method created.
 //***********************************************/
 
-public class EmployeeManager implements IDataAccessor {
+public class EmployeeManager implements ICrud {
 	static Logger log = Logger.getLogger(EmployeeManager.class.getName());
 
 	@Override

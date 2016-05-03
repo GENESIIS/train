@@ -2,6 +2,7 @@ package com.genesiis.hra.department;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,9 +29,15 @@ import com.google.gson.Gson;
  */
 @WebServlet("/DepartmentController")
 public class DepartmentController extends HttpServlet {
+	int count1 = 0;
+	int count2 = 0;
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
+
+	public void init() throws ServletException {
+		log.info(++count1+"Count1");
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -55,14 +62,24 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		log.info(++count2+"Count2");
 		String departmentDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
+
+		Map<String, String[]> m = (Map<String, String[]>) request
+				.getParameterMap();
+		log.info("m.toString()" + m.toString());
+
+		try {
+
+		} catch (Exception e) {
+			log.info("Exception: DepartmentController" + e);
+		}
 
 		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
 			AddDepartment addDepartment = new AddDepartment();
 			try {
-				String message = addDepartment
-						.executeAdddepartment(departmentDetails);
+				String message = addDepartment.execute(departmentDetails);
 				Gson gson = new Gson();
 				response.getWriter().write(gson.toJson(message));
 			} catch (Exception e) {

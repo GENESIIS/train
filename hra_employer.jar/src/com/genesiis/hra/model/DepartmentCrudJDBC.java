@@ -3,14 +3,11 @@ package com.genesiis.hra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -20,8 +17,8 @@ import com.google.gson.Gson;
 //* 20160429 PN Modified the add(Object object) Method.
 //***********************************************/
 
-public class DepartmentManager implements IDataAccessor {
-	static Logger log = Logger.getLogger(DepartmentManager.class.getName());
+public class DepartmentCrudJDBC implements ICrud {
+	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	@Override
 	public String add(Object object) {
@@ -44,11 +41,16 @@ public class DepartmentManager implements IDataAccessor {
 			if (rowsInserted > 0) {
 				message = MessageList.ADDED.message();
 			}
-			preparedStatement.close();
-			conn.close();
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			message = MessageList.ERROR.message();
+		} finally {
+			try {
+				preparedStatement.close();
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}			
 		}
 		return message;
 	}
@@ -85,12 +87,4 @@ public class DepartmentManager implements IDataAccessor {
 		return department;
 	}
 
-	public String validDepartment(Department department) {
-		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentname())) {
-			return MessageList.SUCCESS.message();
-		} else {
-			return MessageList.EMPTYFIELD.message();
-		}
-	}
 }

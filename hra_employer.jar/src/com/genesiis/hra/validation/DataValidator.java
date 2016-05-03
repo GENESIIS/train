@@ -4,17 +4,23 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.jboss.logging.Logger;
+
+import com.genesiis.hra.command.AddDepartment;
+
+import sun.util.logging.resources.logging;
+
 ///***********************************************
 //* This class is to validate user inputs.
 //* 20160422 PN HRA-3 created DataValidator.java class
 //* 20160425 PN HRA-3 Modified DataValidator.java class
 //***********************************************/
 
-
 public class DataValidator {
+	static Logger log = Logger.getLogger(DataValidator.class.getName());
 	Date date = new Date();
 	boolean status = false;
-	
+
 	public boolean isPastDate(String day) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
@@ -69,10 +75,10 @@ public class DataValidator {
 		}
 		return status;
 	}
-	
-	public boolean isValidString(String text){
+
+	public boolean isValidString(String text) {
 		boolean status = false;
-		if(!text.isEmpty() && text != null){
+		if ((text.isEmpty() == false) && text != null) {
 			status = true;
 		}
 		return status;
