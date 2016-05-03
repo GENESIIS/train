@@ -32,7 +32,6 @@ public class GetEmployee {
 		employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
 		employee.setEmployeedesignation("Eng"); 
-		employee.setEmployeesalary(1000);
 		employee.setEmployeeemail("we@mail");
 		employee.setEmployeedob("2000.01.01");
 		employee.setEmployeenic("903293950v");

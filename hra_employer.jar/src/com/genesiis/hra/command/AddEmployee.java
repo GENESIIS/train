@@ -19,30 +19,32 @@ public class AddEmployee {
 		String message = "";
 
 		//Format the JsonData Object.
-		String jsonObject = gsonData.substring(12, gsonData.length()-1);
-		log.info("jsonObject" + jsonObject);
 		
-		try { 
+		//log.info("jsonObject" + jsonObject);
+		
+		Employee employee = extractFromgson(gsonData);
+		message = accessUtill.update(employee);
+		/*try { 
 			//Get employee object extract from Gson object.
-			Employee employee = extractFromgson(gsonData);
+			
 			if (validEmployee(employee).equalsIgnoreCase("Successfull")) {
 				log.info("validEmployee(employee) "
 						+ validEmployee(employee));
-				//message = accessUtill.add(employee);
+				message = accessUtill.add(employee);
 			} else {
 				message = MessageList.ERROR.message();
 			}
 		} catch (Exception e) {
 			log.info("Exception-department: " + e);
-		}
+		}*/
 	}
 	// Method to extract DepartmentDetails from jsonData.
 		public Employee extractFromgson(String gsonData) {
-			Gson gson = new GsonBuilder().create();
+			Gson gson = new Gson();
 			Employee employee = null;
 			try {
 				employee = gson.fromJson(gsonData, Employee.class);
-				log.info("Employee department" + employee);
+				log.info("Employee department" + employee.getEmployeename());
 			} catch (Exception e) {
 				log.info("ExtractFromgson - Exception " + e);
 			}

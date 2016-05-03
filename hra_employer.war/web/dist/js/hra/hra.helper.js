@@ -144,22 +144,35 @@ function updateEmployeeDetails(){
 	var employeeEmail = $("#employeeEmailEdit").val();
 	var employeeDepartment = $("#employeeDepartmentEdit").val();
 	var employeeJoinDate = $("#employeeJoinDateEdit").val();
+	var MARITALSTATUS =null;
+	var MODBY =null;
+	var MODON =null ;
+	var EPF =null;
+	var BASIS =null;
 	
 	var employeeData = {
-            "employeedata": {
-                "employeeNumber": employeeNumber,
-                "employeeName": employeeName,
-                "employeeDesignation": employeeDesignation,
-                "employeeDateofBoth": employeeDateofBoth,
-                "employeeGender": employeeGender,
-                "employeeAddress": employeeAddress,
-                "employeeMobileNumber": employeeMobileNumber,
-                "employeeOtherNumber": employeeOtherNumber,
-                "employeeEmail": employeeEmail,
-                "employeeDepartment": employeeDepartment,
-                "employeeJoinDate": employeeJoinDate
-            }
-        };
+            
+                "ID": employeeNumber,
+                "NAME": employeeName,
+                "DESIGNATION": employeeDesignation,
+                "DOB": employeeDateofBoth,
+                "GENDER": employeeGender,
+                "PERMENENTADDRESS": employeeAddress,
+                
+                "MOBILENO": employeeMobileNumber,
+                "OTHERNO": employeeOtherNumber,
+                "EMAIL": employeeEmail,
+                "DEPTID": employeeDepartment,
+                "DATEOFJOIN": employeeJoinDate,
+                "MARITALSTATUS" : MARITALSTATUS,
+                "MODBY" : MODBY,
+                "MODON" : MODON,
+                "EPF" : EPF,
+                "BASIS" : BASIS
+           
+	    };
+	alert(JSON.stringify(employeeData));
+        
 	
 	$.ajax({
         type: "POST",

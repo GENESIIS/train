@@ -1,5 +1,8 @@
 package com.genesiis.hra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.MessageList;
 
 
@@ -34,26 +38,39 @@ public class DataAccessUtill implements IDataAccessor {
 	}
 
 	@Override
-	public String update(Object object) {
+	public String update(Employee object) {
 		// TODO Auto-generated method stub
 		
-		String message = "";
+		
+		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? WHERE ID = ?";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		//Employee empl = (Employee) object;
+
 		try {
-			EntityTransaction transaction = entityManager.getTransaction();
-			try {
-				transaction.begin();				
-				entityManager.persist(object);
-				transaction.commit();
-				message = "Employee " + MessageList.ADDED.message();
-									
-			} finally {
-				if (transaction.isActive())
-					transaction.rollback();
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, object.getEmployeename());
+			preparedStatement.setString(2, "1");
+			
+
+			int rowsInserted = preparedStatement.executeUpdate();
+			if (rowsInserted > 0) {
+				message = MessageList.ADDED.message();
 			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			message = MessageList.ERROR.message();
 		} finally {
-			entityManager.close();
+			try {
+				preparedStatement.close();
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}			
 		}
-		return null;
+		return message;
 	}
 
 	@Override
@@ -66,14 +83,14 @@ public class DataAccessUtill implements IDataAccessor {
 	public Employee getObjectid(String id) {
 		// TODO Auto-generated method stub
 		
-		EntityManagerFactory emf = Persistence
+		/*EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("hra_employer");
 		EntityManager entityManager = emf.createEntityManager();
 		
 		
-		 Employee empl = entityManager.find( Employee.class, "1");
+		 Employee empl = entityManager.find( Employee.class, "1");*/
 
-		return empl;
+		return null;
 	}
 
 	@Override
