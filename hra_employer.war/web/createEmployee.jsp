@@ -230,7 +230,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h3 class="modal-title">
-						<i class="glyphicon glyphicon-user"></i> Employee Details
+						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
 					</h3>
 				</div>
 				<div class="modal-body">
@@ -380,13 +380,13 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success pull-right"
-						onclick="addedAlert()" data-dismiss="">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Save
+						onclick="updateEmployeeDetails()" data-dismiss="">
+						<i class="glyphicon glyphicon-floppy-disk"></i> Update
 					</button>
 					<button type="button" class="btn btn-warning pull-right" id="moredetails"
 						name="moredetails" onclick="" data-dismiss="modal" 
 						data-toggle="modal" data-target="#editmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i> More Details
+						<i class="glyphicon glyphicon-file"></i>Edit More Details
 					</button>
 					<button type="button" class="btn btn-warning pull-left"
 						onclick="">
@@ -410,7 +410,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>More Employee Details
+					<i class="glyphicon glyphicon-user"></i>Edit More Employee Details
 				</h3>
 			</div>
 			<div class="modal-body">
@@ -424,7 +424,7 @@
 						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
 						class="btn btn-primary">Family Details</a>
 				</div>
-				<div id="modelrest" name="modelrest"></div>
+				<div id="Editmodelrest" name="Editmodelrest"></div>
 
 			</div>
 			<!-- 			<div class="modal-footer"> -->

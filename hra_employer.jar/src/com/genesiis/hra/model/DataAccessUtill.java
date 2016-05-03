@@ -22,29 +22,14 @@ import com.genesiis.hra.validation.MessageList;
 @Stateless
 public class DataAccessUtill implements IDataAccessor { 
 
-	EntityManagerFactory emf = Persistence
+	/*EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("hra_employer");
-	EntityManager entityManager = emf.createEntityManager();
+	EntityManager entityManager = emf.createEntityManager();*/
 
 	@Override
 	public String add(Object object) {
 		String message = "";
-		try {
-			EntityTransaction transaction = entityManager.getTransaction();
-			try {
-				transaction.begin();
-				entityManager.persist(object);
-				transaction.commit();
-				message = "Department " + MessageList.ADDED.message();
-			} catch (Exception exception) {
-				message = MessageList.ERROR.message() + " " + exception;
-			} finally {
-				if (transaction.isActive())
-					transaction.rollback();
-			}
-		} finally {
-			entityManager.close();
-		}
+		
 		return message;
 	}
 

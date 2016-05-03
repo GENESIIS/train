@@ -21,7 +21,7 @@ function deleteAlert(){
 }
 
 function addedAlert() {
-	document.getElementById("moredetails").disabled = false;
+	//document.getElementById("moredetails").disabled = false;
 	alert("Data Added Successfully.");
 }
 
@@ -111,19 +111,19 @@ $.get("EmployerController", function(data, status){
 	
 	//alert("awa");
 	json = JSON.parse(data);
-	$(".modal-body #employeeNumberEdit").val( json.employeeId);
-	$(".modal-body #employeeNameEdit").val( json.employeeName);
-	$(".modal-body #employeeDesignationEdit").val( json.employeeDesignation);
-	//$(".modal-body #employeeDateofBothEdit").val( json.employeeSalary);
-	$(".modal-body #employeeEmailEdit").val( json.employeeEmail);
-	$(".modal-body #employeeDateofBothEdit").val( json.employeeDob);
-	//$(".modal-body #employeeMobileNumber").val( json.employeeNic);
-	$(".modal-body #employeeGenderEdit").val( json.employeeGender);
-	$(".modal-body #employeeAddressEdit").val( json.employeeAddress);
-	$(".modal-body #employeeMobileNumberEdit").val( json.employeeMobileno);
-	$(".modal-body #employeeOtherNumberEdit").val( json.employeeOtherno);
-	$(".modal-body #employeeDepartmentEdit").val( json.departmentId);
-	$(".modal-body #employeeJoinDateEdit").val( json.dateOfjoin);
+	$(".modal-body #employeeNumberEdit").val( json.EmployeeId);
+	$(".modal-body #employeeNameEdit").val( json.FirstName);
+	$(".modal-body #employeeDesignationEdit").val( json.Designation);
+	//$(".modal-body #employeeDateofBothEdit").val( json.Salary);
+	$(".modal-body #employeeEmailEdit").val( json.Email);
+	$(".modal-body #employeeDateofBothEdit").val( json.DoB);
+	//$(".modal-body #employeeMobileNumber").val( json.NIC);
+	$(".modal-body #employeeGenderEdit").val( json.Gender);
+	$(".modal-body #employeeAddressEdit").val( json.Address);
+	$(".modal-body #employeeMobileNumberEdit").val( json.MobNumber);
+	$(".modal-body #employeeOtherNumberEdit").val( json.OtherNumber);
+	$(".modal-body #employeeDepartmentEdit").val( json.Department);
+	$(".modal-body #employeeJoinDateEdit").val( json.DoJ);
 	//$(".modal-body #userid").val( json.modOn);
 	//$(".modal-body #userid").val( json.modBy);
 	
