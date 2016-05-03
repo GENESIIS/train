@@ -1,9 +1,11 @@
 package com.genesiis.hra.department;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,14 +31,19 @@ import com.google.gson.Gson;
  */
 @WebServlet("/DepartmentController")
 public class DepartmentController extends HttpServlet {
-	int count1 = 0;
-	int count2 = 0;
+	HashMap<Integer, Object> hmap = null;
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
 
 	public void init() throws ServletException {
-		log.info(++count1+"Count1");
+		AddDepartment addDepartment = new AddDepartment();
+
+		hmap = new HashMap<Integer, Object>();
+		hmap.put(1, addDepartment);
+		// hmap.put(2, null);
+		// hmap.put(3, null);
+		// hmap.put(4, null);
 	}
 
 	/**
@@ -62,40 +69,34 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		log.info(++count2+"Count2");
+
 		String departmentDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-
-		Map<String, String[]> m = (Map<String, String[]>) request
-				.getParameterMap();
-		log.info("m.toString()" + m.toString());
+		String message = "";
+		// Method to verify it and return integer;
+		int validTask = 1;
 
 		try {
-
-		} catch (Exception e) {
-			log.info("Exception: DepartmentController" + e);
-		}
-
-		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
-			AddDepartment addDepartment = new AddDepartment();
-			try {
-				String message = addDepartment.execute(departmentDetails);
-				Gson gson = new Gson();
-				response.getWriter().write(gson.toJson(message));
-			} catch (Exception e) {
-				log.info("Exception: DepartmentController" + e);
+			switch (validTask) {
+			case 1:
+				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
+				message = addDepartment.execute(departmentDetails);
+				break;
+//For other operations.				
+//			case 2:
+//				break;
+//			case 3:
+//				break;
+//			case 4:
+//				break;
+			default:
+				break;
 			}
-		} else if (task.equalsIgnoreCase(MessageList.UPDATE.message())) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.DELETE.message()))) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.FIND.message()))) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.GETALL.message()))) {
-
-		}
-		response.getWriter().close();
-
+		} catch (Exception exception) {
+			message = MessageList.FAILED_TO_CREATE.message();
+			log.error("Exception: DepartmentController" + exception);
+		}	
+		Gson gson = new Gson();
+		response.getWriter().write(gson.toJson(message));
 	}
-
 }

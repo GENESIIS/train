@@ -123,34 +123,7 @@ function addDepartmentDetails() {
 
 //Get data and sent to DepartmentController.java.
 function deleteDepartmentDetails() {
-	var departmentNumber = $("#departmentNumber").val();
-	var departmentName = $("#departmentName").val();
-	var departmentLocation = $("#departmentLocation").val();
-	var departmentHead = $("#departmentHead").val();
-
-	var jsonData = {
-		"departmentNumber" : departmentNumber,
-		"departmentName" : departmentName,
-		"departmentLocation" : departmentLocation,
-		"departmentHead" : departmentHead
-	};
-
-	$.ajax({
-		type : "POST",
-		url : 'DepartmentController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "DELETE"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+	
 }
 
 

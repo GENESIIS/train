@@ -94,13 +94,13 @@
 				<div class="form-group">
 					<label for="departmentName">Department Name</label> <input
 						type="text" class="form-control" id="departmentName"
-						name="departmentName" placeholder="" value="Legal">
+						name="departmentName" placeholder="" value="">
 				</div>
 
 				<div class="form-group">
 					<label for="departmentLocation">Department Location</label> <input
 						type="text" class="form-control" id="departmentLocation"
-						name="departmentLocation" placeholder="" value="Head Office">
+						name="departmentLocation" placeholder="" value="">
 				</div>
 				<div class="form-group">
 					<label for="departmentHead">Department Head</label> <select
@@ -119,7 +119,7 @@
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal" onclick="deleteDepartmentDetails()">
+					data-dismiss="modal" onclick="clearDepartmentform()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 			</div>
