@@ -16,82 +16,80 @@ import javax.persistence.Id;
 public class Employee {
 	@Id
 	@Column 
-	private String EmployeeId;
+	private String ID;
 	@Column
-	private String FirstName;
+	private String NAME;
 	@Column
-	private String Designation;
+	private String DESIGNATION;
 	@Column
-	private float Salary;
+	private String EMAIL;
 	@Column
-	private String Email;
-	@Column
-	private String DoB;
+	private String DOB;
 	@Column
 	private String NIC;
 	@Column
-	private String Gender;
+	private String GENDER;
 	@Column
-	private String Address;
+	private String PERMENENTADDRESS;
 	@Column
-	private String MobNumber;
+	private String TEMPORARYADDRESS;
 	@Column
-	private String OtherNumber;
+	private String MOBILENO;
 	@Column
-	private String Department;
+	private String OTHERNO;
 	@Column
-	private String DoJ;
+	private String DEPTID;
 	@Column
-	private String modOn;
+	private String DATEOFJOIN;
 	@Column
-	private String modBy;
+	private String MODON;
+	@Column
+	private String MODBY;	
+	@Column
+	private String EPF;	
+	@Column
+	private String MARITALSTATUS;
+	@Column
+	private String BASIS;
 
 	public String getEmployeeid() {
-		return EmployeeId;
+		return ID;
 	}
 
 	public void setEmployeeid(String employeeId) {
-		this.EmployeeId = employeeId;
+		this.ID = employeeId;
 	}
 
 	public String getEmployeename() {
-		return FirstName;
+		return NAME;
 	}
 
 	public void setEmployeename(String employeeName) {
-		this.FirstName = employeeName;
+		this.NAME = employeeName;
 	}
 
 	public String getEmployeedesignation() {
-		return Designation;
+		return DESIGNATION;
 	}
 
 	public void setEmployeedesignation(String employeeDesignation) {
-		this.Designation = employeeDesignation;
-	}
-
-	public float getEmployeesalary() {
-		return Salary;
-	}
-
-	public void setEmployeesalary(float employeeSalary) {
-		this.Salary = employeeSalary;
+		this.DESIGNATION = employeeDesignation;
 	}
 
 	public String getEmployeeemail() {
-		return Email;
+		return EMAIL;
 	}
 
 	public void setEmployeeemail(String employeeEmail) {
-		this.Email = employeeEmail;
+		this.EMAIL = employeeEmail;
 	}
 
 	public String getEmployeedob() {
-		return DoB;
+		return DOB;
 	}
 
 	public void setEmployeedob(String employeeDob) {
-		this.DoB = employeeDob;
+		this.DOB = employeeDob;
 	}
 
 	public String getEmployeenic() {
@@ -103,94 +101,130 @@ public class Employee {
 	}
 
 	public String getEmployeegender() {
-		return Gender;
+		return GENDER;
 	}
 
 	public void setEmployeegender(String employeeGender) {
-		this.Gender = employeeGender;
+		this.GENDER = employeeGender;
 	}
 
+	public String getEmployeeTempdddress() {
+		return PERMENENTADDRESS;
+	}
+
+	public void setEmployeeTempdddress(String employeeTempAddress) {
+		this.TEMPORARYADDRESS = employeeTempAddress;
+	}
+	
 	public String getEmployeedddress() {
-		return Address;
+		return PERMENENTADDRESS;
 	}
 
 	public void setEmployeedddress(String employeeAddress) {
-		this.Address = employeeAddress;
+		this.PERMENENTADDRESS = employeeAddress;
 	}
 
 	public String getEmployeemobileno() {
-		return MobNumber;
+		return MOBILENO;
 	}
 
 	public void setEmployeemobileno(String employeeMobileno) {
-		this.MobNumber = employeeMobileno;
+		this.MOBILENO = employeeMobileno;
 	}
 
 	public String getEmployeeotherno() {
-		return OtherNumber;
+		return OTHERNO;
 	}
 
 	public void setEmployeeotherno(String employeeOtherno) {
-		this.OtherNumber = employeeOtherno;
+		this.OTHERNO = employeeOtherno;
 	}
 
 	public String getDepartmentid() {
-		return Department;
+		return DEPTID;
 	}
 
 	public void setDepartmentid(String departmentId) {
-		this.Department = departmentId;
+		this.DEPTID = departmentId;
 	}
 
 	public String getDateofjoin() {
-		return DoJ;
+		return DATEOFJOIN;
 	}
 
 	public void setDateOfJoin(String DoJ) {
-		this.DoJ = DoJ;
+		this.DATEOFJOIN = DoJ;
 	}
 
 	public String getModon() {
-		return modOn;
+		return MODON;
 	}
 
 	public void setModon(String modOn) {
-		this.modOn = modOn;
+		this.MODON = modOn;
 	}
 
 	public String getModby() {
-		return modBy;
+		return MODBY;
 	}
 
 	public void setModby(String modBy) {
-		this.modBy = modBy;
+		this.MODBY = modBy;
+	}
+
+	public String getMARITALSTATUS() {
+		return MARITALSTATUS;
+	}
+
+	public void setMARITALSTATUS(String MARITALSTATUS) {
+		this.MARITALSTATUS = MARITALSTATUS;
+	}
+
+	public String getEPF() {
+		return EPF;
+	}
+
+	public void setEPF(String EPF) {
+		this.EPF = EPF;
+	}
+
+	public String getBASIS() {
+		return BASIS;
+	}
+
+	public void setBASIS(String BASIS) {
+		this.BASIS = BASIS;
 	}
 
 	public Employee() {
 	}
+	
+	
 
 	public Employee(String employeeId, String employeeName,
-			String employeeDesignation, float employeeSalary,
-			String employeeEmail, String employeeDob, String employeeNic,
+			String employeeDesignation, String employeeEmail, String employeeDob, String employeeNic,
 			String employeeGender, String employeeAddress,
 			String employeeMobileno, String employeeOtherno,
-			String departmentId, String dateOfjoin, String modOn, String modBy) {
+			String departmentId, String dateOfjoin, String modOn, String modBy,String mrstus, String epf, String basis, String employeeTempAddress ) {
 		super();
-		this.EmployeeId = employeeId;
-		this.FirstName = employeeName;
-		this.Designation = employeeDesignation;
-		this.Salary = employeeSalary;
-		this.Email = employeeEmail;
-		this.DoB = employeeDob;
+		this.ID = employeeId;
+		this.NAME = employeeName;
+		this.DESIGNATION = employeeDesignation;		
+		this.EMAIL = employeeEmail;
+		this.DOB = employeeDob;
 		this.NIC = employeeNic;
-		this.Gender = employeeGender;
-		this.Address = employeeAddress;
-		this.MobNumber = employeeMobileno;
-		this.OtherNumber = employeeOtherno;
-		this.Department = departmentId;
-		this.DoJ = dateOfjoin;
-		this.modOn = modOn;
-		this.modBy = modBy;
+		this.GENDER = employeeGender;
+		this.PERMENENTADDRESS = employeeAddress;
+		this.TEMPORARYADDRESS = employeeTempAddress;
+		this.MOBILENO = employeeMobileno;
+		this.OTHERNO = employeeOtherno;
+		this.DEPTID = departmentId;
+		this.DATEOFJOIN = dateOfjoin;
+		this.MODON = modOn;
+		this.MODBY = modBy;
+		this.EPF = epf;
+		this.MARITALSTATUS = mrstus;
+		this.BASIS = basis;
 	}
 
 	

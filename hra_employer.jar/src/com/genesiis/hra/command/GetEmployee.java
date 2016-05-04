@@ -1,24 +1,20 @@
 package com.genesiis.hra.command;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
+import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employee;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 import java.util.logging.Logger;
-import com.genesiis.hra.model.DataAccessUtill;
+
 
 
 public class GetEmployee {
 
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());
 	
-	DataAccessUtill dataAcse = new DataAccessUtill();
+	DataManager dataAcses = new DataManager();
 	
 	public String createGson() {
 		
@@ -53,7 +49,7 @@ public class GetEmployee {
 		String employeD = null;
 		
 		try {
-			 employeD = gson.toJson(dataAcse.getObjectid("1"));
+			 employeD = gson.toJson(dataAcses.getObjectid("1"));
 			
 		} catch (Exception e) {
 			
