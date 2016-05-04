@@ -55,6 +55,7 @@ function addEmployeeDetails() {
 	var employeeMobile = $("#employeeMobile").val();
 	var employeeEmail = $("#employeeEmail").val();
 	var employeeJoindate = $("#employeeJoindate").val();
+	var employeeNumber = $("#employeeNumber").val();
 
 	var employeeData = {
 		"employeeName" : employeeFirstname,
@@ -71,7 +72,8 @@ function addEmployeeDetails() {
 		"employeeTelephone" : employeeTelephone,
 		"employeeMobile" : employeeMobile,
 		"employeeEmail" : employeeEmail,
-		"employeeJoindate" : employeeJoindate
+		"employeeJoindate" : employeeJoindate,
+		"employeeId" : employeeNumber
 	};
 
 	$.ajax({
@@ -84,8 +86,10 @@ function addEmployeeDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
-			clearAddemployeeform();
-			document.getElementById("moredetails").disabled = false;
+			if (data == "Data Added Successfully") {
+				clearAddemployeeform();
+				document.getElementById("moredetails").disabled = false;
+			}
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -118,6 +122,9 @@ function addDepartmentDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
+			if (data == "Data Added Successfully") {
+				clearAddemployeeform();
+			}
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -143,4 +150,6 @@ function clearAddemployeeform() {
 	$("#employeeMobile").val("");
 	$("#employeeEmail").val("");
 	$("#employeeJoindate").val("");
+	$("#employeeNumber").val("");
+	getDepartment();
 }

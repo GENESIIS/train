@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 //* 20160430 PN Created getDipartments() Method.
 //***********************************************/
 
-public class DepartmentManager implements IDataAccessor {
+public class DepartmentManager implements ICurd {
 	static Logger log = Logger.getLogger(DepartmentManager.class.getName());
 
 	@Override
