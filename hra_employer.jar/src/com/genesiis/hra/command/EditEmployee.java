@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 public class EditEmployee {
 
-	static Logger log = Logger.getLogger(AddEmployee.class.getName());
+	static Logger log = Logger.getLogger(EditEmployee.class.getName());
 	
 	public void executeAddEmployee(String gsonData) {
 		
