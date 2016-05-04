@@ -29,7 +29,7 @@ function updatedAlert() {
 	alert("Data Updated Successfully.");
 }
 
-//Get Employees for Add Department Form
+// Get Employees for Add Department Form
 function getManager() {
 	$.getJSON('DepartmentController', {}, function(data) {
 		var select = $('#departmentHead');
@@ -113,6 +113,9 @@ function addDepartmentDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
+			if (data == "Details added successfully.") {
+				clearDepartmentform();
+			}
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -121,11 +124,10 @@ function addDepartmentDetails() {
 	});
 }
 
-//Get data and sent to DepartmentController.java.
+// Get data and sent to DepartmentController.java.
 function deleteDepartmentDetails() {
-	
-}
 
+}
 
 function clearDepartmentform() {
 	$("#departmentNumber").val("");

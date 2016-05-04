@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 //* 20160425 PN HRA-3 modified doPost()
 //* 20160429 PN Modified the doPost() by separating the execute method for ADD,UPDATE,DELETE etc.
 //* 20160501 PN Modified the doGet() method to display managers for Departments.
+//* 20160504 PN Modified the doPost method with a Switch-Case statement and init() method with a hashMap.
 //***********************************************/
 
 /**
@@ -75,28 +76,30 @@ public class DepartmentController extends HttpServlet {
 		String message = "";
 		// Method to verify it and return integer;
 		int validTask = 1;
+		Gson gson = new Gson();
 
 		try {
 			switch (validTask) {
 			case 1:
 				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
 				message = addDepartment.execute(departmentDetails);
+				response.getWriter().write(gson.toJson(message));
 				break;
-//For other operations.				
-//			case 2:
-//				break;
-//			case 3:
-//				break;
-//			case 4:
-//				break;
+			// For other operations.
+			// case 2:
+			// break;
+			// case 3:
+			// break;
+			// case 4:
+			// break;
 			default:
 				break;
 			}
 		} catch (Exception exception) {
 			message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: DepartmentController" + exception);
-		}	
-		Gson gson = new Gson();
-		response.getWriter().write(gson.toJson(message));
+			response.getWriter().write(gson.toJson(message));
+		}
+		response.getWriter().close();
 	}
 }

@@ -86,7 +86,7 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="">
+								name="departmentNumber" placeholder="" value="" maxlength="5" size="5">
 						</div>
 					</div>
 				</div>
