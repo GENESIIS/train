@@ -32,6 +32,8 @@ public class Employee {
 	@Column
 	private String PERMENENTADDRESS;
 	@Column
+	private String TEMPORARYADDRESS;
+	@Column
 	private String MOBILENO;
 	@Column
 	private String OTHERNO;
@@ -106,6 +108,14 @@ public class Employee {
 		this.GENDER = employeeGender;
 	}
 
+	public String getEmployeeTempdddress() {
+		return PERMENENTADDRESS;
+	}
+
+	public void setEmployeeTempdddress(String employeeTempAddress) {
+		this.TEMPORARYADDRESS = employeeTempAddress;
+	}
+	
 	public String getEmployeedddress() {
 		return PERMENENTADDRESS;
 	}
@@ -195,7 +205,7 @@ public class Employee {
 			String employeeDesignation, String employeeEmail, String employeeDob, String employeeNic,
 			String employeeGender, String employeeAddress,
 			String employeeMobileno, String employeeOtherno,
-			String departmentId, String dateOfjoin, String modOn, String modBy,String mrstus, String epf, String basis) {
+			String departmentId, String dateOfjoin, String modOn, String modBy,String mrstus, String epf, String basis, String employeeTempAddress ) {
 		super();
 		this.ID = employeeId;
 		this.NAME = employeeName;
@@ -205,6 +215,7 @@ public class Employee {
 		this.NIC = employeeNic;
 		this.GENDER = employeeGender;
 		this.PERMENENTADDRESS = employeeAddress;
+		this.TEMPORARYADDRESS = employeeTempAddress;
 		this.MOBILENO = employeeMobileno;
 		this.OTHERNO = employeeOtherno;
 		this.DEPTID = departmentId;

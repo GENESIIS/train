@@ -1,13 +1,8 @@
 package com.genesiis.hra.employer;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.logging.Logger;
 
+import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
+
+
+import com.genesiis.hra.command.EditEmployee;
 import com.genesiis.hra.command.GetEmployee;
-import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.command.AddEmployee;
+
 
 /**
  * Servlet implementation class AddEmployeeDetails
@@ -54,7 +50,7 @@ public class EmployerController extends HttpServlet {
         
 		String employeeDetails = request.getParameter("jsonData");
 		
-		AddEmployee addEmployee = new AddEmployee();
+		EditEmployee addEmployee = new EditEmployee();
 		
 		try {
 			

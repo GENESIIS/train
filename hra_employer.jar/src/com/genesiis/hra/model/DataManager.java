@@ -1,5 +1,4 @@
 package com.genesiis.hra.model;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,13 +7,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.validation.MessageList;
+
 
 
 ///***********************************************
@@ -26,14 +20,10 @@ import com.genesiis.hra.validation.MessageList;
  * Session Bean implementation class DepartmentDao
  */
 @Stateless
-public class DataAccessUtill implements IDataAccessor { 
+public class DataManager implements IDataAccessor { 
 
-	static Logger log = Logger.getLogger(DataAccessUtill.class.getName());
-	
-	/*EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("hra_employer");
-	EntityManager entityManager = emf.createEntityManager();*/
-
+	static Logger log = Logger.getLogger(DataManager.class.getName());
+		
 	@Override
 	public String add(Object object) {
 		String message = "";
@@ -47,10 +37,10 @@ public class DataAccessUtill implements IDataAccessor {
 		
 		
 		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? WHERE ID = ?";
-		String message = MessageList.UNKNOWN.message();
+		String message ="Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		//Employee empl = (Employee) object;
+		
 
 		try {
 			conn = ConnectionManager.getConnection();
@@ -59,13 +49,13 @@ public class DataAccessUtill implements IDataAccessor {
 			preparedStatement.setString(2, "1");
 			
 
-			int rowsInserted = preparedStatement.executeUpdate();
-			if (rowsInserted > 0) {
-				message = MessageList.ADDED.message();
+			int rows = preparedStatement.executeUpdate();
+			if (rows > 0) {
+				message = "Succesfull";
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-			message = MessageList.ERROR.message();
+			
 		} finally {
 			try {
 				preparedStatement.close();
@@ -88,11 +78,13 @@ public class DataAccessUtill implements IDataAccessor {
 		// TODO Auto-generated method stub
 		
 		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
-		String message = MessageList.UNKNOWN.message();
+		String message = "Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet retriveData = null;
+		
 		Employee employee = new Employee();
+		
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
@@ -104,6 +96,7 @@ public class DataAccessUtill implements IDataAccessor {
 				
 				try{
 					if (retriveData.next()) {
+						// set data to entity class
 						employee.setEmployeeid(retriveData.getString("ID"));
 						employee.setEmployeename(retriveData.getString("NAME"));
 						employee.setEmployeedesignation(retriveData.getString("DESIGNATION")); 						
@@ -113,16 +106,18 @@ public class DataAccessUtill implements IDataAccessor {
 						employee.setEmployeegender(retriveData.getString("GENDER"));
 						employee.setEmployeedddress(retriveData.getString("PERMENENTADDRESS"));
 						employee.setEmployeemobileno(retriveData.getString("MOBILENO"));
-						employee.setDepartmentid(retriveData.getString("OTHERNO"));
-						employee.setEmployeeotherno(retriveData.getString("DEPTID"));
+						employee.setDepartmentid(retriveData.getString("DEPTID"));
+						employee.setEmployeeotherno(retriveData.getString("OTHERNO"));
 						employee.setDateOfJoin(retriveData.getString("DATEOFJOIN")); 
-						employee.setModon("MODON");
-						employee.setModby("EPF");
-						employee.setMARITALSTATUS("MARITALSTATUS");
-						employee.setBASIS("BASIS");
-						employee.setModby("modBy");
+						employee.setModon(retriveData.getString("MODON"));
+						employee.setEPF(retriveData.getString("EPF"));
+						employee.setMARITALSTATUS(retriveData.getString("MARITALSTATUS"));
+						employee.setBASIS(retriveData.getString("BASIS"));
+						employee.setModby(retriveData.getString("modBy"));
+						employee.setEmployeeTempdddress(retriveData.getString("TEMPORARYADDRESS"));
 						
-						log.info(retriveData.getString("EmployeeId")+"////////////////////////////////////////////////////////");
+						log.info(retriveData.getString("NAME")+"////////////////////////////////////////////////////////");
+						
 					}
 				}catch(Exception e){
 					log.info(e.toString());
@@ -130,18 +125,13 @@ public class DataAccessUtill implements IDataAccessor {
 				
 			preparedStatement.close();
 			conn.close();
+			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			
 		}
-		/*EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("hra_employer");
-		EntityManager entityManager = emf.createEntityManager();
 		
-		
-		 Employee empl = entityManager.find( Employee.class, "1");*/
-
-		return null;
+		return employee;
 	}
 
 	@Override

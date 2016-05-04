@@ -109,15 +109,15 @@ $(document).on("click", "#vbutton", function () {
 $(document).on("click", "#ebutton", function () {
 $.get("EmployerController", function(data, status){
 	
-	//alert("awa");
+	alert(data);
 	json = JSON.parse(data);
 	$(".modal-body #employeeNumberEdit").val( json.ID);
 	$(".modal-body #employeeNameEdit").val( json.NAME);
 	$(".modal-body #employeeDesignationEdit").val( json.DESIGNATION);
-	//$(".modal-body #employeeDateofBothEdit").val( json.Salary);
+	//(".modal-body #employeeDateofBothEdit").val( json.Salary);
 	$(".modal-body #employeeEmailEdit").val( json.EMAIL);
 	$(".modal-body #employeeDateofBothEdit").val( json.DOB);
-	//$(".modal-body #employeeMobileNumber").val( json.NIC);
+	$(".modal-body #employeeNICEdit").val( json.NIC);
 	$(".modal-body #employeeGenderEdit").val( json.GENDER);
 	$(".modal-body #employeeAddressEdit").val( json.PERMENENTADDRESS);
 	$(".modal-body #employeeMobileNumberEdit").val( json.MOBILENO);
@@ -125,7 +125,8 @@ $.get("EmployerController", function(data, status){
 	$(".modal-body #employeeDepartmentEdit").val( json.DEPTID);
 	$(".modal-body #employeeJoinDateEdit").val( json.DATEOFJOIN);
 	$(".modal-body #employeeMaritalEdit").val( json.MARITALSTATUS);
-	//$(".modal-body #userid").val( json.modBy);
+	$(".modal-body #employeeEPFEdit").val( json.EPF);
+	$(".modal-body #employeeTempADDEdit").val( json.TEMPORARYADDRESS);
 	
 });
 
@@ -186,7 +187,7 @@ function updateEmployeeDetails(){
             alert(data);
         },
         error: function (e) {
-            alert("Error "+e);
+            //alert("Error "+e);
             console.log(e);
         }
     });
