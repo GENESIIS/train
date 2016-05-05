@@ -30,14 +30,11 @@ public class EmployerController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,  
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
+		response.setContentType("text/html");		
 		
-		//Integer userId =null;
-		//userId = Integer.parseInt(request.getParameter("user_id"));
 		GetEmployee empgson= new GetEmployee();
 		response.setContentType("text/plain");
 		response.getWriter().write(empgson.createGson());
-
 	}
 
 	/**
@@ -48,39 +45,10 @@ public class EmployerController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
         
-		String employeeDetails = request.getParameter("jsonData");
-		
-		EditEmployee addEmployee = new EditEmployee();
-		
-		try {
-			
-			
-			
-			
-			//String upaDate = request.getParameter("update");
-	       // if (upaDate.equalsIgnoreCase("true"))
-	      //  {
-	        	addEmployee.executeAddEmployee(employeeDetails);
-	      //  }
-	       // else
-	       // {
-	        //	addEmployee.executeAddEmployee(employeeDetails);
-	        	
-	       // }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		
-	}
-	
-	public void extractEmployeeDetails() {		
-		try {
-			
-		} catch (Exception e) {
-
-		}
-		
-	}
+		String employeeDetails = request.getParameter("jsonData");		
+		EditEmployee addEmployee = new EditEmployee();		
+				
+	   	addEmployee.execute(employeeDetails);		
+	}	
 	
 }

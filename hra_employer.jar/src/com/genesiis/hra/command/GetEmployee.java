@@ -1,7 +1,7 @@
 package com.genesiis.hra.command;
 
 import com.genesiis.hra.model.DataManager;
-import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.model.Employees;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
@@ -14,7 +14,7 @@ public class GetEmployee {
 	public String createGson() {
 		
 		DataManager dataAcse  = new DataManager();		
-		Employee employee = dataAcse.retrive("1");		
+		Employees employee = dataAcse.retrive("1");		
 		
 		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
