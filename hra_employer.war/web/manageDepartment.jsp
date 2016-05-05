@@ -7,7 +7,6 @@
 	$(document).ready(function() {
 		$('#departmentDetails').DataTable();
 	});
-	getManager();
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -127,7 +126,6 @@
 	</div>
 </div>
 
-<!--"Edit department Details Form" Modal -->
 <div class="modal fade" id="editdepartmentDetailsForm" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">

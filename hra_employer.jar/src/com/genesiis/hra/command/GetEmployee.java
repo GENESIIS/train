@@ -1,5 +1,6 @@
 package com.genesiis.hra.command;
 
+
 import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employees;
 import com.genesiis.hra.validation.DataValidator;
@@ -11,14 +12,19 @@ public class GetEmployee {
 
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());
 	
-	public String createGson() {
-		
+	public String createGson() {	
 		DataManager dataAcse  = new DataManager();		
-		Employees employee = dataAcse.retrive("1");		
+		Employees employee = dataAcse.retrive("1");			
+	    String employeD = null;
+	    DataManager dataAcses = new DataManager();
+	
+
+		Gson gson = new Gson();
 		
 		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
 		employee.setEmployeedesignation("Eng"); 
+		employee.setEmployeesalary(1000);
 		employee.setEmployeeemail("we@mail");
 		employee.setEmployeedob("2000.01.01");
 		employee.setEmployeenic("903293950v");
@@ -31,12 +37,10 @@ public class GetEmployee {
 		employee.setModon("mod");
 		employee.setModby("modby");*/		
 		
-		//log.info();
-		Gson gson = new Gson();  		 
-		String employeD = null;
+		//log.info();		
 		
 		try {
-			 employeD = gson.toJson(employee);
+			 employeD = gson.toJson(dataAcses.retrive("1"));
 			
 		} catch (Exception e) {
 			

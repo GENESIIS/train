@@ -9,9 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
+import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.EditEmployee;
 import com.genesiis.hra.command.GetEmployee;
 
@@ -30,7 +28,8 @@ public class EmployerController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,  
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");		
+		response.setContentType("text/html");
+		response.setContentType("text/html");
 		
 		GetEmployee empgson= new GetEmployee();
 		response.setContentType("text/plain");

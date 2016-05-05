@@ -2,7 +2,18 @@ package com.genesiis.hra.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+
+//com.genesiis.hra.model.Employee
+
+///***********************************************
+// * 20160407 PN HRA-1 created Employee.java class
+// * 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
+// * 
+// ***********************************************/
+@Entity
 public class Empl {
 	@Id
 	@Column 
@@ -163,7 +174,8 @@ public class Empl {
 	}
 
 	public String getMARITALSTATUS() {
-		return DATEOFJOIN;
+
+		return MARITALSTATUS;
 	}
 
 	public void setMARITALSTATUS(String MARITALSTATUS) {
@@ -179,9 +191,9 @@ public class Empl {
 	}
 
 	public String getBASIS() {
-		return MODBY;
+	
+		return BASIS;
 	}
-
 	public void setBASIS(String BASIS) {
 		this.BASIS = BASIS;
 	}
@@ -217,7 +229,6 @@ public class Empl {
 		this.BASIS = basis;
 	}
 
-	
-
 }
+
 

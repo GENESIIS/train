@@ -12,7 +12,7 @@ public enum MessageList {
 	UPDATED("Details updated successfully."), 
 	DELETED("Details deleted successfully."), 
 	IDFOUND("ID found."), 
-	IDNOTFOUND("ID not found."), 
+	IDNOTFOUND("ID not found."),
 	ERROR("Unsuccessful."), 
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
@@ -24,9 +24,9 @@ public enum MessageList {
 	FIND("FIND"),
 	GETALL("GETALL");
 
-	private String message;
+	private String message;	
 
-	MessageList(String message) {
+	MessageList(String message) { 
 		this.message = message;
 	}
 

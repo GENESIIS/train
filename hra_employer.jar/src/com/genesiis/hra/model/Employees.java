@@ -173,7 +173,8 @@ public class Employees {
 	}
 
 	public String getMARITALSTATUS() {
-		return DATEOFJOIN;
+	
+		return MARITALSTATUS;
 	}
 
 	public void setMARITALSTATUS(String MARITALSTATUS) {
@@ -189,7 +190,8 @@ public class Employees {
 	}
 
 	public String getBASIS() {
-		return MODBY;
+
+		return BASIS;
 	}
 
 	public void setBASIS(String BASIS) {
@@ -227,6 +229,6 @@ public class Employees {
 		this.BASIS = basis;
 	}
 
-	
 
 }
+

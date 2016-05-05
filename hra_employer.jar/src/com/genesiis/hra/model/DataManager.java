@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import com.genesiis.hra.utill.ConnectionManager;
 
-
-
 ///***********************************************
 //* 20160422 PN HRA-3 created DataAccessUtill.java class
 //* 20160425 PN HRA-3 Modified add(Object object), method.
@@ -66,6 +64,12 @@ public class DataManager implements IDataAccessor {
 	}
 
 	@Override
+	public String update(Object object) {
+		
+		return null;
+	}
+
+	@Override
 	public String delete(Object object) {
 		// TODO Auto-generated method stub
 		return null;
@@ -82,8 +86,8 @@ public class DataManager implements IDataAccessor {
 		ResultSet retriveData = null;
 		
 		Employees employee = new Employees();
-		
 		try {
+
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, "1");
@@ -114,6 +118,7 @@ public class DataManager implements IDataAccessor {
 						
 						log.info(retriveData.getString("NAME")+"////////////////////////////////////////////////////////");
 						
+
 					}
 				}catch(Exception e){
 					log.info(e.toString());
@@ -121,12 +126,10 @@ public class DataManager implements IDataAccessor {
 				
 			preparedStatement.close();
 			conn.close();
-			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			
 		}
-		
 		return employee;
 	}
 

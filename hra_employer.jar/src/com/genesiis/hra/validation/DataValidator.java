@@ -29,13 +29,13 @@ public class DataValidator {
 			status = true;
 		}
 		return status;
-	}
+	} 
 
 	public boolean isFutureDate(String day) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = dateFormat.parse(dateFormat.format(date));
 		Date date2 = dateFormat.parse(day);
-
+ 
 		if (date1.after(date2)) {
 			status = true;
 		}

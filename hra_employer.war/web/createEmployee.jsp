@@ -231,6 +231,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h3 class="modal-title">
 						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
+						<i class="glyphicon glyphicon-user"></i> Employee Details
 					</h3>
 				</div>
 				<div class="modal-body">
@@ -265,6 +266,7 @@
 								<div class="form-group">
 									<label for="editemployeeId">Date of Birth</label> <input
 										type="date" class="form-control" id="employeeDateofBothEdit"
+										type="date" class="form-control" id="editemployeeId"
 										name="employeeDateofBothEdit" placeholder="">
 								</div>
 							</div>
@@ -276,7 +278,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -323,6 +324,7 @@
 										name="employeeDesignationEdit" placeholder="">
 								</div>
 							</div>
+
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Department</label> <input
@@ -398,6 +400,7 @@
 	</div>
 </div>
 
+
 <!--////////////////////////////////////////-->
 
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
@@ -452,22 +455,7 @@
 				</h3>
 
 			</div>
-			<div id ="view">  
-           <!-- <img src="dist/demoimages/photo.jpg" class="img-thumbnail"
-									alt="User" width="150" height="150">
-            <p id="userid"></p>
-            <p id="username"></p>
-            <p id="disignation"></p>
-            <p id="salary"></p>
-			<p id="email"></p>
-            <p id="dob"></p>
-            <p id="Nic"></p>
-		 	<p id="gender"></p>
-			<p id="adress"></p>
-            <p id="MobNumber"></p>
-            <p id="OthNumber"></p>
-			<p id="depid"></p>
-			<p id="doj"></p> -->
+			<div id ="view">           
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger pull-side"
@@ -482,7 +470,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- group byn model-->
 <div class="modal fade" id="viewmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
@@ -503,17 +490,7 @@
 				</div>
 				<div id="viewmodelrest" name="viewmodelrest"></div>
 
-			</div>
-			<!-- 			<div class="modal-footer"> -->
-			<!-- 				<button type="button" class="btn btn-success pull-side" -->
-			<!-- 					onclick="updatedAlert()" data-dismiss=""> -->
-			<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
-			<!-- 				</button> -->
-			<!-- 				<button type="button" class="btn btn-warning " id="moredetails" -->
-			<!-- 					name="moredetails" onclick="" data-dismiss="modal" disabled="true"> -->
-			<!-- 					<i class="glyphicon glyphicon-file"></i> More Details -->
-			<!-- 				</button> -->
-			<!-- 			</div> -->
+			</div>		
 		</div>
 	</div>
 </div>
