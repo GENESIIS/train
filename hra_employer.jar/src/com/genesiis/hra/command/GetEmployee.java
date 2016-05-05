@@ -4,7 +4,9 @@ package com.genesiis.hra.command;
 
 import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
+
 
 
 import java.util.logging.Logger;
@@ -17,8 +19,8 @@ public class GetEmployee {
 		
 		DataManager dataAcse  = new DataManager();
 		
-		Employee employee = dataAcse.getObjectid("saf");
-		//Employee employee = new Employee();
+		Employee employee = dataAcse.retrive("saf");
+		
 		
 		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
@@ -49,5 +51,7 @@ public class GetEmployee {
 		}
 		return employeD;
 	}
+	
+	
 	
 }

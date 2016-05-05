@@ -3,6 +3,8 @@ import java.util.logging.Logger;
 
 import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 
@@ -16,7 +18,12 @@ public class EditEmployee {
 		String message = "";
 		
 		Employee employee = extractFromgson(gsonData);
-		message = accessdata.update(employee);
+		
+		if (validEmployee(employee)) {
+			message = accessdata.update(employee);
+		} else {
+			message = MessageList.ERROR.message();
+		}
 		
 	}
 	
@@ -33,10 +40,14 @@ public class EditEmployee {
 			return employee;
 		}
 		
-		public String validEmployee(Employee employee) {
-			
-				return null;
-			
+				
+		public boolean validEmployee(Employee empl) {
+			DataValidator validator = new DataValidator();
+			if (validator.isValidString(empl.getEmployeename())) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 }
 
