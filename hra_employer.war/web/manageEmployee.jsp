@@ -2,7 +2,7 @@
 <!-- 20160412 PN HRA-2 edited the design. -->
 <!-- 20160419 PN HRA-2 edited the design. -->
 <!-- 20160419 PN HRA-2 edited the design. -->
-
+<!-- 20160505 PN HRA-2 edited the design. -->
 <!-- JavaScripts to help to load  -->
 
 <script type="text/javascript">
@@ -94,7 +94,7 @@
 								<div class="form-group">
 									<label for="employeeNumber">Employee Number</label><input
 										type="text" class="form-control" id="employeeNumber"
-										name="employeeNumber" placeholder="">
+										name="employeeNumber" placeholder="" maxlength="6" size="6">
 								</div>
 							</div>
 						</div>
@@ -103,21 +103,21 @@
 								<div class="form-group">
 									<label for="employeeFirstname">First Name</label><input
 										type="text" class="form-control" id="employeeFirstname"
-										name="employeeFirstname" placeholder="">
+										name="employeeFirstname" placeholder="" onkeypress="return isLetter(event);">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeMiddlename">Middle Name</label> <input
 										type="text" class="form-control" id="employeeMiddlename"
-										name="employeeMiddlename" placeholder=""> -
+										name="employeeMiddlename" placeholder="" onkeypress="return isLetter(event);">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeLastname">Last Name</label> <input
 										type="text" class="form-control" id="employeeLastname"
-										name="employeeLastname" placeholder=""> -
+										name="employeeLastname" placeholder="" onkeypress="return isLetter(event);">
 								</div>
 							</div>
 						</div>
@@ -134,7 +134,7 @@
 								<div class="form-group">
 									<label for="employeeNic">NIC</label> <input type="text"
 										class="form-control" id="employeeNic" name="employeeNic"
-										placeholder="">
+										placeholder="" maxlength="10" size="10">
 								</div>
 							</div>
 						</div>
@@ -174,7 +174,7 @@
 								<div class="form-group">
 									<label for="employeeEpf">EPF Number</label> <input type="text"
 										class="form-control" id="employeeEpf" name="employeeEpf"
-										placeholder="">
+										placeholder="" onkeypress="return isNumberKey(event)">
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -201,7 +201,7 @@
 								<div class="form-group">
 									<label for="employeeDesignation">Designation</label> <input
 										type="text" class="form-control" id="employeeDesignation"
-										name="employeeDesignation" placeholder="">
+										name="employeeDesignation" placeholder="" >
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -240,14 +240,14 @@
 								<div class="form-group">
 									<label for="employeeTelephone">Telephone</label> <input
 										type="text" class="form-control" id="employeeTelephone"
-										size="10" name="employeeTelephone" placeholder="">
+										maxlength="10" size="10" name="employeeTelephone" placeholder="" onkeypress="return isNumberKey(event);">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="employeeMobile">Mobile Number</label> <input
 										type="text" class="form-control" id="employeeMobile"
-										name="employeeMobile" size="10">
+										name="employeeMobile" maxlength="10" size="10" onkeypress="return isNumberKey(event)">
 								</div>
 							</div>
 						</div>

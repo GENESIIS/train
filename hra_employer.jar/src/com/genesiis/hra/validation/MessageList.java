@@ -2,7 +2,7 @@ package com.genesiis.hra.validation;
 
 ///***********************************************
 //* 20160422 PN HRA-3 created Message.List Enum class
-//* 
+//* 20160505 PN HRA-3 New values added to the MessageList Enum
 //***********************************************/
 
 
@@ -24,10 +24,13 @@ public enum MessageList {
 	FIND("FIND"),
 	GETALL("GETALL"),
 	NICERROR("Invalid NIC Number."),
-	PHONENUMBERERROR("Invalid Phone Number."),
+	PHONENUMBERERROR("Invalid Telephone Number."),
+	MOBILENUMBERERROR("Invalid Mobile Number."),
 	EMAILERROR("Invalid Email."),
-	INVALIDDATE("In valid Birthdate."),
-	EMPTYVALUES("Empty data Fields.");
+	INVALIDDATE("Invalid DateFormat."),
+	EMPTYVALUES("Empty data Fields."),
+	INVALIDBIRTDAY("Invalid Birthdate.");
+
 
 	private String message;
 

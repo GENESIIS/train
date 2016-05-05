@@ -1,5 +1,7 @@
 package com.genesiis.hra.command;
 
+import java.text.ParseException;
+
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
@@ -8,6 +10,7 @@ import com.genesiis.hra.validation.MessageList;
 
 ///***********************************************
 //* 20160430 PN HRA-2 created AddEmployee.java class
+//* 20160505 PN HRA-2  execute() method Modified.
 //***********************************************/
 
 public class AddEmployee {
@@ -30,7 +33,13 @@ public class AddEmployee {
 			} else {
 				message = MessageList.EMPTYVALUES.message();
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
+			message = MessageList.EMPTYFIELD.message();
+			log.info("Exception-employee: " + e);
+		} catch (ParseException e) {
+			message = MessageList.INVALIDDATE.message();
+			log.info("Exception-employee: " + e);
+		} catch (NumberFormatException e) {
 			message = MessageList.ERROR.message();
 			log.info("Exception-employee: " + e);
 		}

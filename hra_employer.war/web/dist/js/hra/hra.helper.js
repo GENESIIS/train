@@ -1,7 +1,8 @@
 /**
  * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
  * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
- * function Modified.
+ * function Modified. 20160505 PN HRA-2 clearAddemployeeform() function
+ * modified.
  */
 
 function loadContentDashboard() {
@@ -86,7 +87,7 @@ function addEmployeeDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
-			if (data == "Data Added Successfully") {
+			if (data == "Details added successfully.") {
 				clearAddemployeeform();
 				document.getElementById("moredetails").disabled = false;
 			}
@@ -117,4 +118,20 @@ function clearAddemployeeform() {
 	$("#employeeJoindate").val("");
 	$("#employeeNumber").val("");
 	getDepartment();
+}
+
+function isNumberKey(evt) {
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+		return false;
+
+	return true;
+}
+
+function isLetter(evt) {
+	var inputValue = evt.charCode;
+    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)){
+    	evt.preventDefault();
+    }
+	
 }

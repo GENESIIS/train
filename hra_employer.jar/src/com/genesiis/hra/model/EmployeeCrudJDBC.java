@@ -16,6 +16,7 @@ import com.sun.org.apache.regexp.internal.recompile;
 
 ///***********************************************
 //* 20160430 PN HRA-2 created EmployeeManager.java class
+//* 20160505 PN HRA-2  validateEmployee() method Modified.
 //***********************************************/
 
 public class EmployeeCrudJDBC implements ICurd {
@@ -109,29 +110,34 @@ public class EmployeeCrudJDBC implements ICurd {
 		String message = "";
 
 		if (!validator.isValidString(employee.getEmployeeid())) {
-			message = message + MessageList.EMPTYFIELD.message();
-		} else if (!validator.isValidString(employee.getEmployeename())) {
-			message = message + MessageList.EMPTYFIELD.message();
-		} else if (!validator.isValidNic(employee.getEmployeenic())) {
-			message = message + MessageList.NICERROR.message();
-		} else if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message();
-		} else if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
-			message = message + MessageList.INVALIDDATE.message();
-		} else if (!validator.isValidTelephone(employee.getEmployeemobile())) {
-			message = message + MessageList.PHONENUMBERERROR.message();
-		} else if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
-			message = message + MessageList.PHONENUMBERERROR.message();
-		} else if (!validator.isValidemail(employee.getEmployeeemail())) {
-			message = message + MessageList.EMAILERROR.message();
-		} else {
-			message = message + MessageList.SUCCESS.message();
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		if (!validator.isValidString(employee.getEmployeename())) {
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		if (!validator.isValidNic(employee.getEmployeenic())) {
+			message = message + MessageList.NICERROR.message() +" ";
+		}
+		if (!validator.isValidString(employee.getEmployeeepf())) {
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
+			message = message + MessageList.INVALIDBIRTDAY.message() +" ";
+		}
+		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
+			message = message + MessageList.MOBILENUMBERERROR.message() +" ";
+		}
+		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
+			message = message + MessageList.PHONENUMBERERROR.message() +" ";
+		}
+		if (!validator.isValidemail(employee.getEmployeeemail())) {
+			message = message + MessageList.EMAILERROR.message() +" ";
 		}
 		return message;
 	}
 
 	public boolean validEmployee(Employee employee) throws ParseException {
-		if (validateEmployee(employee) == "Successfull") {
+		if (validateEmployee(employee).isEmpty()) {
 			return true;
 		} else {
 			return false;
