@@ -41,13 +41,16 @@ public class EmployerController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		
+			HttpServletResponse response) throws ServletException, IOException {		
         
-		String employeeDetails = request.getParameter("jsonData");		
+		String employeeDetails = request.getParameter("Data");		
 		EditEmployee editEmployee = new EditEmployee();		
-				
-		editEmployee.execute(employeeDetails);		
+
+		if (!employeeDetails.isEmpty()& employeeDetails!=null){		
+			editEmployee.execute(employeeDetails);	
+		}
+		
+			
 	}	
 	
 }

@@ -1,7 +1,12 @@
 /**
  * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
  * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
+<<<<<<< HEAD
  * function Modified.
+=======
+ * function Modified. 20160505 PN HRA-2 clearAddemployeeform() function
+ * modified.
+>>>>>>> a4c6b07b200b6d5f328930ab91aa852f2400ec5b
  */
 
 function loadContentDashboard() {
@@ -29,8 +34,7 @@ function deleteAlert() {
 	alert("Data Deleted Successfully.");
 }
 
-function addedAlert() {
-	
+function addedAlert() {	
 	//document.getElementById("moredetails").disabled = false;
 	document.getElementById("moredetails").disabled = false;
 	alert("Data Added Successfully.");
@@ -51,6 +55,24 @@ function getManager() {
 		});
 	});
 }
+function addedAlert() {
+	alert("Data Added Successfully.");
+	document.getElementById("moredetails").disabled = false;
+}
+
+// Get Departments for Add Employee Form
+function getDepartment() {
+	$.get('EmployeeController', {}, function(data) {
+		var select = $('#employeeDepartment');
+		select.find('option').remove();
+		$('<option>').val("").text("--Select--").appendTo(select);
+		$.each(data, function(index, value) {
+			var result = value.split("#");
+			$('<option>').val(result[0]).text(result[1]).appendTo(select);
+		});
+	});
+}
+
 
 // Get data to sent to Servlet
 function addEmployeeDetails() {
@@ -171,7 +193,7 @@ function updateEmployeeDetails(){
 		type : "POST",
 		url : 'EmployerController',
 		data : {
-			jsonData : JSON.stringify(employeeData)
+			Data : JSON.stringify(employeeData)
 		},
 		dataType : "json",
 		success : function(data) {
@@ -218,7 +240,6 @@ function addDepartmentDetails() {
 		}
 	});
 }
-
 // Get data and sent to DepartmentController.java.
 function deleteDepartmentDetails() {
 
@@ -318,8 +339,38 @@ function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
 
+function clearAddemployeeform() {
+	$("#employeeFirstname").val("");
+	$("#employeeMiddlename").val("");
+	$("#employeeLastname").val("");
+	$("#employeeDateofbirth").val("");
+	$("#employeeNic").val("");
+	$("#employeeGender").val("");
+	$("#employeeMaritalstatus").val("");
+	$("#employeeEpf").val("");
+	$("#employeeBasis").val("");
+	$("#employeeDesignation").val("");
+	$("#employeePermenetaddress").val("");
+	$("#employeeTemporaryaddress").val("");
+	$("#employeeTelephone").val("");
+	$("#employeeMobile").val("");
+	$("#employeeEmail").val("");
+	$("#employeeJoindate").val("");
+	$("#employeeNumber").val("");
+	getDepartment();
+}
 
+function isNumberKey(evt) {
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+		return false;
 
+	return true;
+}
 
-
-
+function isLetter(evt) {
+	var inputValue = evt.charCode;
+    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)){
+    	evt.preventDefault();
+    }
+}

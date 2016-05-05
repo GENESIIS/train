@@ -1,11 +1,9 @@
-package com.genesiis.hra.department;
+package com.genesiis.hra.employer;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,49 +12,46 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddDepartment;
-import com.genesiis.hra.command.EditEmployee;
-import com.genesiis.hra.command.GetEmployee;
-import com.genesiis.hra.model.EmployeeManager;
+import com.genesiis.hra.command.AddEmployee;
+import com.genesiis.hra.model.DepartmentManager;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 ///***********************************************
-//* 20160416 PN HRA-3 DepartmentController.java class
-//* 20160425 PN HRA-3 modified doPost()
-//* 20160429 PN Modified the doPost() by separating the execute method for ADD,UPDATE,DELETE etc.
-//* 20160501 PN Modified the doGet() method to display managers for Departments.
-//* 20160504 PN Modified the doPost method with a Switch-Case statement and init() method with a hashMap.
+//* 20160407 PN HRA-1 created EmployeeController.java class
+//* 20160430 PN HRA-1 doGet(), doPost() methods compleated.
+//* 
 //***********************************************/
 
 /**
- * Servlet implementation class DeptServlet
+ * Servlet implementation class AddEmployeeDetails
  */
-@WebServlet("/DepartmentController")
-public class DepartmentController extends HttpServlet {
-	HashMap<Integer, Object> hmap = null;
+@WebServlet("/EmployeeController")
+public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	static Logger log = Logger.getLogger(DepartmentController.class.getName());
+	static Logger log = Logger.getLogger(EmployeeController.class.getName());
+	HashMap<Integer, Object> hmap = null;
 
 	public void init() throws ServletException {
-		AddDepartment addDepartment = new AddDepartment();
+		AddEmployee addEmployee = new AddEmployee();
 
 		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addDepartment);
-		
+		hmap.put(1, addEmployee);
+		// hmap.put(2, null);
+		// hmap.put(3, null);
+		// hmap.put(4, null);
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#HttpServlet()
 	 */
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {	
-		
+			HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
 		try {
-			EmployeeManager employeeManager = new EmployeeManager();
-			List<String> list = employeeManager.getManagers();
+			DepartmentManager departmentManager = new DepartmentManager();
+			List<String> list = departmentManager.getDepartments();
 			String gson = null;
 			gson = new Gson().toJson(list);
 			response.getWriter().write(gson);
@@ -71,19 +66,18 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		String departmentDetails = request.getParameter("jsonData");			
+		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
 		// Method to verify it and return integer;
-		int validTask = 1;
+		int validTask = validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
 			switch (validTask) {
 			case 1:
-				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
-				message = addDepartment.execute(departmentDetails);
+				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
+				message = addEmployee.execute(employeeDetails);
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
@@ -98,9 +92,26 @@ public class DepartmentController extends HttpServlet {
 			}
 		} catch (Exception exception) {
 			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: DepartmentController" + exception);
+			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
 		response.getWriter().close();
 	}
+
+	private int validTaskId(String task) {
+		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
+			return 1;
+		} else if (task.equalsIgnoreCase(MessageList.UPDATE.message())) {
+			return 2;
+		} else if (task.equalsIgnoreCase(MessageList.DELETE.message())) {
+			return 3;
+		} else if (task.equalsIgnoreCase(MessageList.GETALL.message())) {
+			return 4;
+		} else if (task.equalsIgnoreCase(MessageList.FIND.message())) {
+			return 5;
+		} else {
+			return -1;
+		}
+	}
+
 }

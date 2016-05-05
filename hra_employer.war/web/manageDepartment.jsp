@@ -14,6 +14,7 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addDepartmentDetailsForm">
 		<i class="glyphicon glyphicon-plus"></i> New Department
+		<i class="glyphicon glyphicon-home"></i> Create Department
 	</button>
 	<br></br>
 	<div class="table-responsive">
@@ -126,6 +127,7 @@
 	</div>
 </div>
 
+<!--"Edit department Details Form" Modal -->
 <div class="modal fade" id="editdepartmentDetailsForm" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">

@@ -1,20 +1,7 @@
 package com.genesiis.hra.model;
-
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-
-///***********************************************
-// * 20160407 PN HRA-1 created Employee.java class
-// * 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
-// * 
-// ***********************************************/
 //@Entity
-//@NamedQueries(@NamedQuery(name="Employee.getAll",query="SELECE e from EMPLOYEE e"))
-
-
-@Entity
 public class Employee {
 	private String employeeId;
 	private String employeeName;

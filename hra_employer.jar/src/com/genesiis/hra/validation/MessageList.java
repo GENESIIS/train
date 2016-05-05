@@ -2,8 +2,7 @@ package com.genesiis.hra.validation;
 
 ///***********************************************
 //* 20160422 PN HRA-3 created Message.List Enum class
-//* 
-//***********************************************/
+
 
 
 public enum MessageList {	
@@ -22,11 +21,18 @@ public enum MessageList {
 	UPDATE("UPDATE"),
 	DELETE("DELETE"),
 	FIND("FIND"),
-	GETALL("GETALL");
+	GETALL("GETALL"),
+	NICERROR("Invalid NIC Number."),
+	PHONENUMBERERROR("Invalid Telephone Number."),
+	MOBILENUMBERERROR("Invalid Mobile Number."),
+	EMAILERROR("Invalid Email."),
+	INVALIDDATE("Invalid DateFormat."),
+	EMPTYVALUES("Empty data Fields."),
+	INVALIDBIRTDAY("Invalid Birthdate.");	
 
-	private String message;	
+	private String message;
 
-	MessageList(String message) { 
+	MessageList(String message) {
 		this.message = message;
 	}
 
@@ -34,4 +40,6 @@ public enum MessageList {
 		return message;
 	}
 	
+
 }
+
