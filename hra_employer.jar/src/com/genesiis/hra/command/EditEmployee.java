@@ -12,11 +12,10 @@ public class EditEmployee {
 
 	static Logger log = Logger.getLogger(EditEmployee.class.getName());
 	
-	public void executeAddEmployee(String gsonData) {
-		
+	// Method to execute JsonData 
+	public void executeAddEmployee(String gsonData) {		
 		DataManager accessdata = new DataManager();		
-		String message = "";
-		
+		String message = "";		
 		Employee employee = extractFromgson(gsonData);
 		
 		if (validEmployee(employee)) {

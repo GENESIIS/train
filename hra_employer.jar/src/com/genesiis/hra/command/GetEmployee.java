@@ -1,13 +1,9 @@
 package com.genesiis.hra.command;
 
-
-
 import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
-
-
 
 import java.util.logging.Logger;
 
@@ -17,10 +13,8 @@ public class GetEmployee {
 	
 	public String createGson() {
 		
-		DataManager dataAcse  = new DataManager();
-		
-		Employee employee = dataAcse.retrive("saf");
-		
+		DataManager dataAcse  = new DataManager();		
+		Employee employee = dataAcse.retrive("1");		
 		
 		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
@@ -35,12 +29,10 @@ public class GetEmployee {
 		employee.setEmployeeotherno("e5");
 		employee.setDateOfJoin("2016.04.25"); 
 		employee.setModon("mod");
-		employee.setModby("modby");*/
-		
+		employee.setModby("modby");*/		
 		
 		//log.info();
-		Gson gson = new Gson();  
-		 
+		Gson gson = new Gson();  		 
 		String employeD = null;
 		
 		try {

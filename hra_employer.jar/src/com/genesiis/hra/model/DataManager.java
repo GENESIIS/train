@@ -41,14 +41,12 @@ public class DataManager implements IDataAccessor {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		
-
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, object.getEmployeename());
 			preparedStatement.setString(2, "1");
 			
-
 			int rows = preparedStatement.executeUpdate();
 			if (rows > 0) {
 				message = "Succesfull";
@@ -90,9 +88,7 @@ public class DataManager implements IDataAccessor {
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, "1");
 			
-			 retriveData = preparedStatement.executeQuery();
-		
-			 
+			 retriveData = preparedStatement.executeQuery();			 
 				
 				try{
 					if (retriveData.next()) {

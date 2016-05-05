@@ -73,8 +73,7 @@ public class DataValidator {
 	}
 
 	public boolean isValidString(String text) {
-		boolean status = false;
-		log.info(text+"////////////////////////////////////////////////////////");
+		boolean status = false;		
 		if ((text.isEmpty() == false) && text != null) {
 			status = true;
 		}
