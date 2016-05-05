@@ -77,7 +77,8 @@ public class DataValidator {
 	}
 
 	public boolean isValidString(String text) {
-		boolean status = false;
+		boolean status = false;	
+		
 		if ((text.isEmpty() == false) && text != null) {
 			status = true;
 		}

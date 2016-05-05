@@ -6,11 +6,15 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source></non-jta-data-source>
 
-<!-- 		<class>com.genesiis.hra.Employee</class> -->
+ 		<class>com.genesiis.hra.model.Empl</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-<!-- 			<property name="hibernate.archive.autodetection" value="" /> -->
-		</properties>
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
+           <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://220.247.201.82:20020;databaseName=hra-2"></property>
+           <property name="javax.persistence.jdbc.user" value="pc"></property>
+           <property name="javax.persistence.jdbc.password" value="Job8Admin9I"></property>
+       </properties>
+
 	</persistence-unit>
 </persistence>
