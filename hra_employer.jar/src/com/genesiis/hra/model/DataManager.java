@@ -82,7 +82,7 @@ public class DataManager implements IDataAccessor {
 						employee.setModby(retriveData.getString("modBy"));
 						employee.setEmployeeTempdddress(retriveData.getString("TEMPORARYADDRESS"));
 						
-						log.info(retriveData.getString("EmployeeId")+"////////////////////////////////////////////////////////");
+						log.info(retriveData.getString("ID")+"////////////////////////////////////////////////////////");
 					}
 				}catch(Exception e){
 					log.info(e.toString());
