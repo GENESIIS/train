@@ -7,7 +7,7 @@ import java.util.List;
 //* 
 //***********************************************/
 
-public interface IDataAccessor {
+public interface ICurd {
 	public String add(Object object);
 
 	public String update(Object object);

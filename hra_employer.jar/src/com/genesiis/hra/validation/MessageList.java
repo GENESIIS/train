@@ -22,7 +22,12 @@ public enum MessageList {
 	UPDATE("UPDATE"),
 	DELETE("DELETE"),
 	FIND("FIND"),
-	GETALL("GETALL");
+	GETALL("GETALL"),
+	NICERROR("Invalid NIC Number."),
+	PHONENUMBERERROR("Invalid Phone Number."),
+	EMAILERROR("Invalid Email."),
+	INVALIDDATE("In valid Birthdate."),
+	EMPTYVALUES("Empty data Fields.");
 
 	private String message;
 

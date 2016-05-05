@@ -55,6 +55,7 @@ function addEmployeeDetails() {
 	var employeeMobile = $("#employeeMobile").val();
 	var employeeEmail = $("#employeeEmail").val();
 	var employeeJoindate = $("#employeeJoindate").val();
+	var employeeNumber = $("#employeeNumber").val();
 
 	var employeeData = {
 		"employeeName" : employeeFirstname,
@@ -71,7 +72,8 @@ function addEmployeeDetails() {
 		"employeeTelephone" : employeeTelephone,
 		"employeeMobile" : employeeMobile,
 		"employeeEmail" : employeeEmail,
-		"employeeJoindate" : employeeJoindate
+		"employeeJoindate" : employeeJoindate,
+		"employeeId" : employeeNumber
 	};
 
 	$.ajax({
@@ -84,40 +86,10 @@ function addEmployeeDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
-			clearAddemployeeform();
-			document.getElementById("moredetails").disabled = false;
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
-}
-
-// Get data and sent to DepartmentController.java.
-function addDepartmentDetails() {
-	var departmentNumber = $("#departmentNumber").val();
-	var departmentName = $("#departmentName").val();
-	var departmentLocation = $("#departmentLocation").val();
-	var departmentHead = $("#departmentHead").val();
-
-	var jsonData = {
-		"departmentNumber" : departmentNumber,
-		"departmentName" : departmentName,
-		"departmentLocation" : departmentLocation,
-		"departmentHead" : departmentHead
-	};
-
-	$.ajax({
-		type : "POST",
-		url : 'DepartmentController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "ADD"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
+			if (data == "Data Added Successfully") {
+				clearAddemployeeform();
+				document.getElementById("moredetails").disabled = false;
+			}
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -143,4 +115,6 @@ function clearAddemployeeform() {
 	$("#employeeMobile").val("");
 	$("#employeeEmail").val("");
 	$("#employeeJoindate").val("");
+	$("#employeeNumber").val("");
+	getDepartment();
 }

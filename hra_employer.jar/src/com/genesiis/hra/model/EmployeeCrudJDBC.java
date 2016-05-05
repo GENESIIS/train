@@ -12,14 +12,14 @@ import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
-
+import com.sun.org.apache.regexp.internal.recompile;
 
 ///***********************************************
 //* 20160430 PN HRA-2 created EmployeeManager.java class
 //***********************************************/
 
-public class EmployeeManager implements IDataAccessor {
-	static Logger log = Logger.getLogger(EmployeeManager.class.getName());
+public class EmployeeCrudJDBC implements ICurd {
+	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
 	@Override
 	public String add(Object object) {
@@ -35,7 +35,7 @@ public class EmployeeManager implements IDataAccessor {
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "EMP001");
+			preparedStatement.setString(1, employee.getEmployeeid());
 			preparedStatement.setString(2, employee.getEmployeename());
 			preparedStatement.setString(3, employee.getEmployeedesignation());
 			preparedStatement.setString(4, employee.getEmployeeemail());
@@ -104,16 +104,37 @@ public class EmployeeManager implements IDataAccessor {
 		return employee;
 	}
 
-	public String validEmployee(Employee employee) throws ParseException {
+	public String validateEmployee(Employee employee) throws ParseException {
 		DataValidator validator = new DataValidator();
-		if (validator.isValidString(employee.getEmployeename())
-				&& validator.isValidNic(employee.getEmployeenic())
-				&& validator.isValidString(employee.getEmployeeepf())
-				&& validator.isPastDate(employee.getEmployeedateofbirth())
-				&& validator.isValidString(employee.getEmployeedepartment())) {
-			return MessageList.SUCCESS.message();
+		String message = "";
+
+		if (!validator.isValidString(employee.getEmployeeid())) {
+			message = message + MessageList.EMPTYFIELD.message();
+		} else if (!validator.isValidString(employee.getEmployeename())) {
+			message = message + MessageList.EMPTYFIELD.message();
+		} else if (!validator.isValidNic(employee.getEmployeenic())) {
+			message = message + MessageList.NICERROR.message();
+		} else if (!validator.isValidString(employee.getEmployeeepf())) {
+			message = message + MessageList.EMPTYFIELD.message();
+		} else if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
+			message = message + MessageList.INVALIDDATE.message();
+		} else if (!validator.isValidTelephone(employee.getEmployeemobile())) {
+			message = message + MessageList.PHONENUMBERERROR.message();
+		} else if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
+			message = message + MessageList.PHONENUMBERERROR.message();
+		} else if (!validator.isValidemail(employee.getEmployeeemail())) {
+			message = message + MessageList.EMAILERROR.message();
 		} else {
-			return MessageList.EMPTYFIELD.message();
+			message = message + MessageList.SUCCESS.message();
+		}
+		return message;
+	}
+
+	public boolean validEmployee(Employee employee) throws ParseException {
+		if (validateEmployee(employee) == "Successfull") {
+			return true;
+		} else {
+			return false;
 		}
 	}
 

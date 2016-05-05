@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.jboss.logging.Logger;
 
-
 ///***********************************************
 //* 20160415 PN HRA-2 created DataValidator.java class
 //* 20160430 PN created isValidnic() method.
@@ -53,28 +52,30 @@ public class DataValidator {
 
 	public boolean isValidNic(String nic) {
 		boolean status = false;
-		boolean numaric = true;
-		boolean letter = true;
-
-		if (nic.length() == 10) {
-			for (int i = 0; i < nic.length() - 1; i++) {
-				if (!Character.isDigit(nic.charAt(i))) {
-					numaric = false;
-				}
-			}
-			if (!Character.isLetter(nic.charAt(nic.length() - 1))) {
-				letter = false;
-			}
-			if ((numaric == true) && (letter == true)) {
-				status = true;
-			}
+		
+		if(nic.matches("[0-9]{9}V")){
+			status = true;
 		}
 		return status;
 	}
 
 	public boolean isValidString(String text) {
 		boolean status = false;
-		if (!text.isEmpty() && text != null) {
+		if ((text.isEmpty() == false) && text != null) {
+			status = true;
+		}
+		return status;
+	}
+
+	public boolean isValidemail(String email) {
+		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+		Boolean b = email.matches(EMAIL_REGEX);
+		return b;
+	}
+
+	public boolean isValidTelephone(String number) {
+		boolean status = false;
+		if (number.matches("[0-9]+") && number.length() == 10) {
 			status = true;
 		}
 		return status;

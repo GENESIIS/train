@@ -1,6 +1,7 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,6 +31,17 @@ public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
+	HashMap<Integer, Object> hmap = null;
+
+	public void init() throws ServletException {
+		AddEmployee addEmployee = new AddEmployee();
+
+		hmap = new HashMap<Integer, Object>();
+		hmap.put(1, addEmployee);
+		// hmap.put(2, null);
+		// hmap.put(3, null);
+		// hmap.put(4, null);
+	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -54,29 +66,52 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String employeetDetails = request.getParameter("jsonData");
-		log.info(employeetDetails);
+		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
+		String message = "";
+		// Method to verify it and return integer;
+		int validTask = validTaskId(task);
+		Gson gson = new Gson();
 
-		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
-			AddEmployee addEmployee = new AddEmployee();
-			try {
-				String message = addEmployee
-						.executeAddemployee(employeetDetails);
-				Gson gson = new Gson();
+		try {
+			switch (validTask) {
+			case 1:
+				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
+				message = addEmployee.execute(employeeDetails);
 				response.getWriter().write(gson.toJson(message));
-			} catch (Exception e) {
-				log.info("Exception: EmployeeController" + e);
+				break;
+			// For other operations.
+			// case 2:
+			// break;
+			// case 3:
+			// break;
+			// case 4:
+			// break;
+			default:
+				break;
 			}
-		} else if (task.equalsIgnoreCase(MessageList.UPDATE.message())) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.DELETE.message()))) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.FIND.message()))) {
-
-		} else if ((task.equalsIgnoreCase(MessageList.GETALL.message()))) {
-
+		} catch (Exception exception) {
+			message = MessageList.FAILED_TO_CREATE.message();
+			log.error("Exception: EmployeeController" + exception);
+			response.getWriter().write(gson.toJson(message));
 		}
 		response.getWriter().close();
 	}
+
+	private int validTaskId(String task) {
+		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
+			return 1;
+		} else if (task.equalsIgnoreCase(MessageList.UPDATE.message())) {
+			return 2;
+		} else if (task.equalsIgnoreCase(MessageList.DELETE.message())) {
+			return 3;
+		} else if (task.equalsIgnoreCase(MessageList.GETALL.message())) {
+			return 4;
+		} else if (task.equalsIgnoreCase(MessageList.FIND.message())) {
+			return 5;
+		} else {
+			return -1;
+		}
+	}
+
 }
