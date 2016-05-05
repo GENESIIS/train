@@ -3,11 +3,13 @@ package com.genesiis.hra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -50,7 +52,7 @@ public class DepartmentCrudJDBC implements ICrud {
 				conn.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
-			}			
+			}
 		}
 		return message;
 	}
@@ -87,4 +89,25 @@ public class DepartmentCrudJDBC implements ICrud {
 		return department;
 	}
 
+	public String validateDepartment(Department department)
+			throws ParseException {
+		DataValidator validator = new DataValidator();
+		String message = "";
+
+		if (!validator.isValidString(department.getDepartmentNumber())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		if (!validator.isValidString(department.getDepartmentname())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		return message;
+	}
+
+	public boolean validDepartment(Department department) throws ParseException {
+		if (validateDepartment(department).isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

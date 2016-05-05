@@ -5,11 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.jboss.logging.Logger;
-
-import com.genesiis.hra.command.AddDepartment;
-
-import sun.util.logging.resources.logging;
-
 ///***********************************************
 //* This class is to validate user inputs.
 //* 20160422 PN HRA-3 created DataValidator.java class
