@@ -41,11 +41,7 @@
 					  <tr>
                         <td>Date Of JOin</td>
                        <td><p id="doj"></p></td>
-                      </tr>
-                      <tr>
-                        <td>Salary</td>
-                        <td><p id="salary"></p></td>
-                      </tr>
+                      </tr>                      
                       <tr>
                         <td>Date of Birth</td>
                         <td><p id="dob"></p></td>
@@ -65,6 +61,14 @@
 					  <tr>
                         <td>Address</td>
                         <td><p id="adress"></p></td>
+                      </tr>
+                      <tr>
+                        <td>Temporary Address</td>
+                        <td><p id="tempAddresid"></p></td>
+                      </tr>
+                      <tr>
+                        <td>Marital Status</td>
+                        <td><p id="maritalstatusid"></p></td>
                       </tr>
                     </tbody>
                   </table>                

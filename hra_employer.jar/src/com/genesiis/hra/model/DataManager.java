@@ -41,7 +41,7 @@ public class DataManager implements IDataAccessor {
 	}
 
 	@Override
-	public Employee getObjectid(String id) {
+	public Employee retrive(String id) {
 		// TODO Auto-generated method stub
 		
 		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
@@ -52,15 +52,13 @@ public class DataManager implements IDataAccessor {
 		ResultSet retriveData = null;
 		
 		Employee employee = new Employee();
-		try {
-			
+		
+		try {			
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, "1");
 			
-			 retriveData = preparedStatement.executeQuery();
-		
-			 
+			 retriveData = preparedStatement.executeQuery();			 
 				
 				try{
 					if (retriveData.next()) {

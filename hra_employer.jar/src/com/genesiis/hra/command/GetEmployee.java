@@ -13,20 +13,12 @@ import java.util.logging.Logger;
 public class GetEmployee {
 
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());
-	
+	String employeD = null;
 	DataManager dataAcses = new DataManager();
 	
-	public String createGson() {
+	public String createGson() {	
+		Gson gson = new Gson();  
 		
-		
-		
-		//Employee employee = da.getObjectid("saf");
-		//Employee employee = new Employee();
-		try{
-		
-		}catch(Exception e){
-			
-		}
 		/*employee.setEmployeeid("1");
 		employee.setEmployeename("Genesiis");
 		employee.setEmployeedesignation("Eng"); 
@@ -41,15 +33,10 @@ public class GetEmployee {
 		employee.setEmployeeotherno("e5");
 		employee.setDateOfJoin("2016.04.25"); 
 		employee.setModon("mod");
-		employee.setModby("modby");*/
-		
-		
-		Gson gson = new Gson();  
-		 
-		String employeD = null;
+		employee.setModby("modby");*/						
 		
 		try {
-			 employeD = gson.toJson(dataAcses.getObjectid("1"));
+			 employeD = gson.toJson(dataAcses.retrive("1"));
 			
 		} catch (Exception e) {
 			
