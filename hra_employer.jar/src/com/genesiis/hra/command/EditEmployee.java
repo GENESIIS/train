@@ -16,26 +16,28 @@ public class EditEmployee {
 	// Method to execute JsonData 
 	public void execute(String gsonData) {		
 		EditEmployeeCrudJDBC accessdata = new EditEmployeeCrudJDBC();		
-		String message = "";		
-		Employee employee = extractFromgson(gsonData);
-		
-		if (validEmployee(employee)) {
-			message = accessdata.update(employee);
-		} else {
-			message = MessageList.ERROR.message();
-		}
-		
+		String message = "";			
+		try{
+			Employee employee = extractFromgson(gsonData);		
+		      if (validEmployee(employee)) {
+			     message = accessdata.update(employee);
+		       } else {
+			     message = MessageList.ERROR.message();
+		       }
+		}catch(Exception e){
+			
+		}		
 	}
 	
 	// Method to extract DepartmentDetails from jsonData.
 		public Employee extractFromgson(String gsonData) {
 			Gson gson = new Gson();
+			String message = "";
 			Employee employee = null;
 			try {
-				employee = gson.fromJson(gsonData, Employee.class);
-				
+				employee = gson.fromJson(gsonData, Employee.class);				
 			} catch (Exception e) {
-				log.info(e.toString());
+				 message = MessageList.ERROR.message();;
 			}
 			return employee;
 		}
