@@ -1,8 +1,9 @@
 package com.genesiis.hra.command;
 import java.util.logging.Logger;
 
-import com.genesiis.hra.model.DataManager;
-import com.genesiis.hra.model.Employees;
+
+import com.genesiis.hra.model.EditEmployeeCrudJDBC;
+import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -14,9 +15,9 @@ public class EditEmployee {
 	
 	// Method to execute JsonData 
 	public void execute(String gsonData) {		
-		DataManager accessdata = new DataManager();		
+		EditEmployeeCrudJDBC accessdata = new EditEmployeeCrudJDBC();		
 		String message = "";		
-		Employees employee = extractFromgson(gsonData);
+		Employee employee = extractFromgson(gsonData);
 		
 		if (validEmployee(employee)) {
 			message = accessdata.update(employee);
@@ -27,11 +28,11 @@ public class EditEmployee {
 	}
 	
 	// Method to extract DepartmentDetails from jsonData.
-		public Employees extractFromgson(String gsonData) {
+		public Employee extractFromgson(String gsonData) {
 			Gson gson = new Gson();
-			Employees employee = null;
+			Employee employee = null;
 			try {
-				employee = gson.fromJson(gsonData, Employees.class);
+				employee = gson.fromJson(gsonData, Employee.class);
 				
 			} catch (Exception e) {
 				log.info(e.toString());
@@ -40,7 +41,7 @@ public class EditEmployee {
 		}
 		
 				
-		public boolean validEmployee(Employees empl) {
+		public boolean validEmployee(Employee empl) {
 			DataValidator validator = new DataValidator();
 			if (validator.isValidString(empl.getEmployeename())) {
 				return true;

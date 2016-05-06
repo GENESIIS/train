@@ -1,7 +1,8 @@
 package com.genesiis.hra.command;
 
-import com.genesiis.hra.model.DataManager;
-import com.genesiis.hra.model.Employees;
+
+import com.genesiis.hra.model.EditEmployeeCrudJDBC;
+import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
@@ -13,25 +14,8 @@ public class GetEmployee {
 	
 	public String createGson() {
 		
-		DataManager dataAcse  = new DataManager();		
-		Employees employee = dataAcse.retrive("1");		
-		
-		/*employee.setEmployeeid("1");
-		employee.setEmployeename("Genesiis");
-		employee.setEmployeedesignation("Eng"); 
-		employee.setEmployeeemail("we@mail");
-		employee.setEmployeedob("2000.01.01");
-		employee.setEmployeenic("903293950v");
-		employee.setEmployeegender("mail");
-		employee.setEmployeedddress("Colombo 3");
-		employee.setEmployeemobileno("071111111");
-		employee.setDepartmentid("111");
-		employee.setEmployeeotherno("e5");
-		employee.setDateOfJoin("2016.04.25"); 
-		employee.setModon("mod");
-		employee.setModby("modby");*/		
-		
-		//log.info();
+		EditEmployeeCrudJDBC dataAcse  = new EditEmployeeCrudJDBC();		
+		Employee employee = dataAcse.retrive("1");			
 		Gson gson = new Gson();  		 
 		String employeD = null;
 		

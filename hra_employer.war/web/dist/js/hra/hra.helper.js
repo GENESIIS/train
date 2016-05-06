@@ -35,22 +35,22 @@ $.get("EmployerController", function(data, status){
 	
 	alert(data);
 	json = JSON.parse(data);
-	$(".modal-body #employeeNumberEdit").val( json.ID);
-	$(".modal-body #employeeNameEdit").val( json.NAME);
-	$(".modal-body #employeeDesignationEdit").val( json.DESIGNATION);
-	//(".modal-body #employeeDateofBothEdit").val( json.Salary);
-	$(".modal-body #employeeEmailEdit").val( json.EMAIL);
-	$(".modal-body #employeeDateofBothEdit").val( json.DOB);
-	$(".modal-body #employeeNICEdit").val( json.NIC);
-	$(".modal-body #employeeGenderEdit").val( json.GENDER);
-	$(".modal-body #employeeAddressEdit").val( json.PERMENENTADDRESS);
-	$(".modal-body #employeeMobileNumberEdit").val( json.MOBILENO);
-	$(".modal-body #employeeOtherNumberEdit").val( json.OTHERNO);
-	$(".modal-body #employeeDepartmentEdit").val( json.DEPTID);
-	$(".modal-body #employeeJoinDateEdit").val( json.DATEOFJOIN);
-	$(".modal-body #employeeMaritalEdit").val( json.MARITALSTATUS);
-	$(".modal-body #employeeEPFEdit").val( json.EPF);
-	$(".modal-body #employeeTempADDEdit").val( json.TEMPORARYADDRESS);
+	$(".modal-body #employeeNumberEdit").val( json.employeeId);
+	$(".modal-body #employeeNameEdit").val( json.employeeName);
+	$(".modal-body #employeeDesignationEdit").val( json.employeeDesignation);
+	$(".modal-body #employeeEmailEdit").val( json.employeeEmail);
+	$(".modal-body #employeeDateofBothEdit").val( json.employeeDateofbirth);
+	$(".modal-body #employeeNICEdit").val( json.employeeNic);
+	$(".modal-body #employeeGenderEdit").val( json.employeeGender);
+	$(".modal-body #employeeAddressEdit").val( json.employeePermenetaddress);
+	$(".modal-body #employeeTempADDEdit").val( json.employeeTemporaryaddress);
+	$(".modal-body #employeeMobileNumberEdit").val( json.employeeMobile);
+	$(".modal-body #employeeOtherNumberEdit").val( json.employeeTelephone);
+	$(".modal-body #employeeDepartmentEdit").val( json.employeeDepartment);
+	$(".modal-body #employeeJoinDateEdit").val( json.employeeJoindate);
+	$(".modal-body #employeeMaritalEdit").val( json.employeeMaritalstatus);
+	$(".modal-body #employeeEPFEdit").val( json.employeeEpf);
+
 	
 });
 
@@ -62,38 +62,40 @@ function updateEmployeeDetails(){
 	var employeeName = $("#employeeNameEdit").val();
 	var employeeDesignation = $("#employeeDesignationEdit").val();
 	var employeeDateofBoth = $("#employeeDateofBothEdit").val();
+	var employeeNic =$("#employeeNICEdit").val();
 	var employeeGender = $("#employeeGenderEdit").val();
 	var employeeAddress = $("#employeeAddressEdit").val();
+	var employeeTemAddress = $("#employeeAddressEdit").val();
 	var employeeMobileNumber = $("#employeeMobileNumberEdit").val();
 	var employeeOtherNumber = $("#employeeOtherNumberEdit").val();
 	var employeeEmail = $("#employeeEmailEdit").val();
 	var employeeDepartment = $("#employeeDepartmentEdit").val();
-	var employeeJoinDate = $("#employeeJoinDateEdit").val();
-	var MARITALSTATUS =$("employeeMaritalEdit").val;
-	var MODBY =null;
-	var MODON =null ;
-	var EPF =$("employeeEPFEdit").val;
-	var BASIS =null;
+	var employeeJoinDate ="2011-10-06";
+	var employeeMaritslStatus =$("#employeeMaritalEdit").val();
+	var employeeModon ="mod" ;
+	var employeeEpf = $("#employeeEPFEdit").val();
+	var employeeBasis ="Permernent";
 	
 	var employeeData = {
             
-                "ID": employeeNumber,
-                "NAME": employeeName,
-                "DESIGNATION": employeeDesignation,
-                "DOB": employeeDateofBoth,
-                "GENDER": employeeGender,
-                "PERMENENTADDRESS": employeeAddress,
-                
-                "MOBILENO": employeeMobileNumber,
-                "OTHERNO": employeeOtherNumber,
-                "EMAIL": employeeEmail,
-                "DEPTID": employeeDepartment,
+                "employeeId": employeeNumber,
+                "employeeName": employeeName,
+                "employeeDesignation": employeeDesignation,
+                "employeeDateofbirth": employeeDateofBoth,
+                "employeeGender": employeeGender,
+                "employeePermenetaddress": employeeAddress,
+                "employeeNic" : employeeNic,
+                "employeeTemporaryaddress" : employeeTemAddress,
+                "employeeMobile": employeeMobileNumber,
+                "employeeTelephone": employeeOtherNumber,
+                "employeeEmail": employeeEmail,
+                "employeeDepartment": employeeDepartment,
                 "DATEOFJOIN": employeeJoinDate,
-                "MARITALSTATUS" : MARITALSTATUS,
-                "MODBY" : MODBY,
-                "MODON" : MODON,
-                "EPF" : EPF,
-                "BASIS" : BASIS
+                "employeeMaritalstatus" : employeeMaritslStatus,
+               // "MODBY" : employeeModby,
+               /// "MODON" : employeeModon,
+                "employeeEpf" : employeeEpf,
+                "employeeBasis" : employeeBasis
            
 	    };
 	alert(JSON.stringify(employeeData));

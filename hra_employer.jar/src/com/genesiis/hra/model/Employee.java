@@ -1,11 +1,6 @@
 package com.genesiis.hra.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-
-
-//com.genesiis.hra.model.Employee
 
 ///***********************************************
 // * 20160407 PN HRA-1 created Employee.java class
@@ -190,5 +185,4 @@ public class Employee {
 		this.employeeEpf = employeeEpf;
 		this.employeeBasis = employeeBasis;
 	}
-
 }
