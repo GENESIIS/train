@@ -37,23 +37,21 @@ $(document).on("click", "#vbutton", function () {
 		
 		$("#view").load("viewEmployee.jsp",function(datatl){
 			json = JSON.parse(data);
-			$("#userid").text(json.ID);
-			$(".panel-body #username").text(json.NAME);
-			$(".panel-body #disignation").text( json.DESIGNATION);
-			//$(".panel-body #salary").text( json.Salary);
-			$(".panel-body #email").text( json.EMAIL);
-			$(".panel-body #dob").text( json.DOB);
-			$(".panel-body #Nic").text( json.NIC);
-			$(".panel-body #gender").text(json.GENDER);
-			$(".panel-body #adress").text(json.PERMENENTADDRESS);
-			$(".panel-body #MobNumber").text( json.MOBILENO);
-			$(".panel-body #OthNumber").text(  json.OTHERNO);
-			$(".panel-body #depid").text(  json.DEPTID);
-			$(".panel-body #doj").text(json.DATEOFJOIN);
-			$(".modal-body #userid").val( json.EPF);
-			$(".modal-body #userid").val( json.TEMPORARYADDRESS);
-			
-			$(".panel-body #doj").text(json.MARITALSTATUS);
+			$(".panel-body #userid").text(json.employeeId);
+			$(".panel-body #username").text(json.employeeName);
+			$(".panel-body #disignation").text( json.employeeDesignation);
+			$(".panel-body #email").text( json.employeeEmail);
+			$(".panel-body #dob").text( json.employeeDateofbirth);
+			$(".panel-body #Nic").text( json.employeeNic);
+			$(".panel-body #gender").text(json.employeeGender);
+			$(".panel-body #adress").text(json.employeePermenetaddress);
+			$(".panel-body #MobNumber").text( json.employeeMobile);
+			$(".panel-body #OthNumber").text(  json.employeeTelephone);
+			$(".panel-body #depid").text(  json.employeeDepartment);
+			$(".panel-body #doj").text(json.employeeJoindate);
+			$(".modal-body #userid").val( json.employeeEpf);
+			$(".modal-body #userid").val( json.employeeTemporaryaddress);			
+			$(".panel-body #doj").text(json.employeeMaritalstatus);
 			//$(".modal-body #userid").val( json.EPF);
 			//$(".modal-body #userid").val( json.TEMPORARYADDRESS);
 			

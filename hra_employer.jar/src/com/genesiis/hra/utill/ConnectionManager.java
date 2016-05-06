@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
+///***********************************************
+//* 20160427 PN HRA-9 created SqlServerConnectionManager.java class
+//* 20160428 PN HRA-9 name changed to ConnectionManager.java class. 
+//***********************************************/
 
 public class ConnectionManager {
 	private static final String DB_JNDI_NAME = "java:/hraDatabase";
@@ -22,7 +25,7 @@ public class ConnectionManager {
 			e.printStackTrace();
 		}
 	}
-
+    // get sql conection
 	public static Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
 	}
