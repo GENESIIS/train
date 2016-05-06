@@ -9,10 +9,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import com.genesiis.hra.utill.ConnectionManager;
 
-///***********************************************
-//* 20160422 PN HRA-3 created DataAccessUtill.java class
-//* 20160425 PN HRA-3 Modified add(Object object), method.
-//***********************************************/
+
 
 /**
  * Session Bean implementation class DepartmentDao
@@ -42,15 +39,12 @@ public class DataManager implements IDataAccessor {
 
 	@Override
 	public Employees retrive(String id) {
-		// TODO Auto-generated method stub
-		
-		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
-		
+		// TODO Auto-generated method stub		
+		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";		
 		String message ="Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
-		
+		ResultSet retriveData = null;		
 		Employees employee = new Employees();
 		
 		try {			
@@ -80,9 +74,8 @@ public class DataManager implements IDataAccessor {
 						employee.setMARITALSTATUS(retriveData.getString("MARITALSTATUS"));
 						employee.setBASIS(retriveData.getString("BASIS"));
 						employee.setModby(retriveData.getString("modBy"));
-						employee.setEmployeeTempdddress(retriveData.getString("TEMPORARYADDRESS"));
+						employee.setEmployeeTempdddress(retriveData.getString("TEMPORARYADDRESS"));					
 						
-						log.info(retriveData.getString("ID")+"////////////////////////////////////////////////////////");
 					}
 				}catch(Exception e){
 					log.info(e.toString());

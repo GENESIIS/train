@@ -1,11 +1,5 @@
 package com.genesiis.hra.validation;
 
-///***********************************************
-//* 20160422 PN HRA-3 created Message.List Enum class
-//* 
-//***********************************************/
-
-
 public enum MessageList {	
 	//Message set that will return by the CRUD methods.
 	ADDED("Details added successfully."), 
