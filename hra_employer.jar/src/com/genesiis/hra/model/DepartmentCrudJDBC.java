@@ -2,12 +2,17 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -50,7 +55,7 @@ public class DepartmentCrudJDBC implements ICrud {
 				conn.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
-			}			
+			}
 		}
 		return message;
 	}
@@ -87,4 +92,48 @@ public class DepartmentCrudJDBC implements ICrud {
 		return department;
 	}
 
+	public String validateDepartment(Department department)
+			throws ParseException {
+		DataValidator validator = new DataValidator();
+		String message = "";
+
+		if (!validator.isValidString(department.getDepartmentNumber())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		if (!validator.isValidString(department.getDepartmentname())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		return message;
+	}
+
+	public boolean validDepartment(Department department) throws ParseException {
+		if (validateDepartment(department).isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public List<String> getDepartments() {
+		String query = "SELECT * FROM [HRA.DEPARTMENT]";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		List<String> departments = new ArrayList<String>();
+		Statement statement = null;
+		try {
+			conn = ConnectionManager.getConnection();
+			statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			while(result.next()){
+				departments.add(result.getString(1)+"#"+result.getString(2));
+			}
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			message = MessageList.ERROR.message();
+		}
+		
+		return departments;
+	}
 }

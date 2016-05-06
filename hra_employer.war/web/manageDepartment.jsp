@@ -7,6 +7,7 @@
 	$(document).ready(function() {
 		$('#departmentDetails').DataTable();
 	});
+	getManager();
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -14,7 +15,6 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addDepartmentDetailsForm">
 		<i class="glyphicon glyphicon-plus"></i> New Department
-		<i class="glyphicon glyphicon-home"></i> Create Department
 	</button>
 	<br></br>
 	<div class="table-responsive">

@@ -2,7 +2,6 @@ package com.genesiis.hra.command;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.model.Department;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
@@ -23,7 +22,7 @@ public class AddDepartment {
 		try {
 			// Get department object extract from Gson object.
 			Department department = departmentManager.extractFromgson(gsonData);
-			if (validDepartment(department)) {
+			if (departmentManager.validDepartment(department)) {
 				message = departmentManager.add(department);
 			} else {
 				message = MessageList.ERROR.message();
@@ -33,15 +32,5 @@ public class AddDepartment {
 			log.info("Exception-department: " + e);
 		}
 		return message;
-	}
-
-	public boolean validDepartment(Department department) {
-		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentname())
-				&& validator.isValidString(department.getDepartmentNumber())) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 }

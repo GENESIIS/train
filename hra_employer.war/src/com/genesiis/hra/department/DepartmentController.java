@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddDepartment;
-import com.genesiis.hra.command.EditEmployee;
-import com.genesiis.hra.command.GetEmployee;
-import com.genesiis.hra.model.EmployeeManager;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -44,7 +42,9 @@ public class DepartmentController extends HttpServlet {
 
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addDepartment);
-		
+		// hmap.put(2, null);
+		// hmap.put(3, null);
+		// hmap.put(4, null);
 	}
 
 	/**
@@ -52,10 +52,9 @@ public class DepartmentController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {	
-		
+			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			EmployeeManager employeeManager = new EmployeeManager();
+			EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 			List<String> list = employeeManager.getManagers();
 			String gson = null;
 			gson = new Gson().toJson(list);
@@ -72,7 +71,7 @@ public class DepartmentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String departmentDetails = request.getParameter("jsonData");			
+		String departmentDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
 		// Method to verify it and return integer;

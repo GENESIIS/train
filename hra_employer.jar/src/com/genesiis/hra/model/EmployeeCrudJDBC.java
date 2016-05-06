@@ -2,9 +2,13 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import org.jboss.logging.Logger;
 
@@ -12,14 +16,13 @@ import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
-import com.sun.org.apache.regexp.internal.recompile;
 
 ///***********************************************
 //* 20160430 PN HRA-2 created EmployeeManager.java class
 //* 20160505 PN HRA-2  validateEmployee() method Modified.
 //***********************************************/
 
-public class EmployeeCrudJDBC implements ICurd {
+public class EmployeeCrudJDBC implements ICrud {
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
 	@Override
@@ -136,12 +139,33 @@ public class EmployeeCrudJDBC implements ICurd {
 		return message;
 	}
 
+	
 	public boolean validEmployee(Employee employee) throws ParseException {
 		if (validateEmployee(employee).isEmpty()) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public List<String> getManagers() {
+		String query = "SELECT * FROM [HRA.EMPLOYEE] WHERE DESIGNATION='Manager';";
+		Connection conn = null;
+		List<String> managers = new ArrayList<String>();
+		Statement statement = null;
+		try {
+			conn = ConnectionManager.getConnection();
+			statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			while(result.next()){
+				managers.add(result.getString(1)+"#"+result.getString(2));
+			}
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return managers;
 	}
 
 }

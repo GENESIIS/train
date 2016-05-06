@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.model.DepartmentManager;
+import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -50,7 +50,7 @@ public class EmployeeController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		try {
-			DepartmentManager departmentManager = new DepartmentManager();
+			DepartmentCrudJDBC departmentManager = new DepartmentCrudJDBC();
 			List<String> list = departmentManager.getDepartments();
 			String gson = null;
 			gson = new Gson().toJson(list);

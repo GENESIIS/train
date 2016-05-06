@@ -2,7 +2,8 @@ package com.genesiis.hra.validation;
 
 ///***********************************************
 //* 20160422 PN HRA-3 created Message.List Enum class
-
+//* 20160505 PN HRA-3 New values added to the MessageList Enum
+//***********************************************/
 
 
 public enum MessageList {	
@@ -11,12 +12,12 @@ public enum MessageList {
 	UPDATED("Details updated successfully."), 
 	DELETED("Details deleted successfully."), 
 	IDFOUND("ID found."), 
-	IDNOTFOUND("ID not found."),
+	IDNOTFOUND("ID not found."), 
 	ERROR("Unsuccessful."), 
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
-    FAILED_TO_CREATE("Details not added. Internal System Error."),
+    FAILED_TO_CREATE("Object not created"),
 	ADD("ADD"),
 	UPDATE("UPDATE"),
 	DELETE("DELETE"),
@@ -28,7 +29,8 @@ public enum MessageList {
 	EMAILERROR("Invalid Email."),
 	INVALIDDATE("Invalid DateFormat."),
 	EMPTYVALUES("Empty data Fields."),
-	INVALIDBIRTDAY("Invalid Birthdate.");	
+	INVALIDBIRTDAY("Invalid Birthdate.");
+
 
 	private String message;
 
@@ -40,6 +42,4 @@ public enum MessageList {
 		return message;
 	}
 	
-
 }
-

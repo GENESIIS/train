@@ -5,30 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.jboss.logging.Logger;
-import com.genesiis.hra.command.AddDepartment;
-
-import sun.util.logging.resources.logging;
 
 ///***********************************************
-//* This class is to validate user inputs.
-//* 20160422 PN HRA-3 created DataValidator.java class
-//* 20160425 PN HRA-3 Modified DataValidator.java class
+//* 20160415 PN HRA-2 created DataValidator.java class
+//* 20160430 PN created isValidnic() method.
+//* 20160505 PN created isValidemail(), isValidTelephone() methods.
+//***********************************************/
+
 public class DataValidator {
 	static Logger log = Logger.getLogger(DataValidator.class.getName());
 
 	Date date = new Date();
 	boolean status = false;
-
-	public boolean isPastDate(String day) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		Date date1 = dateFormat.parse(dateFormat.format(date));
-		Date date2 = dateFormat.parse(day);
-
-		if (date1.after(date2)) {
-			status = true;
-		}
-		return status;
-	}
 
 	public boolean isFutureDate(String day) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
@@ -40,8 +28,16 @@ public class DataValidator {
 		return status;
 	}
 
-	
+	public boolean isPastDate(String day) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		Date date1 = dateFormat.parse(dateFormat.format(date));
+		Date date2 = dateFormat.parse(day);
 
+		if (date1.after(date2)) {
+			status = true;
+		}
+		return status;
+	}
 
 	public boolean isEqualDate(String day) throws ParseException {
 		log.info("day" + day);
@@ -85,5 +81,4 @@ public class DataValidator {
 		}
 		return status;
 	}
-
 }
