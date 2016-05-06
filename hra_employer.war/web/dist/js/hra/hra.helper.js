@@ -33,7 +33,9 @@ function updatedAlert() {
 }
 // Get Employees for Add Department Form
 function getManager() {
-	$.getJSON('DepartmentController', {}, function(data) {
+	$.getJSON('DepartmentController', {
+		task : "FIND"
+	}, function(data) {
 		var select = $('#departmentHead');
 		select.find('option').remove();
 		$('<option>').val("").text("--Select--").appendTo(select);
@@ -50,7 +52,9 @@ function addedAlert() {
 
 // Get Departments for Add Employee Form
 function getDepartment() {
-	$.get('EmployeeController', {}, function(data) {
+	$.get('EmployeeController', {
+		task : "FIND"
+	}, function(data) {
 		var select = $('#employeeDepartment');
 		select.find('option').remove();
 		$('<option>').val("").text("--Select--").appendTo(select);
@@ -380,5 +384,5 @@ function loadEditemergencycontacts() {
 }
 
 function disableButton() {
-	document.getElementById("moredetails").disabled = true;	
+	document.getElementById("moredetails").disabled = true;
 }

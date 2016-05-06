@@ -17,28 +17,37 @@ import org.jboss.logging.Logger;
 
 public class ConnectionManager {
 	static Logger log = Logger.getLogger(ConnectionManager.class.getName());
-	
-//The DB_JNDI_NAME is the property for data source name that the application looking at runtime. 
+
+	// The DB_JNDI_NAME is the property for data source name that the
+	// application looking at runtime.
 	private static final String DB_JNDI_NAME = "java:/hraDatabase";
 	private static DataSource dataSource;
 
-//This static{} block runs first when running the ConnectionManager class object.	
+	// This static{} block runs first when running the ConnectionManager class
+	// object.
 	static {
 		try {
-//From the datasource name, we get the datasource which we have mentioned in hra.xml file.
+			// From the datasource name, we get the datasource which we have
+			// mentioned in hra.xml file.
 			dataSource = (DataSource) new InitialContext().lookup(DB_JNDI_NAME);
-		} catch (NullPointerException e) {
-			log.error("NullPointerException: look up dataSource: " + e);
-		} catch (NamingException e) {
-			log.error("NamingException: nameing the dataSource " + e);
-		} catch (ClassCastException e) {
-			log.error("ClassCastException: casting dataSource = (DataSource) " + e);
-		}finally{
-			log.error("ConnectionManager static block execution over.");
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
+
+		// catch (NullPointerException e) {
+		// log.error("NullPointerException: look up dataSource: " + e);
+		// } catch (NamingException e) {
+		// log.error("NamingException: nameing the dataSource " + e);
+		// } catch (ClassCastException e) {
+		// log.error("ClassCastException: casting dataSource = (DataSource) "
+		// + e);
+		// } finally {
+		// log.error("ConnectionManager static block execution over.");
+		// }
 	}
 
-//This method only return the Connection type variable for other classed, to access the dataSource through that.	
+	// This method only return the Connection type variable for other classed,
+	// to access the dataSource through that.
 	public static Connection getConnection() throws SQLException {
 		return dataSource.getConnection();
 	}

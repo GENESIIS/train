@@ -81,4 +81,21 @@ public class DataValidator {
 		}
 		return status;
 	}
+	
+
+	public int validTaskId(String task) {
+		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
+			return 1;
+		} else if (task.equalsIgnoreCase(MessageList.UPDATE.message())) {
+			return 2;
+		} else if (task.equalsIgnoreCase(MessageList.DELETE.message())) {
+			return 3;
+		} else if (task.equalsIgnoreCase(MessageList.GETALL.message())) {
+			return 4;
+		} else if (task.equalsIgnoreCase(MessageList.FIND.message())) {
+			return 5;
+		} else {
+			return -1;
+		}
+	}
 }

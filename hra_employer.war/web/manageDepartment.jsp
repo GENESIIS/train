@@ -86,7 +86,8 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="" maxlength="5" size="5">
+								name="departmentNumber" placeholder="" value="" maxlength="5"
+								size="5">
 						</div>
 					</div>
 				</div>
@@ -105,13 +106,13 @@
 				<div class="form-group">
 					<label for="departmentHead">Department Head</label> <select
 						class="form-control" id="departmentHead" name="departmentHead">
-						<option>-Select-</option>						
+						<option>-Select-</option>
 					</select>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"
-					data-dismiss="modal" onclick="addDepartmentDetails()">
+					onclick="addDepartmentDetails()">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left"

@@ -1,5 +1,7 @@
 package com.genesiis.hra.command;
 
+import java.text.ParseException;
+
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.validation.MessageList;
@@ -22,14 +24,24 @@ public class AddDepartment {
 		try {
 			// Get department object extract from Gson object.
 			Department department = departmentManager.extractFromgson(gsonData);
-			if (departmentManager.validDepartment(department)) {
-				message = departmentManager.add(department);
+			if (department != null) {
+				if (departmentManager.validDepartment(department)) {
+					message = departmentManager.add(department);
+				} else {
+					message = departmentManager.validateDepartment(department);
+				}
 			} else {
-				message = MessageList.ERROR.message();
+				message = MessageList.EMPTYVALUES.message();
 			}
-		} catch (Exception e) {
-			message = MessageList.FAILED_TO_CREATE.message();
-			log.info("Exception-department: " + e);
+		} catch (NullPointerException e) {
+			message = MessageList.EMPTYFIELD.message();
+			log.info("Exception-employee: " + e);
+		} catch (ParseException e) {
+			message = MessageList.INVALIDDATE.message();
+			log.info("Exception-employee: " + e);
+		} catch (NumberFormatException e) {
+			message = MessageList.ERROR.message();
+			log.info("Exception-employee: " + e);
 		}
 		return message;
 	}

@@ -98,10 +98,12 @@ public class DepartmentCrudJDBC implements ICrud {
 		String message = "";
 
 		if (!validator.isValidString(department.getDepartmentNumber())) {
-			message = message + MessageList.EMPTYFIELD.message() + " ";
+			message = message + " Department Number "
+					+ MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isValidString(department.getDepartmentname())) {
-			message = message + MessageList.EMPTYFIELD.message() + " ";
+			message = message + " Department Name "
+					+ MessageList.EMPTYFIELD.message() + " ";
 		}
 		return message;
 	}
@@ -113,7 +115,7 @@ public class DepartmentCrudJDBC implements ICrud {
 			return false;
 		}
 	}
-	
+
 	public List<String> getDepartments() {
 		String query = "SELECT * FROM [HRA.DEPARTMENT]";
 		String message = MessageList.UNKNOWN.message();
@@ -124,8 +126,9 @@ public class DepartmentCrudJDBC implements ICrud {
 			conn = ConnectionManager.getConnection();
 			statement = conn.createStatement();
 			ResultSet result = statement.executeQuery(query);
-			while(result.next()){
-				departments.add(result.getString(1)+"#"+result.getString(2));
+			while (result.next()) {
+				departments
+						.add(result.getString(1) + "#" + result.getString(2));
 			}
 			statement.close();
 			conn.close();
@@ -133,7 +136,7 @@ public class DepartmentCrudJDBC implements ICrud {
 			e.printStackTrace();
 			message = MessageList.ERROR.message();
 		}
-		
+
 		return departments;
 	}
 }

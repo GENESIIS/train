@@ -21,8 +21,6 @@ public class AddEmployee {
 		String message = "";
 		try {
 			// Get employee object extract from Gson object.
-
-			log.info("gsonData: " + gsonData);
 			Employee employee = employeeManager.extractFromgson(gsonData);
 			if (employee != null) {
 				if (employeeManager.validEmployee(employee)) {
