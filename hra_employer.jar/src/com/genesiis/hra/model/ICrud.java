@@ -3,7 +3,7 @@ package com.genesiis.hra.model;
 import java.util.List;
 
 
-public interface IDataAccessor {
+public interface ICrud {
 	public String add(Object object);
 
 	public String update(Employee object);

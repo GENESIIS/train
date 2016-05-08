@@ -1,7 +1,7 @@
 package com.genesiis.hra.command;
 
 
-import com.genesiis.hra.model.EditEmployeeCrudJDBC;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -15,7 +15,7 @@ public class GetEmployee {
 	
 	public String createGson() {
 		String message = "";
-		EditEmployeeCrudJDBC dataAcse  = new EditEmployeeCrudJDBC();	
+		EmployeeCrudJDBC dataAcse  = new EmployeeCrudJDBC();	
 		Gson gson = new Gson();  		 
 		String employeD = null;		
 				
