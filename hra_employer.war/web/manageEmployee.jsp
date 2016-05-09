@@ -272,8 +272,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick=""
-					data-toggle="modal" data-target="#addmoreEmployeedetails">
+					id="moredetails" name="moredetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
 				<button type="button" class="btn btn-warning pull-left"
@@ -302,12 +301,11 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick=""
-						class="btn btn-primary">Educaional Data</a> <a onclick=""
-						href="#" class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick=""
-						class="btn btn-primary">Family Details</a>
+					<a href="#" onclick="" class="btn btn-primary">Educaional Data</a>
+					<a onclick="" href="#" class="btn btn-primary">Study Programs</a> <a
+						href="#" onclick="" class="btn btn-primary">Loan Details</a> <a
+						href="#" onclick="loadfamilydetails()" class="btn btn-primary">Family
+						Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -325,3 +323,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$("#moredetails").click(function() {
+			$("#addmoreEmployeedetails").modal();
+		});
+	});
+</script>

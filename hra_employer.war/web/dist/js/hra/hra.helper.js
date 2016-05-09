@@ -117,7 +117,7 @@ function addEmployeeDetails() {
 			alert(data);
 			if (data == "Details added successfully.") {
 				clearAddemployeeform();
-			//	document.getElementById("moredetails").disabled = false;
+				// document.getElementById("moredetails").disabled = false;
 			}
 		},
 		error : function(e) {
@@ -152,7 +152,6 @@ function isNumberKey(evt) {
 	var charCode = (evt.which) ? evt.which : evt.keyCode;
 	if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
 		return false;
-
 	return true;
 }
 
@@ -383,52 +382,58 @@ function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
 
-
-//Load more details contents
+// Load more details contents
 function loadfamilydetails() {
 	$("#modelrest").load("employeeDetails/familyDetails.jsp");
 }
 
 function disableButton() {
-	//document.getElementById("moredetails").disabled = true;
+	// document.getElementById("moredetails").disabled = true;
 }
 
-
-////Add Family Details
+// //Add Family Details
 function addFamilyDetails() {
-	var fmemployeeId =$("#fmemployeeId").val();
-	var relationship =$("#relationship").val();
-	var relationDateofbirth =$("#relationDateofbirth").val();
-	var relationName =$("#relationName").val();
-	var occupation =$("#occupation").val();
-	var workingPlace =$("#workingPlace").val();
+	var fmemployeeId = $("#fmemployeeId").val();
+	var relationship = $("#relationship").val();
+	var relationDateofbirth = $("#relationDateofbirth").val();
+	var relationName = $("#relationName").val();
+	var occupation = $("#occupation").val();
+	var workingPlace = $("#workingPlace").val();
 
 	var jsonData = {
-			"fmemployeeId" : fmemployeeId,
-			"relationship" : relationship,
-			"relationDateofbirth" : relationDateofbirth,
-			"relationName" : relationName,
-			"occupation" : occupation,
-			"workingPlace" : workingPlace
+		"fmemployeeId" : fmemployeeId,
+		"relationship" : relationship,
+		"relationDateofbirth" : relationDateofbirth,
+		"relationName" : relationName,
+		"occupation" : occupation,
+		"workingPlace" : workingPlace
 	};
 
-//	$.ajax({
-//		type : "POST",
-//		url : 'EmployeeController',
-//		data : {
-//			jsonData : JSON.stringify(jsonData),
-//			task : "ADD"
-//		},
-//		dataType : "json",
-//		success : function(data) {
-//			alert(data);
-//			if (data == "Details added successfully.") {
-//				clearDepartmentform();
-//			}
-//		},
-//		error : function(e) {
-//			alert("Error " + e);
-//			console.log(e);
-//		}
-//	});
+	// $.ajax({
+	// type : "POST",
+	// url : 'EmployeeController',
+	// data : {
+	// jsonData : JSON.stringify(jsonData),
+	// task : "ADD"
+	// },
+	// dataType : "json",
+	// success : function(data) {
+	// alert(data);
+	// if (data == "Details added successfully.") {
+	// clearDepartmentform();
+	// }
+	// },
+	// error : function(e) {
+	// alert("Error " + e);
+	// console.log(e);
+	// }
+	// });
+}
+
+function clearFamilydetails() {
+	$("#fmemployeeId").val();
+	$("#relationDateofbirth").val();
+	$("#relationName").val();
+	$("#occupation").val();
+	$("#workingPlace").val();
 }

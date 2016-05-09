@@ -4,12 +4,14 @@
 	<i class="glyphicon glyphicon-edit"></i> Family Details
 </h3>
 <div class="form-group">
-	<label for="fmemployeeId">Employee</label> <input type="text"
+	<label for="fmemployeeId">Employee</label><span id="fmemployeeidError"
+		name="fmemployeeidError"></span> <input type="text"
 		class="form-control" id="fmemployeeId" name="fmemployeeId"
 		placeholder="">
 </div>
 <div class="form-group">
-	<label for="relationship">Relationship</label> <select
+	<label for="relationship">Relationship</label><span
+		id="relationshipError" name="relationshipError"></span> <select
 		class="form-control" id="relationship" name="relationship">
 		<option value="Father">Father</option>
 		<option value="Mother">Mother</option>
@@ -22,14 +24,16 @@
 	</select>
 </div>
 <div class="form-group">
-	<label for="relationName">Name</label> <input type="text"
+	<label for="relationName">Name</label><span id="relationnameError"
+		name="relationnameError"></span> <input type="text"
 		class="form-control" id="relationName" name="relationName"
 		placeholder="">
 </div>
 <div class="row">
 	<div class="col-md-6">
 		<div class="form-group">
-			<label for="relationDateofbirth">Date of Birth</label> <input
+			<label for="relationDateofbirth">Date of Birth</label><span
+				id="relationbirthdateError" name="relationbirthdateError"></span> <input
 				type="date" class="form-control" id="relationDateofbirth"
 				name="relationDateofbirth" placeholder="">
 		</div>
@@ -37,20 +41,26 @@
 </div>
 
 <div class="form-group">
-	<label for="occupation">Occupation</label> <input type="text"
-		class="form-control" id="occupation" name="occupation" placeholder="">
+	<label for="occupation">Occupation</label> <span id="occupationError"
+		name="occupationError"></span><input type="text" class="form-control"
+		id="occupation" name="occupation" placeholder="">
 </div>
 
 <div class="form-group">
-	<label for="workingPlace">Working Place/School</label> <input
+	<label for="workingPlace">Working Place/School</label><span
+		id="workingplaceError" name="workingplaceError"></span> <input
 		type="text" class="form-control" id="workingPlace"
 		name="occupationPlace" placeholder="">
 </div>
 
 <div class="">
 	<button type="button" class="btn btn-success pull-right"
-		onclick="updatedAlert()" data-dismiss="modal">
+		onclick="addFamilyDetails()" data-dismiss="modal">
 		<i class="glyphicon glyphicon-floppy-disk"></i> Save
+	</button>
+	<button type="button" class="btn btn-warning pull-left"
+		onclick="clearFamilydetails()">
+		<i class="glyphicon glyphicon-refresh"></i> Clear
 	</button>
 	<button type="button" class="btn btn-danger pull-left"
 		data-dismiss="modal">
