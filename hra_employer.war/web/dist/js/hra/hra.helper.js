@@ -84,7 +84,6 @@ function addEmployeeDetails() {
 	var employeeMobile = $("#employeeMobile").val();
 	var employeeEmail = $("#employeeEmail").val();
 	var employeeJoindate = $("#employeeJoindate").val();
-	var employeeNumber = $("#employeeNumber").val();
 
 	var employeeData = {
 		"employeeName" : employeeFirstname,
@@ -102,7 +101,6 @@ function addEmployeeDetails() {
 		"employeeMobile" : employeeMobile,
 		"employeeEmail" : employeeEmail,
 		"employeeJoindate" : employeeJoindate,
-		"employeeId" : employeeNumber
 	};
 
 	$.ajax({
@@ -144,7 +142,6 @@ function clearAddemployeeform() {
 	$("#employeeMobile").val("");
 	$("#employeeEmail").val("");
 	$("#employeeJoindate").val("");
-	$("#employeeNumber").val("");
 	getDepartment();
 }
 
@@ -251,13 +248,13 @@ function updateEmployeeDetails() {
 
 // Get data and sent to DepartmentController.java.
 function addDepartmentDetails() {
-	var departmentNumber = $("#departmentNumber").val();
+//	var departmentNumber = $("#departmentNumber").val();
 	var departmentName = $("#departmentName").val();
 	var departmentLocation = $("#departmentLocation").val();
 	var departmentHead = $("#departmentHead").val();
 
 	var jsonData = {
-		"departmentNumber" : departmentNumber,
+//		"departmentNumber" : departmentNumber,
 		"departmentName" : departmentName,
 		"departmentLocation" : departmentLocation,
 		"departmentHead" : departmentHead
@@ -290,7 +287,7 @@ function deleteDepartmentDetails() {
 }
 
 function clearDepartmentform() {
-	$("#departmentNumber").val("");
+//	$("#departmentNumber").val("");
 	$("#departmentName").val("");
 	$("#departmentLocation").val("");
 	getManager();

@@ -81,16 +81,16 @@
 				</h3>
 			</div>
 			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="departmentNumber">Department Number</label> <input
-								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="" maxlength="5"
-								size="5">
-						</div>
-					</div>
-				</div>
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col-md-6"> -->
+<!-- 						<div class="form-group"> -->
+<!-- 							<label for="departmentNumber">Department Number</label> <input -->
+<!-- 								type="text" class="form-control" id="departmentNumber" -->
+<!-- 								name="departmentNumber" placeholder="" value="" maxlength="5" -->
+<!-- 								size="5"> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 
 				<div class="form-group">
 					<label for="departmentName">Department Name</label> <input

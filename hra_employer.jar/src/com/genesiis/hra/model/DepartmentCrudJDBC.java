@@ -32,7 +32,7 @@ public class DepartmentCrudJDBC implements ICrud {
 	 * **/
 	@Override
 	public String add(Object object) {
-		String query = "INSERT INTO [HRA.DEPARTMENT] (ID, NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?)";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -41,11 +41,10 @@ public class DepartmentCrudJDBC implements ICrud {
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, department.getDepartmentNumber());
-			preparedStatement.setString(2, department.getDepartmentname());
-			preparedStatement.setString(3, department.getDepartmentlocation());
-			preparedStatement.setString(4, department.getDepartmentHead());
-			preparedStatement.setString(5, "SYSTEM");
+			preparedStatement.setString(1, department.getDepartmentname());
+			preparedStatement.setString(2, department.getDepartmentlocation());
+			preparedStatement.setString(3, department.getDepartmentHead());
+			preparedStatement.setString(4, "SYSTEM");
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
@@ -102,10 +101,10 @@ public class DepartmentCrudJDBC implements ICrud {
 		DataValidator validator = new DataValidator();
 		String message = "";
 
-		if (!validator.isValidString(department.getDepartmentNumber())) {
-			message = message + " Department Number "
-					+ MessageList.EMPTYFIELD.message() + " ";
-		}
+//		if (!validator.isValidString(department.getDepartmentNumber())) {
+//			message = message + " Department Number "
+//					+ MessageList.EMPTYFIELD.message() + " ";
+//		}
 		if (!validator.isValidString(department.getDepartmentname())) {
 			message = message + " Department Name "
 					+ MessageList.EMPTYFIELD.message() + " ";

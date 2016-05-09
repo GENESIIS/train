@@ -3,7 +3,6 @@ import javax.persistence.Column;
 
 //@Entity
 public class Employee {
-	private String employeeId;
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -24,15 +23,7 @@ public class Employee {
 	
 	public Employee() {
 	}
-
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
-
+	
 	public String getEmployeename() {
 		return employeeName;
 	}
@@ -153,7 +144,7 @@ public class Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
-	public Employee(String employeeId, String employeeName,
+	public Employee(String employeeName,
 			String employeeDesignation, String employeeEmail,
 			String employeeDateofbirth, String employeeNic,
 			String employeeGender, String employeePermenetaddress,
@@ -162,7 +153,6 @@ public class Employee {
 			String employeeMaritalstatus, String employeeJoindate,
 			String employeeEpf, String employeeBasis) {
 		super();
-		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeeDesignation = employeeDesignation;
 		this.employeeEmail = employeeEmail;

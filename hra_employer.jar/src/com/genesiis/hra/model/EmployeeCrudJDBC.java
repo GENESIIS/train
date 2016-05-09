@@ -27,10 +27,10 @@ public class EmployeeCrudJDBC implements ICrud {
 
 	@Override
 	public String add(Object object) {
-		String query = "INSERT INTO [HRA.EMPLOYEE] (ID, NAME, DESIGNATION, "
+		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
 				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
 				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, EPF, BASIS) "
-				+ "VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)";
+				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -39,26 +39,25 @@ public class EmployeeCrudJDBC implements ICrud {
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, employee.getEmployeeid());
-			preparedStatement.setString(2, employee.getEmployeename());
-			preparedStatement.setString(3, employee.getEmployeedesignation());
-			preparedStatement.setString(4, employee.getEmployeeemail());
-			preparedStatement.setString(5, employee.getEmployeedateofbirth());
-			preparedStatement.setString(6, employee.getEmployeenic());
-			preparedStatement.setString(7, employee.getEmployeegender());
-			preparedStatement.setString(8,
+			preparedStatement.setString(1, employee.getEmployeename());
+			preparedStatement.setString(2, employee.getEmployeedesignation());
+			preparedStatement.setString(3, employee.getEmployeeemail());
+			preparedStatement.setString(4, employee.getEmployeedateofbirth());
+			preparedStatement.setString(5, employee.getEmployeenic());
+			preparedStatement.setString(6, employee.getEmployeegender());
+			preparedStatement.setString(7,
 					employee.getEmployeepermenetaddress());
-			preparedStatement.setString(9,
+			preparedStatement.setString(8,
 					employee.getEmployeetemporaryaddress());
-			preparedStatement.setString(10, employee.getEmployeemobile());
-			preparedStatement.setString(11, employee.getEmployeetelephone());
-			preparedStatement.setString(12, employee.getEmployeedepartment());
+			preparedStatement.setString(9, employee.getEmployeemobile());
+			preparedStatement.setString(10, employee.getEmployeetelephone());
+			preparedStatement.setString(11, employee.getEmployeedepartment());
 			preparedStatement
-					.setString(13, employee.getEmployeemaritalstatus());
-			preparedStatement.setString(14, employee.getEmployeejoindate());
-			preparedStatement.setString(15, "SYSTEM");
-			preparedStatement.setString(16, employee.getEmployeeepf());
-			preparedStatement.setString(17, employee.getEmployeebasis());
+					.setString(12, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(13, employee.getEmployeejoindate());
+			preparedStatement.setString(14, "SYSTEM");
+			preparedStatement.setString(15, employee.getEmployeeepf());
+			preparedStatement.setString(16, employee.getEmployeebasis());
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
@@ -112,34 +111,30 @@ public class EmployeeCrudJDBC implements ICrud {
 		DataValidator validator = new DataValidator();
 		String message = "";
 
-		if (!validator.isValidString(employee.getEmployeeid())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
-		}
 		if (!validator.isValidString(employee.getEmployeename())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
+			message = message + MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isValidNic(employee.getEmployeenic())) {
-			message = message + MessageList.NICERROR.message() +" ";
+			message = message + MessageList.NICERROR.message() + " ";
 		}
 		if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
+			message = message + MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
-			message = message + MessageList.INVALIDBIRTDAY.message() +" ";
+			message = message + MessageList.INVALIDBIRTDAY.message() + " ";
 		}
 		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
-			message = message + MessageList.MOBILENUMBERERROR.message() +" ";
+			message = message + MessageList.MOBILENUMBERERROR.message() + " ";
 		}
 		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
-			message = message + MessageList.PHONENUMBERERROR.message() +" ";
+			message = message + MessageList.PHONENUMBERERROR.message() + " ";
 		}
 		if (!validator.isValidemail(employee.getEmployeeemail())) {
-			message = message + MessageList.EMAILERROR.message() +" ";
+			message = message + MessageList.EMAILERROR.message() + " ";
 		}
 		return message;
 	}
 
-	
 	public boolean validEmployee(Employee employee) throws ParseException {
 		if (validateEmployee(employee).isEmpty()) {
 			return true;
@@ -147,7 +142,7 @@ public class EmployeeCrudJDBC implements ICrud {
 			return false;
 		}
 	}
-	
+
 	public List<String> getManagers() {
 		String query = "SELECT * FROM [HRA.EMPLOYEE] WHERE DESIGNATION='Manager';";
 		Connection conn = null;
@@ -157,14 +152,15 @@ public class EmployeeCrudJDBC implements ICrud {
 			conn = ConnectionManager.getConnection();
 			statement = conn.createStatement();
 			ResultSet result = statement.executeQuery(query);
-			while(result.next()){
-				managers.add(result.getString(1)+"#"+result.getString(2));
+			while (result.next()) {
+				managers.add(result.getString(1) + "#"
+						+ result.getString(2).replaceAll(",", " "));
 			}
 			statement.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
 		return managers;
 	}
 
