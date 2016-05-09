@@ -76,8 +76,59 @@ public class EmployeeCrudJDBC implements ICrud {
 	@Override
 	public String update(Object object) {
 		// TODO Auto-generated method stub
-		return null;
+		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
+				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
+				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Employee employee = (Employee) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, employee.getEmployeename());
+			preparedStatement.setString(2, employee.getEmployeedesignation());
+			preparedStatement.setString(3, employee.getEmployeeemail());
+			preparedStatement.setString(4, employee.getEmployeedateofbirth());
+			preparedStatement.setString(5, employee.getEmployeenic());
+			preparedStatement.setString(6, employee.getEmployeegender());
+			preparedStatement.setString(7,
+					employee.getEmployeepermenetaddress());
+			preparedStatement.setString(8,
+					employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(9, employee.getEmployeemobile());
+			preparedStatement.setString(10, employee.getEmployeetelephone());
+			preparedStatement.setString(11, employee.getEmployeedepartment());
+			preparedStatement
+					.setString(12, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(13, employee.getEmployeejoindate());
+			preparedStatement.setString(14, "S");
+			preparedStatement.setString(15, employee.getEmployeeepf());
+			preparedStatement.setString(16, employee.getEmployeebasis());
+			preparedStatement.setString(17, "1");
+
+			int rows = preparedStatement.executeUpdate();
+			if (rows > 0) {
+				message = "Succesfull";
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return message;
 	}
+		
+
 
 	@Override
 	public String delete(Object object) {
