@@ -21,7 +21,7 @@ import com.google.gson.Gson;
 
 ///***********************************************
 //* 20160407 PN HRA-1 created EmployeeController.java class
-//* 20160430 PN HRA-1 doGet(), doPost() methods compleated.
+//* 20160430 PN HRA-1 doGet(), doPost() methods completed.
 //* 
 //***********************************************/
 
