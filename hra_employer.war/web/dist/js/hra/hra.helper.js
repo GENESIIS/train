@@ -5,6 +5,10 @@
  * modified.
  */
 
+var theNewScript = document.createElement("script");
+theNewScript.type = "text/javascript";
+theNewScript.src = "hra.validation.js";
+
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 }
@@ -161,7 +165,6 @@ function isLetter(evt) {
 			&& (inputValue != 32 && inputValue != 0)) {
 		evt.preventDefault();
 	}
-
 }
 
 // load data to edit
@@ -400,14 +403,18 @@ function addFamilyDetails() {
 	var occupation = $("#occupation").val();
 	var workingPlace = $("#workingPlace").val();
 
-	var jsonData = {
-		"fmemployeeId" : fmemployeeId,
-		"relationship" : relationship,
-		"relationDateofbirth" : relationDateofbirth,
-		"relationName" : relationName,
-		"occupation" : occupation,
-		"workingPlace" : workingPlace
-	};
+	var emptyfield = isEmptyfield(fmemployeeId);
+	var emptydropdown = isEmptyfield(relationship);
+
+	alert(emptyfield + emptydropdown);
+	// var jsonData = {
+	// "fmemployeeId" : fmemployeeId,
+	// "relationship" : relationship,
+	// "relationDateofbirth" : relationDateofbirth,
+	// "relationName" : relationName,
+	// "occupation" : occupation,
+	// "workingPlace" : workingPlace
+	// };
 
 	// $.ajax({
 	// type : "POST",

@@ -5,21 +5,12 @@ package com.genesiis.hra.model;
  * 
  * 
  * **/
-public class Familymember {
-	private String employeeId;
+public class Familymember extends Employee{
 	private String fmName;
 	private String fmDateOfbirth;
 	private String fmRelationship;
 	private String fmOccupation;
 	private String fmWorkingPlace;
-
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
 
 	public String getFmname() {
 		return fmName;
@@ -64,15 +55,13 @@ public class Familymember {
 	public Familymember() {
 	}
 
-	public Familymember(String employeeId, String fmName, String fmDateOfbirth,
+	public Familymember(String fmName, String fmDateOfbirth,
 			String fmRelationship, String fmOccupation, String fmWorkingPlace) {
 		super();
-		this.employeeId = employeeId;
 		this.fmName = fmName;
 		this.fmDateOfbirth = fmDateOfbirth;
 		this.fmRelationship = fmRelationship;
 		this.fmOccupation = fmOccupation;
 		this.fmWorkingPlace = fmWorkingPlace;
 	}
-
 }
