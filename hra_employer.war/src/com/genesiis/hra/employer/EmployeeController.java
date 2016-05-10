@@ -103,6 +103,7 @@ public class EmployeeController extends HttpServlet {
 				BasicData employee = new BasicData();
 				employee = (BasicData) dim.extractFromJason(
 						"com.genesiis.hra.model.BasicData", employeeDetails);
+				
 				String s = dim.execute(1, employee);
 				log.info(" : " + s);
 				break;

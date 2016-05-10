@@ -5,10 +5,6 @@
  * modified.
  */
 
-var theNewScript = document.createElement("script");
-theNewScript.type = "text/javascript";
-theNewScript.src = "hra.validation.js";
-
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 }
@@ -21,20 +17,6 @@ function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 }
 
-// Only for Sprint -1 demo.
-function deleteAlert() {
-	alert("Data Deleted Successfully.");
-}
-
-function addedAlert() {
-	// document.getElementById("moredetails").disabled = false;
-	document.getElementById("moredetails").disabled = false;
-	alert("Data Added Successfully.");
-}
-
-function updatedAlert() {
-	alert("Data Updated Successfully.");
-}
 // Get Employees for Add Department Form
 function getManager() {
 	$.getJSON('DepartmentController', {
@@ -48,10 +30,6 @@ function getManager() {
 			$('<option>').val(result[0]).text(result[1]).appendTo(select);
 		});
 	});
-}
-function addedAlert() {
-	alert("Data Added Successfully.");
-	document.getElementById("moredetails").disabled = false;
 }
 
 // Get Departments for Add Employee Form
@@ -297,25 +275,7 @@ function clearDepartmentform() {
 	$("#departmentLocation").val("");
 	getManager();
 }
-// ////load more edit Employeee Detail///////////////
 
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-}
-
-function loadEditemployementhistory() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
-}
-
-function loadEditContentstudyprograms() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-}
-
-function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
-}
-
-// ///////////////////////////////////////////////
 $(document).on("click", "#vbutton", function() {
 
 	$.get("EmployerController", function(data, status) {
@@ -403,10 +363,23 @@ function addFamilyDetails() {
 	var occupation = $("#occupation").val();
 	var workingPlace = $("#workingPlace").val();
 
-	var emptyfield = isEmptyfield(fmemployeeId);
-	var emptydropdown = isEmptyfield(relationship);
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
 
-	alert(emptyfield + emptydropdown);
+	if (employeeIdtb == false) {
+		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	}
+	if (relationNametb == false) {
+		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
+	}
 	// var jsonData = {
 	// "fmemployeeId" : fmemployeeId,
 	// "relationship" : relationship,
@@ -438,9 +411,13 @@ function addFamilyDetails() {
 }
 
 function clearFamilydetails() {
-	$("#fmemployeeId").val();
-	$("#relationDateofbirth").val();
-	$("#relationName").val();
-	$("#occupation").val();
-	$("#workingPlace").val();
+	$("#fmemployeeId").val("");
+	$("#relationDateofbirth").val("");
+	$("#relationName").val("");
+	$("#occupation").val("");
+	$("#workingPlace").val("");
+	$('#relationship option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
 }

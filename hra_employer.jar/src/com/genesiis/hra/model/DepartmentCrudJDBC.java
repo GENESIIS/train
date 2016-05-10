@@ -22,15 +22,13 @@ import com.google.gson.Gson;
 //* 20160429 PN Modified the add(Object object) Method.
 //***********************************************/
 
-public class DepartmentCrudJDBC extends ICrud {
+public class DepartmentCrudJDBC {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
-	
 	/**
 	 * This method is t
 	 * 
 	 * **/
-	@Override
 	public String add(Object object) {
 		String query = "INSERT INTO [HRA.DEPARTMENT] (ID, NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?, ?)";
 		String message = MessageList.UNKNOWN.message();
@@ -65,18 +63,14 @@ public class DepartmentCrudJDBC extends ICrud {
 		return message;
 	}
 
-	@Override
 	public String update(Object object) {
 		return null;
 	}
 
-	@Override
 	public String delete(Object object) {
 		return null;
 	}
 
-
-	@Override
 	public List<Object> getAll() {
 		return null;
 	}
@@ -141,7 +135,6 @@ public class DepartmentCrudJDBC extends ICrud {
 		return departments;
 	}
 
-	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;

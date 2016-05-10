@@ -31,6 +31,7 @@
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
+<script src="dist/js/hra/hra.validation.js"></script>
 
 <style type="text/css">
 /* label { */
@@ -39,8 +40,14 @@
 input {
 	font-weight: normal !important;
 }
+
 select {
 	font-weight: normal !important;
+}
+
+warningspan {
+	font-weight: normal !important;
+	color: red;
 }
 </style>
 
