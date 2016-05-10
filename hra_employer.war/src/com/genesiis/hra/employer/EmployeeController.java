@@ -18,6 +18,7 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -100,10 +101,10 @@ public class EmployeeController extends HttpServlet {
 				// employeeDetails);
 				// log.info("uihegruighuiwehguihweuighwe : "
 				// + emp.getEmployeebasis());
-				BasicData employee = new BasicData();
-				employee = (BasicData) dim.extractFromJason(
-						"com.genesiis.hra.model.BasicData", employeeDetails);
-				String s = dim.execute(1, employee);
+				Loan employee = new Loan();
+				employee = (Loan) dim.extractFromJason(
+						"com.genesiis.hra.model.Loan", employeeDetails);
+				String s = dim.execute(3, employee);
 				log.info(" : " + s);
 				break;
 			// For other operations.

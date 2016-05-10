@@ -388,6 +388,8 @@ function loadEditemergencycontacts() {
 // Load more details contents
 function loadfamilydetails() {
 	$("#modelrest").load("employeeDetails/familyDetails.jsp");
+}function loadlonedetails() {
+	$("#modelrest").load("employeeDetails/loanDetails.jsp");
 }
 
 function disableButton() {
@@ -443,4 +445,52 @@ function clearFamilydetails() {
 	$("#relationName").val();
 	$("#occupation").val();
 	$("#workingPlace").val();
+}
+
+
+
+// add Loan Deatile
+function addLoanDetailes() {
+	var departmentNumber = $("#employeeId").val();
+	var LoanAmount = $("#totalOutstanding").val();
+	var LoanBorrowers = $("#borrowers").val();
+	var LoanmonthlyPayment = $("#monthlyPayment").val();
+	var LoanDueDate = $("#dueDate").val();
+
+	var jsonData = {
+		"departmentNumber" : departmentNumber,
+		"LoanAmount" : LoanAmount,
+		"LoanBorrowers" : LoanBorrowers,
+		"LoanmonthlyPayment" : LoanmonthlyPayment,
+		"LoanDueDate" : LoanDueDate
+	};
+	alert(JSON.stringify(jsonData));
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				clearLoanDetails();
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}		
+	});
+	
+}
+
+function clearLoanDetails() {
+	$("#employeeId").val("");
+	$("#totalOutstanding").val("");
+	$("#borrowers").val("");
+	$("#dueDate").val("");
+	$("#monthlyPayment").val("");
 }

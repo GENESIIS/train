@@ -303,7 +303,7 @@
 				<div class="btn-group btn-group-justified">
 					<a href="#" onclick="" class="btn btn-primary">Educaional Data</a>
 					<a onclick="" href="#" class="btn btn-primary">Study Programs</a> <a
-						href="#" onclick="" class="btn btn-primary">Loan Details</a> <a
+						href="#" onclick="loadlonedetails()" class="btn btn-primary">Loan Details</a> <a
 						href="#" onclick="loadfamilydetails()" class="btn btn-primary">Family
 						Details</a>
 				</div>

@@ -47,7 +47,7 @@ public class EditEmployee {
 				
 		public boolean validEmployee(Employee empl) {
 			DataValidator validator = new DataValidator();
-			if (validator.isValidString(empl.getEmployeename())) {
+			if (validator.isValidString("strung")) {
 				return true;
 			} else {
 				return false;

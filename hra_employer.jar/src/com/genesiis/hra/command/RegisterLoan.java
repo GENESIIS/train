@@ -41,15 +41,11 @@ public class RegisterLoan implements ICommand {
 	  return LoanDeatail;
 	}
 	
-	public Boolean validateValue(Object entityObject){
+	public boolean validateValue(Object entityObject){
 		DataValidator validator = new DataValidator();
 		Loan loan =(Loan)entityObject;
 		String message = "";
-		if (loan!= null) {
-			if (!validator.isValidString(loan.getEmployeeId())) {
-				message = message + " Department Number "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
+		if (loan!= null) {			
 			if (!validator.isValidString(loan.getLoanAmount())) {
 				message = message + " Department Name "
 						+ MessageList.EMPTYFIELD.message() + " ";
@@ -72,8 +68,8 @@ public class RegisterLoan implements ICommand {
 		return true;
 	}
 	
-    public Boolean validateValue(HashMap<Integer, Object> entityMap){
+    public boolean validateValue(HashMap<Integer, Object> entityMap){
 		
-		return null;
+		return true;
 	}
 }

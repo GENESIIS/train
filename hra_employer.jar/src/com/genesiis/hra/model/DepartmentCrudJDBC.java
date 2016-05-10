@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 //* 20160429 PN Modified the add(Object object) Method.
 //***********************************************/
 
-public class DepartmentCrudJDBC extends ICrud {
+public class DepartmentCrudJDBC implements ICrud {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	
