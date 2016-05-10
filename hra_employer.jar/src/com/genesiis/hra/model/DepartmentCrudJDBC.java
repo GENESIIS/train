@@ -25,6 +25,11 @@ import com.google.gson.Gson;
 public class DepartmentCrudJDBC implements ICrud {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
+	
+	/**
+	 * This method is t
+	 * 
+	 * **/
 	@Override
 	public String add(Object object) {
 		String query = "INSERT INTO [HRA.DEPARTMENT] (ID, NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?, ?)";

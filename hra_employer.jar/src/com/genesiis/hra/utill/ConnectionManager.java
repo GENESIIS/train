@@ -30,20 +30,16 @@ public class ConnectionManager {
 			// From the datasource name, we get the datasource which we have
 			// mentioned in hra.xml file.
 			dataSource = (DataSource) new InitialContext().lookup(DB_JNDI_NAME);
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		} catch (NullPointerException e) {
+			log.error("NullPointerException: look up dataSource: " + e);
+		} catch (NamingException e) {
+			log.error("NamingException: nameing the dataSource " + e);
+		} catch (ClassCastException e) {
+			log.error("ClassCastException: casting dataSource = (DataSource) "
+					+ e);
+		} finally {
+			log.error("ConnectionManager static block execution over.");
 		}
-
-		// catch (NullPointerException e) {
-		// log.error("NullPointerException: look up dataSource: " + e);
-		// } catch (NamingException e) {
-		// log.error("NamingException: nameing the dataSource " + e);
-		// } catch (ClassCastException e) {
-		// log.error("ClassCastException: casting dataSource = (DataSource) "
-		// + e);
-		// } finally {
-		// log.error("ConnectionManager static block execution over.");
-		// }
 	}
 
 	// This method only return the Connection type variable for other classed,

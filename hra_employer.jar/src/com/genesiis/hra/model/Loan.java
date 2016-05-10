@@ -2,20 +2,14 @@ package com.genesiis.hra.model;
 
 import java.sql.Date;
 
-public class Loan {
+public class Loan extends Employee {
 
-	String employeeId ;	
+		
 	String LoanAmount;
 	String LoanBorrowers;
 	String LoanmonthlyPayment;
-	String LoanDueDate;
+	String LoanDueDate;	
 	
-	public String getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
 	public String getLoanAmount() {
 		return LoanAmount;
 	}
@@ -40,4 +34,15 @@ public class Loan {
 	public void setLoanDueDate(String loanDueDate) {
 		LoanDueDate = loanDueDate;
 	} 
+	
+	public Loan( String LoanAmount, String LoanBorrowers, String LoanmonthlyPayment, String LoanDueDate) {
+		super();
+		this.LoanAmount = LoanAmount;
+		this.LoanBorrowers = LoanBorrowers;
+		this.LoanmonthlyPayment = LoanmonthlyPayment;
+		this.LoanmonthlyPayment = LoanmonthlyPayment;
+		this.LoanDueDate = LoanDueDate;
+	}
+	public Loan() {
+	}
 }

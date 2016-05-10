@@ -272,8 +272,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick="" disabled="true"
-					data-toggle="modal" data-target="#addmoreEmployeedetails">
+					id="moredetails" name="moredetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
 				<button type="button" class="btn btn-warning pull-left"
@@ -289,7 +288,6 @@
 	</div>
 </div>
 
-
 <!-- Modal -->
 <div class="modal fade" id="addmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
@@ -303,13 +301,11 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
+					<a href="#" onclick="" class="btn btn-primary">Educaional Data</a>
+					<a onclick="" href="#" class="btn btn-primary">Study Programs</a> <a
+						href="#" onclick="" class="btn btn-primary">Loan Details</a> <a
+						href="#" onclick="loadfamilydetails()" class="btn btn-primary">Family
+						Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -328,278 +324,10 @@
 	</div>
 </div>
 
-<!--"Edit Employee Details Form" Modal -->
-<!--//////////////////////////////////////////////// new edit/////////////////////////////////////////////////////// -->
-
-<!-- Modal -->
-	<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h3 class="modal-title">
-						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
-						<i class="glyphicon glyphicon-user"></i> Employee Details
-					</h3>
-				</div>
-				<div class="modal-body">
-					<div class="well">
-						<h3 class="">General Details</h3>
-						<!-- 						<div class="row"> -->
-						<!-- 							<div class="col-md-6"> -->
-						<div class="form-group">
-							<label for="editemployeeId">Name</label> <input type="text"
-								class="form-control" id="employeeNameEdit" name="editemployeeId"
-								placeholder="">
-						</div>
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Middle Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Last Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Date of Birth</label> <input
-										type="date" class="form-control" id="employeeDateofBothEdit"
-										type="date" class="form-control" id="editemployeeId"
-										name="employeeDateofBothEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">NIC</label> <input type="text"
-										class="form-control" id="employeeNICEdit" name="editemployeeNIC"
-										placeholder="">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Gender</label> <input type="text"
-										class="form-control" id="employeeGenderEdit" name="employeeGenderEdit"
-										placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Marital Status</label> <input
-										type="text" class="form-control" id="employeeMaritalEdit"
-										name="editemployeeId" placeholder="">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="well">
-						<h3 class="">Job Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">EPF Number</label> <input
-										type="text" class="form-control" id="employeeEPFEdit"
-										name="employeeEPFEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Employment Status</label> <input
-										type="text" class="form-control" id="employeeStatusEdit"
-										name="employeeStatusEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-
-									<label for="editemployeeId">Designation</label> <input
-										type="text" class="form-control" id="employeeDesignationEdit"
-										name="employeeDesignationEdit" placeholder="">
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Department</label> <input
-										type="text" class="form-control" id="employeeDepartmentEdit"
-										name="employeeDepartmentEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="well">
-						<h3 class="">Contact Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Permanent Address</label>
-									<textarea class="form-control" id="employeeAddressEdit"
-										name="employeeAddressEdit" placeholder=""></textarea>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Temporary Address</label>
-									<textarea class="form-control" id="employeeTempADDEdit"
-										name="employeeTempADDEdit" placeholder=""></textarea>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Telephone</label> <input
-										type="text" class="form-control" id="employeeOtherNumberEdit"
-										name="employeeOtherNumberEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Mobile Number</label> <input
-										type="text" class="form-control" id="employeeMobileNumberEdit"
-										name="employeeMobileNumberEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label for="editemployeeId">Email</label> <input type="text"
-								class="form-control" id="employeeEmailEdit" name="editemployeeId"
-								placeholder="">
-						</div>
-					</div>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success pull-right"
-						onclick="updateEmployeeDetails()" data-dismiss="">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Update
-					</button>
-					<button type="button" class="btn btn-warning pull-right" id="moredetails"
-						name="moredetails" onclick="" data-dismiss="modal" 
-						data-toggle="modal" data-target="#editmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i>Edit More Details
-					</button>					
-					<button type="button" class="btn btn-danger pull-left"
-						data-dismiss="modal" onclick="">
-						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<!--////////////////////////////////////////-->
-
-<div class="modal fade" id="editmoreEmployeedetails" role="dialog">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>Edit More Employee Details
-				</h3>
-			</div>
-			<div class="modal-body">
-
-				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-				</div>
-				<div id="Editmodelrest" name="Editmodelrest"></div>
-
-			</div>
-			<!-- 			<div class="modal-footer"> -->
-			<!-- 				<button type="button" class="btn btn-success pull-side" -->
-			<!-- 					onclick="updatedAlert()" data-dismiss=""> -->
-			<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
-			<!-- 				</button> -->
-			<!-- 				<button type="button" class="btn btn-warning " id="moredetails" -->
-			<!-- 					name="moredetails" onclick="" data-dismiss="modal" disabled="true"> -->
-			<!-- 					<i class="glyphicon glyphicon-file"></i> More Details -->
-			<!-- 				</button> -->
-			<!-- 			</div> -->
-		</div>
-	</div>
-</div>
-
-<!--////////////////////////////////////////-->
-
-
-<!--"View Employee Details Form" Modal -->
-<div class="modal fade" id="viewEmployeeDetailsForm" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-modal-window"></i> View Employee Details
-				</h3>
-
-			</div>
-			<div id ="view">           
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger pull-side"
-					data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-warning " id="moredetails"
-						name="moredetails" onclick="" data-dismiss="modal" 
-						data-toggle="modal" data-target="#viewmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i> More Details
-				</button>
-	
-			</div>
-		</div>
-	</div>
-</div>
-<!-- group byn model-->
-<div class="modal fade" id="viewmoreEmployeedetails" role="dialog">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>More Employee Details
-				</h3>
-			</div>
-			<div class="modal-body">
-
-				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadviewqlifications()" class="btn btn-primary">Educaional Data</a> 
-					<a onclick="loadviewstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
-					<a href="#" onclick="loadviewloandetails()" class="btn btn-primary">Loan Details</a> 
-					<a href="#" onclick="loadviewfamilydetails()" class="btn btn-primary">Family Details</a>
-				</div>
-				<div id="viewmodelrest" name="viewmodelrest"></div>
-
-			</div>		
-		</div>
-	</div>
-</div>
-
+<script>
+	$(document).ready(function() {
+		$("#moredetails").click(function() {
+			$("#addmoreEmployeedetails").modal();
+		});
+	});
+</script>
