@@ -127,6 +127,7 @@ function addEmployeeDetails() {
 	});
 }
 
+
 function clearAddemployeeform() {
 	$("#employeeFirstname").val("");
 	$("#employeeMiddlename").val("");
@@ -295,6 +296,87 @@ function clearDepartmentform() {
 	$("#departmentLocation").val("");
 	getManager();
 }
+
+/**
+ * thumeera
+ * Get data and sent to EmployeeController.java
+ * Employee > new employee > more details > add new in EMPLOYEE HISTORY > SAVE 
+ * **/
+
+function addEmployeeHistoryDetails() {
+	
+	var employeeId 				= $("#employeeId").val();
+	var employer 				= $("#employer").val();
+	var designation 			= $("#designation").val();
+	var basis 					= $("#basis").val();
+	var startedOn 				= $("#startedOn").val();
+	var compleatedOn 			= $("#compleatedOn").val();
+	var referenceOne 			= $("#referenceOne").val();
+	var referenceOnecomments 	= $("#referenceOnecomments").val();
+	var referenceTwo 			= $("#referenceTwo").val();
+	var referenceTwocomments 	= $("#referenceTwocomments").val();
+	
+
+	var employeeData = {
+			
+		"employeeId" 			: employeeId,
+		"employeeDateofbirth" 	: employeeDateofbirth,
+		"designation" 			: designation,
+		"basis" 				: basis,
+		"startedOn" 			: startedOn,
+		"compleatedOn" 			: compleatedOn,
+		"referenceOne" 			: referenceOne,
+		"referenceOnecomments" 	: referenceOnecomments,
+		"referenceTwo" 			: referenceTwo,
+		"referenceTwocomments" 	: referenceTwocomments,
+		
+	};
+
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(employeeData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				clearAddemployeeform();
+//				document.getElementById("moredetails").disabled = false;
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}
+
+/**
+ * thumeera
+ * Employee > new employee > more details > add new > clear 
+ * **/
+function clearEmployeementHisory() {
+	
+	$("#employeeId").val("");
+	$("#employer").val("");
+	$("#designation").val("");
+	$("#basis").val("");
+	
+	$("#startedOn").val("");
+	$("#compleatedOn").val("");
+	
+	$("#referenceOne").val("");
+	$("#referenceOnecomments").val("");
+	
+	$("#referenceTwo").val("");
+	$("#referenceTwocomments").val("");
+
+}
+
+
 // ////load more edit Employeee Detail///////////////
 
 function loadEditContentqualifications() {

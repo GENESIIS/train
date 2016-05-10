@@ -14,6 +14,7 @@
 </script>
 
 
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
 
@@ -302,25 +303,25 @@
 					<i class="glyphicon glyphicon-user">More Employee Details</i>
 				</h3>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" onload="ready()">
 
-				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary"  >Educaional Data</a> 
-					<a href="#" onclick="loadAddEmployementDetails()"  class="btn btn-primary" id="btnEmpHisDet">Employee History Details</a> 
+				<div class="btn-group btn-group-justified" >
+					<a id="btnEduDat"href="#" onclick="loadContentqualifications()" class="btn btn-primary"  >Educaional Data</a> 
+					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementDetails()"  class="btn btn-primary" >Employee History Details</a> 
 					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
 					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
 				</div>
 				
-				<div class="modal-body1">
-                	<div id="placeholder-div1" style="overflow-y: scroll;">
+				<div class="modal-body1"  style="overflow-y:auto;" >
+                	<div id="modelrest" style="overflow-y:auto;">
                 
                 	</div>                    
               	</div>
               
               
-				<div id="modelrest" name="modelrest">
+			<!-- <div id="modelrest" name="modelrest" style="overflow-y: scroll;> -->
 				
-				</div>
+ 				</div> 
 
 			</div>
 			<!-- 			<div class="modal-footer"> -->

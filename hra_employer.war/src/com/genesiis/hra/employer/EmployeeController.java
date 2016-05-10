@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
+import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
@@ -37,13 +38,13 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployee addEmployee = new AddEmployee();
+		AddEmployee addEmployee = new AddEmployee();																
 		GetDepartment department = new GetDepartment();
-
+		AddEmployeeHistory addEmployeeHistory = new AddEmployeeHistory(); //add employee history data pass
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
+		hmap.put(2, addEmployeeHistory);//map pass employeement history
 		hmap.put(5, department);
-		// hmap.put(3, null);
 		// hmap.put(4, null);
 	}
 
@@ -111,6 +112,11 @@ public class EmployeeController extends HttpServlet {
 			// break;
 			// case 4:
 			// break;
+			case 5:
+				AddEmployeeHistory addEmployeeHistory = (AddEmployeeHistory) hmap.get(2); //add employee history data pass
+				message = addEmployeeHistory.execute(employeeDetails);
+				response.getWriter().write(gson.toJson(message));
+				break;
 			default:
 				break;
 			}
