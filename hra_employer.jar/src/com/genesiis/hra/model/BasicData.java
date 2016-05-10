@@ -14,7 +14,7 @@ public class BasicData extends Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-	private String employeeEpf;
+	// private String employeeEpf;
 	private String employeeBasis;
 
 	public String getEmployeename() {
@@ -121,14 +121,6 @@ public class BasicData extends Employee {
 		this.employeeJoindate = employeeJoindate;
 	}
 
-	public String getEmployeeepf() {
-		return employeeEpf;
-	}
-
-	public void setEmployeeepf(String employeeEpf) {
-		this.employeeEpf = employeeEpf;
-	}
-
 	public String getEmployeebasis() {
 		return employeeBasis;
 	}
@@ -158,7 +150,7 @@ public class BasicData extends Employee {
 		this.employeeDepartment = employeeDepartment;
 		this.employeeMaritalstatus = employeeMaritalstatus;
 		this.employeeJoindate = employeeJoindate;
-		this.employeeEpf = employeeEpf;
+		super.employeeEpf = employeeEpf;
 		this.employeeBasis = employeeBasis;
 	}
 

@@ -380,34 +380,34 @@ function addFamilyDetails() {
 	if (relationNametb == false) {
 		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
 	}
-	// var jsonData = {
-	// "fmemployeeId" : fmemployeeId,
-	// "relationship" : relationship,
-	// "relationDateofbirth" : relationDateofbirth,
-	// "relationName" : relationName,
-	// "occupation" : occupation,
-	// "workingPlace" : workingPlace
-	// };
+	var jsonData = {
+		"employeeEpf" : fmemployeeId,
+		"fmRelationship" : relationship,
+		"fmDateofbirth" : relationDateofbirth,
+		"fmName" : relationName,
+		"fmOccupation" : occupation,
+		"fmWorkingplace" : workingPlace
+	};
 
-	// $.ajax({
-	// type : "POST",
-	// url : 'EmployeeController',
-	// data : {
-	// jsonData : JSON.stringify(jsonData),
-	// task : "ADD"
-	// },
-	// dataType : "json",
-	// success : function(data) {
-	// alert(data);
-	// if (data == "Details added successfully.") {
-	// clearDepartmentform();
-	// }
-	// },
-	// error : function(e) {
-	// alert("Error " + e);
-	// console.log(e);
-	// }
-	// });
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			// if (data == "Details added successfully.") {
+			// clearDepartmentform();
+			// }
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
 }
 
 function clearFamilydetails() {

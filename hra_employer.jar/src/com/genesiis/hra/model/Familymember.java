@@ -1,16 +1,23 @@
 package com.genesiis.hra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.MessageList;
+
 /**
  * 20160509 PN created Familymember.java Entity class.
  * 
  * 
  * **/
-public class Familymember extends Employee{
+public class Familymember extends Employee {
 	private String fmName;
-	private String fmDateOfbirth;
+	private String fmDateofbirth;
 	private String fmRelationship;
 	private String fmOccupation;
-	private String fmWorkingPlace;
+	private String fmWorkingplace;
 
 	public String getFmname() {
 		return fmName;
@@ -21,11 +28,11 @@ public class Familymember extends Employee{
 	}
 
 	public String getFmdateofbirth() {
-		return fmDateOfbirth;
+		return fmDateofbirth;
 	}
 
-	public void setFmdateofbirth(String fmDateOfbirth) {
-		this.fmDateOfbirth = fmDateOfbirth;
+	public void setFmdateofbirth(String fmDateofbirth) {
+		this.fmDateofbirth = fmDateofbirth;
 	}
 
 	public String getFmrelationship() {
@@ -45,28 +52,65 @@ public class Familymember extends Employee{
 	}
 
 	public String getFmWorkingplace() {
-		return fmWorkingPlace;
+		return fmWorkingplace;
 	}
 
-	public void setFmWorkingplace(String fmWorkingPlace) {
-		this.fmWorkingPlace = fmWorkingPlace;
+	public void setFmWorkingplace(String fmWorkingplace) {
+		this.fmWorkingplace = fmWorkingplace;
 	}
 
 	public Familymember() {
 	}
 
-	public Familymember(String fmName, String fmDateOfbirth,
-			String fmRelationship, String fmOccupation, String fmWorkingPlace) {
+	public Familymember(String fmName, String fmDateofbirth,
+			String fmRelationship, String fmOccupation, String fmWorkingplace,
+			String employeeEpf) {
 		super();
 		this.fmName = fmName;
-		this.fmDateOfbirth = fmDateOfbirth;
+		this.fmDateofbirth = fmDateofbirth;
 		this.fmRelationship = fmRelationship;
 		this.fmOccupation = fmOccupation;
-		this.fmWorkingPlace = fmWorkingPlace;
+		this.fmWorkingplace = fmWorkingplace;
+		this.employeeEpf = employeeEpf;
 	}
-	
+
 	@Override
 	public String add(Object object) {
-		return "You are in FamilyMember";
+		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
+				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Familymember fm = (Familymember) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, fm.getEmployeeepf());
+			preparedStatement.setString(2, fm.getFmname());
+			preparedStatement.setString(3, fm.getFmdateofbirth());
+			preparedStatement.setString(4, fm.getFmrelationship());
+			preparedStatement.setString(5, fm.getFmoccupation());
+			preparedStatement.setString(6, fm.getFmWorkingplace());
+			preparedStatement.setString(7, "SYSTEM");
+
+			int rowsInserted = preparedStatement.executeUpdate();
+			if (rowsInserted > 0) {
+				message = MessageList.ADDED.message();
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			message = MessageList.ERROR.message();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return message;
 	}
 }

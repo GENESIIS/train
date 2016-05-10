@@ -33,7 +33,6 @@ public class AddEmployeeDim {
 		Gson gson = new Gson();
 		Class<?> clazz = Class.forName(className);
 		Object object = clazz.newInstance();
-		// Employee employee = null;
 		try {
 			object = gson.fromJson(gsonData, clazz);
 		} catch (Exception e) {
