@@ -2,8 +2,13 @@
  * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
  * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
  * function Modified. 20160505 PN HRA-2 clearAddemployeeform() function
- * modified.
+ * modified. 20160509 addEducationDetails() Function
  */
+
+
+var theNewScript = document.createElement("script");
+theNewScript.type = "text/javascript";
+theNewScript.src = "hra.validation.js";
 
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
@@ -15,6 +20,9 @@ function loadContentEmployee() {
 
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
+}
+function loadContentqualifications() {
+	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
 }
 
 // Only for Sprint -1 demo.
@@ -89,7 +97,7 @@ function addEmployeeDetails() {
 			alert(data);
 			if (data == "Details added successfully.") {
 				clearAddemployeeform();
-				document.getElementById("moredetails").disabled = false;
+				// document.getElementById("moredetails").disabled = false;
 			}
 		},
 		error : function(e) {
@@ -130,8 +138,60 @@ function isNumberKey(evt) {
 
 function isLetter(evt) {
 	var inputValue = evt.charCode;
-    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)){
-    	evt.preventDefault();
-    }
-	
+	if (!(inputValue >= 65 && inputValue <= 120)
+			&& (inputValue != 32 && inputValue != 0)) {
+		evt.preventDefault();
+	}
+
+}
+
+function AddEducationDetails() {
+	// var employeeId =$("#employeeId").val("");
+	var qualificationName = $("#qualificationName").val("");
+	var educatedPlace = $("#educatedPlace").val("");
+	var mediumStudied = $("#mediumStudied").val("");
+	var startedOn = $("#startedOn").val("");
+	var compleatedOn = $("#compleatedOn").val("");
+	var institution = $("#institution").val("");
+	var courseType = $("#courseType").val("");
+	var admissionDate = $("#admissionDate").val("");
+	var duration = $("#duration").val("");
+	var weekdays = $("#weekdays").val("");
+	var weekends = $("#weekends").val("");
+
+	var EducationData = {
+		"qualificationName" : qualificationName,
+		"educatedPlace" : educatedPlace,
+		"mediumStudied" : mediumStudied,
+		"startedOn" : startedOn,
+		"compleatedOn" : compleatedOn,
+		"institution" : institution,
+		"courseType" : courseType,
+		"admissionDate" : admissionDate,
+		"duration" : duration,
+		"weekdays" : weekdays,
+		"weekends" : weekends
+
+	};
+	$.ajax({
+		type : "POST",
+		// url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(EducationData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				// clearAddemployeeform();
+				// document.getElementById("moredetails").disabled = false;
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
 }

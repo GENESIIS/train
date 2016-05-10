@@ -266,7 +266,7 @@
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-info pull-left"
-						id="moredetails" name="moredetails" onclick="" disabled="true"
+						id="moredetails" name="moredetails" onclick=""
 						data-toggle="modal" data-target="#addmoreEmployeedetails">
 						<i class="glyphicon glyphicon-file"></i> More Details
 					</button>

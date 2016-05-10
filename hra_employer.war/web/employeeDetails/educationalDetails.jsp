@@ -1,6 +1,6 @@
 <!--Add Educational Modal -->
 <div class="">
-	<div class="">
+	<div class="well">
 		<h3 class="">
 			<i class="glyphicon glyphicon-edit"></i> Educational & Professional
 			Qualifications
@@ -10,12 +10,28 @@
 				class="form-control" id="employeeId" name="employeeId"
 				placeholder="">
 		</div>
-		<div class="form-group">
-			<label for="qualificationName">Qualification</label> <input
-				type="text" class="form-control" id="qualificationName"
-				name="qualificationName" placeholder="">
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="qualificationName">Qualification</label> <input
+						type="text" class="form-control" id="qualificationName"
+						name="qualificationName" placeholder="">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="completed"><input type="checkbox"
+						class="form-control" id="completed" name="completed"
+						placeholder="">Completed</label>
+				</div>
+			</div>
 		</div>
+
+
+
 		<div class="form-group">
+
 			<label for="educatedPlace">University/College/School</label> <input
 				type="text" class="form-control" id="educatedPlace"
 				name="educatedPlace" placeholder="">
@@ -41,15 +57,66 @@
 				</div>
 			</div>
 		</div>
+
+	</div>
+	<div class="well">
+		<h3 class="">
+			<i class="glyphicon glyphicon-edit"></i> Study Program Details
+		</h3>
+
+
+		<div class="form-group">
+			<label for="institution">Institution</label> <input type="text"
+				class="form-control" id="institution" name="institution"
+				placeholder="">
+		</div>
+		<div class="form-group">
+			<label for="courseType">Type of Course</label> <input type="text"
+				class="form-control" id="courseType" name="courseType"
+				placeholder="">
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="admissionDate">Admission Date</label> <input
+						type="text" class="form-control" id="admissionDate"
+						name="admissionDate" placeholder="">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="duration">Duration (In months)</label> <input
+						type="text" class="form-control" id="duration" name="duration"
+						placeholder="">
+				</div>
+			</div>
+		<div class="col-md-6">
+				<div class="form-group">
+					<label  for="studyTime">Study Time</label> 
+					<label
+						for="weekdays"><input type="checkbox" class="form-control"
+						id="weekdays" name="weekdays" placeholder="">Weekdays </label> 
+						<label
+						for=weekends> <input type="checkbox"
+						class="form-control" id="weekends" name="weekends" placeholder="">Weekends
+					</label>
+				</div>
+			</div>
+
+		</div>
+
 		<div class="modal-footer">
-			<button type="button" class="btn btn-success pull-left"
-				onclick="updatedAlert()" data-dismiss="modal">
-				<i class="glyphicon glyphicon-floppy-disk"></i> Save
-			</button>
-			<button type="button" class="btn btn-danger pull-right"
+			<button type="button" class="btn btn-danger pull-left"
 				data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 			</button>
+			<button type="button" class="btn btn-success pull-right"
+				onclick="updatedAlert()" data-dismiss="modal">
+				<i class="glyphicon glyphicon-floppy-disk"></i> Save
+			</button>
+
 		</div>
 	</div>
 </div>
