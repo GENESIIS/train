@@ -86,7 +86,6 @@ public class EmployeeController extends HttpServlet {
 		Gson gson = new Gson();
 
 		try {
-			log.info("You are in Try");
 			switch (validTask) {
 			case 1:
 				/*
@@ -105,7 +104,7 @@ public class EmployeeController extends HttpServlet {
 				employee = (BasicData) dim.extractFromJason(
 						"com.genesiis.hra.model.BasicData", employeeDetails);
 				String s = dim.execute(1, employee);
-				log.info("uihegruighuiwehguihweuighwe : " + s);
+				log.info(" : " + s);
 				break;
 			// For other operations.
 			// case 2:
