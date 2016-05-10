@@ -117,7 +117,7 @@ function addEmployeeDetails() {
 			alert(data);
 			if (data == "Details added successfully.") {
 				clearAddemployeeform();
-				document.getElementById("moredetails").disabled = false;
+//				document.getElementById("moredetails").disabled = false;
 			}
 		},
 		error : function(e) {
@@ -382,7 +382,13 @@ function loadEditContentfamilydetails() {
 function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
+/**
+ * thumeera
+ * Employee > new employee > more details > add Employeement details **/
+function loadAddEmployementDetails() {
+	$("#modelrest").load("employeeDetails/employementHistory.jsp");
+}
 
 function disableButton() {
-	document.getElementById("moredetails").disabled = true;
+//	document.getElementById("moredetails").disabled = true;
 }

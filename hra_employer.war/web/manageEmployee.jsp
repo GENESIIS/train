@@ -18,7 +18,7 @@
 	<h2 class="sub-header">Employee Management</h2>
 
 	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#addEmployeedetails" onclick="disableButton()">
+		data-target="#addEmployeedetails" >
 		<i class="glyphicon glyphicon-plus"></i> New Employee
 	</button>
 
@@ -272,7 +272,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick="" disabled="true"
+					id="moredetails" name="moredetails" onclick=""
 					data-toggle="modal" data-target="#addmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
@@ -293,25 +293,34 @@
 <!-- Modal -->
 <div class="modal fade" id="addmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
+	
+	<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>More Employee Details
+					<i class="glyphicon glyphicon-user">More Employee Details</i>
 				</h3>
 			</div>
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
+					<a href="#" onclick="loadContentqualifications()" class="btn btn-primary"  >Educaional Data</a> 
+					<a href="#" onclick="loadAddEmployementDetails()"  class="btn btn-primary" id="btnEmpHisDet">Employee History Details</a> 
+					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
+					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
 				</div>
-				<div id="modelrest" name="modelrest"></div>
+				
+				<div class="modal-body1">
+                	<div id="placeholder-div1" style="overflow-y: scroll;">
+                
+                	</div>                    
+              	</div>
+              
+              
+				<div id="modelrest" name="modelrest">
+				
+				</div>
 
 			</div>
 			<!-- 			<div class="modal-footer"> -->
