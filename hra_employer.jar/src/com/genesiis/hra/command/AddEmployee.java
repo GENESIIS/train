@@ -19,28 +19,28 @@ public class AddEmployee {
 
 	public String execute(String gsonData) {
 		String message = "";
-		try {
-			// Get employee object extract from Gson object.
-			Employee employee = employeeManager.extractFromgson(gsonData);
-			if (employee != null) {
-				if (employeeManager.validEmployee(employee)) {
-					message = employeeManager.add(employee);
-				} else {
-					message = employeeManager.validateEmployee(employee);
-				}
-			} else {
-				message = MessageList.EMPTYVALUES.message();
-			}
-		} catch (NullPointerException e) {
-			message = MessageList.EMPTYFIELD.message();
-			log.info("Exception-employee: " + e);
-		} catch (ParseException e) {
-			message = MessageList.INVALIDDATE.message();
-			log.info("Exception-employee: " + e);
-		} catch (NumberFormatException e) {
-			message = MessageList.ERROR.message();
-			log.info("Exception-employee: " + e);
-		}
+//		try {
+//			// Get employee object extract from Gson object.
+//			Employee employee = employeeManager.extractFromgson(gsonData);
+//			if (employee != null) {
+//				if (employeeManager.validEmployee(employee)) {
+//					message = employeeManager.add(employee);
+//				} else {
+//					message = employeeManager.validateEmployee(employee);
+//				}
+//			} else {
+//				message = MessageList.EMPTYVALUES.message();
+//			}
+//		} catch (NullPointerException e) {
+//			message = MessageList.EMPTYFIELD.message();
+//			log.info("Exception-employee: " + e);
+//		} catch (ParseException e) {
+//			message = MessageList.INVALIDDATE.message();
+//			log.info("Exception-employee: " + e);
+//		} catch (NumberFormatException e) {
+//			message = MessageList.ERROR.message();
+//			log.info("Exception-employee: " + e);
+//		}
 		return message;
 	}
 }

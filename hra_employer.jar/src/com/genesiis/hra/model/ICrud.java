@@ -14,7 +14,7 @@ public interface ICrud {
 
 	public String delete(Object object);
 
-	public String getObjectid(String id);
+	public String getId(String id);
 
 	public List<Object> getAll();
 }

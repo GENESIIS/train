@@ -2,7 +2,9 @@ package com.genesiis.hra.model;
 
 import java.util.List;
 
-//@Entity
+/**
+ * This class is the super class of the design.
+ * **/
 public abstract class Employee implements ICrud {
 	private String employeeId;
 
@@ -24,7 +26,7 @@ public abstract class Employee implements ICrud {
 
 	@Override
 	public String add(Object object) {
-		return null;
+		return "You are in Employee";
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public abstract class Employee implements ICrud {
 	}
 
 	@Override
-	public String getObjectid(String id) {
+	public String getId(String id) {
 		return null;
 	}
 

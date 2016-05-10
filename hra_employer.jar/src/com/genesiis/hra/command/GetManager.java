@@ -13,12 +13,12 @@ public class GetManager {
 
 	public List<String> execute() {
 		List<String> list = null;
-		try {
-			EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
-			list = employeeManager.getManagers();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
+//			list = employeeManager.getManagers();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		return list;
 	}
 }
