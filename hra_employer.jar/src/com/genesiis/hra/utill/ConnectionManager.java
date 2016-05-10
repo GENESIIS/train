@@ -35,8 +35,7 @@ public class ConnectionManager {
 		} catch (NamingException e) {
 			log.error("NamingException: nameing the dataSource " + e);
 		} catch (ClassCastException e) {
-			log.error("ClassCastException: casting dataSource = (DataSource) "
-					+ e);
+			log.error("ClassCastException: casting dataSource = (DataSource) " + e);
 		} finally {
 			log.error("ConnectionManager static block execution over.");
 		}

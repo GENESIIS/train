@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -45,7 +46,14 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(4, employee.getEmployeeemail());
 			preparedStatement.setString(5, employee.getEmployeedateofbirth());
 			preparedStatement.setString(6, employee.getEmployeenic());
-			preparedStatement.setString(7, employee.getEmployeegender());
+			String gender = employee.getEmployeegender().toString().trim();
+
+			if(gender=="Male" || gender.equals("Male")){
+				preparedStatement.setString(7, String.valueOf(MaskValidator.MSK_MALE));
+			}else{
+				preparedStatement.setString(7, String.valueOf(MaskValidator.MSK_FEMALE));
+			}
+			
 			preparedStatement.setString(8,
 					employee.getEmployeepermenetaddress());
 			preparedStatement.setString(9,
