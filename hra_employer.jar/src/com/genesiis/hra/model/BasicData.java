@@ -1,21 +1,6 @@
 package com.genesiis.hra.model;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-
-///***********************************************
-// * 20160407 PN HRA-1 created Employee.java class
-// * 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
-// * 
-// ***********************************************/
-//@Entity
-//@NamedQueries(@NamedQuery(name="Employee.getAll",query="SELECE e from EMPLOYEE e"))
-
-public class Employee implements ICrud{
-	private String employeeId;
+public class BasicData extends Employee {
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -31,19 +16,6 @@ public class Employee implements ICrud{
 	private String employeeJoindate;
 	private String employeeEpf;
 	private String employeeBasis;
-
-	
-	
-	public Employee() {
-	}
-
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
 
 	public String getEmployeename() {
 		return employeeName;
@@ -165,16 +137,14 @@ public class Employee implements ICrud{
 		this.employeeBasis = employeeBasis;
 	}
 
-	public Employee(String employeeId, String employeeName,
-			String employeeDesignation, String employeeEmail,
-			String employeeDateofbirth, String employeeNic,
-			String employeeGender, String employeePermenetaddress,
-			String employeeTemporaryaddress, String employeeMobile,
-			String employeeTelephone, String employeeDepartment,
-			String employeeMaritalstatus, String employeeJoindate,
-			String employeeEpf, String employeeBasis) {
+	public BasicData(String employeeName, String employeeDesignation,
+			String employeeEmail, String employeeDateofbirth,
+			String employeeNic, String employeeGender,
+			String employeePermenetaddress, String employeeTemporaryaddress,
+			String employeeMobile, String employeeTelephone,
+			String employeeDepartment, String employeeMaritalstatus,
+			String employeeJoindate, String employeeEpf, String employeeBasis) {
 		super();
-		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeeDesignation = employeeDesignation;
 		this.employeeEmail = employeeEmail;
@@ -192,34 +162,11 @@ public class Employee implements ICrud{
 		this.employeeBasis = employeeBasis;
 	}
 
+	public BasicData() {
+	}
+
 	@Override
 	public String add(Object object) {
-		// TODO Auto-generated method stub
-		return null;
+		return "You are in BasicData";
 	}
-
-	@Override
-	public String update(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String delete(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getId(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Object> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

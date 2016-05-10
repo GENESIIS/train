@@ -19,7 +19,7 @@ public class AddEmployee {
 
 	public String execute(String gsonData) {
 		String message = "";
-		try {
+	/*	try {
 			// Get employee object extract from Gson object.
 
 			log.info("gsonData: " + gsonData);
@@ -42,7 +42,7 @@ public class AddEmployee {
 		} catch (NumberFormatException e) {
 			message = MessageList.ERROR.message();
 			log.info("Exception-employee: " + e);
-		}
+		}*/
 		return message;
 	}
 }

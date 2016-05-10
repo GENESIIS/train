@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label for="qualificationName">Qualification</label> <input
 						type="text" class="form-control" id="qualificationName"
-						name="qualificationName" placeholder="">
+						name="qualificationName" placeholder="" onkeypress="return isLetter(event)">
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -34,19 +34,19 @@
 
 			<label for="educatedPlace">University/College/School</label> <input
 				type="text" class="form-control" id="educatedPlace"
-				name="educatedPlace" placeholder="">
+				name="educatedPlace" placeholder="" onkeypress="return isLetter(event)">
 		</div>
 		<div class="form-group">
 			<label for="mediumStudied">Medium</label> <input type="text"
 				class="form-control" id="mediumStudied" name="mediumStudied"
-				placeholder="">
+				placeholder="" onkeypress="return isLetter(event)">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="startedOn">Started On</label> <input type="date"
 						class="form-control" id="startedOn" name="startedOn"
-						placeholder="">
+						placeholder="" onselect="">
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -68,18 +68,18 @@
 		<div class="form-group">
 			<label for="institution">Institution</label> <input type="text"
 				class="form-control" id="institution" name="institution"
-				placeholder="">
+				placeholder="" onkeypress="return isLetter(event)">
 		</div>
 		<div class="form-group">
 			<label for="courseType">Type of Course</label> <input type="text"
 				class="form-control" id="courseType" name="courseType"
-				placeholder="">
+				placeholder="" onkeypress="return isLetter(event)">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="admissionDate">Admission Date</label> <input
-						type="text" class="form-control" id="admissionDate"
+						type="date" class="form-control" id="admissionDate"
 						name="admissionDate" placeholder="">
 				</div>
 			</div>
@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<label for="duration">Duration (In months)</label> <input
 						type="text" class="form-control" id="duration" name="duration"
-						placeholder="">
+						placeholder="" onkeypress="return isNumberKey(event)">
 				</div>
 			</div>
 		<div class="col-md-6">

@@ -1,6 +1,5 @@
 package com.genesiis.hra.model;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -19,9 +18,10 @@ import com.sun.org.apache.regexp.internal.recompile;
 //* 20160505 PN HRA-2  validateEmployee() method Modified.
 //***********************************************/
 
-public class EmployeeCrudJDBC implements ICurd {
+public class EmployeeCrudJDBC extends Employee{
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
+	/*
 	@Override
 	public String add(Object object) {
 		String query = "INSERT INTO [HRA.EMPLOYEE] (ID, NAME, DESIGNATION, "
@@ -143,5 +143,6 @@ public class EmployeeCrudJDBC implements ICurd {
 			return false;
 		}
 	}
+	*/
 
 }
