@@ -1,6 +1,6 @@
 package com.genesiis.hra.model;
 
-public class BasicData extends Employee{
+public class BasicData extends Employee {
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -16,7 +16,7 @@ public class BasicData extends Employee{
 	private String employeeJoindate;
 	private String employeeEpf;
 	private String employeeBasis;
-	
+
 	public String getEmployeename() {
 		return employeeName;
 	}
@@ -163,5 +163,10 @@ public class BasicData extends Employee{
 	}
 
 	public BasicData() {
+	}
+
+	@Override
+	public String add(Object object) {
+		return "You are in BasicData";
 	}
 }

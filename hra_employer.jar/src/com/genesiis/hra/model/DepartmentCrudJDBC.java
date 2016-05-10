@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 //* 20160429 PN Modified the add(Object object) Method.
 //***********************************************/
 
-public class DepartmentCrudJDBC implements ICrud {
+public class DepartmentCrudJDBC extends ICrud {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	
@@ -75,10 +75,6 @@ public class DepartmentCrudJDBC implements ICrud {
 		return null;
 	}
 
-	@Override
-	public String getObjectid(String id) {
-		return null;
-	}
 
 	@Override
 	public List<Object> getAll() {
@@ -143,5 +139,11 @@ public class DepartmentCrudJDBC implements ICrud {
 		}
 
 		return departments;
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

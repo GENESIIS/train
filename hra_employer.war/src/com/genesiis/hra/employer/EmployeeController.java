@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
+import com.genesiis.hra.command.AddEmployeeDim;
 import com.genesiis.hra.command.GetDepartment;
-import com.genesiis.hra.impldesign.AddEmployeeDim;
+import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
@@ -85,6 +86,7 @@ public class EmployeeController extends HttpServlet {
 		Gson gson = new Gson();
 
 		try {
+			log.info("You are in Try");
 			switch (validTask) {
 			case 1:
 				/*
@@ -94,10 +96,16 @@ public class EmployeeController extends HttpServlet {
 				 */
 				// AddEmployee addEmployee = (AddEmployee) hmap.get(1);
 				AddEmployeeDim dim = new AddEmployeeDim();
-//				Employee emp = (Employee) dim.extractFromJason("com.genesiis.hra.model.Employee", employeeDetails);
-//				log.info("uihegruighuiwehguihweuighwe : "
-//						+ emp.getEmployeebasis());
-				dim.execute(1, (Employee) dim.extractFromJason("com.genesiis.hra.model.Employee", employeeDetails));
+				// Employee emp = (Employee)
+				// dim.extractFromJason("com.genesiis.hra.model.Employee",
+				// employeeDetails);
+				// log.info("uihegruighuiwehguihweuighwe : "
+				// + emp.getEmployeebasis());
+				BasicData employee = new BasicData();
+				employee = (BasicData) dim.extractFromJason(
+						"com.genesiis.hra.model.BasicData", employeeDetails);
+				String s = dim.execute(1, employee);
+				log.info("uihegruighuiwehguihweuighwe : " + s);
 				break;
 			// For other operations.
 			// case 2:

@@ -64,4 +64,9 @@ public class Familymember extends Employee{
 		this.fmOccupation = fmOccupation;
 		this.fmWorkingPlace = fmWorkingPlace;
 	}
+	
+	@Override
+	public String add(Object object) {
+		return "You are in FamilyMember";
+	}
 }
