@@ -26,8 +26,8 @@ public abstract class Employee implements ICrud {
 	}
 
 	@Override
-	public String add(Object object) {
-		return "You are in Employee";
+	public int add(Object object) {
+		return -1;
 	}
 
 	@Override
@@ -48,5 +48,10 @@ public abstract class Employee implements ICrud {
 	@Override
 	public List<Object> getAll() {
 		return null;
+	}
+	
+	@Override
+	public boolean isValid(Object object) {
+		return false;
 	}
 }

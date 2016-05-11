@@ -8,7 +8,7 @@ import java.util.List;
 //***********************************************/
 
 public interface ICrud {
-	public String add(Object object);
+	public int add(Object object);
 
 	public String update(Object object);
 
@@ -17,4 +17,6 @@ public interface ICrud {
 	public String getId(String id);
 
 	public List<Object> getAll();
+	
+	public boolean isValid(Object object);
 }

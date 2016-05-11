@@ -3,12 +3,12 @@ package com.genesiis.hra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.DataValidator;
 
 /**
  * 20160509 PN created Familymember.java Entity class.
- * 
  * 
  * **/
 public class Familymember extends Employee {
@@ -74,10 +74,22 @@ public class Familymember extends Employee {
 	}
 
 	@Override
-	public String add(Object object) {
+	public boolean isValid(Object object) {
+		DataValidator validator = new DataValidator();
+		Familymember fm = (Familymember) object;
+		if ((validator.isValidString(fm.getFmname()) == true)
+				&& (validator.isValidString(fm.getFmdateofbirth())) == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int add(Object object) {
 		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
 				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		String message = MessageList.UNKNOWN.message();
+		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		Familymember fm = (Familymember) object;
@@ -95,11 +107,10 @@ public class Familymember extends Employee {
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
-				message = MessageList.ADDED.message();
+				status = 1;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-			message = MessageList.ERROR.message() + exception;
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -108,9 +119,8 @@ public class Familymember extends Employee {
 				conn.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
-				message = MessageList.ERROR.message() + exception;
 			}
 		}
-		return message;
+		return status;
 	}
 }

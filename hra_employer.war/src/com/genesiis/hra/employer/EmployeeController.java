@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.AddEmployee;
+import com.genesiis.hra.command.UpdateEmployee;
+import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.Familymember;
+import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -38,7 +39,7 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployee addEmployee = new AddEmployee();
+		UpdateEmployee addEmployee = new UpdateEmployee();
 		GetDepartment department = new GetDepartment();
 
 		hmap = new HashMap<Integer, Object>();
@@ -54,35 +55,6 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-//
-//		String task = request.getParameter("task");
-//		String gson = null;
-//		int validTask = validator.validTaskId(task);
-//		try {
-//			switch (validTask) {
-//			case 1:
-//				break;
-//			case 5:
-//				GetDepartment department = (GetDepartment) hmap.get(5);
-//				gson = new Gson().toJson(department.execute());
-//				response.getWriter().write(gson);
-//				break; // For other operations. //
-//			case 3:
-//
-//				break;
-//			case 4:
-//				break;
-//			case -1:
-//			default:
-//				break;
-//			}
-//		} catch (Exception exception) {
-//			String message = MessageList.ERROR.message();
-//			log.error("Exception: EmployeeController " + exception);
-//			response.getWriter().write(message);
-//		}
-//		response.getWriter().close();
-
 	}
 
 	/**
@@ -96,20 +68,17 @@ public class EmployeeController extends HttpServlet {
 		String message = "";
 
 		// Method to verify it and return integer;
-		int validTask = 1;// validator.validTaskId(task);
+		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
 			switch (validTask) {
 			case 1:
-				/*
-				 * AddEmployee addEmployee = (AddEmployee) hmap.get(1); message
-				 * = addEmployee.execute(employeeDetails);
-				 * response.getWriter().write(gson.toJson(message));
-				 */
-				// AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				AddEmployee dim = new AddEmployee();
-				message = dim.execute(2, employeeDetails);
+				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
+				if ((dim.execute(ClassList.FAMILY_MEMBER.getValue(),
+						employeeDetails)) == 1) {
+					message = MessageList.ADDED.message();
+				}
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.

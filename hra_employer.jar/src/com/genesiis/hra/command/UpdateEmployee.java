@@ -4,29 +4,34 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeFactory;
-import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 /**
+ * 20160510 PN Created the class. extractFromJson and execute methods were implemented.
  * This class is for replace the AddEmployee Command Class after completing the
  * design.
  * **/
-public class AddEmployee {
-	static Logger log = Logger.getLogger(AddEmployee.class.getName());
+public class UpdateEmployee {
+	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
 
-	public String execute(int key, String employeeDetails) {
-		String message = "";
+	public int execute(int key, String employeeDetails) {
+		int status = -1;
 		try {
+			
+			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
 			EmployeeFactory factory = new EmployeeFactory();
-			Employee emp = factory.getEmployeefactory(key);
+			Employee emp = factory.getEmployee(key);
+			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),
 					employeeDetails);
-			message = emp.add(emp);
+			//Only a valid object will added to the database.
+			if (emp.isValid(emp)) {
+				status = emp.add(emp);
+			}
 		} catch (Exception e) {
-			message = MessageList.ERROR.toString();
 			log.error("execute - Exception " + e);
 		}
-		return message;
+		return status;
 	}
 
 	public Object extractFromJason(String className, String gsonData)
