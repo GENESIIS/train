@@ -27,6 +27,4 @@ public enum Operations {
 	public String getClassname() {
 		return CLASSNAME;
 	}
-
-
 }
