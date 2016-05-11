@@ -3,7 +3,6 @@ package com.genesiis.hra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.MessageList;
 
@@ -100,7 +99,7 @@ public class Familymember extends Employee {
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-			message = MessageList.ERROR.message();
+			message = MessageList.ERROR.message() + exception;
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -109,6 +108,7 @@ public class Familymember extends Employee {
 				conn.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
+				message = MessageList.ERROR.message() + exception;
 			}
 		}
 		return message;

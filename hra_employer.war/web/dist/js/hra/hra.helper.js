@@ -380,42 +380,50 @@ function addFamilyDetails() {
 	if (relationNametb == false) {
 		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
 	}
-	var jsonData = {
-		"employeeEpf" : fmemployeeId,
-		"fmRelationship" : relationship,
-		"fmDateofbirth" : relationDateofbirth,
-		"fmName" : relationName,
-		"fmOccupation" : occupation,
-		"fmWorkingplace" : workingPlace
-	};
 
-	$.ajax({
-		type : "POST",
-		url : 'EmployeeController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "ADD"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			// if (data == "Details added successfully.") {
-			// clearDepartmentform();
-			// }
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+	if ((employeeIdtb == true) && (relationshiptb == true)
+			&& (relationDateofbirthtb == true) && (relationNametb == true)) {
+		var jsonData = {
+			"employeeEpf" : fmemployeeId,
+			"fmRelationship" : relationship,
+			"fmDateofbirth" : relationDateofbirth,
+			"fmName" : relationName,
+			"fmOccupation" : occupation,
+			"fmWorkingplace" : workingPlace
+		};
+
+		$.ajax({
+			type : "POST",
+			url : 'EmployeeController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ADD"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearFamilydetails();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+
 }
 
 function clearFamilydetails() {
-	$("#fmemployeeId").val("");
 	$("#relationDateofbirth").val("");
 	$("#relationName").val("");
 	$("#occupation").val("");
 	$("#workingPlace").val("");
+	$("#fmemployeeidError").text("");
+	$("#relationshipError").text("");
+	$("#relationbirthdateError").text("");
+	$("#relationnameError").text("");
 	$('#relationship option').prop('selected', function() {
 		return this.defaultSelected;
 	});

@@ -33,7 +33,8 @@
 				id="relationnameError" name="relationnameError"
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="relationName"
-				name="relationName" placeholder="">
+				name="relationName" placeholder=""
+				onkeypress="return isLetter(event);">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -52,7 +53,7 @@
 				id="occupationError" name="occupationError"
 				style="color: red; font-weight: normal !important;"></span><input
 				type="text" class="form-control" id="occupation" name="occupation"
-				placeholder="">
+				placeholder="" onkeypress="return isLetter(event);">
 		</div>
 
 		<div class="form-group">
@@ -60,7 +61,8 @@
 				id="workingplaceError" name="workingplaceError"
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="workingPlace"
-				name="workingPlace" placeholder="">
+				name="workingPlace" placeholder=""
+				onkeypress="return isLetter(event);">
 		</div>
 
 		<div class="modal-footer">

@@ -37,6 +37,8 @@ public class ConnectionManager {
 		} catch (ClassCastException e) {
 			log.error("ClassCastException: casting dataSource = (DataSource) "
 					+ e);
+		} catch (Exception e) {
+			log.error("Exception: dataSource = (DataSource) " + e);
 		} finally {
 			log.error("ConnectionManager static block execution over.");
 		}

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.AddEmployeeDim;
+import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.Familymember;
 import com.genesiis.hra.validation.DataValidator;
@@ -54,34 +54,34 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-
-		String task = request.getParameter("task");
-		String gson = null;
-		int validTask = validator.validTaskId(task);
-		try {
-			switch (validTask) {
-			case 1:
-				break;
-			case 5:
-				GetDepartment department = (GetDepartment) hmap.get(5);
-				gson = new Gson().toJson(department.execute());
-				response.getWriter().write(gson);
-				break; // For other operations. //
-			case 3:
-
-				break;
-			case 4:
-				break;
-			case -1:
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			String message = MessageList.ERROR.message();
-			log.error("Exception: EmployeeController " + exception);
-			response.getWriter().write(message);
-		}
-		response.getWriter().close();
+//
+//		String task = request.getParameter("task");
+//		String gson = null;
+//		int validTask = validator.validTaskId(task);
+//		try {
+//			switch (validTask) {
+//			case 1:
+//				break;
+//			case 5:
+//				GetDepartment department = (GetDepartment) hmap.get(5);
+//				gson = new Gson().toJson(department.execute());
+//				response.getWriter().write(gson);
+//				break; // For other operations. //
+//			case 3:
+//
+//				break;
+//			case 4:
+//				break;
+//			case -1:
+//			default:
+//				break;
+//			}
+//		} catch (Exception exception) {
+//			String message = MessageList.ERROR.message();
+//			log.error("Exception: EmployeeController " + exception);
+//			response.getWriter().write(message);
+//		}
+//		response.getWriter().close();
 
 	}
 
@@ -108,11 +108,8 @@ public class EmployeeController extends HttpServlet {
 				 * response.getWriter().write(gson.toJson(message));
 				 */
 				// AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				AddEmployeeDim dim = new AddEmployeeDim();
-				Familymember employee = new Familymember();
-				employee = (Familymember) dim.extractFromJason(
-						"com.genesiis.hra.model.Familymember", employeeDetails);
-				message = dim.execute(2, employee);
+				AddEmployee dim = new AddEmployee();
+				message = dim.execute(2, employeeDetails);
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
