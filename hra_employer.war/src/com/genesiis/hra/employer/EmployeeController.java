@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.command.AddEducation;
 import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.AddEmployeeDim;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.BasicData;
+import com.genesiis.hra.model.EducationData;
 //import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -40,11 +43,13 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployee addEmployee = new AddEmployee();
+		AddEmployeeDim addEmployee = new AddEmployeeDim();
 		GetDepartment department = new GetDepartment();
-
+		AddEducation education = new AddEducation();
+		
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
+		hmap.put(3, education);
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -82,30 +87,18 @@ public class EmployeeController extends HttpServlet {
 		String message = "";
 
 		// Method to verify it and return integer;
-		int validTask = 1;// validator.validTaskId(task);
+		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
 			switch (validTask) {
 			case 1:
-				/*
-				 * AddEmployee addEmployee = (AddEmployee) hmap.get(1); message
-				 * = addEmployee.execute(employeeDetails);
-				 * response.getWriter().write(gson.toJson(message));
-				 */
-				// AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				AddEmployeeDim dim = new AddEmployeeDim();
-				// Employee emp = (Employee)
-				// dim.extractFromJason("com.genesiis.hra.model.Employee",
-				// employeeDetails);
-				// log.info("uihegruighuiwehguihweuighwe : "
-				// + emp.getEmployeebasis());
-				BasicData employee = new BasicData();
-				employee = (BasicData) dim.extractFromJason(
-						"com.genesiis.hra.model.BasicData", employeeDetails);
-				
-				String s = dim.execute(1, employee);
-				log.info(" : " + s);
+				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(3);
+				if ((dim.execute(ClassList.EDUCATION.getValue(),
+						employeeDetails)) == 3) {
+					message = MessageList.ADDED.message();
+				}
+				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
 			// case 2:

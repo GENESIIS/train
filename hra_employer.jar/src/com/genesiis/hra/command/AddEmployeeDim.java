@@ -14,17 +14,23 @@ import com.google.gson.Gson;
 public class AddEmployeeDim {
 	static Logger log = Logger.getLogger(AddEmployeeDim.class.getName());
 
-	public String execute(int key, Employee employee) {
-		String message = "";
+	public int execute(int key, String employeeDetails) {
+		int status = -1;
 		try {
+			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
 			EmployeeFactory factory = new EmployeeFactory();
 			Employee emp = factory.getEmployeefactory(key);
-			message = emp.add(employee);
+			//Extract the particular class type object returned from the factory.
+			emp = (Employee) extractFromJason(emp.getClass().getName(),
+					employeeDetails);
+			// Only a valid object will added to the database.
+			if (emp.isValid(emp)) {
+				status = emp.add(emp);
+			}
 		} catch (Exception e) {
-			message = MessageList.ERROR.toString();
 			log.error("execute - Exception " + e);
 		}
-		return message;
+		return status;
 	}
 
 	public Object extractFromJason(String className, String gsonData)
@@ -33,7 +39,6 @@ public class AddEmployeeDim {
 		Gson gson = new Gson();
 		Class<?> clazz = Class.forName(className);
 		Object object = clazz.newInstance();
-		// Employee employee = null;
 		try {
 			object = gson.fromJson(gsonData, clazz);
 		} catch (Exception e) {

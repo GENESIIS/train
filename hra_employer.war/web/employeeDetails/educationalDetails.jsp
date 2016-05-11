@@ -16,16 +16,17 @@
 				<div class="form-group">
 					<label for="qualificationName">Qualification</label> <input
 						type="text" class="form-control" id="qualificationName"
-						name="qualificationName" placeholder="" onkeypress="return isLetter(event)">
+						name="qualificationName" placeholder=""
+						onkeypress="return isLetter(event)">
 				</div>
 			</div>
-			<div class="col-md-6">
+			<!-- <div class="col-md-6">
 				<div class="form-group">
 					<label for="completed"><input type="checkbox"
 						class="form-control" id="completed" name="completed"
 						placeholder="">Completed</label>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 
@@ -34,7 +35,8 @@
 
 			<label for="educatedPlace">University/College/School</label> <input
 				type="text" class="form-control" id="educatedPlace"
-				name="educatedPlace" placeholder="" onkeypress="return isLetter(event)">
+				name="educatedPlace" placeholder=""
+				onkeypress="return isLetter(event)">
 		</div>
 		<div class="form-group">
 			<label for="mediumStudied">Medium</label> <input type="text"
@@ -56,10 +58,20 @@
 						placeholder="">
 				</div>
 			</div>
+			<div class="col-md-6" >
+				<div class="form-group">
+					<label for="studyTime">Study Time</label><br> <label for="weekdays"><input
+						type="checkbox" class="form-control" id="weekdays" name="weekdays"
+						placeholder="">Weekdays </label> <label for=weekends> <input
+						type="checkbox" class="form-control" id="weekends" name="weekends"
+						placeholder="">Weekends
+					</label>
+				</div>
+			</div>
 		</div>
 
 	</div>
-	<div class="well">
+<!-- 	<div class="well">
 		<h3 class="">
 			<i class="glyphicon glyphicon-edit"></i> Study Program Details
 		</h3>
@@ -92,31 +104,30 @@
 						placeholder="" onkeypress="return isNumberKey(event)">
 				</div>
 			</div>
-		<div class="col-md-6">
+			<div class="col-md-6">
 				<div class="form-group">
-					<label  for="studyTime">Study Time</label> 
-					<label
-						for="weekdays"><input type="checkbox" class="form-control"
-						id="weekdays" name="weekdays" placeholder="">Weekdays </label> 
-						<label
-						for=weekends> <input type="checkbox"
-						class="form-control" id="weekends" name="weekends" placeholder="">Weekends
+					<label for="studyTime">Study Time</label> <label for="weekdays"><input
+						type="checkbox" class="form-control" id="weekdays" name="weekdays"
+						placeholder="">Weekdays </label> <label for=weekends> <input
+						type="checkbox" class="form-control" id="weekends" name="weekends"
+						placeholder="">Weekends
 					</label>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="modal-footer">
+		
+	</div> -->
+	<div class="modal-footer">
 			<button type="button" class="btn btn-danger pull-left"
 				data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 			</button>
 			<button type="button" class="btn btn-success pull-right"
-				onclick="updatedAlert()" data-dismiss="modal">
+				onclick="AddEducationDetails()" data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
 
 		</div>
-	</div>
 </div>

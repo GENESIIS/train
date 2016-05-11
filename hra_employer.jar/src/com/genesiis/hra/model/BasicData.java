@@ -166,7 +166,7 @@ public class BasicData extends Employee {
 	}
 
 	@Override
-	public String add(Object object) {
-		return "You are in BasicData";
+	public int add(Object object) {
+		return -1;
 	}
 }

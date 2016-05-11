@@ -5,7 +5,7 @@ import java.text.ParseException;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
+
 import com.genesiis.hra.validation.MessageList;
 
 ///***********************************************
@@ -15,7 +15,7 @@ import com.genesiis.hra.validation.MessageList;
 
 public class AddEmployee {
 	static Logger log = Logger.getLogger(AddEmployee.class.getName());
-	EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
+	//EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 
 	public String execute(String gsonData) {
 		String message = "";

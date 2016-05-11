@@ -66,7 +66,12 @@ public class Familymember extends Employee{
 	}
 	
 	@Override
-	public String add(Object object) {
-		return "You are in FamilyMember";
+	public int add(Object object) {
+		return -1;
+	}
+	
+	@Override
+	public boolean isValid(Object object) {
+		return false;
 	}
 }

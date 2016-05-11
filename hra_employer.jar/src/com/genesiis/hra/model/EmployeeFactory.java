@@ -10,6 +10,10 @@ public class EmployeeFactory {
 			return new BasicData();
 		case 2:
 			return new Familymember();
+		case 3:
+			return new EducationData();
+		case 4:
+		//	return new Studyprogram();
 		default:
 			return null;
 		}

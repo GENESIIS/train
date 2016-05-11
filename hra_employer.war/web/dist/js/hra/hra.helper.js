@@ -437,39 +437,43 @@ function clearFamilydetails() {
 
 
 
-
+//////Add Education Details
 
 function AddEducationDetails() {
-	// var employeeId =$("#employeeId").val("");
-	var qualificationName = $("#qualificationName").val("");
-	var educatedPlace = $("#educatedPlace").val("");
-	var mediumStudied = $("#mediumStudied").val("");
-	var startedOn = $("#startedOn").val("");
-	var compleatedOn = $("#compleatedOn").val("");
-	var institution = $("#institution").val("");
-	var courseType = $("#courseType").val("");
-	var admissionDate = $("#admissionDate").val("");
-	var duration = $("#duration").val("");
-	var weekdays = $("#weekdays").val("");
-	var weekends = $("#weekends").val("");
+	var employeeId =$("#employeeId").val();
+	var qualificationName = $("#qualificationName").val();
+	var educatedPlace = $("#educatedPlace").val();
+	var mediumStudied = $("#mediumStudied").val();
+	var startedOn = $("#startedOn").val();
+	var compleatedOn = $("#compleatedOn").val();
+	/*var institution = $("#institution").val();
+	var courseType = $("#courseType").val();
+	var admissionDate = $("#admissionDate").val();
+	var duration = $("#duration").val();
+	var weekdays = $("#weekdays").val();
+	var weekends = $("#weekends").val();*/
 
 	var EducationData = {
-		"qualificationName" : qualificationName,
-		"educatedPlace" : educatedPlace,
-		"mediumStudied" : mediumStudied,
-		"startedOn" : startedOn,
-		"compleatedOn" : compleatedOn,
-		"institution" : institution,
+			"employeeEpf" : employeeId,
+		"eduQualification" : qualificationName,
+		"eduUniversity" : educatedPlace,
+		"eduMedium" : mediumStudied,
+		"eduStartedOn" : startedOn,
+		"eduCompltedOn" : compleatedOn
+		
+		/*"institution" : institution,
 		"courseType" : courseType,
 		"admissionDate" : admissionDate,
 		"duration" : duration,
 		"weekdays" : weekdays,
-		"weekends" : weekends
+		"weekends" : weekends*/
 
 	};
+	 alert(JSON.stringify(EducationData));
+	
 	$.ajax({
 		type : "POST",
-		// url : 'EmployeeController',
+		 url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(EducationData),
 			task : "ADD"
@@ -478,7 +482,7 @@ function AddEducationDetails() {
 		success : function(data) {
 			alert(data);
 			if (data == "Details added successfully.") {
-				// clearAddemployeeform();
+			clearAddeducationform();
 				// document.getElementById("moredetails").disabled = false;
 			}
 		},
@@ -505,5 +509,9 @@ function clearAddeducationform() {
 	$("#weekends").val("");
 	
 	
+	
+}
+
+function disableDiv(){
 	
 }
