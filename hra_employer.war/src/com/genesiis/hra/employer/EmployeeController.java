@@ -79,8 +79,8 @@ public class EmployeeController extends HttpServlet {
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
-			// case 2:
-			// break;
+			 case 2:
+			 break;
 			// case 3:
 			// break;
 			// case 4:

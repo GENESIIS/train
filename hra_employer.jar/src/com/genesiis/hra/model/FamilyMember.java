@@ -11,7 +11,7 @@ import com.genesiis.hra.validation.DataValidator;
  * 20160509 PN created Familymember.java Entity class.
  * 
  * **/
-public class Familymember extends Employee {
+public class FamilyMember extends Employee {
 	private String fmName;
 	private String fmDateofbirth;
 	private String fmRelationship;
@@ -58,10 +58,10 @@ public class Familymember extends Employee {
 		this.fmWorkingplace = fmWorkingplace;
 	}
 
-	public Familymember() {
+	public FamilyMember() {
 	}
 
-	public Familymember(String fmName, String fmDateofbirth,
+	public FamilyMember(String fmName, String fmDateofbirth,
 			String fmRelationship, String fmOccupation, String fmWorkingplace,
 			String employeeEpf) {
 		super();
@@ -76,7 +76,7 @@ public class Familymember extends Employee {
 	@Override
 	public boolean isValid(Object object) {
 		DataValidator validator = new DataValidator();
-		Familymember fm = (Familymember) object;
+		FamilyMember fm = (FamilyMember) object;
 		if ((validator.isValidString(fm.getFmname()) == true)
 				&& (validator.isValidString(fm.getFmdateofbirth())) == true) {
 			return true;
@@ -92,7 +92,7 @@ public class Familymember extends Employee {
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		Familymember fm = (Familymember) object;
+		FamilyMember fm = (FamilyMember) object;
 
 		try {
 			conn = ConnectionManager.getConnection();
