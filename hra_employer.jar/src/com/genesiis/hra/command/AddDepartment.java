@@ -19,8 +19,8 @@ public class AddDepartment {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 	DepartmentCrudJDBC departmentManager = new DepartmentCrudJDBC();
 
-	public String execute(String gsonData) {
-		String message = "";
+	public int execute(String gsonData) {
+		int message = 0;
 		try {
 			// Get department object extract from Gson object.
 			Department department = departmentManager.extractFromgson(gsonData);
@@ -28,19 +28,19 @@ public class AddDepartment {
 				if (departmentManager.validDepartment(department)) {
 					message = departmentManager.add(department);
 				} else {
-					message = departmentManager.validateDepartment(department);
+					//message = departmentManager.validateDepartment(department);
 				}
 			} else {
-				message = MessageList.EMPTYVALUES.message();
+				//message = MessageList.EMPTYVALUES.message();
 			}
 		} catch (NullPointerException e) {
-			message = MessageList.EMPTYFIELD.message();
+			//message = MessageList.EMPTYFIELD.message();
 			log.info("Exception-employee: " + e);
 		} catch (ParseException e) {
-			message = MessageList.INVALIDDATE.message();
+			//message = MessageList.INVALIDDATE.message();
 			log.info("Exception-employee: " + e);
 		} catch (NumberFormatException e) {
-			message = MessageList.ERROR.message();
+			//message = MessageList.ERROR.message();
 			log.info("Exception-employee: " + e);
 		}
 		return message;

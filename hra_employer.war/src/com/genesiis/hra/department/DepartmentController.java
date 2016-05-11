@@ -97,7 +97,7 @@ public class DepartmentController extends HttpServlet {
 
 		String departmentDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-		String message = "";
+		int message = 0;
 		// Method to verify it and return integer;
 		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
@@ -120,7 +120,7 @@ public class DepartmentController extends HttpServlet {
 				break;
 			}
 		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
+			//message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: DepartmentController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}

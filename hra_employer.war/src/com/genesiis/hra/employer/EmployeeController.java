@@ -92,7 +92,7 @@ public class EmployeeController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-		String message = "";
+		int message = 0;
 
 		// Method to verify it and return integer;
 		int validTask = validator.validTaskId(task);
@@ -121,7 +121,7 @@ public class EmployeeController extends HttpServlet {
 				break;
 			}
 		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
+			//message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}

@@ -26,7 +26,7 @@ public class EmployeeCrudJDBC implements ICrud {
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
 	@Override
-	public String add(Object object) {
+	public int add(Object object) {
 		String query = "INSERT INTO [HRA.EMPLOYEE] (ID, NAME, DESIGNATION, "
 				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
 				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, EPF, BASIS) "
@@ -35,32 +35,30 @@ public class EmployeeCrudJDBC implements ICrud {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		Employee employee = (Employee) object;
-
+		int rowsInserted = 0;
+		
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, employee.getEmployeeid());
-			preparedStatement.setString(2, employee.getEmployeename());
-			preparedStatement.setString(3, employee.getEmployeedesignation());
-			preparedStatement.setString(4, employee.getEmployeeemail());
-			preparedStatement.setString(5, employee.getEmployeedateofbirth());
-			preparedStatement.setString(6, employee.getEmployeenic());
-			preparedStatement.setString(7, employee.getEmployeegender());
-			preparedStatement.setString(8,
-					employee.getEmployeepermenetaddress());
-			preparedStatement.setString(9,
-					employee.getEmployeetemporaryaddress());
-			preparedStatement.setString(10, employee.getEmployeemobile());
-			preparedStatement.setString(11, employee.getEmployeetelephone());
-			preparedStatement.setString(12, employee.getEmployeedepartment());
-			preparedStatement
-					.setString(13, employee.getEmployeemaritalstatus());
-			preparedStatement.setString(14, employee.getEmployeejoindate());
-			preparedStatement.setString(15, "SYSTEM");
-			preparedStatement.setString(16, employee.getEmployeeepf());
-			preparedStatement.setString(17, employee.getEmployeebasis());
+//			preparedStatement.setString(1, employee.getEmployeeid());
+//			preparedStatement.setString(2, employee.getEmployeename());
+//			preparedStatement.setString(3, employee.getEmployeedesignation());
+//			preparedStatement.setString(4, employee.getEmployeeemail());
+//			preparedStatement.setString(5, employee.getEmployeedateofbirth());
+//			preparedStatement.setString(6, employee.getEmployeenic());
+//			preparedStatement.setString(7, employee.getEmployeegender());
+//			preparedStatement.setString(8, 					employee.getEmployeepermenetaddress());
+//			preparedStatement.setString(9, 					employee.getEmployeetemporaryaddress());
+//			preparedStatement.setString(10, employee.getEmployeemobile());
+//			preparedStatement.setString(11, employee.getEmployeetelephone());
+//			preparedStatement.setString(12, employee.getEmployeedepartment());
+//			preparedStatement 					.setString(13, employee.getEmployeemaritalstatus());
+//			preparedStatement.setString(14, employee.getEmployeejoindate());
+//			preparedStatement.setString(15, "SYSTEM");
+//			preparedStatement.setString(16, employee.getEmployeeepf());
+//			preparedStatement.setString(17, employee.getEmployeebasis());
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
 				message = MessageList.ADDED.message();
 			}
@@ -70,31 +68,10 @@ public class EmployeeCrudJDBC implements ICrud {
 			exception.printStackTrace();
 			message = MessageList.ERROR.message();
 		}
-		return message;
+		return rowsInserted;
 	}
 
-	@Override
-	public String update(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String delete(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getObjectid(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Object> getAll() {
-		return null;
-	}
+	
 
 	// Method to extract EmployeeDetails from jsonData.
 	public Employee extractFromgson(String gsonData) {
@@ -112,30 +89,30 @@ public class EmployeeCrudJDBC implements ICrud {
 		DataValidator validator = new DataValidator();
 		String message = "";
 
-		if (!validator.isValidString(employee.getEmployeeid())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
-		}
-		if (!validator.isValidString(employee.getEmployeename())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
-		}
-		if (!validator.isValidNic(employee.getEmployeenic())) {
-			message = message + MessageList.NICERROR.message() +" ";
-		}
-		if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
-		}
-		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
-			message = message + MessageList.INVALIDBIRTDAY.message() +" ";
-		}
-		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
-			message = message + MessageList.MOBILENUMBERERROR.message() +" ";
-		}
-		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
-			message = message + MessageList.PHONENUMBERERROR.message() +" ";
-		}
-		if (!validator.isValidemail(employee.getEmployeeemail())) {
-			message = message + MessageList.EMAILERROR.message() +" ";
-		}
+//		if (!validator.isValidString(employee.getgetEmployeeid())) {
+//			message = message + MessageList.EMPTYFIELD.message() +" ";
+//		}
+//		if (!validator.isValidString(employee.getEmployeename())) {
+//			message = message + MessageList.EMPTYFIELD.message() +" ";
+//		}
+//		if (!validator.isValidNic(employee.getEmployeenic())) {
+//			message = message + MessageList.NICERROR.message() +" ";
+//		}
+//		if (!validator.isValidString(employee.getEmployeeepf())) {
+//			message = message + MessageList.EMPTYFIELD.message() +" ";
+//		}
+//		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
+//			message = message + MessageList.INVALIDBIRTDAY.message() +" ";
+//		}
+//		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
+//			message = message + MessageList.MOBILENUMBERERROR.message() +" ";
+//		}
+//		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
+//			message = message + MessageList.PHONENUMBERERROR.message() +" ";
+//		}
+//		if (!validator.isValidemail(employee.getEmployeeemail())) {
+//			message = message + MessageList.EMAILERROR.message() +" ";
+//		}
 		return message;
 	}
 
@@ -166,6 +143,36 @@ public class EmployeeCrudJDBC implements ICrud {
 			e.printStackTrace();
 		}		
 		return managers;
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValid(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public String update(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String delete(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<Object> getAll() {
+		return null;
 	}
 
 }

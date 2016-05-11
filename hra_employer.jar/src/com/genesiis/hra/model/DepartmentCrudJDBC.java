@@ -23,20 +23,21 @@ import com.google.gson.Gson;
 //***********************************************/
 
 public class DepartmentCrudJDBC implements ICrud {
+
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
-	
 	/**
-	 * This method is t
+	 * This method is ADDD
 	 * 
 	 * **/
 	@Override
-	public String add(Object object) {
+	public int add(Object object) {
 		String query = "INSERT INTO [HRA.DEPARTMENT] (ID, NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?, ?)";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		Department department = (Department) object;
+		int rowsInserted = 0;
 
 		try {
 			conn = ConnectionManager.getConnection();
@@ -47,7 +48,7 @@ public class DepartmentCrudJDBC implements ICrud {
 			preparedStatement.setString(4, department.getDepartmentHead());
 			preparedStatement.setString(5, "SYSTEM");
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
 				message = MessageList.ADDED.message();
 			}
@@ -62,29 +63,33 @@ public class DepartmentCrudJDBC implements ICrud {
 				exception.printStackTrace();
 			}
 		}
-		return message;
+		return rowsInserted;
 	}
 
-	@Override
-	public String update(Object object) {
-		return null;
-	}
+	public List<String> getDepartments() {
+		String query = "SELECT * FROM [HRA.DEPARTMENT]";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		List<String> departments = new ArrayList<String>();
+		Statement statement = null;
+		try {
+			conn = ConnectionManager.getConnection();
+			statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			while (result.next()) {
+				departments
+						.add(result.getString(1) + "#" + result.getString(2));
+			}
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			message = MessageList.ERROR.message();
+		}
 
-	@Override
-	public String delete(Object object) {
-		return null;
+		return departments;
 	}
-
-	@Override
-	public String getObjectid(String id) {
-		return null;
-	}
-
-	@Override
-	public List<Object> getAll() {
-		return null;
-	}
-
+	
 	// Method to extract DepartmentDetails from jsonData.
 	public Department extractFromgson(String gsonData) {
 		Gson gson = new Gson();
@@ -121,27 +126,33 @@ public class DepartmentCrudJDBC implements ICrud {
 		}
 	}
 
-	public List<String> getDepartments() {
-		String query = "SELECT * FROM [HRA.DEPARTMENT]";
-		String message = MessageList.UNKNOWN.message();
-		Connection conn = null;
-		List<String> departments = new ArrayList<String>();
-		Statement statement = null;
-		try {
-			conn = ConnectionManager.getConnection();
-			statement = conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
-			while (result.next()) {
-				departments
-						.add(result.getString(1) + "#" + result.getString(2));
-			}
-			statement.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			message = MessageList.ERROR.message();
-		}
+	
 
-		return departments;
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public boolean isValid(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String update(Object object) {
+		return null;
+	}
+
+	@Override
+	public String delete(Object object) {
+		return null;
+	}
+
+	@Override
+	public List<Object> getAll() {
+		return null;
+	}
+
 }

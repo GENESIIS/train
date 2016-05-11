@@ -304,6 +304,8 @@ function clearDepartmentform() {
  * **/
 
 function addEmployeeHistoryDetails() {
+
+	alert("dfgdfg");
 	
 	var employeeId 				= $("#employeeId").val();
 	var employer 				= $("#employer").val();
@@ -376,26 +378,15 @@ function clearEmployeementHisory() {
 
 }
 
+$("#buttonAddemployee").click(function() {
+	alert("ddddddddddddddddddddd");
+	alert(this.id);
+});
+
 
 // ////load more edit Employeee Detail///////////////
 
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-}
-
-function loadEditemployementhistory() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
-}
-
-function loadEditContentstudyprograms() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-}
-
-function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
-}
-
-// ///////////////////////////////////////////////
+/////////////////////////////////////////////////
 $(document).on("click", "#vbutton", function() {
 
 	$.get("EmployerController", function(data, status) {
@@ -428,6 +419,24 @@ $(document).on("click", "#vbutton", function() {
 });
 
 // ///load more employee views/////////////////////////////////////
+
+
+
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
+}
+
+function loadEditemployementhistory() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
+}
+
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
+}
+
+function loadEditlanguages() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
+}
 
 function loadviewqlifications() {
 	$("#viewmodelrest").load("viewemployeeDetails/vieweducationalDetails.jsp");
@@ -467,7 +476,7 @@ function loadEditemergencycontacts() {
 /**
  * thumeera
  * Employee > new employee > more details > add Employeement details **/
-function loadAddEmployementDetails() {
+function loadAddEmployementHIstoryDetails() {
 	$("#modelrest").load("employeeDetails/employementHistory.jsp");
 }
 

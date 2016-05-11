@@ -307,7 +307,7 @@
 
 				<div class="btn-group btn-group-justified" >
 					<a id="btnEduDat"href="#" onclick="loadContentqualifications()" class="btn btn-primary"  >Educaional Data</a> 
-					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementDetails()"  class="btn btn-primary" >Employee History Details</a> 
+					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementHIstoryDetails()"  class="btn btn-primary" >Employee History Details</a> 
 					<a href="#" onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
 					<a href="#" onclick="loadContentfamilydetails()" class="btn btn-primary">Family Details</a>
 				</div>
