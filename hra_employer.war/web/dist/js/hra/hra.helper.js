@@ -429,3 +429,80 @@ function clearFamilydetails() {
 	});
 
 }
+
+// //Edit Family Details
+function editFamilyDetails() {
+	var fmemployeeId = $("#editfmemployeeId").val();
+	var relationship = $("#editrelationship").val();
+	var relationDateofbirth = $("#editrelationDateofbirth").val();
+	var relationName = $("#editrelationName").val();
+	var occupation = $("#editoccupation").val();
+	var workingPlace = $("#editworkingPlace").val();
+
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
+
+	if (employeeIdtb == false) {
+		document.getElementById('editfmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('editrelationshipError').innerHTML = "** Relationship can not be Empty.";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('editrelationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	}
+	if (relationNametb == false) {
+		document.getElementById('editrelationnameError').innerHTML = "** Name cannot be Empty.";
+	}
+
+	if ((employeeIdtb == true) && (relationshiptb == true)
+			&& (relationDateofbirthtb == true) && (relationNametb == true)) {
+		var jsonData = {
+			"employeeEpf" : fmemployeeId,
+			"fmRelationship" : relationship,
+			"fmDateofbirth" : relationDateofbirth,
+			"fmName" : relationName,
+			"fmOccupation" : occupation,
+			"fmWorkingplace" : workingPlace
+		};
+
+				
+		 $.ajax({
+			type : "POST",
+			url : 'EmployeeController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "UPDATE"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details updated successfully.") {
+					clearFamilydetails();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+
+}
+
+function editclearFamilydetails() {
+	$("#editrelationDateofbirth").val("");
+	$("#editrelationName").val("");
+	$("#editoccupation").val("");
+	$("#editworkingPlace").val("");
+	$("#editfmemployeeidError").text("");
+	$("#editrelationshipError").text("");
+	$("#editrelationbirthdateError").text("");
+	$("#editrelationnameError").text("");
+	$('#editrelationship option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+}

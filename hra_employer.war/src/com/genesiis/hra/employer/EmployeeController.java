@@ -2,7 +2,6 @@ package com.genesiis.hra.employer;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.UpdateEmployee;
-import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
-import com.genesiis.hra.model.Familymember;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;

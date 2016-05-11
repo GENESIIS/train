@@ -3,7 +3,7 @@
  */
 
 function isEmptyfield(field) {
-	if ((field == "") || (field.length = 0) || (field == null)) {
+	if ((field == "") || (field.length == 0) || (field == null)) {
 		return false;
 	} else {
 		return true;
