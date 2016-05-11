@@ -123,4 +123,44 @@ public class FamilyMember extends Employee {
 		}
 		return status;
 	}
+	
+	//String sql = "UPDATE Users SET password=?, fullname=?, email=? WHERE username=?";
+	
+	@Override
+	public int update(Object object) {
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE EMPLOYEEID=?";
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		FamilyMember fm = (FamilyMember) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, fm.getFmname());
+			preparedStatement.setString(2, fm.getFmdateofbirth());
+			preparedStatement.setString(3, fm.getFmrelationship());
+			preparedStatement.setString(4, fm.getFmoccupation());
+			preparedStatement.setString(5, fm.getFmWorkingplace());
+			preparedStatement.setString(6, "SYSTEM");
+			preparedStatement.setString(7, fm.getEmployeeepf());
+
+			int rowsUpdated = preparedStatement.executeUpdate();
+			if (rowsUpdated > 0) {
+				status = 1;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
 }

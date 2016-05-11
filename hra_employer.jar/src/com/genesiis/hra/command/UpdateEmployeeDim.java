@@ -13,7 +13,6 @@ public class UpdateEmployeeDim {
 	static Logger log = Logger.getLogger(UpdateEmployeeDim.class.getName());
 
 	public int execute(String operation, String employeeDetails) {
-
 		int status = -1;
 		int classCode = Operations.valueOf(operation).getclassCode();
 		String task = Operations.valueOf(operation).getTask();
