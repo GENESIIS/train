@@ -15,7 +15,7 @@ import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.MessageList;
 
 public class LoanCrudJDBC implements IDataAccessor {
-	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
+	static Logger log = Logger.getLogger(LoanCrudJDBC.class.getName());
 
 	@Override
 	public String add(Object object) {
@@ -70,7 +70,50 @@ public class LoanCrudJDBC implements IDataAccessor {
 
 	@Override
 	public Object retrive(String id) {
-		return null;
+		String query = "select * from [hra-2].[dbo].[HRA.LOAN] where ID = ?";
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet retriveData = null;
+		
+		Loan loan = new Loan();
+		try {
+
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, "1");
+			
+			 retriveData = preparedStatement.executeQuery();			 
+				
+				try{
+					if (retriveData.next()) {
+						// set data to entity class
+						
+						loan.setEmployeeId(retriveData.getString("EMPLOYEEID"));
+						loan.setLoanDueDate(retriveData.getString("DUEDATE")); 						
+						loan.setLoanAmount(retriveData.getString("TOTALOUTSTANDING"));
+						loan.setLoanBorrowers(retriveData.getString("BORROWER"));
+						loan.setLoanmonthlyPayment(retriveData.getString("MONTHLYPAYMENT"));
+						loan.setmodBy(retriveData.getString("MODBY"));
+						loan.setModOn(retriveData.getString("MODON"));
+						
+						
+						log.info(retriveData.getString("TOTALOUTSTANDING")+"////////////////////////////////////////////////////////");
+						
+
+					}
+				}catch(Exception e){
+					log.info(e.toString());
+				}
+				
+			preparedStatement.close();
+			conn.close();
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			
+		}
+		
+		return loan;
 	}
 
 	@Override

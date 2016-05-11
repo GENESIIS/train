@@ -14,6 +14,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
@@ -56,10 +57,13 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String task = request.getParameter("task");
+		//String task = request.getParameter("task");
 		String gson = null;
-		int validTask = validator.validTaskId(task);
-		try {
+		//int validTask = validator.validTaskId(task);
+		GetLoan lndetail = new GetLoan();
+		gson =lndetail.execute("1");
+		response.getWriter().write(gson);
+		/*try {
 			switch (validTask) {
 			case 1:
 				break;
@@ -83,7 +87,7 @@ public class EmployeeController extends HttpServlet {
 			response.getWriter().write(message);
 		}
 		response.getWriter().close();
-
+*/
 	}
 
 	/**

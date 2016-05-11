@@ -9,6 +9,8 @@ public class Loan {
 	String LoanBorrowers;
 	String LoanmonthlyPayment;
 	String LoanDueDate;
+	String modOn;
+	String modBy;	
 	
 	public String getemployeeEpf() {
 		return employeeEpf;
@@ -40,6 +42,19 @@ public class Loan {
 	public void setLoanDueDate(String loanDueDate) {
 		LoanDueDate = loanDueDate;
 	} 
+	
+	public String getModOn() {
+		return modOn;
+	}
+	public void setModOn(String modOn) {
+		this.modOn = modOn;
+	}
+	public String getmodBy() {
+		return modBy;
+	}
+	public void setmodBy(String modBy) {
+		modBy = modBy;
+	}
 	
 	public Loan( String LoanAmount, String LoanBorrowers, String LoanmonthlyPayment, String LoanDueDate, String employeeEpf) {
 		

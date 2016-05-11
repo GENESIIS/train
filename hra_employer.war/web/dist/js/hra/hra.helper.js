@@ -374,8 +374,20 @@ function loadviewemergencycontacts() {
 }
 
 function loadEditContentloandetails() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp");
+	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp");	
+	
+	$.get("EmployeeController", function(data, status) {
+		alert(data);
+		json = JSON.parse(data);
+		$(".Editmodelrest #employeeIdEdit").val(json.employeeEpf);
+		$(".Editmodelrest #totalOutstandingEdit").val(json.LoanAmount);
+		$(".Editmodelrest #borrowersEdit").val(json.LoanBorrowers);	
+		$(".Editmodelrest #monthlyPaymentEdit").val(json.LoanmonthlyPayment);
+		$(".Editmodelrest #dueDateEdit").val(json.LoanDueDate);
+		
+		});
 }
+	
 function loadEditContentfamilydetails() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditfamilyDetails.jsp");
 }
@@ -425,9 +437,11 @@ function addLoanDetailes() {
 }
 
 function clearLoanDetails() {
-	$("#employeeId").val("");
-	$("#totalOutstanding").val("");
-	$("#borrowers").val("");
-	$("#dueDate").val("");
-	$("#monthlyPayment").val("");
+	$("#employeeId").val(" ");
+	$("#totalOutstanding").val(" ");
+	$("#borrowers").val(" ");
+	$("#dueDate").val(" ");
+	$("#monthlyPayment").val(" ");
 }
+
+
