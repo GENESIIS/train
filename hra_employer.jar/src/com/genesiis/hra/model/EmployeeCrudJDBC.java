@@ -48,11 +48,17 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(6, employee.getEmployeenic());
 			String gender = employee.getEmployeegender().toString().trim();
 
-			if(gender=="Male" || gender.equals("Male")){
+			if(gender=="Male"){
 				preparedStatement.setString(7, String.valueOf(MaskValidator.MSK_MALE));
-			}else{
+				log.info("+++++++++++++++++++++++++++"+String.valueOf(MaskValidator.MSK_MALE));
+			}else if(gender=="Female"){
 				preparedStatement.setString(7, String.valueOf(MaskValidator.MSK_FEMALE));
+				log.info("+++++++++++++++++++++++++++"+String.valueOf(MaskValidator.MSK_FEMALE));
+			}else{
+				preparedStatement.setString(7, String.valueOf(MaskValidator.MSK_OTHER));
+				log.info("+++++++++++++++++++++++++++"+String.valueOf(MaskValidator.MSK_OTHER));
 			}
+			
 			
 			preparedStatement.setString(8,
 					employee.getEmployeepermenetaddress());
