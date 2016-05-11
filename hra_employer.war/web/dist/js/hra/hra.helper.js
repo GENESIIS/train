@@ -451,14 +451,14 @@ function clearFamilydetails() {
 
 // add Loan Deatile
 function addLoanDetailes() {
-	var departmentNumber = $("#employeeId").val();
+	var employeeEpf = $("#employeeId").val();
 	var LoanAmount = $("#totalOutstanding").val();
 	var LoanBorrowers = $("#borrowers").val();
 	var LoanmonthlyPayment = $("#monthlyPayment").val();
 	var LoanDueDate = $("#dueDate").val();
-
+    var employeeEpf
 	var jsonData = {
-		"departmentNumber" : departmentNumber,
+		"employeeEpf" : employeeEpf,
 		"LoanAmount" : LoanAmount,
 		"LoanBorrowers" : LoanBorrowers,
 		"LoanmonthlyPayment" : LoanmonthlyPayment,
@@ -480,7 +480,7 @@ function addLoanDetailes() {
 			}
 		},
 		error : function(e) {
-			alert("Error " + e);
+			//alert("Error " + e);
 			console.log(e);
 		}		
 	});

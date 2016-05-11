@@ -104,7 +104,7 @@ public class EmployeeController extends HttpServlet {
 				Loan employee = new Loan();
 				employee = (Loan) dim.extractFromJason(
 						"com.genesiis.hra.model.Loan", employeeDetails);
-				String s = dim.execute(3, employee);
+				String s = dim.execute(5, employee);
 				log.info(" : " + s);
 				break;
 			// For other operations.

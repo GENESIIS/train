@@ -11,11 +11,11 @@ public class EmployeeFactory {
 		case 2:
 			return new Familymember();	
 		case 3:
-			return new Loan();
+			
 		case 4:
 			return new Familymember();
 		case 5:
-			return new Familymember();
+			return new Loan();
 		default:
 			return null;
 		}

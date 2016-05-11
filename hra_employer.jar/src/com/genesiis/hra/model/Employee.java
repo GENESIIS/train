@@ -6,22 +6,22 @@ import java.util.List;
  * This class is the super class of the design.
  * **/
 public abstract class Employee implements ICrud {
-	private String employeeId;
+	protected String employeeEpf;	
 
+	public String getemployeeEpf() {
+		return employeeEpf;
+	}
+
+	public void setemployeeEpf(String employeeEpf) {
+		this.employeeEpf = employeeEpf;
+	}
+	
 	public Employee() {
 	}
 
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
-
-	public Employee(String employeeId) {
+	public Employee(String employeeEpf) {
 		super();
-		this.employeeId = employeeId;
+		this.employeeEpf = employeeEpf;
 	}
 
 	@Override
