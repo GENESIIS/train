@@ -18,8 +18,10 @@ public class LoanCrudJDBC implements IDataAccessor {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	@Override
-	public String add(Object object)  {
-		String query = " ";
+	public String add(Object object) {
+		String query = "INSERT INTO [HRA.LOAN] (EMPLOYEEID , DUEDATE , "
+				+ "TOTALOUTSTANDING , BORROWER , MONTHLYPAYMENT , MODBY)"
+				+ "VALUES (?, ?, ?, ?, ?,?) ";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -28,7 +30,14 @@ public class LoanCrudJDBC implements IDataAccessor {
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, " ");
+			
+			preparedStatement.setString(1, lnDetail.getemployeeEpf());
+			preparedStatement.setString(2, lnDetail.getLoanDueDate());
+			preparedStatement.setString(3, lnDetail.getLoanAmount());
+			preparedStatement.setString(4, lnDetail.getLoanBorrowers());
+			preparedStatement.setString(5, lnDetail.getLoanmonthlyPayment());
+			preparedStatement.setString(6, "Saman");
+			
 			
 
 			int rowsInserted = preparedStatement.executeUpdate();

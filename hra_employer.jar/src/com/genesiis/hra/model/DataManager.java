@@ -30,7 +30,7 @@ public class DataManager implements IDataAccessor {
 	}
 
 	@Override
-	public String update(Employees object) {
+	public String update(Object object) {
 		// TODO Auto-generated method stub
 		
 		
@@ -40,9 +40,10 @@ public class DataManager implements IDataAccessor {
 		PreparedStatement preparedStatement = null;
 		
 		try {
+			Employees emp = (Employees)object;
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, object.getEmployeename());
+			preparedStatement.setString(1, emp.getEmployeename());
 			preparedStatement.setString(2, "1");
 			
 			int rows = preparedStatement.executeUpdate();
@@ -61,13 +62,7 @@ public class DataManager implements IDataAccessor {
 			}			
 		}
 		return message;
-	}
-
-	@Override
-	public String update(Object object) {
-		
-		return null;
-	}
+	}	
 
 	@Override
 	public String delete(Object object) {

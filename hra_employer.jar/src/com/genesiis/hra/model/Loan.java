@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class Loan {
 
-	String employeeId ;	
+	String employeeEpf ;	
 	String LoanAmount;
 	String LoanBorrowers;
 	String LoanmonthlyPayment;
 	String LoanDueDate;
 	
-	public String getEmployeeId() {
-		return employeeId;
+	public String getemployeeEpf() {
+		return employeeEpf;
 	}
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployeeId(String employeeEpf) {
+		this.employeeEpf = employeeEpf;
 	}
 	public String getLoanAmount() {
 		return LoanAmount;
@@ -40,4 +40,15 @@ public class Loan {
 	public void setLoanDueDate(String loanDueDate) {
 		LoanDueDate = loanDueDate;
 	} 
+	
+	public Loan( String LoanAmount, String LoanBorrowers, String LoanmonthlyPayment, String LoanDueDate, String employeeEpf) {
+		
+		this.LoanAmount = LoanAmount;
+		this.LoanBorrowers = LoanBorrowers;
+		this.LoanmonthlyPayment = LoanmonthlyPayment;		
+		this.LoanDueDate = LoanDueDate;
+		this.employeeEpf = employeeEpf;
+	}
+	public Loan() {
+	}
 }

@@ -272,7 +272,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick="" disabled="true"
+					id="moredetails" name="moredetails" 
 					data-toggle="modal" data-target="#addmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
@@ -307,8 +307,8 @@
 						class="btn btn-primary">Educaional Data</a> <a
 						onclick="loadContentstudyprograms()" href="#"
 						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadContentfamilydetails()"
+						onclick="loadlonedetails()" class="btn btn-primary">Loan
+						Details</a> <a href="#" onclick="loadfamilydetails()"
 						class="btn btn-primary">Family Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>

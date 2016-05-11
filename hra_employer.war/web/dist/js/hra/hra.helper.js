@@ -383,6 +383,51 @@ function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
 
-function disableButton() {
-	document.getElementById("moredetails").disabled = true;
+function loadlonedetails() {
+	$("#modelrest").load("employeeDetails/loanDetails.jsp");
+}
+//add Loan Deatile
+function addLoanDetailes() {
+	var employeeEpf = $("#employeeId").val();
+	var LoanAmount = $("#totalOutstanding").val();
+	var LoanBorrowers = $("#borrowers").val();
+	var LoanmonthlyPayment = $("#monthlyPayment").val();
+	var LoanDueDate = $("#dueDate").val();
+    var employeeEpf
+	var jsonData = {
+		"employeeEpf" : employeeEpf,
+		"LoanAmount" : LoanAmount,
+		"LoanBorrowers" : LoanBorrowers,
+		"LoanmonthlyPayment" : LoanmonthlyPayment,
+		"LoanDueDate" : LoanDueDate
+	};
+	alert(JSON.stringify(jsonData));
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "1"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				clearLoanDetails();
+			}
+		},
+		error : function(e) {
+			//alert("Error " + e);
+			console.log(e);
+		}		
+	});
+	
+}
+
+function clearLoanDetails() {
+	$("#employeeId").val("");
+	$("#totalOutstanding").val("");
+	$("#borrowers").val("");
+	$("#dueDate").val("");
+	$("#monthlyPayment").val("");
 }

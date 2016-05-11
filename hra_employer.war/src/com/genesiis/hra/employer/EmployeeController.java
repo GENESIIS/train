@@ -14,6 +14,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -39,9 +40,11 @@ public class EmployeeController extends HttpServlet {
 	public void init() throws ServletException {
 		AddEmployee addEmployee = new AddEmployee();
 		GetDepartment department = new GetDepartment();
+		//RegisterLoan  loan = new RegisterLoan();
 
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
+		//hmap.put(2, loan);
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -90,18 +93,19 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String employeeDetails = request.getParameter("jsonData");
-		String task = request.getParameter("task");
+		//String task = request.getParameter("task");
 		String message = "";
 
 		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
-		Gson gson = new Gson();
-
+		//int validTask = validator.validTaskId(task);		
+		RegisterLoan  regLoan = new RegisterLoan();
+		message = regLoan.execute(employeeDetails);
+/*
 		try {
-			switch (validTask) {
+			switch (1) {
 			case 1:
-				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				message = addEmployee.execute(employeeDetails);
+				RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
+				message = regLoan.execute(employeeDetails);
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
@@ -119,7 +123,7 @@ public class EmployeeController extends HttpServlet {
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
-		response.getWriter().close();
+		response.getWriter().close();*/
 	}
 
 }

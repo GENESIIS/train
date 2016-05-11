@@ -46,7 +46,7 @@ public class RegisterLoan implements ICommand {
 		Loan loan =(Loan)entityObject;
 		String message = "";
 		if (loan!= null) {
-			if (!validator.isValidString(loan.getEmployeeId())) {
+			if (!validator.isValidString(loan.getemployeeEpf())) {
 				message = message + " Department Number "
 						+ MessageList.EMPTYFIELD.message() + " ";
 			}
