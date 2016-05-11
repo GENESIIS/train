@@ -5,26 +5,26 @@ public enum Operations {
 	/**
 	 * This is for return the operations with related to the class.
 	 * **/
-	ADD_EMPLOYEE("ADD", "Employee"),
-	UPDATE_EMPLOYEE("UPDATE", "Employee"),
-	ADD_BASICDATA("ADD", "BasicData"),
-	UPDATE_BASICDATA("UPDATE", "BasicData"),
-	ADD_FAMILYMEMBER("ADD", "FamilyMember"),
-	UPDATE_FAMILYMEMBER("UPDATE", "FamilyMember");
+	ADD_EMPLOYEE("ADD", 5),
+	UPDATE_EMPLOYEE("UPDATE", 5),
+	ADD_BASICDATA("ADD", 1),
+	UPDATE_BASICDATA("UPDATE", 1),
+	ADD_FAMILYMEMBER("ADD", 2),
+	UPDATE_FAMILYMEMBER("UPDATE", 2);
 
 	private final String TASK;
-	private final String CLASSNAME;
+	private final int CLASSCODE;
 
-	private Operations(String task, String classname) {
+	private Operations(String task, int classCode) {
 		this.TASK = task;
-		this.CLASSNAME = classname;
+		this.CLASSCODE = classCode;
 	}
 
 	public String getTask() {
 		return TASK;
 	}
 
-	public String getClassname() {
-		return CLASSNAME;
+	public int getclassCode() {
+		return CLASSCODE;
 	}
 }

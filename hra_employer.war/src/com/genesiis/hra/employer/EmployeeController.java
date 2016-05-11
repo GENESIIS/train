@@ -13,6 +13,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.UpdateEmployeeDim;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -63,31 +64,11 @@ public class EmployeeController extends HttpServlet {
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
-
-		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
-			switch (validTask) {
-			case 1:
-				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
-				if ((dim.execute(ClassList.FAMILY_MEMBER.getValue(),
-						employeeDetails)) == 1) {
-					message = MessageList.ADDED.message();
-				}
-				response.getWriter().write(gson.toJson(message));
-				break;
-			// For other operations.
-			 case 2:
-			 break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			default:
-				break;
-			}
+			UpdateEmployeeDim dim = new UpdateEmployeeDim();
+			dim.execute(task, employeeDetails);
 		} catch (Exception exception) {
 			message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: EmployeeController" + exception);
