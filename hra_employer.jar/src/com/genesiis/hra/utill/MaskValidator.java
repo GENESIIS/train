@@ -17,5 +17,7 @@ public class MaskValidator {
 	public static int MSK_ISMARRIED						=512;
 	
 	
-	
+	public static String MSK_MALE_DES					="Male";
+	public static String MSK_FEMALE_DES					="Female";
+	public static String MSK_OTHER_DES					="Other";
 }

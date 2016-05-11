@@ -16,6 +16,8 @@ import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
+import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -54,34 +56,35 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String task = request.getParameter("task");
-		String gson = null;
-		int validTask = validator.validTaskId(task);
-		try {
-			switch (validTask) {
-			case 1:
-				break;
-			case 5:
-				GetDepartment department = (GetDepartment) hmap.get(5);
-				gson = new Gson().toJson(department.execute());
-				response.getWriter().write(gson);
-				break;
-			// For other operations.
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			case -1:
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			String message = MessageList.ERROR.message();
-			log.error("Exception: EmployeeController " + exception);
-			response.getWriter().write(message);
-		}
-		response.getWriter().close();
+//		String task = request.getParameter("task");
+//		String gson = null;
+//		int validTask = validator.validTaskId(task);
+//		try {
+//			switch (validTask) {
+//			case 1:
+//				break;
+//			case 5:
+//				GetDepartment department = (GetDepartment) hmap.get(5);
+//				gson = new Gson().toJson(department.execute());
+//				response.getWriter().write(gson);
+//				break;
+//			// For other operations.
+//			// case 3:
+//			// break;
+//			// case 4:
+//			// break;
+//			case -1:
+//			default:
+//				break;
+//			}
+//		} catch (Exception exception) {
+//			String message = MessageList.ERROR.message();
+//			log.error("Exception: EmployeeController " + exception);
+//			response.getWriter().write(message);
+//		}
+//		response.getWriter().close();
 
+		
 	}
 
 	/**
@@ -90,42 +93,66 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String employeeDetails = request.getParameter("jsonData");
-		String task = request.getParameter("task");
-		String message = "";
-
-		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
-		Gson gson = new Gson();
-
-		try {
-			switch (validTask) {
-			case 1:
-				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				message = addEmployee.execute(employeeDetails);
-				response.getWriter().write(gson.toJson(message));
-				break;
-			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			case 5:
-				AddEmployeeHistory addEmployeeHistory = (AddEmployeeHistory) hmap.get(2); //add employee history data pass
-				message = addEmployeeHistory.execute(employeeDetails);
-				response.getWriter().write(gson.toJson(message));
-				break;
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: EmployeeController" + exception);
-			response.getWriter().write(gson.toJson(message));
-		}
-		response.getWriter().close();
+		Employee employee = new Employee();
+		employee.setEmployeebasis("parental");
+		employee.setEmployeedateofbirth("getdate()");
+		employee.setEmployeedepartment("5");
+		employee.setEmployeedesignation("Supp. Vice Manager");
+		employee.setEmployeeemail("donette.foller@cox.net");
+		employee.setEmployeeepf("5");
+		employee.setEmployeegender("Male");
+		employee.setEmployeejoindate("getdate()");
+		employee.setEmployeemaritalstatus("married");
+		employee.setEmployeemobile("6054142147");
+		employee.setEmployeeModifiedby("tr");
+		employee.setEmployeeModifiedon("getdate()");
+		employee.setEmployeename("Mary Johnson");
+		employee.setEmployeenic("475825361V");
+		employee.setEmployeepermenetaddress("7 Eads St");
+		employee.setEmployeetelephone("4106558723");
+		employee.setEmployeetemporaryaddress("228 Runamuck Pl #2808");
+		
+		EmployeeCrudJDBC employeeCrudJDBC = new EmployeeCrudJDBC();
+		//employeeCrudJDBC.add(employee);
+		
+		employeeCrudJDBC.getAll();
+		
+//		String employeeDetails = request.getParameter("jsonData");
+//		String task = request.getParameter("task");
+//		String message = "";
+//
+//		// Method to verify it and return integer;
+//		int validTask = validator.validTaskId(task);
+//		Gson gson = new Gson();
+//
+//		try {
+//			switch (validTask) {
+//			case 1:
+//				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
+//				message = addEmployee.execute(employeeDetails);
+//				response.getWriter().write(gson.toJson(message));
+//				break;
+//			// For other operations.
+//			// case 2:
+//			// break;
+//			// case 3:
+//			// break;
+//			// case 4:
+//			// break;
+//			case 5:
+//				AddEmployeeHistory addEmployeeHistory = (AddEmployeeHistory) hmap.get(2); //add employee history data pass
+//				message = addEmployeeHistory.execute(employeeDetails);
+//				response.getWriter().write(gson.toJson(message));
+//				break;
+//			default:
+//				break;
+//			}
+//		} catch (Exception exception) {
+//			message = MessageList.FAILED_TO_CREATE.message();
+//			log.error("Exception: EmployeeController" + exception);
+//			response.getWriter().write(gson.toJson(message));
+//		}
+//		response.getWriter().close();
 	}
 
 }

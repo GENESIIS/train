@@ -17,6 +17,8 @@ public class Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
+	private String employeeModifiedby;
+	private String employeeModifiedon;
 	private String employeeEpf;
 	private String employeeBasis;
 
@@ -151,6 +153,22 @@ public class Employee {
 
 	public void setEmployeebasis(String employeeBasis) {
 		this.employeeBasis = employeeBasis;
+	}
+
+	public String getEmployeeModifiedby() {
+		return employeeModifiedby;
+	}
+
+	public void setEmployeeModifiedby(String employeeModifiedby) {
+		this.employeeModifiedby = employeeModifiedby;
+	}
+
+	public String getEmployeeModifiedon() {
+		return employeeModifiedon;
+	}
+
+	public void setEmployeeModifiedon(String employeeModifiedon) {
+		this.employeeModifiedon = employeeModifiedon;
 	}
 
 	public Employee(String employeeId, String employeeName,
