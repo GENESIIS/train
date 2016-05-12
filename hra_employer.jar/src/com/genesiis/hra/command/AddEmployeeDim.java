@@ -17,12 +17,15 @@ public class AddEmployeeDim {
 	public int execute(int key, String employeeDetails) {
 		int status = -1;
 		try {
-			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
+			// Returns a Subclass object of Employee super class according to
+			// the key. Key implies the sub class name
 			EmployeeFactory factory = new EmployeeFactory();
 			Employee emp = factory.getEmployeefactory(key);
-			//Extract the particular class type object returned from the factory.
+			// Extract the particular class type object returned from the
+			// factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),
 					employeeDetails);
+			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
 			// Only a valid object will added to the database.
 			if (emp.isValid(emp)) {
 				status = emp.add(emp);

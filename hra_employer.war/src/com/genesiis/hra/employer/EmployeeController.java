@@ -45,11 +45,11 @@ public class EmployeeController extends HttpServlet {
 	public void init() throws ServletException {
 		AddEmployeeDim addEmployee = new AddEmployeeDim();
 		GetDepartment department = new GetDepartment();
-		AddEducation education = new AddEducation();
+		//EducationData education = new EducationData();
 		
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
-		hmap.put(3, education);
+		//hmap.put(3, education);
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -93,9 +93,9 @@ public class EmployeeController extends HttpServlet {
 		try {
 			switch (validTask) {
 			case 1:
-				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(3);
+				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(1);
 				if ((dim.execute(ClassList.EDUCATION.getValue(),
-						employeeDetails)) == 3) {
+						employeeDetails)) == 1) {
 					message = MessageList.ADDED.message();
 				}
 				response.getWriter().write(gson.toJson(message));

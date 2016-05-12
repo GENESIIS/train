@@ -11,7 +11,8 @@ public enum ClassList {
 	// return message;
 	// }
 
-	EMPLOYEE(1),
+	//For the time being
+	EMPLOYEE(9),
 	BASIC_DATA(1),
 	FAMILY_MEMBER(2),
 	EDUCATION(3),

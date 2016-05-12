@@ -5,11 +5,9 @@
  * modified. 20160509 addEducationDetails() Function
  */
 
-
 var theNewScript = document.createElement("script");
 theNewScript.type = "text/javascript";
 theNewScript.src = "hra.validation.js";
-
 
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
@@ -133,8 +131,6 @@ function clearAddemployeeform() {
 	getDepartment();
 }
 
-
-
 function isNumberKey(evt) {
 	var charCode = (evt.which) ? evt.which : evt.keyCode;
 	if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
@@ -152,9 +148,7 @@ function isLetter(evt) {
 
 }
 
-
-
-//load data to edit
+// load data to edit
 $(document).on("click", "#ebutton", function() {
 	$.get("EmployerController", function(data, status) {
 
@@ -432,48 +426,45 @@ function clearFamilydetails() {
 	$("#workingPlace").val();
 }
 
-
-
-
-
-
-//////Add Education Details
+// ////Add Education Details
 
 function AddEducationDetails() {
-	var employeeId =$("#employeeId").val();
+	var employeeId = $("#employeeId").val();
 	var qualificationName = $("#qualificationName").val();
 	var educatedPlace = $("#educatedPlace").val();
 	var mediumStudied = $("#mediumStudied").val();
 	var startedOn = $("#startedOn").val();
 	var compleatedOn = $("#compleatedOn").val();
-	/*var institution = $("#institution").val();
-	var courseType = $("#courseType").val();
-	var admissionDate = $("#admissionDate").val();
-	var duration = $("#duration").val();
-	var weekdays = $("#weekdays").val();
-	var weekends = $("#weekends").val();*/
+	var studyTime = checkStudyTime();
+	//alert(studyTime);
+	/*
+	 * var institution = $("#institution").val(); var courseType =
+	 * $("#courseType").val(); var admissionDate = $("#admissionDate").val();
+	 * var duration = $("#duration").val(); var weekdays = $("#weekdays").val();
+	 * var weekends = $("#weekends").val();
+	 */
 
 	var EducationData = {
-			"employeeEpf" : employeeId,
+		"employeeEpf" : employeeId,
 		"eduQualification" : qualificationName,
 		"eduUniversity" : educatedPlace,
 		"eduMedium" : mediumStudied,
-		"eduStartedOn" : startedOn,
-		"eduCompltedOn" : compleatedOn
-		
-		/*"institution" : institution,
-		"courseType" : courseType,
-		"admissionDate" : admissionDate,
-		"duration" : duration,
-		"weekdays" : weekdays,
-		"weekends" : weekends*/
+		"eduStartedon" : startedOn,
+		"eduCompltedon" : compleatedOn,
+		"eduStudytime" : studyTime
+
+	/*
+	 * "institution" : institution, "courseType" : courseType, "admissionDate" :
+	 * admissionDate, "duration" : duration, "weekdays" : weekdays, "weekends" :
+	 * weekends
+	 */
 
 	};
-	 alert(JSON.stringify(EducationData));
-	
+	alert(JSON.stringify(EducationData));
+
 	$.ajax({
 		type : "POST",
-		 url : 'EmployeeController',
+		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(EducationData),
 			task : "ADD"
@@ -482,7 +473,7 @@ function AddEducationDetails() {
 		success : function(data) {
 			alert(data);
 			if (data == "Details added successfully.") {
-			clearAddeducationform();
+				clearAddeducationform();
 				// document.getElementById("moredetails").disabled = false;
 			}
 		},
@@ -494,8 +485,8 @@ function AddEducationDetails() {
 
 }
 
-
 function clearAddeducationform() {
+	$("#employeeId").val("");
 	$("#qualificationName").val("");
 	$("#educatedPlace").val("");
 	$("#mediumStudied").val("");
@@ -505,13 +496,20 @@ function clearAddeducationform() {
 	$("#courseType").val("");
 	$("#admissionDate").val("");
 	$("#duration").val("");
-	$("#weekdays").val("");
-	$("#weekends").val("");
-	
-	
-	
+	$("#weekdays").attr('checked', false); 
+	$("#weekends").attr('checked', false); 
+
 }
 
-function disableDiv(){
-	
+function checkStudyTime() {
+	if ((document.getElementById('weekdays').checked)
+			&& (document.getElementById('weekends').checked)) {
+		return 1;
+	} else if (document.getElementById('weekends').checked) {
+		return 2;
+	} else if (document.getElementById('weekdays').checked) {
+		return 3;
+	} else {
+		return 4;
+	}
 }

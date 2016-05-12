@@ -125,7 +125,7 @@
 				<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 			</button>
 			<button type="button" class="btn btn-success pull-right"
-				onclick="AddEducationDetails()" data-dismiss="modal">
+				onclick="AddEducationDetails()" >
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
 
