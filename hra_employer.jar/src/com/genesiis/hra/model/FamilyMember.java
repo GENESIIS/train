@@ -2,10 +2,12 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
+import com.google.gson.Gson;
 
 /**
  * 20160509 PN created Familymember.java Entity class.
@@ -123,12 +125,10 @@ public class FamilyMember extends Employee {
 		}
 		return status;
 	}
-	
-	//String sql = "UPDATE Users SET password=?, fullname=?, email=? WHERE username=?";
-	
+
 	@Override
 	public int update(Object object) {
-		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE EMPLOYEEID=?";
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -143,7 +143,7 @@ public class FamilyMember extends Employee {
 			preparedStatement.setString(4, fm.getFmoccupation());
 			preparedStatement.setString(5, fm.getFmWorkingplace());
 			preparedStatement.setString(6, "SYSTEM");
-			preparedStatement.setString(7, fm.getEmployeeepf());
+			preparedStatement.setString(7, "2");
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 			if (rowsUpdated > 0) {
@@ -162,5 +162,34 @@ public class FamilyMember extends Employee {
 			}
 		}
 		return status;
+	}
+
+	@Override
+	public String getEmployee(int emploeeId) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		FamilyMember fm = new FamilyMember();
+		String familymember = null;
+		Gson gson = new Gson();
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
+			preparedStatement.setInt(1, emploeeId);
+			ResultSet res = preparedStatement.executeQuery();
+			if (res.next()) {
+				fm.setEmployeeepf(res.getString(2));
+				fm.setFmdateofbirth(res.getString(4));
+				fm.setFmname(res.getString(3));
+				fm.setFmoccupation(res.getString(6));
+				fm.setFmrelationship(res.getString(5));
+				fm.setFmWorkingplace(res.getString(7));
+				familymember = gson.toJson(fm);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return familymember;
 	}
 }

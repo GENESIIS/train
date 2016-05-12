@@ -7,6 +7,7 @@ import java.util.List;
  * **/
 public abstract class Employee implements ICrud {
 
+	protected int id;
 	protected String employeeEpf;
 
 	public String getEmployeeepf() {
@@ -49,9 +50,14 @@ public abstract class Employee implements ICrud {
 	public List<Object> getAll() {
 		return null;
 	}
-	
+
 	@Override
 	public boolean isValid(Object object) {
 		return false;
+	}
+
+	@Override
+	public String getEmployee(int emploeeId) {
+		return "";
 	}
 }

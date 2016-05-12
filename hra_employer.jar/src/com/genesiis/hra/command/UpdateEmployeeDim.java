@@ -29,7 +29,7 @@ public class UpdateEmployeeDim {
 					status = emp.add(emp);
 					break;
 				case 2:
-					emp.update(emp);
+					status = emp.update(emp);
 					break;
 				default:
 					break;

@@ -14,6 +14,8 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.UpdateEmployeeDim;
+import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.model.FamilyMember;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -45,6 +47,7 @@ public class EmployeeController extends HttpServlet {
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
+
 	}
 
 	/**
@@ -53,6 +56,16 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
+		String employeeDetails = request.getParameter("jsonData");
+		log.info("employeeDetails" + employeeDetails);
+		FamilyMember empgson = new FamilyMember();
+		try {
+			response.getWriter().write(empgson.getEmployee(2));
+			log.info("employeeDetails"
+					+ empgson.getEmployee(Integer.parseInt("2")));
+		} catch (Exception ex) {
+			log.error("Exception: doGet" + ex);
+		}// (Integer) extractFromJason(Integer,employeeDetails)
 	}
 
 	/**
@@ -68,13 +81,33 @@ public class EmployeeController extends HttpServlet {
 
 		try {
 			UpdateEmployeeDim dim = new UpdateEmployeeDim();
-			dim.execute(task, employeeDetails);
+			int result = dim.execute(task, employeeDetails);
+			if (result == 1) {
+				message = MessageList.ADDED.message();
+			} else {
+				message = MessageList.FAILED_TO_CREATE.message();
+			}
 		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
+			message = MessageList.ERROR.message();
 			log.error("Exception: EmployeeController" + exception);
-			response.getWriter().write(gson.toJson(message));
+
 		}
+		response.getWriter().write(gson.toJson(message));
 		response.getWriter().close();
+	}
+
+	public Object extractFromJason(String className, String gsonData)
+			throws ClassNotFoundException, InstantiationException,
+			IllegalAccessException {
+		Gson gson = new Gson();
+		Class<?> clazz = Class.forName(className);
+		Object object = clazz.newInstance();
+		try {
+			object = gson.fromJson(gsonData, clazz);
+		} catch (Exception e) {
+			log.error("ExtractFromgson - Exception " + e);
+		}
+		return object;
 	}
 
 }

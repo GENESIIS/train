@@ -5,6 +5,7 @@
  * modified.
  */
 
+getEmployeetoupdate();
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 }
@@ -468,13 +469,12 @@ function editFamilyDetails() {
 			"fmWorkingplace" : workingPlace
 		};
 
-				
-		 $.ajax({
+		$.ajax({
 			type : "POST",
 			url : 'EmployeeController',
 			data : {
 				jsonData : JSON.stringify(jsonData),
-				task : "UPDATE"
+				task : "UPDATE_FAMILYMEMBER"
 			},
 			dataType : "json",
 			success : function(data) {
@@ -503,6 +503,14 @@ function editclearFamilydetails() {
 	$("#editrelationnameError").text("");
 	$('#editrelationship option').prop('selected', function() {
 		return this.defaultSelected;
+	});
+}
+
+function getEmployeetoupdate() {
+	var jsonData = 2;
+	$.get("EmployeeController", function(data, status) {
+		alert(data);
+		json = JSON.parse(data);
 	});
 
 }

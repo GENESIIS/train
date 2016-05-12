@@ -17,7 +17,9 @@ public interface ICrud {
 	public String getId(String id);
 
 	public List<Object> getAll();
-	
+
 	public boolean isValid(Object object);
-	
+
+	public String getEmployee(int emploeeId);
+
 }
