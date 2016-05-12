@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.UpdateEmployee;
+import com.genesiis.hra.command.UpdateEmployeeHistory;
 import com.genesiis.hra.model.DepartmentCrudJDBC;
+import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -38,14 +40,17 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployee addEmployee = new AddEmployee();																
+
+		// initialize the commands
+		//UpdateEmployee addEmployee = new UpdateEmployee();
+		UpdateEmployeeHistory updateEmployeeHistory = new UpdateEmployeeHistory();
 		GetDepartment department = new GetDepartment();
-		AddEmployeeHistory addEmployeeHistory = new AddEmployeeHistory(); //add employee history data pass
+
 		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addEmployee);
-		hmap.put(2, addEmployeeHistory);//map pass employeement history
+		//hmap.put(1, addEmployee);
 		hmap.put(5, department);
-		// hmap.put(4, null);
+		hmap.put(6, updateEmployeeHistory);
+
 	}
 
 	/**
@@ -53,35 +58,7 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json");
-		String task = request.getParameter("task");
-		String gson = null;
-		int validTask = validator.validTaskId(task);
-		try {
-			switch (validTask) {
-			case 1:
-				break;
-			case 5:
-				GetDepartment department = (GetDepartment) hmap.get(5);
-				gson = new Gson().toJson(department.execute());
-				response.getWriter().write(gson);
-				break;
-			// For other operations.
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			case -1:
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			String message = MessageList.ERROR.message();
-			log.error("Exception: EmployeeController " + exception);
-			response.getWriter().write(message);
-		}
-		response.getWriter().close();
-
+		// Leave as empty
 	}
 
 	/**
@@ -90,21 +67,33 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-		int message = 0;
+		String message = "";
+
 
 		// Method to verify it and return integer;
 		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
+
+			
+
 			switch (validTask) {
 			case 1:
-				AddEmployee addEmployee = (AddEmployee) hmap.get(1);
-				message = addEmployee.execute(employeeDetails);
+				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
+				
+				
+				// For ADD FAMILLY DETAILS operations.
+				if ((dim.execute(ClassList.FAMILY_MEMBER.getValue(),
+						employeeDetails)) == 1) {
+					message = MessageList.ADDED.message();
+				}
 				response.getWriter().write(gson.toJson(message));
 				break;
+
 			// For other operations.
 			// case 2:
 			// break;
@@ -112,20 +101,28 @@ public class EmployeeController extends HttpServlet {
 			// break;
 			// case 4:
 			// break;
-			case 5:
-				AddEmployeeHistory addEmployeeHistory = (AddEmployeeHistory) hmap.get(2); //add employee history data pass
-				message = addEmployeeHistory.execute(employeeDetails);
+
+			case 6: // EmployeeHistory > validTask-6 > task-6
+
+				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(6);
+
+				// For ADD EMPLOYMENT HISTORY DETAILS operations.
+				if ((updateEmployeeHistory.execute(
+						ClassList.EMPLOYMENT_HISTORY.getValue(),
+						employeeDetails)) == 6) {
+					message = MessageList.ADDED.message();
+				}
+
 				response.getWriter().write(gson.toJson(message));
 				break;
 			default:
 				break;
 			}
 		} catch (Exception exception) {
-			//message = MessageList.FAILED_TO_CREATE.message();
+			message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
 		response.getWriter().close();
 	}
-
 }

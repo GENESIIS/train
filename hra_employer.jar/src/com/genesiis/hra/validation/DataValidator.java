@@ -94,6 +94,8 @@ public class DataValidator {
 			return 4;
 		} else if (task.equalsIgnoreCase(MessageList.FIND.message())) {
 			return 5;
+		} else if (task.equalsIgnoreCase(MessageList.EHADD.message())) {
+			return 6;
 		} else {
 			return -1;
 		}

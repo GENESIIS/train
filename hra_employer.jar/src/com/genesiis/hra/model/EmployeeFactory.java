@@ -10,6 +10,8 @@ public class EmployeeFactory {
 			return new BasicData();
 		case 2:
 			return new Familymember();
+		case 6:
+			return new EmploymentHistory();
 		default:
 			return null;
 		}

@@ -302,10 +302,8 @@ function clearDepartmentform() {
  * Get data and sent to EmployeeController.java
  * Employee > new employee > more details > add new in EMPLOYEE HISTORY > SAVE 
  * **/
-
+/*****************START Employee History*************************/
 function addEmployeeHistoryDetails() {
-
-	alert("dfgdfg");
 	
 	var employeeId 				= $("#employeeId").val();
 	var employer 				= $("#employer").val();
@@ -318,19 +316,20 @@ function addEmployeeHistoryDetails() {
 	var referenceTwo 			= $("#referenceTwo").val();
 	var referenceTwocomments 	= $("#referenceTwocomments").val();
 	
-
+	var x = parseInt(employeeId, 10);
+	
 	var employeeData = {
 			
-		"employeeId" 			: employeeId,
-		"employeeDateofbirth" 	: employeeDateofbirth,
-		"designation" 			: designation,
-		"basis" 				: basis,
-		"startedOn" 			: startedOn,
-		"compleatedOn" 			: compleatedOn,
-		"referenceOne" 			: referenceOne,
-		"referenceOnecomments" 	: referenceOnecomments,
-		"referenceTwo" 			: referenceTwo,
-		"referenceTwocomments" 	: referenceTwocomments,
+		"ehEmployeeid" 			: x,
+		"ehEmployername" 		: employer,
+		"ehDesignation" 		: designation,
+		"ehBasis" 				: basis,
+		"ehStartdate" 			: startedOn,
+		"ehEnddate" 			: compleatedOn,
+		"ehReferenceonename" 	: referenceOne,
+		"ehReferenceonecomments": referenceOnecomments,
+		"ehReferencetwoname" 	: referenceTwo,
+		"ehReferencetwocomments": referenceTwocomments,
 		
 	};
 
@@ -339,7 +338,7 @@ function addEmployeeHistoryDetails() {
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(employeeData),
-			task : "ADD"
+			task : "EHADD"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -355,6 +354,8 @@ function addEmployeeHistoryDetails() {
 		}
 	});
 }
+
+/*****************END Employee History*************************/
 
 /**
  * thumeera
@@ -379,7 +380,6 @@ function clearEmployeementHisory() {
 }
 
 $("#buttonAddemployee").click(function() {
-	alert("ddddddddddddddddddddd");
 	alert(this.id);
 });
 
@@ -419,6 +419,87 @@ $(document).on("click", "#vbutton", function() {
 });
 
 // ///load more employee views/////////////////////////////////////
+
+/*****************START Add Family Details*************************/
+function addFamilyDetails() {
+	var fmemployeeId = $("#fmemployeeId").val();
+	var relationship = $("#relationship").val();
+	var relationDateofbirth = $("#relationDateofbirth").val();
+	var relationName = $("#relationName").val();
+	var occupation = $("#occupation").val();
+	var workingPlace = $("#workingPlace").val();
+
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
+
+	if (employeeIdtb == false) {
+		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	}
+	if (relationNametb == false) {
+		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
+	}
+
+	if ((employeeIdtb == true) && (relationshiptb == true) && (relationDateofbirthtb == true) && (relationNametb == true)) {
+		var jsonData = {
+			"employeeEpf" : fmemployeeId,
+			"fmRelationship" : relationship,
+			"fmDateofbirth" : relationDateofbirth,
+			"fmName" : relationName,
+			"fmOccupation" : occupation,
+			"fmWorkingplace" : workingPlace
+		};
+
+		$.ajax({
+			type : "POST",
+			url : 'EmployeeController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ADD"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearFamilydetails();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+
+}
+
+/*****************END Add Family Details*************************/
+
+
+
+function clearFamilydetails() {
+	$("#relationDateofbirth").val("");
+	$("#relationName").val("");
+	$("#occupation").val("");
+	$("#workingPlace").val("");
+	$("#fmemployeeidError").text("");
+	$("#relationshipError").text("");
+	$("#relationbirthdateError").text("");
+	$("#relationnameError").text("");
+	$('#relationship option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+}
+
+
 
 
 
