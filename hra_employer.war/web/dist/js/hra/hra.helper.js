@@ -374,18 +374,19 @@ function loadviewemergencycontacts() {
 }
 
 function loadEditContentloandetails() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp");	
 	
+	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp", function(datatl) {
 	$.get("EmployeeController", function(data, status) {
 		alert(data);
 		json = JSON.parse(data);
-		$(".Editmodelrest #employeeIdEdit").val(json.employeeEpf);
-		$(".Editmodelrest #totalOutstandingEdit").val(json.LoanAmount);
-		$(".Editmodelrest #borrowersEdit").val(json.LoanBorrowers);	
-		$(".Editmodelrest #monthlyPaymentEdit").val(json.LoanmonthlyPayment);
-		$(".Editmodelrest #dueDateEdit").val(json.LoanDueDate);
+		$("#employeeIdEdit").val(json.employeeEpf);
+		$("#totalOutstandingEdit").val(json.LoanAmount);
+		$("#borrowersEdit").val(json.LoanBorrowers);	
+		$("#monthlyPaymentEdit").val(json.LoanmonthlyPayment);
+		$("#dueDateEdit").val(json.LoanDueDate);
 		
 		});
+	});
 }
 	
 function loadEditContentfamilydetails() {
@@ -398,7 +399,7 @@ function loadEditemergencycontacts() {
 function loadlonedetails() {
 	$("#modelrest").load("employeeDetails/loanDetails.jsp");
 }
-//add Loan Deatile
+/////add Loan Detaile////////////////////////////////////////////////////////////////////////////////////////////////////////
 function addLoanDetailes() {
 	var employeeEpf = $("#employeeId").val();
 	var LoanAmount = $("#totalOutstanding").val();
@@ -444,4 +445,41 @@ function clearLoanDetails() {
 	$("#monthlyPayment").val(" ");
 }
 
+function updateLoanDetailes() {
+	
+	var employeeEpf = $("#employeeIdEdit").val();
+	var LoanAmount = $("#totalOutstandingEdit").val();
+	var LoanBorrowers = $("#borrowersEdit").val();
+	var LoanmonthlyPayment = $("#monthlyPaymentEdit").val();
+	var LoanDueDate = $("#dueDateEdit").val();
+    var employeeEpf
+	var jsonData = {
+		"employeeEpf" : employeeEpf,
+		"LoanAmount" : LoanAmount,
+		"LoanBorrowers" : LoanBorrowers,
+		"LoanmonthlyPayment" : LoanmonthlyPayment,
+		"LoanDueDate" : LoanDueDate
+	};
+	alert(JSON.stringify(jsonData));
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "1"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				clearLoanDetails();
+			}
+		},
+		error : function(e) {
+			//alert("Error " + e);
+			console.log(e);
+		}		
+	});
+	
+}
 

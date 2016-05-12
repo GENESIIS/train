@@ -15,9 +15,7 @@ public class GetEmployee {
 	public String createGson() {	
 		DataManager dataAcse  = new DataManager();		
 		Employees employee = dataAcse.retrive("1");			
-	    String employeD = null;
-	    DataManager dataAcses = new DataManager();
-	
+	    String employeD = null;	   
 
 		Gson gson = new Gson();
 		
@@ -40,7 +38,7 @@ public class GetEmployee {
 		//log.info();		
 		
 		try {
-			 employeD = gson.toJson(dataAcses.retrive("1"));
+			// employeD = gson.toJson(dataAcse.retrive("1"));
 			
 		} catch (Exception e) {
 			

@@ -1,5 +1,5 @@
 <!--Add loan Modal -->
-<div class="">
+<div class="" id ="loan">
 	<div class="">
 		<h3 class="">
 			<i class="glyphicon glyphicon-edit"></i> Loan Details
@@ -33,8 +33,8 @@
 		</div>
 				<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-left"
-				onclick="updatedAlert()" data-dismiss="modal">
-				<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				onclick="updateLoanDetailes()" data-dismiss="modal">
+				<i class="glyphicon glyphicon-floppy-disk"></i> Update
 			</button>
 			<button type="button" class="btn btn-danger pull-right"
 				data-dismiss="modal">

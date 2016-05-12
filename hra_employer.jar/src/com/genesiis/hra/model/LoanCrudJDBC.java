@@ -59,8 +59,45 @@ public class LoanCrudJDBC implements IDataAccessor {
 	}
 
 	@Override
-	public String update(Object object) {
-		return null;
+	public String update(Object object) {		
+		String query = "UPDATE [hra-2].[dbo].[HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
+				+ "  TOTALOUTSTANDING = ? ,  BORROWER = ? ,  MONTHLYPAYMENT = ?,  MODBY = ?  WHERE ID = ?";
+		String message = MessageList.UNKNOWN.message();
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Loan lnDetail = (Loan) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			
+			preparedStatement.setString(1, lnDetail.getemployeeEpf());
+			preparedStatement.setString(2, lnDetail.getLoanDueDate());
+			preparedStatement.setString(3, lnDetail.getLoanAmount());
+			preparedStatement.setString(4, lnDetail.getLoanBorrowers());
+			preparedStatement.setString(5, lnDetail.getLoanmonthlyPayment());
+			preparedStatement.setString(6, "Saman");
+			preparedStatement.setString(7, "1");
+			
+			log.info(lnDetail.LoanBorrowers+"////////////////////////////////////////////////////////");
+
+			int rowsInserted = preparedStatement.executeUpdate();
+			if (rowsInserted > 0) {
+				message = MessageList.ADDED.message();
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			message = MessageList.ERROR.message();
+			log.info(exception+"////////////////////////////////////////////////////////");
+		} finally {
+			try {
+				preparedStatement.close();
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return message;
 	}
 
 	@Override

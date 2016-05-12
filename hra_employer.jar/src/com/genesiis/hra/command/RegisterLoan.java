@@ -2,6 +2,7 @@ package com.genesiis.hra.command;
 
 import java.util.HashMap;
 
+import org.jboss.logging.Logger;
 import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.model.LoanCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
@@ -9,15 +10,17 @@ import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class RegisterLoan implements ICommand {
-
+	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
 	public String execute(String gsonData) {
 		String message = "";
 		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
 		try {
-			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 
+			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 			
 			if(extractedLndetail!=null){
+				message = loanManager.update(extractedLndetail);
 				if (validateValue(extractedLndetail)) {
-					message = loanManager.add(extractedLndetail);
+					
+					//log.info(extractedLndetail.getLoanBorrowers() +"++++++++++++++++++++++++++////////////////////////////////////////////////////////");
 				}
 			}
 		} catch (NullPointerException e) {

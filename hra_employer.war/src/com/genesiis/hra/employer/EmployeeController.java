@@ -56,7 +56,7 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json");
+		response.setContentType("text/html");
 		//String task = request.getParameter("task");
 		String gson = null;
 		//int validTask = validator.validTaskId(task);
@@ -104,6 +104,7 @@ public class EmployeeController extends HttpServlet {
 		//int validTask = validator.validTaskId(task);		
 		RegisterLoan  regLoan = new RegisterLoan();
 		message = regLoan.execute(employeeDetails);
+		log.info(employeeDetails +"////////////////////////////////////////////////////////");
 /*
 		try {
 			switch (1) {
