@@ -508,9 +508,11 @@ function editclearFamilydetails() {
 
 function getEmployeetoupdate() {
 	var jsonData = 2;
-	$.get("EmployeeController", function(data, status) {
-		alert(data);
-		json = JSON.parse(data);
+
+	$.get('EmployeeController', {
+		nicno : nicno
+	}, function(response) {
+		alert(response);
 	});
 
 }
