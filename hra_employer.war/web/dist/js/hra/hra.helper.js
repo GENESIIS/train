@@ -374,16 +374,17 @@ function loadviewemergencycontacts() {
 }
 
 function loadEditContentloandetails() {
-	
 	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp", function(datatl) {
 	$.get("EmployeeController", function(data, status) {
 		alert(data);
 		json = JSON.parse(data);
 		$("#employeeIdEdit").val(json.employeeEpf);
-		$("#totalOutstandingEdit").val(json.LoanAmount);
-		$("#borrowersEdit").val(json.LoanBorrowers);	
-		$("#monthlyPaymentEdit").val(json.LoanmonthlyPayment);
-		$("#dueDateEdit").val(json.LoanDueDate);
+		$("#totalOutstandingEdit").val(json.loanAmount);
+		$("#guaranter1Edit").val(json.loanGuarantor1);	
+		$("#guaranter2Edit").val(json.loanGuarantor2);	
+		$("#monthlyPaymentEdit").val(json.loanmonthlyPayment);
+		$("#dueDateEdit").val(json.loanDueDate);
+		$("#endDateEdit").val(json.loanendDate);
 		
 		});
 	});
@@ -448,17 +449,21 @@ function clearLoanDetails() {
 function updateLoanDetailes() {
 	
 	var employeeEpf = $("#employeeIdEdit").val();
-	var LoanAmount = $("#totalOutstandingEdit").val();
-	var LoanBorrowers = $("#borrowersEdit").val();
-	var LoanmonthlyPayment = $("#monthlyPaymentEdit").val();
-	var LoanDueDate = $("#dueDateEdit").val();
+	var loanAmount = $("#totalOutstandingEdit").val();
+	var loanGuarantor1= $("#guaranter1Edit").val();
+	var loanGuarantor2 = $("#guaranter2Edit").val();
+	var loanmonthlyPayment = $("#monthlyPaymentEdit").val();
+	var loanDueDate = $("#dueDateEdit").val();
+	var loanendDate = $("#endDateEdit").val();
     var employeeEpf
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
-		"LoanAmount" : LoanAmount,
-		"LoanBorrowers" : LoanBorrowers,
-		"LoanmonthlyPayment" : LoanmonthlyPayment,
-		"LoanDueDate" : LoanDueDate
+		"loanAmount" : loanAmount,
+		"loanGuarantor1" : loanGuarantor1,
+		"loanGuarantor2" : loanGuarantor2,
+		"loanmonthlyPayment" : loanmonthlyPayment,
+		"loanDueDate" : loanDueDate,
+		"loanendDate" : loanendDate
 	};
 	alert(JSON.stringify(jsonData));
 	$.ajax({

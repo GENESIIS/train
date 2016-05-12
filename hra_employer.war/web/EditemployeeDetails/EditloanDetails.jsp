@@ -15,8 +15,11 @@
 				name="totalOutstanding" placeholder="">
 		</div>
 		<div class="form-group">
-			<label for="borrowers">Borrowers</label> <input type="text"
-				class="form-control" id="borrowersEdit" name="borrowers" placeholder="">
+			<label for="borrowers">Guarantor1</label> <input type="text"
+				class="form-control" id="guaranter1Edit" name="Gauranter1Edit" placeholder="">
+				<label for="borrowers">Guarantor2</label>
+				<input type="text"
+				class="form-control" id="guaranter2Edit" name="Guaranter2Edit" placeholder="">
 		</div>
 		<div class="form-group">
 			<label for="monthlyPayment">Monthly Payment</label> <input
@@ -26,8 +29,16 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<label for="dueDate">Due Date</label> <input type="date"
+					<label for="dueDate">Payment Due Date</label> <input type="date"
 						class="form-control" id="dueDateEdit" name="dueDate" placeholder="">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="dueDate">End Date</label> <input type="date"
+						class="form-control" id="endDateEdit" name="endDateEdit" placeholder="">
 				</div>
 			</div>
 		</div>

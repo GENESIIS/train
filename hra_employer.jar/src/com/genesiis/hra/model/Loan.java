@@ -5,10 +5,11 @@ import java.sql.Date;
 public class Loan {
 
 	String employeeEpf ;	
-	String LoanAmount;
-	String LoanBorrowers;
-	String LoanmonthlyPayment;
-	String LoanDueDate;
+	String loanAmount;
+	String loanGuarantor1;
+	String loanGuarantor2;
+	String loanmonthlyPayment;
+	String loanDueDate;
 	String modOn;
 	String modBy;	
 	
@@ -19,28 +20,34 @@ public class Loan {
 		this.employeeEpf = employeeEpf;
 	}
 	public String getLoanAmount() {
-		return LoanAmount;
+		return loanAmount;
 	}
 	public void setLoanAmount(String loanAmount) {
-		LoanAmount = loanAmount;
+		this.loanAmount = loanAmount;
 	}
-	public String getLoanBorrowers() {
-		return LoanBorrowers;
+	public String getLoanGuarantor1() {
+		return loanGuarantor1;
 	}
-	public void setLoanBorrowers(String loanBorrowers) {
-		LoanBorrowers = loanBorrowers;
+	public void setLoanGuarantor1(String loanGuarantor1) {
+		this.loanGuarantor1 = loanGuarantor1;
+	}
+	public String getLoanGuarantor2() {
+		return loanGuarantor2;
+	}
+	public void setLoanGuarantor2(String loanGuarantor2) {
+		this.loanGuarantor2 = loanGuarantor2;
 	}
 	public String getLoanmonthlyPayment() {
-		return LoanmonthlyPayment;
+		return loanmonthlyPayment;
 	}
 	public void setLoanmonthlyPayment(String loanmonthlyPayment) {
-		LoanmonthlyPayment = loanmonthlyPayment;
+		this.loanmonthlyPayment = loanmonthlyPayment;
 	}
 	public String getLoanDueDate() {
-		return LoanDueDate;
+		return loanDueDate;
 	}
 	public void setLoanDueDate(String loanDueDate) {
-		LoanDueDate = loanDueDate;
+		this.loanDueDate = loanDueDate;
 	} 
 	
 	public String getModOn() {
@@ -53,16 +60,20 @@ public class Loan {
 		return modBy;
 	}
 	public void setmodBy(String modBy) {
-		modBy = modBy;
+		this.modBy = modBy;
 	}
 	
-	public Loan( String LoanAmount, String LoanBorrowers, String LoanmonthlyPayment, String LoanDueDate, String employeeEpf) {
+	public Loan( String loanAmount, String loanGuarantor1, String loanGuarantor2, String loanmonthlyPayment, 
+			String loanDueDate, String employeeEpf, String modBy, String modOn) {
 		
-		this.LoanAmount = LoanAmount;
-		this.LoanBorrowers = LoanBorrowers;
-		this.LoanmonthlyPayment = LoanmonthlyPayment;		
-		this.LoanDueDate = LoanDueDate;
+		this.loanAmount = loanAmount;
+		this.loanGuarantor1 = loanGuarantor1;
+		this.loanGuarantor2 = loanGuarantor2;
+		this.loanmonthlyPayment = loanmonthlyPayment;		
+		this.loanDueDate = loanDueDate;
 		this.employeeEpf = employeeEpf;
+		this.modBy = modBy;
+		this.modBy = modBy;
 	}
 	public Loan() {
 	}

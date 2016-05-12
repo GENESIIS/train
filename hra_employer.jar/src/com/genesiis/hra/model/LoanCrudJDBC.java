@@ -34,9 +34,10 @@ public class LoanCrudJDBC implements IDataAccessor {
 			preparedStatement.setString(1, lnDetail.getemployeeEpf());
 			preparedStatement.setString(2, lnDetail.getLoanDueDate());
 			preparedStatement.setString(3, lnDetail.getLoanAmount());
-			preparedStatement.setString(4, lnDetail.getLoanBorrowers());
-			preparedStatement.setString(5, lnDetail.getLoanmonthlyPayment());
-			preparedStatement.setString(6, "Saman");
+			preparedStatement.setString(4, lnDetail.getLoanGuarantor1());
+			preparedStatement.setString(5, lnDetail.getLoanGuarantor2());
+			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
+			preparedStatement.setString(7, "Saman");
 			
 			
 
@@ -61,7 +62,7 @@ public class LoanCrudJDBC implements IDataAccessor {
 	@Override
 	public String update(Object object) {		
 		String query = "UPDATE [hra-2].[dbo].[HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
-				+ "  TOTALOUTSTANDING = ? ,  BORROWER = ? ,  MONTHLYPAYMENT = ?,  MODBY = ?  WHERE ID = ?";
+				+ "  TOTALOUTSTANDING = ? ,  GUARANTOR1 = ? , GUARANTOR2 = ? ,  MONTHLYPAYMENT = ?,  MODBY = ?  WHERE ID = ?";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -74,12 +75,13 @@ public class LoanCrudJDBC implements IDataAccessor {
 			preparedStatement.setString(1, lnDetail.getemployeeEpf());
 			preparedStatement.setString(2, lnDetail.getLoanDueDate());
 			preparedStatement.setString(3, lnDetail.getLoanAmount());
-			preparedStatement.setString(4, lnDetail.getLoanBorrowers());
-			preparedStatement.setString(5, lnDetail.getLoanmonthlyPayment());
-			preparedStatement.setString(6, "Saman");
-			preparedStatement.setString(7, "1");
+			preparedStatement.setString(4, lnDetail.getLoanGuarantor1());
+			preparedStatement.setString(5, lnDetail.getLoanGuarantor2());
+			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
+			preparedStatement.setString(7, "Saman");
+			preparedStatement.setString(8, "1");
 			
-			log.info(lnDetail.LoanBorrowers+"////////////////////////////////////////////////////////");
+			log.info(lnDetail.loanGuarantor1+"////////////////////////////////////////////////////////");
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
@@ -129,12 +131,17 @@ public class LoanCrudJDBC implements IDataAccessor {
 						loan.setEmployeeId(retriveData.getString("EMPLOYEEID"));
 						loan.setLoanDueDate(retriveData.getString("DUEDATE")); 						
 						loan.setLoanAmount(retriveData.getString("TOTALOUTSTANDING"));
-						loan.setLoanBorrowers(retriveData.getString("BORROWER"));
+						loan.setLoanGuarantor1(retriveData.getString("GUARANTOR1"));
+						loan.setLoanGuarantor2(retriveData.getString("GUARANTOR2"));
 						loan.setLoanmonthlyPayment(retriveData.getString("MONTHLYPAYMENT"));
 						loan.setmodBy(retriveData.getString("MODBY"));
 						loan.setModOn(retriveData.getString("MODON"));
 						
 						
+						log.info(retriveData.getString("GUARANTOR1")+"////////////////////////////////////////////////////////");
+						log.info(loan.getLoanGuarantor1()+"////////////////////////////////////////////////////////");
+						log.info(retriveData.getString("TOTALOUTSTANDING")+"////////////////////////////////////////////////////////");
+						log.info(retriveData.getString("TOTALOUTSTANDING")+"////////////////////////////////////////////////////////");
 						log.info(retriveData.getString("TOTALOUTSTANDING")+"////////////////////////////////////////////////////////");
 						
 

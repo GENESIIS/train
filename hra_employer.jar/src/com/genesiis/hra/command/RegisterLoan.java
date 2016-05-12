@@ -57,7 +57,11 @@ public class RegisterLoan implements ICommand {
 				message = message + " Department Name "
 						+ MessageList.EMPTYFIELD.message() + " ";
 			}
-			if (!validator.isValidString(loan.getLoanBorrowers())) {
+			if (!validator.isValidString(loan.getLoanGuarantor1())) {
+				message = message + " Department Name "
+						+ MessageList.EMPTYFIELD.message() + " ";
+			}
+			if (!validator.isValidString(loan.getLoanGuarantor2())) {
 				message = message + " Department Name "
 						+ MessageList.EMPTYFIELD.message() + " ";
 			}
