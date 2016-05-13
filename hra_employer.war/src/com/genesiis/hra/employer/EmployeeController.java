@@ -16,11 +16,12 @@ import com.genesiis.hra.command.AddEducation;
 import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.AddEmployeeDim;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.EducationData;
 //import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.validation.ClassList;
+import com.genesiis.hra.validation.Operation;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -39,18 +40,18 @@ public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
-	HashMap<Integer, Object> hmap = null;
+	HashMap<Operation, ICommand> commands = null;
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployeeDim addEmployee = new AddEmployeeDim();
-		GetDepartment department = new GetDepartment();
-		//EducationData education = new EducationData();
-		
-		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addEmployee);
-		//hmap.put(3, education);
-		hmap.put(5, department);
+	//	AddEmployeeDim addEmployee = ;
+		//GetDepartment department = new GetDepartment();
+		// EducationData education = new EducationData();
+
+		commands = new HashMap<Operation, ICommand>();
+		commands.put(Operation.ADD_EDU_DETAILS, new AddEmployeeDim());
+		// hmap.put(3, education);
+		//commands.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
 	}
@@ -61,18 +62,18 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		/*
-		 * String task = request.getParameter("task"); String gson = null; int
-		 * validTask = validator.validTaskId(task); try { switch (validTask) {
-		 * case 1: break; case 5: GetDepartment department = (GetDepartment)
-		 * hmap.get(5); gson = new Gson().toJson(department.execute());
-		 * response.getWriter().write(gson); break; // For other operations. //
-		 * case 3: // break; // case 4: // break; case -1: default: break; } }
-		 * catch (Exception exception) { String message =
-		 * MessageList.ERROR.message();
-		 * log.error("Exception: EmployeeController " + exception);
-		 * response.getWriter().write(message); } response.getWriter().close();
-		 */
+		String employeeDetails = request.getParameter("jsonData");
+		log.info("employeeDetails" + employeeDetails);
+		// FamilyMember empgson = new FamilyMember();
+		EducationData edu = new EducationData();
+		try {
+			response.getWriter().write(edu.getEmployee(3));
+			log.info("employeeDetails" + edu.getEmployee(Integer.parseInt("3")));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			log.error("Exception: doGet" + ex);
+
+		}
 
 	}
 
@@ -82,24 +83,23 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String employeeDetails = request.getParameter("jsonData");
+		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
 
 		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
+		//int validTask = validator.validTaskId(task);
+		Operation o = Operation.NO_COMMAND;
+		// using the task i retrieve the operation o = Operation.fromString(task)
+		
 		Gson gson = new Gson();
 
 		try {
-			switch (validTask) {
-			case 1:
-				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(1);
-				if ((dim.execute(ClassList.EDUCATION.getValue(),
-						employeeDetails)) == 1) {
-					message = MessageList.ADDED.message();
-				}
-				response.getWriter().write(gson.toJson(message));
-				break;
+			switch (o) {
+			case ADD_EDU_DETAILS:
+				message = commands.get(o).execute(details);
+				writeResponse(message, response);
+			break;
 			// For other operations.
 			// case 2:
 			// break;
@@ -116,6 +116,11 @@ public class EmployeeController extends HttpServlet {
 			response.getWriter().write(gson.toJson(message));
 		}
 		response.getWriter().close();
+	}
+
+	private void writeResponse(String message, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -2,11 +2,14 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
+import com.google.gson.Gson;
 
 /**
  * 20160511 created EducationData entity class - as
@@ -147,4 +150,40 @@ public class EducationData extends Employee {
 		}
 
 	}
+
+	@Override
+	public String getEmployee(int employeeId) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement preparedStatement  = null;
+		EducationData edu = new EducationData();
+		String educationDetails = null;
+		Gson gson = new Gson();
+		
+		try {
+			
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement("SELECT * FROM [HRA.EDUCATION] WHERE ID=?");
+			preparedStatement.setInt(1, employeeId);
+			
+			ResultSet res = preparedStatement.executeQuery();
+			if(res.next()){
+				edu.setEmployeeepf("1");
+				edu.setEduUniversity(res.getString(3));
+				edu.setEduStartedon(res.getString(4));
+				edu.setEduQualification(res.getString(5));
+				edu.setEduMedium(res.getString(6));
+				edu.setEduCompltedon(res.getString(7));
+				edu.setEduStudytime(res.getString(8));
+				educationDetails = gson.toJson(edu);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return educationDetails;
+	}
+	
+	
 }

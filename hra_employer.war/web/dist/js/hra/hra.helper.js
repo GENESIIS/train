@@ -281,7 +281,7 @@ function clearDepartmentform() {
 // ////load more edit Employeee Detail///////////////
 
 function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
+	$("#Editmodelrest").load("\EditemployeeDetails/EditeducationalDetails.jsp");
 }
 
 function loadEditemployementhistory() {
@@ -426,7 +426,7 @@ function clearFamilydetails() {
 	$("#workingPlace").val();
 }
 
-// ////Add Education Details
+// ////Add Education Details /////////
 
 function AddEducationDetails() {
 	var employeeId = $("#employeeId").val();
@@ -436,7 +436,7 @@ function AddEducationDetails() {
 	var startedOn = $("#startedOn").val();
 	var compleatedOn = $("#compleatedOn").val();
 	var studyTime = checkStudyTime();
-	//alert(studyTime);
+	// alert(studyTime);
 	/*
 	 * var institution = $("#institution").val(); var courseType =
 	 * $("#courseType").val(); var admissionDate = $("#admissionDate").val();
@@ -496,8 +496,8 @@ function clearAddeducationform() {
 	$("#courseType").val("");
 	$("#admissionDate").val("");
 	$("#duration").val("");
-	$("#weekdays").attr('checked', false); 
-	$("#weekends").attr('checked', false); 
+	$("#weekdays").attr('checked', false);
+	$("#weekends").attr('checked', false);
 
 }
 
@@ -512,4 +512,44 @@ function checkStudyTime() {
 	} else {
 		return 4;
 	}
+}
+
+// ///Load data to edit Educational Details
+
+$(document).on("click", "#edubutton", function() {
+	$.get("EmployerController", function(data, status) {
+		alert(data);
+		json = JSON.parse(data);
+		$(".modal-body #employeeId").val(json.employeeEpf);
+		$(".modal-body #qualificationName").val(json.employeeEpf);
+		$(".modal-body #educatedPlace").val(json.employeeEpf);
+		$(".modal-body #mediumStudied").val(json.employeeEpf);
+		$(".modal-body #startedOn").val(json.employeeEpf);
+		$(".modal-body #compleatedOn").val(json.employeeEpf);
+
+		if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
+			document.getElementById('weekdays').checked;
+			document.getElementById('weekends').checked;
+		} else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 2) {
+			document.getElementById('weekdays').checked;
+		} else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 3) {
+			document.getElementById('weekends').checked;
+		} else {
+			//do nothing 
+		}
+
+	});
+
+});
+
+// /////Edit Educational Details ////////
+function EditEducationDetails() {
+	var employeeId = $("#employeeId").val();
+	var qualificationName = $("#qualificationName").val();
+	var educatedPlace = $("#educatedPlace").val();
+	var mediumStudied = $("#mediumStudied").val();
+	var startedOn = $("#startedOn").val();
+	var compleatedOn = $("#compleatedOn").val();
+	var studyTime = checkStudyTime();
+
 }

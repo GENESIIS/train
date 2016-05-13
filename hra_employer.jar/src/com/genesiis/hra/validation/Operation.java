@@ -1,6 +1,6 @@
 package com.genesiis.hra.validation;
 
-public enum ClassList {
+public enum Operation {
 	// private String message;
 	//
 	// ClassList(String message) {
@@ -15,14 +15,15 @@ public enum ClassList {
 	EMPLOYEE(9),
 	BASIC_DATA(1),
 	FAMILY_MEMBER(2),
-	EDUCATION(3),
+	ADD_EDU_DETAILS(3),
 	STUDY_PROGRAM(4),
 	LOAN(5),
-	EMPLOYMENT_HISTORY(6);
+	EMPLOYMENT_HISTORY(6), 
+	NO_COMMAND(-1);
 
 	private final int value;
 
-	ClassList(final int newValue) {
+	Operation(final int newValue) {
 		value = newValue;
 	}
 

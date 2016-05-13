@@ -62,4 +62,9 @@ public class Employee implements ICrud {
 	public boolean isValid(Object object) {
 		return false;
 	}
+	
+	@Override
+	public String getEmployee(int emploeeId) {
+		return "";
+	}
 }

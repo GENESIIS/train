@@ -11,11 +11,11 @@ import com.google.gson.Gson;
  * This class is for replace the AddEmployee Command Class after completing the
  * design.
  * **/
-public class AddEmployeeDim {
+public class AddEmployeeDim implements ICommand {
 	static Logger log = Logger.getLogger(AddEmployeeDim.class.getName());
 
-	public int execute(int key, String employeeDetails) {
-		int status = -1;
+	public String execute(int key, String employeeDetails) {
+		String status = "";
 		try {
 			// Returns a Subclass object of Employee super class according to
 			// the key. Key implies the sub class name
@@ -28,7 +28,7 @@ public class AddEmployeeDim {
 			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
 			// Only a valid object will added to the database.
 			if (emp.isValid(emp)) {
-				status = emp.add(emp);
+	//			status = emp.add(emp);
 			}
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
