@@ -384,7 +384,7 @@ function loadEditContentloandetails() {
 		$("#guaranter2Edit").val(json.loanGuarantor2);	
 		$("#monthlyPaymentEdit").val(json.loanmonthlyPayment);
 		$("#dueDateEdit").val(json.loanDueDate);
-		$("#endDateEdit").val(json.loanendDate);
+		$("#endDateEdit").val(json.loanEndDate);
 		
 		});
 	});
@@ -400,51 +400,8 @@ function loadEditemergencycontacts() {
 function loadlonedetails() {
 	$("#modelrest").load("employeeDetails/loanDetails.jsp");
 }
-/////add Loan Detaile////////////////////////////////////////////////////////////////////////////////////////////////////////
-function addLoanDetailes() {
-	var employeeEpf = $("#employeeId").val();
-	var LoanAmount = $("#totalOutstanding").val();
-	var LoanBorrowers = $("#borrowers").val();
-	var LoanmonthlyPayment = $("#monthlyPayment").val();
-	var LoanDueDate = $("#dueDate").val();
-    var employeeEpf
-	var jsonData = {
-		"employeeEpf" : employeeEpf,
-		"LoanAmount" : LoanAmount,
-		"LoanBorrowers" : LoanBorrowers,
-		"LoanmonthlyPayment" : LoanmonthlyPayment,
-		"LoanDueDate" : LoanDueDate
-	};
-	alert(JSON.stringify(jsonData));
-	$.ajax({
-		type : "POST",
-		url : 'EmployeeController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "1"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
-				clearLoanDetails();
-			}
-		},
-		error : function(e) {
-			//alert("Error " + e);
-			console.log(e);
-		}		
-	});
-	
-}
+/////Update Loan Detaile////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function clearLoanDetails() {
-	$("#employeeId").val(" ");
-	$("#totalOutstanding").val(" ");
-	$("#borrowers").val(" ");
-	$("#dueDate").val(" ");
-	$("#monthlyPayment").val(" ");
-}
 
 function updateLoanDetailes() {
 	
@@ -454,7 +411,7 @@ function updateLoanDetailes() {
 	var loanGuarantor2 = $("#guaranter2Edit").val();
 	var loanmonthlyPayment = $("#monthlyPaymentEdit").val();
 	var loanDueDate = $("#dueDateEdit").val();
-	var loanendDate = $("#endDateEdit").val();
+	var loanEndDate = $("#endDateEdit").val();
     var employeeEpf
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
@@ -463,7 +420,7 @@ function updateLoanDetailes() {
 		"loanGuarantor2" : loanGuarantor2,
 		"loanmonthlyPayment" : loanmonthlyPayment,
 		"loanDueDate" : loanDueDate,
-		"loanendDate" : loanendDate
+		"loanEndDate" : loanEndDate
 	};
 	alert(JSON.stringify(jsonData));
 	$.ajax({

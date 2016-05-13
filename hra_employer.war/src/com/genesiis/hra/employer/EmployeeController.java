@@ -1,6 +1,7 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -103,7 +104,13 @@ public class EmployeeController extends HttpServlet {
 		// Method to verify it and return integer;
 		//int validTask = validator.validTaskId(task);		
 		RegisterLoan  regLoan = new RegisterLoan();
-		message = regLoan.execute(employeeDetails);
+		try {
+			message = regLoan.execute(employeeDetails);
+		} catch (ParseException e) {
+			// TODO: handle exception
+			log.info(employeeDetails +"++++++++++++++++++++++++++++++++++++++++++++++++");
+		}
+		
 		log.info(employeeDetails +"////////////////////////////////////////////////////////");
 /*
 		try {

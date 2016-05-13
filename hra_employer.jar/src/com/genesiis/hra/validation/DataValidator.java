@@ -67,6 +67,22 @@ public class DataValidator {
 		}
 		return status;
 	}
+	
+	public boolean isNumber(String text) {
+		boolean status = false;		
+		if ((text.isEmpty() == false) && text != null) {
+			   try {
+				   Integer number = Integer.parseInt(text) ;
+			} catch (NumberFormatException e) {
+				// TODO: handle exception
+				return false;
+			}catch ( Exception s){
+				return false;
+			}
+			status = true;
+		}
+		return status;
+	}
 
 	public boolean isValidemail(String email) {
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";

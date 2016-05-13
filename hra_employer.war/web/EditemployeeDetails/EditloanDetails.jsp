@@ -11,7 +11,7 @@
 		</div>
 		<div class="form-group">
 			<label for="totalOutstanding">Total Outstanding Amount</label> <input
-				type="text" class="form-control" id="totalOutstandingEdit"
+				type="number" class="form-control" id="totalOutstandingEdit"
 				name="totalOutstanding" placeholder="">
 		</div>
 		<div class="form-group">
@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group">
 			<label for="monthlyPayment">Monthly Payment</label> <input
-				type="text" class="form-control" id="monthlyPaymentEdit"
+				type="number" class="form-control" id="monthlyPaymentEdit"
 				name="monthlyPayment" placeholder="">
 		</div>
 		<div class="row">

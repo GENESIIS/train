@@ -1,14 +1,15 @@
 package com.genesiis.hra.command;
 
+import java.text.ParseException;
 import java.util.HashMap;
 
 
 public interface ICommand {	
-		public String execute(String gsonData) ;
+		public String execute(String gsonData) throws ParseException ;
 		
 		public Object extractFromJason(String data);
 		
-		public Boolean validateValue(Object entiytObject); 
+		public String validateValue(Object entiytObject) throws ParseException; 
 		
 		public Boolean validateValue(HashMap<Integer, Object> entitytMap);
 }
