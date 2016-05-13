@@ -1,6 +1,9 @@
 package com.genesiis.hra.command;
 
+import java.text.ParseException;
 import java.util.HashMap;
+
+import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.model.LoanCrudJDBC;
@@ -9,14 +12,14 @@ import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class RegisterLoan implements ICommand {
-
-	public String execute(String gsonData) {
+	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
+	public String execute(String gsonData)  {
 		String message = "";
 		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
 		try {
 			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 
 			if(extractedLndetail!=null){
-				if (validateValue(extractedLndetail)) {
+				if (validateValue(extractedLndetail).equalsIgnoreCase("True")) {
 					message = loanManager.add(extractedLndetail);
 				}
 			}
@@ -29,7 +32,7 @@ public class RegisterLoan implements ICommand {
 		}		
 		return message;
 	}
-	
+	//Extract Json ogect
 	public Object extractFromJason(String data){
 		Gson gson = new Gson();
 		Loan LoanDeatail = null;
@@ -41,36 +44,31 @@ public class RegisterLoan implements ICommand {
 	  return LoanDeatail;
 	}
 	
-	public Boolean validateValue(Object entityObject){
-		DataValidator validator = new DataValidator();
-		Loan loan =(Loan)entityObject;
-		String message = "";
-		if (loan!= null) {
-			if (!validator.isValidString(loan.getemployeeEpf())) {
-				message = message + " Department Number "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
-			if (!validator.isValidString(loan.getLoanAmount())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
-			if (!validator.isValidString(loan.getLoanBorrowers())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
-			if (!validator.isValidString(loan.getLoanmonthlyPayment())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
-			if (!validator.isValidString(loan.getLoanDueDate())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
-			}
-		} else {
-			return false;
+	//Validating data fields
+		public String validateValue(Object entityObject) {
+			DataValidator validator = new DataValidator();
+			Loan loan =(Loan)entityObject;
+			String message = "True";
+			if (loan!= null) {					
+				if (!validator.isValidString(loan.getLoanGuarantor1())) {
+					message =  MessageList.EMPTYFIELD.message() + " ";
+				}
+				if (!validator.isValidString(loan.getLoanAmount())) {
+					message = MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();						
+				}
+				if (!validator.isValidString(loan.getLoanGuarantor2())) {
+					message = MessageList.EMPTYFIELD.message() + " ";
+				}
+				if (!validator.isValidString(loan.getLoanmonthlyPayment())) {
+					message =  MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();
+				}
+				/*if (!validator.isFutureDate(loan.getLoanEndDate())) {
+					message = message + " Department Name "
+							+ MessageList.INVALIDENDDATE.message() + " ";
+				}*/
+			} 
+			return message;
 		}
-		return true;
-	}
 	
     public Boolean validateValue(HashMap<Integer, Object> entityMap){
 		

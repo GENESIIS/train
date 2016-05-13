@@ -389,18 +389,23 @@ function loadlonedetails() {
 //add Loan Deatile
 function addLoanDetailes() {
 	var employeeEpf = $("#employeeId").val();
-	var LoanAmount = $("#totalOutstanding").val();
-	var LoanBorrowers = $("#borrowers").val();
-	var LoanmonthlyPayment = $("#monthlyPayment").val();
-	var LoanDueDate = $("#dueDate").val();
-    var employeeEpf
+	var loanAmount = $("#totalOutstanding").val();
+	var loanGuarantor1 = $("#guarantor1").val();
+	var loanGuarantor2 = $("#guarantor2").val();
+	var loanmonthlyPayment = $("#monthlyPayment").val();
+	var loanDueDate = $("#dueDate").val();
+	var loanEndDate = $("#endDate").val();
+   
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
-		"LoanAmount" : LoanAmount,
-		"LoanBorrowers" : LoanBorrowers,
-		"LoanmonthlyPayment" : LoanmonthlyPayment,
-		"LoanDueDate" : LoanDueDate
+		"loanAmount" : loanAmount,
+		"loanGuarantor1" : loanGuarantor1,
+		"loanGuarantor2" : loanGuarantor2,
+		"loanmonthlyPayment" : loanmonthlyPayment,
+		"loanDueDate" : loanDueDate ,
+		"loanEndDate" : loanEndDate
 	};
+    
 	alert(JSON.stringify(jsonData));
 	$.ajax({
 		type : "POST",

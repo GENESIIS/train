@@ -18,10 +18,11 @@ public class LoanCrudJDBC implements IDataAccessor {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	@Override
+	//Add data to DB
 	public String add(Object object) {
 		String query = "INSERT INTO [HRA.LOAN] (EMPLOYEEID , DUEDATE , "
-				+ "TOTALOUTSTANDING , BORROWER , MONTHLYPAYMENT , MODBY)"
-				+ "VALUES (?, ?, ?, ?, ?,?) ";
+				+ "TOTALOUTSTANDING , GUARANTOR1 , GUARANTOR2, MONTHLYPAYMENT , ENDDATE, MODBY)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 		String message = MessageList.UNKNOWN.message();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -29,17 +30,15 @@ public class LoanCrudJDBC implements IDataAccessor {
 
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			
+			preparedStatement = conn.prepareStatement(query);			
 			preparedStatement.setString(1, lnDetail.getemployeeEpf());
 			preparedStatement.setString(2, lnDetail.getLoanDueDate());
 			preparedStatement.setString(3, lnDetail.getLoanAmount());
-			preparedStatement.setString(4, lnDetail.getLoanBorrowers());
-			preparedStatement.setString(5, lnDetail.getLoanmonthlyPayment());
-			preparedStatement.setString(6, "Saman");
-			
-			
-
+			preparedStatement.setString(4, lnDetail.getLoanGuarantor1());
+			preparedStatement.setString(5, lnDetail.getLoanGuarantor2());
+			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
+			preparedStatement.setString(7, lnDetail.getLoanEndDate());
+			preparedStatement.setString(8, "Saman");
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
 				message = MessageList.ADDED.message();

@@ -29,8 +29,9 @@ public enum MessageList {
 	EMAILERROR("Invalid Email."),
 	INVALIDDATE("Invalid DateFormat."),
 	EMPTYVALUES("Empty data Fields."),
-	INVALIDBIRTDAY("Invalid Birthdate.");
-
+	INVALIDBIRTDAY("Invalid Birthdate."),
+	INVALIDENDDATE("Invalid End date."),
+	INVALIDAMOUNT("Invalid Amount.");
 
 	private String message;
 
