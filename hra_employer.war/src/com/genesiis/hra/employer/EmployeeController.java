@@ -70,7 +70,7 @@ public class EmployeeController extends HttpServlet {
 
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-		String message = "";
+		String message = "Transaction Fails.";
 
 
 		// Method to verify it and return integer;
@@ -102,19 +102,25 @@ public class EmployeeController extends HttpServlet {
 			// case 4:
 			// break;
 
-			case 6: // EmployeeHistory > validTask-6 > task-6
+			case 6: 
+				System.out.println("\n");
 
+				// EmployeeHistory > validTask-6 > task-6
 				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(6);
 
+				int ee = updateEmployeeHistory.execute(	ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
+
 				// For ADD EMPLOYMENT HISTORY DETAILS operations.
-				if ((updateEmployeeHistory.execute(
-						ClassList.EMPLOYMENT_HISTORY.getValue(),
-						employeeDetails)) == 6) {
+				if (ee == 1) 
+				{
 					message = MessageList.ADDED.message();
+				}else{
+					message = MessageList.ERROR.message();
 				}
 
 				response.getWriter().write(gson.toJson(message));
 				break;
+				
 			default:
 				break;
 			}
@@ -123,6 +129,7 @@ public class EmployeeController extends HttpServlet {
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
+		
 		response.getWriter().close();
 	}
 }

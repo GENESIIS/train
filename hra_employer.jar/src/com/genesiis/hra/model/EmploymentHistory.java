@@ -14,8 +14,8 @@ public class EmploymentHistory extends Employee{
 	private int ehEmployeeid; 
 	private String ehEmployername; 
 	private String ehDesignation;
-	private Date  ehStartdate;
-	private Date  ehEnddate;
+	private String ehStartdate;
+	private String  ehEnddate;
 	private String ehBasis;
 	private String ehComments;
 	private String ehEmail;
@@ -35,7 +35,7 @@ public class EmploymentHistory extends Employee{
 	private String ehReferencetwocomments;
 	
 	private String ehReferencemodby;
-	private Date ehReferencemodon;
+	private String ehReferencemodon;
 	
 	
 	
@@ -71,19 +71,19 @@ public class EmploymentHistory extends Employee{
 		this.ehDesignation = ehDesignation;
 	}
 
-	public Date getEhStartdate() {
+	public String getEhStartdate() {
 		return ehStartdate;
 	}
 
-	public void setEhStartdate(Date ehStartdate) {
+	public void setEhStartdate(String ehStartdate) {
 		this.ehStartdate = ehStartdate;
 	}
 
-	public Date getEhEnddate() {
+	public String getEhEnddate() {
 		return ehEnddate;
 	}
 
-	public void setEhEnddate(Date ehEnddate) {
+	public void setEhEnddate(String ehEnddate) {
 		this.ehEnddate = ehEnddate;
 	}
 
@@ -215,11 +215,11 @@ public class EmploymentHistory extends Employee{
 		this.ehReferencemodby = ehReferencemodby;
 	}
 
-	public Date getEhReferencemodon() {
+	public String getEhReferencemodon() {
 		return ehReferencemodon;
 	}
 
-	public void setEhReferencemodon(Date ehReferencemodon) {
+	public void setEhReferencemodon(String ehReferencemodon) {
 		this.ehReferencemodon = ehReferencemodon;
 	}
 
@@ -235,7 +235,7 @@ public class EmploymentHistory extends Employee{
 
 	
 	public EmploymentHistory(int ehId, int ehEmployeeid, String ehEmployername,
-			String ehDesignation, Date ehStartdate, Date ehEnddate,
+			String ehDesignation, String ehStartdate, String ehEnddate,
 			String ehBasis, String ehComments, String ehEmail,
 			String ehReferenceonename, String ehReferenceonephone,
 			String ehReferenceonemobile, String ehReferenceoneaddress,
@@ -243,7 +243,7 @@ public class EmploymentHistory extends Employee{
 			String ehReferencetwoname, String ehReferencetwophone,
 			String ehReferencetwomobile, String ehReferencetwoaddress,
 			String ehReferencetwodesignation, String ehReferencetwocomments,
-			String ehReferencemodby, Date ehReferencemodon) {
+			String ehReferencemodby, String ehReferencemodon) {
 		super();
 		this.ehId = ehId;
 		this.ehEmployeeid = ehEmployeeid;
@@ -278,18 +278,32 @@ public class EmploymentHistory extends Employee{
 		
 		DataValidator validator = new DataValidator();
 		EmploymentHistory eh = (EmploymentHistory) object;
-		
-		System.out.println("**EmploymentHistory**"
-		+eh.getEhEmployeeid()+"**"
-		+eh.getEhEmployername()+"**"
-		+eh.getEhDesignation()+"**"
-		+eh.getEhBasis()+"**"
-		+eh.getEhBasis()+"**");
-		
-		if ( (  (validator.isValidString(eh.getEhBasis()) == true) 
-				&& (validator.isValidString(eh.getEhComments()) == true)  
-				&& (validator.isValidString(eh.getEhDesignation()) == true)
-				&& (validator.isValidString(eh.getEhEmployername()) == true)
+
+		if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 
+				(validator.isValidString(eh.getEhComments()) == true) && 
+				(validator.isValidString(eh.getEhDesignation()) == true) && 
+				(validator.isValidString(eh.getEhEmail()) == true) &&
+				(validator.isValidString(eh.getEhEmployername()) == true) &&
+				(validator.isValidString(eh.getEhEnddate()) == true) &&
+				(validator.isValidString(eh.getEhStartdate()) == true) &&
+				
+				(validator.isValidString(eh.getEhReferencemodby()) == true) &&
+				
+				(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonename()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
+				
+				(validator.isValidString(eh.getEhReferencetwoaddress()) == true) &&
+				(validator.isValidString(eh.getEhReferencetwocomments()) == true) &&
+				(validator.isValidString(eh.getEhReferencetwodesignation()) == true) &&
+				(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
+				(validator.isValidString(eh.getEhReferencetwoname()) == true) &&
+				(validator.isValidString(eh.getEhReferencetwophone()) == true)
+				
+				
 				)) {
 			return true;
 		} else {
@@ -302,13 +316,13 @@ public class EmploymentHistory extends Employee{
 	@Override
 	public int add(Object object) {
 		
-		System.out.println("EmploymentHistory");
-		
+		DataValidator dataValidator = new DataValidator();
+
 		String query = "INSERT INTO [HRA.EMPLOYMENTHISTORY] (EMPLOYEEID,EMPLOYERNAME,DESIGNATION,STARTDATE,ENDDATE,BASIS,COMMENTS,EMAIL,"
 				+ "REFERENCEONENAME,REFERENCEONEPHONE,REFERENCEONEMOBILE,REFERENCEONEADDRESS,REFERENCEONEDESIGNATION,REFERENCEONECOMMENTS,"
 				+ "REFERENCETWOENAME,REFERENCETWOPHONE,REFERENCETWOMOBILE,REFERENCETWOADDRESS,REFERENCETWODESIGNATION,REFERENCETWOCOMMENTS,"
 				+ "MODBY,MODON ) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?,?)";
+				+ "VALUES (?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE())";
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -318,11 +332,11 @@ public class EmploymentHistory extends Employee{
 			conn = ConnectionManager.getConnection();
 			
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, String.valueOf(eh.getEhEmployeeid()));
+			preparedStatement.setInt(1, Integer.valueOf(eh.getEhEmployeeid()));
 			preparedStatement.setString(2, String.valueOf(eh.getEhEmployername()));
 			preparedStatement.setString(3, String.valueOf(eh.getEhDesignation()));
-			preparedStatement.setString(4, String.valueOf(eh.getEhStartdate()));
-			preparedStatement.setString(5, String.valueOf(eh.getEhEnddate()));
+			preparedStatement.setDate(4, dataValidator.convertStringDatetoSqlDate(eh.getEhStartdate()));
+			preparedStatement.setDate(5, dataValidator.convertStringDatetoSqlDate(eh.getEhEnddate()));
 			preparedStatement.setString(6, String.valueOf(eh.getEhBasis()));
 			preparedStatement.setString(7, String.valueOf(eh.getEhComments()));
 			preparedStatement.setString(8, String.valueOf(eh.getEhEmail()));
@@ -341,13 +355,11 @@ public class EmploymentHistory extends Employee{
 			preparedStatement.setString(19, String.valueOf(eh.getEhReferencetwodesignation()));
 			preparedStatement.setString(20, String.valueOf(eh.getEhReferencetwocomments()));
 			
-			
 			preparedStatement.setString(21, String.valueOf(eh.getEhReferencemodby()));
-			preparedStatement.setString(22, String.valueOf(eh.getEhReferencemodon()));
 
 
 			int rowsInserted = preparedStatement.executeUpdate();
-			
+
 			if (rowsInserted > 0) {
 				status = 1;
 			}

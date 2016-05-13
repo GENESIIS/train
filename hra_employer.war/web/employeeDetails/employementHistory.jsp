@@ -1,12 +1,5 @@
 <script type="text/javascript">
-	
-	$(function() {
-		$("#startedOn").click(function() {
-			$(this).datepicker().datepicker("show");
-		});
-	});
-	
-	
+
 	//To load the Datatable
 	$(document).ready(function() {
 
@@ -18,18 +11,43 @@
 			$("#employer").val("employer name");
 			$("#designation").val("designation");
 			$("#basis").val("basis");
+			$("#ehComments").val("ehComments");
+			$("#ehEmail").val("ehEmail@gmail.com");
+			
+			$("#ehReferenceonename").val("Referenceonename 1");
+			$("#ehReferenceonecomments").val("Referenceonecomments1");
+			$("#ehReferenceonephone").val("Referenceonephone 1");
+			$("#ehReferenceonemobile").val("Referenceonemobile1");
+			$("#ehReferenceoneaddress").val("Referenceoneaddress1");
+			$("#ehReferenceonedesignation").val("Referenceonedesignation1");
 
-			$("#referenceOne").val("referenceOne 11111");
-			$("#referenceOnecomments").val("referenceOnecomments 11111");
+			$("#ehReferencetwoname").val("Referenceonename2");
+			$("#ehReferencetwocomments").val("Referencetwocomments2");
+			$("#ehReferencetwophone").val("Referencetwophone2");
+			$("#ehReferencetwomobile").val("referenceTwocomments 22222");
+			$("#ehReferencetwoaddress").val("referenceTwo 22222");
+			$("#ehReferencetwodesignation").val("referenceTwocomments 22222");
 
-			$("#referenceTwo").val("referenceTwo 22222");
-			$("#referenceTwocomments").val("referenceTwocomments 22222");
-
+			$("#ehReferencemodby").val("ADMIN_USER_TR");
 		});
+
+		
 	});
+	
+
+	function isNumber(evt) {
+	    evt = (evt) ? evt : window.event;
+	    var charCode = (evt.which) ? evt.which : evt.keyCode;
+	    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+	        return false;
+	    }
+	    return true;
+	}
+	
 </script>
 
 
+	
 <div>
 	<div>
 		<!-- Modal content-->
@@ -45,57 +63,52 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="employer">Employee ID</label> 
-						<input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="">
+						<label for="employeeId">Employee ID</label> 
+						<input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="" maxlength="10">
 					</div>
 				</div>
 				
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="employer">Employer Name</label> 
-						<input type="text" class="form-control" id="employer" name="employer" placeholder="">
+						<input type="text" class="form-control" id="employer" name="employer" placeholder="" maxlength="100">
 					</div>
 				</div>
 			
 			</div>
-			
+
 			<div class="row">
-				
+
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="designation">Designation</label> 
-						<input type="text" class="form-control" id="designation" name="designation" placeholder="">
+						<input type="text"	class="form-control" id="designation" name="designation" placeholder="" maxlength="20">
 					</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="basis">Basis (Contract/Intern/Permanent)</label> 
-						<input type="text" class="form-control" id="basis" name="basis" placeholder="">
+						<input	type="text" class="form-control" id="basis" name="basis" placeholder="" maxlength="10">
 					</div>
 				</div>
 
 			</div>
-			
-			<div class="row">
-			
 
+			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="startedOn">Started On</label> 
 						<input type="date" class="form-control" id="startedOn" name="startedOn" placeholder="">
 					</div>
 				</div>
-
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="compleatedOn">Completed On</label> 
 						<input type="date" class="form-control" id="compleatedOn" name="compleatedOn" placeholder="">
 					</div>
 				</div>
-
 			</div>
-
 			<!-- refreee 1-->
 
 			<div class="row">
@@ -103,34 +116,35 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferenceonename">Reference Name</label> 
-						<input type="text" class="form-control" id="ehReferenceonename" name="ehReferenceonename" placeholder="">
+						<input
+							type="text" class="form-control" id="ehReferenceonename" name="ehReferenceonename" placeholder="" maxlength="300">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferenceonecomments">Reference Comments</label>
-						<textarea type="text" class="form-control" 	id="ehReferenceonecomments" name="ehReferenceonecomments" placeholder=""></textarea>
+						<textarea type="text" class="form-control" 	id="ehReferenceonecomments" name="ehReferenceonecomments" placeholder="" maxlength="300"></textarea>
 					</div>
 				</div>
 
 			</div>
-			
-			
-			
+
+
+
 
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferenceonephone">Reference Phone</label>
-						<input type="text" class="form-control" id="ehReferenceonephone" name="ehReferenceonephone" placeholder="">
+						<input type="text" class="form-control" id="ehReferenceonephone" name="ehReferenceonephone" placeholder="" onkeypress="return isNumber(event)" maxlength="30">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferenceonemobile">Reference Mobile</label>
-						<input type="text" class="form-control"  id="ehReferenceonemobile" name="ehReferenceonemobile" placeholder=""></input>
+						<input type="text" class="form-control"  id="ehReferenceonemobile" name="ehReferenceonemobile" placeholder="" onkeypress="return isNumber(event)" maxlength="30"></input>
 					</div>
 				</div>
 			</div>
@@ -141,13 +155,13 @@
 
 					<div class="form-group">
 						<label for="ehReferenceoneaddress">Reference Address</label>
-						<input type="text" class="form-control" id="ehReferenceoneaddress" name="ehReferenceoneaddress" placeholder="">
+						<input type="text" class="form-control" id="ehReferenceoneaddress" name="ehReferenceoneaddress" placeholder="" maxlength="500">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferenceonedesignation">Reference Designation</label>
-						<input type="text" class="form-control" id="ehReferenceonedesignation" name="ehReferenceonedesignation" placeholder=""></input>
+						<input type="text" class="form-control" id="ehReferenceonedesignation" name="ehReferenceonedesignation" placeholder="" maxlength="100"></input>
 					</div>
 				</div>
 			</div>
@@ -160,14 +174,14 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferencetwoname">Reference Name</label> 
-						<input type="text" class="form-control" id="ehReferencetwoname" name="ehReferencetwoname" placeholder="">
+						<input type="text" class="form-control" id="ehReferencetwoname" name="ehReferencetwoname" placeholder="" maxlength="300">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferencetwocomments">Reference Comments</label>
-						<textarea type="text" class="form-control" 	id="ehReferencetwocomments" name="ehReferencetwocomments" placeholder=""></textarea>
+						<textarea type="text" class="form-control" 	id="ehReferencetwocomments" name="ehReferencetwocomments" placeholder="" maxlength="300"></textarea>
 					</div>
 				</div>
 
@@ -180,14 +194,14 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferencetwophone">Reference Phone</label>
-						<input type="text" class="form-control" id="ehReferencetwophone" name="ehReferencetwophone" placeholder="">
+						<input type="text" class="form-control" id="ehReferencetwophone" name="ehReferencetwophone" placeholder="" onkeypress="return isNumber(event)" maxlength="30">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferencetwomobile">Reference Mobile</label>
-						<input type="text" class="form-control" 	id="ehReferencetwomobile" name="ehReferencetwomobile" placeholder=""></input>
+						<input type="text" class="form-control" 	id="ehReferencetwomobile" name="ehReferencetwomobile" placeholder="" onkeypress="return isNumber(event)" maxlength="30"></input>
 					</div>
 				</div>
 			</div>
@@ -198,13 +212,13 @@
 
 					<div class="form-group">
 						<label for="ehReferencetwoaddress">Reference Address</label>
-						<input type="text" class="form-control" id="ehReferencetwoaddress" name="ehReferencetwoaddress" placeholder="">
+						<input type="text" class="form-control" id="ehReferencetwoaddress" name="ehReferencetwoaddress" placeholder="" maxlength="500">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="ehReferencetwodesignation">Reference Designation</label>
-						<input type="text" class="form-control" id="ehReferencetwodesignation" name="ehReferencetwodesignation" placeholder=""></input>
+						<input type="text" class="form-control" id="ehReferencetwodesignation" name="ehReferencetwodesignation" placeholder="" maxlength="100"></input>
 					</div>
 				</div>
 				
@@ -215,8 +229,13 @@
 				<div class="col-md-6">
 
 					<div class="form-group">
-						<label for="ehEmail">E-mail Address</label>
-						<input type="text" class="form-control" id="ehEmail" name="ehEmail" placeholder="">
+						<label for="ehEmail">E-mail Address</label> <input type="text" class="form-control" id="ehEmail" name="ehEmail" placeholder="" maxlength="100">
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="ehComments">Comments</label> <input type="text" class="form-control" id="ehComments" name="ehComments" placeholder="" maxlength="200">
 					</div>
 				</div>
 
@@ -231,14 +250,15 @@
 				<div class="row pad">
 
 					<div class="col-xs-2 ">
+					<input
+							type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" placeholder="">
 						<button type="button" class="btn btn-danger full">
 							<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 						</button>
 					</div>
 
 					<div class="col-xs-2 ">
-						<button type="button" class="btn btn-success full"
-							onclick="addEmployeeHistoryDetails();">
+						<button type="button" class="btn btn-success full" onclick="addEmployeeHistoryDetails();">
 							<i class="glyphicon glyphicon-floppy-disk"></i> Add New
 						</button>
 					</div>
@@ -249,7 +269,6 @@
 						</button>
 					</div>
 
-
 				</div>
 
 			</div>
@@ -257,8 +276,6 @@
 		</div>
 
 	</div>
-
-
 
 	<table id="employmentHistorydetails"
 		class="table table-striped table-bordered table-responsive"

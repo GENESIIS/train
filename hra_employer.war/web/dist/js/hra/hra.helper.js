@@ -309,12 +309,28 @@ function addEmployeeHistoryDetails() {
 	var employer 				= $("#employer").val();
 	var designation 			= $("#designation").val();
 	var basis 					= $("#basis").val();
+	var ehEmail 				= $("#ehEmail").val();
+	var ehComments 				= $("#ehComments").val();
+	
 	var startedOn 				= $("#startedOn").val();
 	var compleatedOn 			= $("#compleatedOn").val();
-	var referenceOne 			= $("#referenceOne").val();
-	var referenceOnecomments 	= $("#referenceOnecomments").val();
-	var referenceTwo 			= $("#referenceTwo").val();
-	var referenceTwocomments 	= $("#referenceTwocomments").val();
+	
+	var ehReferenceonename 		= $("#ehReferenceonename").val();
+	var ehReferenceonecomments 	= $("#ehReferenceonecomments").val();
+	var ehReferenceonephone 	= $("#ehReferenceonephone").val();
+	var ehReferenceonemobile 	= $("#ehReferenceonemobile").val();
+	var ehReferenceoneaddress 	= $("#ehReferenceoneaddress").val();
+	var ehReferenceonedesignation = $("#ehReferenceonedesignation").val();
+	
+	var ehReferencetwoname 		= $("#ehReferencetwoname").val();
+	var ehReferencetwocomments 	= $("#ehReferencetwocomments").val();
+	var ehReferencetwophone 	= $("#ehReferencetwophone").val();
+	var ehReferencetwomobile 	= $("#ehReferencetwomobile").val();
+	var ehReferencetwoaddress 	= $("#ehReferencetwoaddress").val();
+	var ehReferencetwodesignation= $("#ehReferencetwodesignation").val();
+	var ehReferencemodby= $("#ehReferencemodby").val();
+	
+	
 	
 	var x = parseInt(employeeId, 10);
 	
@@ -324,13 +340,26 @@ function addEmployeeHistoryDetails() {
 		"ehEmployername" 		: employer,
 		"ehDesignation" 		: designation,
 		"ehBasis" 				: basis,
+		"ehComments" 			: ehComments,
+		"ehEmail" 				: ehEmail,
+		
 		"ehStartdate" 			: startedOn,
 		"ehEnddate" 			: compleatedOn,
-		"ehReferenceonename" 	: referenceOne,
-		"ehReferenceonecomments": referenceOnecomments,
-		"ehReferencetwoname" 	: referenceTwo,
-		"ehReferencetwocomments": referenceTwocomments,
 		
+		"ehReferenceonename" 	: ehReferenceonename,
+		"ehReferenceonecomments": ehReferenceonecomments,
+		"ehReferenceonephone" 	: ehReferenceonephone,
+		"ehReferenceonemobile"	: ehReferenceonemobile,
+		"ehReferenceoneaddress" : ehReferenceoneaddress,
+		"ehReferenceonedesignation"	: ehReferenceonedesignation,
+		
+		"ehReferencetwoname" 	: ehReferencetwoname,
+		"ehReferencetwocomments": ehReferencetwocomments,
+		"ehReferencetwophone" 	: ehReferencetwophone,
+		"ehReferencetwomobile"	: ehReferencetwomobile,
+		"ehReferencetwoaddress" : ehReferencetwoaddress,
+		"ehReferencetwodesignation"	: ehReferencetwodesignation,
+		"ehReferencemodby"		: ehReferencemodby,
 	};
 
 	$.ajax({
@@ -344,7 +373,7 @@ function addEmployeeHistoryDetails() {
 		success : function(data) {
 			alert(data);
 			if (data == "Details added successfully.") {
-				clearAddemployeeform();
+				clearEmployeementHisory();
 //				document.getElementById("moredetails").disabled = false;
 			}
 		},
@@ -367,15 +396,25 @@ function clearEmployeementHisory() {
 	$("#employer").val("");
 	$("#designation").val("");
 	$("#basis").val("");
+	$("#ehEmail").val("");
+	$("#ehComments").val("");
 	
 	$("#startedOn").val("");
 	$("#compleatedOn").val("");
 	
-	$("#referenceOne").val("");
-	$("#referenceOnecomments").val("");
+	$("#ehReferenceonename").val("");
+	$("#ehReferenceonecomments").val("");
+	$("#ehReferenceonephone").val("");
+	$("#ehReferenceonemobile").val("");
+	$("#ehReferenceoneaddress").val("");
+	$("#ehReferenceonedesignation").val("");
 	
-	$("#referenceTwo").val("");
-	$("#referenceTwocomments").val("");
+	$("#ehReferencetwoname").val("");
+	$("#ehReferencetwocomments").val("");
+	$("#ehReferencetwophone").val("");
+	$("#ehReferencetwomobile").val("");
+	$("#ehReferencetwoaddress").val("");
+	$("#ehReferencetwodesignation").val("");
 
 }
 

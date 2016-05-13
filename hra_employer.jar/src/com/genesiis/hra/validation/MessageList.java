@@ -34,8 +34,10 @@ public enum MessageList {
 	EHADD("EHADD"),//EMPLOYE HISTORY ADD
 	EHUPDATED("EHUPDATE"),//EMPLOYE HISTORY UPDATE
 	EHDELETE("EHDELETE"),//EMPLOYE HISTORY DELETE
-	EHFIND("EHFIND");//EMPLOYE HISTORY FIND
+	EHFIND("EHFIND");
 
+	
+	
 	private String message;
 
 	MessageList(String message) {

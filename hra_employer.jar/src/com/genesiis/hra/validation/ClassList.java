@@ -17,6 +17,7 @@ public enum ClassList {
 	EDUCATION(3),
 	STUDY_PROGRAM(4),
 	LOAN(5),
+	
 	EMPLOYMENT_HISTORY(6);
 
 	private final int value;

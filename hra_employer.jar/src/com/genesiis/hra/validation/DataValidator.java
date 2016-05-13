@@ -2,6 +2,7 @@ package com.genesiis.hra.validation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.jboss.logging.Logger;
@@ -62,9 +63,10 @@ public class DataValidator {
 
 	public boolean isValidString(String text) {
 		boolean status = false;
-		if ((text.isEmpty() == false) && text != null) {
+		if ( (text != null) &&  (text.isEmpty() == false)) {
 			status = true;
 		}
+		System.out.println("**********"+status+"*********");
 		return status;
 	}
 
@@ -99,5 +101,31 @@ public class DataValidator {
 		} else {
 			return -1;
 		}
+	}
+	
+	public java.sql.Date convertStringDatetoSqlDate(String stringDate){
+		
+		java.sql.Date sqlDate = null;
+		
+		try {
+			
+			if (!stringDate.equals(null) && stringDate != null) {
+				stringDate = stringDate.trim().toString();
+				if (stringDate != "" && !stringDate.equals("")) {
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+					Date parsed = format.parse(stringDate);
+					sqlDate = new java.sql.Date(parsed.getTime());
+				} else {
+					sqlDate = new java.sql.Date(Calendar.getInstance()
+							.getTime().getTime());
+				}
+			}
+			
+	        
+		} catch (Exception e) {
+			log.info(e);
+			e.printStackTrace();
+		}
+		return sqlDate;
 	}
 }

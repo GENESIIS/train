@@ -112,8 +112,10 @@ select {
 						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')
 	</script>
 	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="dist/js/bootstrap-datepicker.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>
 	<script src="dist/js/jquery.dataTables.min.js"></script>
+	
 
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="dist/assets/js/vendor/holder.min.js"></script>

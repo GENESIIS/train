@@ -62,16 +62,8 @@
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-warning" data-toggle="modal"
-							data-target="#editEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-edit"></i>
-						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-danger" data-toggle="modal"
-							data-target="#deleteEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
+					<td align="center"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editEmployeeDetailsForm"> <i class="glyphicon glyphicon-edit"></i></button></td>
+					<td align="center"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmployeeDetailsForm"> <i class="glyphicon glyphicon-trash"></i> </button></td>
 				</tr>
 			</tbody>
 		</table>

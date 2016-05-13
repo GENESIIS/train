@@ -12,8 +12,6 @@ public class UpdateEmployeeHistory {
 
 	public int execute(int key, String employeeDetails) {
 		
-		
-		
 		int status = -1;
 		try {
 			
@@ -21,11 +19,10 @@ public class UpdateEmployeeHistory {
 			EmployeeFactory factory = new EmployeeFactory();
 			
 			Employee emp = factory.getEmployee(key);
-			
+
 			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
 			
-			System.out.println("****Employeeepf***"+emp.getEmployeeepf()+"*************");
 			
 			//Only a valid object will added to the database.
 			if (emp.isValid(emp)) {
