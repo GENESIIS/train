@@ -53,21 +53,17 @@ public class RegisterLoan implements ICommand {
 		String message = "True";
 		if (loan!= null) {					
 			if (!validator.isValidString(loan.getLoanGuarantor1())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
+				message =MessageList.EMPTYFIELD.message() + " ";
 			}
 			if (!validator.isValidString(loan.getLoanAmount())) {
-				message = message + " Department Name "
-						+  MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();
-				Integer number = Integer.parseInt(loan.getLoanAmount()) ;	
+				message =  MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();
+					
 			}
 			if (!validator.isValidString(loan.getLoanGuarantor2())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " ";
+				message = MessageList.EMPTYFIELD.message() + " ";
 			}
 			if (!validator.isValidString(loan.getLoanmonthlyPayment())) {
-				message = message + " Department Name "
-						+ MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();
+				message = MessageList.EMPTYFIELD.message() + " or" +MessageList.INVALIDAMOUNT.message();
 			}
 			/*if (!validator.isFutureDate(loan.getLoanEndDate())) {
 				message = message + " Department Name "
