@@ -60,12 +60,13 @@ public class EmployeeController extends HttpServlet {
 		log.info("employeeDetails" + employeeDetails);
 		FamilyMember empgson = new FamilyMember();
 		try {
-			response.getWriter().write(empgson.getEmployee(2));
 			log.info("employeeDetails"
 					+ empgson.getEmployee(Integer.parseInt("2")));
 		} catch (Exception ex) {
 			log.error("Exception: doGet" + ex);
 		}// (Integer) extractFromJason(Integer,employeeDetails)
+		response.getWriter().write(empgson.getEmployee(Integer.parseInt("2")));
+
 	}
 
 	/**

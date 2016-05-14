@@ -11,6 +11,7 @@
 		$('#employeeDetails').DataTable();
 	});
 	getDepartment();
+	getEmployeetoupdate();
 </script>
 
 

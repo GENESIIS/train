@@ -5,7 +5,6 @@
  * modified.
  */
 
-getEmployeetoupdate();
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 }
@@ -510,7 +509,7 @@ function getEmployeetoupdate() {
 	var jsonData = 2;
 
 	$.get('EmployeeController', {
-		nicno : nicno
+		'jsonData' : jsonData
 	}, function(response) {
 		alert(response);
 	});
