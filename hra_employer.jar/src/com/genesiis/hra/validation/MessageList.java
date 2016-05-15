@@ -17,12 +17,20 @@ public enum MessageList {
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
-    FAILED_TO_CREATE("Details not added. Internal System Error."),
+    FAILED_TO_CREATE("Object not created"),
 	ADD("ADD"),
 	UPDATE("UPDATE"),
 	DELETE("DELETE"),
 	FIND("FIND"),
-	GETALL("GETALL");
+	GETALL("GETALL"),
+	NICERROR("Invalid NIC Number."),
+	PHONENUMBERERROR("Invalid Telephone Number."),
+	MOBILENUMBERERROR("Invalid Mobile Number."),
+	EMAILERROR("Invalid Email."),
+	INVALIDDATE("Invalid DateFormat."),
+	EMPTYVALUES("Empty data Fields."),
+	INVALIDBIRTDAY("Invalid Birthdate.");
+
 
 	private String message;
 

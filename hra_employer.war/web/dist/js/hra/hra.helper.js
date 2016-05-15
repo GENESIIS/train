@@ -8,7 +8,7 @@ function loadContentDashboard() {
 }
 
 function loadContentEmployee() {
-	$("#mainContent").load("createEmployee.jsp");
+	$("#mainContent").load("manageEmployee.jsp");
 }
 
 function loadContentDepartment() {

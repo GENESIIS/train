@@ -1,5 +1,7 @@
 package com.genesiis.hra.command;
+import java.text.ParseException;
 import java.util.logging.Logger;
+
 
 
 
@@ -20,7 +22,7 @@ public class EditEmployee {
 		String message = "";			
 		try{
 			Employee employee = extractFromgson(gsonData);		
-		      if (validEmployee(employee)) {
+		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     message = accessdata.update(employee);
 		       } else {
 			     message = MessageList.ERROR.message();
@@ -42,16 +44,38 @@ public class EditEmployee {
 				 message = MessageList.ERROR.message();;
 			}
 			return employee;
-		}
+		}			
 		
-				
-		public boolean validEmployee(Employee empl) {
+		
+		public String validateEmployee(Employee employee) throws ParseException {
 			DataValidator validator = new DataValidator();
-			if (validator.isValidString(empl.getEmployeename())) {
-				return true;
-			} else {
-				return false;
+			String message = "True";
+
+			if (!validator.isValidString(employee.getEmployeeid())) {
+				message = message + MessageList.EMPTYFIELD.message() +" ";
 			}
+			if (!validator.isValidString(employee.getEmployeename())) {
+				message = message + MessageList.EMPTYFIELD.message() +" ";
+			}
+			if (!validator.isValidNic(employee.getEmployeenic())) {
+				message = message + MessageList.NICERROR.message() +" ";
+			}
+			if (!validator.isValidString(employee.getEmployeeepf())) {
+				message = message + MessageList.EMPTYFIELD.message() +" ";
+			}
+			if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
+				message = message + MessageList.INVALIDBIRTDAY.message() +" ";
+			}
+			if (!validator.isValidTelephone(employee.getEmployeemobile())) {
+				message = message + MessageList.MOBILENUMBERERROR.message() +" ";
+			}
+			if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
+				message = message + MessageList.PHONENUMBERERROR.message() +" ";
+			}
+			if (!validator.isValidemail(employee.getEmployeeemail())) {
+				message = message + MessageList.EMAILERROR.message() +" ";
+			}
+			return message;
 		}
 }
 
