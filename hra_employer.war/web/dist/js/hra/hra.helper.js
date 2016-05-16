@@ -139,7 +139,7 @@ function isNumberKey(evt) {
 
 function isLetter(evt) {
 	var inputValue = evt.charCode;
-	if (!(inputValue >= 65 && inputValue <= 120)
+	if (!(inputValue >= 65 && inputValue <= 122)
 			&& (inputValue != 32 && inputValue != 0)) {
 		evt.preventDefault();
 	}
@@ -490,6 +490,40 @@ function editFamilyDetails() {
 		});
 	}
 
+}
+
+function resetFieldsadd() {
+	var fmemployeeId = $("#editfmemployeeId").val();
+	var relationship = $("#editrelationship").val();
+	var relationDateofbirth = $("#editrelationDateofbirth").val();
+	var relationName = $("#editrelationName").val();
+
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
+
+	if (employeeIdtb == false) {
+		document.getElementById('editfmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	} else {
+		document.getElementById('editfmemployeeidError').innerHTML = "";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('editrelationshipError').innerHTML = "** Relationship can not be Empty.";
+	} else {
+		document.getElementById('editrelationshipError').innerHTML = "";
+	}
+
+	if (relationDateofbirthtb == false) {
+		document.getElementById('editrelationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	} else {
+		document.getElementById('editrelationbirthdateError').innerHTML = "";
+	}
+	if (relationNametb == false) {
+		document.getElementById('editrelationnameError').innerHTML = "** Name cannot be Empty.";
+	} else {
+		document.getElementById('editrelationnameError').innerHTML = "";
+	}
 }
 
 function editclearFamilydetails() {

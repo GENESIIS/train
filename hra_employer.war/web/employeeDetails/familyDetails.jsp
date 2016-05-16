@@ -10,13 +10,13 @@
 				style="color: red; font-weight: normal !important;"
 				id="fmemployeeidError" name="fmemployeeidError"></span> <input
 				type="text" class="form-control" id="fmemployeeId"
-				name="fmemployeeId" placeholder="">
+				name="fmemployeeId" placeholder="" onblur="resetFieldsadd()">
 		</div>
 		<div class="form-group">
 			<label for="relationship">Relationship</label>&nbsp;&nbsp;<span
 				id="relationshipError" name="relationshipError"
 				style="color: red; font-weight: normal !important;"></span> <select
-				class="form-control" id="relationship" name="relationship">
+				class="form-control" id="relationship" name="relationship" onchange="resetFieldsadd()">
 				<option value="" selected="selected">--Select--</option>
 				<option value="Father">Father</option>
 				<option value="Mother">Mother</option>
@@ -34,7 +34,7 @@
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="relationName"
 				name="relationName" placeholder=""
-				onkeypress="return isLetter(event);">
+				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -43,7 +43,7 @@
 						id="relationbirthdateError" name="relationbirthdateError"
 						style="color: red; font-weight: normal !important;"></span> <input
 						type="date" class="form-control" id="relationDateofbirth"
-						name="relationDateofbirth" placeholder="">
+						name="relationDateofbirth" placeholder="" onblur="resetFieldsadd()">
 				</div>
 			</div>
 		</div>
@@ -53,7 +53,7 @@
 				id="occupationError" name="occupationError"
 				style="color: red; font-weight: normal !important;"></span><input
 				type="text" class="form-control" id="occupation" name="occupation"
-				placeholder="" onkeypress="return isLetter(event);">
+				placeholder="" onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 
 		<div class="form-group">
@@ -62,7 +62,7 @@
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="workingPlace"
 				name="workingPlace" placeholder=""
-				onkeypress="return isLetter(event);">
+				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 
 		<div class="modal-footer">
