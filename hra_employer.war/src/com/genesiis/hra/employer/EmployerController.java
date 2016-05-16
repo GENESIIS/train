@@ -1,5 +1,4 @@
 package com.genesiis.hra.employer;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -15,7 +14,6 @@ import com.genesiis.hra.command.EditEmployee;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
-
 /**
  * Servlet implementation class AddEmployeeDetails
  */
@@ -44,6 +42,7 @@ public class EmployerController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		GetEmployee empgson = new GetEmployee();
+		response.setContentType("text/html");			
 		response.getWriter().write(empgson.createGson());
 	}
 
@@ -82,8 +81,7 @@ public class EmployerController extends HttpServlet {
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
-		response.getWriter().close();
-
+		response.getWriter().close();				
 	}
 
 	private int validTaskId(String task) {

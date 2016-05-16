@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 // * 
 // ***********************************************/
 @Entity
+
 public class Employee {
 	private String employeeId;
 	private String employeeName;

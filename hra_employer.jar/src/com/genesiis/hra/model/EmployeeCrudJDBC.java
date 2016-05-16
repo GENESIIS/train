@@ -13,30 +13,35 @@ import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.MessageList;
+
+///***********************************************
+//* 20160506 PN HRA-4 created EditEmployeeCrudJDBC.java class
+//*
+//***********************************************/ 
 
 /**
  * Session Bean implementation class DepartmentDao
  */
 @Stateless
 public class EmployeeCrudJDBC implements ICrud {
-
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
-
 	@Override
-	public String add(Object object) {
+	public String add(Object object) {	
 		return null;
 	}
-
-	@Override
+	
+	// Update Employee data
 	public String update(Employee employee) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
 				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
-		String message = "Error";
+		String message ="Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-
+		
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
@@ -55,6 +60,12 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(11, employee.getEmployeedepartment());
 			preparedStatement
 					.setString(12, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(7, employee.getEmployeepermenetaddress());
+			preparedStatement.setString(8, employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(9, employee.getEmployeemobile());
+			preparedStatement.setString(10, employee.getEmployeetelephone());
+			preparedStatement.setString(11, employee.getEmployeedepartment());
+			preparedStatement.setString(12, employee.getEmployeemaritalstatus());
 			preparedStatement.setString(13, employee.getEmployeejoindate());
 			preparedStatement.setString(14, "S");
 			preparedStatement.setString(15, employee.getEmployeeepf());
@@ -76,7 +87,8 @@ public class EmployeeCrudJDBC implements ICrud {
 			} catch (SQLException exception) {
 				exception.printStackTrace();
 			}
-		}
+			
+		} 
 		return message;
 	}
 
@@ -85,11 +97,9 @@ public class EmployeeCrudJDBC implements ICrud {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	// retrive employe data
 	public Employee retrive(String id) {
 		// TODO Auto-generated method stub
-
 		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
@@ -97,12 +107,10 @@ public class EmployeeCrudJDBC implements ICrud {
 		ResultSet retriveData = null;
 
 		Employee employee = new Employee();
-
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, "1");
-
 			retriveData = preparedStatement.executeQuery();
 
 			try {
@@ -149,7 +157,7 @@ public class EmployeeCrudJDBC implements ICrud {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}		
 		return employee;
 	}
 
@@ -158,5 +166,6 @@ public class EmployeeCrudJDBC implements ICrud {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

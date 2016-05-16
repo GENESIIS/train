@@ -148,8 +148,60 @@ function loadEditemergencycontacts() {
 }
 
 
+/////////////////////////////////////////////////
+$(document).on("click", "#vbutton", function () {
+	
+	$.get("EmployerController", function(data, status){
+		
+		$("#view").load("viewEmployee.jsp",function(datatl){
+			json = JSON.parse(data);
+			$(".panel-body #userid").text(json.employeeId);
+			$(".panel-body #username").text(json.employeeName);
+			$(".panel-body #disignation").text( json.employeeDesignation);
+			$(".panel-body #email").text( json.employeeEmail);
+			$(".panel-body #dob").text( json.employeeDateofbirth);
+			$(".panel-body #Nic").text( json.employeeNic);
+			$(".panel-body #gender").text(json.employeeGender);
+			$(".panel-body #adress").text(json.employeePermenetaddress);
+			$(".panel-body #MobNumber").text( json.employeeMobile);
+			$(".panel-body #OthNumber").text(  json.employeeTelephone);
+			$(".panel-body #depid").text(  json.employeeDepartment);
+			$(".panel-body #doj").text(json.employeeJoindate);
+			$(".modal-body #userid").text( json.employeeEpf);
+			$(".modal-body #tempAddresid").text( json.employeeTemporaryaddress);			
+			$(".panel-body #doj").text(json.employeeJoindate);
+			$(".modal-body #maritalstatusid").text( json.employeeMaritalstatus);
+			//$(".modal-body #userid").val( json.TEMPORARYADDRESS);
+			
+			alert(data);
+		});		
+	});	
+});
 
+/////load more employee views/////////////////////////////////////
 
+function loadviewqlifications() {
+	$("#viewmodelrest").load("viewemployeeDetails/vieweducationalDetails.jsp");
+}
 
+function loadviewemployementhistory() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
+}
 
+function loadviewstudyprograms() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewstudyPrograms.jsp");
+}
 
+function loadviewlanguages() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewlanguageProficiency.jsp");
+}
+
+function loadviewloandetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
+}
+function loadviewfamilydetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewfamilyDetails.jsp");
+}
+function loadviewemergencycontacts() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemergencyContacts.jsp");
+}
