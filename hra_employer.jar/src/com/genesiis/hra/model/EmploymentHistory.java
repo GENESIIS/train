@@ -333,6 +333,7 @@ public class EmploymentHistory extends Employee{
 
 	}
 
+	@Override
 public boolean isValidUpdate(Object object) {
 	
 	DataValidator validator = new DataValidator();
@@ -523,13 +524,99 @@ public boolean isValidUpdate(Object object) {
 	}
 	
 	
+	@Override
+	public Object getRetriveRecode(String id) {
+		
+		log.info("*****************************getRetriveRecode"+id);
+		// TODO Auto-generated method stub
+		String query = "SELECT EH.ID,EH.EMPLOYEEID,EH.EMPLOYERNAME,EH.DESIGNATION,EH.STARTDATE,EH.ENDDATE,EH.BASIS,EH.COMMENTS,EH.EMAIL,"
+				+ "EH.REFERENCEONENAME, EH.REFERENCEONEPHONE, EH.REFERENCEONEMOBILE, EH.REFERENCEONEADDRESS, EH.REFERENCEONEDESIGNATION, EH.REFERENCEONECOMMENTS,"
+				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS,"
+				+ "EH.MODBY, EH.MODON  FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM WHERE EM.ID = EH.EMPLOYEEID AND EH.ID = ?";
+		
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rsRetriveData = null;
+
+		EmploymentHistory employee = new EmploymentHistory();
+		try {
+
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(id));
+			
+			rsRetriveData = preparedStatement.executeQuery();			 
+				
+				try{
+					if (rsRetriveData.next()) {
+						
+						log.info("*****************************rsRetriveData"+id);
+						
+						// set data to entity class
+						employee.setEhid(rsRetriveData.getInt("ID"));
+						employee.setEhEmployeeid(rsRetriveData.getInt("EMPLOYEEID"));
+						employee.setEhEmployername(rsRetriveData.getString("EMPLOYERNAME")); 						
+						employee.setEhDesignation(rsRetriveData.getString("DESIGNATION"));
+						employee.setEhStartdate(rsRetriveData.getString("STARTDATE"));
+						employee.setEhEnddate(rsRetriveData.getString("ENDDATE"));
+						employee.setEhBasis(rsRetriveData.getString("BASIS"));
+						employee.setEhComments(rsRetriveData.getString("COMMENTS"));
+						employee.setEhEmail(rsRetriveData.getString("EMAIL"));
+						
+						employee.setEhReferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
+						employee.setEhReferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
+						employee.setEhReferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
+						employee.setEhReferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
+						employee.setEhReferenceonedesignation(rsRetriveData.getString("REFERENCEONEDESIGNATION"));
+						employee.setEhReferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
+						
+						employee.setEhReferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
+						employee.setEhReferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
+						employee.setEhReferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
+						employee.setEhReferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
+						employee.setEhReferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
+						employee.setEhReferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
+						
+						employee.setEhReferencemodby(rsRetriveData.getString("MODBY"));
+						employee.setEhReferencemodon(rsRetriveData.getString("MODON"));
+
+					}
+				}catch(Exception e){
+					log.info("Exception - "+ e);
+				}
+				
+			
+		} catch (SQLException exception) {
+			log.info("Exception - "+ exception);
+			exception.printStackTrace();
+		}
+		finally{
+			try {
+				if(conn!=null && preparedStatement!=null){
+					preparedStatement.close();
+					conn.close();
+				}
+			} catch (SQLException e) {
+				log.info("Exception - "+ e);
+				e.printStackTrace();
+			}
+		}
+		return employee;
+	}
+	
+	
+	
 	
 	@Override
 	public int updateEmployeeHistory(Object object) {
 		
+		
 		String query = "UPDATE [HRA.EMPLOYMENTHISTORY] SET EMPLOYERNAME=? , DESIGNATION =? , STARTDATE=? , ENDDATE=? , BASIS=? , COMMENTS=? , EMAIL=? ,"
 				+ "REFERENCEONENAME=? , REFERENCEONEPHONE=? , REFERENCEONEMOBILE=? , REFERENCEONEADDRESS=? , REFERENCEONEDESIGNATION =? , REFERENCEONECOMMENTS=? ,"
 				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE ID=?";
+		
+		
 		
 		int status = -1;
 		Connection conn = null;
@@ -565,7 +652,10 @@ public boolean isValidUpdate(Object object) {
 			preparedStatement.setString(20, "SYSTEM");
 			preparedStatement.setInt(21, eh.getEhid());
 
+			log.info("getEhid:-"+eh.getEhid());
+
 			int rowsUpdated = preparedStatement.executeUpdate();
+			
 			if (rowsUpdated > 0) {
 				status = 1;
 			}

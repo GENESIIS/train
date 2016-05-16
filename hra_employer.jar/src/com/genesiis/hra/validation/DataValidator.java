@@ -107,6 +107,10 @@ public class DataValidator {
 			return 5;
 		} else if (task.equalsIgnoreCase(MessageList.EHADD.message())) {
 			return 6;
+		} else if (task.equalsIgnoreCase(MessageList.EHGET.message())) {
+			return 7;
+		} else if (task.equalsIgnoreCase(MessageList.EHUPDATE.message())) {
+			return 8;
 		} else {
 			return -1;
 		}

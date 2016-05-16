@@ -38,4 +38,9 @@ public interface ICrud {
 	//thumeera - Employee history update using id with data
 	public int updateEmployeeHistory(Object object);
 
+	//thumeera - Employee history get recode using id with data
+	public Object getRetriveRecode(String id);
+
+	boolean isValidUpdate(Object object);
+
 }

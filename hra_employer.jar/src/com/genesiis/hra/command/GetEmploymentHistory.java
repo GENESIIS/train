@@ -7,17 +7,16 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeFactory;
+import com.genesiis.hra.model.EmploymentHistory;
 import com.google.gson.Gson;
 
 public class GetEmploymentHistory {
 
 	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
 
-	public List<Object> execute(int key, String employeeDetails) {
+	public String execute(int key, String employeeDetails) {
 		
-		List<Object> employeeHistoryList = new ArrayList<Object>();
-		
-		
+		String ehGson="";
 		try {
 			
 			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
@@ -25,17 +24,24 @@ public class GetEmploymentHistory {
 			
 			Employee emp = factory.getEmployee(key);
 
+			
 			//Extract the particular class type object returned from the factory.
-			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
+			//emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
 
-//			if (emp.isValid(emp)) {
-				employeeHistoryList  = emp.getRetrive("1");
-//			}
+			//employeeHistoryList  = emp.getRetrive("1");
+			try {
+				log.info("execute");
+				EmploymentHistory employmentHistory = (EmploymentHistory)emp.getRetriveRecode("7");	
+				ehGson = createGson(employmentHistory);			
+			} catch (Exception e) {
+				log.info("Exception - GetEmploymentHistory: " + e);
+			}	
+			
 			
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-		return employeeHistoryList;
+		return ehGson;
 	}
 
 	public Object extractFromJason(String className, String gsonData) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -49,5 +55,18 @@ public class GetEmploymentHistory {
 		}
 		return object;
 	}
+	
+	// Create geson object
+		public String createGson(EmploymentHistory eh) {					
+			Gson gson = new Gson();	
+			String empHistory = " ";
+			try {
+				empHistory = gson.toJson(eh);			
+			} catch (Exception e) {
+				log.info("Execption - GetEmploymentHistory - createGson");
+			}
+			return empHistory;
+		}
+		
 	
 }

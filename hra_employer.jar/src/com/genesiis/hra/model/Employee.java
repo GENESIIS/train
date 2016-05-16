@@ -64,4 +64,17 @@ public abstract class Employee implements ICrud {
 	public int updateEmployeeHistory(Object object) {
 		return -1;
 	}
+
+	@Override
+	public Object getRetriveRecode(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidUpdate(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

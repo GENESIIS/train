@@ -30,7 +30,7 @@ public class UpdateEmployeeHistory {
 			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
 
-			if (emp.isValid(emp)) {
+			if (emp.isValidUpdate(emp)) {
 				status = emp.updateEmployeeHistory(emp);
 			}
 			

@@ -177,6 +177,8 @@
 	</div>
 </div>
 
+
+
 <!--edit Educational Modal -->
 <div class="modal fade" id="editEmploymenthistorydetails"
 	name="addEducationaldetails" role="dialog">
@@ -276,3 +278,8 @@
 
 	</div>
 </div>
+
+
+
+
+

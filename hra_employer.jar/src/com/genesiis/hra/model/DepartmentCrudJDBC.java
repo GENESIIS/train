@@ -167,4 +167,16 @@ public class DepartmentCrudJDBC implements ICrud {
 		return 0;
 	}
 
+	@Override
+	public Object getRetriveRecode(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidUpdate(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

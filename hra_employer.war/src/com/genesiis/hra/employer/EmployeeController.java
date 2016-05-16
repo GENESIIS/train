@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.UpdateEmployeeHistory;
+import com.genesiis.hra.model.EmploymentHistory;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -74,6 +76,7 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = MessageList.ERROR.message();
@@ -82,6 +85,7 @@ public class EmployeeController extends HttpServlet {
 
 		// Method to verify it and return integer;
 		int validTask = validator.validTaskId(task);
+		
 		Gson gson = new Gson();
 
 		try {
@@ -132,16 +136,10 @@ public class EmployeeController extends HttpServlet {
 				 * **/
 				log.error("__________________GetEmploymentHistory_______________________");
 				GetEmploymentHistory getEmploymentHistory 	= (GetEmploymentHistory) hmap.get(7);
-				employeeHistoryList 						= getEmploymentHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
-
-				// For ADD EMPLOYMENT HISTORY DETAILS operations.
-//				if (ee == 1) {
-//					message = MessageList.ADDED.message();
-//				} else {
-//					message = MessageList.ERROR.message();
-//				}
+				String 	gsonString							= getEmploymentHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 				
-				response.getWriter().write(gson.toJson(message));
+				response.getWriter().write(gsonString);
+				
 				break;
 
 			case 8:
@@ -155,7 +153,7 @@ public class EmployeeController extends HttpServlet {
 
 				// For ADD EMPLOYMENT HISTORY DETAILS operations.
 				if (updateStatus == 1) {
-					message = MessageList.ADDED.message();
+					message = MessageList.UPDATED.message();
 				} else {
 					message = MessageList.ERROR.message();
 				}
