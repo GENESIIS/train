@@ -50,9 +50,9 @@ $(document).on("click", "#vbutton", function () {
 			$(".panel-body #depid").text(  json.employeeDepartment);
 			$(".panel-body #doj").text(json.employeeJoindate);
 			$(".modal-body #userid").val( json.employeeEpf);
-			$(".modal-body #userid").val( json.employeeTemporaryaddress);			
-			$(".panel-body #doj").text(json.employeeMaritalstatus);
-			//$(".modal-body #userid").val( json.EPF);
+			$(".modal-body #tempAddresid").val( json.employeeTemporaryaddress);			
+			$(".panel-body #doj").text(json.employeeJoindate);
+			$(".modal-body #maritalstatusid").val( json.employeeMaritalstatus);
 			//$(".modal-body #userid").val( json.TEMPORARYADDRESS);
 			
 			alert(data);
