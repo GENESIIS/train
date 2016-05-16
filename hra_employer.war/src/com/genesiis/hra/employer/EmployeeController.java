@@ -40,18 +40,22 @@ public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
-	HashMap<Operation, ICommand> commands = null;
+	// HashMap<Operation, ICommand> commands = null;
+	HashMap<Integer, Object> hmap = null;
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-	//	AddEmployeeDim addEmployee = ;
-		//GetDepartment department = new GetDepartment();
-		// EducationData education = new EducationData();
+		AddEmployeeDim addEmployee = new AddEmployeeDim();
+		GetDepartment department = new GetDepartment();
+		EducationData education = new EducationData();
 
-		commands = new HashMap<Operation, ICommand>();
-		commands.put(Operation.ADD_EDU_DETAILS, new AddEmployeeDim());
+		// commands = new HashMap<Operation, ICommand>();
+		// commands.put(Operation.ADD_EDU_DETAILS, new AddEmployeeDim());
+		hmap = new HashMap<Integer, Object>();
+		hmap.put(1, addEmployee);
+		hmap.put(5, department);
 		// hmap.put(3, education);
-		//commands.put(5, department);
+		// commands.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
 	}
@@ -63,13 +67,17 @@ public class EmployeeController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		String employeeDetails = request.getParameter("jsonData");
-		log.info("employeeDetails" + employeeDetails);
+		// log.info("employeeDetails" + employeeDetails);
 		// FamilyMember empgson = new FamilyMember();
 		EducationData edu = new EducationData();
+		Gson gson = new Gson();
+		String message = "";
 		try {
-			response.getWriter().write(edu.getEmployee(3));
-			log.info("employeeDetails" + edu.getEmployee(Integer.parseInt("3")));
+			message = edu.getEmployee(1);
+			response.getWriter().write(gson.toJson(message));
+			log.info("employeeDetails" + edu.getEmployee(Integer.parseInt("1")));
 		} catch (Exception ex) {
+			message = MessageList.ERROR.message();
 			ex.printStackTrace();
 			log.error("Exception: doGet" + ex);
 
@@ -88,39 +96,33 @@ public class EmployeeController extends HttpServlet {
 		String message = "";
 
 		// Method to verify it and return integer;
-		//int validTask = validator.validTaskId(task);
-		Operation o = Operation.NO_COMMAND;
-		// using the task i retrieve the operation o = Operation.fromString(task)
-		
+		// int validTask = validator.validTaskId(task);
+		// Operation o = Operation.NO_COMMAND;
+		// using the task i retrieve the operation o =
+		// Operation.fromString(task)
+
+		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 
 		try {
-			switch (o) {
-			case ADD_EDU_DETAILS:
-				message = commands.get(o).execute(details);
-				writeResponse(message, response);
-			break;
-			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
+			switch (validTask) {
+			case 1:
+
+				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(1);
+				if ((dim.execute(Operation.ADD_EDU_DETAILS.getValue(), details)) == 3) {
+					message = MessageList.ADDED.message();
+				}
+				response.getWriter().write(gson.toJson(message));
+				break;
 			default:
 				break;
 			}
 		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
+			message = MessageList.ERROR.message();
 			log.error("Exception: EmployeeController" + exception);
-			response.getWriter().write(gson.toJson(message));
 		}
+		response.getWriter().write(gson.toJson(message));
 		response.getWriter().close();
-	}
-
-	private void writeResponse(String message, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

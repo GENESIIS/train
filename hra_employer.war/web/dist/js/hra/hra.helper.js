@@ -282,6 +282,7 @@ function clearDepartmentform() {
 
 function loadEditContentqualifications() {
 	$("#Editmodelrest").load("\EditemployeeDetails/EditeducationalDetails.jsp");
+	loadDataEducationalDetails();
 }
 
 function loadEditemployementhistory() {
@@ -290,28 +291,6 @@ function loadEditemployementhistory() {
 
 function loadEditContentstudyprograms() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-	// $(document).on("click", "#edubutton", function() {
-	/*
-	 * $.get("EmployerController", function(data, status) { alert(data); json =
-	 * JSON.parse(data); $(".modal-body #employeeId").val(json.employeeEpf);
-	 * $(".modal-body #qualificationName").val(json.employeeEpf); $(".modal-body
-	 * #educatedPlace").val(json.employeeEpf); $(".modal-body
-	 * #mediumStudied").val(json.employeeEpf); $(".modal-body
-	 * #startedOn").val(json.employeeEpf); $(".modal-body
-	 * #compleatedOn").val(json.employeeEpf);
-	 * 
-	 * if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
-	 * document.getElementById('weekdays').checked;
-	 * document.getElementById('weekends').checked; } else if ($(".modal-body
-	 * #compleatedOn").val(json.eduStudytime) == 2) {
-	 * document.getElementById('weekdays').checked; } else if ($(".modal-body
-	 * #compleatedOn").val(json.eduStudytime) == 3) {
-	 * document.getElementById('weekends').checked; } else { //do nothing }
-	 * 
-	 * });
-	 */
-	// });
-	loadData();
 
 }
 
@@ -540,29 +519,54 @@ function checkStudyTime() {
 // ///Load data to edit Educational Details
 
 // $(document).on("click", "#edubutton", function() {
-function loadData() {
+function loadDataEducationalDetails() {
 
-	$.get("EmployerController", function(data, status) {
-		alert(data);
+	// $.get("EmployerController", function(data, status) {
+	// alert(data);
+	// json = JSON.parse(data);
+	// $(".modal-body #employeeId").val(json.employeeEpf);
+	// $(".modal-body #qualificationName").val(json.employeeEpf);
+	// $(".modal-body #educatedPlace").val(json.employeeEpf);
+	// $(".modal-body #mediumStudied").val(json.employeeEpf);
+	// $(".modal-body #startedOn").val(json.employeeEpf);
+	// $(".modal-body #compleatedOn").val(json.employeeEpf);
+	//
+	// if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
+	// document.getElementById('weekdays').checked;
+	// document.getElementById('weekends').checked;
+	// } else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 2) {
+	// document.getElementById('weekdays').checked;
+	// } else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 3) {
+	// document.getElementById('weekends').checked;
+	// } else {
+	// // do nothing
+	// }
+	//
+	// });
+
+	var jsonData = "1";
+	$.getJSON('EmployeeController', {
+		jsonData : JSON.stringify(jsonData),
+		task : "FIND"
+	}, function(data) {
 		json = JSON.parse(data);
-		$(".modal-body #employeeId").val(json.employeeEpf);
-		$(".modal-body #qualificationName").val(json.employeeEpf);
-		$(".modal-body #educatedPlace").val(json.employeeEpf);
-		$(".modal-body #mediumStudied").val(json.employeeEpf);
-		$(".modal-body #startedOn").val(json.employeeEpf);
-		$(".modal-body #compleatedOn").val(json.employeeEpf);
+		$("#employeeId").val(json.employeeEpf);
+		$("#qualificationName").val(json.eduQualification);
+		$("#educatedPlace").val(json.eduUniversity);
+		$("#mediumStudied").val(json.eduMedium);
+		$("#startedOn").val(json.eduStartedon);
+		$("#compleatedOn").val(json.eduCompltedon);
 
-		if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
-			document.getElementById('weekdays').checked;
-			document.getElementById('weekends').checked;
-		} else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 2) {
-			document.getElementById('weekdays').checked;
-		} else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 3) {
-			document.getElementById('weekends').checked;
-		} else {
-			// do nothing
-		}
-
+		// if ($("#compleatedOn").val(json.eduStudytime) == 1) {
+		// document.getElementById('weekdays').checked;
+		// document.getElementById('weekends').checked;
+		// } else if ($("#compleatedOn").val(json.eduStudytime) == 2) {
+		// document.getElementById('weekdays').checked;
+		// } else if ($("#compleatedOn").val(json.eduStudytime) == 3) {
+		// document.getElementById('weekends').checked;
+		// } else {
+		// // do nothing
+		// }
 	});
 
 }
@@ -579,4 +583,35 @@ function EditEducationDetails() {
 	var compleatedOn = $("#compleatedOn").val();
 	var studyTime = checkStudyTime();
 
+	var EducationData = {
+		"employeeEpf" : employeeId,
+		"eduQualification" : qualificationName,
+		"eduUniversity" : educatedPlace,
+		"eduMedium" : mediumStudied,
+		"eduStartedon" : startedOn,
+		"eduCompltedon" : compleatedOn,
+		"eduStudytime" : studyTime
+	};
+	alert(JSON.stringify(EducationData));
+
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(EducationData),
+			task : "UPDATE"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details Updated successfully.") {
+				clearAddeducationform();
+				// document.getElementById("moredetails").disabled = false;
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
 }

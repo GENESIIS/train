@@ -39,8 +39,8 @@ public class Employee implements ICrud {
 	}
 
 	@Override
-	public String update(Object object) {
-		return null;
+	public int update(Object object) {
+		return -1;
 	}
 
 	@Override

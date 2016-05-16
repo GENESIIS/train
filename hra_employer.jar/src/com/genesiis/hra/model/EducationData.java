@@ -24,8 +24,6 @@ public class EducationData extends Employee {
 	private String eduStartedon;
 	private String eduCompltedon;
 	private String eduStudytime;
-	
-	
 
 	public String getEduQualification() {
 		return eduQualification;
@@ -105,7 +103,7 @@ public class EducationData extends Employee {
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			
+
 			preparedStatement.setString(1, edu.getEmployeeepf());
 			preparedStatement.setString(2, edu.getEduUniversity());
 			preparedStatement.setString(3, edu.getEduStartedon());
@@ -155,19 +153,20 @@ public class EducationData extends Employee {
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
-		PreparedStatement preparedStatement  = null;
+		PreparedStatement preparedStatement = null;
 		EducationData edu = new EducationData();
 		String educationDetails = null;
 		Gson gson = new Gson();
-		
+
 		try {
-			
+
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement("SELECT * FROM [HRA.EDUCATION] WHERE ID=1");
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
 			preparedStatement.setInt(1, employeeId);
-			
+
 			ResultSet res = preparedStatement.executeQuery();
-			if(res.next()){
+			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
 				edu.setEduUniversity(res.getString(3));
 				edu.setEduStartedon(res.getString(4));
@@ -175,15 +174,56 @@ public class EducationData extends Employee {
 				edu.setEduMedium(res.getString(6));
 				edu.setEduCompltedon(res.getString(7));
 				edu.setEduStudytime(res.getString(8));
-				educationDetails = gson.toJson(edu);
 				
+				educationDetails = gson.toJson(edu);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return educationDetails;
 	}
-	
-	
+
+	@Override
+	public int update(Object object) {
+		String query = "UPDATE [HRA.QUALIFICATION  ] SET STUDYPLACE=?, ADDMISSIONDATE=?, RELATIONSHIP=?,QUALIFICATION=?, MEDIUM=?, LEAVINGDATE=?, STUDYTIME=?,  MODBY=? WHERE ID=?";
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		EducationData edu = (EducationData) object;
+
+		try {
+			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+
+			preparedStatement.setString(1, edu.getEmployeeepf());
+			preparedStatement.setString(2, edu.getEduUniversity());
+			preparedStatement.setString(3, edu.getEduStartedon());
+			preparedStatement.setString(4, edu.getEduQualification());
+			preparedStatement.setString(5, edu.getEduMedium());
+			preparedStatement.setString(6, edu.getEduCompltedon());
+			preparedStatement.setString(7, edu.getEduStudytime());
+			preparedStatement.setString(8, "SYSTEM");
+
+			int rowsInserted = preparedStatement.executeUpdate();
+			if (rowsInserted > 0) {
+				status = 1;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			log.error("Exception: EducationData Edit" + exception);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+				log.error("Exception: EducationData Edit" + exception);
+			}
+		}
+		return status;
+	}
 }
