@@ -106,7 +106,7 @@ public class EmployeeController extends HttpServlet {
 
 		try {
 			switch (validTask) {
-			case 1:
+			case 2:
 
 				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(1);
 				if ((dim.execute(Operation.ADD_EDU_DETAILS.getValue(), details)) == 3) {

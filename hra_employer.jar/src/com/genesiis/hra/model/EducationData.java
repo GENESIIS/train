@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.jboss.logging.Logger;
 
@@ -168,12 +169,19 @@ public class EducationData extends Employee {
 			ResultSet res = preparedStatement.executeQuery();
 			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
+				log.info("res.getString(2)"+res.getString(2));
 				edu.setEduUniversity(res.getString(3));
+				log.info("res.getString(3)"+res.getString(3));
 				edu.setEduStartedon(res.getString(4));
+				log.info("res.getString(4)"+res.getString(4));
 				edu.setEduQualification(res.getString(5));
+				log.info("res.getString(5)"+res.getString(5));
 				edu.setEduMedium(res.getString(6));
+				log.info("res.getString(6)"+res.getString(6));
 				edu.setEduCompltedon(res.getString(7));
+				log.info("res.getString(7)"+res.getString(7));
 				edu.setEduStudytime(res.getString(8));
+				log.info("res.getString(8)"+res.getString(8));
 				
 				educationDetails = gson.toJson(edu);
 
@@ -187,24 +195,27 @@ public class EducationData extends Employee {
 
 	@Override
 	public int update(Object object) {
-		String query = "UPDATE [HRA.QUALIFICATION  ] SET STUDYPLACE=?, ADDMISSIONDATE=?, RELATIONSHIP=?,QUALIFICATION=?, MEDIUM=?, LEAVINGDATE=?, STUDYTIME=?,  MODBY=? WHERE ID=?";
+		String query = "UPDATE [HRA.QUALIFICATION] SET STUDYPLACE=?, ADDMISSIONDATE=?,QUALIFICATION=?, MEDIUM=?, LEAVINGDATE=?, STUDYTIME=?,  MODBY=? WHERE ID=?";
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		EducationData edu = (EducationData) object;
-
+		
+		
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 
-			preparedStatement.setString(1, edu.getEmployeeepf());
-			preparedStatement.setString(2, edu.getEduUniversity());
-			preparedStatement.setString(3, edu.getEduStartedon());
-			preparedStatement.setString(4, edu.getEduQualification());
-			preparedStatement.setString(5, edu.getEduMedium());
-			preparedStatement.setString(6, edu.getEduCompltedon());
-			preparedStatement.setString(7, edu.getEduStudytime());
-			preparedStatement.setString(8, "SYSTEM");
+			
+			preparedStatement.setString(1, edu.getEduUniversity());
+			preparedStatement.setString(2, edu.getEduStartedon());
+			preparedStatement.setString(3, edu.getEduQualification());
+			preparedStatement.setString(4, edu.getEduMedium());
+			preparedStatement.setString(5, edu.getEduCompltedon());
+			preparedStatement.setString(6, edu.getEduStudytime());
+			preparedStatement.setString(7, "SYSTEM");
+			preparedStatement.setString(8, edu.getEmployeeepf());
+		
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {

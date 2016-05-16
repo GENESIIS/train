@@ -19,16 +19,19 @@ public class AddEmployeeDim {
 			// Returns a Subclass object of Employee super class according to
 			// the key. Key implies the sub class name
 			EmployeeFactory factory = new EmployeeFactory();
-			Employee emp = factory.getEmployeefactory(key);
+			Employee emp = factory.getEmployeefactory(3);
 			// Extract the particular class type object returned from the
 			// factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),
 					employeeDetails);
+			log.info("emp.getClass().getName()"+emp.getClass().getName());
 			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
 			// Only a valid object will added to the database.
-			if (emp.isValid(emp)) {
-				status = emp.add(emp);
-			}
+//			if (emp.isValid(emp)) {
+				status = emp.update(emp);
+//			}else{
+				log.info("status" + status);
+//			}
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}

@@ -3,9 +3,8 @@
 	//To load the Datatable
 	$(document).ready(function() {
 		$('#employeeDetails').DataTable();
-		
+		loadDataEducationalDetails();
 	});
-	
 </script>
 <div class="">
 	<div class="">
@@ -63,7 +62,7 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-left"
-				onclick="updatedAlert()" data-dismiss="modal">
+				onclick="EditEducationDetails()" data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
 			<button type="button" class="btn btn-danger pull-right"

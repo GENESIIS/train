@@ -282,7 +282,7 @@ function clearDepartmentform() {
 
 function loadEditContentqualifications() {
 	$("#Editmodelrest").load("\EditemployeeDetails/EditeducationalDetails.jsp");
-	loadDataEducationalDetails();
+
 }
 
 function loadEditemployementhistory() {
@@ -438,7 +438,7 @@ function AddEducationDetails() {
 	var startedOn = $("#startedOn").val();
 	var compleatedOn = $("#compleatedOn").val();
 	var studyTime = checkStudyTime();
-	// alert(studyTime);
+	 
 	/*
 	 * var institution = $("#institution").val(); var courseType =
 	 * $("#courseType").val(); var admissionDate = $("#admissionDate").val();
@@ -518,31 +518,8 @@ function checkStudyTime() {
 
 // ///Load data to edit Educational Details
 
-// $(document).on("click", "#edubutton", function() {
-function loadDataEducationalDetails() {
 
-	// $.get("EmployerController", function(data, status) {
-	// alert(data);
-	// json = JSON.parse(data);
-	// $(".modal-body #employeeId").val(json.employeeEpf);
-	// $(".modal-body #qualificationName").val(json.employeeEpf);
-	// $(".modal-body #educatedPlace").val(json.employeeEpf);
-	// $(".modal-body #mediumStudied").val(json.employeeEpf);
-	// $(".modal-body #startedOn").val(json.employeeEpf);
-	// $(".modal-body #compleatedOn").val(json.employeeEpf);
-	//
-	// if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
-	// document.getElementById('weekdays').checked;
-	// document.getElementById('weekends').checked;
-	// } else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 2) {
-	// document.getElementById('weekdays').checked;
-	// } else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 3) {
-	// document.getElementById('weekends').checked;
-	// } else {
-	// // do nothing
-	// }
-	//
-	// });
+function loadDataEducationalDetails() {
 
 	var jsonData = "1";
 	$.getJSON('EmployeeController', {
@@ -557,21 +534,21 @@ function loadDataEducationalDetails() {
 		$("#startedOn").val(json.eduStartedon);
 		$("#compleatedOn").val(json.eduCompltedon);
 
-		// if ($("#compleatedOn").val(json.eduStudytime) == 1) {
-		// document.getElementById('weekdays').checked;
-		// document.getElementById('weekends').checked;
-		// } else if ($("#compleatedOn").val(json.eduStudytime) == 2) {
-		// document.getElementById('weekdays').checked;
-		// } else if ($("#compleatedOn").val(json.eduStudytime) == 3) {
-		// document.getElementById('weekends').checked;
-		// } else {
-		// // do nothing
-		// }
+		if (json.eduStudytime == 1) {
+			document.getElementById("weekdays").checked;
+			document.getElementById("weekends").checked;
+		} else if (json.eduStudytime == 2) {
+			document.getElementById("weekdays").checked;
+		} else if (json.eduStudytime == 3) {
+			document.getElementById("weekends").checked;
+		} else {
+			// do nothing
+		}
 	});
 
 }
 
-// });
+
 
 // /////Edit Educational Details ////////
 function EditEducationDetails() {
@@ -592,7 +569,7 @@ function EditEducationDetails() {
 		"eduCompltedon" : compleatedOn,
 		"eduStudytime" : studyTime
 	};
-	alert(JSON.stringify(EducationData));
+	//alert(JSON.stringify(EducationData));
 
 	$.ajax({
 		type : "POST",
