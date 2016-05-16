@@ -13,7 +13,10 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.MessageList;
-
+/***********************************************
+//* 20160510 PN HRA-13 created LoanCrudJDBC.java class
+//* 20160513 PN HRA-13  validateEmployee() method Modified.
+//***********************************************/
 public class LoanCrudJDBC implements IDataAccessor {
 	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 

@@ -10,6 +10,10 @@ import com.genesiis.hra.model.LoanCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
+/*
+ * 
+ * 05092016 HRA 13 PC RigisterLoan.java class 
+ * */
 
 public class RegisterLoan implements ICommand {
 	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
