@@ -16,7 +16,8 @@
 			<label for="editrelationship">Relationship</label>&nbsp;&nbsp;<span
 				id="editrelationshipError" name="editrelationshipError"
 				style="color: red; font-weight: normal !important;"></span> <select
-				class="form-control" id="editrelationship" name="editrelationship">
+				class="form-control" id="editrelationship" name="editrelationship"
+				onchange="resetFieldsadd()">
 				<option value="" selected="selected">--Select--</option>
 				<option value="Father">Father</option>
 				<option value="Mother">Mother</option>
@@ -34,7 +35,7 @@
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="editrelationName"
 				name="editrelationName" placeholder=""
-				onkeypress="return isLetter(event);">
+				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -43,7 +44,8 @@
 						id="editrelationbirthdateError" name="editrelationbirthdateError"
 						style="color: red; font-weight: normal !important;"></span> <input
 						type="date" class="form-control" id="editrelationDateofbirth"
-						name="editrelationDateofbirth" placeholder="">
+						name="editrelationDateofbirth" placeholder=""
+						onblur="resetFieldsadd()">
 				</div>
 			</div>
 		</div>
@@ -54,7 +56,7 @@
 				style="color: red; font-weight: normal !important;"></span><input
 				type="text" class="form-control" id="editoccupation"
 				name="editoccupation" placeholder=""
-				onkeypress="return isLetter(event);">
+				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 
 		<div class="form-group">
@@ -63,7 +65,7 @@
 				style="color: red; font-weight: normal !important;"></span> <input
 				type="text" class="form-control" id="editworkingPlace"
 				name="editworkingPlace" placeholder=""
-				onkeypress="return isLetter(event);">
+				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
 		</div>
 
 		<div class="modal-footer">
