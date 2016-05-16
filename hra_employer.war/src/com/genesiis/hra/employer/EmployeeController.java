@@ -14,9 +14,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.UpdateEmployeeDim;
-import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.FamilyMember;
-import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -24,7 +22,7 @@ import com.google.gson.Gson;
 ///***********************************************
 //* 20160407 PN HRA-1 created EmployeeController.java class
 //* 20160430 PN HRA-1 doGet(), doPost() methods completed.
-//* 
+//* 20160430 PN HRA-1 doGet() method modified to get the details from the table.
 //***********************************************/
 
 /**
@@ -45,9 +43,6 @@ public class EmployeeController extends HttpServlet {
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
 		hmap.put(5, department);
-		// hmap.put(3, null);
-		// hmap.put(4, null);
-
 	}
 
 	/**
@@ -59,13 +54,19 @@ public class EmployeeController extends HttpServlet {
 		String employeeDetails = request.getParameter("jsonData");
 		log.info("employeeDetails" + employeeDetails);
 		FamilyMember empgson = new FamilyMember();
+		String message = "";
+		Gson gson = new Gson();
+
 		try {
+			message = empgson.getEmployee(Integer.parseInt(employeeDetails));
 			log.info("employeeDetails"
-					+ empgson.getEmployee(Integer.parseInt("2")));
+					+ empgson.getEmployee(Integer.parseInt(employeeDetails)));
 		} catch (Exception ex) {
 			log.error("Exception: doGet" + ex);
-		}// (Integer) extractFromJason(Integer,employeeDetails)
-		response.getWriter().write(empgson.getEmployee(Integer.parseInt("2")));
+			message = MessageList.ERROR.message();
+		}//
+		response.getWriter().write(gson.toJson(message));
+		response.getWriter().close();
 
 	}
 

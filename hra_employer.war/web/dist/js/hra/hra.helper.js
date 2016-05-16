@@ -2,7 +2,7 @@
  * 20160407 PN HRA-1 created hra.helper.js class. 20160415 PN HRA-1 Modified
  * addEmployeeDetails() Function. 20160429 PN HRA-3 addDepartmentDetails()
  * function Modified. 20160505 PN HRA-2 clearAddemployeeform() function
- * modified.
+ * modified. 20160516 PN HRA-2 getEmployeetoupdate() function modified.
  */
 
 function loadContentDashboard() {
@@ -340,6 +340,7 @@ function loadEditContentloandetails() {
 }
 function loadEditContentfamilydetails() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditfamilyDetails.jsp");
+	getEmployeetoupdate();
 }
 function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
@@ -508,10 +509,23 @@ function editclearFamilydetails() {
 function getEmployeetoupdate() {
 	var jsonData = 2;
 
-	$.get('EmployeeController', {
-		'jsonData' : jsonData
-	}, function(response) {
-		alert(response);
+	// $.getJSON('EmployeeController', {
+	// // 'jsonData' : jsonData
+	// }, function(response) {
+	// alert(response);
+	// });
+
+	$.getJSON('EmployeeController', {
+		jsonData : JSON.stringify(jsonData),
+		task : "FIND"
+	}, function(data) {
+		json = JSON.parse(data);
+		$("#editfmemployeeId").val(json.employeeEpf);
+		$("#editrelationDateofbirth").val(json.fmDateofbirth);
+		$("#editrelationName").val(json.fmName);
+		$("#editoccupation").val(json.fmOccupation);
+		$("#editworkingPlace").val(json.fmWorkingplace);
+		$("#editrelationship").val(json.fmRelationship);
 	});
 
 }
