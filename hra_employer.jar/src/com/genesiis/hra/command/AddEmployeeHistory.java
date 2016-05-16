@@ -6,20 +6,13 @@ import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeFactory;
 import com.google.gson.Gson;
 
-public class UpdateEmployeeHistory {
+public class AddEmployeeHistory {
 
 	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
-	/**
-	 * @author thumeera
-	 * @param employeeDetails ,key 
-	 * @return int status
-	 * update execute the update funtion of employee history 
-	 * 
-	 * **/
+
 	public int execute(int key, String employeeDetails) {
 		
 		int status = -1;
-		
 		try {
 			
 			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
@@ -29,24 +22,21 @@ public class UpdateEmployeeHistory {
 
 			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
-
+			
+			
+			//Only a valid object will added to the database.
 			if (emp.isValid(emp)) {
-				status = emp.updateEmployeeHistory(emp);
+				status = emp.add(emp);
 			}
 			
 		} catch (Exception e) {
+			
 			log.error("execute - Exception " + e);
+			
 		}
 		return status;
 	}
 
-	/**
-	 * 
-	 * @param className, gsonData
-	 * @return Object
-	 * extract From Gson
-	 * 
-	 * **/
 	public Object extractFromJason(String className, String gsonData) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Gson gson = new Gson();
 		Class<?> clazz = Class.forName(className);

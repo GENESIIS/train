@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.List;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -173,6 +172,22 @@ public class EmployeeCrudJDBC implements ICrud {
 	@Override
 	public List<Object> getAll() {
 		return null;
+	}
+
+
+
+	@Override
+	public List<Object> getRetrive(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public int updateEmployeeHistory(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

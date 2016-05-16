@@ -31,5 +31,11 @@ public interface ICrud {
 	public List<Object> getAll();
 	
 	public boolean isValid(Object object);
-	
+
+	//thumeera - Employee history retrive using id
+	public List<Object> getRetrive(String id);
+
+	//thumeera - Employee history update using id with data
+	public int updateEmployeeHistory(Object object);
+
 }

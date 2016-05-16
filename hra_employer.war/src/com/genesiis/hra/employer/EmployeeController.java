@@ -1,6 +1,7 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployee;
+import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.UpdateEmployeeHistory;
-import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -43,13 +44,18 @@ public class EmployeeController extends HttpServlet {
 
 		// initialize the commands
 		//UpdateEmployee addEmployee = new UpdateEmployee();
+		AddEmployeeHistory addEmployeeHistory 		= new AddEmployeeHistory();
 		UpdateEmployeeHistory updateEmployeeHistory = new UpdateEmployeeHistory();
+		GetEmploymentHistory getEmploymentHistory 	= new GetEmploymentHistory();
+		
 		GetDepartment department = new GetDepartment();
 
 		hmap = new HashMap<Integer, Object>();
 		//hmap.put(1, addEmployee);
 		hmap.put(5, department);
-		hmap.put(6, updateEmployeeHistory);
+		hmap.put(6, addEmployeeHistory);
+		hmap.put(7, getEmploymentHistory);
+		hmap.put(8, updateEmployeeHistory);
 
 	}
 
@@ -70,8 +76,9 @@ public class EmployeeController extends HttpServlet {
 
 		String employeeDetails = request.getParameter("jsonData");
 		String task = request.getParameter("task");
-		String message = "Transaction Fails.";
-
+		String message = MessageList.ERROR.message();
+		
+		List<Object> employeeHistoryList = new ArrayList<Object>();
 
 		// Method to verify it and return integer;
 		int validTask = validator.validTaskId(task);
@@ -79,13 +86,10 @@ public class EmployeeController extends HttpServlet {
 
 		try {
 
-			
-
 			switch (validTask) {
 			case 1:
 				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
-				
-				
+
 				// For ADD FAMILLY DETAILS operations.
 				if ((dim.execute(ClassList.FAMILY_MEMBER.getValue(),
 						employeeDetails)) == 1) {
@@ -102,22 +106,60 @@ public class EmployeeController extends HttpServlet {
 			// case 4:
 			// break;
 
-			case 6: 
-				System.out.println("\n");
-
-				// EmployeeHistory > validTask-6 > task-6
-				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(6);
-
-				int ee = updateEmployeeHistory.execute(	ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
+			case 6:
+				/**
+				 * Add Employee History 
+				 * AddEmployeeHistory > validTask-6 > task-6
+				 * **/
+				log.error("__________________AddEmployeeHistory_______________________");
+				AddEmployeeHistory addEmployeeHistory 	= (AddEmployeeHistory) hmap.get(6);
+				int insetStatus 						= addEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 
 				// For ADD EMPLOYMENT HISTORY DETAILS operations.
-				if (ee == 1) 
-				{
+				if (insetStatus == 1) {
 					message = MessageList.ADDED.message();
-				}else{
+				} else {
 					message = MessageList.ERROR.message();
 				}
+				response.getWriter().write(gson.toJson(message));
+				break;
 
+				
+			case 7:
+				/**
+				 * Get Employee History 
+				 * GetEmploymentHistory > validTask-7 > task-7
+				 * **/
+				log.error("__________________GetEmploymentHistory_______________________");
+				GetEmploymentHistory getEmploymentHistory 	= (GetEmploymentHistory) hmap.get(7);
+				employeeHistoryList 						= getEmploymentHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
+
+				// For ADD EMPLOYMENT HISTORY DETAILS operations.
+//				if (ee == 1) {
+//					message = MessageList.ADDED.message();
+//				} else {
+//					message = MessageList.ERROR.message();
+//				}
+				
+				response.getWriter().write(gson.toJson(message));
+				break;
+
+			case 8:
+				/**
+				 * UpdateEmployeeHistory
+				 * UpdateEmployeeHistory > validTask-8 > task-8
+				 * **/
+				log.error("__________________UpdateEmployeeHistory_______________________");
+				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(8);
+				int updateStatus 							= updateEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
+
+				// For ADD EMPLOYMENT HISTORY DETAILS operations.
+				if (updateStatus == 1) {
+					message = MessageList.ADDED.message();
+				} else {
+					message = MessageList.ERROR.message();
+				}
+				
 				response.getWriter().write(gson.toJson(message));
 				break;
 				
@@ -133,3 +175,6 @@ public class EmployeeController extends HttpServlet {
 		response.getWriter().close();
 	}
 }
+
+
+

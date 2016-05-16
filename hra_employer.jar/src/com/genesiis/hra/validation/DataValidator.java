@@ -66,10 +66,19 @@ public class DataValidator {
 		if ( (text != null) &&  (text.isEmpty() == false)) {
 			status = true;
 		}
-		System.out.println("**********"+status+"*********");
+		log.error("isValidString - status " + status);
 		return status;
 	}
 
+	public boolean isValidInt(int text) {
+		boolean status = false;
+		if  (text != 0) {
+			status = true;
+		}
+		log.error("isValidInt - status " + status);
+		return status;
+	}
+	
 	public boolean isValidemail(String email) {
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		Boolean b = email.matches(EMAIL_REGEX);

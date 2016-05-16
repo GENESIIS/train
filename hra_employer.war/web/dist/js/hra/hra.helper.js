@@ -538,7 +538,36 @@ function clearFamilydetails() {
 
 }
 
+function clearEmployeeHistoryDetails() {
+	
+	$("#employeeId").val("");
+	$("#employer").val("");
+	$("#designation").val("");
+	$("#ehComments").val("");
+	$("#ehEmail").val("");
+	
+	$("#ehReferenceonename").val("");
+	$("#ehReferenceonecomments").val("");
+	$("#ehReferenceonephone").val("");
+	$("#ehReferenceonemobile").val("");
+	$("#ehReferenceoneaddress").val("");
+	$("#ehReferenceonedesignation").val("");
 
+	$("#ehReferencetwoname").val("");
+	$("#ehReferencetwocomments").val("");
+	$("#ehReferencetwophone").val("");
+	$("#ehReferencetwomobile").val("");
+	$("#ehReferencetwoaddress").val("");
+	$("#ehReferencetwodesignation").val("");
+	
+	$("#startedOn").val("");
+	$("#compleatedOn").val("");
+
+	$('#basis option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+}
 
 
 

@@ -1,24 +1,22 @@
 package com.genesiis.hra.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeFactory;
 import com.google.gson.Gson;
 
-public class UpdateEmployeeHistory {
+public class GetEmploymentHistory {
 
 	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
-	/**
-	 * @author thumeera
-	 * @param employeeDetails ,key 
-	 * @return int status
-	 * update execute the update funtion of employee history 
-	 * 
-	 * **/
-	public int execute(int key, String employeeDetails) {
+
+	public List<Object> execute(int key, String employeeDetails) {
 		
-		int status = -1;
+		List<Object> employeeHistoryList = new ArrayList<Object>();
+		
 		
 		try {
 			
@@ -30,23 +28,16 @@ public class UpdateEmployeeHistory {
 			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
 
-			if (emp.isValid(emp)) {
-				status = emp.updateEmployeeHistory(emp);
-			}
+//			if (emp.isValid(emp)) {
+				employeeHistoryList  = emp.getRetrive("1");
+//			}
 			
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-		return status;
+		return employeeHistoryList;
 	}
 
-	/**
-	 * 
-	 * @param className, gsonData
-	 * @return Object
-	 * extract From Gson
-	 * 
-	 * **/
 	public Object extractFromJason(String className, String gsonData) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Gson gson = new Gson();
 		Class<?> clazz = Class.forName(className);
@@ -58,4 +49,5 @@ public class UpdateEmployeeHistory {
 		}
 		return object;
 	}
+	
 }

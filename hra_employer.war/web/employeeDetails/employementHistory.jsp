@@ -10,7 +10,6 @@
 			$("#employeeId").val("001");
 			$("#employer").val("employer name");
 			$("#designation").val("designation");
-			$("#basis").val("basis");
 			$("#ehComments").val("ehComments");
 			$("#ehEmail").val("ehEmail@gmail.com");
 			
@@ -47,7 +46,7 @@
 </script>
 
 
-	
+<!--Add Employee History Modal -->	
 <div>
 	<div>
 		<!-- Modal content-->
@@ -88,8 +87,15 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="basis">Basis (Contract/Intern/Permanent)</label> 
-						<input	type="text" class="form-control" id="basis" name="basis" placeholder="" maxlength="10">
+						<div class="form-group">
+								<label for="basis">Employment Basis (Contract/Intern/Permanent)</label> <select
+									class="form-control" id="basis" name="basis">
+									<option value="">--Select--</option>
+									<option value="Permanent">Permanent</option>
+									<option value="Contract">Contract</option>
+									<option value="Trainee">Trainee</option>
+								</select>
+							</div>
 					</div>
 				</div>
 
@@ -241,105 +247,73 @@
 
 			</div>
 
-	
 
-	
-	
-			<div>
+			<div class="modal-footer">
+				<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" >
+				<button type="button" class="btn btn-success full pull-right"
+					onclick="addEmployeeHistoryDetails();">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				</button>
 
-				<div class="row pad">
+				<button type="button" class="btn btn-warning pull-left"
+					onclick="clearEmployeeHistoryDetails()">
+					<i class="glyphicon glyphicon-refresh"></i> Clear
+				</button>
+				<button type="button" id="buttonCancelemployee"
+					class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearEmployeeHistoryDetails()">
+					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				</button>
+				
+				<button type="button" class="btn btn-success full pull-right" id=btn3>
+					<i class="glyphicon glyphicon-floppy-disk"></i> Test
+				</button>
 
-					<div class="col-xs-2 ">
-					<input
-							type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" placeholder="">
-						<button type="button" class="btn btn-danger full">
-							<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
-						</button>
-					</div>
-
-					<div class="col-xs-2 ">
-						<button type="button" class="btn btn-success full" onclick="addEmployeeHistoryDetails();">
-							<i class="glyphicon glyphicon-floppy-disk"></i> Add New
-						</button>
-					</div>
-
-					<div class="col-xs-2 ">
-						<button type="button" class="btn btn-success full" id=btn3>
-							<i class="glyphicon glyphicon-floppy-disk"></i> Test
-						</button>
-					</div>
-
-				</div>
-
+				
 			</div>
+
+
+			<!-- 			<div> -->
+
+
+<!-- 				<div class="row pad"> -->
+
+<!-- 					<div class="col-xs-2 "> -->
+<!-- 					<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" placeholder=""> -->
+<!-- 						<button type="button" class="btn btn-danger full"> -->
+<!-- 							<i class="glyphicon glyphicon-floppy-remove"></i> Cancel -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+
+<!-- 					<div class="col-xs-2 "> -->
+<!-- 						<button type="button" class="btn btn-success full" onclick="addEmployeeHistoryDetails();"> -->
+<!-- 							<i class="glyphicon glyphicon-floppy-disk"></i> Add New -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+
+<!-- 					<div class="col-xs-2 "> -->
+<!-- 						<button type="button" class="btn btn-success full" id=btn3> -->
+<!-- 							<i class="glyphicon glyphicon-floppy-disk"></i> Test -->
+<!-- 						</button> -->
+<!-- 						<button type="button" id="buttonCancelemployee" class="btn btn-danger pull-left" >  -->
+<!-- 				 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel  -->
+<!-- 			 				</button> -->
+<!-- 					</div> -->
+
+<!-- 				</div> -->
+
+<!-- 			</div> -->
 
 		</div>
 
 	</div>
 
-	<table id="employmentHistorydetails"
-		class="table table-striped table-bordered table-responsive"
-		cellspacing="0" width="100%">
-		<thead>
-			<tr>
-				<th>Employee</th>
-				<th>Employer</th>
-				<th>Designation</th>
-				<th>Basis</th>
-				<th>Started On</th>
-				<th>Completed On</th>
-				<th>View</th>
-				<th>Edit</th>
-				<th>Delete</th>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<th>Employee</th>
-				<th>Employer</th>
-				<th>Designation</th>
-				<th>Basis</th>
-				<th>Started On</th>
-				<th>Completed On</th>
-				<th>View</th>
-				<th>Edit</th>
-				<th>Delete</th>
-			</tr>
-		</tfoot>
-		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td align="center">
-					<button type="button" class="btn btn-info" data-toggle="modal"
-						data-target="#">
-						<i class="glyphicon glyphicon-modal-window"></i>
-					</button>
-				</td>
-				<td align="center"><button type="button"
-						class="btn btn-warning" data-toggle="modal"
-						data-target="#editEmploymenthistorydetails">
-						<i class="glyphicon glyphicon-edit"></i>
-					</button></td>
-				<td align="center"><button type="button" class="btn btn-danger"
-						data-toggle="modal" data-target="#">
-						<i class="glyphicon glyphicon-trash"></i>
-					</button></td>
-			</tr>
-		</tbody>
-	</table>
-
-
 </div>
 
 
 <!--Add Educational Modal -->
-<div class="modal fade" id="addEmploymenthistorydetails"
-	name="addEducationaldetails" role="dialog"></div>
+<div class="modal fade" id="addEmploymenthistorydetails" name="addEducationaldetails" role="dialog">
+
+</div>
 
 <!--edit Educational Modal -->
 <div class="modal fade" id="editEmploymenthistorydetails"
@@ -431,12 +405,14 @@
 
 			</div>
 			<div class="modal-footer">
-				<!-- 				<button type="button" id="buttonAddemployee" class="btn btn-success pull-side" > -->
-				<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
-				<!-- 				</button> -->
-				<!-- 				<button type="button" id="buttonCancelemployee" class="btn btn-danger pull-left" > -->
-				<!-- 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel -->
-				<!-- 				</button> -->
+				<button type="button" id="buttonAddemployee"
+					class="btn btn-success pull-side">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				</button>
+				<button type="button" id="buttonCancelemployee"
+					class="btn btn-danger pull-left">
+					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				</button>
 
 			</div>
 		</div>

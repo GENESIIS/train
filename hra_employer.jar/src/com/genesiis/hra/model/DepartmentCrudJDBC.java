@@ -155,4 +155,16 @@ public class DepartmentCrudJDBC implements ICrud {
 		return null;
 	}
 
+	@Override
+	public List<Object> getRetrive(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateEmployeeHistory(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

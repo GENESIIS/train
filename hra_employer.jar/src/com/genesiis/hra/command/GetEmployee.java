@@ -3,7 +3,6 @@ package com.genesiis.hra.command;
 
 import com.genesiis.hra.model.DataManager;
 import com.genesiis.hra.model.Employees;
-import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
 import java.util.logging.Logger;

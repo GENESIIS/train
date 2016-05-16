@@ -54,4 +54,14 @@ public abstract class Employee implements ICrud {
 	public boolean isValid(Object object) {
 		return false;
 	}
+	
+	@Override
+	public List<Object> getRetrive(String id) {
+		return null;
+	}
+	
+	@Override
+	public int updateEmployeeHistory(Object object) {
+		return -1;
+	}
 }

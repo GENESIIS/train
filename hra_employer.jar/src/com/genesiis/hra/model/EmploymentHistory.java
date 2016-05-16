@@ -1,16 +1,19 @@
 package com.genesiis.hra.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 
 public class EmploymentHistory extends Employee{
 
-	private int ehId;
+	private int ehid;
 	private int ehEmployeeid; 
 	private String ehEmployername; 
 	private String ehDesignation;
@@ -39,12 +42,14 @@ public class EmploymentHistory extends Employee{
 	
 	
 	
-	public int getEhId() {
-		return ehId;
+	
+
+	public int getEhid() {
+		return ehid;
 	}
 
-	public void setEhId(int ehId) {
-		this.ehId = ehId;
+	public void setEhid(int ehid) {
+		this.ehid = ehid;
 	}
 
 	public int getEhEmployeeid() {
@@ -234,6 +239,8 @@ public class EmploymentHistory extends Employee{
 	}
 
 	
+	static Logger log = Logger.getLogger(EmploymentHistory.class.getName());
+	
 	public EmploymentHistory(int ehId, int ehEmployeeid, String ehEmployername,
 			String ehDesignation, String ehStartdate, String ehEnddate,
 			String ehBasis, String ehComments, String ehEmail,
@@ -245,7 +252,7 @@ public class EmploymentHistory extends Employee{
 			String ehReferencetwodesignation, String ehReferencetwocomments,
 			String ehReferencemodby, String ehReferencemodon) {
 		super();
-		this.ehId = ehId;
+		this.ehid = ehId;
 		this.ehEmployeeid = ehEmployeeid;
 		this.ehEmployername = ehEmployername;
 		this.ehDesignation = ehDesignation;
@@ -273,46 +280,97 @@ public class EmploymentHistory extends Employee{
 	
 	@Override
 	public boolean isValid(Object object) {
-		
-		
-		
+
 		DataValidator validator = new DataValidator();
 		EmploymentHistory eh = (EmploymentHistory) object;
 
-		if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 
-				(validator.isValidString(eh.getEhComments()) == true) && 
-				(validator.isValidString(eh.getEhDesignation()) == true) && 
-				(validator.isValidString(eh.getEhEmail()) == true) &&
-				(validator.isValidString(eh.getEhEmployername()) == true) &&
-				(validator.isValidString(eh.getEhEnddate()) == true) &&
-				(validator.isValidString(eh.getEhStartdate()) == true) &&
-				
-				(validator.isValidString(eh.getEhReferencemodby()) == true) &&
-				
-				(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonename()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
-				
-				(validator.isValidString(eh.getEhReferencetwoaddress()) == true) &&
-				(validator.isValidString(eh.getEhReferencetwocomments()) == true) &&
-				(validator.isValidString(eh.getEhReferencetwodesignation()) == true) &&
-				(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
-				(validator.isValidString(eh.getEhReferencetwoname()) == true) &&
-				(validator.isValidString(eh.getEhReferencetwophone()) == true)
-				
-				
-				)) {
+		if (((validator.isValidString(eh.getEhBasis()) == true)
+				&& (validator.isValidString(eh.getEhComments()) == true)
+				&& (validator.isValidString(eh.getEhDesignation()) == true)
+				&& (validator.isValidString(eh.getEhEmail()) == true)
+				&& (validator.isValidString(eh.getEhEmployername()) == true)
+				&& (validator.isValidString(eh.getEhEnddate()) == true)
+				&& (validator.isValidString(eh.getEhStartdate()) == true)
+				&&
+
+				(validator.isValidString(eh.getEhReferencemodby()) == true)
+				&&
+
+				(validator.isValidString(eh.getEhReferenceoneaddress()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonecomments()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonedesignation()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonemobile()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonename()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonephone()) == true)
+				&&
+
+				(validator.isValidString(eh.getEhReferencetwoaddress()) == true)
+				&& (validator.isValidString(eh.getEhReferencetwocomments()) == true)
+				&& (validator.isValidString(eh.getEhReferencetwodesignation()) == true)
+				&& (validator.isValidString(eh.getEhReferenceonemobile()) == true)
+				&& (validator.isValidString(eh.getEhReferencetwoname()) == true) && (validator
+					.isValidString(eh.getEhReferencetwophone()) == true)
+
+		)) {
 			return true;
 		} else {
 			return false;
 		}
-		
+
 	}
 	
 	
+	public boolean isValidEmployeeID(Object object) {
+
+		DataValidator validator = new DataValidator();
+		EmploymentHistory eh = (EmploymentHistory) object;
+
+		if (((validator.isValidInt(eh.getEhEmployeeid()) == true))) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+public boolean isValidUpdate(Object object) {
+	
+	DataValidator validator = new DataValidator();
+	EmploymentHistory eh = (EmploymentHistory) object;
+
+	if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 
+			(validator.isValidString(eh.getEhComments()) == true) && 
+			(validator.isValidString(eh.getEhDesignation()) == true) && 
+			(validator.isValidString(eh.getEhEmail()) == true) &&
+			(validator.isValidString(eh.getEhEmployername()) == true) &&
+			(validator.isValidString(eh.getEhEnddate()) == true) &&
+			(validator.isValidString(eh.getEhStartdate()) == true) &&
+			
+			(validator.isValidString(eh.getEhReferencemodby()) == true) &&
+			
+			(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonename()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
+			
+			(validator.isValidString(eh.getEhReferencetwoaddress()) == true) &&
+			(validator.isValidString(eh.getEhReferencetwocomments()) == true) &&
+			(validator.isValidString(eh.getEhReferencetwodesignation()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
+			(validator.isValidString(eh.getEhReferencetwoname()) == true) &&
+			(validator.isValidString(eh.getEhReferencetwophone()) == true)
+			
+			
+			)) {
+		return true;
+	} else {
+		return false;
+	}
+	
+}
+
 	@Override
 	public int add(Object object) {
 		
@@ -365,6 +423,7 @@ public class EmploymentHistory extends Employee{
 			}
 			
 		} catch (SQLException exception) {
+			log.info("SQLException - "+ exception);
 			exception.printStackTrace();
 		} finally {
 			try {
@@ -373,10 +432,158 @@ public class EmploymentHistory extends Employee{
 				}
 				conn.close();
 			} catch (SQLException exception) {
+				log.info("SQLException - "+ exception);
 				exception.printStackTrace();
 			}
 		}
 		return status;
 	}
 	
+	@Override
+	public List<Object> getRetrive(String id) {
+		
+		// TODO Auto-generated method stub
+		String query = "SELECT EH.ID,EH.EMPLOYEEID,EH.EMPLOYERNAME,EH.DESIGNATION,EH.STARTDATE,EH.ENDDATE,EH.BASIS,EH.COMMENTS,EH.EMAIL,"
+				+ "EH.REFERENCEONENAME, EH.REFERENCEONEPHONE, EH.REFERENCEONEMOBILE, EH.REFERENCEONEADDRESS, EH.REFERENCEONEDESIGNATION, EH.REFERENCEONECOMMENTS,"
+				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS,"
+				+ "EH.MODBY, EH.MODON  FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM WHERE EM.EMPLOYEEID = EH.EMPLOYEEID AND EMPLOYEEID = ?";
+		
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rsRetriveData = null;
+		List <Object> employeeHistoryList = new ArrayList<Object>();
+		
+		EmploymentHistory employee = new EmploymentHistory();
+		try {
+
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, "1");
+			
+			rsRetriveData = preparedStatement.executeQuery();			 
+				
+				try{
+					if (rsRetriveData.next()) {
+						
+						// set data to entity class
+						employee.setEhid(rsRetriveData.getInt("ID"));
+						employee.setEhEmployeeid(rsRetriveData.getInt("EMPLOYEEID"));
+						employee.setEhEmployername(rsRetriveData.getString("EMPLOYERNAME")); 						
+						employee.setEhDesignation(rsRetriveData.getString("DESIGNATION"));
+						employee.setEhStartdate(rsRetriveData.getString("STARTDATE"));
+						employee.setEhEnddate(rsRetriveData.getString("ENDDATE"));
+						employee.setEhBasis(rsRetriveData.getString("BASIS"));
+						employee.setEhComments(rsRetriveData.getString("COMMENTS"));
+						employee.setEhEmail(rsRetriveData.getString("EMAIL"));
+						
+						employee.setEhReferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
+						employee.setEhReferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
+						employee.setEhReferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
+						employee.setEhReferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
+						employee.setEhReferenceonedesignation(rsRetriveData.getString("REFERENCEONEDESIGNATION"));
+						employee.setEhReferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
+						
+						employee.setEhReferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
+						employee.setEhReferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
+						employee.setEhReferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
+						employee.setEhReferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
+						employee.setEhReferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
+						employee.setEhReferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
+						
+						employee.setEhReferencemodby(rsRetriveData.getString("MODBY"));
+						employee.setEhReferencemodon(rsRetriveData.getString("MODON"));
+						
+						
+						employeeHistoryList.add(employee);//add data to list
+
+
+					}
+				}catch(Exception e){
+					log.info("Exception - "+ e);
+				}
+				
+			
+		} catch (SQLException exception) {
+			log.info("Exception - "+ exception);
+			exception.printStackTrace();
+		}
+		finally{
+			try {
+				if(conn!=null && preparedStatement!=null){
+					preparedStatement.close();
+					conn.close();
+				}
+			} catch (SQLException e) {
+				log.info("Exception - "+ e);
+				e.printStackTrace();
+			}
+		}
+		return employeeHistoryList;
+	}
+	
+	
+	
+	@Override
+	public int updateEmployeeHistory(Object object) {
+		
+		String query = "UPDATE [HRA.EMPLOYMENTHISTORY] SET EMPLOYERNAME=? , DESIGNATION =? , STARTDATE=? , ENDDATE=? , BASIS=? , COMMENTS=? , EMAIL=? ,"
+				+ "REFERENCEONENAME=? , REFERENCEONEPHONE=? , REFERENCEONEMOBILE=? , REFERENCEONEADDRESS=? , REFERENCEONEDESIGNATION =? , REFERENCEONECOMMENTS=? ,"
+				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE ID=?";
+		
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		EmploymentHistory eh = (EmploymentHistory) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, eh.getEhEmployername());
+			preparedStatement.setString(2, eh.getEhDesignation());
+			preparedStatement.setString(3, eh.getEhStartdate());
+			preparedStatement.setString(4, eh.getEhEnddate());
+			preparedStatement.setString(5, eh.getEhBasis());
+			preparedStatement.setString(6, eh.getEhComments());
+			preparedStatement.setString(7, eh.getEhEmail());
+			
+			preparedStatement.setString(8, eh.getEhReferenceonename());
+			preparedStatement.setString(9, eh.getEhReferenceonephone());
+			preparedStatement.setString(10, eh.getEhReferenceonemobile());
+			preparedStatement.setString(11, eh.getEhReferenceoneaddress());
+			preparedStatement.setString(12, eh.getEhReferenceonedesignation());
+			preparedStatement.setString(13, eh.getEhReferenceonecomments());
+			
+			preparedStatement.setString(14, eh.getEhReferencetwoname());
+			preparedStatement.setString(15, eh.getEhReferencetwophone());
+			preparedStatement.setString(16, eh.getEhReferencetwomobile());
+			preparedStatement.setString(17, eh.getEhReferencetwoaddress());
+			preparedStatement.setString(18, eh.getEhReferencetwodesignation());
+			preparedStatement.setString(19, eh.getEhReferencetwocomments());
+			
+			
+			preparedStatement.setString(20, "SYSTEM");
+			preparedStatement.setInt(21, eh.getEhid());
+
+			int rowsUpdated = preparedStatement.executeUpdate();
+			if (rowsUpdated > 0) {
+				status = 1;
+			}
+		} catch (SQLException exception) {
+			log.info("Exception - "+ exception);
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				log.info("Exception - "+ exception);
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
+
 }
