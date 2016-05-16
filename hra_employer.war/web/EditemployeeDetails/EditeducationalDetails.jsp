@@ -1,4 +1,12 @@
 <!--Edit Educational Modal -->
+<script type="text/javascript">
+	//To load the Datatable
+	$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+		
+	});
+	
+</script>
 <div class="">
 	<div class="">
 		<h3 class="">

@@ -290,6 +290,29 @@ function loadEditemployementhistory() {
 
 function loadEditContentstudyprograms() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
+	// $(document).on("click", "#edubutton", function() {
+	/*
+	 * $.get("EmployerController", function(data, status) { alert(data); json =
+	 * JSON.parse(data); $(".modal-body #employeeId").val(json.employeeEpf);
+	 * $(".modal-body #qualificationName").val(json.employeeEpf); $(".modal-body
+	 * #educatedPlace").val(json.employeeEpf); $(".modal-body
+	 * #mediumStudied").val(json.employeeEpf); $(".modal-body
+	 * #startedOn").val(json.employeeEpf); $(".modal-body
+	 * #compleatedOn").val(json.employeeEpf);
+	 * 
+	 * if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 1) {
+	 * document.getElementById('weekdays').checked;
+	 * document.getElementById('weekends').checked; } else if ($(".modal-body
+	 * #compleatedOn").val(json.eduStudytime) == 2) {
+	 * document.getElementById('weekdays').checked; } else if ($(".modal-body
+	 * #compleatedOn").val(json.eduStudytime) == 3) {
+	 * document.getElementById('weekends').checked; } else { //do nothing }
+	 * 
+	 * });
+	 */
+	// });
+	loadData();
+
 }
 
 function loadEditlanguages() {
@@ -516,7 +539,9 @@ function checkStudyTime() {
 
 // ///Load data to edit Educational Details
 
-$(document).on("click", "#edubutton", function() {
+// $(document).on("click", "#edubutton", function() {
+function loadData() {
+
 	$.get("EmployerController", function(data, status) {
 		alert(data);
 		json = JSON.parse(data);
@@ -535,12 +560,14 @@ $(document).on("click", "#edubutton", function() {
 		} else if ($(".modal-body #compleatedOn").val(json.eduStudytime) == 3) {
 			document.getElementById('weekends').checked;
 		} else {
-			//do nothing 
+			// do nothing
 		}
 
 	});
 
-});
+}
+
+// });
 
 // /////Edit Educational Details ////////
 function EditEducationDetails() {

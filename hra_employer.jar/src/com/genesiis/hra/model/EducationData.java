@@ -163,12 +163,12 @@ public class EducationData extends Employee {
 		try {
 			
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement("SELECT * FROM [HRA.EDUCATION] WHERE ID=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM [HRA.EDUCATION] WHERE ID=1");
 			preparedStatement.setInt(1, employeeId);
 			
 			ResultSet res = preparedStatement.executeQuery();
 			if(res.next()){
-				edu.setEmployeeepf("1");
+				edu.setEmployeeepf(res.getString(2));
 				edu.setEduUniversity(res.getString(3));
 				edu.setEduStartedon(res.getString(4));
 				edu.setEduQualification(res.getString(5));
