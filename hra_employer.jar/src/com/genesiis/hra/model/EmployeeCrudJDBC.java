@@ -60,7 +60,6 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(15, employee.getEmployeeepf());
 			preparedStatement.setString(16, employee.getEmployeebasis());
 			preparedStatement.setString(17, "1");
-
 			int rows = preparedStatement.executeUpdate();
 			if (rows > 0) {
 				message = "Succesfull";
@@ -133,7 +132,7 @@ public class EmployeeCrudJDBC implements ICrud {
 							.getString("MARITALSTATUS"));
 					employee.setEmployeebasis(retriveData.getString("BASIS"));
 					employee.setEmployeetemporaryaddress(retriveData
-							.getString("TEMPORARYADDRESS"));
+							.getString("TEMPORARYADDRESS"));			
 
 				}
 			} catch (Exception e) {

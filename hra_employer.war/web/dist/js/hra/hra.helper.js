@@ -90,7 +90,7 @@ function updateEmployeeDetails(){
                 "employeeTelephone": employeeOtherNumber,
                 "employeeEmail": employeeEmail,
                 "employeeDepartment": employeeDepartment,
-                "DATEOFJOIN": employeeJoinDate,
+                "employeeJoindate": employeeJoinDate,
                 "employeeMaritalstatus" : employeeMaritslStatus,
                // "MODBY" : employeeModby,
                /// "MODON" : employeeModon,
@@ -106,7 +106,8 @@ function updateEmployeeDetails(){
         url: 'EmployerController',
         data: {
         	
-        	jsonData: JSON.stringify(employeeData) 
+        	jsonData: JSON.stringify(employeeData) ,
+        	task : "UPDATE"
         },
         dataType: "json",
         success: function (data) {

@@ -356,14 +356,14 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Telephone</label> <input
-										type="text" class="form-control" id="employeeOtherNumberEdit"
+										type="Number" class="form-control" id="employeeOtherNumberEdit"
 										name="employeeOtherNumberEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="editemployeeId">Mobile Number</label> <input
-										type="text" class="form-control" id="employeeMobileNumberEdit"
+										type="Number" class="form-control" id="employeeMobileNumberEdit"
 										name="employeeMobileNumberEdit" placeholder="">
 								</div>
 							</div>
