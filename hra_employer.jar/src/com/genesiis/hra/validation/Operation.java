@@ -1,5 +1,5 @@
 package com.genesiis.hra.validation;
-
+//2016/05/13 Changed class name add commands 
 public enum Operation {
 	// private String message;
 	//

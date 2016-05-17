@@ -24,14 +24,14 @@ public class AddEmployeeDim {
 			// factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),
 					employeeDetails);
-			log.info("emp.getClass().getName()"+emp.getClass().getName());
+			log.info("emp.getClass().getName()" + emp.getClass().getName());
 			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
 			// Only a valid object will added to the database.
-//			if (emp.isValid(emp)) {
-				status = emp.update(emp);
-//			}else{
-				log.info("status" + status);
-//			}
+			// if (emp.isValid(emp)) {
+			status = emp.update(emp);
+			// }else{
+			log.info("status" + status);
+			// }
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
@@ -52,17 +52,4 @@ public class AddEmployeeDim {
 		return object;
 	}
 
-	/*
-	 * @Override public String execute(String gsonData) { // TODO Auto-generated
-	 * method stub return null; }
-	 * 
-	 * @Override public Object extractFromJason(String data) { // TODO
-	 * Auto-generated method stub return null; }
-	 * 
-	 * @Override public boolean validateValue(Object entiytObject) { // TODO
-	 * Auto-generated method stub return false; }
-	 * 
-	 * @Override public boolean validateValue(HashMap<Integer, Object>
-	 * entiytMap) { // TODO Auto-generated method stub return false; }
-	 */
 }

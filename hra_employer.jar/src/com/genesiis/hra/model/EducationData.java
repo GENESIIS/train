@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 /**
  * 20160511 created EducationData entity class - as
+ * 20160513 update the class functions 
  **/
 
 public class EducationData extends Employee {
