@@ -339,22 +339,12 @@ public boolean isValidUpdate(Object object) {
 	DataValidator validator = new DataValidator();
 	EmploymentHistory eh = (EmploymentHistory) object;
 
-	if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 
-			(validator.isValidString(eh.getEhComments()) == true) && 
-			(validator.isValidString(eh.getEhDesignation()) == true) && 
-			(validator.isValidString(eh.getEhEmail()) == true) &&
-			(validator.isValidString(eh.getEhEmployername()) == true) &&
-			(validator.isValidString(eh.getEhEnddate()) == true) &&
-			(validator.isValidString(eh.getEhStartdate()) == true) &&
+	if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 			(validator.isValidString(eh.getEhComments()) == true) && 			(validator.isValidString(eh.getEhDesignation()) == true) && 
+			(validator.isValidString(eh.getEhEmail()) == true) &&			(validator.isValidString(eh.getEhEmployername()) == true) &&			(validator.isValidString(eh.getEhEnddate()) == true) &&
+			(validator.isValidString(eh.getEhStartdate()) == true) &&			(validator.isValidString(eh.getEhReferencemodby()) == true) &&
 			
-			(validator.isValidString(eh.getEhReferencemodby()) == true) &&
-			
-			(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonename()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
+			(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&			(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&			(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
+			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&			(validator.isValidString(eh.getEhReferenceonename()) == true) &&			(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
 			
 			(validator.isValidString(eh.getEhReferencetwoaddress()) == true) &&
 			(validator.isValidString(eh.getEhReferencetwocomments()) == true) &&

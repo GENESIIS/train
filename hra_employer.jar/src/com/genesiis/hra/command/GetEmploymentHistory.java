@@ -31,7 +31,7 @@ public class GetEmploymentHistory {
 			//employeeHistoryList  = emp.getRetrive("1");
 			try {
 				log.info("execute");
-				EmploymentHistory employmentHistory = (EmploymentHistory)emp.getRetriveRecode("7");	
+				EmploymentHistory employmentHistory = (EmploymentHistory)emp.getRetriveRecode("1");	
 				ehGson = createGson(employmentHistory);			
 			} catch (Exception e) {
 				log.info("Exception - GetEmploymentHistory: " + e);
