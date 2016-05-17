@@ -33,7 +33,7 @@ public class UpdateEmployeeHistory {
 			if (emp.isValidUpdate(emp)) {
 				status = emp.updateEmployeeHistory(emp);
 			}
-			
+			log.info("status:-"+status);
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}

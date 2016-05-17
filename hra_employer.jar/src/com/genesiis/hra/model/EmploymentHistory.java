@@ -308,8 +308,9 @@ public class EmploymentHistory extends Employee{
 				&& (validator.isValidString(eh.getEhReferencetwocomments()) == true)
 				&& (validator.isValidString(eh.getEhReferencetwodesignation()) == true)
 				&& (validator.isValidString(eh.getEhReferenceonemobile()) == true)
-				&& (validator.isValidString(eh.getEhReferencetwoname()) == true) && (validator
-					.isValidString(eh.getEhReferencetwophone()) == true)
+				&& (validator.isValidString(eh.getEhReferencetwoname()) == true) 
+				&& (validator.isValidString(eh.getEhReferencetwophone()) == true 
+				&& (validator.isValidemail(eh.getEhEmail())==true))
 
 		)) {
 			return true;
@@ -338,7 +339,8 @@ public boolean isValidUpdate(Object object) {
 	
 	DataValidator validator = new DataValidator();
 	EmploymentHistory eh = (EmploymentHistory) object;
-
+	
+	
 	if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 			(validator.isValidString(eh.getEhComments()) == true) && 			(validator.isValidString(eh.getEhDesignation()) == true) && 
 			(validator.isValidString(eh.getEhEmail()) == true) &&			(validator.isValidString(eh.getEhEmployername()) == true) &&			(validator.isValidString(eh.getEhEnddate()) == true) &&
 			(validator.isValidString(eh.getEhStartdate()) == true) &&			(validator.isValidString(eh.getEhReferencemodby()) == true) &&
@@ -351,10 +353,8 @@ public boolean isValidUpdate(Object object) {
 			(validator.isValidString(eh.getEhReferencetwodesignation()) == true) &&
 			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
 			(validator.isValidString(eh.getEhReferencetwoname()) == true) &&
-			(validator.isValidString(eh.getEhReferencetwophone()) == true)
-			
-			
-			)) {
+			(validator.isValidString(eh.getEhReferencetwophone()) == true)  && validator.isValidemail(eh.getEhEmail())==true)) 
+	{
 		return true;
 	} else {
 		return false;

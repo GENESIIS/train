@@ -147,14 +147,16 @@ public class EmployeeController extends HttpServlet {
 				 * UpdateEmployeeHistory
 				 * UpdateEmployeeHistory > validTask-8 > task-8
 				 * **/
-				log.error("__________________UpdateEmployeeHistory_______________________");
+				log.error("--UpdateEmployeeHistory--");
 				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(8);
 				int updateStatus 							= updateEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 
+				log.error("--UpdateEmployeeHistory--Responce-"+updateStatus);
+				
 				// For ADD EMPLOYMENT HISTORY DETAILS operations.
 				if (updateStatus == 1) {
 					message = MessageList.UPDATED.message();
-				} else {
+				} else if(updateStatus==-1){
 					message = MessageList.ERROR.message();
 				}
 				

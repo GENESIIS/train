@@ -539,7 +539,10 @@ function editEmployeeHistoryDetails() {
 				alert(data);
 				clearEmployeementHisory();
 //				document.getElementById("moredetails").disabled = false;
+			}else{
+				alert(data);
 			}
+			
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -629,7 +632,6 @@ function loadEditContentEmployeeHistoryDetails() {
 		$("#ehComments").val(json.ehComments);
 		$("#ehEmail").val(json.ehEmail);
 		$("#basis").val(json.ehBasis);
-		
 		$("#ehReferenceonename").val(json.ehReferenceonename);
 		$("#ehReferenceonecomments").val(json.ehReferenceonecomments);
 		$("#ehReferenceonephone").val(json.ehReferenceonephone);
@@ -773,3 +775,10 @@ function loadEditEmployementDetail() {
 function disableButton() {
 //	document.getElementById("moredetails").disabled = true;
 }
+
+function checkTextField(field) {
+    if (field.value == '') {
+        alert("Field is empty");
+    }
+}
+ 

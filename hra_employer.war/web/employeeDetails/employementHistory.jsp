@@ -264,9 +264,9 @@
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 				
-				<button type="button" class="btn btn-success full pull-right" id=btn3>
-					<i class="glyphicon glyphicon-floppy-disk"></i> Test
-				</button>
+<!-- 				<button type="button" class="btn btn-success full pull-right" id=btn3> -->
+<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Test -->
+<!-- 				</button> -->
 
 				
 			</div>
