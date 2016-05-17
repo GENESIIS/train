@@ -88,18 +88,9 @@ public class EmployeeController extends HttpServlet {
 		try {
 			switch (validTask) {
 			case 1:
-				/*
-				 * AddEmployee addEmployee = (AddEmployee) hmap.get(1); message
-				 * = addEmployee.execute(employeeDetails);
-				 * response.getWriter().write(gson.toJson(message));
-				 */
-				// AddEmployee addEmployee = (AddEmployee) hmap.get(1);
+				
 				AddEmployeeDim dim = new AddEmployeeDim();
-				// Employee emp = (Employee)
-				// dim.extractFromJason("com.genesiis.hra.model.Employee",
-				// employeeDetails);
-				// log.info("uihegruighuiwehguihweuighwe : "
-				// + emp.getEmployeebasis());
+				 
 				BasicData employee = new BasicData();
 				employee = (BasicData) dim.extractFromJason(
 						"com.genesiis.hra.model.BasicData", employeeDetails);

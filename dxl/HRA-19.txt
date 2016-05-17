@@ -1,0 +1,37 @@
+1. What is SORTKEY?
+Sort Key can be unique or non unique.
+
+A sort key is non-unique if more than one record can have the same value for the sort key field. When the sort key is non unique, 
+records with the same sort key value are grouped together, but they are not in a specific order within the group. 
+To arrange these grouped records in a specific order, you can specify a secondary sort key, which is a second sort key field. 
+The first sort key field is called the primary sort key.
+
+2. How to choose a SORTKEY?
+    -If recent data is queried most frequently, specify the timestamp column as the leading column for the sort key.
+    Queries will be more efficient because they can skip entire blocks that fall outside the time range.
+
+    -If you do frequent range filtering or equality filtering on one column, specify that column as the sort key.
+    Amazon Redshift can skip reading entire blocks of data for that column because it keeps track of the minimum and maximum column values stored on each block and can skip blocks that don't apply to the predicate range.
+
+    -If you frequently join a table, specify the join column as both the sort key and the distribution key.
+    This enables the query optimizer to choose a sort merge join instead of a slower hash join. Because the data is already sorted on the join key, the query optimizer can bypass the sort phase of the sort merge join.
+
+
+
+Example : 
+
+CREATE TABLE "hra-4".dbo.[HRA.STUDYPROGRAM] (
+	ID int NOT NULL,
+	EMPLOYEEID int NOT NULL DEFAULT ('-'),
+	TIMEPERIOD varchar(10) NOT NULL DEFAULT ('-'),
+	INSTITUTION varchar(200) NOT NULL DEFAULT ('-'),
+	COURSETYPE varchar(50) DEFAULT ('-'),
+	ADDMISIONDATE date NOT NULL DEFAULT '(getdate())',
+	DURATION int NOT NULL DEFAULT ((0)),
+	MODBY date NOT NULL DEFAULT '(getdate())',
+	MODON date NOT NULL DEFAULT '(getdate())',
+	CONSTRAINT PK_STUDYPROGRAM PRIMARY KEY (ID),
+	CONSTRAINT PK_STUDYPROGRAM_EMPLOYEE FOREIGN KEY (EMPLOYEEID) REFERENCES "hra-4".dbo."HRA.EMPLOYEE"(ID) ON DELETE RESTRICT ON UPDATE RESTRICT
+	CREATE NONCLUSTERED INDEX DescIDx ON
+         STUDYPROGRAM(EMPLOYEEID ASC, MODON DESC)
+);
