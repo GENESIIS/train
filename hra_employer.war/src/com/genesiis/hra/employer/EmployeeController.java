@@ -93,6 +93,12 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		/**
+		 * @see - Enter dume data to test the mask vales in data base
+		 * 
+		 * **/
+		
 		Employee employee = new Employee();
 		employee.setEmployeebasis("parental");
 		employee.setEmployeedateofbirth("getdate()");
@@ -100,7 +106,7 @@ public class EmployeeController extends HttpServlet {
 		employee.setEmployeedesignation("Supp. Vice Manager");
 		employee.setEmployeeemail("donette.foller@cox.net");
 		employee.setEmployeeepf("5");
-		employee.setEmployeegender("Male");
+		employee.setEmployeegender("F");
 		employee.setEmployeejoindate("getdate()");
 		employee.setEmployeemaritalstatus("married");
 		employee.setEmployeemobile("6054142147");
@@ -113,8 +119,19 @@ public class EmployeeController extends HttpServlet {
 		employee.setEmployeetemporaryaddress("228 Runamuck Pl #2808");
 		
 		EmployeeCrudJDBC employeeCrudJDBC = new EmployeeCrudJDBC();
+		
+		/**
+		 * @see - Masking call when add employee details to database
+		 * N.B. MaskValidator is the key point which having map 
+		 * This Map upgrading will be added next levels
+		 * * **/
 		//employeeCrudJDBC.add(employee);
 		
+		/**
+		 * @see - Masking call when retriving employee details to database
+		 * N.B. MaskValidator is the key point which having map 
+		 * This Map upgrading will be added next levels
+		 * * **/
 		employeeCrudJDBC.getAll();
 		
 //		String employeeDetails = request.getParameter("jsonData");

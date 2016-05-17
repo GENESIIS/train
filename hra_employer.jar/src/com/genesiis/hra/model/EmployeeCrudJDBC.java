@@ -47,29 +47,10 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(3, employee.getEmployeeemail());
 			preparedStatement.setDate(4, new java.sql.Date(2016, 05, 11));
 			preparedStatement.setString(5, employee.getEmployeenic());
-			String gender = employee.getEmployeegender().toString().trim();
+			preparedStatement.setString(6, String.valueOf(new DataValidator().maskValidator(employee.getEmployeegender())));
 
-			if (gender == "Male") {
-				preparedStatement.setString(6,
-						String.valueOf(MaskValidator.MSK_MALE));
-				log.info("+++++++++++++++++++++++++++"
-						+ String.valueOf(MaskValidator.MSK_MALE));
-			} else if (gender == "Female") {
-				preparedStatement.setString(6,
-						String.valueOf(MaskValidator.MSK_FEMALE));
-				log.info("+++++++++++++++++++++++++++"
-						+ String.valueOf(MaskValidator.MSK_FEMALE));
-			} else {
-				preparedStatement.setString(6,
-						String.valueOf(MaskValidator.MSK_OTHER));
-				log.info("+++++++++++++++++++++++++++"
-						+ String.valueOf(MaskValidator.MSK_OTHER));
-			}
-
-			preparedStatement.setString(7,
-					employee.getEmployeepermenetaddress());
-			preparedStatement.setString(8,
-					employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(7,employee.getEmployeepermenetaddress());
+			preparedStatement.setString(8,employee.getEmployeetemporaryaddress());
 			preparedStatement.setString(9, employee.getEmployeemobile());
 			preparedStatement.setString(10, employee.getEmployeetelephone());
 			preparedStatement.setString(11, employee.getEmployeedepartment());
@@ -87,14 +68,8 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.close();
 			conn.close();
 		} catch (SQLException exception) {
-			System.out
-					.println("----------------------------------------message-------------------------------------------------"
-							+ message);
 			exception.printStackTrace();
 			message = MessageList.ERROR.message();
-			System.out
-					.println("-------------------------------------message---------------------------------------------------"
-							+ message);
 		}
 		return message;
 	}
@@ -142,20 +117,22 @@ public class EmployeeCrudJDBC implements ICrud {
 					employee.setEmployeeemail(result.getString("EMAIL"));
 					employee.setEmployeedateofbirth(result.getString("DOB"));
 					employee.setEmployeenic(result.getString("NIC"));
-					String gender = result.getString("GENDER");
-
-					if (gender.equals(String.valueOf(MaskValidator.MSK_MALE))) 
-					{
-						employee.setEmployeegender(MaskValidator.MSK_MALE_DES);
-					} 
-					else if (gender.equals(String.valueOf(MaskValidator.MSK_FEMALE))) 
-					{
-						employee.setEmployeegender(MaskValidator.MSK_FEMALE_DES);
-					} 
-					else 
-					{
-						employee.setEmployeegender(MaskValidator.MSK_OTHER_DES);
-					}
+					employee.setEmployeegender(new DataValidator().maskReverseValidator(Integer.parseInt(result.getString("GENDER"))));
+					log.info("GENDER____________"+employee.getEmployeegender());
+//					String gender = result.getString("GENDER");
+//
+//					if (gender.equals(String.valueOf(MaskValidator.MSK_MALE))) 
+//					{
+//						employee.setEmployeegender(MaskValidator.MSK_MALE_DES);
+//					} 
+//					else if (gender.equals(String.valueOf(MaskValidator.MSK_FEMALE))) 
+//					{
+//						employee.setEmployeegender(MaskValidator.MSK_FEMALE_DES);
+//					} 
+//					else 
+//					{
+//						employee.setEmployeegender(MaskValidator.MSK_OTHER_DES);
+//					}
 					
 					employee.setEmployeepermenetaddress(result
 							.getString("PERMENENTADDRESS"));
@@ -170,8 +147,6 @@ public class EmployeeCrudJDBC implements ICrud {
 					employee.setEmployeeModifiedby(result.getString("MODBY"));
 					employee.setEmployeeepf(result.getString("EPF"));
 					employee.setEmployeebasis(result.getString("BASIS"));
-
-					// System.out.println("*****************"+employee.getEmployeegender()+"*****************");
 
 					employeeList.add(employee);
 				}

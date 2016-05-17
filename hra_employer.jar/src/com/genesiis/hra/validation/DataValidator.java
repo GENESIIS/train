@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.utill.MaskValidator;
+
 ///***********************************************
 //* 20160415 PN HRA-2 created DataValidator.java class
 //* 20160430 PN created isValidnic() method.
@@ -74,6 +76,11 @@ public class DataValidator {
 		return b;
 	}
 
+	/**
+	 * @see - Validation of telephone number
+	 * @param - String
+	 * @return int
+	 * **/
 	public boolean isValidTelephone(String number) {
 		boolean status = false;
 		if (number.matches("[0-9]+") && number.length() == 10) {
@@ -82,7 +89,11 @@ public class DataValidator {
 		return status;
 	}
 	
-
+	/**
+	 * 
+	 * @param - String
+	 * @return int
+	 * **/
 	public int validTaskId(String task) {
 		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
 			return 1;
@@ -98,4 +109,60 @@ public class DataValidator {
 			return -1;
 		}
 	}
+	
+	/**
+	 * @author thumeera
+	 * @param - String
+	 * @return int binary
+	 * **/
+	public int maskValidator(String text) {
+		int returnValue = -1;
+
+		if (text != null) {
+			String priMask = text.toString().trim();
+
+			if (priMask.equals(MaskValidator.MSK_FEMALE_DES)) {
+				return MaskValidator.MSK_FEMALE;
+			} else if (priMask.equals(MaskValidator.MSK_MALE_DES)) {
+				return MaskValidator.MSK_MALE;
+			} else if (priMask.equals(MaskValidator.MSK_OTHER_DES)) {
+				return MaskValidator.MSK_OTHER;
+			}
+
+		} else {
+			return MaskValidator.MSK_OTHER;
+		}
+		return returnValue;
+	}
+	
+	/**
+	 * @author thumeera
+	 * @param - int value
+	 * @return String Description
+	 * **/
+	public String maskReverseValidator(int value) {
+		String returnDescription = MaskValidator.MSK_OTHER_DES;
+
+		switch(value){
+		
+		case MaskValidator.MSK_FEMALE:
+			return MaskValidator.MSK_FEMALE_DES;
+
+		case MaskValidator.MSK_MALE:
+			return MaskValidator.MSK_MALE_DES;
+
+		case MaskValidator.MSK_HEAD_OFFICE:
+			return MaskValidator.MSK_HEAD_OFFICE_DES;
+
+		case MaskValidator.MSK_BRANCH_UNION_PLACE:
+			return MaskValidator.MSK_BRANCH_UNION_PLACE_DES;
+
+		case MaskValidator.MSK_BORELLA_OFFICE:
+			return MaskValidator.MSK_BORELLA_OFFICE_DES;
+
+		}
+		
+		return returnDescription;
+	}
+	
 }
