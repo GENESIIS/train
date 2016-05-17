@@ -1,16 +1,7 @@
 package com.genesiis.hra.validation;
 
 public enum ClassList {
-	// private String message;
-	//
-	// ClassList(String message) {
-	// this.message = message;
-	// }
-	//
-	// public String message() {
-	// return message;
-	// }
-
+	
 	//For the time being
 	EMPLOYEE(9),
 	BASIC_DATA(1),

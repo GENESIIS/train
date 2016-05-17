@@ -10,6 +10,7 @@ import com.genesiis.hra.validation.DataValidator;
 
 /**
  * 20160511 created EducationData entity class - as
+ * 
  **/
 
 public class EducationData extends Employee {

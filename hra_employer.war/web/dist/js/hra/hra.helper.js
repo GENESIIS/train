@@ -436,13 +436,6 @@ function AddEducationDetails() {
 	var startedOn = $("#startedOn").val();
 	var compleatedOn = $("#compleatedOn").val();
 	var studyTime = checkStudyTime();
-	//alert(studyTime);
-	/*
-	 * var institution = $("#institution").val(); var courseType =
-	 * $("#courseType").val(); var admissionDate = $("#admissionDate").val();
-	 * var duration = $("#duration").val(); var weekdays = $("#weekdays").val();
-	 * var weekends = $("#weekends").val();
-	 */
 
 	var EducationData = {
 		"employeeEpf" : employeeId,
@@ -452,12 +445,6 @@ function AddEducationDetails() {
 		"eduStartedon" : startedOn,
 		"eduCompltedon" : compleatedOn,
 		"eduStudytime" : studyTime
-
-	/*
-	 * "institution" : institution, "courseType" : courseType, "admissionDate" :
-	 * admissionDate, "duration" : duration, "weekdays" : weekdays, "weekends" :
-	 * weekends
-	 */
 
 	};
 	alert(JSON.stringify(EducationData));
@@ -484,7 +471,7 @@ function AddEducationDetails() {
 	});
 
 }
-
+ 	/// Clear Function Education Details  
 function clearAddeducationform() {
 	$("#employeeId").val("");
 	$("#qualificationName").val("");
@@ -496,11 +483,11 @@ function clearAddeducationform() {
 	$("#courseType").val("");
 	$("#admissionDate").val("");
 	$("#duration").val("");
-	$("#weekdays").attr('checked', false); 
-	$("#weekends").attr('checked', false); 
+	$("#weekdays").attr('checked', false);
+	$("#weekends").attr('checked', false);
 
 }
-
+// Check study time and returns Value
 function checkStudyTime() {
 	if ((document.getElementById('weekdays').checked)
 			&& (document.getElementById('weekends').checked)) {
