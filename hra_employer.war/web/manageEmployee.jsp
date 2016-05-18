@@ -6,13 +6,29 @@
 <!-- JavaScripts to help to load  -->
 
 <script type="text/javascript">
-	//To load the Datatable
+	//To load the Datatable	
 	$(document).ready(function() {
-		$('#employeeDetails').DataTable();
-	});
-	getDepartment();
+	alert("m");
+    $('#employeeDetails').DataTable( {
+        data: dataSet,
+        columns: [
+            { title: "Employee Number" },
+            { title: "Employee Name" },
+            { title: "Designation" },
+            { title: "Contact Details." },
+            { title: "View" },
+            { title: "Edit" },
+            { title: "Delete" }
+        ]
+    } );
+} );
+
 </script>
 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
@@ -24,7 +40,7 @@
 
 
 	<br></br>
-	<div class="table-responsive">
+	<div class="table-responsive">	
 		<table id="employeeDetails"
 			class="table table-striped table-bordered table-responsive"
 			cellspacing="0" width="100%">
@@ -52,11 +68,7 @@
 			</tfoot>
 			<tbody>
 				<tr>
-					<td>EMP001</td>
-					<td>Dammika Nawarathna</td>
-					<td>AGM - HR</td>
-					<td>0711111111<br> 0112222222<br> dammika@gmail.com
-					</td>
+					
 					<td align="center"><button type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
@@ -73,7 +85,7 @@
 						</button></td>
 				</tr>
 			</tbody>
-		</table>
+		</table>				
 	</div>
 </div>
 

@@ -1,53 +1,39 @@
-/**
- * 20160518 PC HRA-30 created hra.anguleruse.js 
- */
-
-var editor; // use a global for the submit and return data rendering in the examples
-
-$(document).ready(function() {
-	 alert("a");
-    editor = new $.fn.dataTable.Editor( {
-        ajax: "EmployeeController",
-        table: "#employeeDetails",
-        fields: [ {                
-                label: "employeeId:",
-                name: "employeeId"
-            }, {
-                label: "employeeName:",
-                name: "employeeName"
-            }, {
-                label: "employeeDesignation:",
-                name: "employeeDesignation"
-            }, {
-                label: "Extension:",
-                name: "extn"
-            }, {
-                label: "employeeMobile:",
-                name: "employeeMobile"
-            }
-        ]
-    } );
+var dataSet = [
+    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421" ],
+    [ "Garrett Winters", "Accountant", "Tokyo", "8422"],
+    [ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562"],
+    [ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224" ],
+    [ "Airi Satou", "Accountant", "Tokyo", "5407"],
+    [ "Brielle Williamson", "Integration Specialist", "New York", "4804"],
+    [ "Herrod Chandler", "Sales Assistant", "San Francisco", "9608"],
+    [ "Rhona Davidson", "Integration Specialist", "Tokyo", "6200" ],
+    [ "Colleen Hurst", "Javascript Developer", "San Francisco"],
+    [ "Sonya Frost", "Software Engineer", "Edinburgh", "1667"],
+    [ "Jena Gaines", "Office Manager", "London", "3814"],
+    [ "Quinn Flynn", "Support Lead", "Edinburgh", "9497"],
+    [ "Charde Marshall", "Regional Director", "San Francisco", "6741"],
+    [ "Haley Kennedy", "Senior Marketing Designer", "London", "3597"],
+    [ "Tatyana Fitzpatrick", "Regional Director", "London", "1965" ],
+    [ "Michael Silva", "Marketing Designer", "London", "1581" ],
+    [ "Paul Byrd", "Chief Financial Officer (CFO)", "New York", "3059" ],
+    [ "Gloria Little", "Systems Administrator", "New York", "1721" ],
+    [ "Bradley Greer", "Software Engineer", "London", "2558"],
+    [ "Dai Rios", "Personnel Lead", "Edinburgh", "2290"],
+    [ "Jenette Caldwell", "Development Lead", "New York" ],
+    [ "Yuri Berry", "Chief Marketing Officer (CMO)", "New York" ],
+    [ "Caesar Vance", "Pre-Sales Support", "New York", "8330"],
+    [ "Doris Wilder", "Sales Assistant", "Sidney", "3023" ],
+    [ "Angelica Ramos", "Chief Executive Officer (CEO)", "London", "5797"],
+    [ "Gavin Joyce", "Developer", "Edinburgh", "8822"],
+    [ "Jennifer Chang", "Regional Director", "Singapore", "9239" ],
+    [ "Brenden Wagner", "Software Engineer", "San Francisco", "1314"],
+    [ "Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "2947" ],
+    [ "Shou Itou", "Regional Marketing", "Tokyo", "8899"],
+    [ "Michelle House", "Integration Specialist", "Sidney", "2769" ],
+    [ "Suki Burks", "Developer", "London", "6832" ],
+    [ "Prescott Bartlett", "Technical Author", "London", "3606"],
+    [ "Gavin Cortez", "Team Leader", "San Francisco", "2860"],
+    [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240"],
+    [ "Unity Butler", "Marketing Designer", "San Francisco", "5384" ]
+];
  
-    var table = $('#employeeDetails').DataTable( {
-        lengthChange: false,
-        ajax: "EmployeeController",
-        columns: [            
-            { data: "employeeId" },
-            { data: "employeeName" },
-            { data: "employeeDesignation" },
-            { data: "employeeMobile" },
-           // { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
-        ],
-        select: true
-    } );
- 
-    // Display the buttons
-    new $.fn.dataTable.Buttons( table, [
-        { extend: "create", editor: editor },
-        { extend: "edit",   editor: editor },
-        { extend: "remove", editor: editor }
-    ] );
- 
-    table.buttons().container()
-        .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
-} );
