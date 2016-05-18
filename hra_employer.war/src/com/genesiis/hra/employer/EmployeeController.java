@@ -1,9 +1,7 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +15,6 @@ import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.RegisterLoan;
-import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -42,11 +39,11 @@ public class EmployeeController extends HttpServlet {
 	public void init() throws ServletException {
 		AddEmployee addEmployee = new AddEmployee();
 		GetDepartment department = new GetDepartment();
-		//RegisterLoan  loan = new RegisterLoan();
+		RegisterLoan  loan = new RegisterLoan();
 
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
-		//hmap.put(2, loan);
+		hmap.put(2, loan);
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -58,37 +55,23 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		//String task = request.getParameter("task");
-		String gson = null;
-		//int validTask = validator.validTaskId(task);
-		GetLoan lndetail = new GetLoan();
-		gson =lndetail.execute("1");
-		response.getWriter().write(gson);
-		/*try {
-			switch (validTask) {
-			case 1:
-				break;
-			case 5:
-				GetDepartment department = (GetDepartment) hmap.get(5);
-				gson = new Gson().toJson(department.execute());
-				response.getWriter().write(gson);
-				break;
-			// For other operations.
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			case -1:
-			default:
-				break;
-			}
+		String task = request.getParameter("task");
+		Gson gson = new Gson();
+		String lnGson = null;
+		int validTask = validator.validTaskId(task);
+		
+		try {
+			GetLoan lndetail = new GetLoan();
+			lnGson =lndetail.execute("1");
+			response.getWriter().write(lnGson);
+			
 		} catch (Exception exception) {
 			String message = MessageList.ERROR.message();
 			log.error("Exception: EmployeeController " + exception);
-			response.getWriter().write(message);
+			response.getWriter().write(gson.toJson(message));
 		}
 		response.getWriter().close();
-*/
+
 	}
 
 	/**
@@ -98,35 +81,22 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String employeeDetails = request.getParameter("jsonData");
-		//String task = request.getParameter("task");
+		String task = request.getParameter("task");
+		Gson gson = new Gson();
 		String message = "";
-
 		// Method to verify it and return integer;
-		//int validTask = validator.validTaskId(task);		
-		RegisterLoan  regLoan = new RegisterLoan();
-		try {
-			message = regLoan.execute(employeeDetails);
-		} catch (ParseException e) {
-			// TODO: handle exception
-			log.info(employeeDetails +"++++++++++++++++++++++++++++++++++++++++++++++++");
-		}
-		
-		log.info(employeeDetails +"////////////////////////////////////////////////////////");
-/*
+		int validTask = validator.validTaskId(task);
+			
 		try {
 			switch (1) {
-			case 1:
-				RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
-				message = regLoan.execute(employeeDetails);
-				response.getWriter().write(gson.toJson(message));
+			case 1:				
 				break;
 			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
+			 case 2:
+				    RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
+					message = regLoan.execute(employeeDetails);
+					response.getWriter().write(gson.toJson(message));
+		        break;			
 			default:
 				break;
 			}
@@ -135,7 +105,7 @@ public class EmployeeController extends HttpServlet {
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
-		response.getWriter().close();*/
+		response.getWriter().close();
 	}
 
 }
