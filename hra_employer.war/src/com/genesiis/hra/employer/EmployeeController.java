@@ -40,11 +40,11 @@ public class EmployeeController extends HttpServlet {
 	public void init() throws ServletException {
 		AddEmployee addEmployee = new AddEmployee();
 		GetDepartment department = new GetDepartment();
-		//RegisterLoan  loan = new RegisterLoan();
+		RegisterLoan  loan = new RegisterLoan();
 
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
-		//hmap.put(2, loan);
+		hmap.put(2, loan);
 		hmap.put(5, department);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -68,12 +68,7 @@ public class EmployeeController extends HttpServlet {
 				gson = new Gson().toJson(department.execute());
 				response.getWriter().write(gson);
 				break;
-			// For other operations.
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-			case -1:
+			// For other operations.			
 			default:
 				break;
 			}
@@ -93,28 +88,23 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String employeeDetails = request.getParameter("jsonData");
-		//String task = request.getParameter("task");
+		String task = request.getParameter("task");
 		String message = "";
 
 		// Method to verify it and return integer;
-		//int validTask = validator.validTaskId(task);		
-		RegisterLoan  regLoan = new RegisterLoan();
-		message = regLoan.execute(employeeDetails);
-/*
+		int validTask = validator.validTaskId(task);
+		Gson gson = new Gson();		
+
 		try {
 			switch (1) {
-			case 1:
+			case 1:		
 				RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
 				message = regLoan.execute(employeeDetails);
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
+		    case 2:		    	
+			    break;			
 			default:
 				break;
 			}
@@ -123,7 +113,7 @@ public class EmployeeController extends HttpServlet {
 			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
 		}
-		response.getWriter().close();*/
+		response.getWriter().close();
 	}
 
 }
