@@ -5,12 +5,32 @@
 <!-- 20160505 PN HRA-2 edited the design. -->
 <!-- JavaScripts to help to load  -->
 
+
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
-		$('#employeeDetails').DataTable();
-	});
-	getDepartment();
+    $('#employeeDetails').DataTable( {
+        //data: dataSet, 
+         /* columns: [                              
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  },
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  },
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  }
+              ]  */
+      
+    } );
+} );
 </script>
 
 
@@ -24,7 +44,7 @@
 
 
 	<br></br>
-	<div class="table-responsive">
+	<div class="table-responsive">	
 		<table id="employeeDetails"
 			class="table table-striped table-bordered table-responsive"
 			cellspacing="0" width="100%">
@@ -51,13 +71,8 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<tr>
-					<td>EMP001</td>
-					<td>Dammika Nawarathna</td>
-					<td>AGM - HR</td>
-					<td>0711111111<br> 0112222222<br> dammika@gmail.com
-					</td>
-					<td align="center"><button type="button" class="btn btn-info"
+				<tr>					
+					<!-- <td align="center"><button type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
@@ -70,7 +85,7 @@
 							class="btn btn-danger" data-toggle="modal"
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
+						</button></td> -->
 				</tr>
 			</tbody>
 		</table>
