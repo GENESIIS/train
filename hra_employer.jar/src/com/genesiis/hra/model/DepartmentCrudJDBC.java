@@ -3,8 +3,7 @@ package com.genesiis.hra.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
 
 import org.jboss.logging.Logger;
@@ -20,8 +19,8 @@ import com.google.gson.Gson;
 //* 20160429 PN Modified the add(Object object) Method.
 //***********************************************/
 
-public class DepartmentManager implements IDataAccessor {
-	static Logger log = Logger.getLogger(DepartmentManager.class.getName());
+public class DepartmentCrudJDBC implements ICrud {
+	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
 
 	@Override
 	public String add(Object object) {
@@ -44,11 +43,16 @@ public class DepartmentManager implements IDataAccessor {
 			if (rowsInserted > 0) {
 				message = MessageList.ADDED.message();
 			}
-			preparedStatement.close();
-			conn.close();
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			message = MessageList.ERROR.message();
+		} finally {
+			try {
+				preparedStatement.close();
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
 		}
 		return message;
 	}
@@ -85,12 +89,25 @@ public class DepartmentManager implements IDataAccessor {
 		return department;
 	}
 
-	public String validDepartment(Department department) {
+	public String validateDepartment(Department department)
+			throws ParseException {
 		DataValidator validator = new DataValidator();
-		if (validator.isValidString(department.getDepartmentname())) {
-			return MessageList.SUCCESS.message();
+		String message = "";
+
+		if (!validator.isValidString(department.getDepartmentNumber())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		if (!validator.isValidString(department.getDepartmentname())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		return message;
+	}
+
+	public boolean validDepartment(Department department) throws ParseException {
+		if (validateDepartment(department).isEmpty()) {
+			return true;
 		} else {
-			return MessageList.EMPTYFIELD.message();
+			return false;
 		}
 	}
 }

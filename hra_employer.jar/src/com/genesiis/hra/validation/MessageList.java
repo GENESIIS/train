@@ -17,7 +17,7 @@ public enum MessageList {
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
-    FAILED_TO_CREATE("Object not created"),
+    FAILED_TO_CREATE("Details not added. Internal System Error."),
 	ADD("ADD"),
 	UPDATE("UPDATE"),
 	DELETE("DELETE"),

@@ -86,7 +86,7 @@
 						<div class="form-group">
 							<label for="departmentNumber">Department Number</label> <input
 								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="">
+								name="departmentNumber" placeholder="" value="" maxlength="5" size="5">
 						</div>
 					</div>
 				</div>
@@ -94,13 +94,13 @@
 				<div class="form-group">
 					<label for="departmentName">Department Name</label> <input
 						type="text" class="form-control" id="departmentName"
-						name="departmentName" placeholder="" value="Legal">
+						name="departmentName" placeholder="" value="">
 				</div>
 
 				<div class="form-group">
 					<label for="departmentLocation">Department Location</label> <input
 						type="text" class="form-control" id="departmentLocation"
-						name="departmentLocation" placeholder="" value="Head Office">
+						name="departmentLocation" placeholder="" value="">
 				</div>
 				<div class="form-group">
 					<label for="departmentHead">Department Head</label> <select
