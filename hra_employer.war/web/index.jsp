@@ -22,6 +22,7 @@
 
 <!-- Custom styles for this template -->
 <link href="dist/css/dashboard.css" rel="stylesheet">
+<!-- <link href="dist/css/sidebar.css" rel="stylesheet"> -->
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -39,6 +40,7 @@
 input {
 	font-weight: normal !important;
 }
+
 select {
 	font-weight: normal !important;
 }
@@ -82,25 +84,46 @@ select {
 		</div>
 	</nav>
 
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#"
-						onclick="loadContentDashboard()"><b>Dashboard <span
-								class="sr-only">(current)</span></a></li>
+					<li class="active"><a href="#dashboard"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadContentDashboard()">Dashboard</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li>Configuration</li>
-					<li><a href="#" onclick="loadContentEmployee()">- Employee</a></li>
-					<li><a href="#" onclick="loadContentDepartment()">-
-							Department</a></li>
+					<li><a href="#employee"
+						class="list-group-item list-group-item-info"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadContentEmployee()"> Employee</a></li>
+					<li><a href="#department"
+						class="list-group-item list-group-item-info"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadContentDepartment()"> Department</a></li>
+					<li><a href="#payroll"
+						class="list-group-item list-group-item-info"
+						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i
+							class="glyphicon glyphicon-menu-down"></i></a>
+						<div class="collapse list-group-submenu list-group-submenu-1"
+							id="payroll">
+							<a href="" class="list-group-item list-group-item-info">
+								Salary Component <i class="fa fa-caret-down"></i>
+							</a> <a href="" class="list-group-item list-group-item-info">
+								Salary Scheme</a> <a href=""
+								class="list-group-item list-group-item-info"> Employee
+								Salary</a>
+						</div></li>
 				</ul>
 			</div>
 
 			<div id="mainContent"></div>
 		</div>
 	</div>
+
+
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -115,7 +138,7 @@ select {
 	<script src="dist/js/bootstrap-datepicker.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>
 	<script src="dist/js/jquery.dataTables.min.js"></script>
-	
+
 
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="dist/assets/js/vendor/holder.min.js"></script>
