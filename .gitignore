@@ -9,7 +9,9 @@
 *.classpath
 *.project
 /build
-*/.settings/
+*/.settings
+/.settings
+.settings
 */.metadata
 /.metadata
 .metadata
