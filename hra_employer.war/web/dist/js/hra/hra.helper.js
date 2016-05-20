@@ -163,7 +163,6 @@ function isLetter(evt) {
 			&& (inputValue != 32 && inputValue != 0)) {
 		evt.preventDefault();
 	}
-
 }
 
 // load data to edit

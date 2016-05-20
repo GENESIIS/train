@@ -29,10 +29,13 @@
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
-<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
-
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- <script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script> -->
+<script src="dist/editablesearch/source/jquery-latest.min.js"></script>
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
+<script src="dist/js/hra/hra.payroll.helper.js"></script>
+<script src="dist/js/hra/hra.validation.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
 
 <style type="text/css">
@@ -98,26 +101,31 @@ select {
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="#employee"
-						class="list-group-item list-group-item-info"
+						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentEmployee()"> Employee</a></li>
 					<li><a href="#department"
-						class="list-group-item list-group-item-info"
+						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentDepartment()"> Department</a></li>
-					<li><a href="#payroll"
-						class="list-group-item list-group-item-info"
-						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i
-							class="glyphicon glyphicon-menu-down"></i></a>
-						<div class="collapse list-group-submenu list-group-submenu-1"
-							id="payroll">
-							<a href="" class="list-group-item list-group-item-info">
-								Salary Component <i class="fa fa-caret-down"></i>
-							</a> <a href="" class="list-group-item list-group-item-info">
-								Salary Scheme</a> <a href=""
-								class="list-group-item list-group-item-info"> Employee
-								Salary</a>
-						</div></li>
+					<li><a href="#salarycomponent"
+						class="list-group-item list-group-item-primary"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadSalarycomponentdetails()"> Salary Component</a></li>
+					<!-- 					<li><a href="#payroll" -->
+					<!-- 						class="list-group-item list-group-item-primary" -->
+					<!-- 						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i -->
+					<!-- 							class="glyphicon glyphicon-menu-down"></i></a> -->
+					<!-- 						<div class="collapse list-group-submenu list-group-submenu-1" -->
+					<!-- 							id="payroll"> -->
+					<!-- 							<a href="" class="list-group-item list-group-item-primary" -->
+					<!-- 								onclick="loadContentDepartment()"> Salary Component <i -->
+					<!-- 								class="fa fa-caret-down"></i> -->
+					<!-- 							</a> <a href="" class="list-group-item list-group-item-primary"> -->
+					<!-- 								Salary Scheme</a> <a href="" -->
+					<!-- 								class="list-group-item list-group-item-primary"> Employee -->
+					<!-- 								Salary</a> -->
+					<!-- 						</div></li> -->
 				</ul>
 			</div>
 
