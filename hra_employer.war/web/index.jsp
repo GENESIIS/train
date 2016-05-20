@@ -93,8 +93,8 @@ select {
 				<ul class="nav nav-sidebar">
 					<li>Configuration</li>
 					<li><a href="#" onclick="loadContentEmployee()">- Employee</a></li>
-					<li><a href="#" onclick="loadContentDepartment()">-
-							Department</a></li>
+					<li><a href="#" onclick="loadContentDepartment()">-	Department</a></li>
+					<li><a href="#" onclick="loadContentBackGroundDetails()">- Background Details</a></li>
 				</ul>
 			</div>
 
@@ -106,11 +106,7 @@ select {
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')
-	</script>
+	<script> window.jQuery || document .write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/js/bootstrap-datepicker.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>

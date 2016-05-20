@@ -134,7 +134,7 @@ public class EmployeeController extends HttpServlet {
 				 * Get Employee History 
 				 * GetEmploymentHistory > validTask-7 > task-7
 				 * **/
-				log.error("__________________GetEmploymentHistory_______________________");
+				log.error("----GetEmploymentHistory----");
 				GetEmploymentHistory getEmploymentHistory 	= (GetEmploymentHistory) hmap.get(7);
 				String 	gsonString							= getEmploymentHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 				
@@ -147,7 +147,7 @@ public class EmployeeController extends HttpServlet {
 				 * UpdateEmployeeHistory
 				 * UpdateEmployeeHistory > validTask-8 > task-8
 				 * **/
-				log.error("--UpdateEmployeeHistory--");
+				log.error("----UpdateEmployeeHistory----");
 				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(8);
 				int updateStatus 							= updateEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 

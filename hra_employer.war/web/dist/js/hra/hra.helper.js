@@ -7,15 +7,19 @@
 
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
-}
+};
 
 function loadContentEmployee() {
 	$("#mainContent").load("manageEmployee.jsp");
-}
+};
 
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
-}
+};
+
+function loadContentBackGroundDetails() {
+	$("#mainContent").load("backgroundDetails.jsp");
+};
 
 // Only for Sprint -1 demo.
 function deleteAlert() {
