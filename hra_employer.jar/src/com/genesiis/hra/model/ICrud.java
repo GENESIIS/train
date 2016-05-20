@@ -13,8 +13,12 @@ public interface ICrud {
 	public String update(Object object);
 
 	public String delete(Object object);
+	
+	public String retrive(int id);
 
-	public String getObjectid(String id);
+	public String find(int empEpf);
+	
+	public List<Object> find(String empIdenti);
 
 	public List<Object> getAll();
 }
