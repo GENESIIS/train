@@ -69,6 +69,37 @@ function getDepartment() {
 	});
 }
 
+//Get ailment for Add Employee > more info Form
+function getAilment1() {
+	$.post('EmployeeController', {
+		task : "ALFIND"
+	}, function(data) {
+		alert(data);
+		var select = $('#employeeAilment');
+		select.find('option').remove();
+		$('<option>').val("").text("----Select----").appendTo(select);
+		$.each(data, function(index, value) {
+			var result = value.split("#");
+			$('<option>').val(result[0]).text(result[1]).appendTo(select);
+		});
+	});
+}
+
+function getAilment() {
+	$.ajax({
+		url : 'EmployeeController',
+		type : 'POST',
+		data : {task : "ALFIND"},
+		dataType : 'json',
+		success : function(json) {
+			alert(json);
+			$.each(json, function(i, value) {
+				$('#employeeAilment').append(
+						$('<option>').text(value).attr('value', value));
+			});
+		}
+	});
+}
 // Get data and sent to EmployeeController.java.
 function addEmployeeDetails() {
 	var employeeFirstname = $("#employeeFirstname").val() + ","
@@ -774,6 +805,14 @@ function loadEditEmployementHIstoryDetails() {
 
 function loadEditEmployementDetail() {
 	$("#modelrestedit").load("employeeDetails/editEmployementHistory.jsp");
+}
+
+/**
+ * Medical History
+ * add function();
+ * **/
+function loadaddBackgrounddetails() {
+	$("#modelrest").load("employeeDetails/backgroundHistory.jsp");
 }
 
 function disableButton() {

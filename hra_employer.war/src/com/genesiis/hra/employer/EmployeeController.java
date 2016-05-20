@@ -2,6 +2,7 @@ package com.genesiis.hra.employer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.UpdateEmployeeHistory;
 import com.genesiis.hra.model.EmploymentHistory;
+import com.genesiis.hra.validation.AilmentEnum;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -151,7 +153,7 @@ public class EmployeeController extends HttpServlet {
 				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(8);
 				int updateStatus 							= updateEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
 
-				log.error("--UpdateEmployeeHistory--Responce-"+updateStatus);
+				log.error("--UpdateEmployeeHistory-- Responce-"+updateStatus);
 				
 				// For ADD EMPLOYMENT HISTORY DETAILS operations.
 				if (updateStatus == 1) {
@@ -161,6 +163,39 @@ public class EmployeeController extends HttpServlet {
 				}
 				
 				response.getWriter().write(gson.toJson(message));
+				
+				break;
+				
+			case 9:
+				/**
+				 * Select Ailment
+				 * 
+				 * **/
+				
+				
+				List<AilmentEnum> stateList = new ArrayList<AilmentEnum>( Arrays.asList(AilmentEnum.values() ));
+
+				log.info("----Select Ailment Medical History----");
+				List<AilmentEnum> somethingList = Arrays.asList(AilmentEnum.values());
+				
+				AilmentEnum[] d = AilmentEnum.values();
+				
+				for(AilmentEnum dd :d){
+					log.info("----"+dd.toString()+"----");
+				}
+
+				List<String> list = new   ArrayList<String>();
+				
+				list.add("kasun");
+				list.add("kasu1n");
+				list.add("kasu1n2");
+				
+				String gsons = null;
+				gsons = new Gson().toJson(list);
+				response.getWriter().write(gsons);
+				
+				
+				//response.getWriter().write(gson.toJson(list));
 				break;
 				
 			default:
