@@ -1,3 +1,8 @@
+/**
+ * 20160518 PC HRA-30 created hra.anguleruse.js 
+ */
+
+
 var dataSet = [
     [ "Tiger Nixon", "System Architect", "Edinburgh", "5421" ],
     [ "Garrett Winters", "Accountant", "Tokyo", "8422"],
@@ -36,4 +41,35 @@ var dataSet = [
     [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240"],
     [ "Unity Butler", "Marketing Designer", "San Francisco", "5384" ]
 ];
- 
+
+function serchEmployee() {
+	var serchContent = $("#serchEmployeeText").val();
+	
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			serchVlaue : serchContent,
+			task : "SERCH_EMPLOYEE"
+		},
+		dataType : "text",
+		contentType :" ",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+} 
+
+function listEmployee() {
+	$.get("EmployerController", function(data, status) {		
+			json = JSON.parse(data);			
+			alert(data);		
+	});
+	
+}

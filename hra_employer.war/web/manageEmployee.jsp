@@ -5,30 +5,38 @@
 <!-- 20160505 PN HRA-2 edited the design. -->
 <!-- JavaScripts to help to load  -->
 
+
 <script type="text/javascript">
-	//To load the Datatable	
+	//To load the Datatable
 	$(document).ready(function() {
-	alert("m");
-    $('#employeeDetails').DataTable( {
-        data: dataSet,
-        columns: [
-            { title: "Employee Number" },
-            { title: "Employee Name" },
-            { title: "Designation" },
-            { title: "Contact Details." },
-            { title: "View" },
-            { title: "Edit" },
-            { title: "Delete" }
-        ]
+	$('#employeeDetails').DataTable( {
+        data: dataSet,         
+               /* columns: [                              
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  },
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  },
+                  {
+                      data: null,
+                      className: "center",
+                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+                  }
+              ]  */
+      
     } );
 } );
-
+	oTable = $('#employeeDetails').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+	$('#myInputTextField').keyup(function(){
+	      oTable.search($(this).val()).draw() ;
+	})
 </script>
 
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
@@ -39,8 +47,11 @@
 	</button>
 
 
-	<br></br>
+	<br></br>	
 	<div class="table-responsive">	
+	<button type="button" class="btn btn_default" onclick = "serchEmployee()">	
+	</button>
+	<input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">	
 		<table id="employeeDetails"
 			class="table table-striped table-bordered table-responsive"
 			cellspacing="0" width="100%">
@@ -67,9 +78,8 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<tr>
-					
-					<td align="center"><button type="button" class="btn btn-info"
+				<tr>					
+					<!-- <td align="center"><button type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
@@ -82,10 +92,10 @@
 							class="btn btn-danger" data-toggle="modal"
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
+						</button></td> -->
 				</tr>
 			</tbody>
-		</table>				
+		</table>
 	</div>
 </div>
 

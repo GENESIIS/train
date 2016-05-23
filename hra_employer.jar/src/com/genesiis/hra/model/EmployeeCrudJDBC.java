@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -46,15 +47,12 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(5, employee.getEmployeedateofbirth());
 			preparedStatement.setString(6, employee.getEmployeenic());
 			preparedStatement.setString(7, employee.getEmployeegender());
-			preparedStatement.setString(8,
-					employee.getEmployeepermenetaddress());
-			preparedStatement.setString(9,
-					employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(8, employee.getEmployeepermenetaddress());
+			preparedStatement.setString(9, employee.getEmployeetemporaryaddress());
 			preparedStatement.setString(10, employee.getEmployeemobile());
 			preparedStatement.setString(11, employee.getEmployeetelephone());
 			preparedStatement.setString(12, employee.getEmployeedepartment());
-			preparedStatement
-					.setString(13, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(13, employee.getEmployeemaritalstatus());
 			preparedStatement.setString(14, employee.getEmployeejoindate());
 			preparedStatement.setString(15, "SYSTEM");
 			preparedStatement.setString(16, employee.getEmployeeepf());
@@ -81,10 +79,10 @@ public class EmployeeCrudJDBC implements ICrud {
 				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
 		String message = "Error";
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		Employee employee = (Employee) object;
+		PreparedStatement preparedStatement = null;		
 
 		try {
+			Employee employee = (Employee) object;
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, employee.getEmployeename());
@@ -93,15 +91,12 @@ public class EmployeeCrudJDBC implements ICrud {
 			preparedStatement.setString(4, employee.getEmployeedateofbirth());
 			preparedStatement.setString(5, employee.getEmployeenic());
 			preparedStatement.setString(6, employee.getEmployeegender());
-			preparedStatement.setString(7,
-					employee.getEmployeepermenetaddress());
-			preparedStatement.setString(8,
-					employee.getEmployeetemporaryaddress());
+			preparedStatement.setString(7, employee.getEmployeepermenetaddress());
+			preparedStatement.setString(8, employee.getEmployeetemporaryaddress());
 			preparedStatement.setString(9, employee.getEmployeemobile());
 			preparedStatement.setString(10, employee.getEmployeetelephone());
 			preparedStatement.setString(11, employee.getEmployeedepartment());
-			preparedStatement
-					.setString(12, employee.getEmployeemaritalstatus());
+			preparedStatement.setString(12, employee.getEmployeemaritalstatus());
 			preparedStatement.setString(13, employee.getEmployeejoindate());
 			preparedStatement.setString(14, "S");
 			preparedStatement.setString(15, employee.getEmployeeepf());
@@ -115,7 +110,11 @@ public class EmployeeCrudJDBC implements ICrud {
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 
-		} finally {
+		} catch (ClassCastException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
 			try {
 				if (preparedStatement != null) {
 					preparedStatement.close();
@@ -135,11 +134,64 @@ public class EmployeeCrudJDBC implements ICrud {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	@Override
-	public String getObjectid(String id) {
+	public String retrive(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public String find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String name) {
+		List<Object> employList = new LinkedList<Object>();
+		String query = "select ID, NAME,D ESIGNATION, MOBILENO from HRA.EMPLOYEE where DESIGNATION = ?";
+		String messege = "";
+		Connection conn = null;
+		PreparedStatement pd = null;
+		ResultSet findData = null;
+		
+		Employee employee = new Employee();
+		
+		try {
+			conn = ConnectionManager.getConnection();
+			pd = conn.prepareStatement(query);
+			pd.setString(1, name);
+			findData = pd.executeQuery();
+			
+			try {
+				while(findData.next()){
+					// set data to entity class
+					employee.setEmployeeid(findData.getString("ID"));
+					employee.setEmployeename(findData.getString("NAME"));
+					employee.setEmployeedesignation(findData.getString("DESIGNATION"));					
+					employee.setEmployeemobile(findData.getString("MOBILENO"));		
+					employList.add(employee);
+				}
+			} catch (SQLException e) {
+				// TODO: handle exception
+				log.info(e.toString());
+			}
+		} catch (Exception ex) {
+			// TODO: handle exception
+			log.info(ex.toString());
+		}finally{
+			try {
+				if (pd != null) {
+					pd.close();
+				}
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return employList;
 	}
 
 	@Override
@@ -219,4 +271,6 @@ public class EmployeeCrudJDBC implements ICrud {
 		return managers;
 	}
 
+
+	
 }
