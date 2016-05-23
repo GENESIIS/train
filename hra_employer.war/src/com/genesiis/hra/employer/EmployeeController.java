@@ -19,7 +19,6 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.UpdateEmployeeHistory;
-import com.genesiis.hra.model.EmploymentHistory;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;

@@ -6,6 +6,7 @@ function addRowToTable(names, tableId, dates, selections, options) {
 	var tbl = document.getElementById(tableId);
 	var lastRow = tbl.rows.length;
 	alert(dates);
+	
 	// if there's no header row in the table, then iteration = lastRow + 1
 	var iteration = lastRow;
 	var row = tbl.insertRow(lastRow);

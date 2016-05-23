@@ -10,42 +10,12 @@ function loadSalarycomponentdetails() {
 	$("#mainContent").load("payroll/salaryComponent.jsp");
 }
 
-function resetComponentErrors() {
-	var fmemployeeId = $("#fmemployeeId").val();
-	var relationship = $("#relationship").val();
-	var relationDateofbirth = $("#relationDateofbirth").val();
-	var relationName = $("#relationName").val();
-
-	var employeeIdtb = isEmptyfield(fmemployeeId);
-	var relationshiptb = isEmptyfield(relationship);
-	var relationDateofbirthtb = isPastdate(relationDateofbirth);
-	var relationNametb = isEmptyfield(relationName);
-
-	if (employeeIdtb == false) {
-		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
-	} else {
-		document.getElementById('fmemployeeidError').innerHTML = "";
-	}
-	if (relationshiptb == false) {
-		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
-	} else {
-		document.getElementById('relationshipError').innerHTML = "";
-	}
-	if (relationDateofbirthtb == false) {
-		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
-	} else {
-		document.getElementById('relationbirthdateError').innerHTML = "";
-	}
-	if (relationNametb == false) {
-		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
-	} else {
-		document.getElementById('relationnameError').innerHTML = "";
-	}
+function loadSalaryschemedetails() {
+	$("#mainContent").load("payroll/salaryScheme.jsp");
 }
 
 function setEmptyerrormessage(textFieldname, errorSpanname, message) {
 	var textField = $(textFieldname).val();
-	alert(textField);
 	if (isEmptyfield(textField)) {
 		document.getElementById(errorSpanname).innerHTML = "";
 	} else {
