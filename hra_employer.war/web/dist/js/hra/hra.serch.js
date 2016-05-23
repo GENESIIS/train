@@ -45,7 +45,7 @@ var dataSet = [
 function serchEmployee() {
 	var serchContent = $("#serchEmployeeText").val();
 	
-	$.ajax({
+	$.ajax({ 
 		type : "POST",
 		url : 'EmployeeController',
 		data : {

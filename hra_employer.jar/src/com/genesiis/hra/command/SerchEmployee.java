@@ -25,7 +25,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 			 switch (validateFind(emplIdenti)) {
 			case 1:
 				  empList = (Employee) employeeManager.find(emplIdenti);
-				break;
+				break; 
 			case 2:
 				  empList = (Employee) serchEmployeeManager.find(emplIdenti);
 				break;
