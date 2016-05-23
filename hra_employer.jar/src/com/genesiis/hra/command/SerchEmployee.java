@@ -17,7 +17,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	@Override
 	public String execute(String emplIdenti) throws ParseException {
 		// TODO Auto-generated method stub
-		 String message = "";
+		 String message = ""; 
 		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
 		 Employee  empList = null ;
