@@ -93,14 +93,13 @@ public class MedicalHistory extends Employee {
 		this.medicalHistorycrton = medicalHistorycrton;
 	}
 
-//	public HashMap<Integer,String> getDeclaredFields(){
-//		HashMap<Integer,String> declarMap = new HashMap<Integer, String>();
-//		declarMap.put(1,this.medicalHistoryemployeeid);
-//		declarMap.put(2,this.medicalHistoryailment);
-//		declarMap.put(3,this.medicalHistorydescription);
-//		declarMap.put(4,this.medicalHistorydescription);
-//		return declarMap;
-//	}
+	public HashMap<Integer,String> getDeclaredFields(){
+		HashMap<Integer,String> declarMap = new HashMap<Integer, String>();
+		declarMap.put(1,this.medicalHistoryemployeeid);
+		declarMap.put(2,this.medicalHistoryailment);
+		declarMap.put(3,this.medicalHistorydescription);
+		return declarMap;
+	}
 	/**
 	 * @param mh
 	 *            - Medical History
@@ -150,29 +149,94 @@ public class MedicalHistory extends Employee {
 	@Override
 	public boolean isValid(Object object) {
 
-		final int i =0;
-		
+		int i = 0;
+
 		DataValidator val = new DataValidator();
 		MedicalHistory edu = (MedicalHistory) object;
 
-//		HashMap<Integer,String> dataMap = new HashMap<Integer, String>();
-//		
-//		dataMap = this.getDeclaredFields();
-		
-		for (Field field : edu.getClass().getDeclaredFields()) 
-		{
-			log.info("||----------field.getName()-----"+field.getName()+"--------------------------||");
-		}
+		 int vall = 0;
+		 if (val.isValidString(edu.getMedicalHistoryemployeeid()) == true) vall |= 0x1;
+		 if (val.isValidString(edu.getMedicalHistoryailment())== true)  vall |= 0x2;
+		 if (val.isValidString(edu.getMedicalHistorydescription()) == true) vall |= 0x3;
+		 
 
-		
-		 if ((val.isValidString(edu.getMedicalHistoryemployeeid()) == true) && (val.isValidString(edu.getMedicalHistoryailment()) == true) && (val.isValidString(edu.getMedicalHistorydescription() ) == true)) {
-		 return true;
-		 } else {
-		 return false;
+		 switch (vall) {
+		 case 0: // Both too short
+			 log.info("all not valid");
+			 break;
+		 case 1: // User Ok, pass too short
+			 log.info("getMedicalHistory employee id not valid");
+			 break;
+		 case 2: // User too short, pass ok
+			 log.info("getMedicalHistory ailment not valid");
+			 break;
+		 case 3: // Both Ok
+			 log.info("getMedicalHistory description not valid");
+			 break;
 		 }
+		 
+
+		if ((val.isValidString(edu.getMedicalHistoryemployeeid()) == true)
+				&& (val.isValidString(edu.getMedicalHistoryailment()) == true)
+				&& (val.isValidString(edu.getMedicalHistorydescription()) == true)) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
+	
+	public String isValidED(Object object) {
+
+		String messagetxt = "success";
+
+		DataValidator val = new DataValidator();
+		MedicalHistory edu = (MedicalHistory) object;
+
+		 int vall = 0;
+		 if (val.isValidString(edu.getMedicalHistoryemployeeid()) == true) vall |= 0x1;
+		 if (val.isValidString(edu.getMedicalHistoryailment())== true)  vall |= 0x2;
+		 if (val.isValidString(edu.getMedicalHistorydescription()) == true) vall |= 0x3;
+		 
+		 log.info("###"+edu.getMedicalHistoryemployeeid()+"###");
+		 log.info("###"+edu.getMedicalHistoryailment()+"###");
+		 log.info("###"+edu.getMedicalHistorydescription()+"###");
+
+		 switch (vall) {
+		 
+		 case 0: // Both too short
+			 log.info("all not valid");
+			 messagetxt = "all not valid";
+			 break;
+
+		 case 1: // User Ok, pass too short
+			 log.info("getMedicalHistory employee id not valid");
+			 messagetxt ="getMedicalHistory employee id not valid";
+			 break;
+
+		 case 2: // User too short, pass ok
+			 log.info("getMedicalHistory ailment not valid");
+			 messagetxt ="getMedicalHistory ailment not valid";
+			 break;
+			 
+		 case 3: // Both Ok
+			 log.info("getMedicalHistory description not valid");
+			 messagetxt ="getMedicalHistory description not valid";
+			 break;
+			 
+		 case 4: // Both Ok
+			 log.info("all good ");
+			 messagetxt =messagetxt;
+			 break;
+		 }
+		 
+		return messagetxt;
+
+
+	}
+	
+	
 	@Override
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
