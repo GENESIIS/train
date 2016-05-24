@@ -3,14 +3,27 @@
  */
 package com.genesiis.hra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
+
+import com.genesiis.hra.utill.ConnectionManager;
 
 /**
  * This class is the data access class when creating a Salary Component.
  */
-public class SalaryComponent implements ICrud{
-	String componentType, componentName, description, modBy;
+public class SalaryComponent implements ICrud {
+	String componentType, componentName, description, modBy, currency;
 	double minAmount, maxAmount, rate;
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
 
 	public String getComponentType() {
 		return componentType;
@@ -78,7 +91,7 @@ public class SalaryComponent implements ICrud{
 	 * Salary Component constructor with fields
 	 */
 	public SalaryComponent(String ct, String cn, String des, String mb,
-			double min, double max, double r) {
+			double min, double max, double r, String cr) {
 		this.componentType = ct;
 		this.componentName = cn;
 		this.description = des;
@@ -86,17 +99,51 @@ public class SalaryComponent implements ICrud{
 		this.minAmount = min;
 		this.maxAmount = max;
 		this.rate = r;
+		this.currency = cr;
 	}
 
 	@Override
 	public int add(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query = "INSERT INTO [HRA.SALARYCOMPONENT] (COMPONENTTYPE, NAME, DESCRIPTION, CURRANCY, "
+				+ "MINSALARY, MAXSALARY, RATE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		SalaryComponent cs = (SalaryComponent) object;
+		int status = 0;
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, cs.getComponentType());
+			preparedStatement.setString(2, cs.getComponentname());
+			preparedStatement.setString(3, cs.getDescription());
+			preparedStatement.setDouble(4, cs.getMinamount());
+			preparedStatement.setString(5, cs.getCurrency());
+			preparedStatement.setDouble(6, cs.getMaxamount());
+			preparedStatement.setDouble(7, cs.getRate());
+			preparedStatement.setString(8, "SYSTEM");
+
+			int rowsInserted = preparedStatement.executeUpdate();
+			if (rowsInserted > 0) {
+				status = rowsInserted;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return status;
 	}
 
 	@Override
 	public int update(Object object) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

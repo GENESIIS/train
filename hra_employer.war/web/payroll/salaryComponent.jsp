@@ -103,6 +103,21 @@
 						placeholder="" onkeypress="return isLetter(event);"></textarea>
 				</div>
 
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="salaryCurrency">Currency</label><select
+								class="form-control" id="salaryCurrency"
+								name="salaryCurrency"
+								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
+						
+							</select>&nbsp;&nbsp;<span id="salaryCurrencyerror"
+								name="salaryCurrencyerror"
+								style="color: red; font-weight: normal !important;"></span>
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
 					<label class="radio-inline"><input type="radio"
 						name="salaryComponentamount" id="salaryComponentamount"

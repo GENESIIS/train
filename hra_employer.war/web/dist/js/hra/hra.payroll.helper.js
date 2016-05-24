@@ -44,6 +44,7 @@ function addSalarycomponent() {
 	var salaryComponentdescription = $("#salaryComponentdescription").val();
 	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked').val()
 	var salaryComponentmin = $("#salaryComponentmin").val();
+	var salaryCurrency = $("#salaryCurrency").val();
 	var salaryComponentmax = $("#salaryComponentmax").val();
 
 	var jsonData = {
@@ -52,7 +53,8 @@ function addSalarycomponent() {
 		"description" : salaryComponentdescription,
 		"rate" : salaryComponentamount,
 		"minAmount" : salaryComponentmin,
-		"maxAmount" : salaryComponentmax
+		"maxAmount" : salaryComponentmax,
+		"currency" : salaryCurrency
 	};
 
 	

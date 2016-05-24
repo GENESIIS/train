@@ -24,7 +24,9 @@ public class AddSalaryComponent implements ICommand {
 		boolean hasError = validateValue(entiytMap);
 		
 		if(hasError){
-			component.update(component);
+			component.add(component);
+		}else{
+			
 		}
 		return null;
 	}
@@ -50,7 +52,7 @@ public class AddSalaryComponent implements ICommand {
 	@Override
 	public boolean validateValue(HashMap<Integer, Object> entiytMap) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

@@ -68,15 +68,20 @@ public class PayrollController extends HttpServlet {
 			}
 
 		} catch (Exception e) {
+			//Client see an error from here 
 			message = MessageList.ERROR.message();
 			log.error("Payroll Controloler Error. " + e);
 		}
-		response.getWriter().write(gson.toJson(message));
-		response.getWriter().close();
+		writeResponse(gson.toJson(message), response);
 	}
 
-	private void writeResponse(String message, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+	private void writeResponse(String message, HttpServletResponse response) throws IOException {
+		try {
+			response.getWriter().write(message);
+		} catch (Exception e) {
+			log.error("WriteResponse method error. " + e);
+		}finally{
+			response.getWriter().close();
+		}		
 	}
 }
