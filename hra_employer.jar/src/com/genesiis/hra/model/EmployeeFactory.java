@@ -12,6 +12,8 @@ public class EmployeeFactory {
 			return new Familymember();
 		case 6:
 			return new EmploymentHistory();
+		case 7:
+			return new MedicalHistory();
 		default:
 			return null;
 		}

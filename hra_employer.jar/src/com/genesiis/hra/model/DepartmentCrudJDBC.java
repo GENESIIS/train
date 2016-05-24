@@ -179,4 +179,10 @@ public class DepartmentCrudJDBC implements ICrud {
 		return false;
 	}
 
+	@Override
+	public String getEmployee(int employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

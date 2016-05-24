@@ -111,6 +111,8 @@ public class DataValidator {
 			return 8;
 		}else if (task.equalsIgnoreCase(MessageList.ALFIND.message())) {
 			return 9;
+		}else if (task.equalsIgnoreCase(MessageList.MHADD.message())) {
+			return 10;
 		} else {
 			return -1;
 		}

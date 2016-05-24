@@ -37,7 +37,9 @@ public enum MessageList {
 	EHDELETE("EHDELETE"),//EMPLOYE HISTORY DELETE
 	EHFIND("EHFIND"),
 
-	ALFIND("ALFIND");
+	ALFIND("ALFIND"),
+	
+	MHADD("MHADD");//MEDICAL HISTORY ADD
 	
 	private String message;
 

@@ -16,15 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployeeHistory;
+import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetEmploymentHistory;
+import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.UpdateEmployeeHistory;
+import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmploymentHistory;
 import com.genesiis.hra.validation.AilmentEnum;
 import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -40,27 +44,17 @@ import com.google.gson.Gson;
 public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
-	HashMap<Integer, Object> hmap = null;
+
+	HashMap<Operation, ICommand> commands = null;
+
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-
 		// initialize the commands
-		//UpdateEmployee addEmployee = new UpdateEmployee();
-		AddEmployeeHistory addEmployeeHistory 		= new AddEmployeeHistory();
-		UpdateEmployeeHistory updateEmployeeHistory = new UpdateEmployeeHistory();
-		GetEmploymentHistory getEmploymentHistory 	= new GetEmploymentHistory();
-		
-		GetDepartment department = new GetDepartment();
-
-		hmap = new HashMap<Integer, Object>();
-		//hmap.put(1, addEmployee);
-		hmap.put(5, department);
-		hmap.put(6, addEmployeeHistory);
-		hmap.put(7, getEmploymentHistory);
-		hmap.put(8, updateEmployeeHistory);
-
+		commands = new HashMap<Operation, ICommand>();
+		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());// MEDICAL_HISTORY==7
 	}
 
 	/**
@@ -78,138 +72,64 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		log.info("------------------1----------------------");
+		String medicalHistoryJson 		= request.getParameter("jsonData");// Method to verify it and return details set;
+		log.info("-------------2----------------"+medicalHistoryJson);
+		String task 					= request.getParameter("task");//json data from jquery for task identification
+		log.info("-----------3----------------"+task);
+		String message 					= "";
+		Operation o						= null;
 		
-		String employeeDetails = request.getParameter("jsonData");
-		String task = request.getParameter("task");
-		String message = MessageList.ERROR.message();
-		
-		List<Object> employeeHistoryList = new ArrayList<Object>();
-
-		// Method to verify it and return integer;
+		DataValidator validator = new DataValidator();
 		int validTask = validator.validTaskId(task);
+		System.out.println("4"+validTask);
 		
-		Gson gson = new Gson();
-
-		try {
-
-			switch (validTask) {
-			case 1:
-				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
-
-				// For ADD FAMILLY DETAILS operations.
-				if ((dim.execute(ClassList.FAMILY_MEMBER.getValue(),
-						employeeDetails)) == 1) {
-					message = MessageList.ADDED.message();
-				}
-				response.getWriter().write(gson.toJson(message));
-				break;
-
-			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
-
-			case 6:
-				/**
-				 * Add Employee History 
-				 * AddEmployeeHistory > validTask-6 > task-6
-				 * **/
-				log.error("__________________AddEmployeeHistory_______________________");
-				AddEmployeeHistory addEmployeeHistory 	= (AddEmployeeHistory) hmap.get(6);
-				int insetStatus 						= addEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
-
-				// For ADD EMPLOYMENT HISTORY DETAILS operations.
-				if (insetStatus == 1) {
-					message = MessageList.ADDED.message();
-				} else {
-					message = MessageList.ERROR.message();
-				}
-				response.getWriter().write(gson.toJson(message));
-				break;
-
-				
-			case 7:
-				/**
-				 * Get Employee History 
-				 * GetEmploymentHistory > validTask-7 > task-7
-				 * **/
-				log.error("----GetEmploymentHistory----");
-				GetEmploymentHistory getEmploymentHistory 	= (GetEmploymentHistory) hmap.get(7);
-				String 	gsonString							= getEmploymentHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
-				
-				response.getWriter().write(gsonString);
-				
-				break;
-
-			case 8:
-				/**
-				 * UpdateEmployeeHistory
-				 * UpdateEmployeeHistory > validTask-8 > task-8
-				 * **/
-				log.error("----UpdateEmployeeHistory----");
-				UpdateEmployeeHistory updateEmployeeHistory = (UpdateEmployeeHistory) hmap.get(8);
-				int updateStatus 							= updateEmployeeHistory.execute(ClassList.EMPLOYMENT_HISTORY.getValue(),employeeDetails);
-
-				log.error("--UpdateEmployeeHistory-- Responce-"+updateStatus);
-				
-				// For ADD EMPLOYMENT HISTORY DETAILS operations.
-				if (updateStatus == 1) {
-					message = MessageList.UPDATED.message();
-				} else if(updateStatus==-1){
-					message = MessageList.ERROR.message();
-				}
-				
-				response.getWriter().write(gson.toJson(message));
-				
-				break;
-				
-			case 9:
-				/**
-				 * Select Ailment
-				 * 
-				 * **/
-				
-				
-				List<AilmentEnum> stateList = new ArrayList<AilmentEnum>( Arrays.asList(AilmentEnum.values() ));
-
-				log.info("----Select Ailment Medical History----");
-				List<AilmentEnum> somethingList = Arrays.asList(AilmentEnum.values());
-				
-				AilmentEnum[] d = AilmentEnum.values();
-				
-				for(AilmentEnum dd :d){
-					log.info("----"+dd.toString()+"----");
-				}
-
-				List<String> list = new   ArrayList<String>();
-				
-				list.add("kasun");
-				list.add("kasu1n");
-				list.add("kasu1n2");
-				
-				String gsons = null;
-				gsons = new Gson().toJson(list);
-				response.getWriter().write(gsons);
-				
-				
-				//response.getWriter().write(gson.toJson(list));
-				break;
-				
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: EmployeeController" + exception);
-			response.getWriter().write(gson.toJson(message));
+		
+		
+		switch (validTask) {
+		case 10:
+			o = Operation.ADD_MEDICAL_HISTORY;
+			System.out.println("4"+o);
+			break;
+		default:
+			break;
 		}
 		
+		
+		
+		
+		try {
+			
+
+			int operationValue = o.getValue();
+
+			switch (operationValue) {
+
+			case 7:
+				message = commands.get(o).execute(medicalHistoryJson);
+				writeResponse(message, response);
+				break;
+			default:
+				break;
+				
+			}
+			
+		} catch (Exception exception) {
+			writeResponse(MessageList.FAILED_TO_CREATE.message(), response);
+			log.error("Exception: EmployeeController" + exception);
+		}
+
 		response.getWriter().close();
 	}
+
+	private void writeResponse(String insertedSuccess,HttpServletResponse response) {
+		
+		Gson gson = new Gson();
+		try {
+			response.getWriter().write(gson.toJson(insertedSuccess));
+		} catch (Exception e) {
+			insertedSuccess = MessageList.FAILED_TO_CREATE.message();
+			log.error("Exception: EmployeeController - writeResponse" + e);
+		}
+	}
 }
-
-
-
