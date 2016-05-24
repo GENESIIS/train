@@ -31,8 +31,8 @@ public abstract class Employee implements ICrud {
 	}
 
 	@Override
-	public String update(Object object) {
-		return null;
+	public int update(Object object) {
+		return -1;
 	}
 
 	@Override
@@ -55,26 +55,5 @@ public abstract class Employee implements ICrud {
 		return false;
 	}
 	
-	@Override
-	public List<Object> getRetrive(String id) {
-		return null;
-	}
-	
-	@Override
-	public int updateEmployeeHistory(Object object) {
-		return -1;
-	}
-
-	@Override
-	public Object getRetriveRecode(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isValidUpdate(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

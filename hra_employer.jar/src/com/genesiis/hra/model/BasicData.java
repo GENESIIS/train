@@ -161,4 +161,10 @@ public class BasicData extends Employee {
 	public int add(Object object) {
 		return -1;
 	}
+
+	@Override
+	public String getEmployee(int employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

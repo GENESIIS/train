@@ -105,10 +105,11 @@
 
 				<div class="form-group">
 					<label class="radio-inline"><input type="radio"
-						name="salaryComponentamount" id="salaryComponentamount"><b>Rate</b></label>
-					<label class="radio-inline"><input type="radio"
-						name="salaryComponentamount" id="salaryComponentamount"><b>Amount</b></label>
-					<label class="radio-inline">&nbsp;&nbsp;<span
+						name="salaryComponentamount" id="salaryComponentamount"
+						value="Rate"><b>Rate</b></label> <label class="radio-inline"><input
+						type="radio" name="salaryComponentamount"
+						id="salaryComponentamount" value="Amount"><b>Amount</b></label> <label
+						class="radio-inline">&nbsp;&nbsp;<span
 						id="salaryComponentamounterror" name="salaryComponentamounterror"
 						style="color: red; font-weight: normal !important;"></span></label>
 				</div>
@@ -120,7 +121,8 @@
 								id="salaryComponentminerror" name="salaryComponentminerror"
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmin"
-								name="salaryComponentmin" placeholder="">
+								name="salaryComponentmin" placeholder=""
+								onblur="setEmptyerrormessage('#salaryComponentmin','salaryComponentminerror','Minimum Value')">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -129,15 +131,16 @@
 								id="salaryComponentmaxerror" name="salaryComponentmaxerror"
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmax"
-								name="salaryComponentmax" placeholder="">
+								name="salaryComponentmax" placeholder=""
+								onblur="setLargevalueerror('salaryComponentmin','salaryComponentmax','salaryComponentmaxerror');">
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-right" onclick=""
-					data-dismiss="">
+				<button type="button" class="btn btn-success pull-right"
+					onclick="addSalarycomponent()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left" onclick="">

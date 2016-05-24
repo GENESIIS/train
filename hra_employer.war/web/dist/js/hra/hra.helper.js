@@ -159,7 +159,7 @@ function isNumberKey(evt) {
 
 function isLetter(evt) {
 	var inputValue = evt.charCode;
-	if (!(inputValue >= 65 && inputValue <= 120)
+	if (!(inputValue >= 65 && inputValue <= 122)
 			&& (inputValue != 32 && inputValue != 0)) {
 		evt.preventDefault();
 	}

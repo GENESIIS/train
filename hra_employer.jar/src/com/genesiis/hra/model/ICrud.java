@@ -9,14 +9,18 @@ import java.util.List;
 
 public interface ICrud {
 	
-//	public boolean add(Object object);
-//
-//	public boolean update(Object object);
-//
-//	public boolean delete(Object object);
-//	
-//	public List<Object> getAll();
-//	
-//	public boolean isValid(Object object);
+	public int add(Object object);
+
+	public int update(Object object);
+
+	public String delete(Object object);
+
+	public String getId(String id);
+
+	public List<Object> getAll();
+
+	public boolean isValid(Object object);
+
+	String getEmployee(int employeeId);
 
 }
