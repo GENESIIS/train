@@ -143,7 +143,7 @@ public class EmployeeCrudJDBC implements ICrud {
 	}
 	
 	@Override
-	public String find(int empEpf) {
+	public Object find(int empEpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}

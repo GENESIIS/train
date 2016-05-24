@@ -7,7 +7,9 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
+import com.google.gson.Gson;
 /* *********************************************
  * 20160520 HRA 30 pc create SercEmPloyee class 
  * 20160520 HRA 30 pc create execute method
@@ -22,24 +24,26 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
 		 Employee  empList = null ;
 		 try {
-			 switch (validateFind(emplIdenti)) {
+			 switch (2/*validateFind(emplIdenti)*/) {
 			case 1:
 				  empList = (Employee) employeeManager.find(emplIdenti);
-				break;
-			case 2:
-				  empList = (Employee) serchEmployeeManager.find(emplIdenti);
+				break; 
+			case 2: 
+				  empList = (Employee) serchEmployeeManager.find(1);
+				  loger.info("execute -----------------------------------------------------");
 				break;
 			case 3:
 				  empList = (Employee) serchEmployeeManager.find(emplIdenti);
 				break;
 
 			default:
-				break;
+				break;				
 			}			
 		} catch (Exception e) {
 			// TODO: handle exception
+			loger.info(e.toString());
 		}
-		return null;
+		return createGson(empList);
 	}
 
 	@Override
@@ -63,6 +67,17 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 		// TODO Auto-generated method stub
 		return (Integer) null;
 	}
-
+	
+	// Create geson object
+	public String createGson(Employee emp) {					
+			Gson gson = new Gson();	
+			String empList = " ";
+			try {
+				empList = gson.toJson(emp);			
+			} catch (Exception e) {
+				
+			}
+			return empList;
+	}
 	
 }

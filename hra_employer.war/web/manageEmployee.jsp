@@ -8,29 +8,14 @@
 
 <script type="text/javascript">
 	//To load the Datatable
-	$(document).ready(function() {
-    $('#employeeDetails').DataTable( {
-        //data: dataSet, 
-         /* columns: [                              
-                  {
-                      data: null,
-                      className: "center",
-                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-                  },
-                  {
-                      data: null,
-                      className: "center",
-                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-                  },
-                  {
-                      data: null,
-                      className: "center",
-                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-                  }
-              ]  */
-      
-    } );
+	$(document).ready(function() {		
+	
 } );
+	eTable = $('#employeeDetails').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+	$('#serchEmployeeText').keyup(function(){
+	      eTable.search($(this).val()).draw() ;
+	});
+	
 </script>
 
 
@@ -45,6 +30,11 @@
 
 	<br></br>
 	<div class="table-responsive">	
+	<br></br>	
+	<div class="table-responsive">	
+	<button type="button" class="btn btn_default" onclick = "serchEmployee()" value="Search">	
+	</button>
+	<input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">	
 		<table id="employeeDetails"
 			class="table table-striped table-bordered table-responsive"
 			cellspacing="0" width="100%">

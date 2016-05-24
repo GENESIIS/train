@@ -70,7 +70,7 @@ public class DepartmentCrudJDBC implements ICrud {
 		return null;
 	}
 
-	@Override
+	
 	public String getObjectid(String id) {
 		return null;
 	}
@@ -138,5 +138,23 @@ public class DepartmentCrudJDBC implements ICrud {
 		}
 
 		return departments;
+	}
+
+	@Override
+	public String retrive(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

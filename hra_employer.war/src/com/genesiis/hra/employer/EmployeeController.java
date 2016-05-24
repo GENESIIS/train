@@ -15,6 +15,7 @@ import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.RegisterLoan;
+import com.genesiis.hra.command.SerchEmployee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -40,12 +41,13 @@ public class EmployeeController extends HttpServlet {
 		AddEmployee addEmployee = new AddEmployee();
 		GetDepartment department = new GetDepartment();
 		RegisterLoan  loan = new RegisterLoan();
+		SerchEmployee sEmp = new SerchEmployee();
 
 		hmap = new HashMap<Integer, Object>();
 		hmap.put(1, addEmployee);
 		hmap.put(2, loan);
 		hmap.put(5, department);
-		// hmap.put(3, null);
+	    hmap.put(6, sEmp);
 		// hmap.put(4, null);
 	}
 
@@ -81,14 +83,15 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String employeeDetails = request.getParameter("jsonData");
+		String serchVlaue = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
 		String message = "";
 		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
+		//int validTask = validator.validTaskId(task);
 			
 		try {
-			switch (1) {
+			switch (3) {
 			case 1:				
 				break;
 			// For other operations.
@@ -96,7 +99,12 @@ public class EmployeeController extends HttpServlet {
 				    RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
 					message = regLoan.execute(employeeDetails);
 					response.getWriter().write(gson.toJson(message));
-		        break;			
+		        break;		
+			 case 3:
+				 SerchEmployee sEmp = (SerchEmployee) hmap.get(6);
+					message = sEmp.execute(serchVlaue);
+					response.getWriter().write(gson.toJson(message));
+		        break;	
 			default:
 				break;
 			}

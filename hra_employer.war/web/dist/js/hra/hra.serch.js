@@ -41,3 +41,78 @@ var dataSet = [
     [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240"],
     [ "Unity Butler", "Marketing Designer", "San Francisco", "5384" ]
 ];
+
+function serchEmployee() {
+	var serchContent = $("#serchEmployeeText").val();
+	
+	$.ajax({ 
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : " ",
+			serchVlaue : serchContent,
+			task : "SERCH_EMPLOYEE"
+		},
+		dataType : "json",
+		contentType :"application/json ",
+		success : function(data) {
+			alert(data);
+			listEmployee(data);			
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+} 
+
+function listEmployee(empData) {
+	//$.get("EmployerController", function(data, status) {		
+			json = JSON.parse(empData);			
+			alert(json);		
+			$('#employeeDetails').DataTable( {data : dataSet,}/*{		                
+		        columns: [ 
+		                  {
+		                      data: "1",
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                  
+		                  {
+		                      data: json.employeeName,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                  
+		                  {
+		                      data: json.employeeDesignation,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                  {
+		                      data: json.employeeMobile,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                          
+		                  {
+		                      data: null,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                  {
+		                      data: null,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  },
+		                  {
+		                      data: null,
+		                      className: "center",
+		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                  }
+		              ]  
+		      
+		    }*/ );
+	//});
+	
+}

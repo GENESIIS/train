@@ -16,7 +16,7 @@ public interface ICrud {
 	
 	public String retrive(int id);
 
-	public String find(int empEpf);
+	public Object find(int empEpf);
 	
 	public List<Object> find(String empIdenti);
 

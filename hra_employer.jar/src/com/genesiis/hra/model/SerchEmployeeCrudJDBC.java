@@ -15,23 +15,23 @@ import com.genesiis.hra.utill.ConnectionManager;
 */
 public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 
-	public String find(int empEpf) {
+	public Object find(int empEpf) {
 		// TODO Auto-generated method stub
-		String query = "select * from HRA.EMPLOYEE where EPF = ?";
+		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where EPF = ?";
 		String messege = "";
 		Connection conn = null;
 		PreparedStatement pd = null;
 		ResultSet findData = null;
 		
 		Employee employee = new Employee();
-		
+		log.info("find int ================================================");
 		try {
 			conn = ConnectionManager.getConnection();
 			pd = conn.prepareStatement(query);
 			pd.setInt(1, empEpf);
 			findData = pd.executeQuery();
-			
-			try {
+			log.info("find int .......................................................");
+			try { 
 				if(findData.next()){
 					// set data to entity class
 					employee.setEmployeeid(findData.getString("ID"));
@@ -59,16 +59,15 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 					employee.setEmployeebasis(findData.getString("BASIS"));
 					employee.setEmployeetemporaryaddress(findData
 							.getString("TEMPORARYADDRESS"));
-					
+					log.info("find int //////////////////////////////////////////");
 				}
 			} catch (SQLException e) {
 				// TODO: handle exception
-				messege = MessageList.ERROR.message();
 				log.info(e.toString());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			messege = MessageList.ERROR.message();
+			log.info(e.toString());
 		}finally{
 			try {
 				if (pd != null) {
@@ -77,10 +76,9 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				messege = MessageList.ERROR.message();
 			}
 		}
-		return null;
+		return employee;
 	}
 
 	@Override
