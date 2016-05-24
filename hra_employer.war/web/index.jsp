@@ -96,7 +96,8 @@ select {
 					<li><a href="#" onclick="loadContentEmployee()">- Employee</a></li>
 					<li><a href="#" onclick="loadContentDepartment()">-
 							Department</a></li>
-							<li><a href="#" onclick="loadViewEmployee()">-Employee View</a></li>
+					<li><a href="#" onclick="loadViewEmployee()">-Employee
+							View</a></li>
 				</ul>
 			</div>
 
