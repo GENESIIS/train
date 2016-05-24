@@ -23,6 +23,10 @@ function loadContentDepartment() {
 function loadContentqualifications() {
 	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
 }
+function loadViewEmployee() {
+	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
+	alert("test");
+}
 
 // Only for Sprint -1 demo.
 function addedAlert() {
@@ -438,8 +442,7 @@ function AddEducationDetails() {
 	var startedOn = $("#startedOn").val();
 	var compleatedOn = $("#compleatedOn").val();
 	var studyTime = checkStudyTime();
-	 
-	
+
 	var EducationData = {
 		"employeeEpf" : employeeId,
 		"eduQualification" : qualificationName,
@@ -448,7 +451,6 @@ function AddEducationDetails() {
 		"eduStartedon" : startedOn,
 		"eduCompltedon" : compleatedOn,
 		"eduStudytime" : studyTime
-
 
 	};
 	alert(JSON.stringify(EducationData));
@@ -491,7 +493,7 @@ function clearAddeducationform() {
 	$("#weekends").attr('checked', false);
 
 }
-//Check Study time 
+// Check Study time
 function checkStudyTime() {
 	if ((document.getElementById('weekdays').checked)
 			&& (document.getElementById('weekends').checked)) {
@@ -506,7 +508,6 @@ function checkStudyTime() {
 }
 
 // ///Load data to edit Educational Details
-
 
 function loadDataEducationalDetails() {
 
@@ -537,8 +538,6 @@ function loadDataEducationalDetails() {
 
 }
 
-
-
 // /////Edit Educational Details ////////
 function EditEducationDetails() {
 	var employeeId = $("#employeeId").val();
@@ -558,7 +557,7 @@ function EditEducationDetails() {
 		"eduCompltedon" : compleatedOn,
 		"eduStudytime" : studyTime
 	};
-	//alert(JSON.stringify(EducationData));
+	// alert(JSON.stringify(EducationData));
 
 	$.ajax({
 		type : "POST",

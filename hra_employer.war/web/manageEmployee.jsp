@@ -3,6 +3,8 @@
 <!-- 20160419 PN HRA-2 edited the design. -->
 <!-- 20160419 PN HRA-2 edited the design. -->
 <!-- 20160505 PN HRA-2 edited the design. -->
+<!-- 20160521 AS HRA-32 edited for ViewEmployeeDetails.jsp class -->
+
 <!-- JavaScripts to help to load  -->
 
 <script type="text/javascript">
@@ -57,8 +59,8 @@
 					<td>AGM - HR</td>
 					<td>0711111111<br> 0112222222<br> dammika@gmail.com
 					</td>
-					<td align="center"><button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
+					<td align="center"><button type="button"
+							onclick="loadViewEmployee()" class="btn btn-info">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
 					<td align="center"><button type="button"
@@ -103,21 +105,24 @@
 								<div class="form-group">
 									<label for="employeeFirstname">First Name</label><input
 										type="text" class="form-control" id="employeeFirstname"
-										name="employeeFirstname" placeholder="" onkeypress="return isLetter(event);">
+										name="employeeFirstname" placeholder=""
+										onkeypress="return isLetter(event);">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeMiddlename">Middle Name</label> <input
 										type="text" class="form-control" id="employeeMiddlename"
-										name="employeeMiddlename" placeholder="" onkeypress="return isLetter(event);">
+										name="employeeMiddlename" placeholder=""
+										onkeypress="return isLetter(event);">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="employeeLastname">Last Name</label> <input
 										type="text" class="form-control" id="employeeLastname"
-										name="employeeLastname" placeholder="" onkeypress="return isLetter(event);">
+										name="employeeLastname" placeholder=""
+										onkeypress="return isLetter(event);">
 								</div>
 							</div>
 						</div>
@@ -201,7 +206,7 @@
 								<div class="form-group">
 									<label for="employeeDesignation">Designation</label> <input
 										type="text" class="form-control" id="employeeDesignation"
-										name="employeeDesignation" placeholder="" >
+										name="employeeDesignation" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -240,14 +245,16 @@
 								<div class="form-group">
 									<label for="employeeTelephone">Telephone</label> <input
 										type="text" class="form-control" id="employeeTelephone"
-										maxlength="10" size="10" name="employeeTelephone" placeholder="" onkeypress="return isNumberKey(event);">
+										maxlength="10" size="10" name="employeeTelephone"
+										placeholder="" onkeypress="return isNumberKey(event);">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="employeeMobile">Mobile Number</label> <input
 										type="text" class="form-control" id="employeeMobile"
-										name="employeeMobile" maxlength="10" size="10" onkeypress="return isNumberKey(event)">
+										name="employeeMobile" maxlength="10" size="10"
+										onkeypress="return isNumberKey(event)">
 								</div>
 							</div>
 						</div>
@@ -266,8 +273,8 @@
 						<i class="glyphicon glyphicon-floppy-disk"></i> Save
 					</button>
 					<button type="button" class="btn btn-info pull-left"
-						id="moredetails" name="moredetails" onclick=""
-						data-toggle="modal" data-target="#addmoreEmployeedetails">
+						id="moredetails" name="moredetails" onclick="" data-toggle="modal"
+						data-target="#addmoreEmployeedetails">
 						<i class="glyphicon glyphicon-file"></i> More Details
 					</button>
 					<button type="button" class="btn btn-warning pull-left"
@@ -326,180 +333,180 @@
 <!--//////////////////////////////////////////////// new edit/////////////////////////////////////////////////////// -->
 
 <!-- Modal -->
-	<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h3 class="modal-title">
-						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
-						<i class="glyphicon glyphicon-user"></i> Employee Details
-					</h3>
-				</div>
-				<div class="modal-body">
-					<div class="well">
-						<h3 class="">General Details</h3>
-						<!-- 						<div class="row"> -->
-						<!-- 							<div class="col-md-6"> -->
-						<div class="form-group">
-							<label for="editemployeeId">Name</label> <input type="text"
-								class="form-control" id="employeeNameEdit" name="editemployeeId"
-								placeholder="">
-						</div>
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Middle Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Last Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
+<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-user"></i>Edit Employee Details <i
+						class="glyphicon glyphicon-user"></i> Employee Details
+				</h3>
+			</div>
+			<div class="modal-body">
+				<div class="well">
+					<h3 class="">General Details</h3>
+					<!-- 						<div class="row"> -->
+					<!-- 							<div class="col-md-6"> -->
+					<div class="form-group">
+						<label for="editemployeeId">Name</label> <input type="text"
+							class="form-control" id="employeeNameEdit" name="editemployeeId"
+							placeholder="">
+					</div>
+					<!-- 							</div> -->
+					<!-- 							<div class="col-md-6"> -->
+					<!-- 								<div class="form-group"> -->
+					<!-- 									<label for="editemployeeId">Middle Name</label> <input -->
+					<!-- 										type="text" class="form-control" id="editemployeeId" -->
+					<!-- 										name="editemployeeId" placeholder=""> -->
+					<!-- 								</div> -->
+					<!-- 							</div> -->
+					<!-- 							<div class="col-md-6"> -->
+					<!-- 								<div class="form-group"> -->
+					<!-- 									<label for="editemployeeId">Last Name</label> <input -->
+					<!-- 										type="text" class="form-control" id="editemployeeId" -->
+					<!-- 										name="editemployeeId" placeholder=""> -->
+					<!-- 								</div> -->
+					<!-- 							</div> -->
+					<!-- 						</div> -->
 
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Date of Birth</label> <input
-										type="date" class="form-control" id="employeeDateofBothEdit"
-										type="date" class="form-control" id="editemployeeId"
-										name="employeeDateofBothEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">NIC</label> <input type="text"
-										class="form-control" id="employeeNICEdit" name="editemployeeNIC"
-										placeholder="">
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Date of Birth</label> <input
+									type="date" class="form-control" id="employeeDateofBothEdit"
+									type="date" class="form-control" id="editemployeeId"
+									name="employeeDateofBothEdit" placeholder="">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Gender</label> <input type="text"
-										class="form-control" id="employeeGenderEdit" name="employeeGenderEdit"
-										placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Marital Status</label> <input
-										type="text" class="form-control" id="employeeMaritalEdit"
-										name="editemployeeId" placeholder="">
-								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">NIC</label> <input type="text"
+									class="form-control" id="employeeNICEdit"
+									name="editemployeeNIC" placeholder="">
 							</div>
 						</div>
 					</div>
-
-					<div class="well">
-						<h3 class="">Job Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">EPF Number</label> <input
-										type="text" class="form-control" id="employeeEPFEdit"
-										name="employeeEPFEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Employment Status</label> <input
-										type="text" class="form-control" id="employeeStatusEdit"
-										name="employeeStatusEdit" placeholder="">
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Gender</label> <input type="text"
+									class="form-control" id="employeeGenderEdit"
+									name="employeeGenderEdit" placeholder="">
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-
-									<label for="editemployeeId">Designation</label> <input
-										type="text" class="form-control" id="employeeDesignationEdit"
-										name="employeeDesignationEdit" placeholder="">
-								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Marital Status</label> <input
+									type="text" class="form-control" id="employeeMaritalEdit"
+									name="editemployeeId" placeholder="">
 							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Department</label> <input
-										type="text" class="form-control" id="employeeDepartmentEdit"
-										name="employeeDepartmentEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="well">
-						<h3 class="">Contact Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Permanent Address</label>
-									<textarea class="form-control" id="employeeAddressEdit"
-										name="employeeAddressEdit" placeholder=""></textarea>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Temporary Address</label>
-									<textarea class="form-control" id="employeeTempADDEdit"
-										name="employeeTempADDEdit" placeholder=""></textarea>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Telephone</label> <input
-										type="text" class="form-control" id="employeeOtherNumberEdit"
-										name="employeeOtherNumberEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Mobile Number</label> <input
-										type="text" class="form-control" id="employeeMobileNumberEdit"
-										name="employeeMobileNumberEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label for="editemployeeId">Email</label> <input type="text"
-								class="form-control" id="employeeEmailEdit" name="editemployeeId"
-								placeholder="">
 						</div>
 					</div>
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success pull-right"
-						onclick="updateEmployeeDetails()" data-dismiss="">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Update
-					</button>
-					<button type="button" class="btn btn-warning pull-right" id="moredetails"
-						name="moredetails" onclick="" data-dismiss="modal" 
-						data-toggle="modal" data-target="#editmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i>Edit More Details
-					</button>					
-					<button type="button" class="btn btn-danger pull-left"
-						data-dismiss="modal" onclick="">
-						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
-					</button>
+				<div class="well">
+					<h3 class="">Job Details</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">EPF Number</label> <input
+									type="text" class="form-control" id="employeeEPFEdit"
+									name="employeeEPFEdit" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Employment Status</label> <input
+									type="text" class="form-control" id="employeeStatusEdit"
+									name="employeeStatusEdit" placeholder="">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+
+								<label for="editemployeeId">Designation</label> <input
+									type="text" class="form-control" id="employeeDesignationEdit"
+									name="employeeDesignationEdit" placeholder="">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Department</label> <input
+									type="text" class="form-control" id="employeeDepartmentEdit"
+									name="employeeDepartmentEdit" placeholder="">
+							</div>
+						</div>
+					</div>
 				</div>
+
+				<div class="well">
+					<h3 class="">Contact Details</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Permanent Address</label>
+								<textarea class="form-control" id="employeeAddressEdit"
+									name="employeeAddressEdit" placeholder=""></textarea>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Temporary Address</label>
+								<textarea class="form-control" id="employeeTempADDEdit"
+									name="employeeTempADDEdit" placeholder=""></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Telephone</label> <input type="text"
+									class="form-control" id="employeeOtherNumberEdit"
+									name="employeeOtherNumberEdit" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">Mobile Number</label> <input
+									type="text" class="form-control" id="employeeMobileNumberEdit"
+									name="employeeMobileNumberEdit" placeholder="">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label for="editemployeeId">Email</label> <input type="text"
+							class="form-control" id="employeeEmailEdit" name="editemployeeId"
+							placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success pull-right"
+					onclick="updateEmployeeDetails()" data-dismiss="">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Update
+				</button>
+				<button type="button" class="btn btn-warning pull-right"
+					id="moredetails" name="moredetails" onclick="" data-dismiss="modal"
+					data-toggle="modal" data-target="#editmoreEmployeedetails">
+					<i class="glyphicon glyphicon-file"></i>Edit More Details
+				</button>
+				<button type="button" class="btn btn-danger pull-left"
+					data-dismiss="modal" onclick="">
+					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				</button>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 
