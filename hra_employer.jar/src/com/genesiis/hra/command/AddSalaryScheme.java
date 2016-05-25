@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author pabodha
  *
  */
-public class AddSalaryScheme implements ICommand{
+public class AddSalaryScheme implements ICommandAJX{
 
 	@Override
 	public String execute(String gsonData) {

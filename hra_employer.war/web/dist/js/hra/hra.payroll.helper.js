@@ -70,7 +70,7 @@ function addSalarycomponent() {
 		url : 'PayrollController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
-			task : "10"
+			task : "ASC"
 		},
 		dataType : "json",
 		success : function(data) {

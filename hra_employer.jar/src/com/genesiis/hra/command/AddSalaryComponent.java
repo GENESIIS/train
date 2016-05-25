@@ -15,29 +15,36 @@ import com.google.gson.Gson;
  * @author pabodha
  * 
  */
-public class AddSalaryComponent implements ICommand {
+public class AddSalaryComponent implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddSalaryComponent.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
 	@Override
 	public String execute(String gsonData) {
-		String message = MessageList.ERROR.message();
-		
-		SalaryComponent component = (SalaryComponent) extractFromJason(gsonData);
-		
-		boolean hasError = validateValue(entiytMap);
-		
-		log.info("inside execute");
-		if (hasError) {
-			int rowInsetrted = component.add(component);
-			if(rowInsetrted>0){
-				message = MessageList.ADDED.message();
-			}
-			log.info("execute - hasNoError");
-		} else {
-			log.info("execute - hasError");
+		int id = -1; // The new row id created when a salary component is
+						// inserted
+		MessageList message = MessageList.ERROR;
+		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
+
+		try {
+			SalaryComponent component = getComponentDetails(gsonData);
+			validateComponent(errorList);
+			id = component.add(component);
+			message = MessageList.ADDED;
+		} catch (Exception mne) { // User Defined exception. This comes from the validation of the Component -> validateComponent()
+			message = MessageList.ERROR;
+			log.error("--> execute(): ERR" + mne);
 		}
-		return message;
+		return message.message();
+	}
+
+	private void validateComponent(HashMap<Integer, Object> errorList) {
+		
+	}
+
+	private SalaryComponent getComponentDetails(String data) {
+		SalaryComponent component = (SalaryComponent) extractFromJason(data);
+		return component;
 	}
 
 	@Override

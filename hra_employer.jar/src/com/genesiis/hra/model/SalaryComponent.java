@@ -117,7 +117,6 @@ public class SalaryComponent implements ICrud {
 		PreparedStatement ps = null;
 		SalaryComponent cs = (SalaryComponent) object;
 		int status = 0;
-		log.info("add inside");
 
 		try {
 			// Use the mask here
@@ -156,7 +155,6 @@ public class SalaryComponent implements ICrud {
 				exception.printStackTrace();
 			}
 		}
-		log.info("status " + status);
 		return status;
 	}
 

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.genesiis.hra.command.AddSalaryComponent;
 import com.genesiis.hra.command.AddSalaryScheme;
-import com.genesiis.hra.command.ICommand;
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -26,11 +26,11 @@ public class PayrollController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(PayrollController.class.getName());
-	HashMap<Operation, ICommand> commands = null;
+	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
-		commands = new HashMap<Operation, ICommand>();
+		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
 	}
 
@@ -39,7 +39,7 @@ public class PayrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// Leave as empty
+		this.doPost(request, response);
 	}
 
 	/**
@@ -48,29 +48,24 @@ public class PayrollController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
 
 		// Get the retrieve the operation from the task.
-		Operation o = Operation.NO_COMMAND;
-		
-		o = Operation.get(Integer.parseInt(task));
-		log.info("oper "+o);
+		Operation o = Operation.BAD_OPERATION;
+
+		o = Operation.getOperation(task);
 
 		Gson gson = new Gson();
 
 		try {
 			switch (o) {
 			case ADD_SALARY_COMPONENT:
-				log.info("inside ADD_SALARY_COMPONENT.");
 				message = commands.get(o).execute(details);
-				log.info("message" + message);
-				writeResponse(message, response);
 				break;
-
 			default:
-				log.info("inside Break.");
 				break;
 			}
 
@@ -79,8 +74,8 @@ public class PayrollController extends HttpServlet {
 			message = MessageList.ERROR.message();
 			log.error("Payroll Controloler Error. " + e);
 		}
-		response.getWriter().write(gson.toJson(message));
-		response.getWriter().close();
+
+		writeResponse(gson.toJson(message), response);
 	}
 
 	private void writeResponse(String message, HttpServletResponse response)
@@ -90,7 +85,9 @@ public class PayrollController extends HttpServlet {
 		} catch (Exception e) {
 			log.error("WriteResponse method error. " + e);
 		} finally {
+			response.getWriter().flush();
 			response.getWriter().close();
 		}
+
 	}
 }
