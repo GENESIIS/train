@@ -25,7 +25,6 @@ public enum Operation {
 	}
 
 	public static Operation fromString(String task) {
-		//int tt = Operation.(task);
 		return Operation.valueOf(task);
 	}
 

@@ -1,12 +1,12 @@
 <script type="text/javascript">
 
-$(document).on('ready', function() {
-    $("#input-6").fileinput({
-        showUpload: false,
-        maxFileCount: 10,
-        mainClass: "input-group-lg"
-    });
-});
+		$(document).on('ready', function() {
+		    $("#input-6").fileinput({
+		        showUpload: false,
+		        maxFileCount: 10,
+		        mainClass: "input-group-lg"
+		    });
+		});
 
 	function isNumber(evt) {
 	    evt = (evt) ? evt : window.event;
@@ -18,6 +18,41 @@ $(document).on('ready', function() {
 	}
 	
 </script>
+
+
+
+<script type="text/javascript">
+				  
+						function Add(){
+
+							var employeeId = $("#employeeId").val();
+							var employeeAilment = $("#employeeAilment").val();
+							var ailmentDescription = $("#ailmentDescription").val();
+							var reportDescription = $("#reportDescription").val();
+							var reportUpload = $("#reportUpload").val();
+							var ehReferencemodby= $("#ehReferencemodby").val();
+							
+							
+							$("#tblData tbody").append(
+								"<tr>"+
+									"<td >"+employeeId+"</td>"+
+									"<td >"+employeeAilment+"</td>"+
+									"<td >"+ailmentDescription+"</td>"+
+									"<td >"+reportDescription+"</td>"+
+									"<td >"+reportUpload+"</td>"+
+									"<td >"+ehReferencemodby+"</td>"+
+									
+									"<td ><img src='resources/images/medicalhistory/edit.png' class='btnSave' onclick=''; /></td>"+
+									"<td ><img src='resources/images/medicalhistory/delete.png' class='btnDelete' onclick=''; /></td>"+
+									
+								"</tr>");
+							
+// 								$(".btnSave").bind("click", Save);		
+// 								$(".btnDelete").bind("click", Delete);
+						};
+				
+				</script>
+
 
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -90,81 +125,78 @@ $(document).on('ready', function() {
 
 
 			<div class="modal-footer">
+			
+				<button type="button" class="btn btn-success full pull-right" id="btnAddd" onclick="Add();">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Add
+				</button>
+
+			</div>
+
+
+					
+
+				<div class="modal-footer table-responsive">
+				
+					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size: xx-small;">			
+						
+						<thead>
+							<tr>
+								<th id="t012">Employee Id</th>
+								<th id="t012">Employee Ailment</th>
+								<th id="t012">Ailment Description</th>
+								<th id="t012">Report Description</th>
+								<th id="t012">Report Uploaded</th>
+								<th id="t012">Created By</th>
+								<th id="t012">Edit</th>
+								<th id="t012">Delete</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							
+						</tbody>
+						
+						
+						<tfoot>
+						<tr>
+								<th id="t012">Employee Id</th>
+								<th id="t012">Employee Ailment</th>
+								<th id="t012">Ailment Description</th>
+								<th id="t012">Report Description</th>
+								<th id="t012">Report Uploaded</th>
+								<th id="t012">Created By</th>
+								<th id="t012">Edit</th>
+								<th id="t012">Delete</th>
+							</tr>
+						</tfoot>
+						
+					</table>
+			</div>
+
+
+			<div class="modal-footer">
+			
 				<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >
+				
 				<!-- SAVE -->
 				<button type="button" class="btn btn-success full pull-right" onclick="addMedicalHistoryDetails();">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save 
 				</button>
+				
 				<!-- CLEAR -->
 				<button type="button" class="btn btn-warning pull-left"
 					onclick="clearEmployeeHistoryDetails()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
+				
 				<!-- CANCEL -->
 				<button type="button" id="buttonCancelemployee"
 					class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearEmployeeHistoryDetails()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 				
-<!-- 				<button type="button" class="btn btn-success full pull-right" id=btn4> -->
-<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Test -->
-<!-- 				</button> -->
-
-				
 			</div>
-
 			
-
-				<script type="text/javascript">
-				  
-						function Add(){
-
-							var employeeId 				= $("#employeeId").val();
-							var employeeAilment 		= $("#employeeAilment").val();
-							var ailmentDescription 		= $("#ailmentDescription").val();
-							var reportDescription 		= $("#reportDescription").val();
-							var reportUpload 			= $("#reportUpload").val();
-							
-							var ehReferencemodby= $("#ehReferencemodby").val();
-							
-							
-							$("#tblData tbody").append(
-								"<tr>"+
-								"<td>"+employeeId+"</td>"+
-								"<td>"+employeeAilment+"</td>"+
-								"<td>"+ailmentDescription+"</td>"+
-								"<td>"+reportDescription+"</td>"+
-								"<td>"+reportUpload+"</td>"+
-								"<td>"+ehReferencemodby+"</td>"+
-								
-								"<td><img src='images/disk.png' class='btnSave'></td>"+
-								"<td><img src='images/delete.png' class='btnDelete'/></td>"+
-								
-								"</tr>");
-							
-// 								$(".btnSave").bind("click", Save);		
-// 								$(".btnDelete").bind("click", Delete);
-						};
-				
-				</script>
-				
-				
-				<div class="modal-footer">
-				<button id="btnAddd" onclick="Add();" > New </button>
-					<table id="tblData">			
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Phone</th>
-								<th>Email</th>
-								<th>Operation</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-			</div>
-
 		</div>
 
 	</div>

@@ -72,35 +72,22 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		
-		String formData = request.getParameter("jsonData");// Method to verify it and return details set;
-		
-		String task = request.getParameter("task");//json data from jquery for task identification
-		
+		String formData = request.getParameter("jsonData");// Method to verify
+															// it and return
+															// details set;
+		String task = request.getParameter("task");// json data from jquery for
+													// task identification
+
 		String message = "";
-		Operation o	= null;
-		
-		o = Operation.fromString(task);
-		
-		
-		
-		switch (o) {
-		case 10:
-			o = Operation.ADD_MEDICAL_HISTORY;
-			break;
-		default:
-			break;
-		}
-		
-		
-		
-		
+		Operation o = Operation.fromString("ADD_MEDICAL_HISTORY");
+
+		int value = o.getValue();
+
 		try {
-			
-
-			int operationValue = o.getValue();
-
-			switch (operationValue) {
+			switch (value) {
+			case 1:
+				/** add your code here **/
+				break;
 
 			case 7:
 				message = commands.get(o).execute(formData);
@@ -108,9 +95,8 @@ public class EmployeeController extends HttpServlet {
 				break;
 			default:
 				break;
-				
 			}
-			
+
 		} catch (Exception exception) {
 			writeResponse(MessageList.FAILED_TO_CREATE.message(), response);
 			log.error("Exception: EmployeeController" + exception);
