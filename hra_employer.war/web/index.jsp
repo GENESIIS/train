@@ -33,6 +33,9 @@
 <script src="dist/js/hra/hra.medicalhistory.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
 
+<script src="dist/js/hra/jquery.form.js"></script>
+<script src="dist/js/hra/jquery.js"></script>
+
 <style type="text/css">
 /* label { */
 /* 	font-weight: normal !important; */
