@@ -123,6 +123,9 @@ public class SalaryComponent implements ICrud {
 			// Use the mask here
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			
+			
+			
 			ps.setInt(1, 1);
 			ps.setString(2, cs.getComponentname());
 			ps.setString(3, cs.getDescription());

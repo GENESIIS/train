@@ -65,33 +65,40 @@ function addSalarycomponent() {
 		"currency" : salaryCurrency
 	};
 
-	if ((salaryComponenttitleerror != "") && (salaryComponenttypeerror != "")
-			&& (salaryCurrencyerror != "")
-			&& (salaryComponentamounterror != "")
-			&& (salaryComponentminerror != "")
-			|| (salaryComponentmaxerror != "")) {
-
-		$.ajax({
-			type : "POST",
-			url : 'PayrollController',
-			data : {
-				jsonData : JSON.stringify(jsonData),
-				task : "10"
-			},
-			dataType : "json",
-			success : function(data) {
-
-				if (data == "Details added successfully.") {
-					alert(data);
-				}
-			},
-			error : function(e) {
-				alert("Error " + e);
-				console.log(e);
+	$.ajax({
+		type : "POST",
+		url : 'PayrollController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "10"
+		},
+		dataType : "json",
+		success : function(data) {
+			if (data == "Details added successfully.") {
+				alert(data);
 			}
-		});
-	} else {
-		alert(":-( Data not Saved.");
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
+}
+
+function loadModel() {
+	// componentLinknew
+	// componentLinkadd
+
+	if (salaryComponent == "") {
+		document.getElementById("componentLinknew").style.visibility = "visible";
+		document.getElementById("componentLinkadd").style.visibility = "hidden";
+	} else if (salaryComponent == "Found") {
+		document.getElementById("componentLinknew").style.visibility = "hidden";
+		document.getElementById("componentLinkadd").style.visibility = "visible";
+	} else if (salaryComponent == "Not Found") {
+		document.getElementById("componentLinknew").style.visibility = "visible";
+		document.getElementById("componentLinkadd").style.visibility = "hidden";
 	}
 
 }

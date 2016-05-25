@@ -22,8 +22,11 @@ public class AddSalaryComponent implements ICommand {
 	@Override
 	public String execute(String gsonData) {
 		String message = MessageList.ERROR.message();
+		
 		SalaryComponent component = (SalaryComponent) extractFromJason(gsonData);
+		
 		boolean hasError = validateValue(entiytMap);
+		
 		log.info("inside execute");
 		if (hasError) {
 			int rowInsetrted = component.add(component);

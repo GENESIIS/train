@@ -54,6 +54,7 @@ public class PayrollController extends HttpServlet {
 
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.NO_COMMAND;
+		
 		o = Operation.get(Integer.parseInt(task));
 		log.info("oper "+o);
 

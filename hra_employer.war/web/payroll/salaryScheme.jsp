@@ -1,3 +1,7 @@
+<script type="text/javascript">
+	loadModel();
+</script>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Salary Scheme</h2>
 	<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -126,31 +130,40 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> Add Salary Component
+					<i class="glyphicon glyphicon-list-alt"></i> Add Salary Scheme
 				</h3>
 			</div>
-			<div class="modal-body">		
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addSalarycomponent">
-					<i class="glyphicon glyphicon-plus"></i> New Salary Scheme
-				</button>
-				<br></br>
-				
+			<div class="modal-body">
 				<div class="row">
+					<span id="salarySchemetitleerror" name="salarySchemetitleerror"
+						style="color: red; font-weight: normal !important;"></span>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="salarySchemetitle">Title</label><input type="text"
+								class="form-control" id="salarySchemetitle"
+								name="salarySchemetitle" placeholder=""
+								onkeypress="return isLetter(event);"
+								onblur="setEmptyerrormessage('#salarySchemetitle','salarySchemetitleerror','Title')">
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<span id="salaryCriteriaerror" name="salaryCriteriaerror"
+						style="color: red; font-weight: normal !important;"></span>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="salaryCriteria">Criteria</label><select
-								class="form-control" id="salaryCriteria"
-								name="salaryCriteria"
+								class="form-control" id="salaryCriteria" name="salaryCriteria"
 								onchange="setEmptyerrormessage('#salaryCriteria','salaryCriteriaerror','Criteria')">
 								<option value="">--Select--</option>
 								<option value="Basic">Grade</option>
 								<option value="Allowance">Working Experience</option>
 								<option value="Bonus">Qualification</option>
 								<option value="Other">Other</option>
-							</select>&nbsp;&nbsp;<span id="salaryCriteriaerror"
-								name="salaryCriteriaerror"
-								style="color: red; font-weight: normal !important;"></span>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -160,8 +173,35 @@
 						id="salarySchemedescription" name="salarySchemedescription"
 						placeholder="" onkeypress="return isLetter(event);"></textarea>
 				</div>
-				
-				
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="salaryComponent">Add Component</label>
+							<div class="inner-addon right-addon">
+								<i class="glyphicon glyphicon-search"></i> <input type="text"
+									class="form-control" id="salaryComponent"
+									name="salaryComponent" placeholder="" onkeypress="loadModel();">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div id="componentLinknew" name="componentLinknew">
+							<p>
+								<a href="" data-toggle="modal" data-target="#addSalarycomponent"><i
+									class="glyphicon glyphicon-plus"></i> New Component</a>
+							</p>
+						</div>
+						<div id="componentLinkadd" name="componentLinkadd">
+							<p>
+								<a href=""><i class="glyphicon glyphicon-ok"></i> Add to
+									Scheme</a>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
 				<div>
 					<div class="table-responsive">
 						<table id="salarySchemetbl"
@@ -183,8 +223,8 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-right"
-					onclick="" data-dismiss="modal">
+				<button type="button" class="btn btn-success pull-right" onclick=""
+					data-dismiss="modal">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left" onclick="">
@@ -215,7 +255,9 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="salaryComponenttype">Type</label><select
+							<label for="salaryComponenttype">Type</label> &nbsp;&nbsp;<span
+								id="salaryComponenttypeerror" name="salaryComponenttypeerror"
+								style="color: red; font-weight: normal !important;"></span> <select
 								class="form-control" id="salaryComponenttype"
 								name="salaryComponenttype"
 								onchange="setEmptyerrormessage('#salaryComponenttype','salaryComponenttypeerror','Type')">
@@ -225,9 +267,7 @@
 								<option value="Bonus">Bonus</option>
 								<option value="Deduction">Deduction</option>
 								<option value="Other">Other</option>
-							</select>&nbsp;&nbsp;<span id="salaryComponenttypeerror"
-								name="salaryComponenttypeerror"
-								style="color: red; font-weight: normal !important;"></span>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -297,3 +337,4 @@
 		</div>
 	</div>
 </div>
+
