@@ -25,7 +25,7 @@ function loadContentqualifications() {
 }
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
-	alert("test");
+	
 }
 
 // Only for Sprint -1 demo.
