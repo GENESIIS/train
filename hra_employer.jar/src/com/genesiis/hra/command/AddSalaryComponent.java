@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.SalaryComponent;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 /**
@@ -20,15 +21,20 @@ public class AddSalaryComponent implements ICommand {
 
 	@Override
 	public String execute(String gsonData) {
+		String message = MessageList.ERROR.message();
 		SalaryComponent component = (SalaryComponent) extractFromJason(gsonData);
 		boolean hasError = validateValue(entiytMap);
-		
-		if(hasError){
-			component.add(component);
-		}else{
-			
+		log.info("inside execute");
+		if (hasError) {
+			int rowInsetrted = component.add(component);
+			if(rowInsetrted>0){
+				message = MessageList.ADDED.message();
+			}
+			log.info("execute - hasNoError");
+		} else {
+			log.info("execute - hasError");
 		}
-		return null;
+		return message;
 	}
 
 	@Override

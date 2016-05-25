@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.genesiis.hra.command.AddSalaryComponent;
 import com.genesiis.hra.command.AddSalaryScheme;
 import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.validation.MessageList;
@@ -30,7 +31,7 @@ public class PayrollController extends HttpServlet {
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
 		commands = new HashMap<Operation, ICommand>();
-		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryScheme());
+		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
 	}
 
 	/**
@@ -53,35 +54,42 @@ public class PayrollController extends HttpServlet {
 
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.NO_COMMAND;
-		o = Operation.values()[Integer.parseInt(task)];
+		o = Operation.get(Integer.parseInt(task));
+		log.info("oper "+o);
+
 		Gson gson = new Gson();
 
 		try {
 			switch (o) {
 			case ADD_SALARY_COMPONENT:
+				log.info("inside ADD_SALARY_COMPONENT.");
 				message = commands.get(o).execute(details);
+				log.info("message" + message);
 				writeResponse(message, response);
 				break;
 
 			default:
+				log.info("inside Break.");
 				break;
 			}
 
 		} catch (Exception e) {
-			//Client see an error from here 
+			// Client see an error from here
 			message = MessageList.ERROR.message();
 			log.error("Payroll Controloler Error. " + e);
 		}
-		writeResponse(gson.toJson(message), response);
+		response.getWriter().write(gson.toJson(message));
+		response.getWriter().close();
 	}
 
-	private void writeResponse(String message, HttpServletResponse response) throws IOException {
+	private void writeResponse(String message, HttpServletResponse response)
+			throws IOException {
 		try {
 			response.getWriter().write(message);
 		} catch (Exception e) {
 			log.error("WriteResponse method error. " + e);
-		}finally{
+		} finally {
 			response.getWriter().close();
-		}		
+		}
 	}
 }

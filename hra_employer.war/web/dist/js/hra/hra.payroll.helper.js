@@ -28,8 +28,8 @@ function setLargevalueerror(textFieldname1, textFieldname2, errorSpanname) {
 	var textField1 = $(textFieldname1).val();
 	var textField2 = $(textFieldname2).val();
 
-	var largeValue = Math.max(textField1, textField2);
-	
+	var largeValue = Math.max(Number(textField1), Number(textField2));
+	alert(largeValue);
 	if (largeValue == textField2) {
 		document.getElementById(errorSpanname).innerHTML = "";
 	} else {
@@ -42,10 +42,18 @@ function addSalarycomponent() {
 	var salaryComponenttype = $("#salaryComponenttype").val();
 	var salaryComponenttitle = $("#salaryComponenttitle").val();
 	var salaryComponentdescription = $("#salaryComponentdescription").val();
-	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked').val()
+	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked')
+			.val()
 	var salaryComponentmin = $("#salaryComponentmin").val();
 	var salaryCurrency = $("#salaryCurrency").val();
 	var salaryComponentmax = $("#salaryComponentmax").val();
+
+	var salaryComponenttitleerror = $("#salaryComponenttitleerror").text();
+	var salaryComponenttypeerror = $("#salaryComponenttypeerror").text();
+	var salaryCurrencyerror = $("#salaryCurrencyerror").text();
+	var salaryComponentamounterror = $("#salaryComponentamounterror").text();
+	var salaryComponentminerror = $("#salaryComponentminerror").text();
+	var salaryComponentmaxerror = $("#salaryComponentmaxerror").text();
 
 	var jsonData = {
 		"componentType" : salaryComponenttype,
@@ -57,23 +65,33 @@ function addSalarycomponent() {
 		"currency" : salaryCurrency
 	};
 
-	
-	$.ajax({
-		type : "POST",
-		url : 'PayrollController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "11"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
+	if ((salaryComponenttitleerror != "") && (salaryComponenttypeerror != "")
+			&& (salaryCurrencyerror != "")
+			&& (salaryComponentamounterror != "")
+			&& (salaryComponentminerror != "")
+			|| (salaryComponentmaxerror != "")) {
+
+		$.ajax({
+			type : "POST",
+			url : 'PayrollController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "10"
+			},
+			dataType : "json",
+			success : function(data) {
+
+				if (data == "Details added successfully.") {
+					alert(data);
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
 			}
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+		});
+	} else {
+		alert(":-( Data not Saved.");
+	}
+
 }

@@ -5,8 +5,12 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+
+import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 
@@ -14,8 +18,10 @@ import com.genesiis.hra.utill.ConnectionManager;
  * This class is the data access class when creating a Salary Component.
  */
 public class SalaryComponent implements ICrud {
-	String componentType, componentName, description, modBy, currency;
-	double minAmount, maxAmount, rate;
+	static Logger log = Logger.getLogger(SalaryComponent.class.getName());
+
+	String componentType, componentName, description, modBy, currency, rate;
+	double minAmount, maxAmount;
 
 	public String getCurrency() {
 		return currency;
@@ -65,11 +71,11 @@ public class SalaryComponent implements ICrud {
 		this.maxAmount = maxAmount;
 	}
 
-	public double getRate() {
+	public String getRate() {
 		return rate;
 	}
 
-	public void setRate(double rate) {
+	public void setRate(String rate) {
 		this.rate = rate;
 	}
 
@@ -91,7 +97,7 @@ public class SalaryComponent implements ICrud {
 	 * Salary Component constructor with fields
 	 */
 	public SalaryComponent(String ct, String cn, String des, String mb,
-			double min, double max, double r, String cr) {
+			double min, double max, String r, String cr) {
 		this.componentType = ct;
 		this.componentName = cn;
 		this.description = des;
@@ -108,37 +114,46 @@ public class SalaryComponent implements ICrud {
 				+ "MINSALARY, MAXSALARY, RATE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		SalaryComponent cs = (SalaryComponent) object;
 		int status = 0;
-		try {
-			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, cs.getComponentType());
-			preparedStatement.setString(2, cs.getComponentname());
-			preparedStatement.setString(3, cs.getDescription());
-			preparedStatement.setDouble(4, cs.getMinamount());
-			preparedStatement.setString(5, cs.getCurrency());
-			preparedStatement.setDouble(6, cs.getMaxamount());
-			preparedStatement.setDouble(7, cs.getRate());
-			preparedStatement.setString(8, "SYSTEM");
+		log.info("add inside");
 
-			int rowsInserted = preparedStatement.executeUpdate();
+		try {
+			// Use the mask here
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, 1);
+			ps.setString(2, cs.getComponentname());
+			ps.setString(3, cs.getDescription());
+			ps.setString(4, cs.getCurrency());
+			ps.setDouble(5, cs.getMinamount());
+			ps.setDouble(6, cs.getMaxamount());
+			ps.setString(7, cs.getRate());
+			ps.setString(8, "SYSTEM");
+
+			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				status = rowsInserted;
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
 			}
-		} catch (SQLException exception) {
+		} catch (Exception exception) {
 			exception.printStackTrace();
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
-			} catch (SQLException exception) {
+			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
 		}
+		log.info("status " + status);
 		return status;
 	}
 

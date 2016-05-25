@@ -107,10 +107,11 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="salaryCurrency">Currency</label><select
-								class="form-control" id="salaryCurrency"
-								name="salaryCurrency"
+								class="form-control" id="salaryCurrency" name="salaryCurrency"
 								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
-						
+								<option value="">--Select--</option>
+								<option value="USD">USD</option>
+								<option value="LKR">LKR</option>
 							</select>&nbsp;&nbsp;<span id="salaryCurrencyerror"
 								name="salaryCurrencyerror"
 								style="color: red; font-weight: normal !important;"></span>
@@ -137,7 +138,8 @@
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmin"
 								name="salaryComponentmin" placeholder=""
-								onblur="setEmptyerrormessage('#salaryComponentmin','salaryComponentminerror','Minimum Value')">
+								onblur="setEmptyerrormessage('#salaryComponentmin','salaryComponentminerror','Minimum Value')"
+								onkeypress="return isNumberKey(event);">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -147,7 +149,8 @@
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmax"
 								name="salaryComponentmax" placeholder=""
-								onblur="setLargevalueerror('salaryComponentmin','salaryComponentmax','salaryComponentmaxerror');">
+								onblur="setLargevalueerror('#salaryComponentmin','#salaryComponentmax','salaryComponentmaxerror');"
+								onkeypress="return isNumberKey(event);">
 						</div>
 					</div>
 				</div>
