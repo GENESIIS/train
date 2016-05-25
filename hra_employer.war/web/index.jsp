@@ -30,6 +30,7 @@
 
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
+<script src="dist/js/hra/hra.medicalhistory.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
 
 <style type="text/css">

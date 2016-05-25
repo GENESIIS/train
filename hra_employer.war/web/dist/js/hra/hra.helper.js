@@ -358,55 +358,6 @@ function addEmployeeHistoryDetails() {
 
 /***************** END ADD EMPLOYEE HISTORY *************************/
 
-/**
- * thumeera
- * Get data and sent to EmployeeController.java
- * MedicalHistory > new MedicalHistory > more details > add new in MedicalHistory > SAVE 
- * **/
-/***************** START ADD MEDICAL HISTORY *************************/
-function addMedicalHistoryDetails() {
-
-	var employeeId 				= $("#employeeId").val();
-	var employeeAilment 		= $("#employeeAilment").val();
-	var ailmentDescription 		= $("#ailmentDescription").val();
-	var reportDescription 		= $("#reportDescription").val();
-	var reportUpload 			= $("#reportUpload").val();
-	
-	var ehReferencemodby= $("#ehReferencemodby").val();
-
-	var x = parseInt(employeeId, 10);
-	alert(employeeId);
-	var employeeData = {
-		"medicalHistoryemployeeid" 			: x,
-		"medicalHistoryailment" 			: employeeAilment,
-		"medicalHistorydescription" 		: ailmentDescription,
-		"medicalHistorymodby" 				: ehReferencemodby,
-		"medicalHistorycrtby" 				: ehReferencemodby,
-	};
-
-	$.ajax({
-		type : "POST",
-		url : 'EmployeeController',
-		data : {
-			jsonData : JSON.stringify(employeeData),
-			task : "MHADD"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
-				clearMedicalHisory();
-			}
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
-}
-
-/***************** END ADD MEDICAL HISTORY *************************/
-
 
 
 
@@ -490,16 +441,7 @@ function clearEmployeementHisory() {
 	$("#ehReferencetwodesignation").val("");
 
 }
-function clearMedicalHisory() {
-	
-	//$("#employeeId").val("");
-	$("#employeeAilment").val("");
-	$("#ailmentDescription").val("---SELECT---");
-	$("#reportDescription").val("");
-	$("#input-6").val("");
 
-
-}
 
 
 

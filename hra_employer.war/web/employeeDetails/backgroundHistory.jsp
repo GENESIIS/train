@@ -1,62 +1,17 @@
-<script type="text/javascript">
-
-		$(document).on('ready', function() {
-		    $("#input-6").fileinput({
-		        showUpload: false,
-		        maxFileCount: 10,
-		        mainClass: "input-group-lg"
-		    });
-		});
-
-	function isNumber(evt) {
-	    evt = (evt) ? evt : window.event;
-	    var charCode = (evt.which) ? evt.which : evt.keyCode;
-	    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-	        return false;
-	    }
-	    return true;
-	}
-	
-</script>
-
-
-
-<script type="text/javascript">
-				  
-						function Add(){
-
-							var employeeId = $("#employeeId").val();
-							var employeeAilment = $("#employeeAilment").val();
-							var ailmentDescription = $("#ailmentDescription").val();
-							var reportDescription = $("#reportDescription").val();
-							var reportUpload = $("#reportUpload").val();
-							var ehReferencemodby= $("#ehReferencemodby").val();
-							
-							
-							$("#tblData tbody").append(
-								"<tr>"+
-									"<td >"+employeeId+"</td>"+
-									"<td >"+employeeAilment+"</td>"+
-									"<td >"+ailmentDescription+"</td>"+
-									"<td >"+reportDescription+"</td>"+
-									"<td >"+reportUpload+"</td>"+
-									"<td >"+ehReferencemodby+"</td>"+
-									
-									"<td ><img src='resources/images/medicalhistory/edit.png' class='btnSave' onclick=''; /></td>"+
-									"<td ><img src='resources/images/medicalhistory/delete.png' class='btnDelete' onclick=''; /></td>"+
-									
-								"</tr>");
-							
-// 								$(".btnSave").bind("click", Save);		
-// 								$(".btnDelete").bind("click", Delete);
-						};
-				
-				</script>
-
 
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.genesiis.hra.validation.AilmentEnum"%>
+
+<style>
+th#tbledit {
+	text-align: center;
+}
+th#tbldelete {
+	text-align: center;
+}
+</style>
+
 
 <!--Edit Employee History Modal -->	
 <div>
@@ -122,56 +77,52 @@
 				</div>
 			</div>
 			
-
-
-			<div class="modal-footer">
 			
-				<button type="button" class="btn btn-success full pull-right" id="btnAddd" onclick="Add();">
-					<i class="glyphicon glyphicon-floppy-disk"></i> Add
-				</button>
+<!-- 			<div class="modal-footer"> -->
+			
+<!-- 				<button type="button" class="btn btn-success full pull-right" id="btnAddd" onclick="Add();"> -->
+<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Add -->
+<!-- 				</button> -->
 
-			</div>
+<!-- 			</div> -->
 
-
-					
-
-				<div class="modal-footer table-responsive">
+<!-- 				<div class="modal-footer table-responsive"> -->
 				
-					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size: xx-small;">			
+<!-- 					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size:small;">			 -->
 						
-						<thead>
-							<tr>
-								<th id="t012">Employee Id</th>
-								<th id="t012">Employee Ailment</th>
-								<th id="t012">Ailment Description</th>
-								<th id="t012">Report Description</th>
-								<th id="t012">Report Uploaded</th>
-								<th id="t012">Created By</th>
-								<th id="t012">Edit</th>
-								<th id="t012">Delete</th>
-							</tr>
-						</thead>
+<!-- 						<thead> -->
+<!-- 							<tr> -->
+<!-- 								<th id="t012">Employee Id</th> -->
+<!-- 								<th id="t012">Employee Ailment</th> -->
+<!-- 								<th id="t012">Ailment Description</th> -->
+<!-- 								<th id="t012">Report Description</th> -->
+<!-- 								<th id="t012">Report Uploaded</th> -->
+<!-- 								<th id="t012">Created By</th> -->
+<!-- 								<th id="tbledit" >Edit</th> -->
+<!-- 								<th id="tbldelete">Delete</th> -->
+<!-- 							</tr> -->
+<!-- 						</thead> -->
 						
-						<tbody>
+<!-- 						<tbody> -->
 							
-						</tbody>
+<!-- 						</tbody> -->
 						
 						
-						<tfoot>
-						<tr>
-								<th id="t012">Employee Id</th>
-								<th id="t012">Employee Ailment</th>
-								<th id="t012">Ailment Description</th>
-								<th id="t012">Report Description</th>
-								<th id="t012">Report Uploaded</th>
-								<th id="t012">Created By</th>
-								<th id="t012">Edit</th>
-								<th id="t012">Delete</th>
-							</tr>
-						</tfoot>
+<!-- 						<tfoot> -->
+<!-- 						<tr> -->
+<!-- 								<th id="t012">Employee Id</th> -->
+<!-- 								<th id="t012">Employee Ailment</th> -->
+<!-- 								<th id="t012">Ailment Description</th> -->
+<!-- 								<th id="t012">Report Description</th> -->
+<!-- 								<th id="t012">Report Uploaded</th> -->
+<!-- 								<th id="t012">Created By</th> -->
+<!-- 								<th id="tbledit">Edit</th> -->
+<!-- 								<th id="tbldelete">Delete</th> -->
+<!-- 							</tr> -->
+<!-- 						</tfoot> -->
 						
-					</table>
-			</div>
+<!-- 					</table> -->
+<!-- 			</div> -->
 
 
 			<div class="modal-footer">
@@ -184,14 +135,12 @@
 				</button>
 				
 				<!-- CLEAR -->
-				<button type="button" class="btn btn-warning pull-left"
-					onclick="clearEmployeeHistoryDetails()">
+				<button type="button" class="btn btn-warning pull-left"	onclick="clearMedicalHisory()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				
 				<!-- CANCEL -->
-				<button type="button" id="buttonCancelemployee"
-					class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearEmployeeHistoryDetails()">
+				<button type="button" id="buttonCancelemployee"	class="btn btn-danger pull-left" data-dismiss="modal" onclick="clearMedicalHisory()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 				
