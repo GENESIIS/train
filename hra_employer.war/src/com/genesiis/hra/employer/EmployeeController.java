@@ -1,7 +1,9 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +18,11 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.command.SerchEmployee;
+import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.validation.DataTableObject;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.StudentDataService;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -101,7 +106,7 @@ public class EmployeeController extends HttpServlet {
 					response.getWriter().write(gson.toJson(message));
 		        break;		
 			 case 3:
-				 SerchEmployee sEmp = (SerchEmployee) hmap.get(6);
+					SerchEmployee sEmp = (SerchEmployee) hmap.get(6);
 					message = sEmp.execute(serchVlaue);
 					response.getWriter().write(gson.toJson(message));
 		        break;	

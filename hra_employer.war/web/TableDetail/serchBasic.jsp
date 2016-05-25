@@ -2,9 +2,7 @@
 	<div class="table-responsive">	
 	<br></br>	
 	<div class="table-responsive">			
-		<table id="employeeDetails"
-			class="table table-striped table-bordered table-responsive"
-			cellspacing="0" width="100%">
+		<table id="employeeDetails" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th>Employee Number</th>
@@ -29,7 +27,7 @@
 			</tfoot>
 			<tbody>
 				<tr>					
-					<!-- <td align="center"><button type="button" class="btn btn-info"
+					<td align="center"><button type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
 						</button></td>
@@ -42,7 +40,7 @@
 							class="btn btn-danger" data-toggle="modal"
 							data-target="#deleteEmployeeDetailsForm">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button></td> -->
+						</button></td> 
 				</tr>
 			</tbody>
 		</table>

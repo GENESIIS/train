@@ -57,7 +57,73 @@ function serchEmployee() {
 		contentType :"application/json ",
 		success : function(responseText) {
 			alert("ajax"+responseText);			
-			listEmployee(responseText);			
+//			listEmployee(responseText);		
+			json = JSON.parse(responseText);	
+			
+			$('#employeeDetails').DataTable({
+//				"data": responseText,
+				"ajax": "EmployeeController",
+				"aaData": [
+				           {
+				               "DT_RowId": "row_7",
+				               "DT_RowClass": "gradeA",
+				               "0": json.employeeId,
+				               "1": json.employeeName,
+				               "2": "Win 98+ / OSX.2+",
+				               "3": "1.7",
+				               "4": "A"
+				           },
+				           {
+				               "DT_RowId": "row_8",
+				               "DT_RowClass": "gradeA",
+				               "0": "Gecko",
+				               "1": "Firefox 1.5",
+				               "2": "Win 98+ / OSX.2+",
+				               "3": "1.8",
+				               "4": "A"
+				           }
+				           ]
+//				"aoColumns": [ 
+//                          {
+//                        	  "title": "employeeEpf"
+//                              //className: "center"	                     
+//                          },
+//		                  {
+//                        	  "title": "employeeEpf"
+//		                      //className: "center"	                      
+//		                  },		                  
+//		                  
+//		                  {
+//		                	  "title": "employeeDesignation"
+//		                     // className: "center"
+//		                  },
+//		                  {
+//		                	  "title": "employeeMobile"
+//		                      //className: "center"		                    
+//		                  },
+//		                          
+//		                  {
+//		                      data: null,
+//		                      className: "center",
+//		                      defaultContent: '<a href="" class="editor_edit">Add</a>'
+//		                  },
+//		                  {
+//		                      data: null,
+//		                      className: "center",
+//		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+//		                  },
+//		                  {
+//		                      data: null,
+//		                      className: "center",
+//		                      defaultContent: '<a href="" class="editor_edit">Delete</a>'
+//		                  }
+//		              ]  
+		      
+		    } );
+			
+			
+			
+			
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -67,8 +133,8 @@ function serchEmployee() {
 } 
 
 function listEmployee(empData) {		
-			json = JSON.parse(empData);			
-			alert("list"+json.employeeName);	
+			json = JSON.parse(empData);	
+			alert(empData+".................................."+json.employeeName);	
 			/* editor = new $.fn.dataTable.Editor( {
 			        ajax: "json",
 			        table: "#employeeDetails",
@@ -89,30 +155,31 @@ function listEmployee(empData) {
 			    } );*/
 			$('#employeeDetails').DataTable({
 				//"data": empData
-				data : json.employeeName,
-		        columns: [ 
+				//ajax: "EmployeeController",
+				"aaData" : empData,
+				"aoColumns": [ 
                           {
-                              data: "name",
-                              className: "center"	                     
+                        	  "mDataProp": "employeeEpf"
+                              //className: "center"	                     
                           },
 		                  {
-		                      data: json.employeeId,
-		                      className: "center"	                      
+                        	  "mDataProp": "employeeEpf"
+		                      //className: "center"	                      
 		                  },		                  
 		                  
 		                  {
-		                      data: json.employeeDesignation,
-		                      className: "center"
+		                	  "mDataProp": "employeeDesignation"
+		                     // className: "center"
 		                  },
 		                  {
-		                      data: json.employeeMobile,
-		                      className: "center"		                    
+		                	  "mDataProp": "employeeMobile"
+		                      //className: "center"		                    
 		                  },
 		                          
 		                  {
 		                      data: null,
 		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                      defaultContent: '<a href="" class="editor_edit">Add</a>'
 		                  },
 		                  {
 		                      data: null,
@@ -122,15 +189,16 @@ function listEmployee(empData) {
 		                  {
 		                      data: null,
 		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                      defaultContent: '<a href="" class="editor_edit">Delete</a>'
 		                  }
 		              ]  
 		      
 		    } );
 	
+
 }
 
-eTable = $('#employeeDetails').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+eTable = $('#employeeDetails').dataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
 $('#serchEmployeeText').keyup(function(){
       eTable.search($(this).val()).draw() ;
 });
