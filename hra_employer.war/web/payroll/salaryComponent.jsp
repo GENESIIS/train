@@ -62,7 +62,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> Add Salary Component
+					<i class="glyphicon glyphicon-usd"></i> Add Salary Component
 				</h3>
 			</div>
 			<div class="modal-body">

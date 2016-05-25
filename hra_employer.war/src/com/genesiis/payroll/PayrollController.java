@@ -32,6 +32,7 @@ public class PayrollController extends HttpServlet {
 		// HashMap to map commands into Operation enum.
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
+		commands.put(Operation.ADD_SALARY_SCHEME, new AddSalaryScheme());
 	}
 
 	/**
@@ -65,6 +66,9 @@ public class PayrollController extends HttpServlet {
 			case ADD_SALARY_COMPONENT:
 				message = commands.get(o).execute(details);
 				break;
+			case ADD_SALARY_SCHEME:
+				message = commands.get(o).execute(details);
+				break;	
 			default:
 				break;
 			}

@@ -1,7 +1,3 @@
-<script type="text/javascript">
-	loadModel();
-</script>
-
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Salary Scheme</h2>
 	<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -186,18 +182,21 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div id="componentLinknew" name="componentLinknew">
-							<p>
-								<a href="" data-toggle="modal" data-target="#addSalarycomponent"><i
-									class="glyphicon glyphicon-plus"></i> New Component</a>
-							</p>
-						</div>
-						<div id="componentLinkadd" name="componentLinkadd">
-							<p>
-								<a href=""><i class="glyphicon glyphicon-ok"></i> Add to
-									Scheme</a>
-							</p>
-						</div>
+						<!-- 						<div id="componentLinknew" name="componentLinknew"> -->
+						<!-- 							<p> -->
+						<!-- 								<a href="" data-toggle="modal" data-target="#addSalarycomponent"><i -->
+						<!-- 									class="glyphicon glyphicon-plus"></i> New Component</a> -->
+						<!-- 							</p> -->
+						<!-- 						</div> -->
+						<!-- 						<div id="componentLinkadd" name="componentLinkadd"> -->
+						<!-- 							<p> -->
+						<!-- 								<a href=""><i class="glyphicon glyphicon-ok"></i> Add to -->
+						<!-- 									Scheme</a> -->
+						<!-- 							</p> -->
+						<!-- 						</div> -->
+
+						<div id="componentLink" name="componentLink"></div>
+
 					</div>
 				</div>
 
@@ -223,8 +222,8 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-right" onclick=""
-					data-dismiss="modal">
+				<button type="button" class="btn btn-success pull-right" onclick="addSalaryscheme()"
+					data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left" onclick="">
@@ -241,23 +240,21 @@
 
 
 
-<!-- Modal Component -->
+<!-- Modal -->
 <div class="modal fade" id="addSalarycomponent" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i> Add Salary Component
+					<i class="glyphicon glyphicon-usd"></i> Add Salary Component
 				</h3>
 			</div>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="salaryComponenttype">Type</label> &nbsp;&nbsp;<span
-								id="salaryComponenttypeerror" name="salaryComponenttypeerror"
-								style="color: red; font-weight: normal !important;"></span> <select
+							<label for="salaryComponenttype">Type</label><select
 								class="form-control" id="salaryComponenttype"
 								name="salaryComponenttype"
 								onchange="setEmptyerrormessage('#salaryComponenttype','salaryComponenttypeerror','Type')">
@@ -267,7 +264,9 @@
 								<option value="Bonus">Bonus</option>
 								<option value="Deduction">Deduction</option>
 								<option value="Other">Other</option>
-							</select>
+							</select>&nbsp;&nbsp;<span id="salaryComponenttypeerror"
+								name="salaryComponenttypeerror"
+								style="color: red; font-weight: normal !important;"></span>
 						</div>
 					</div>
 				</div>
@@ -289,12 +288,29 @@
 						placeholder="" onkeypress="return isLetter(event);"></textarea>
 				</div>
 
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="salaryCurrency">Currency</label><select
+								class="form-control" id="salaryCurrency" name="salaryCurrency"
+								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
+								<option value="">--Select--</option>
+								<option value="USD">USD</option>
+								<option value="LKR">LKR</option>
+							</select>&nbsp;&nbsp;<span id="salaryCurrencyerror"
+								name="salaryCurrencyerror"
+								style="color: red; font-weight: normal !important;"></span>
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
 					<label class="radio-inline"><input type="radio"
-						name="salaryComponentamount" id="salaryComponentamount"><b>Rate</b></label>
-					<label class="radio-inline"><input type="radio"
-						name="salaryComponentamount" id="salaryComponentamount"><b>Amount</b></label>
-					<label class="radio-inline">&nbsp;&nbsp;<span
+						name="salaryComponentamount" id="salaryComponentamount"
+						value="Rate"><b>Rate</b></label> <label class="radio-inline"><input
+						type="radio" name="salaryComponentamount"
+						id="salaryComponentamount" value="Amount"><b>Amount</b></label> <label
+						class="radio-inline">&nbsp;&nbsp;<span
 						id="salaryComponentamounterror" name="salaryComponentamounterror"
 						style="color: red; font-weight: normal !important;"></span></label>
 				</div>
@@ -306,7 +322,9 @@
 								id="salaryComponentminerror" name="salaryComponentminerror"
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmin"
-								name="salaryComponentmin" placeholder="">
+								name="salaryComponentmin" placeholder=""
+								onblur="setEmptyerrormessage('#salaryComponentmin','salaryComponentminerror','Minimum Value')"
+								onkeypress="return isNumberKey(event);">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -315,7 +333,9 @@
 								id="salaryComponentmaxerror" name="salaryComponentmaxerror"
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmax"
-								name="salaryComponentmax" placeholder="">
+								name="salaryComponentmax" placeholder=""
+								onblur="setLargevalueerror('#salaryComponentmin','#salaryComponentmax','salaryComponentmaxerror');"
+								onkeypress="return isNumberKey(event);">
 						</div>
 					</div>
 				</div>
@@ -337,4 +357,3 @@
 		</div>
 	</div>
 </div>
-

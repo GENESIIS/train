@@ -86,19 +86,44 @@ function addSalarycomponent() {
 
 }
 
+function addSalaryscheme() {
+	var salarySchemetitle = $("#salarySchemetitle").val();
+	var salaryCriteria = $("#salaryCriteria").val();
+	var salarySchemedescription = $("#salarySchemedescription").val();
+
+	var jsonData = {
+		"title" : salarySchemetitle,
+		"criteria" : salaryCriteria,
+		"description" : salarySchemedescription
+	};
+
+	$.ajax({
+		type : "POST",
+		url : 'PayrollController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "ASL"
+		},
+		dataType : "json",
+		success : function(data) {
+			if (data == "Details added successfully.") {
+				alert(data);
+			}
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}
+
 function loadModel() {
-	// componentLinknew
-	// componentLinkadd
-
-	if (salaryComponent == "") {
-		document.getElementById("componentLinknew").style.visibility = "visible";
-		document.getElementById("componentLinkadd").style.visibility = "hidden";
+	var salaryComponent = $("#salaryComponent").val();
+	if (salaryComponent == "Not Found") {
+		document.getElementById("componentLink").innerHTML = '<p><a href="" data-toggle="modal" data-target="#addSalarycomponent"><i class="glyphicon glyphicon-plus"></i> New Component</a>';
 	} else if (salaryComponent == "Found") {
-		document.getElementById("componentLinknew").style.visibility = "hidden";
-		document.getElementById("componentLinkadd").style.visibility = "visible";
-	} else if (salaryComponent == "Not Found") {
-		document.getElementById("componentLinknew").style.visibility = "visible";
-		document.getElementById("componentLinkadd").style.visibility = "hidden";
+		document.getElementById("componentLink").innerHTML = '<p><a href="" ><i class="glyphicon glyphicon-ok"></i> Add to Scheme</a>';
+	} else {
+		document.getElementById("componentLink").innerHTML = '<p><a href="" data-toggle="modal" data-target="#addSalarycomponent"><i class="glyphicon glyphicon-plus"></i> New Component</a>';
 	}
-
 }
