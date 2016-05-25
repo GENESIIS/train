@@ -10,8 +10,8 @@ import com.google.gson.Gson;
  * 2016/05/16 Removed Icommand implimention.
  * 
  * **/
-public class AddEmployeeDim {
-	static Logger log = Logger.getLogger(AddEmployeeDim.class.getName());
+public class UpdateEmployee {
+	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
 
 	public int execute(int key, String employeeDetails) {
 		int status = -1;

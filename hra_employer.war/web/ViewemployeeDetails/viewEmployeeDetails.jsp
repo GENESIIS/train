@@ -80,10 +80,15 @@
 				<li class=""><a id="tabQualifications"
 					href="#tabPageQualifications" role="tab" data-toggle="tab"
 					aria-controls="qualifications" aria-expanded="false">Qualifications</a></li>
-				<li class=""><a id="tabEmployementHistory" href="">Employement
-						History</a></li>
-				<li class=""><a id="tabFamily" href="">Family Details</a></li>
-				<li class=""><a id="tabLoan" href="">Loan Details</a></li>
+				<li class=""><a id="tabEmployementHistory" href="#" role="tab"
+					data-toggle="tab" aria-controls="employementHistory"
+					aria-expanded="false">Employement History</a></li>
+				<li class=""><a id="tabFamily" href="#" role="tab"
+					data-toggle="tab" aria-controls="family" aria-expanded="false">Family
+						Details</a></li>
+				<li class=""><a id="tabLoan" href="#" role="tab"
+					data-toggle="tab" aria-controls="loan" aria-expanded="false">Loan
+						Details</a></li>
 			</ul>
 
 			<div class="tab-content">
@@ -240,16 +245,16 @@
 								<div class="row-fluid">
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Qualification
-											</label> <label class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px;">Qualification </label> <label
+											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;"
 											id="Qualification">BSc. in Information Technologies </label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">University | College | School </label> <label
-											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px;">University | College |
+											School </label> <label class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
@@ -262,8 +267,14 @@
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Started On</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
-											id="startedon">2000-02-05</label>
+											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Completed On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
 									</div>
 								</div>
 
@@ -274,13 +285,110 @@
 				<!-- 						   tabPageQualifications model end  -->
 
 
+				<div class="tab-pane fade" id="tabEmployementHistory"
+					role="tabpanel" aria-labelledby="employementHistory"
+					style="border: 1px solid #DDD;">
+					<div class="row" style="margin-left: 10px; margin-top: 20px;">
+						<div class="panel panel-default" style="width: 97.5%;">
+							<div class="panel-heading">
+								<h4>Employement History Details</h4>
+							</div>
+							<div class="panel-body">
+								<div class="row-fluid">
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Qualification </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;"
+											id="Qualification">BSc. in Information Technologies </label>
+									</div>
 
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">University | College |
+											School </label> <label class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Medium</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Started On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Completed On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
+									</div>
+								</div>
 
-
-
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 				<!-- 	tabEmployement History model end -->
+
+				<div class="tab-pane fade" id="tabfamily"
+					role="tabpanel" aria-labelledby="family"
+					style="border: 1px solid #DDD;">
+					<div class="row" style="margin-left: 10px; margin-top: 20px;">
+						<div class="panel panel-default" style="width: 97.5%;">
+							<div class="panel-heading">
+								<h4>Family Details</h4>
+							</div>
+							<div class="panel-body">
+								<div class="row-fluid">
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Qualification </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;"
+											id="Qualification">BSc. in Information Technologies </label>
+									</div>
+
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">University | College |
+											School </label> <label class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Medium</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Started On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Completed On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 				tabFamily Details End -->
 
 			</div>
 		</div>

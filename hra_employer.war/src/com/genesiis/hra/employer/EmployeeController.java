@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEducation;
 import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.AddEmployeeDim;
+import com.genesiis.hra.command.UpdateEmployee;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.model.BasicData;
@@ -45,7 +44,7 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployeeDim addEmployee = new AddEmployeeDim();
+		UpdateEmployee addEmployee = new UpdateEmployee();
 		GetDepartment department = new GetDepartment();
 		EducationData education = new EducationData();
 
@@ -65,6 +64,8 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
+		this.doPost(request, response);
 		response.setContentType("application/json");
 		String employeeDetails = request.getParameter("jsonData");
 		// log.info("employeeDetails" + employeeDetails);
@@ -97,9 +98,9 @@ public class EmployeeController extends HttpServlet {
 
 		// Method to verify it and return integer;
 		// int validTask = validator.validTaskId(task);
-		// Operation o = Operation.NO_COMMAND;
+		Operation o = Operation.NO_COMMAND;
 		// using the task i retrieve the operation o =
-		// Operation.fromString(task)
+	//	 o= Operation.fromString(task);
 
 		int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
@@ -108,7 +109,7 @@ public class EmployeeController extends HttpServlet {
 			switch (validTask) {
 			case 2:
 
-				AddEmployeeDim dim = (AddEmployeeDim) hmap.get(1);
+				UpdateEmployee dim = (UpdateEmployee) hmap.get(1);
 				if ((dim.execute(Operation.ADD_EDU_DETAILS.getValue(), details)) == 3) {
 					message = MessageList.ADDED.message();
 				}
