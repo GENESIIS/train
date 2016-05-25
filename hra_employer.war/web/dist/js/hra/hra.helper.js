@@ -365,7 +365,7 @@ function addEmployeeHistoryDetails() {
  * **/
 /***************** START ADD MEDICAL HISTORY *************************/
 function addMedicalHistoryDetails() {
-	$("#employeeId").val("7");
+
 	var employeeId 				= $("#employeeId").val();
 	var employeeAilment 		= $("#employeeAilment").val();
 	var ailmentDescription 		= $("#ailmentDescription").val();
@@ -395,8 +395,7 @@ function addMedicalHistoryDetails() {
 		success : function(data) {
 			alert(data);
 			if (data == "Details added successfully.") {
-				clearEmployeementHisory();
-//				document.getElementById("moredetails").disabled = false;
+				clearMedicalHisory();
 			}
 		},
 		error : function(e) {
@@ -491,7 +490,16 @@ function clearEmployeementHisory() {
 	$("#ehReferencetwodesignation").val("");
 
 }
+function clearMedicalHisory() {
+	
+	//$("#employeeId").val("");
+	$("#employeeAilment").val("");
+	$("#ailmentDescription").val("---SELECT---");
+	$("#reportDescription").val("");
+	$("#input-6").val("");
 
+
+}
 
 
 

@@ -1,5 +1,13 @@
 <script type="text/javascript">
 
+$(document).on('ready', function() {
+    $("#input-6").fileinput({
+        showUpload: false,
+        maxFileCount: 10,
+        mainClass: "input-group-lg"
+    });
+});
+
 	function isNumber(evt) {
 	    evt = (evt) ? evt : window.event;
 	    var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -10,19 +18,6 @@
 	}
 	
 </script>
-
-
-<script>
-$(document).on('ready', function() {
-    $("#input-6").fileinput({
-        showUpload: false,
-        maxFileCount: 10,
-        mainClass: "input-group-lg"
-    });
-});
-</script>
-
-
 
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -116,6 +111,58 @@ $(document).on('ready', function() {
 <!-- 				</button> -->
 
 				
+			</div>
+
+			
+
+				<script type="text/javascript">
+				  
+						function Add(){
+
+							var employeeId 				= $("#employeeId").val();
+							var employeeAilment 		= $("#employeeAilment").val();
+							var ailmentDescription 		= $("#ailmentDescription").val();
+							var reportDescription 		= $("#reportDescription").val();
+							var reportUpload 			= $("#reportUpload").val();
+							
+							var ehReferencemodby= $("#ehReferencemodby").val();
+							
+							
+							$("#tblData tbody").append(
+								"<tr>"+
+								"<td>"+employeeId+"</td>"+
+								"<td>"+employeeAilment+"</td>"+
+								"<td>"+ailmentDescription+"</td>"+
+								"<td>"+reportDescription+"</td>"+
+								"<td>"+reportUpload+"</td>"+
+								"<td>"+ehReferencemodby+"</td>"+
+								
+								"<td><img src='images/disk.png' class='btnSave'></td>"+
+								"<td><img src='images/delete.png' class='btnDelete'/></td>"+
+								
+								"</tr>");
+							
+// 								$(".btnSave").bind("click", Save);		
+// 								$(".btnDelete").bind("click", Delete);
+						};
+				
+				</script>
+				
+				
+				<div class="modal-footer">
+				<button id="btnAddd" onclick="Add();" > New </button>
+					<table id="tblData">			
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Phone</th>
+								<th>Email</th>
+								<th>Operation</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 			</div>
 
 		</div>

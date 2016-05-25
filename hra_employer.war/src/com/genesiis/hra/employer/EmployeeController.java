@@ -62,7 +62,7 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// Leave as empty
+		this.doPost(request, response);
 	}
 
 	/**
@@ -72,24 +72,21 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		log.info("------------------1----------------------");
-		String medicalHistoryJson 		= request.getParameter("jsonData");// Method to verify it and return details set;
-		log.info("-------------2----------------"+medicalHistoryJson);
-		String task 					= request.getParameter("task");//json data from jquery for task identification
-		log.info("-----------3----------------"+task);
-		String message 					= "";
-		Operation o						= null;
 		
-		DataValidator validator = new DataValidator();
-		int validTask = validator.validTaskId(task);
-		System.out.println("4"+validTask);
+		String formData = request.getParameter("jsonData");// Method to verify it and return details set;
+		
+		String task = request.getParameter("task");//json data from jquery for task identification
+		
+		String message = "";
+		Operation o	= null;
+		
+		o = Operation.fromString(task);
 		
 		
 		
-		switch (validTask) {
+		switch (o) {
 		case 10:
 			o = Operation.ADD_MEDICAL_HISTORY;
-			System.out.println("4"+o);
 			break;
 		default:
 			break;
@@ -106,7 +103,7 @@ public class EmployeeController extends HttpServlet {
 			switch (operationValue) {
 
 			case 7:
-				message = commands.get(o).execute(medicalHistoryJson);
+				message = commands.get(o).execute(formData);
 				writeResponse(message, response);
 				break;
 			default:

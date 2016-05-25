@@ -28,9 +28,9 @@ public class AddMedicalHistory implements ICommand{
 			MedicalHistory medicalHistory = (MedicalHistory) extractFromJason(gsonData);
 
 			// Only a valid object will added to the database.
-			String hasError = medicalHistory.isValidED(medicalHistory);
+			String hasError = medicalHistory.isValidObject(medicalHistory);
 			
-			if (hasError=="success") {
+			if (hasError=="pass") {
 				
 				//adding medical history to database table
 				int hasInserted = medicalHistory.add(medicalHistory);
