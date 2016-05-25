@@ -17,6 +17,10 @@ function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 }
 
+function loadBasicTable() {
+	$("#basicTable").load("TableDetail/serchBasic.jsp");
+}
+
 // Only for Sprint -1 demo.
 function deleteAlert() {
 	alert("Data Deleted Successfully.");

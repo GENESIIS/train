@@ -8,19 +8,15 @@
 
 <script type="text/javascript">
 	//To load the Datatable
-	$(document).ready(function() {		
-	
-} );
-	eTable = $('#employeeDetails').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-	$('#serchEmployeeText').keyup(function(){
-	      eTable.search($(this).val()).draw() ;
-	});
+	$(document).ready(function() {	
+		loadBasicTable()
+} );	
 	
 </script>
+	
 
-
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h2 class="sub-header">Employee Management</h2>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+<h2 class="sub-header">Employee Management</h2>
 
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addEmployeedetails" onclick="disableButton()">
@@ -29,57 +25,11 @@
 
 
 	<br></br>
-	<div class="table-responsive">	
-	<br></br>	
-	<div class="table-responsive">	
-	<button type="button" class="btn btn_default" onclick = "serchEmployee()" value="Search">	
+<input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">
+<button type="button" class="btn btn_default" onclick = "serchEmployee()" value="Search">	
 	</button>
-	<input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">	
-		<table id="employeeDetails"
-			class="table table-striped table-bordered table-responsive"
-			cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>Employee Number</th>
-					<th>Employee Name</th>
-					<th>Designation</th>
-					<th>Contact Details</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th>Employee Number</th>
-					<th>Employee Name</th>
-					<th>Designation</th>
-					<th>Contact Details</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-			</tfoot>
-			<tbody>
-				<tr>					
-					<!-- <td align="center"><button type="button" class="btn btn-info"
-							data-toggle="modal" data-target="#viewEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-modal-window"></i>
-						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-warning" data-toggle="modal"
-							data-target="#editEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-edit"></i>
-						</button></td>
-					<td align="center"><button type="button"
-							class="btn btn-danger" data-toggle="modal"
-							data-target="#deleteEmployeeDetailsForm">
-							<i class="glyphicon glyphicon-trash"></i>
-						</button></td> -->
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div id = "basicTable">
+</div>
 </div>
 
 <!-- Modal -->

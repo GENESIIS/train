@@ -45,7 +45,7 @@ var dataSet = [
 function serchEmployee() {
 	var serchContent = $("#serchEmployeeText").val();
 	
-	$.ajax({ 
+	var bodyContent  = $.ajax({ 
 		type : "POST",
 		url : 'EmployeeController',
 		data : {
@@ -55,9 +55,9 @@ function serchEmployee() {
 		},
 		dataType : "json",
 		contentType :"application/json ",
-		success : function(data) {
-			alert(data);
-			listEmployee(data);			
+		success : function(responseText) {
+			alert("ajax"+responseText);			
+			listEmployee(responseText);			
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -66,33 +66,47 @@ function serchEmployee() {
 	});
 } 
 
-function listEmployee(empData) {
-	//$.get("EmployerController", function(data, status) {		
+function listEmployee(empData) {		
 			json = JSON.parse(empData);			
-			alert(json);		
-			$('#employeeDetails').DataTable( {data : dataSet,}/*{		                
+			alert("list"+json.employeeName);	
+			/* editor = new $.fn.dataTable.Editor( {
+			        ajax: "json",
+			        table: "#employeeDetails",
+			        fields: [ {
+			                label: "employeeId:",
+			                name: "employeeId"
+			            }, {
+			                label: "employeeName:",
+			                name: "employeeName"
+			            }, {
+			                label: "employeeDesignation:",
+			                name: "employeeDesignation"
+			            }, {
+			                label: "employeeMobile:",
+			                name: "employeeMobile"
+			            }, 
+			        ]
+			    } );*/
+			$('#employeeDetails').DataTable({
+				//"data": empData
+				data : json.employeeName,
 		        columns: [ 
+                          {
+                              data: "name",
+                              className: "center"	                     
+                          },
 		                  {
-		                      data: "1",
-		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-		                  },
-		                  
-		                  {
-		                      data: json.employeeName,
-		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-		                  },
+		                      data: json.employeeId,
+		                      className: "center"	                      
+		                  },		                  
 		                  
 		                  {
 		                      data: json.employeeDesignation,
-		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                      className: "center"
 		                  },
 		                  {
 		                      data: json.employeeMobile,
-		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                      className: "center"		                    
 		                  },
 		                          
 		                  {
@@ -112,7 +126,11 @@ function listEmployee(empData) {
 		                  }
 		              ]  
 		      
-		    }*/ );
-	//});
+		    } );
 	
 }
+
+eTable = $('#employeeDetails').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+$('#serchEmployeeText').keyup(function(){
+      eTable.search($(this).val()).draw() ;
+});
