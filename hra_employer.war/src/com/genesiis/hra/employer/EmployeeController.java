@@ -17,6 +17,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.AddMedicalHistory;
+import com.genesiis.hra.command.AddMedicalReport;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.ICommand;
@@ -55,6 +56,7 @@ public class EmployeeController extends HttpServlet {
 		// initialize the commands
 		commands = new HashMap<Operation, ICommand>();
 		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());// MEDICAL_HISTORY==7
+		commands.put(Operation.ADD_MEDICAL_REPORT, new AddMedicalReport());// MEDICAL_REPORT==10
 	}
 
 	/**
@@ -72,37 +74,36 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String formData = request.getParameter("jsonData");// Method to verify
-															// it and return
-															// details set;
-		String task = request.getParameter("task");// json data from jquery for
-													// task identification
-
+		// Get the retrieve the operation from the task . initialization only
+		Operation operation = Operation.BAD_OPERATION;
+				
+		String details = request.getParameter("jsonData");
+		String task = request.getParameter("task");
 		String message = "";
-		Operation o = Operation.fromString("ADD_MEDICAL_HISTORY");
 
-		int value = o.getValue();
+		operation = Operation.getOperation(task);
+
+		Gson gson = new Gson();
 
 		try {
-			switch (value) {
-			case 1:
-				/** add your code here **/
+			switch (operation) {
+			case ADD_MEDICAL_HISTORY:
+				message = commands.get(operation).execute(details);
 				break;
-
-			case 7:
-				message = commands.get(o).execute(formData);
-				writeResponse(message, response);
+			case ADD_MEDICAL_REPORT:
+				message = commands.get(operation).execute(details);
 				break;
 			default:
 				break;
 			}
 
-		} catch (Exception exception) {
-			writeResponse(MessageList.FAILED_TO_CREATE.message(), response);
-			log.error("Exception: EmployeeController" + exception);
+		} catch (Exception e) {
+			// Client see an error from here
+			message = MessageList.ERROR.message();
+			log.error("Payroll Controloler Error. " + e);
 		}
-
-		response.getWriter().close();
+		
+		writeResponse(gson.toJson(message), response);
 	}
 
 	private void writeResponse(String insertedSuccess,HttpServletResponse response) {

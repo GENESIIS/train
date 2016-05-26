@@ -24,10 +24,7 @@ function loadContentBackGroundDetails() {
 	$("#mainContent").load("backgroundDetails.jsp");
 };
 
-// Only for Sprint -1 demo.
-function deleteAlert() {
-	alert("Data Deleted Successfully.");
-}
+
 
 function addedAlert() {
 	// document.getElementById("moredetails").disabled = false;

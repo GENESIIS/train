@@ -31,77 +31,71 @@ public class MedicalHistory extends Employee {
 	private String medicalHistorycrtby;
 	private String medicalHistorycrton;
 
-	public String getMedicalHistorycode() {
+	public String getMedicalhistorycode() {
 		return medicalHistorycode;
 	}
 
-	public void setMedicalHistorycode(String medicalHistorycode) {
+	public void setMedicalhistorycode(String medicalHistorycode) {
 		this.medicalHistorycode = medicalHistorycode;
 	}
 
-	public String getMedicalHistoryemployeeid() {
+	public String getMedicalhistoryemployeeid() {
 		return medicalHistoryemployeeid;
 	}
 
-	public void setMedicalHistoryemployeeid(String medicalHistoryemployeeid) {
+	public void setMedicalhistoryemployeeid(String medicalHistoryemployeeid) {
 		this.medicalHistoryemployeeid = medicalHistoryemployeeid;
 	}
 
-	public String getMedicalHistoryailment() {
+	public String getMedicalhistoryailment() {
 		return medicalHistoryailment;
 	}
 
-	public void setMedicalHistoryailment(String medicalHistoryailment) {
+	public void setMedicalhistoryailment(String medicalHistoryailment) {
 		this.medicalHistoryailment = medicalHistoryailment;
 	}
 
-	public String getMedicalHistorydescription() {
+	public String getMedicalhistorydescription() {
 		return medicalHistorydescription;
 	}
 
-	public void setMedicalHistorydescription(String medicalHistorydescription) {
+	public void setMedicalhistorydescription(String medicalHistorydescription) {
 		this.medicalHistorydescription = medicalHistorydescription;
 	}
 
-	public String getMedicalHistorymodby() {
+	public String getMedicalhistorymodby() {
 		return medicalHistorymodby;
 	}
 
-	public void setMedicalHistorymodby(String medicalHistorymodby) {
+	public void setMedicalhistorymodby(String medicalHistorymodby) {
 		this.medicalHistorymodby = medicalHistorymodby;
 	}
 
-	public String getMedicalHistorymodon() {
+	public String getMedicalhistorymodon() {
 		return medicalHistorymodon;
 	}
 
-	public void setMedicalHistorymodon(String medicalHistorymodon) {
+	public void setMedicalhistorymodon(String medicalHistorymodon) {
 		this.medicalHistorymodon = medicalHistorymodon;
 	}
 
-	public String getMedicalHistorycrtby() {
+	public String getMedicalhistorycrtby() {
 		return medicalHistorycrtby;
 	}
 
-	public void setMedicalHistorycrtby(String medicalHistorycrtby) {
+	public void setMedicalhistorycrtby(String medicalHistorycrtby) {
 		this.medicalHistorycrtby = medicalHistorycrtby;
 	}
 
-	public String getMedicalHistorycrton() {
+	public String getMedicalhistorycrton() {
 		return medicalHistorycrton;
 	}
 
-	public void setMedicalHistorycrton(String medicalHistorycrton) {
+	public void setMedicalhistorycrton(String medicalHistorycrton) {
 		this.medicalHistorycrton = medicalHistorycrton;
 	}
 
-	public HashMap<Integer, String> getDeclaredFields() {
-		HashMap<Integer, String> declarMap = new HashMap<Integer, String>();
-		declarMap.put(1, this.medicalHistoryemployeeid);
-		declarMap.put(2, this.medicalHistoryailment);
-		declarMap.put(3, this.medicalHistorydescription);
-		return declarMap;
-	}
+	
 
 	/**
 	 * @param mh
@@ -114,17 +108,17 @@ public class MedicalHistory extends Employee {
 		int insertStatus = -1;// fires when valid insert
 		Connection conn = null;// fires when connecting to database
 		PreparedStatement ps = null;
-		MedicalHistory mh = (MedicalHistory) object;
+		MedicalHistory medicalHistory = (MedicalHistory) object;
 
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 
-			ps.setString(1, mh.getMedicalHistoryemployeeid());
-			ps.setString(2, mh.getMedicalHistoryailment());
-			ps.setString(3, mh.getMedicalHistorydescription());
-			ps.setString(4, mh.getMedicalHistorymodby());
-			ps.setString(5, mh.getMedicalHistorycrtby());
+			ps.setString(1, medicalHistory.getMedicalhistoryemployeeid());
+			ps.setString(2, medicalHistory.getMedicalhistoryailment());
+			ps.setString(3, medicalHistory.getMedicalhistorydescription());
+			ps.setString(4, medicalHistory.getMedicalhistorymodby());
+			ps.setString(5, medicalHistory.getMedicalhistorycrtby());
 
 			int rowsInserted = ps.executeUpdate();
 			log.info("rowsInserted"+rowsInserted);
@@ -136,8 +130,8 @@ public class MedicalHistory extends Employee {
 			
 			try  {
 	            if (ss.next()) {
-	            	mh.setMedicalHistoryemployeeid(ss.getString(1));
-	            	log.info("----mh---"+mh.getMedicalHistoryemployeeid());
+	            	medicalHistory.setMedicalhistoryemployeeid(ss.getString(1));
+	            	log.info("----mh---"+medicalHistory.getMedicalhistoryemployeeid());
 	            }
 	            else {
 	                throw new SQLException("Creating user failed, no ID obtained.");
@@ -197,11 +191,11 @@ public class MedicalHistory extends Employee {
 		MedicalHistory edu = (MedicalHistory) object;
 
 		int vall = 0;
-		if (val.isValidString(edu.getMedicalHistoryemployeeid()) != true)
+		if (val.isValidString(edu.getMedicalhistoryemployeeid()) != true)
 			vall |= 0x1;
-		if (val.isValidString(edu.getMedicalHistoryailment()) != true)
+		if (val.isValidString(edu.getMedicalhistoryailment()) != true)
 			vall |= 0x2;
-		if (val.isValidString(edu.getMedicalHistorydescription()) != true)
+		if (val.isValidString(edu.getMedicalhistorydescription()) != true)
 			vall |= 0x3;
 
 		switch (vall) {
@@ -211,18 +205,15 @@ public class MedicalHistory extends Employee {
 			break;
 
 		case 1: // User Ok, pass too short
-			log.info("getMedicalHistory employee id not valid");
-			messagetxt = "getMedicalHistory employee id not valid";
+			messagetxt = "Medical History Employee id not valid";
 			break;
 
 		case 2: // User too short, pass ok
-			log.info("getMedicalHistory ailment not valid");
-			messagetxt = "getMedicalHistory ailment not valid";
+			messagetxt = "Medical History Ailment not valid";
 			break;
 
 		case 3: // Both Ok
-			log.info("getMedicalHistory description not valid");
-			messagetxt = "getMedicalHistory description not valid";
+			messagetxt = "Medical History Description not valid";
 			break;
 
 		}

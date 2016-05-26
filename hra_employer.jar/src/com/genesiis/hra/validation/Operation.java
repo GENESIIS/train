@@ -2,30 +2,27 @@ package com.genesiis.hra.validation;
 
 public enum Operation {
 
-	// For the time being
-	BASIC_DATA(1) , 
-	FAMILY_MEMBER(2) , 
-	ADD_EDU_DETAILS(3) , 
-	STUDY_PROGRAM(4) , 
-	LOAN(5), 
-	EMPLOYMENT_HISTORY(6) , 
-	ADD_MEDICAL_HISTORY(7), //add medical history data to database
-	GET_AILMENT_TYPES(8),//populate ailment type drop down	
-	EMPLOYEE(9),
-	NO_COMMAND(-1);
+	// For the time being 
+	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
+	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
+	BAD_OPERATION("BO");
 
-	private final int value;
+	private final String value;
 
-	Operation(final int newValue) {
-		value = newValue;
+	Operation(String newValue) {
+		this.value = newValue;
 	}
 
-	public int getValue() {
+	public String getValue() {
 		return value;
 	}
-
-	public static Operation fromString(String task) {
-		return Operation.valueOf(task);
+	
+	public static Operation getOperation(String o){		
+		for(Operation op : values()){
+			if(op.getValue().equalsIgnoreCase(o))
+				return op;			
+		}		
+		return BAD_OPERATION;
 	}
 
 }

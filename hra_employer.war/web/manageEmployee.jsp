@@ -292,7 +292,7 @@
 					<i class="glyphicon glyphicon-user">More Employee Details</i>
 				</h3>
 			</div>
-			<div class="modal-body" onload="ready()">
+			<div class="modal-body" >
 
 				<div class="btn-group btn-group-justified">
 					<a id="btnEduDat" href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 

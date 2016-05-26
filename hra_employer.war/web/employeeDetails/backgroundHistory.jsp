@@ -78,18 +78,13 @@ th#tbldelete {
 			</div>
 			
 			
-<!-- 			<div class="modal-footer"> -->
-			
+<!-- 			<div class="modal-footer"> -->		
 <!-- 				<button type="button" class="btn btn-success full pull-right" id="btnAddd" onclick="Add();"> -->
 <!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Add -->
 <!-- 				</button> -->
-
 <!-- 			</div> -->
-
-<!-- 				<div class="modal-footer table-responsive"> -->
-				
-<!-- 					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size:small;">			 -->
-						
+<!-- 				<div class="modal-footer table-responsive"> -->			
+<!-- 					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size:small;">			 -->				
 <!-- 						<thead> -->
 <!-- 							<tr> -->
 <!-- 								<th id="t012">Employee Id</th> -->
@@ -101,13 +96,9 @@ th#tbldelete {
 <!-- 								<th id="tbledit" >Edit</th> -->
 <!-- 								<th id="tbldelete">Delete</th> -->
 <!-- 							</tr> -->
-<!-- 						</thead> -->
-						
-<!-- 						<tbody> -->
-							
-<!-- 						</tbody> -->
-						
-						
+<!-- 						</thead> -->					
+<!-- 						<tbody> -->							
+<!-- 						</tbody> -->					
 <!-- 						<tfoot> -->
 <!-- 						<tr> -->
 <!-- 								<th id="t012">Employee Id</th> -->
@@ -119,8 +110,7 @@ th#tbldelete {
 <!-- 								<th id="tbledit">Edit</th> -->
 <!-- 								<th id="tbldelete">Delete</th> -->
 <!-- 							</tr> -->
-<!-- 						</tfoot> -->
-						
+<!-- 						</tfoot> -->				
 <!-- 					</table> -->
 <!-- 			</div> -->
 
@@ -130,8 +120,13 @@ th#tbldelete {
 				<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >
 				
 				<!-- SAVE -->
-				<button type="button" class="btn btn-success full pull-right" onclick="addMedicalHistoryDetails();">
+				<button type="button" class="btn btn-success full pull-right" onclick="addMedicalhistorydetails(); ">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save 
+				</button>
+				
+				<!-- SAVE 2-->
+				<button type="button" class="btn btn-success full pull-right" onclick="loadTestDetails(); ">
+					<i class="glyphicon glyphicon-floppy-disk"></i> TEST Save 
 				</button>
 				
 				<!-- CLEAR -->

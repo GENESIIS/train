@@ -33,8 +33,6 @@
 <script src="dist/js/hra/hra.medicalhistory.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
 
-<script src="dist/js/hra/jquery.form.js"></script>
-<script src="dist/js/hra/jquery.js"></script>
 
 <style type="text/css">
 /* label { */
@@ -98,7 +96,6 @@ select {
 					<li>Configuration</li>
 					<li><a href="#" onclick="loadContentEmployee()">- Employee</a></li>
 					<li><a href="#" onclick="loadContentDepartment()">-	Department</a></li>
-					<li><a href="#" onclick="loadContentBackGroundDetails()">- Background Details</a></li>
 				</ul>
 			</div>
 

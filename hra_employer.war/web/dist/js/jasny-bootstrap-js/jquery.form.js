@@ -10,10 +10,6 @@
  */
 /*global ActiveXObject */
 
-/***
- * @TR use for multipart file upload
- * **/
-
 // AMD support
 (function (factory) {
     "use strict";
