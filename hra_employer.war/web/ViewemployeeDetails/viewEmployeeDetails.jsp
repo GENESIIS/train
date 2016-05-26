@@ -350,36 +350,35 @@
 								<div class="row-fluid">
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Qualification </label> <label
+											style="font-size: 13px;">Relationship </label> <label
 											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;"
-											id="Qualification">BSc. in Information Technologies </label>
+											id="relationship">Singel</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">University | College |
-											School </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+											style="font-size: 13px;">Relation Date of birth </label> <label class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="relationDateofbirth">relationDateofbirth</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Medium</label> <label
+											style="font-size: 13px;">Relation Name</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+											style="font-size: 13px; font-weight: bold;" id="relationName">relationName</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;"> Started On</label> <label
+											style="font-size: 13px;"> Occupation</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+											style="font-size: 13px; font-weight: bold;" id="occupation">occupation</label>
 									</div>
 									<hr>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;"> Completed On</label> <label
+											style="font-size: 13px;"> WorkingPlace</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
+											style="font-size: 13px; font-weight: bold;" id="workingPlace">workingPlace</label>
 									</div>
 								</div>
 

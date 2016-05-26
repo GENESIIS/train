@@ -581,36 +581,100 @@ function EditEducationDetails() {
 	});
 }
 
-// /////////////// load employee details///////////////
+// /////////////// load employee education details///////////////
 
 function loadEducationDetails() {
 
-	var jsonData = "1";
-	
-	
-	$.getJSON('EmployeeController', {
-		jsonData : JSON.stringify(jsonData),
-		task : "FIND"
-	}, function(data) {
-		json = JSON.parse(data);
-		alert(data);
-		//$("#employeeId").val(json.employeeEpf);
-		$("#qualificationName").text(json.eduQualification);
-		$("#educatedPlace").test(json.eduUniversity);
-		$("#mediumStudied").text(json.eduMedium);
-		$("#startedOn").text(json.eduStartedon);
-		$("#compleatedOn").html(json.eduCompltedon);
+	var serchContent = "1";
 
-		if (json.eduStudytime == 1) {
-			document.getElementById("weekdays").checked;
-			document.getElementById("weekends").checked;
-		} else if (json.eduStudytime == 2) {
-			document.getElementById("weekdays").checked;
-		} else if (json.eduStudytime == 3) {
-			document.getElementById("weekends").checked;
-		} else {
-			// do nothing
+	var jsonData = {
+		"serchContent" : serchContent
+	};
+	alert("ajax" + serchContent), $.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			serchVlaue : serchContent,
+			task : "EDU"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+			alert(responseText);
+			$("#employeeId").val(responseText.employeeEpf);
+			$("#qualificationName").text(responseText.eduQualification);
+			$("#educatedPlace").test(responseText.eduUniversity);
+			$("#mediumStudied").text(responseText.eduMedium);
+			$("#startedOn").text(responseText.eduStartedon);
+			$("#compleatedOn").text(responseText.eduCompltedon);
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
 		}
 	});
 
+	// $.getJSON('EmployeeController', {
+	// jsonData : JSON.stringify(jsonData),
+	// task : "FIND"
+	// }, function(data) {
+	// json = JSON.parse(data);
+	// alert(data);
+	// $("#employeeId").val(json.employeeEpf);
+	// $("#qualificationName").text(json.eduQualification);
+	// $("#educatedPlace").test(json.eduUniversity);
+	// $("#mediumStudied").text(json.eduMedium);
+	// $("#startedOn").text(json.eduStartedon);
+	// $("#compleatedOn").html(json.eduCompltedon);
+	//
+	// if (json.eduStudytime == 1) {
+	// document.getElementById("weekdays").checked;
+	// document.getElementById("weekends").checked;
+	// } else if (json.eduStudytime == 2) {
+	// document.getElementById("weekdays").checked;
+	// } else if (json.eduStudytime == 3) {
+	// document.getElementById("weekends").checked;
+	// } else {
+	// // do nothing
+	// }
+	// });
+
+}
+
+// /////load family Details//////
+
+function loadFamilyDetails() {
+	var serchContent = "1";
+
+	var jsonData = {
+		"serchContent" : serchContent
+	};
+	alert("ajax" + serchContent), $.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			serchVlaue : serchContent,
+			task : "FAM"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+			alert(responseText);
+			$("#relationship").val(responseText.fmRelationship);
+			$("#relationDateofbirth").text(responseText.fmDateofbirth);
+			$("#relationName").test(responseText.fmName);
+			$("#occupation").text(responseText.fmOccupation);
+			$("#workingPlace").text(responseText.fmWorkingplace);
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
 }

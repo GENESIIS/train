@@ -2,6 +2,7 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -69,7 +70,25 @@ public class EmployeeCrudJDBC extends Employee {
 		return -1;
 	}
 
-
+	@Override
+	public String getEmployee(int employeeId) {
+		
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		EmployeeCrudJDBC emp = new EmployeeCrudJDBC();
+		String employeeDetails = null;
+		Gson gson = new Gson();
+		
+		conn = ConnectionManager.getConnection();
+		preparedStatement = conn
+				.prepareStatement("SELECT * FROM [HRA.EMPLOYEE] WHERE ID=?");
+		preparedStatement.setInt(1, employeeId);
+		ResultSet res = preparedStatement.executeQuery();
+		if (res.next()) {
+			emp.setEmployeeepf(res.getString(2));
+		
+		}
+	}
 
 	@Override
 	public List<Object> getAll() {
@@ -93,28 +112,28 @@ public class EmployeeCrudJDBC extends Employee {
 		String message = "";
 
 		if (!validator.isValidString(employee.getEmployeeid())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
+			message = message + MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isValidString(employee.getEmployeename())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
+			message = message + MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isValidNic(employee.getEmployeenic())) {
-			message = message + MessageList.NICERROR.message() +" ";
+			message = message + MessageList.NICERROR.message() + " ";
 		}
 		if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
+			message = message + MessageList.EMPTYFIELD.message() + " ";
 		}
 		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
-			message = message + MessageList.INVALIDBIRTDAY.message() +" ";
+			message = message + MessageList.INVALIDBIRTDAY.message() + " ";
 		}
 		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
-			message = message + MessageList.MOBILENUMBERERROR.message() +" ";
+			message = message + MessageList.MOBILENUMBERERROR.message() + " ";
 		}
 		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
-			message = message + MessageList.PHONENUMBERERROR.message() +" ";
+			message = message + MessageList.PHONENUMBERERROR.message() + " ";
 		}
 		if (!validator.isValidemail(employee.getEmployeeemail())) {
-			message = message + MessageList.EMAILERROR.message() +" ";
+			message = message + MessageList.EMAILERROR.message() + " ";
 		}
 		return message;
 	}

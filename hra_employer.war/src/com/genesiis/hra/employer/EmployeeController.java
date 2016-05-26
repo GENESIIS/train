@@ -111,26 +111,30 @@ public class EmployeeController extends HttpServlet {
 		Operation o = Operation.BAD_OPERATION;
 		// using the task i retrieve the operation o =
 		o = Operation.getOperation(task);
-
+		log.info(task + details + "......");
+		log.info(o + ".");
 		// int validTask = validator.validTaskId(task);
 		Gson gson = new Gson();
 		try {
 			switch (o) {
 			case ADD_EDU_DETAILS:
 				message = commands.get(o).execute(details);
+				log.info("Search Educational details");
 				break;
 			case FAMILY_MEMBER:
 				message = commands.get(o).execute(details);
+				log.info("Search family details");
 				break;
 			default:
 				break;
 			}
 		} catch (Exception e) {
-			message = MessageList.ERROR.message();
-			log.error("Employee Controloler error " + e);
+			message = MessageList.FAILED_TO_CREATE.message();
+			log.error("Exception: EmployeeController" + e);
+			response.getWriter().write(gson.toJson(message));
 		}
 
-		writeResponse(gson.toJson(message), response);
+		response.getWriter().close();
 		// try {
 		// switch (validTask) {
 		// case 2:
