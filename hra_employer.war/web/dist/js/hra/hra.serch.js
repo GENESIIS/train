@@ -44,92 +44,59 @@ var dataSet = [
 
 function serchEmployee() {
 	var serchContent = $("#serchEmployeeText").val();
-	
-	var bodyContent  = $.ajax({ 
+	var jsonData = {
+		"serchContent" : serchContent
+	};
+	alert("ajax"+serchContent),
+	$.ajax({
 		type : "POST",
 		url : 'EmployeeController',
 		data : {
-			jsonData : " ",
+			jsonData : JSON.stringify(jsonData),
 			serchVlaue : serchContent,
-			task : "SERCH_EMPLOYEE"
+			task : "SE"
 		},
 		dataType : "json",
-		contentType :"application/json ",
-		success : function(responseText) {
-			alert("ajax"+responseText);			
-//			listEmployee(responseText);		
-			json = JSON.parse(responseText);	
-			
+		success : function(data) {
+			alert("ajax"+responseText);
+			json = JSON.parse(responseText);			
 			$('#employeeDetails').DataTable({
-//				"data": responseText,
-				"ajax": "EmployeeController",
+//				"data": responseText,				
 				"aaData": [
-				           {
-				               "DT_RowId": "row_7",
-				               "DT_RowClass": "gradeA",
-				               "0": json.employeeId,
-				               "1": json.employeeName,
-				               "2": "Win 98+ / OSX.2+",
-				               "3": "1.7",
-				               "4": "A"
-				           },
-				           {
-				               "DT_RowId": "row_8",
-				               "DT_RowClass": "gradeA",
-				               "0": "Gecko",
-				               "1": "Firefox 1.5",
-				               "2": "Win 98+ / OSX.2+",
-				               "3": "1.8",
-				               "4": "A"
-				           }
-				           ]
-//				"aoColumns": [ 
-//                          {
-//                        	  "title": "employeeEpf"
-//                              //className: "center"	                     
-//                          },
-//		                  {
-//                        	  "title": "employeeEpf"
-//		                      //className: "center"	                      
-//		                  },		                  
-//		                  
-//		                  {
-//		                	  "title": "employeeDesignation"
-//		                     // className: "center"
-//		                  },
-//		                  {
-//		                	  "title": "employeeMobile"
-//		                      //className: "center"		                    
-//		                  },
-//		                          
-//		                  {
-//		                      data: null,
-//		                      className: "center",
-//		                      defaultContent: '<a href="" class="editor_edit">Add</a>'
-//		                  },
-//		                  {
-//		                      data: null,
-//		                      className: "center",
-//		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
-//		                  },
-//		                  {
-//		                      data: null,
-//		                      className: "center",
-//		                      defaultContent: '<a href="" class="editor_edit">Delete</a>'
-//		                  }
-//		              ]  
-		      
-		    } );
-			
-			
-			
-			
+                            responseText
+				           ]	      
+		    } );	
 		},
 		error : function(e) {
 			alert("Error " + e);
 			console.log(e);
 		}
 	});
+	/*$.ajax({ 
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			serchVlaue : serchContent,
+			task : "SE"
+		},
+		dataType : "json",
+		contentType :"application/json ",
+		success : function(responseText) {
+			alert("ajax"+responseText);
+			json = JSON.parse(responseText);			
+			$('#employeeDetails').DataTable({
+//				"data": responseText,				
+				"aaData": [
+                            responseText
+				           ]	      
+		    } );			
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});*/
 } 
 
 function listEmployee(empData) {		

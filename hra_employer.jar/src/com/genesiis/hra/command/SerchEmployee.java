@@ -17,28 +17,16 @@ import com.google.gson.Gson;
 public class SerchEmployee implements ICommand {
 static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	@Override
-	public String execute(String emplIdenti) throws ParseException {
+	public String execute(String keyWord) throws ParseException {
 		// TODO Auto-generated method stub
 		 String message = "";
 		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
 		 Employee  empList = null ;
-		 try {
-			 switch (2/*validateFind(emplIdenti)*/) {
-			case 1:
-				  empList = (Employee) employeeManager.find(emplIdenti);
-				break; 
-			case 2: 
-				  empList = (Employee) serchEmployeeManager.find(1);
-				  loger.info("execute -----------------------------------------------------");
-				break;
-			case 3:
-				  empList = (Employee) serchEmployeeManager.find(emplIdenti);
-				break;
-
-			default:
-				break;				
-			}			
+		 try {			
+				  empList = (Employee) serchEmployeeManager.find(keyWord);
+				  loger.info("execute -----------------------------------------------------");								
+					
 		} catch (Exception e) {
 			// TODO: handle exception
 			loger.info(e.toString());

@@ -22,8 +22,6 @@
 		data-target="#addEmployeedetails" onclick="disableButton()">
 		<i class="glyphicon glyphicon-plus"></i> New Employee
 	</button>
-
-
 	<br></br>
 <input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">
 <button type="button" class="btn btn_default" onclick = "serchEmployee()" value="Search">	
