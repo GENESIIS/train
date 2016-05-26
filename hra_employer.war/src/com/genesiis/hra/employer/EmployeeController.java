@@ -78,7 +78,7 @@ public class EmployeeController extends HttpServlet {
 		o = Operation.getOperation(task);
 		log.info(task +serchVlaue+ details+ "............................................");
 		log.info(o + "............................................");
-		try {
+		try { 
 			switch (o) {
 			
 			 case SERCH_EMPLOYEE:					

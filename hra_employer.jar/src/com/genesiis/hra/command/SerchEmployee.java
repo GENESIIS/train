@@ -2,6 +2,7 @@ package com.genesiis.hra.command;
 
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.jboss.logging.Logger;
 
@@ -22,9 +23,9 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 		 String message = "";
 		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
-		 Employee  empList = null ;
+		 List<Object>  empList = null ;
 		 try {			
-				  empList = (Employee) serchEmployeeManager.find(keyWord);
+				  empList =  employeeManager.find(keyWord); 
 				  loger.info("execute -----------------------------------------------------");								
 					
 		} catch (Exception e) {
@@ -57,7 +58,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	}
 	
 	// Create geson object
-	public String createGson(Employee emp) {					
+	public String createGson(List<Object> emp) {					
 			Gson gson = new Gson();	
 			String empList = " ";
 			try {

@@ -12,7 +12,7 @@
 					<th>View</th>
 					<th>Edit</th>
 					<th>Delete</th>
-				</tr>
+				</tr> 
 			</thead>
 			<tfoot>
 				<tr>

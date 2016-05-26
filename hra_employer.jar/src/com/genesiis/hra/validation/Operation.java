@@ -8,7 +8,7 @@ public enum Operation {
 	SERCH_EMPLOYEE("SE"),
 	REGISTER_LOAN("RL"),
 	EDIT_LOAN("EL");
-	
+	 
 	private final String value;
 
 	Operation(String newValue) {

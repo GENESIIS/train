@@ -57,73 +57,23 @@ function serchEmployee() {
 			task : "SE"
 		},
 		dataType : "json",
-		success : function(data) {
-			alert("ajax"+responseText);
-			json = JSON.parse(responseText);			
-			$('#employeeDetails').DataTable({
-//				"data": responseText,				
-				"aaData": [
-                            responseText
-				           ]	      
-		    } );	
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
-	/*$.ajax({ 
-		type : "POST",
-		url : 'EmployeeController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			serchVlaue : serchContent,
-			task : "SE"
-		},
-		dataType : "json",
-		contentType :"application/json ",
 		success : function(responseText) {
 			alert("ajax"+responseText);
-			json = JSON.parse(responseText);			
-			$('#employeeDetails').DataTable({
-//				"data": responseText,				
-				"aaData": [
-                            responseText
-				           ]	      
-		    } );			
+			json = JSON.parse(responseText);
+			listEmployee(responseText);
 		},
 		error : function(e) {
 			alert("Error " + e);
 			console.log(e);
 		}
-	});*/
+	});	
 } 
 
 function listEmployee(empData) {		
-			json = JSON.parse(empData);	
-			alert(empData+".................................."+json.employeeName);	
-			/* editor = new $.fn.dataTable.Editor( {
-			        ajax: "json",
-			        table: "#employeeDetails",
-			        fields: [ {
-			                label: "employeeId:",
-			                name: "employeeId"
-			            }, {
-			                label: "employeeName:",
-			                name: "employeeName"
-			            }, {
-			                label: "employeeDesignation:",
-			                name: "employeeDesignation"
-			            }, {
-			                label: "employeeMobile:",
-			                name: "employeeMobile"
-			            }, 
-			        ]
-			    } );*/
+			json = JSON.parse(empData);				
 			$('#employeeDetails').DataTable({
-				//"data": empData
-				//ajax: "EmployeeController",
-				"aaData" : empData,
+				data: empData,
+				//"aaData" : empData, 
 				"aoColumns": [ 
                           {
                         	  "mDataProp": "employeeEpf"

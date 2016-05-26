@@ -149,20 +149,24 @@ public class EmployeeCrudJDBC implements ICrud {
 	}
 
 	@Override
-	public List<Object> find(String name) {
+	public List<Object> find(String keyWord) {
 		List<Object> employList = new LinkedList<Object>();
-		String query = "select ID, NAME,D ESIGNATION, MOBILENO from HRA.EMPLOYEE where DESIGNATION = ?";
+		String query = "select ID, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where (ID LIKE   ? OR NAME LIKE ? OR DESIGNATION LIKE  ? OR MOBILENO LIKE  ?)";
+		String query1 = "select ID, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
 		String messege = "";
 		Connection conn = null;
 		PreparedStatement pd = null;
 		ResultSet findData = null;
-		
+		 
 		Employee employee = new Employee();
 		
 		try {
 			conn = ConnectionManager.getConnection();
 			pd = conn.prepareStatement(query);
-			pd.setString(1, name);
+			pd.setString(1, "%"+keyWord+"%");
+			pd.setString(2, "%"+keyWord+"%");
+			pd.setString(3, "%"+keyWord+"%");
+			pd.setString(4, "%"+keyWord+"%");
 			findData = pd.executeQuery();
 			
 			try {

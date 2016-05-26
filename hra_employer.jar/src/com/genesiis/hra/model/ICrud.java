@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ICrud {
 	public String add(Object object);
-
+ 
 	public String update(Object object);
 
 	public String delete(Object object);
