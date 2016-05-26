@@ -25,7 +25,7 @@ function loadContentqualifications() {
 }
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
-	
+
 }
 
 // Only for Sprint -1 demo.
@@ -579,4 +579,38 @@ function EditEducationDetails() {
 			console.log(e);
 		}
 	});
+}
+
+// /////////////// load employee details///////////////
+
+function loadEducationDetails() {
+
+	var jsonData = "1";
+	
+	
+	$.getJSON('EmployeeController', {
+		jsonData : JSON.stringify(jsonData),
+		task : "FIND"
+	}, function(data) {
+		json = JSON.parse(data);
+		alert(data);
+		//$("#employeeId").val(json.employeeEpf);
+		$("#qualificationName").text(json.eduQualification);
+		$("#educatedPlace").test(json.eduUniversity);
+		$("#mediumStudied").text(json.eduMedium);
+		$("#startedOn").text(json.eduStartedon);
+		$("#compleatedOn").html(json.eduCompltedon);
+
+		if (json.eduStudytime == 1) {
+			document.getElementById("weekdays").checked;
+			document.getElementById("weekends").checked;
+		} else if (json.eduStudytime == 2) {
+			document.getElementById("weekdays").checked;
+		} else if (json.eduStudytime == 3) {
+			document.getElementById("weekends").checked;
+		} else {
+			// do nothing
+		}
+	});
+
 }

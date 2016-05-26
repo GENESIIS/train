@@ -9,53 +9,17 @@ import com.genesiis.hra.model.EmployeeFactory;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-/**
- * 2016/05/16 Removed Icommand implimention.
- * 
- * **/
-public class UpdateEmployee implements ICommandAJX {
-	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
+public class GetEmployee implements ICommandAJX {
+	static Logger log = Logger.getLogger(GetEmployee.class.getName());
 
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-//	@Override
-//	public String execute(String gsonData) {
-//		int id = -1;
-//		MessageList message = MessageList.ERROR;
-//		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
-//		try {
-//			// Returns a Subclass object of Employee super class according to
-//			// the key. Key implies the sub class name
-//			EmployeeFactory factory = new EmployeeFactory();
-//			Employee emp = factory.getEmployeefactory(3);
-//			// Extract the particular class type object returned from the
-//			// factory.
-//			// emp = (Employee) extractFromJason(emp.getClass().getName(),
-//			// employeeDetails);
-//
-//			emp = (Employee) createGson(emp.getClass().getName(),
-//					employeeDetails);
-//			log.info("emp.getClass().getName()" + emp.getClass().getName());
-//			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
-//			// Only a valid object will added to the database.
-//			// if (emp.isValid(emp)) {
-//			validateComponent(errorList);
-//			id = emp.update(emp);
-//			// }else{
-//			log.info("status" + id);
-//			// }
-//		} catch (Exception e) {
-//			log.error("execute - Exception " + e);
-//		}
-//		return message.message();
-//	}
-
 	@Override
 	public String execute(String epf) {
-		int id = -1;
+
 		MessageList message = MessageList.ERROR;
 		String educationaDetails = null;
-		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
+
 		try {
 			// Returns a Subclass object of Employee super class according to
 			// the key. Key implies the sub class name
@@ -67,22 +31,23 @@ public class UpdateEmployee implements ICommandAJX {
 			// employeeDetails);
 
 			educationaDetails = emp.find(epf);
-			
+
 			log.info("emp.getClass().getName()" + emp.getClass().getName());
 			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
+			log.info(educationaDetails);
 			// Only a valid object will added to the database.
 			// if (emp.isValid(emp)) {
-			validateComponent(errorList);
-			
+
 			// }else{
-			log.info("status" + id);
+
 			// }
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-	
+
 		return educationaDetails;
 	}
+
 	private void validateComponent(HashMap<Integer, Object> errorList) {
 
 	}
@@ -130,10 +95,10 @@ public class UpdateEmployee implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
