@@ -73,7 +73,7 @@
 								class="form-control" id="salaryComponenttype"
 								name="salaryComponenttype"
 								onchange="setEmptyerrormessage('#salaryComponenttype','salaryComponenttypeerror','Type')">
-								<option value="">--Select--</option>
+								<option value="" selected="selected">--Select--</option>
 								<option value="Basic">Basic</option>
 								<option value="Allowance">Allowance</option>
 								<option value="Bonus">Bonus</option>
@@ -109,7 +109,7 @@
 							<label for="salaryCurrency">Currency</label><select
 								class="form-control" id="salaryCurrency" name="salaryCurrency"
 								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
-								<option value="">--Select--</option>
+								<option value="" selected="selected">--Select--</option>
 								<option value="USD">USD</option>
 								<option value="LKR">LKR</option>
 							</select>&nbsp;&nbsp;<span id="salaryCurrencyerror"
@@ -161,11 +161,11 @@
 					onclick="addSalarycomponent()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
-				<button type="button" class="btn btn-warning pull-left" onclick="">
+				<button type="button" class="btn btn-warning pull-left" onclick="clearComponent()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal" onclick="">
+					data-dismiss="modal" onclick="clearComponent()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 			</div>

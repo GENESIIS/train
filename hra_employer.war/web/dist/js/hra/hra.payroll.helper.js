@@ -29,7 +29,6 @@ function setLargevalueerror(textFieldname1, textFieldname2, errorSpanname) {
 	var textField2 = $(textFieldname2).val();
 
 	var largeValue = Math.max(Number(textField1), Number(textField2));
-	alert(largeValue);
 	if (largeValue == textField2) {
 		document.getElementById(errorSpanname).innerHTML = "";
 	} else {
@@ -109,6 +108,7 @@ function addSalaryscheme() {
 			if (data == "Details added successfully.") {
 				alert(data);
 			}
+			clearComponent();
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -126,4 +126,26 @@ function loadModel() {
 	} else {
 		document.getElementById("componentLink").innerHTML = '<p><a href="" data-toggle="modal" data-target="#addSalarycomponent"><i class="glyphicon glyphicon-plus"></i> New Component</a>';
 	}
+}
+
+function clearComponent() {
+	// CLear dropdown
+	$('#salaryCurrency option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+	$('#salaryComponenttype option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+	$("#salaryComponenttitle").val("");
+	$("#salaryComponentdescription").val("");
+	$('input[name="salaryComponentamount"]:checked').val()
+	$("#salaryComponentmin").val("");
+	$("#salaryComponentmax").val("");
+	$("#salaryComponenttitleerror").text("");
+	$("#salaryComponenttypeerror").text("");
+	$("#salaryCurrencyerror").text("");
+	$("#salaryComponentamounterror").text("");
+	$("#salaryComponentminerror").text("");
+	$("#salaryComponentmaxerror").text("");
 }

@@ -57,7 +57,6 @@
 </div>
 
 <script type="text/javascript">
-	load();
 	function addRow() {
 		var table = document.getElementById("salarySchemetbl");
 		var salaryComponenttype = document
@@ -70,17 +69,61 @@
 				.getElementById("salaryComponentamount");
 		var salaryComponentmin = document.getElementById("salaryComponentmin");
 		var salaryComponentmax = document.getElementById("salaryComponentmax");
+		var salaryCurrency = document.getElementById("salaryCurrency");
 
 		var rowCount = table.rows.length;
 		var row = table.insertRow(rowCount);
 
-		row.insertCell(0).innerHTML = salaryComponenttype.value;
-		row.insertCell(1).innerHTML = salaryComponenttitle.value;
-		row.insertCell(2).innerHTML = salaryComponentdescription.value;
-		row.insertCell(3).innerHTML = salaryComponentamount.value;
-		row.insertCell(4).innerHTML = salaryComponentmin.value;
-		row.insertCell(5).innerHTML = salaryComponentmax.value;
-		row.insertCell(6).innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
+		var x = document.getElementById("salarySchemetbl").rows.length;
+		var y =x;
+		// 		row.insertCell(0).innerHTML = salaryComponenttype.value;
+		var td0 = row.insertCell(0);
+		td0.innerHTML = salaryComponenttype.value;
+		td0.id = "nr" + (x);
+
+		// 		row.insertCell(1).innerHTML = salaryComponenttitle.value;
+		var td1 = row.insertCell(1);
+		td1.innerHTML = salaryComponenttitle.value;
+
+		var td2 = row.insertCell(2);
+		td2.innerHTML = salaryCurrency.value;
+
+		// 		row.insertCell(2).innerHTML = salaryComponentdescription.value;
+		var td3 = row.insertCell(3);
+		td3.innerHTML = salaryComponentdescription.value;
+
+		// 		row.insertCell(3).innerHTML = salaryComponentamount.value;
+		var td4 = row.insertCell(4);
+		td4.innerHTML = salaryComponentamount.value;
+
+		// 		row.insertCell(4).innerHTML = salaryComponentmin.value;
+		var td5 = row.insertCell(5);
+		td5.innerHTML = salaryComponentmin.value;
+
+		// 		row.insertCell(5).innerHTML = salaryComponentmax.value;
+		var td6 = row.insertCell(6);
+		td6.innerHTML = salaryComponentmax.value;
+
+		// 		row.insertCell(6).innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
+		var td7 = row.insertCell(7);
+		td7.innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
+
+		alert(x);
+		var arr = [];
+
+		for (var i = 2; i < x; i++) {
+			var rows = $(this).closest("tr"); // Find the row
+			var text = rows.find(".nr" + i).text(); // Find the text
+			alert(text);
+			arr.push(text);
+
+		}
+		// 		var rows = $(this).closest("tr"); // Find the row
+		// 		var text = rows.find(".nr").text(); // Find the text
+
+		// Let's test it out
+		alert(arr.toString());
+
 	}
 
 	function deleteRow(obj) {
@@ -110,10 +153,6 @@
 			}
 		}
 		myTableDiv.appendChild(table);
-	}
-
-	function load() {
-		console.log("Page load finished");
 	}
 </script>
 
@@ -208,11 +247,12 @@
 							cellspacing="0" width="100%">
 							<tr>
 								<td><b>Type</b></td>
-								<td><b>Description</b></td>
+								<td><b>Title</b></td>
+								<td><b>Currency</b></td>
 								<td><b>Description</b></td>
 								<td><b>Rate/Amount</b></td>
-								<td><b>Min. Value</b></td>
-								<td><b>Max. Value</b></td>
+								<td><b>Min.Value</b></td>
+								<td><b>Max.Value</b></td>
 								<td>&nbsp;</td>
 							</tr>
 						</table>
@@ -222,8 +262,8 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success pull-right" onclick="addSalaryscheme()"
-					data-dismiss="">
+				<button type="button" class="btn btn-success pull-right"
+					onclick="addSalaryscheme()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left" onclick="">
@@ -258,7 +298,7 @@
 								class="form-control" id="salaryComponenttype"
 								name="salaryComponenttype"
 								onchange="setEmptyerrormessage('#salaryComponenttype','salaryComponenttypeerror','Type')">
-								<option value="">--Select--</option>
+								<option value="" selected="selected">--Select--</option>
 								<option value="Basic">Basic</option>
 								<option value="Allowance">Allowance</option>
 								<option value="Bonus">Bonus</option>
@@ -294,7 +334,7 @@
 							<label for="salaryCurrency">Currency</label><select
 								class="form-control" id="salaryCurrency" name="salaryCurrency"
 								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
-								<option value="">--Select--</option>
+								<option value="" selected="selected">--Select--</option>
 								<option value="USD">USD</option>
 								<option value="LKR">LKR</option>
 							</select>&nbsp;&nbsp;<span id="salaryCurrencyerror"
@@ -343,7 +383,8 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"
-					onclick="Javascript:addRow()" data-dismiss="modal">
+					onclick="addSalarycomponent(); Javascript:addRow()"
+					data-dismiss="modal">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left" onclick="">
