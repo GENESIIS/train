@@ -24,7 +24,7 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 		ResultSet findData = null;
 		
 		Employee employee = new Employee();
-		log.info("find int ================================================");
+		log.info("find int ================================================"); 
 		try {
 			conn = ConnectionManager.getConnection(); 
 			pd = conn.prepareStatement(query);

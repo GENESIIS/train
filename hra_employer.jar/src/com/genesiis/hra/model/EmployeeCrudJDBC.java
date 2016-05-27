@@ -163,7 +163,7 @@ public class EmployeeCrudJDBC implements ICrud {
 		try {
 			conn = ConnectionManager.getConnection();
 			pd = conn.prepareStatement(query);
-			pd.setString(1, "%"+keyWord+"%");
+			pd.setString(1, "%"+keyWord+"%"); 
 			pd.setString(2, "%"+keyWord+"%");
 			pd.setString(3, "%"+keyWord+"%");
 			pd.setString(4, "%"+keyWord+"%");

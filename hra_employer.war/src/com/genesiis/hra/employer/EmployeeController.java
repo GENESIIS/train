@@ -72,7 +72,7 @@ public class EmployeeController extends HttpServlet {
 		String task = request.getParameter("task");			
 		Gson gson = new Gson();
 		String message = "";
-		
+		 
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);

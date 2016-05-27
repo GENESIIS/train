@@ -47,7 +47,6 @@ function serchEmployee() {
 	var jsonData = {
 		"serchContent" : serchContent
 	};
-	alert("ajax"+serchContent),
 	$.ajax({
 		type : "POST",
 		url : 'EmployeeController',
@@ -58,7 +57,7 @@ function serchEmployee() {
 		},
 		dataType : "json",
 		success : function(responseText) {
-			alert("ajax"+responseText);
+			alert(responseText);
 			json = JSON.parse(responseText);
 			listEmployee(responseText);
 		},
@@ -70,13 +69,14 @@ function serchEmployee() {
 } 
 
 function listEmployee(empData) {		
-			json = JSON.parse(empData);				
+			json = JSON.parse(empData);	
+			jsonData : JSON.stringify(empData),
 			$('#employeeDetails').DataTable({
 				data: empData,
 				//"aaData" : empData, 
 				"aoColumns": [ 
                           {
-                        	  "mDataProp": "employeeEpf"
+                        	  "mDataProp": employeeEpf
                               //className: "center"	                     
                           },
 		                  {
