@@ -27,7 +27,7 @@ function isEmpty(value) {
 }
 
 function loadTestDetails() {
-	$("#modelrest").load("test/index.jsp");
+	$("#modelrest").load("test/index3.jsp");
 }
 
 /*******************************************************************************

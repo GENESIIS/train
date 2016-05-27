@@ -1,32 +1,25 @@
 package com.genesiis.hra.employer;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Random;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.AddMedicalReport;
-import com.genesiis.hra.command.GetDepartment;
-import com.genesiis.hra.command.GetEmploymentHistory;
 import com.genesiis.hra.command.ICommand;
-import com.genesiis.hra.command.UpdateEmployee;
-import com.genesiis.hra.command.UpdateEmployeeHistory;
-import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmploymentHistory;
-import com.genesiis.hra.validation.AilmentEnum;
-import com.genesiis.hra.validation.ClassList;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
@@ -42,6 +35,7 @@ import com.google.gson.Gson;
  * Servlet implementation class AddEmployeeDetails
  */
 @WebServlet("/EmployeeController")
+@MultipartConfig
 public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -91,7 +85,17 @@ public class EmployeeController extends HttpServlet {
 				message = commands.get(operation).execute(details);
 				break;
 			case ADD_MEDICAL_REPORT:
-				message = commands.get(operation).execute(details);
+				
+				Part filePart = request.getPart("file");
+				log.info("---filePart---:" + filePart);
+				
+				String reportDescription = request.getParameter("reportDescription");
+				log.info("---filePart---:" + reportDescription);
+				
+				AddMedicalReport addMedicalReport = new AddMedicalReport();
+				//overcome problem of sending Part valuess 
+				//(message = commands.get(operation).executePart(details);) do not delete need to improve
+				message = addMedicalReport.executePart(filePart,reportDescription); 
 				break;
 			default:
 				break;
