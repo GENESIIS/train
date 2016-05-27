@@ -580,7 +580,54 @@ function EditEducationDetails() {
 		}
 	});
 }
+// ///////////////// load employee details//////////////////////
 
+function loademployeeDetails() {
+
+	var serchContent = "1";
+
+	var jsonData = {
+		"serchContent" : serchContent
+	};
+	alert("ajax" + serchContent), $.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			serchVlaue : serchContent,
+			task : "GETBASIC"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+			alert(responseText);
+			$("#employee_id").val(json.employeeEpf);
+			$("#name").text(json.employeeName);
+			$("#mobilenumber").text(json.employeeMobile);
+			$("#landnumber").text(json.employeeTelephone);
+			$("#work_email").text(json.employeeEmail);
+			$("#nic_num").text(json.employeeNic);
+
+			$("#birthday").val(json.employeeDateofbirth);
+			$("#gender").text(json.employeeGender);
+			$("#marital_status").text(json.employeeMaritalstatus);
+			$("#address1").text(json.employeePermenetaddress);
+			$("#address2").text(json.employeeTemporaryaddress);
+
+			$("#job_title_Name").val(json.employeeDesignation);
+			$("#department_Name").text(json.employeeDepartment);
+			// $("#employment_status_Name").test(responseText.eduUniversity);
+			$("#joindate").text(json.employeeJoindate);
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
+}
 // /////////////// load employee education details///////////////
 
 function loadEducationDetails() {

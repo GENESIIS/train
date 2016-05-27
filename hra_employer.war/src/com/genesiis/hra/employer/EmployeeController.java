@@ -59,8 +59,8 @@ public class EmployeeController extends HttpServlet {
 		// hmap.put(3, null);
 		// hmap.put(4, null);
 		commands = new HashMap<Operation, ICommandAJX>();
-		commands.put(Operation.BASIC_DATA, new UpdateEmployee());
-		commands.put(Operation.BASIC_DATA, new GetEmployee());
+		commands.put(Operation.GET_BASIC_DATA, new GetEmployee());
+		// commands.put(Operation.BASIC_DATA, new GetEmployee());
 	}
 
 	/**
@@ -103,6 +103,7 @@ public class EmployeeController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String details = request.getParameter("jsonData");
+		String findDetaile = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");
 		String message = "";
 
@@ -117,6 +118,10 @@ public class EmployeeController extends HttpServlet {
 		Gson gson = new Gson();
 		try {
 			switch (o) {
+			case GET_BASIC_DATA:
+				message = commands.get(o).execute(findDetaile);
+				log.info("Search Employee details" + findDetaile);
+				break;
 			case ADD_EDU_DETAILS:
 				message = commands.get(o).execute(details);
 				log.info("Search Educational details");
@@ -128,6 +133,7 @@ public class EmployeeController extends HttpServlet {
 			default:
 				break;
 			}
+			writeResponse(gson.toJson(message), response);
 		} catch (Exception e) {
 			message = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: EmployeeController" + e);

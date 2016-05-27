@@ -74,19 +74,20 @@
 
 			<ul class="nav nav-tabs" id="subModTab"
 				style="margin-bottom: 0px; margin-left: 5px; border-bottom: none;">
-				<li class="active"><a id="tabBasic" href="#tabPageBasic"
+				<li onclick="loademployeeDetails()" class="active"><a id="tabBasic" href="#tabPageBasic"
 					role="tab" data-toggle="tab" aria-controls="basic"
 					aria-expanded="false">Basic Information</a></li>
-				<li onclick="loadEducationDetails()" class=""><a id="tabQualifications"
-					href="#tabPageQualifications" role="tab" data-toggle="tab"
-					aria-controls="qualifications" aria-expanded="false">Qualifications</a></li>
+				<li onclick="loadEducationDetails()" class=""><a
+					id="tabQualifications" href="#tabPageQualifications" role="tab"
+					data-toggle="tab" aria-controls="qualifications"
+					aria-expanded="false">Qualifications</a></li>
 				<li class=""><a id="tabEmployementHistory"
 					href="#tabEmployement" role="tab" data-toggle="tab"
 					aria-controls="employementHistorytab" aria-expanded="false">Employement
 						History</a></li>
-				<li class=""><a id="tabFamily" href="#tabfamily" role="tab"
-					data-toggle="tab" aria-controls="familytab" aria-expanded="false">Family
-						Details</a></li>
+				<li onclick="loadfamilyDetails()" class=""><a id="tabFamily"
+					href="#tabfamily" role="tab" data-toggle="tab"
+					aria-controls="familytab" aria-expanded="false">Family Details</a></li>
 				<li class=""><a id="tabLoan" href="#" role="tab"
 					data-toggle="tab" aria-controls="loan" aria-expanded="false">Loan
 						Details</a></li>
@@ -108,7 +109,7 @@
 											style="font-size: 13px;">National Identity card
 											Number </label> <label class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;"
-											id="driving_license">970980613V</label>
+											id="nic_num">970980613V</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
@@ -164,7 +165,7 @@
 											style="font-size: 13px;">Private Email</label> <label
 											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;"
-											id="private_email">Ruwan@genesis.com</label>
+											id="work_email">Ruwan@genesis.com</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
@@ -221,7 +222,7 @@
 												style="font-size: 13px;">Join Date</label> <label
 												class="control-label col-xs-12 iceLabel"
 												style="font-size: 13px; font-weight: bold;"
-												id="supervisor_Name">2016-05-01</label>
+												id="joindate">2016-05-01</label>
 										</div>
 
 									</div>
@@ -249,20 +250,23 @@
 											style="font-size: 13px;">Qualification </label> <label
 											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;"
-											id="qualificationName">BSc. in Information Technologies </label>
+											id="qualificationName">BSc. in Information
+											Technologies </label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">University | College |
 											School </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="educatedPlace">UCSC</label>
+											style="font-size: 13px; font-weight: bold;"
+											id="educatedPlace">UCSC</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Medium</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="mediumStudied">English</label>
+											style="font-size: 13px; font-weight: bold;"
+											id="mediumStudied">English</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
@@ -352,14 +356,15 @@
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Relationship </label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
-											id="relationship">Singel</label>
+											style="font-size: 13px; font-weight: bold;" id="relationship">Singel</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Relation Date of birth </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="relationDateofbirth">relationDateofbirth</label>
+											style="font-size: 13px;">Relation Date of birth </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;"
+											id="relationDateofbirth">relationDateofbirth</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"

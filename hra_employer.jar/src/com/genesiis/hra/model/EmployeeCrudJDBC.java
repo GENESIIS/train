@@ -72,22 +72,86 @@ public class EmployeeCrudJDBC extends Employee {
 
 	@Override
 	public String getEmployee(int employeeId) {
-		
+
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		EmployeeCrudJDBC emp = new EmployeeCrudJDBC();
 		String employeeDetails = null;
 		Gson gson = new Gson();
-		
-		conn = ConnectionManager.getConnection();
-		preparedStatement = conn
-				.prepareStatement("SELECT * FROM [HRA.EMPLOYEE] WHERE ID=?");
-		preparedStatement.setInt(1, employeeId);
-		ResultSet res = preparedStatement.executeQuery();
-		if (res.next()) {
-			emp.setEmployeeepf(res.getString(2));
-		
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM [HRA.EMPLOYEE] WHERE ID=?");
+			preparedStatement.setInt(1, employeeId);
+			ResultSet res = preparedStatement.executeQuery();
+			if (res.next()) {
+				emp.setEmployeeepf(res.getString(2));
+				emp.setEmployeename(res.getString(3));
+				emp.setEmployeenic(res.getString(4));
+				emp.setEmployeedesignation(res.getString(5));
+				emp.setEmployeeemail(res.getString(6));
+				emp.setEmployeedateofbirth(res.getString(7));
+				emp.setEmployeegender(res.getString(8));
+				emp.setEmployeepermenetaddress(res.getString(9));
+				emp.setEmployeetemporaryaddress(res.getString(10));
+				emp.setEmployeemobile(res.getString(11));
+				emp.setEmployeetelephone(res.getString(12));
+				emp.setEmployeedepartment(res.getString(13));
+				emp.setEmployeemaritalstatus(res.getString(14));
+				emp.setEmployeejoindate(res.getString(15));
+				emp.setEmployeebasis(res.getString(16));
+
+				employeeDetails = gson.toJson(emp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return employeeDetails;
+	}
+
+	@Override
+	public String find(String id) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		EmployeeCrudJDBC emp = new EmployeeCrudJDBC();
+		String employeeDetails = null;
+		Gson gson = new Gson();
+		log.info(id
+				+ "//////////////////////////////////////////////////////////");
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM [HRA.EMPLOYEE] WHERE ID=?");
+			preparedStatement.setString(1, id);
+			ResultSet res = preparedStatement.executeQuery();
+			if (res.next()) {
+				emp.setEmployeeepf(res.getString(2));
+				emp.setEmployeename(res.getString(3));
+				log.info(emp.getEmployeename()
+						+ "+++++++++++++++++++++++++++++++++++++++++++++++++");
+				emp.setEmployeenic(res.getString(4));
+				emp.setEmployeedesignation(res.getString(5));
+				emp.setEmployeeemail(res.getString(6));
+				emp.setEmployeedateofbirth(res.getString(7));
+				emp.setEmployeegender(res.getString(8));
+				emp.setEmployeepermenetaddress(res.getString(9));
+				emp.setEmployeetemporaryaddress(res.getString(10));
+				emp.setEmployeemobile(res.getString(11));
+				emp.setEmployeetelephone(res.getString(12));
+				emp.setEmployeedepartment(res.getString(13));
+				emp.setEmployeemaritalstatus(res.getString(14));
+				emp.setEmployeejoindate(res.getString(15));
+				emp.setEmployeebasis(res.getString(16));
+
+				employeeDetails = gson.toJson(emp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.info(e + "------------------------");
+		}
+		return employeeDetails;
+
 	}
 
 	@Override

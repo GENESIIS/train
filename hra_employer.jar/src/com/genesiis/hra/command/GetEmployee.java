@@ -5,36 +5,40 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeFactory;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class GetEmployee implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());
 
-	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
-
 	@Override
 	public String execute(String epf) {
 
 		MessageList message = MessageList.ERROR;
-		String educationaDetails = null;
+		String empdetails = null;
+		EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 
 		try {
 			// Returns a Subclass object of Employee super class according to
 			// the key. Key implies the sub class name
-			EmployeeFactory factory = new EmployeeFactory();
-			Employee emp = factory.getEmployeefactory(3);
+			// EmployeeFactory factory = new EmployeeFactory();
+			// Employee emp = factory.getEmployeefactory(3);
 			// Extract the particular class type object returned from the
 			// factory.
 			// emp = (Employee) extractFromJason(emp.getClass().getName(),
 			// employeeDetails);
 
-			educationaDetails = emp.find(epf);
+			// educationaDetails = emp.find(epf);
+			log.info(epf +"====================================");
+			empdetails = employeeManager.find(epf);
+			log.info("execute");
 
-			log.info("emp.getClass().getName()" + emp.getClass().getName());
-			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
-			log.info(educationaDetails);
+			// log.info("educationaDetails.getClass().getName()" +
+			// educationaDetails.getClass().getName());
+
+
+			log.info(empdetails);
 			// Only a valid object will added to the database.
 			// if (emp.isValid(emp)) {
 
@@ -45,12 +49,10 @@ public class GetEmployee implements ICommandAJX {
 			log.error("execute - Exception " + e);
 		}
 
-		return educationaDetails;
+		return empdetails;
 	}
 
-	private void validateComponent(HashMap<Integer, Object> errorList) {
-
-	}
+	 
 
 	private Employee getEmployeeDetails(String data) {
 		Employee employee = (Employee) extractFromJason(data);
@@ -59,19 +61,21 @@ public class GetEmployee implements ICommandAJX {
 
 	@Override
 	public Object extractFromJason(String data) {
-		Gson gson = new Gson();
-		// Class<?> clazz = Class.forName(className);
-		// Object object = clazz.newInstance();
-		Employee employee = null;
-		try {
-			// object = gson.fromJson(gsonData, clazz);
-			employee = gson.fromJson(data, Employee.class);
-		} catch (Exception e) {
-			log.error("ExtractFromgson - Exception " + e);
-		}
-		return employee;
+		// Gson gson = new Gson();
+		// // Class<?> clazz = Class.forName(className);
+		// // Object object = clazz.newInstance();
+		// Employee employee = null;
+		// try {
+		// // object = gson.fromJson(gsonData, clazz);
+		// employee = gson.fromJson(data, Employee.class);
+		// } catch (Exception e) {
+		// log.error("ExtractFromgson - Exception " + e);
+		// }
+		// return employee;
+		return null;
 	}
 
+	// Create geson object
 	public String createGson(Employee emp) {
 		Gson gson = new Gson();
 		String empList = " ";
