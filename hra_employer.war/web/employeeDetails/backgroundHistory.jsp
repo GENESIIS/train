@@ -3,6 +3,50 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.genesiis.hra.validation.AilmentEnum"%>
 
+				<!-- Importing hra.helper.js file -->
+				<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.js"></script>
+				<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.min.js"></script>
+				<script src="dist/js/jasny-bootstrap-js/jquery.form.js"></script>
+				
+				<!-- Styles for this template -->
+				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css" rel="stylesheet">
+				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css.map" rel="stylesheet">
+				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.min.css" rel="stylesheet">
+				
+				<script>
+					$(document).ready(function() {
+						var options = {
+						        beforeSend : function() {
+						                $("#progressbox").show();
+						                // clear everything
+						                $("#progressbar").width('0%');
+						                $("#message").empty();
+						                $("#percent").html("0%");
+						        },
+						        uploadProgress : function(event, position, total, percentComplete) {
+						                $("#progressbar").width(percentComplete + '%');
+						                $("#percent").html(percentComplete + '%');
+					
+						                // change message text to red after 50%
+						                if (percentComplete > 50) {
+						                $("#message").html("<font color='red'>File Upload is in progress</font>");
+						                }
+						        },
+						        success : function() {
+						                $("#progressbar").width('100%');
+						                $("#percent").html('100%');
+						        },
+						        complete : function(response) {
+						        $("#message").html("<font color='blue'>Your file has been uploaded!</font>");
+						        },
+						        error : function() {
+						        $("#message").html("<font color='red'> ERROR: unable to upload files</font>");
+						        }
+						};
+						$("#UploadForm").ajaxForm(options);
+						});
+					</script>
+				
 <style>
 th#tbledit {
 	text-align: center;
@@ -72,49 +116,39 @@ th#tbldelete {
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="control-label" for="reportUpload">Report Upload</label>
-						<input id="input-6" name="input6[]" type="file" multiple class="file-loading" placeholder="Select Files">					
+						
+							<form id="UploadForm" action="EmployeeController" method="post" enctype="multipart/form-data">
+							
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+								  
+								  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+								    <img data-src="holder.js/100%x100%" alt="...">
+								  </div>
+								  
+								  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+								  
+								  <div>
+								    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
+								    <span class="fileinput-exists">Change</span> <input type="file" size="60" id="myfile" name="myfile"> </span>
+							   			 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+							   			 <input class="btn btn-default fileinput-exists"  type="submit" value="Ajax File Upload">
+							  	  </div>
+							  	  
+							  		
+							      
+							       <div id="progressbox">
+							         <div id="progressbar"></div>
+							         <div id="percent">0%</div>
+							       </div>
+							       
+							    </div>
+							    
+							</form>
+				
 					</div>
 				</div>
 			</div>
 			
-			
-<!-- 			<div class="modal-footer"> -->		
-<!-- 				<button type="button" class="btn btn-success full pull-right" id="btnAddd" onclick="Add();"> -->
-<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Add -->
-<!-- 				</button> -->
-<!-- 			</div> -->
-<!-- 				<div class="modal-footer table-responsive"> -->			
-<!-- 					<table id="tblData" class="table table-striped table-bordered table-hover table-condensed" style="font-size:small;">			 -->				
-<!-- 						<thead> -->
-<!-- 							<tr> -->
-<!-- 								<th id="t012">Employee Id</th> -->
-<!-- 								<th id="t012">Employee Ailment</th> -->
-<!-- 								<th id="t012">Ailment Description</th> -->
-<!-- 								<th id="t012">Report Description</th> -->
-<!-- 								<th id="t012">Report Uploaded</th> -->
-<!-- 								<th id="t012">Created By</th> -->
-<!-- 								<th id="tbledit" >Edit</th> -->
-<!-- 								<th id="tbldelete">Delete</th> -->
-<!-- 							</tr> -->
-<!-- 						</thead> -->					
-<!-- 						<tbody> -->							
-<!-- 						</tbody> -->					
-<!-- 						<tfoot> -->
-<!-- 						<tr> -->
-<!-- 								<th id="t012">Employee Id</th> -->
-<!-- 								<th id="t012">Employee Ailment</th> -->
-<!-- 								<th id="t012">Ailment Description</th> -->
-<!-- 								<th id="t012">Report Description</th> -->
-<!-- 								<th id="t012">Report Uploaded</th> -->
-<!-- 								<th id="t012">Created By</th> -->
-<!-- 								<th id="tbledit">Edit</th> -->
-<!-- 								<th id="tbldelete">Delete</th> -->
-<!-- 							</tr> -->
-<!-- 						</tfoot> -->				
-<!-- 					</table> -->
-<!-- 			</div> -->
-
-
 			<div class="modal-footer">
 			
 				<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >

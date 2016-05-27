@@ -45,30 +45,42 @@ $(document).ready(function() {
 	});
 </script>
 
+<!-- <form id="UploadForm" action="UploadFile" method="post" enctype="multipart/form-data"> -->
+<!--     <input type="file" size="60" id="myfile" name="myfile">  -->
+<!--      <input type="submit" value="Ajax File Upload"> -->
+<!--        <div id="progressbox"> -->
+<!--          <div id="progressbar"></div> -->
+<!--          <div id="percent">0%</div> -->
+<!--        </div> -->
+<!--  <br /> -->
+<!-- <div id="message"></div> -->
+<!-- </form> -->
+
+
 <form id="UploadForm" action="UploadFile" method="post" enctype="multipart/form-data">
-    <input type="file" size="60" id="myfile" name="myfile"> 
-     <input type="submit" value="Ajax File Upload">
+
+	<div class="fileinput fileinput-new" data-provides="fileinput">
+	  
+	  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+	    <img data-src="holder.js/100%x100%" alt="...">
+	  </div>
+	  
+	  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+	  
+	  <div>
+	    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
+	    <span class="fileinput-exists">Change</span> <input type="file" size="60" id="myfile" name="myfile"> </span>
+   			 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  	  </div>
+<!--   		<button id="up_btn">Upload</button> -->
+  		<input type="submit" value="Ajax File Upload">
+      
        <div id="progressbox">
          <div id="progressbar"></div>
          <div id="percent">0%</div>
        </div>
- <br />
-<div id="message"></div>
+       
+    </div>
+    
 </form>
-
-
-
-<div class="fileinput fileinput-new" data-provides="fileinput">
-  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-    <img data-src="holder.js/100%x100%" alt="...">
-  </div>
-  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-  <div>
-    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span>
-    <span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-  </div>
-  <button id="up_btn">Upload</button>
-</div>
-
 
