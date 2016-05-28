@@ -5,14 +5,14 @@
  * @git branch used - hra-15-add-medical-history-details-tr
  * @created on- 2016-05-25
  */
+
+
 // ready function
-// $(document).on('ready', function() {
-// $("#input-6").fileinput({
-// showUpload : false,
-// maxFileCount : 10,
-// mainClass : "input-group-lg"
-// });
-// });
+ $(document).on('ready', function() {
+	 $('#upload').prop('disabled', true); 
+ });
+ 
+ 
 // number cheker
 function isNumber(evt) {
 	evt = (evt) ? evt : window.event;
@@ -22,8 +22,15 @@ function isNumber(evt) {
 	}
 	return true;
 }
+
 function isEmpty(value) {
 	return (value == null || value.length === 0);
+}
+
+function isValidImage() {
+	if( document.getElementById("avatar").files.length == 0 ){
+		return true;
+	}
 }
 
 function loadTestDetails() {
@@ -53,6 +60,7 @@ function addMedicalhistorydetails() {
 
 	var hasEmptyehReferencemodby = isEmpty(ehReferencemodby);
 
+	
 	if (hasEmptyemployeeid) {
 		message = "Employee id cannot be empty";
 		noError = false;
@@ -72,7 +80,6 @@ function addMedicalhistorydetails() {
 	}
 
 	if (noError) {
-
 		var formData = {
 			"medicalHistoryemployeeid" : employeeId,
 			"medicalHistoryailment" : employeeAilment,
@@ -88,11 +95,19 @@ function addMedicalhistorydetails() {
 				jsonData : JSON.stringify(formData),
 				task : "AMH"
 			},
-			dataType : "json",
+			dataType : "JSON",
 			success : function(data) {
+				
 				alert(data);
+				$('#save').prop('disabled', true); 
+				$('#upload').prop('disabled', false); 
+				
+				$('#employeeAilment').attr('disabled',true);
+				$('#ailmentDescription').attr('disabled',true);
+ 
+				
 				if (data == "Details added successfully.") {
-					clearMedicalHisory();
+					//clearMedicalHisory();
 				}
 			},
 			error : function(e) {
@@ -108,56 +123,77 @@ function addMedicalhistorydetails() {
  * END ADD MEDICAL HISTORY
  ******************************************************************************/
 
-function addMedicalreportdetails() {
+$(document).on("click", "#upload", function() {
 
 	var noError = true;
 	var message = "";
 
 	var reportDescription = $("#reportDescription").val();
-	var reportUpload = $("#input-6").val();
 	var ehReferencemodby = $("#ehReferencemodby").val();
+	var employeeId = $("#employeeId").val();
+	
+	// Getting the properties of file from file field
+	var reportUpload = $("#avatar").prop("files")[0]; 
+	
+	// Creating object of FormData class 
+	// and appending every attributes
+	var formData = new FormData();
+	formData.append("file", reportUpload);
+	formData.append("reportDescription", reportDescription);
+	formData.append("task", "AMR");
+	formData.append("ehReferencemodby", ehReferencemodby);
+	formData.append("employeeId", employeeId);
 
 	var hasReportdescription = isEmpty(reportDescription);
-	var hasReportupload = isEmpty(reportUpload);
-	var hasReferencemodby = isEmpty(ehReferencemodby);
+	var hasReportupload = isValidImage();
+
 
 	if (hasReportdescription) {
 		message = "Report description cannot be empty";
 		noError = false;
 		alert(message);
-	} else if (hasReportupload) {
-		message = "Report upload be empty";
-		noError = false;
-		alert(message);
-	} else if (hasReferencemodby) {
-		message = "User authentication fails";
+	} 
+	else if (hasReportupload) {
+		message = "Please upload your file(s)";
 		noError = false;
 		alert(message);
 	}
 
 	if (noError) {
 
-		var formData = {
-			"reportDescription" : reportDescription,
-			"reportUpload" : reportUpload,
-			"medicalHistorymodby" : ehReferencemodby,
-			"medicalHistorycrtby" : ehReferencemodby,
-		};
-
+//		var formData2 = {
+//			"reportDescription" : reportDescription,
+//			"task" : "AMR",
+//			"medicalHistorymodby" : ehReferencemodby,
+//			"medicalHistorycrtby" : ehReferencemodby,
+//			"employeeId" : employeeId,
+//		};
 		$.ajax({
 			type : "POST",
-			url : 'EmployeeController',
-			data : {
-				jsonData : JSON.stringify(formData),
-				jsonData2 : JSON.stringify(formData2),
-				task : "ADD_MEDICAL_HISTORY",
-				task2 : "ADD_MEDICAL_HISTORY"
-			},
-			dataType : "json",
+			url : "EmployeeController",
+//			data : {
+//				jsonData : JSON.stringify(formData),
+//				task : "AMR",
+//				reportUpload :reportUpload,
+//			},
+			data : formData, // Setting the data attribute of ajax with file_data
+			cache : false,
+			contentType : false,
+			processData : false,
+			dataType : "JSON",
 			success : function(data) {
 				alert(data);
+
+				clearMedicalHisory();
+				clearMedicalReports();
+				$('#save').prop('disabled', false); 
+				$('#upload').prop('disabled', true);
+				
+				$('#employeeAilment').attr('disabled',false);
+				$('#ailmentDescription').attr('disabled',false);
+				
 				if (data == "Details added successfully.") {
-					clearMedicalHisory();
+					//clearMedicalReports();
 				}
 			},
 			error : function(e) {
@@ -166,63 +202,53 @@ function addMedicalreportdetails() {
 			}
 		});
 	}
+});
 
-}
+//$(document).on("click", "#upload", function() {
+//	var file_data = $("#avatar").prop("files")[0]; // Getting the properties of file from file field
+//	var reportDescription = $("#reportDescription").val();
+//	var employeeId = $("#employeeId").val();
+//	var form_data = new FormData(); // Creating object of FormData class
+//	form_data.append("file", file_data);
+//	form_data.append("reportDescription", reportDescription);// Appending parameter named reportDescription with properties of file_field to form_data
+//	form_data.append("employeeId", employeeId);// Appending parameter named file with properties of file_field to form_data
+//	form_data.append("task", "AMR"); // Adding extra parameters to form_data
+//	$.ajax({
+//		url : "EmployeeController",
+//		dataType : 'scrpt',
+//		cache : false,
+//		contentType : false,
+//		processData : false,
+//		data : form_data, // Setting the data attribute of ajax with file_data
+//		type : 'post'
+//	});
+//});
+
+
+
 
 /*******************************************************************************
  * Start Clear medical history data
  */
 function clearMedicalHisory() {
-	$("#medicalHistoryailment").val("");
-	$("#medicalHistorydescription").val("");
-	$("#medicalHistoryailment").val("");
-	$("#medicalHistorydescription").val("");
-	$("#input-6").val("");
+	$("#employeeAilment").val("");
+	$("#ailmentDescription").val("");
+
+	$('#employeeAilment option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+	
+	$('#upload').prop('disabled', true); 
+
 }
 /*******************************************************************************
  * End Clear medical history data
  */
-
-/**
- * beforeSend : this function called before form submission uploadProgress :
- * this function called when the upload is in progress success : this function
- * is called when the form upload is successful. complete: this function is
- * called when the form upload is completed.
- */
-
-// $(document).ready(function() {
-// var options = {
-// beforeSend : function() {
-// $("#progressbox").show();
-// // clear everything
-// $("#progressbar").width('0%');
-// $("#message").empty();
-// $("#percent").html("0%");
-// },
-// uploadProgress : function(event, position, total, percentComplete) {
-// $("#progressbar").width(percentComplete + '%');
-// $("#percent").html(percentComplete + '%');
-//
-// // change message text to red after 50%
-// if (percentComplete > 50) {
-// $("#message").html("<font color='red'>File Upload is in progress</font>");
-// }
-// },
-// success : function() {
-// $("#progressbar").width('100%');
-// $("#percent").html('100%');
-// },
-// complete : function(response) {
-// $("#message").html("<font color='blue'>Your file has been uploaded!</font>");
-// },
-// error : function() {
-// $("#message").html("<font color='red'> ERROR: unable to upload
-// files</font>");
-// }
-// };
-// //$("#UploadForm").ajaxForm(options);
-// });
-
+function clearMedicalReports() {
+	$("#reportDescription").val("");
+	$("#avatar").val("");
+	$('#upload').prop('disabled', true); 
+}
 
 
 

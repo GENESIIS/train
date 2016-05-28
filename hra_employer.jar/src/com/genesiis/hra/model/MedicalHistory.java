@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
 
 /**
@@ -130,7 +131,7 @@ public class MedicalHistory extends Employee {
 			
 			try  {
 	            if (ss.next()) {
-	            	medicalHistory.setMedicalhistoryemployeeid(ss.getString(1));
+	            	MaskValidator.SQL_RECODE = Integer.parseInt(ss.getString(1));
 	            	log.info("----mh---"+medicalHistory.getMedicalhistoryemployeeid());
 	            }
 	            else {

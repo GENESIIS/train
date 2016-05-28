@@ -14,29 +14,6 @@
 				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.min.css" rel="stylesheet">
 
 
-				<script>
-					$(document).on("click", "#upload", function() {
-						var file_data = $("#avatar").prop("files")[0]; // Getting the properties of file from file field
-						var reportDescription = $("#reportDescription").val();
-						var employeeId = $("#employeeId").val();
-						var form_data = new FormData(); // Creating object of FormData class
-						form_data.append("file", file_data);
-						form_data.append("reportDescription", reportDescription);// Appending parameter named reportDescription with properties of file_field to form_data
-						form_data.append("employeeId", employeeId);// Appending parameter named file with properties of file_field to form_data
-						form_data.append("task", "AMR"); // Adding extra parameters to form_data
-						$.ajax({
-							url : "EmployeeController",
-							dataType : 'scrpt',
-							cache : false,
-							contentType : false,
-							processData : false,
-							data : form_data, // Setting the data attribute of ajax with file_data
-							type : 'post'
-						});
-					});
-				</script>
-
-
 				<style>
 					th#tbledit {
 						text-align: center;
@@ -48,7 +25,7 @@
 				</style>
 
 
-				<!--Edit Employee History Modal -->	
+				<!--Add Medical History Modal -->	
 				<div>
 					<div>
 						<!-- Modal content-->
@@ -56,7 +33,7 @@
 				
 							<div>
 								<label><h3 class="modal-title">
-										<i class="glyphicon glyphicon-check"></i>Add Medical History
+										<i class="glyphicon glyphicon-check"></i> Add Medical History
 									</h3></label>
 							</div>
 				
@@ -96,7 +73,8 @@
 								</div>
 				
 							</div>
-				
+							
+							
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -106,12 +84,12 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="control-label" for="reportUpload">Report Upload</label>
+										<label class="control-label" for="reportUpload" style="vertical-align: top;">Report Upload</label>
 										
 												<div class="fileinput fileinput-new" data-provides="fileinput">
 												  
 														  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-														    <img data-src="holder.js/100%x100%" alt="...">
+														    <img data-src="holder.js/100%x100%" src="dist/demoimages/images.jpg">
 														  </div>
 														  
 														  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
@@ -124,18 +102,9 @@
 																</span>
 																
 														   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-														   		
-														   		<button class="btn btn-default" id="upload" value="Upload">Upload</button>
+														   								   		
 													  	  </div>
 
-<!-- 															<div id="progressbox"> -->
-<!-- 																<div id="progressbar"></div> -->
-<!-- 																<div id="percent">0%</div> -->
-<!-- 															</div> -->
-															
-<!-- 															<br/> -->
-															
-<!-- 															<div id="message"></div> -->
 											       
 											    </div>
 
@@ -143,18 +112,19 @@
 								</div>
 							</div>
 							
+							
+				
 							<div class="modal-footer">
 							
 								<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >
 								
 								<!-- SAVE -->
-								<button type="button" class="btn btn-success full pull-right" onclick="addMedicalhistorydetails(); ">
+								<button type="button" class="btn btn-success full pull-right" onclick="addMedicalhistorydetails();"  id="save">
 									<i class="glyphicon glyphicon-floppy-disk"></i> Save 
 								</button>
-								
-								<!-- SAVE 2-->
-								<button type="button" class="btn btn-success full pull-right" onclick="loadTestDetails(); ">
-									<i class="glyphicon glyphicon-floppy-disk"></i> TEST Save 
+
+								<button type="button" class="btn btn-success full pull-right" id="upload" disabled="disabled">
+									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports 
 								</button>
 								
 								<!-- CLEAR -->
@@ -174,5 +144,5 @@
 					</div>
 				
 				</div>
-
+				
 

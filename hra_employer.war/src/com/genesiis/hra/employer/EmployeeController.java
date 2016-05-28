@@ -1,11 +1,9 @@
 package com.genesiis.hra.employer;
 
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -20,10 +18,14 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.AddMedicalReport;
 import com.genesiis.hra.command.ICommand;
+import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.FileUploader;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 ///***********************************************
 //* 20160407 PN HRA-1 created EmployeeController.java class
@@ -86,16 +88,30 @@ public class EmployeeController extends HttpServlet {
 				break;
 			case ADD_MEDICAL_REPORT:
 				
-				Part filePart = request.getPart("file");
-				log.info("---filePart---:" + filePart);
+				Part filePart = request.getPart("file");log.info("---filePart---" + filePart);
+				InputStream fileContent = filePart.getInputStream();
+				String fileName = getSubmittedFileName(filePart);
+				String employeeId = request.getParameter("employeeId");
 				
-				String reportDescription = request.getParameter("reportDescription");
-				log.info("---filePart---:" + reportDescription);
+				FileUploader fileUploader = new FileUploader();
+				HashMap<Integer, String> map = fileUploader.setFileToBeUpload(fileContent,fileName,employeeId);
 				
-				AddMedicalReport addMedicalReport = new AddMedicalReport();
-				//overcome problem of sending Part valuess 
-				//(message = commands.get(operation).executePart(details);) do not delete need to improve
-				message = addMedicalReport.executePart(filePart,reportDescription); 
+				message = map.get(2);
+
+				if(message == "fileSaved"){
+					
+					details = "{\"code\":\""+MaskValidator.SQL_RECODE+"\","
+							+ "\"reportDescription\":\""+request.getParameter("reportDescription")+"\","
+							+ "\"reportPath\":\""+map.get(1)+"\","
+							+ "\"modby\":\""+request.getParameter("ehReferencemodby")+"\","
+							+ "\"crtby\":\""+request.getParameter("ehReferencemodby")+"\""
+							+"}";
+					log.info("details1"+details);
+					message = commands.get(operation).execute(details);// do not delete need to improve
+					
+				}else{
+					message = MessageList.ERROR.message();
+				}
 				break;
 			default:
 				break;
@@ -120,4 +136,17 @@ public class EmployeeController extends HttpServlet {
 			log.error("Exception: EmployeeController - writeResponse" + e);
 		}
 	}
+	
+	
+	private static String getSubmittedFileName(Part part) {
+	    for (String cd : part.getHeader("content-disposition").split(";")) {
+	        if (cd.trim().startsWith("filename")) {
+	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+	            return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); 
+	        }
+	    }
+	    return null;
+	}
+	
+	
 }
