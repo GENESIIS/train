@@ -1,5 +1,5 @@
 /**
- * 20160523 PN HRA-3 created SalaryScheme.java class
+ * 20160523 PN HRA-31 created SalaryScheme.java class
  */
 package com.genesiis.hra.model;
 
@@ -9,22 +9,35 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import com.genesiis.hra.utill.ConnectionManager;
 
 /**
  * This class is the data access class when creating a Salary Scheme.
  */
-public class SalaryScheme implements ICrud{
-	int[] componentCode;
+public class SalaryScheme implements ICrud {
+	static Logger log = Logger.getLogger(SalaryScheme.class.getName());
+
+	// int[] componentCode;
+	String[] componentCodetemp;
 	String description, criteria, modBy, title;
 
-	public int[] getComponentcode() {
-		return componentCode;
+	public String[] getComponentCodetemp() {
+		return componentCodetemp;
 	}
 
-	public void setComponentcode(int[] componentCode) {
-		this.componentCode = componentCode;
+	public void setComponentCodetemp(String[] componentCodetemp) {
+		this.componentCodetemp = componentCodetemp;
 	}
+
+	// public int[] getComponentcode() {
+	// return componentCode;
+	// }
+	//
+	// public void setComponentcode(int[] componentCode) {
+	// this.componentCode = componentCode;
+	// }
 
 	public String getDescription() {
 		return description;
@@ -50,8 +63,6 @@ public class SalaryScheme implements ICrud{
 		this.modBy = modBy;
 	}
 
-	
-	
 	public String getTitle() {
 		return title;
 	}
@@ -63,13 +74,12 @@ public class SalaryScheme implements ICrud{
 	/**
 	 * Salary Scheme constructor with Fields
 	 */
-	public SalaryScheme(int[] cc, String des,
-			String cr, String mb) {
-		super();
-		this.componentCode = cc;
+	public SalaryScheme(int[] cc, String[] ccs, String des, String cr, String mb) {
+		// this.componentCode = cc;
 		this.description = des;
 		this.criteria = cr;
 		this.modBy = mb;
+		this.componentCodetemp = ccs;
 	}
 
 	/**
@@ -105,6 +115,13 @@ public class SalaryScheme implements ICrud{
 					generatedKey = rs.getInt(1);
 				}
 				status = generatedKey;
+				log.info("ss.getComponentCodetemp() "
+						+ ss.getComponentCodetemp() + " "
+						+ ss.getComponentCodetemp().length);
+				for (int i = 0; i < ss.getComponentCodetemp().length; i++) {
+					setSchemecomponent(generatedKey,
+							ss.getComponentCodetemp()[i]);
+				}
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
@@ -157,4 +174,14 @@ public class SalaryScheme implements ICrud{
 		return null;
 	}
 
+	private void setSchemecomponent(int scheme, String component) {
+		SchemeComponent sc = new SchemeComponent();
+		sc.setComponenttemp(component);
+		sc.setScheme(scheme);
+		try {
+			sc.add(sc);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+	}
 }

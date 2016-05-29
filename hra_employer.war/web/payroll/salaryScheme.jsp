@@ -57,103 +57,7 @@
 </div>
 
 <script type="text/javascript">
-	function addRow() {
-		var table = document.getElementById("salarySchemetbl");
-		var salaryComponenttype = document
-				.getElementById("salaryComponenttype");
-		var salaryComponenttitle = document
-				.getElementById("salaryComponenttitle");
-		var salaryComponentdescription = document
-				.getElementById("salaryComponentdescription");
-		var salaryComponentamount = document
-				.getElementById("salaryComponentamount");
-		var salaryComponentmin = document.getElementById("salaryComponentmin");
-		var salaryComponentmax = document.getElementById("salaryComponentmax");
-		var salaryCurrency = document.getElementById("salaryCurrency");
-
-		var rowCount = table.rows.length;
-		var row = table.insertRow(rowCount);
-
-		var x = document.getElementById("salarySchemetbl").rows.length;
-		var y =x;
-		// 		row.insertCell(0).innerHTML = salaryComponenttype.value;
-		var td0 = row.insertCell(0);
-		td0.innerHTML = salaryComponenttype.value;
-		td0.id = "nr" + (x);
-
-		// 		row.insertCell(1).innerHTML = salaryComponenttitle.value;
-		var td1 = row.insertCell(1);
-		td1.innerHTML = salaryComponenttitle.value;
-
-		var td2 = row.insertCell(2);
-		td2.innerHTML = salaryCurrency.value;
-
-		// 		row.insertCell(2).innerHTML = salaryComponentdescription.value;
-		var td3 = row.insertCell(3);
-		td3.innerHTML = salaryComponentdescription.value;
-
-		// 		row.insertCell(3).innerHTML = salaryComponentamount.value;
-		var td4 = row.insertCell(4);
-		td4.innerHTML = salaryComponentamount.value;
-
-		// 		row.insertCell(4).innerHTML = salaryComponentmin.value;
-		var td5 = row.insertCell(5);
-		td5.innerHTML = salaryComponentmin.value;
-
-		// 		row.insertCell(5).innerHTML = salaryComponentmax.value;
-		var td6 = row.insertCell(6);
-		td6.innerHTML = salaryComponentmax.value;
-
-		// 		row.insertCell(6).innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
-		var td7 = row.insertCell(7);
-		td7.innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
-
-		alert(x);
-		var arr = [];
-
-		for (var i = 2; i < x; i++) {
-			var rows = $(this).closest("tr"); // Find the row
-			var text = rows.find(".nr" + i).text(); // Find the text
-			alert(text);
-			arr.push(text);
-
-		}
-		// 		var rows = $(this).closest("tr"); // Find the row
-		// 		var text = rows.find(".nr").text(); // Find the text
-
-		// Let's test it out
-		alert(arr.toString());
-
-	}
-
-	function deleteRow(obj) {
-		var index = obj.parentNode.parentNode.rowIndex;
-		var table = document.getElementById("salarySchemetbl");
-		table.deleteRow(index);
-	}
-
-	function addTable() {
-		var myTableDiv = document.getElementById("myDynamicTable");
-
-		var table = document.createElement('TABLE');
-		table.border = '1';
-
-		var tableBody = document.createElement('TBODY');
-		table.appendChild(tableBody);
-
-		for (var i = 0; i < 3; i++) {
-			var tr = document.createElement('TR');
-			tableBody.appendChild(tr);
-
-			for (var j = 0; j < 4; j++) {
-				var td = document.createElement('TD');
-				td.width = '75';
-				td.appendChild(document.createTextNode("Cell " + i + "," + j));
-				tr.appendChild(td);
-			}
-		}
-		myTableDiv.appendChild(table);
-	}
+	
 </script>
 
 
@@ -193,10 +97,10 @@
 							<label for="salaryCriteria">Criteria</label><select
 								class="form-control" id="salaryCriteria" name="salaryCriteria"
 								onchange="setEmptyerrormessage('#salaryCriteria','salaryCriteriaerror','Criteria')">
-								<option value="">--Select--</option>
-								<option value="Basic">Grade</option>
-								<option value="Allowance">Working Experience</option>
-								<option value="Bonus">Qualification</option>
+								<option value="" selected="selected">--Select--</option>
+								<option value="Grade">Grade</option>
+								<option value="Working Experience">Working Experience</option>
+								<option value="Qualification">Qualification</option>
 								<option value="Other">Other</option>
 							</select>
 						</div>
@@ -266,11 +170,12 @@
 					onclick="addSalaryscheme()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
-				<button type="button" class="btn btn-warning pull-left" onclick="">
+				<button type="button" class="btn btn-warning pull-left"
+					onclick="clearSalaryscheme()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal" onclick="">
+					data-dismiss="modal" onclick="clearSalaryscheme()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 			</div>

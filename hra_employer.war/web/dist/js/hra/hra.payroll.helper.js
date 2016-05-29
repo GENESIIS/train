@@ -6,6 +6,7 @@
 /*******************************************************************************
  * To load the Salary component page.
  ******************************************************************************/
+var arr = [];
 function loadSalarycomponentdetails() {
 	$("#mainContent").load("payroll/salaryComponent.jsp");
 }
@@ -42,7 +43,7 @@ function addSalarycomponent() {
 	var salaryComponenttitle = $("#salaryComponenttitle").val();
 	var salaryComponentdescription = $("#salaryComponentdescription").val();
 	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked')
-			.val()
+			.val();
 	var salaryComponentmin = $("#salaryComponentmin").val();
 	var salaryCurrency = $("#salaryCurrency").val();
 	var salaryComponentmax = $("#salaryComponentmax").val();
@@ -93,7 +94,8 @@ function addSalaryscheme() {
 	var jsonData = {
 		"title" : salarySchemetitle,
 		"criteria" : salaryCriteria,
-		"description" : salarySchemedescription
+		"description" : salarySchemedescription,
+		"componentCodetemp" : arr
 	};
 
 	$.ajax({
@@ -107,6 +109,8 @@ function addSalaryscheme() {
 		success : function(data) {
 			if (data == "Details added successfully.") {
 				alert(data);
+				arr = [];
+				clearSalaryscheme();
 			}
 			clearComponent();
 		},
@@ -148,4 +152,104 @@ function clearComponent() {
 	$("#salaryComponentamounterror").text("");
 	$("#salaryComponentminerror").text("");
 	$("#salaryComponentmaxerror").text("");
+}
+
+function clearSalaryscheme() {
+	$("#salarySchemetitle").val("");
+	$('#salaryCriteria option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+	$("#salarySchemedescription").val("");
+
+	var table = document.getElementById("salarySchemetbl");
+	var tblsize = table.rows.length;
+	for (var int = 0; int < tblsize; int++) {
+		if (int != 0) {
+			deleteRow(table.rows[int]);
+		}
+	}
+
+}
+
+// Table related functions
+
+function addRow() {
+	var table = document.getElementById("salarySchemetbl");
+	var salaryComponenttype = document.getElementById("salaryComponenttype");
+	var salaryComponenttitle = document.getElementById("salaryComponenttitle");
+	var salaryComponentdescription = document
+			.getElementById("salaryComponentdescription");
+	var salaryComponentamount = document
+			.getElementById("salaryComponentamount");
+	var salaryComponentmin = document.getElementById("salaryComponentmin");
+	var salaryComponentmax = document.getElementById("salaryComponentmax");
+	var salaryCurrency = document.getElementById("salaryCurrency");
+
+	var rowCount = table.rows.length;
+	var row = table.insertRow(rowCount);
+
+	var x = document.getElementById("salarySchemetbl").rows.length;
+
+	var td0 = row.insertCell(0);
+	td0.innerHTML = salaryComponenttype.value;
+	td0.id = "nr" + (x);
+
+	var td1 = row.insertCell(1);
+	td1.innerHTML = salaryComponenttitle.value;
+
+	var td2 = row.insertCell(2);
+	td2.innerHTML = salaryCurrency.value;
+
+	var td3 = row.insertCell(3);
+	td3.innerHTML = salaryComponentdescription.value;
+
+	var td4 = row.insertCell(4);
+	td4.innerHTML = salaryComponentamount.value;
+
+	var td5 = row.insertCell(5);
+	td5.innerHTML = salaryComponentmin.value;
+
+	var td6 = row.insertCell(6);
+	td6.innerHTML = salaryComponentmax.value;
+
+	var td7 = row.insertCell(7);
+	td7.innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
+
+	if (table != null) {
+		for (var i = 0; i < table.rows.length; i++) {
+			if (i > 0) {
+				var ce = table.rows[i].cells[1];
+				arr.push(ce.innerHTML);
+			}
+		}
+	}
+}
+
+function deleteRow(obj) {
+	var index = obj.parentNode.parentNode.rowIndex;
+	var table = document.getElementById("salarySchemetbl");
+	table.deleteRow(index);
+}
+
+function addTable() {
+	var myTableDiv = document.getElementById("myDynamicTable");
+
+	var table = document.createElement('TABLE');
+	table.border = '1';
+
+	var tableBody = document.createElement('TBODY');
+	table.appendChild(tableBody);
+
+	for (var i = 0; i < 3; i++) {
+		var tr = document.createElement('TR');
+		tableBody.appendChild(tr);
+
+		for (var j = 0; j < 4; j++) {
+			var td = document.createElement('TD');
+			td.width = '75';
+			td.appendChild(document.createTextNode("Cell " + i + "," + j));
+			tr.appendChild(td);
+		}
+	}
+	myTableDiv.appendChild(table);
 }
