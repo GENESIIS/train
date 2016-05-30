@@ -2,13 +2,13 @@
 	<div class="table-responsive">	
 	<br></br>	
 	<div class="table-responsive">			
-		<table id="employeeDetails" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+		<table id="familyDetails" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th>Employee Number</th>
-					<th>Employee Name</th>
-					<th>Designation</th>
-					<th>Contact Details</th>
+					<th>Name</th>
+					<th>Relationship</th>
+					<th>Date of Birthday</th>
 					<th>View</th>
 					<th>Edit</th>
 					<th>Delete</th>
@@ -17,14 +17,21 @@
 			<tfoot>
 				<tr>
 					<th>Employee Number</th>
-					<th>Employee Name</th>
+					<th>Name</th>
 					<th>Designation</th>
-					<th>Contact Details</th>
+					<th>Relationship</th>
 					<th>View</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
 			</tfoot>
+			<tbody>
+				<tr>					
+					<td align="center"></td>
+					<td align="center"></td>
+					<td align="center"></td> 
+				</tr>
+			</tbody>
 		</table>
 	</div>
   </div>

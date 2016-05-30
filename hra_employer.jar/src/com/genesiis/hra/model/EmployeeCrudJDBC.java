@@ -158,7 +158,7 @@ public class EmployeeCrudJDBC implements ICrud {
 		PreparedStatement pd = null;
 		ResultSet findData = null;
 		 
-		Employee employee = new Employee();
+		
 		
 		try {
 			conn = ConnectionManager.getConnection();
@@ -172,6 +172,7 @@ public class EmployeeCrudJDBC implements ICrud {
 			try {
 				while(findData.next()){
 					// set data to entity class
+					Employee employee = new Employee();
 					employee.setEmployeeid(findData.getString("ID"));
 					employee.setEmployeename(findData.getString("NAME"));
 					employee.setEmployeedesignation(findData.getString("DESIGNATION"));					

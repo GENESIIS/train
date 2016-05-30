@@ -13,11 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.GetDepartment;
-import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommand;
-import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.command.SerchEmployee;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
@@ -45,7 +41,6 @@ public class EmployeeController extends HttpServlet {
 	public void init() throws ServletException {		
 
 		commands = new HashMap<Operation, ICommand>();		
-		commands.put(Operation.REGISTER_LOAN, new RegisterLoan());		
 		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
 		// hmap.put(4, null);
 	}

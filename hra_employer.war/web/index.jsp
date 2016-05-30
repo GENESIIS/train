@@ -27,7 +27,6 @@
 <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
 <script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>

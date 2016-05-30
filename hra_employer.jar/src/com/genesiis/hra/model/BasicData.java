@@ -1,7 +1,6 @@
 package com.genesiis.hra.model;
-//@Entity
-public class Employee {
-	private String employeeId;
+
+public class BasicData extends Employee {
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -17,19 +16,6 @@ public class Employee {
 	private String employeeJoindate;
 	private String employeeEpf;
 	private String employeeBasis;
-
-	
-	
-	public Employee() {
-	}
-
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
 
 	public String getEmployeename() {
 		return employeeName;
@@ -135,14 +121,6 @@ public class Employee {
 		this.employeeJoindate = employeeJoindate;
 	}
 
-	public String getEmployeeepf() {
-		return employeeEpf;
-	}
-
-	public void setEmployeeepf(String employeeEpf) {
-		this.employeeEpf = employeeEpf;
-	}
-
 	public String getEmployeebasis() {
 		return employeeBasis;
 	}
@@ -151,16 +129,14 @@ public class Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
-	public Employee(String employeeId, String employeeName,
-			String employeeDesignation, String employeeEmail,
-			String employeeDateofbirth, String employeeNic,
-			String employeeGender, String employeePermenetaddress,
-			String employeeTemporaryaddress, String employeeMobile,
-			String employeeTelephone, String employeeDepartment,
-			String employeeMaritalstatus, String employeeJoindate,
-			String employeeEpf, String employeeBasis) {
+	public BasicData(String employeeName, String employeeDesignation,
+			String employeeEmail, String employeeDateofbirth,
+			String employeeNic, String employeeGender,
+			String employeePermenetaddress, String employeeTemporaryaddress,
+			String employeeMobile, String employeeTelephone,
+			String employeeDepartment, String employeeMaritalstatus,
+			String employeeJoindate, String employeeEpf, String employeeBasis) {
 		super();
-		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeeDesignation = employeeDesignation;
 		this.employeeEmail = employeeEmail;
@@ -178,4 +154,7 @@ public class Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
+	public BasicData() {
+	}
+	
 }

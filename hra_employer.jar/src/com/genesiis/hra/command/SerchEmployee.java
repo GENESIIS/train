@@ -8,7 +8,6 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeCrudJDBC;
-import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
 import com.google.gson.Gson;
 /* *********************************************
