@@ -5,8 +5,7 @@
 		<description>JBOSS Hibernate Provider</description>
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source></non-jta-data-source>
-
- 		<class>com.genesiis.hra.model.Empl</class>
+		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />

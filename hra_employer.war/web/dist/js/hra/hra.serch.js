@@ -4,7 +4,18 @@
 
 
 var dataSet = [
-    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421" ],
+ {"employeeId":"1","employeeName":"Namal Ahangama","employeeDesignation":"Manager","employeeMobile":"5046218927"},
+ {"employeeId":"2","employeeName":"Nalaka Suranga","employeeDesignation":"Ass. Manager","employeeMobile":"8566368749"},
+ {"employeeId":"3","employeeName":"Saman Joy","employeeDesignation":"Supp. Manager","employeeMobile":"5135701893"},
+ {"employeeId":"4","employeeName":"James Smith","employeeDesignation":"Supp. Human Resource Manager","employeeMobile":"7735736914"},
+ {"employeeId":"5","employeeName":"Mary Johnson","employeeDesignation":"Supp. Vice Manager","employeeMobile":"6054142147"},
+ {"employeeId":"6","employeeName":"John Williams","employeeDesignation":"Supp. Manager","employeeMobile":"2158741229"},
+ {"employeeId":"7","employeeName":"Lisa Walker","employeeDesignation":"Supp. Accountant","employeeMobile":"3104985651"},
+ {"employeeId":"8","employeeName":"Larry West","employeeDesignation":"Supp. Manager","employeeMobile":"9565376195"},
+ {"employeeId":"9","employeeName":"Karen Scott","employeeDesignation":"Supp. Human Resource Manager","employeeMobile":"9313139635"},
+ {"employeeId":"10","employeeName":"Lawrence Sperry","employeeDesignation":"Supp. Manager","employeeMobile":"3132887937"},
+ {"employeeId":"11","employeeName":"Lawrence Sperry","employeeDesignation":"Supp. Manager","employeeMobile":"3132887937"}];
+   /* [ "Tiger Nixon", "System Architect", "Edinburgh", "5421" ],
     [ "Garrett Winters", "Accountant", "Tokyo", "8422"],
     [ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562"],
     [ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224" ],
@@ -40,7 +51,7 @@ var dataSet = [
     [ "Gavin Cortez", "Team Leader", "San Francisco", "2860"],
     [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240"],
     [ "Unity Butler", "Marketing Designer", "San Francisco", "5384" ]
-];
+];*/
 
 function serchEmployee() {
 	var serchContent = $("#serchEmployeeText").val();
@@ -56,9 +67,7 @@ function serchEmployee() {
 			task : "SE"
 		},
 		dataType : "json",
-		success : function(responseText) {
-			alert(responseText);
-			json = JSON.parse(responseText);
+		success : function(responseText) {			
 			listEmployee(responseText);
 		},
 		error : function(e) {
@@ -68,54 +77,56 @@ function serchEmployee() {
 	});	
 } 
 
-function listEmployee(empData) {		
-			json = JSON.parse(empData);	
-			jsonData : JSON.stringify(empData),
+function listEmployee(empData) {
+	//eTable = $('#employeeDetails').DataTable();
+	 //eTable.fnClearTable();
+			var json = JSON.parse(empData);			
 			$('#employeeDetails').DataTable({
-				data: empData,
-				//"aaData" : empData, 
+				data: json,
+				paging: false,
 				"aoColumns": [ 
                           {
-                        	  "mDataProp": employeeEpf
-                              //className: "center"	                     
+                        	  "mDataProp": "employeeId",
+                              className: "center"	                     
                           },
 		                  {
-                        	  "mDataProp": "employeeEpf"
-		                      //className: "center"	                      
+                        	  "mDataProp": "employeeName",
+		                      className: "center"	                      
 		                  },		                  
 		                  
 		                  {
-		                	  "mDataProp": "employeeDesignation"
-		                     // className: "center"
+		                	  "mDataProp": "employeeDesignation",
+		                      className: "center"
 		                  },
-		                  {
-		                	  "mDataProp": "employeeMobile"
-		                      //className: "center"		                    
+		                  { 
+		                	  "mDataProp": "employeeMobile",
+		                      className: "center"		                    
 		                  },
 		                          
 		                  {
 		                      data: null,
 		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Add</a>'
+		                      defaultContent: '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewEmployeeDetailsForm">'
+		                    	             +'<i class="glyphicon glyphicon-modal-window"></i></button>'
 		                  },
 		                  {
 		                      data: null,
 		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Edit</a>'
+		                      defaultContent: '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editEmployeeDetailsForm"><i class="glyphicon glyphicon-modal-window"></i></button>'
 		                  },
 		                  {
 		                      data: null,
 		                      className: "center",
-		                      defaultContent: '<a href="" class="editor_edit">Delete</a>'
+		                      defaultContent: '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmployeeDetailsForm"><i class="glyphicon glyphicon-modal-window"></i></button>'
 		                  }
 		              ]  
 		      
 		    } );
-	
+			$("#employeeDetails_filter").css("display","none");  // hiding global search box
+			eTable = $('#employeeDetails').DataTable();
+			$('#serchEmployeeText').keyup(function(){
+			      eTable.search($(this).val()).draw();
+			});
 
 }
 
-eTable = $('#employeeDetails').dataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-$('#serchEmployeeText').keyup(function(){
-      eTable.search($(this).val()).draw() ;
-});

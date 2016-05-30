@@ -9,7 +9,8 @@
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {	
-		loadBasicTable()
+		loadBasicTable();
+		//listEmployee(empData); 
 } );	
 	 
 </script>
@@ -23,9 +24,21 @@
 		<i class="glyphicon glyphicon-plus"></i> New Employee
 	</button>
 	<br></br>
-<input aria-controls="employeeDetails" placeholder="" class="" type="text" id="serchEmployeeText">
-<button type="button" class="btn btn_default" onclick = "serchEmployee()" value="Search">	
-	</button>
+	<div class="row">
+	<div class="col-sm-4">
+	 <select class="selectpicker">
+      <option value="Basic" selected="selected">Basic detail</option>
+      <option value="Family">Family detail</option>
+      <option value="medical">Medical detail</option>
+      <option value="Education">Education detail</option>
+     </select> 
+     </div>
+     <div class="col-sm-8" align="right">
+       <input aria-controls="employeeDetails" placeholder="" class="input-medium search-query" type="text" id="serchEmployeeText">
+       <button type="button" onclick = "serchEmployee()" value="Search" class="glyphicon glyphicon-search">
+       <i class="icon-search"></i></button>
+	</div>
+	</div>	
 <div id = "basicTable">
 </div>
 </div>

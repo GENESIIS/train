@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.utill.ConnectionManager;
 
 /* *************************************************
@@ -18,19 +17,17 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 	public Object find(int empEpf) {
 		// TODO Auto-generated method stub
 		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where EPF = ?";
-		String messege = "";
 		Connection conn = null;
 		PreparedStatement pd = null;
 		ResultSet findData = null;
 		
-		Employee employee = new Employee();
-		log.info("find int ================================================"); 
+		Employee employee = new Employee(); 
 		try {
 			conn = ConnectionManager.getConnection(); 
 			pd = conn.prepareStatement(query);
 			pd.setInt(1, empEpf);
 			findData = pd.executeQuery();
-			log.info("find int .......................................................");
+			log.info("find int" + empEpf);
 			try { 
 				if(findData.next()){
 					// set data to entity class
@@ -59,15 +56,14 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 					employee.setEmployeebasis(findData.getString("BASIS"));
 					employee.setEmployeetemporaryaddress(findData
 							.getString("TEMPORARYADDRESS"));
-					log.info("find int //////////////////////////////////////////");
 				}
 			} catch (SQLException e) {
 				// TODO: handle exception
-				log.info(e.toString());
+				log.info("find epf methode "+e.toString());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			log.info(e.toString());
+			log.info("find epf methode "+e.toString());
 		}finally{
 			try {
 				if (pd != null) {
@@ -75,7 +71,7 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 				}
 				conn.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.info("find epf methode finally "+e.toString());
 			}
 		}
 		return employee;
@@ -109,12 +105,11 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 				}
 			} catch (SQLException e) {
 				// TODO: handle exception
-				messege = MessageList.ERROR.message();
-				log.info(e.toString());
+				log.info("find methode keyword serch"+e.toString());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			messege = MessageList.ERROR.message();
+			log.info("find methode keyword serch"+e.toString());
 		}finally{
 			try {
 				if (pd != null) {
@@ -122,8 +117,7 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 				}
 				conn.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
-				messege = MessageList.ERROR.message();
+				log.info("find methode keyword serch finally"+e.toString());
 			}
 		}
 		return null;
