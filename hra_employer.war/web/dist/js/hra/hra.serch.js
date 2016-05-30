@@ -79,9 +79,11 @@ function serchEmployee() {
 
 function listEmployee(empData) {
 	//eTable = $('#employeeDetails').DataTable();
-	 //eTable.fnClearTable();
+	//eTable.fnClearTable(); fnAddData(
+	if(typeof eTable === 'undefined') 
+    {
 			var json = JSON.parse(empData);			
-			$('#employeeDetails').DataTable({
+			eTable=$('#employeeDetails').DataTable({
 				data: json,
 				paging: false,
 				"aoColumns": [ 
@@ -122,6 +124,52 @@ function listEmployee(empData) {
 		              ]  
 		      
 		    } );
+			
+    }else{
+    	var json = JSON.parse(empData);	
+    	jQuery('#employeeDetails').DataTable().fnDestroy();
+    	$('#employeeDetails').DataTable({
+			data: json,
+			paging: false,
+			"aoColumns": [ 
+                      {
+                    	  "mDataProp": "employeeId",
+                          className: "center"	                     
+                      },
+	                  {
+                    	  "mDataProp": "employeeName",
+	                      className: "center"	                      
+	                  },		                  
+	                  
+	                  {
+	                	  "mDataProp": "employeeDesignation",
+	                      className: "center"
+	                  },
+	                  { 
+	                	  "mDataProp": "employeeMobile",
+	                      className: "center"		                    
+	                  },
+	                          
+	                  {
+	                      data: null,
+	                      className: "center",
+	                      defaultContent: '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewEmployeeDetailsForm">'
+	                    	             +'<i class="glyphicon glyphicon-modal-window"></i></button>'
+	                  },
+	                  {
+	                      data: null,
+	                      className: "center",
+	                      defaultContent: '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editEmployeeDetailsForm"><i class="glyphicon glyphicon-modal-window"></i></button>'
+	                  },
+	                  {
+	                      data: null,
+	                      className: "center",
+	                      defaultContent: '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmployeeDetailsForm"><i class="glyphicon glyphicon-modal-window"></i></button>'
+	                  }
+	              ]  
+	      
+	    } );
+    }
 			$("#employeeDetails_filter").css("display","none");  // hiding global search box
 			eTable = $('#employeeDetails').DataTable();
 			$('#serchEmployeeText').keyup(function(){
