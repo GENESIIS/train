@@ -280,7 +280,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"
-					onclick="addSalarycomponent(); Javascript:addRow()" data-dismiss="">
+					onclick="addSalarycomponent(2)" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left"

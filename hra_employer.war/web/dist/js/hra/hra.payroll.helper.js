@@ -43,7 +43,8 @@ function setLargevalueerror(textFieldname1, textFieldname2, errorSpanname) {
 }
 
 // //Add salary component
-function addSalarycomponent() {
+function addSalarycomponent(num) {
+	alert(num);
 	var salaryComponenttype = $("#salaryComponenttype").val();
 	var salaryComponenttitle = $("#salaryComponenttitle").val();
 	var salaryComponentdescription = $("#salaryComponentdescription").val();
@@ -94,6 +95,10 @@ function addSalarycomponent() {
 			success : function(data) {
 				if (data == "Details added successfully.") {
 					alert(data);
+					if (num == 2) {
+						addRow();
+					}
+					clearComponent();
 				}
 			},
 			error : function(e) {
@@ -199,42 +204,42 @@ function clearSalaryscheme() {
 // Add row to the Table
 function addRow() {
 	var table = document.getElementById("salarySchemetbl");
-	var salaryComponenttype = document.getElementById("salaryComponenttype");
-	var salaryComponenttitle = document.getElementById("salaryComponenttitle");
-	var salaryComponentdescription = document
-			.getElementById("salaryComponentdescription");
+	var salaryComponenttype = $("#salaryComponenttype").val();
+	var salaryComponenttitle = $("#salaryComponenttitle").val();
+	var salaryComponentdescription = $("#salaryComponentdescription").val();
 	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked')
 			.val();
-	var salaryComponentmin = document.getElementById("salaryComponentmin");
-	var salaryComponentmax = document.getElementById("salaryComponentmax");
-	var salaryCurrency = document.getElementById("salaryCurrency");
+	var salaryComponentmin = $("#salaryComponentmin").val();
+	var salaryComponentmax = $("#salaryComponentmax").val();
+	var salaryCurrency = $("#salaryCurrency").val();
 
 	var rowCount = table.rows.length;
 	var row = table.insertRow(rowCount);
+	alert(rowCount + " " + salaryCurrency);
 
 	var x = document.getElementById("salarySchemetbl").rows.length;
 
 	var td0 = row.insertCell(0);
-	td0.innerHTML = salaryComponenttype.value;
+	td0.innerHTML = salaryComponenttype;
 	td0.id = "nr" + (x);
 
 	var td1 = row.insertCell(1);
-	td1.innerHTML = salaryComponenttitle.value;
+	td1.innerHTML = salaryComponenttitle;
 
 	var td2 = row.insertCell(2);
-	td2.innerHTML = salaryCurrency.value;
+	td2.innerHTML = salaryCurrency;
 
 	var td3 = row.insertCell(3);
-	td3.innerHTML = salaryComponentdescription.value;
+	td3.innerHTML = salaryComponentdescription;
 
 	var td4 = row.insertCell(4);
 	td4.innerHTML = salaryComponentamount;
 
 	var td5 = row.insertCell(5);
-	td5.innerHTML = salaryComponentmin.value;
+	td5.innerHTML = salaryComponentmin;
 
 	var td6 = row.insertCell(6);
-	td6.innerHTML = salaryComponentmax.value;
+	td6.innerHTML = salaryComponentmax;
 
 	var td7 = row.insertCell(7);
 	td7.innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
