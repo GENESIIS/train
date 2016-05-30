@@ -160,15 +160,9 @@ function clearSalaryscheme() {
 		return this.defaultSelected;
 	});
 	$("#salarySchemedescription").val("");
+	$("#salaryComponent").val("");
 
-	var table = document.getElementById("salarySchemetbl");
-	var tblsize = table.rows.length;
-	for (var int = 0; int < tblsize; int++) {
-		if (int != 0) {
-			deleteRow(table.rows[int]);
-		}
-	}
-
+	deleteRows();
 }
 
 // Table related functions
@@ -179,8 +173,8 @@ function addRow() {
 	var salaryComponenttitle = document.getElementById("salaryComponenttitle");
 	var salaryComponentdescription = document
 			.getElementById("salaryComponentdescription");
-	var salaryComponentamount = document
-			.getElementById("salaryComponentamount");
+	var salaryComponentamount = $('input[name="salaryComponentamount"]:checked')
+			.val();
 	var salaryComponentmin = document.getElementById("salaryComponentmin");
 	var salaryComponentmax = document.getElementById("salaryComponentmax");
 	var salaryCurrency = document.getElementById("salaryCurrency");
@@ -204,7 +198,7 @@ function addRow() {
 	td3.innerHTML = salaryComponentdescription.value;
 
 	var td4 = row.insertCell(4);
-	td4.innerHTML = salaryComponentamount.value;
+	td4.innerHTML = salaryComponentamount;
 
 	var td5 = row.insertCell(5);
 	td5.innerHTML = salaryComponentmin.value;
@@ -252,4 +246,11 @@ function addTable() {
 		}
 	}
 	myTableDiv.appendChild(table);
+}
+
+function deleteRows() {
+	var rowCount = salarySchemetbl.rows.length;
+	for (var i = rowCount - 1; i > 0; i--) {
+		salarySchemetbl.deleteRow(i);
+	}
 }
