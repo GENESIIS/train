@@ -161,6 +161,9 @@ function clearSalaryscheme() {
 	});
 	$("#salarySchemedescription").val("");
 	$("#salaryComponent").val("");
+	
+	$("#salarySchemetitleerror").text("");
+	$("#salaryCriteriaerror").text("");
 
 	deleteRows();
 }
