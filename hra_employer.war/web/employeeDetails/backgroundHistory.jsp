@@ -37,82 +37,87 @@
 									</h3></label>
 							</div>
 				
-							<div class="row">
-				
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="employeeId">Employee ID</label> 
-										<input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="" maxlength="10" value="2" readonly >
-									</div>
-								</div>
-								
+					
+							<div class="well">
 							
-							</div>
-				
-							<div class="row">
-				
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="form-group">
-												<label for="employeeAilment">Ailment</label> 
-												<select class="form-control" id="employeeAilment" name="employeeAilment" >
-													<option value="">--Select--</option>
-													<c:forEach items="<%=AilmentEnum.values()%>" var="entry">
-													    <option>${entry.key}</option>
-													</c:forEach>
-												</select>
+									<div class="row">
+						
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="employeeId">Employee ID</label> 
+												<input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="" maxlength="10" value="2" readonly >
 											</div>
-									</div>
-								</div>
-								
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="ailmentDescription">Description</label> 
-										<input type="text"	class="form-control" id="ailmentDescription" name="ailmentDescription" placeholder="" maxlength="100" >
-									</div>
-								</div>
-				
-							</div>
-							
-							
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="reportDescription">Report Description</label> 
-										<input type="text" class="form-control" id="reportDescription" name="reportDescription" placeholder="Report Description" >
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label" for="reportUpload" style="vertical-align: top;">Report Upload</label>
+										</div>
 										
-												<div class="fileinput fileinput-new" data-provides="fileinput">
-												  
-														  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-														    <img data-src="holder.js/100%x100%" src="dist/demoimages/images.jpg">
-														  </div>
-														  
-														  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-														  
-														  <div>
-															    <span class="btn btn-default btn-file">
-															    			<span class="fileinput-new">Select image</span>
-															    			<span class="fileinput-exists">Change</span>
-																			<input type="file"  id="avatar" name="file">
-																</span>
-																
-														   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-														   								   		
-													  	  </div>
-
-											       
-											    </div>
-
 									</div>
-								</div>
+				
+									<div class="row">
+						
+										<div class="col-md-6">
+											<div class="form-group">
+												<div class="form-group">
+														<label for="employeeAilment">Ailment Type</label> 
+														<select class="form-control" id="employeeAilment" name="employeeAilment" >
+															<option value="">--Select--</option>
+															<c:forEach items="<%=AilmentEnum.values()%>" var="entry">
+															    <option>${entry.key}</option>
+															</c:forEach>
+														</select>
+													</div>
+											</div>
+										</div>
+										
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="ailmentDescription">Ailment Description</label> 
+												<input type="text"	class="form-control" id="ailmentDescription" name="ailmentDescription" placeholder="" maxlength="100" >
+											</div>
+										</div>
+						
+									</div>
+							
 							</div>
 							
+							<div class="well">
 							
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="reportDescription">Report Description</label> 
+												<input type="text" class="form-control" id="reportDescription" name="reportDescription" placeholder="Report Description" >
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label" for="reportUpload" style="vertical-align: top;">Report Upload</label>
+												
+														<div class="fileinput fileinput-new" data-provides="fileinput">
+														  
+																  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+																    <img data-src="holder.js/100%x100%" src="dist/demoimages/images.jpg">
+																  </div>
+																  
+																  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+																  
+																  <div>
+																	    <span class="btn btn-default btn-file">
+																	    			<span class="fileinput-new">Select image</span>
+																	    			<span class="fileinput-exists">Change</span>
+																					<input type="file"  id="avatar" name="file">
+																		</span>
+																		
+																   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+																   								   		
+															  	  </div>
+		
+													       
+													    </div>
+		
+											</div>
+										</div>
+									</div>
+							
+							</div>
 				
 							<div class="modal-footer">
 							

@@ -22,13 +22,15 @@ public class FileUploader{
 		
 		OutputStream outputStream = null;
 		try {
+			//genarate for the file front name
 			Random randomGenerator = new Random();
+			
 			//parameter genarator
 			int randomInt = randomGenerator.nextInt(100000);
 			
-			//folder creation
+			//home folder creation
 			boolean folderCreated = createFolder(filePath);
-			
+
 			//folder exists
 			if(folderCreated){
 				
