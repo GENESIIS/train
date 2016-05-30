@@ -138,7 +138,7 @@ function listEmployee(empData) {
                       },
 	                  {
                     	  "mDataProp": "employeeName",
-	                      className: "center"	                      
+	                      className: "center"	                       
 	                  },		                  
 	                  
 	                  {
