@@ -5,42 +5,33 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.model.FamilyMember;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-public class GetEmployee implements ICommandAJX {
-	static Logger log = Logger.getLogger(GetEmployee.class.getName());
+public class GetFamilyMember implements ICommandAJX {
+	static Logger log = Logger.getLogger(GetFamilyMember.class.getName());
 
 	@Override
 	public String execute(String epf) {
-
 		MessageList message = MessageList.ERROR;
-		String empdetails = null;
-		EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
+		String familydetails = null;
+
+		FamilyMember familyManger = new FamilyMember();
 
 		try {
-
-			log.info(epf + "Befor Execute");
-			empdetails = employeeManager.find(epf);
+			log.info(epf + "=========");
+			familydetails = familyManger.find(epf);
 			log.info("execute");
-			log.info(empdetails);
-
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-
-		return empdetails;
-	}
-
-	private Employee getEmployeeDetails(String data) {
-		Employee employee = (Employee) extractFromJason(data);
-		return employee;
+		return familydetails;
 	}
 
 	@Override
 	public Object extractFromJason(String data) {
-
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -54,6 +45,7 @@ public class GetEmployee implements ICommandAJX {
 			log.error("CreateFromgson - Exception " + e);
 		}
 		return empList;
+
 	}
 
 	@Override
@@ -74,4 +66,5 @@ public class GetEmployee implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

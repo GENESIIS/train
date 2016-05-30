@@ -13,8 +13,8 @@ import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
 /**
- * 20160511 created EducationData entity class - as
- * 20160513 update the class functions 
+ * 20160511 created EducationData entity class - as 20160513 update the class
+ * functions
  **/
 
 public class EducationData extends Employee {
@@ -170,20 +170,20 @@ public class EducationData extends Employee {
 			ResultSet res = preparedStatement.executeQuery();
 			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
-				log.info("res.getString(2)"+res.getString(2));
+				log.info("res.getString(2)" + res.getString(2));
 				edu.setEduUniversity(res.getString(3));
-				log.info("res.getString(3)"+res.getString(3));
+				log.info("res.getString(3)" + res.getString(3));
 				edu.setEduStartedon(res.getString(4));
-				log.info("res.getString(4)"+res.getString(4));
+				log.info("res.getString(4)" + res.getString(4));
 				edu.setEduQualification(res.getString(5));
-				log.info("res.getString(5)"+res.getString(5));
+				log.info("res.getString(5)" + res.getString(5));
 				edu.setEduMedium(res.getString(6));
-				log.info("res.getString(6)"+res.getString(6));
+				log.info("res.getString(6)" + res.getString(6));
 				edu.setEduCompltedon(res.getString(7));
-				log.info("res.getString(7)"+res.getString(7));
+				log.info("res.getString(7)" + res.getString(7));
 				edu.setEduStudytime(res.getString(8));
-				log.info("res.getString(8)"+res.getString(8));
-				
+				log.info("res.getString(8)" + res.getString(8));
+
 				educationDetails = gson.toJson(edu);
 
 			}
@@ -193,7 +193,7 @@ public class EducationData extends Employee {
 
 		return educationDetails;
 	}
-	
+
 	@Override
 	public String find(String id) {
 		Connection conn = null;
@@ -201,31 +201,32 @@ public class EducationData extends Employee {
 		EducationData edu = new EducationData();
 		String educationDetails = null;
 		Gson gson = new Gson();
-
+		log.info(id
+				+ "//");
 		try {
 
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn
-					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
+					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE EMPLOYEEID=?");
 			preparedStatement.setString(1, id);
 
 			ResultSet res = preparedStatement.executeQuery();
 			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
-				log.info("res.getString(2)"+res.getString(2));
+				log.info("res.getString(2)" + res.getString(2));
 				edu.setEduUniversity(res.getString(3));
-				log.info("res.getString(3)"+res.getString(3));
+				log.info("res.getString(3)" + res.getString(3));
 				edu.setEduStartedon(res.getString(4));
-				log.info("res.getString(4)"+res.getString(4));
+				log.info("res.getString(4)" + res.getString(4));
 				edu.setEduQualification(res.getString(5));
-				log.info("res.getString(5)"+res.getString(5));
+				log.info("res.getString(5)" + res.getString(5));
 				edu.setEduMedium(res.getString(6));
-				log.info("res.getString(6)"+res.getString(6));
+				log.info("res.getString(6)" + res.getString(6));
 				edu.setEduCompltedon(res.getString(7));
-				log.info("res.getString(7)"+res.getString(7));
+				log.info("res.getString(7)" + res.getString(7));
 				edu.setEduStudytime(res.getString(8));
-				log.info("res.getString(8)"+res.getString(8));
-				
+				log.info("res.getString(8)" + res.getString(8));
+
 				educationDetails = gson.toJson(edu);
 
 			}
@@ -234,7 +235,7 @@ public class EducationData extends Employee {
 		}
 
 		return educationDetails;
-		
+
 	}
 
 	@Override
@@ -244,13 +245,11 @@ public class EducationData extends Employee {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		EducationData edu = (EducationData) object;
-		
-		
+
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 
-			
 			preparedStatement.setString(1, edu.getEduUniversity());
 			preparedStatement.setString(2, edu.getEduStartedon());
 			preparedStatement.setString(3, edu.getEduQualification());
@@ -259,7 +258,6 @@ public class EducationData extends Employee {
 			preparedStatement.setString(6, edu.getEduStudytime());
 			preparedStatement.setString(7, "SYSTEM");
 			preparedStatement.setString(8, edu.getEmployeeepf());
-		
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {

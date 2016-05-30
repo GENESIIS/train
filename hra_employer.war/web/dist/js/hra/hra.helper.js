@@ -25,6 +25,7 @@ function loadContentqualifications() {
 }
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
+	loademployeeDetails();
 
 }
 
@@ -394,34 +395,7 @@ function addFamilyDetails() {
 	var emptydropdown = isEmptyfield(relationship);
 
 	alert(emptyfield + emptydropdown);
-	// var jsonData = {
-	// "fmemployeeId" : fmemployeeId,
-	// "relationship" : relationship,
-	// "relationDateofbirth" : relationDateofbirth,
-	// "relationName" : relationName,
-	// "occupation" : occupation,
-	// "workingPlace" : workingPlace
-	// };
 
-	// $.ajax({
-	// type : "POST",
-	// url : 'EmployeeController',
-	// data : {
-	// jsonData : JSON.stringify(jsonData),
-	// task : "ADD"
-	// },
-	// dataType : "json",
-	// success : function(data) {
-	// alert(data);
-	// if (data == "Details added successfully.") {
-	// clearDepartmentform();
-	// }
-	// },
-	// error : function(e) {
-	// alert("Error " + e);
-	// console.log(e);
-	// }
-	// });
 }
 
 function clearFamilydetails() {
@@ -589,7 +563,8 @@ function loademployeeDetails() {
 	var jsonData = {
 		"serchContent" : serchContent
 	};
-	alert("ajax" + serchContent), $.ajax({
+
+	$.ajax({
 		type : "POST",
 		url : 'EmployeeController',
 		data : {
@@ -599,25 +574,27 @@ function loademployeeDetails() {
 		},
 		dataType : "json",
 		success : function(responseText) {
-			alert("ajax" + responseText);
+			// alert("ajax" + responseText);
 			json = JSON.parse(responseText);
-			alert(responseText);
-			$("#employee_id").val(json.employeeEpf);
+			// alert(responseText);
+			$("#employee_id").text(json.employeeEpf);
 			$("#name").text(json.employeeName);
 			$("#mobilenumber").text(json.employeeMobile);
 			$("#landnumber").text(json.employeeTelephone);
+			$("#mobilenumber1").text(json.employeeMobile);
+			$("#landnumber1").text(json.employeeTelephone);
 			$("#work_email").text(json.employeeEmail);
+			$("#work_email1").text(json.employeeEmail);
 			$("#nic_num").text(json.employeeNic);
-
+			$("#nic_num1").text(json.employeeNic);
 			$("#birthday").val(json.employeeDateofbirth);
 			$("#gender").text(json.employeeGender);
 			$("#marital_status").text(json.employeeMaritalstatus);
 			$("#address1").text(json.employeePermenetaddress);
 			$("#address2").text(json.employeeTemporaryaddress);
-
-			$("#job_title_Name").val(json.employeeDesignation);
+			$("#job_title").text(json.employeeDesignation);
 			$("#department_Name").text(json.employeeDepartment);
-			// $("#employment_status_Name").test(responseText.eduUniversity);
+			$("#bassis").text(json.employeeBasis);
 			$("#joindate").text(json.employeeJoindate);
 
 		},
@@ -637,25 +614,27 @@ function loadEducationDetails() {
 	var jsonData = {
 		"serchContent" : serchContent
 	};
-	alert("ajax" + serchContent), $.ajax({
+	$.ajax({
 		type : "POST",
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			serchVlaue : serchContent,
-			task : "EDU"
+			task : "GETEDUCATION"
 		},
 		dataType : "json",
 		success : function(responseText) {
-			alert("ajax" + responseText);
+			// alert("ajax" + responseText);
 			json = JSON.parse(responseText);
-			alert(responseText);
-			$("#employeeId").val(responseText.employeeEpf);
-			$("#qualificationName").text(responseText.eduQualification);
-			$("#educatedPlace").test(responseText.eduUniversity);
-			$("#mediumStudied").text(responseText.eduMedium);
-			$("#startedOn").text(responseText.eduStartedon);
-			$("#compleatedOn").text(responseText.eduCompltedon);
+			// alert(responseText + " " + json.eduUniversity + " "
+			// + json.eduMedium + " " + json.eduStartedon + " "
+			// + json.eduCompltedon);
+			$("#employeeId").text(json.employeeEpf);
+			$("#qualificationName").text(json.eduQualification);
+			$("#educatedPlace").text(json.eduUniversity);
+			$("#mediumStudied").text(json.eduMedium);
+			$("#startedOn").text(json.eduStartedon);
+			$("#compleatedOn").text(json.eduCompltedon);
 
 		},
 		error : function(e) {
@@ -663,31 +642,6 @@ function loadEducationDetails() {
 			console.log(e);
 		}
 	});
-
-	// $.getJSON('EmployeeController', {
-	// jsonData : JSON.stringify(jsonData),
-	// task : "FIND"
-	// }, function(data) {
-	// json = JSON.parse(data);
-	// alert(data);
-	// $("#employeeId").val(json.employeeEpf);
-	// $("#qualificationName").text(json.eduQualification);
-	// $("#educatedPlace").test(json.eduUniversity);
-	// $("#mediumStudied").text(json.eduMedium);
-	// $("#startedOn").text(json.eduStartedon);
-	// $("#compleatedOn").html(json.eduCompltedon);
-	//
-	// if (json.eduStudytime == 1) {
-	// document.getElementById("weekdays").checked;
-	// document.getElementById("weekends").checked;
-	// } else if (json.eduStudytime == 2) {
-	// document.getElementById("weekdays").checked;
-	// } else if (json.eduStudytime == 3) {
-	// document.getElementById("weekends").checked;
-	// } else {
-	// // do nothing
-	// }
-	// });
 
 }
 
@@ -699,24 +653,24 @@ function loadFamilyDetails() {
 	var jsonData = {
 		"serchContent" : serchContent
 	};
-	alert("ajax" + serchContent), $.ajax({
+	$.ajax({
 		type : "POST",
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			serchVlaue : serchContent,
-			task : "FAM"
+			task : "GETFAMILY"
 		},
 		dataType : "json",
 		success : function(responseText) {
-			alert("ajax" + responseText);
+
 			json = JSON.parse(responseText);
-			alert(responseText);
-			$("#relationship").val(responseText.fmRelationship);
-			$("#relationDateofbirth").text(responseText.fmDateofbirth);
-			$("#relationName").test(responseText.fmName);
-			$("#occupation").text(responseText.fmOccupation);
-			$("#workingPlace").text(responseText.fmWorkingplace);
+
+			$("#relationship").text(json.fmRelationship);
+			$("#relationDateofbirth").text(json.fmDateofbirth);
+			$("#relationName").text(json.fmName);
+			$("#occupation").text(json.fmOccupation);
+			$("#workingPlace").text(json.fmWorkingplace);
 
 		},
 		error : function(e) {

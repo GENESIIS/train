@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.jboss.logging.Logger;
+
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
@@ -19,6 +21,8 @@ public class FamilyMember extends Employee {
 	private String fmRelationship;
 	private String fmOccupation;
 	private String fmWorkingplace;
+
+	static Logger log = Logger.getLogger(FamilyMember.class.getName());
 
 	public String getFmname() {
 		return fmName;
@@ -184,6 +188,42 @@ public class FamilyMember extends Employee {
 				fm.setFmoccupation(res.getString(6));
 				fm.setFmrelationship(res.getString(5));
 				fm.setFmWorkingplace(res.getString(7));
+				familymember = gson.toJson(fm);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return familymember;
+	}
+
+	@Override
+	public String find(String id) {
+
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		FamilyMember fm = new FamilyMember();
+		String familymember = null;
+		Gson gson = new Gson();
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE EMPLOYEEID=?");
+			preparedStatement.setString(1, id);
+			ResultSet res = preparedStatement.executeQuery();
+			if (res.next()) {
+				fm.setEmployeeepf(res.getString(2));
+				log.info("res.getString(2)" + res.getString(2));
+				fm.setFmdateofbirth(res.getString(4));
+				log.info("res.getString(4)" + res.getString(4));
+				fm.setFmname(res.getString(3));
+				log.info("res.getString(3)" + res.getString(3));
+				fm.setFmoccupation(res.getString(6));
+				log.info("res.getString(6)" + res.getString(6));
+				fm.setFmrelationship(res.getString(5));
+				log.info("res.getString(5)" + res.getString(5));
+				fm.setFmWorkingplace(res.getString(7));
+				log.info("res.getString(7)" + res.getString(7));
 				familymember = gson.toJson(fm);
 			}
 		} catch (SQLException e) {

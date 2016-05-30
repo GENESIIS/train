@@ -31,7 +31,6 @@ public class Employee implements ICrud {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-	
 	private String employeeBasis;
 
 	public String getEmployeeepf() {
