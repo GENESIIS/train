@@ -118,14 +118,17 @@
 							
 								<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >
 								
+								<!-- FILE UPLOAD -->
+								<button type="button" class="btn btn-success full pull-right" id="upload" disabled="disabled">
+									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports 
+								</button>
+								
 								<!-- SAVE -->
 								<button type="button" class="btn btn-success full pull-right" onclick="addMedicalhistorydetails();"  id="save">
 									<i class="glyphicon glyphicon-floppy-disk"></i> Save 
 								</button>
 
-								<button type="button" class="btn btn-success full pull-right" id="upload" disabled="disabled">
-									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports 
-								</button>
+								
 								
 								<!-- CLEAR -->
 								<button type="button" class="btn btn-warning pull-left"	onclick="clearMedicalHisory()">
