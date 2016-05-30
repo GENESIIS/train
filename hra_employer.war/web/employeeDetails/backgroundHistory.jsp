@@ -1,4 +1,11 @@
+<style>
+<!--
 
+-->
+.btn-space {
+    margin-right: 5px;
+}
+</style>
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.genesiis.hra.validation.AilmentEnum"%>
@@ -30,7 +37,7 @@
 					<div>
 						<!-- Modal content-->
 						<div class="modal-body">
-				
+
 							<div>
 								<label><h3 class="modal-title">
 										<i class="glyphicon glyphicon-check"></i> Add Medical History
@@ -84,7 +91,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="reportDescription">Report Description</label> 
-												<input type="text" class="form-control" id="reportDescription" name="reportDescription" placeholder="Report Description" >
+												<input type="text" class="form-control" id="reportDescription" name="reportDescription" placeholder="Report Description" maxlength="100" >
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -109,7 +116,7 @@
 																   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 																   								   		
 															  	  </div>
-		
+
 													       
 													    </div>
 		
@@ -124,19 +131,17 @@
 								<input type="hidden" class="form-control" id="ehReferencemodby" name="ehReferencemodby" value="ADMIN_USER_TR" >
 								
 								<!-- FILE UPLOAD -->
-								<button type="button" class="btn btn-success full pull-right" id="upload" disabled="disabled">
+								<button type="button" class="btn btn-success full pull-right btn-space" id="upload" disabled="disabled">
 									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports 
 								</button>
 								
 								<!-- SAVE -->
-								<button type="button" class="btn btn-success full pull-right" onclick="addMedicalhistorydetails();"  id="save">
+								<button type="button" class="btn btn-success full pull-right btn-space" onclick="addMedicalhistorydetails();"  id="save">
 									<i class="glyphicon glyphicon-floppy-disk"></i> Save 
 								</button>
 
-								
-								
 								<!-- CLEAR -->
-								<button type="button" class="btn btn-warning pull-left"	onclick="clearMedicalHisory()">
+								<button type="button" class="btn btn-warning pull-left"	onclick="clearMedicalHisory()" id="reset">
 									<i class="glyphicon glyphicon-refresh"></i> Clear
 								</button>
 								
@@ -145,6 +150,7 @@
 									<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 								</button>
 								
+
 							</div>
 							
 						</div>

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.MessageList;
 
 /**
  * 
@@ -186,7 +187,7 @@ public class MedicalHistory extends Employee {
 
 	public String isValidObject(Object object) {
 
-		String messagetxt = "success";
+		String messagetxt = MessageList.MEDICALHISTORYSUCCESS.message();
 
 		DataValidator val = new DataValidator();
 		MedicalHistory edu = (MedicalHistory) object;
@@ -202,19 +203,19 @@ public class MedicalHistory extends Employee {
 		switch (vall) {
 
 		case 0: // Both too short
-			messagetxt = "pass";
+			messagetxt = MessageList.MEDICALHISTORYPASS.message();
 			break;
 
 		case 1: // User Ok, pass too short
-			messagetxt = "Medical History Employee id not valid";
+			messagetxt = MessageList.MEDICALHISTORYEMPLOYEEID.message();
 			break;
 
 		case 2: // User too short, pass ok
-			messagetxt = "Medical History Ailment not valid";
+			messagetxt = MessageList.MEDICALHISTORYAILMENT.message();
 			break;
 
 		case 3: // Both Ok
-			messagetxt = "Medical History Description not valid";
+			messagetxt = MessageList.MEDICALHISTORYDESCRIPTION.message();
 			break;
 
 		}

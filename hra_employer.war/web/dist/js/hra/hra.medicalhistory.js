@@ -185,7 +185,7 @@ $(document).on("click", "#upload", function() {
 				alert(data);
 
 				clearMedicalHisory();
-				clearMedicalReports();
+
 				$('#save').prop('disabled', false); 
 				$('#upload').prop('disabled', true);
 				
@@ -230,25 +230,27 @@ $(document).on("click", "#upload", function() {
 /*******************************************************************************
  * Start Clear medical history data
  */
-function clearMedicalHisory() {
+
+function clearMedicalHisory(){
+	$('.fileinput').fileinput('reset');
+
 	$("#employeeAilment").val("");
 	$("#ailmentDescription").val("");
 
 	$('#employeeAilment option').prop('selected', function() {
 		return this.defaultSelected;
 	});
-	
-	$('#upload').prop('disabled', true); 
+
+	$("#reportDescription").val("");
+
+	$('#upload').prop('disabled', true);
 
 }
 /*******************************************************************************
  * End Clear medical history data
  */
-function clearMedicalReports() {
-	$("#reportDescription").val("");
-	$("#avatar").val("");
-	$('#upload').prop('disabled', true); 
-}
+
+
 
 
 
