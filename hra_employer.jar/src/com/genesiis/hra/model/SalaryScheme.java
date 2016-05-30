@@ -115,12 +115,13 @@ public class SalaryScheme implements ICrud {
 					generatedKey = rs.getInt(1);
 				}
 				status = generatedKey;
-				log.info("ss.getComponentCodetemp() "
-						+ ss.getComponentCodetemp() + " "
-						+ ss.getComponentCodetemp().length);
-				for (int i = 0; i < ss.getComponentCodetemp().length; i++) {
-					setSchemecomponent(generatedKey,
-							ss.getComponentCodetemp()[i]);
+
+				if ((ss.getComponentCodetemp() != null)
+						|| (ss.getComponentCodetemp().length == 0)) {
+					for (int i = 0; i < ss.getComponentCodetemp().length; i++) {
+						setSchemecomponent(generatedKey,
+								ss.getComponentCodetemp()[i]);
+					}
 				}
 			}
 		} catch (Exception exception) {

@@ -6,6 +6,7 @@
 /*******************************************************************************
  * To load the Salary component page.
  ******************************************************************************/
+
 var arr = [];
 function loadSalarycomponentdetails() {
 	$("#mainContent").load("payroll/salaryComponent.jsp");
@@ -15,6 +16,7 @@ function loadSalaryschemedetails() {
 	$("#mainContent").load("payroll/salaryScheme.jsp");
 }
 
+// Validate Empty test fields.
 function setEmptyerrormessage(textFieldname, errorSpanname, message) {
 	var textField = $(textFieldname).val();
 	if (isEmptyfield(textField)) {
@@ -25,12 +27,15 @@ function setEmptyerrormessage(textFieldname, errorSpanname, message) {
 	}
 }
 
+// Validate Min value over Max Value.
 function setLargevalueerror(textFieldname1, textFieldname2, errorSpanname) {
 	var textField1 = $(textFieldname1).val();
 	var textField2 = $(textFieldname2).val();
-
 	var largeValue = Math.max(Number(textField1), Number(textField2));
-	if (largeValue == textField2) {
+
+	if ((textField1) == (textField2)) {
+		document.getElementById(errorSpanname).innerHTML = "MIN value and MAX value can not be Equal.";
+	} else if (largeValue == textField2) {
 		document.getElementById(errorSpanname).innerHTML = "";
 	} else {
 		document.getElementById(errorSpanname).innerHTML = "MIN value can not be larger than MAX value.";
@@ -65,31 +70,47 @@ function addSalarycomponent() {
 		"currency" : salaryCurrency
 	};
 
-	$.ajax({
-		type : "POST",
-		url : 'PayrollController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "ASC"
-		},
-		dataType : "json",
-		success : function(data) {
-			if (data == "Details added successfully.") {
-				alert(data);
-			}
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+	if ((salaryComponenttype == "") || (salaryComponenttitle == "")
+			|| (salaryComponentamount == "") || (salaryComponentmin == "")
+			|| (salaryCurrency == "") || (salaryComponentmax == "")) {
+		alert("Please fill the Empty fields.");
 
+	} else if ((salaryComponenttitleerror != "")
+			|| (salaryComponenttypeerror != "") || (salaryCurrencyerror != "")
+			|| (salaryComponentamounterror != "")
+			|| (salaryComponentminerror != "")
+			|| (salaryComponentminerror != "")
+			|| (salaryComponentmaxerror != "")) {
+		alert("Please fill the details correctly.");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : 'PayrollController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ASC"
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data == "Details added successfully.") {
+					alert(data);
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
 }
 
 function addSalaryscheme() {
 	var salarySchemetitle = $("#salarySchemetitle").val();
 	var salaryCriteria = $("#salaryCriteria").val();
 	var salarySchemedescription = $("#salarySchemedescription").val();
+
+	var salarySchemetitleerror = $("#salarySchemetitleerror").text();
+	var salaryCriteriaerror = $("#salaryCriteriaerror").text();
 
 	var jsonData = {
 		"title" : salarySchemetitle,
@@ -98,27 +119,33 @@ function addSalaryscheme() {
 		"componentCodetemp" : arr
 	};
 
-	$.ajax({
-		type : "POST",
-		url : 'PayrollController',
-		data : {
-			jsonData : JSON.stringify(jsonData),
-			task : "ASL"
-		},
-		dataType : "json",
-		success : function(data) {
-			if (data == "Details added successfully.") {
-				alert(data);
-				arr = [];
-				clearSalaryscheme();
+	if ((salarySchemetitle == "") || (salaryCriteria == "")) {
+		alert("Please fill the Empty fields.");
+	} else if ((salarySchemetitleerror != "") || (salaryCriteriaerror != "")) {
+		alert("Please fill the details correctly.");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : 'PayrollController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ASL"
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data == "Details added successfully.") {
+					alert(data);
+					arr = [];
+					clearSalaryscheme();
+				}
+				clearComponent();
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
 			}
-			clearComponent();
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+		});
+	}
 }
 
 function loadModel() {
@@ -161,7 +188,7 @@ function clearSalaryscheme() {
 	});
 	$("#salarySchemedescription").val("");
 	$("#salaryComponent").val("");
-	
+
 	$("#salarySchemetitleerror").text("");
 	$("#salaryCriteriaerror").text("");
 
@@ -169,7 +196,7 @@ function clearSalaryscheme() {
 }
 
 // Table related functions
-
+// Add row to the Table
 function addRow() {
 	var table = document.getElementById("salarySchemetbl");
 	var salaryComponenttype = document.getElementById("salaryComponenttype");
@@ -222,35 +249,14 @@ function addRow() {
 	}
 }
 
+// Delete row from the Table
 function deleteRow(obj) {
 	var index = obj.parentNode.parentNode.rowIndex;
 	var table = document.getElementById("salarySchemetbl");
 	table.deleteRow(index);
 }
 
-function addTable() {
-	var myTableDiv = document.getElementById("myDynamicTable");
-
-	var table = document.createElement('TABLE');
-	table.border = '1';
-
-	var tableBody = document.createElement('TBODY');
-	table.appendChild(tableBody);
-
-	for (var i = 0; i < 3; i++) {
-		var tr = document.createElement('TR');
-		tableBody.appendChild(tr);
-
-		for (var j = 0; j < 4; j++) {
-			var td = document.createElement('TD');
-			td.width = '75';
-			td.appendChild(document.createTextNode("Cell " + i + "," + j));
-			tr.appendChild(td);
-		}
-	}
-	myTableDiv.appendChild(table);
-}
-
+// Delete rows from the Table except Header.
 function deleteRows() {
 	var rowCount = salarySchemetbl.rows.length;
 	for (var i = rowCount - 1; i > 0; i--) {

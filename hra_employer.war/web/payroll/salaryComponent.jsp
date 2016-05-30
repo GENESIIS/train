@@ -69,7 +69,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="salaryComponenttype">Type</label><select
+							<label for="salaryComponenttype">Salary Type</label><select
 								class="form-control" id="salaryComponenttype"
 								name="salaryComponenttype"
 								onchange="setEmptyerrormessage('#salaryComponenttype','salaryComponenttypeerror','Type')">
@@ -87,28 +87,30 @@
 				</div>
 
 				<div class="form-group">
-					<label for="salaryComponenttitle">Title</label>&nbsp;&nbsp;<span
+					<label for="salaryComponenttitle">Salary Title</label>&nbsp;&nbsp;<span
 						id="salaryComponenttitleerror" name="salaryComponenttitleerror"
 						style="color: red; font-weight: normal !important;"></span><input
 						type="text" class="form-control" id="salaryComponenttitle"
 						name="salaryComponenttitle" placeholder=""
 						onkeypress="return isLetter(event);"
-						onblur="setEmptyerrormessage('#salaryComponenttitle','salaryComponenttitleerror','Title')">
+						onblur="setEmptyerrormessage('#salaryComponenttitle','salaryComponenttitleerror','Title')"
+						maxlength="499" size="499">
 				</div>
 
 				<div class="form-group">
-					<label for="salaryComponentdescription">Description</label>
+					<label for="salaryComponentdescription">Salary Description</label>
 					<textarea type="text" class="form-control"
 						id="salaryComponentdescription" name="salaryComponentdescription"
-						placeholder="" onkeypress="return isLetter(event);"></textarea>
+						placeholder="" onkeypress="return isLetter(event);"
+						maxlength="499" size="499"></textarea>
 				</div>
 
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="salaryCurrency">Currency</label><select
+							<label for="salaryCurrency">Salary Currency</label><select
 								class="form-control" id="salaryCurrency" name="salaryCurrency"
-								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Type')">
+								onchange="setEmptyerrormessage('#salaryCurrency','salaryCurrencyerror','Currency')">
 								<option value="" selected="selected">--Select--</option>
 								<option value="USD">USD</option>
 								<option value="LKR">LKR</option>
@@ -120,12 +122,12 @@
 				</div>
 
 				<div class="form-group">
-					<label class="radio-inline"><input type="radio"
+					<label>Payment Type</label><br /> <label class="radio-inline">
+						<input type="radio" name="salaryComponentamount"
+						id="salaryComponentamount" value="Rate"><b>Rate</b>
+					</label> <label class="radio-inline"><input type="radio"
 						name="salaryComponentamount" id="salaryComponentamount"
-						value="Rate"><b>Rate</b></label> <label class="radio-inline"><input
-						type="radio" name="salaryComponentamount"
-						id="salaryComponentamount" value="Amount"><b>Amount</b></label> <label
-						class="radio-inline">&nbsp;&nbsp;<span
+						value="Amount"><b>Amount</b></label> <label class="radio-inline">&nbsp;&nbsp;<span
 						id="salaryComponentamounterror" name="salaryComponentamounterror"
 						style="color: red; font-weight: normal !important;"></span></label>
 				</div>
@@ -139,7 +141,8 @@
 								type="text" class="form-control" id="salaryComponentmin"
 								name="salaryComponentmin" placeholder=""
 								onblur="setEmptyerrormessage('#salaryComponentmin','salaryComponentminerror','Minimum Value')"
-								onkeypress="return isNumberKey(event);">
+								onkeyup="setLargevalueerror('#salaryComponentmin','#salaryComponentmax','salaryComponentmaxerror');"
+								onkeypress="return isNumberKey(event);" maxlength="9" size="9">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -149,8 +152,8 @@
 								style="color: red; font-weight: normal !important;"></span> <input
 								type="text" class="form-control" id="salaryComponentmax"
 								name="salaryComponentmax" placeholder=""
-								onblur="setLargevalueerror('#salaryComponentmin','#salaryComponentmax','salaryComponentmaxerror');"
-								onkeypress="return isNumberKey(event);">
+								onkeyup="setLargevalueerror('#salaryComponentmin','#salaryComponentmax','salaryComponentmaxerror');"
+								onkeypress="return isNumberKey(event);" maxlength="9" size="9">
 						</div>
 					</div>
 				</div>
@@ -161,7 +164,8 @@
 					onclick="addSalarycomponent()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
-				<button type="button" class="btn btn-warning pull-left" onclick="clearComponent()">
+				<button type="button" class="btn btn-warning pull-left"
+					onclick="clearComponent()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"
