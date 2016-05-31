@@ -297,94 +297,7 @@ function clearDepartmentform() {
 	getManager();
 }
 
-/**
- * thumeera
- * Get data and sent to EmployeeController.java
- * Employee > new employee > more details > add new in EMPLOYEE HISTORY > SAVE 
- * **/
-/*****************START Employee History*************************/
-function addEmployeeHistoryDetails() {
-	
-	var employeeId 				= $("#employeeId").val();
-	var employer 				= $("#employer").val();
-	var designation 			= $("#designation").val();
-	var basis 					= $("#basis").val();
-	var ehEmail 				= $("#ehEmail").val();
-	var ehComments 				= $("#ehComments").val();
-	
-	var startedOn 				= $("#startedOn").val();
-	var compleatedOn 			= $("#compleatedOn").val();
-	
-	var ehReferenceonename 		= $("#ehReferenceonename").val();
-	var ehReferenceonecomments 	= $("#ehReferenceonecomments").val();
-	var ehReferenceonephone 	= $("#ehReferenceonephone").val();
-	var ehReferenceonemobile 	= $("#ehReferenceonemobile").val();
-	var ehReferenceoneaddress 	= $("#ehReferenceoneaddress").val();
-	var ehReferenceonedesignation = $("#ehReferenceonedesignation").val();
-	
-	var ehReferencetwoname 		= $("#ehReferencetwoname").val();
-	var ehReferencetwocomments 	= $("#ehReferencetwocomments").val();
-	var ehReferencetwophone 	= $("#ehReferencetwophone").val();
-	var ehReferencetwomobile 	= $("#ehReferencetwomobile").val();
-	var ehReferencetwoaddress 	= $("#ehReferencetwoaddress").val();
-	var ehReferencetwodesignation= $("#ehReferencetwodesignation").val();
-	var ehReferencemodby= $("#ehReferencemodby").val();
-	
-	
-	
-	var x = parseInt(employeeId, 10);
-	
-	var employeeData = {
-			
-		"ehEmployeeid" 			: x,
-		"ehEmployername" 		: employer,
-		"ehDesignation" 		: designation,
-		"ehBasis" 				: basis,
-		"ehComments" 			: ehComments,
-		"ehEmail" 				: ehEmail,
-		
-		"ehStartdate" 			: startedOn,
-		"ehEnddate" 			: compleatedOn,
-		
-		"ehReferenceonename" 	: ehReferenceonename,
-		"ehReferenceonecomments": ehReferenceonecomments,
-		"ehReferenceonephone" 	: ehReferenceonephone,
-		"ehReferenceonemobile"	: ehReferenceonemobile,
-		"ehReferenceoneaddress" : ehReferenceoneaddress,
-		"ehReferenceonedesignation"	: ehReferenceonedesignation,
-		
-		"ehReferencetwoname" 	: ehReferencetwoname,
-		"ehReferencetwocomments": ehReferencetwocomments,
-		"ehReferencetwophone" 	: ehReferencetwophone,
-		"ehReferencetwomobile"	: ehReferencetwomobile,
-		"ehReferencetwoaddress" : ehReferencetwoaddress,
-		"ehReferencetwodesignation"	: ehReferencetwodesignation,
-		"ehReferencemodby"		: ehReferencemodby,
-	};
 
-	$.ajax({
-		type : "POST",
-		url : 'EmployeeController',
-		data : {
-			jsonData : JSON.stringify(employeeData),
-			task : "EHADD"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
-				clearEmployeementHisory();
-//				document.getElementById("moredetails").disabled = false;
-			}
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
-}
-
-/*****************END Employee History*************************/
 
 /**
  * thumeera
@@ -750,13 +663,7 @@ function loadEditContentfamilydetails() {
 function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
-/**
- * thumeera
- * Employee > new employee > more details > add Employeement details 
- * **/
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeDetails/employementHistory.jsp");
-}
+
 /**
  * thumeera
  * Employee > edit employee > more details > edit Employeement details 

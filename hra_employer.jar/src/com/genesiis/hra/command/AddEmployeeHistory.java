@@ -1,51 +1,83 @@
 package com.genesiis.hra.command;
 
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeFactory;
+import com.genesiis.hra.model.EmploymentHistory;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-public class AddEmployeeHistory {
+public class AddEmployeeHistory implements ICommand {
 
-	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
+	static Logger log = Logger.getLogger(AddEmployeeHistory.class.getName());
 
-	public int execute(int key, String employeeDetails) {
-		
-		int status = -1;
+	public String execute(String gsonData) {
+
+		// insert fiels validation
+		MessageList message = MessageList.ERROR;
+
 		try {
-			
-			//Returns a Subclass object of Employee super class according to the key. Key implies the sub class name
-			EmployeeFactory factory = new EmployeeFactory();
-			
-			Employee emp = factory.getEmployee(key);
 
-			//Extract the particular class type object returned from the factory.
-			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
-			
-			
-			//Only a valid object will added to the database.
-			if (emp.isValid(emp)) {
-				status = emp.add(emp);
+			// extracting gson data to object
+			EmploymentHistory employmentHistory = (EmploymentHistory) extractFromJason(gsonData);
+
+			// error fields will be visible
+			String hasError = employmentHistory.isValidObjectd(employmentHistory);
+
+			// if no error
+			if (MessageList.SUCCESS.message().equalsIgnoreCase(hasError)) {
+
+				// adding employee history to database table
+				int hasInserted = employmentHistory.add(employmentHistory);
+
+				// if ADD EMPLOYMENT HISTORY DETAILS success
+				if (hasInserted == 1) {
+					message = MessageList.ADDED;
+				} else {// if ADD EMPLOYMENT HISTORY DETAILS fails
+					message = MessageList.ERROR;
+				}
+
+			} else {
+				// if error
+				return message.message();
 			}
-			
 		} catch (Exception e) {
-			
-			log.error("execute - Exception " + e);
-			
+			// if error
+			log.info("execute - Exception " + e);
 		}
-		return status;
+		return message.message();
+
 	}
 
-	public Object extractFromJason(String className, String gsonData) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	/**
+	 * @tr extracting json data to object
+	 * **/
+	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
-		Class<?> clazz = Class.forName(className);
-		Object object = clazz.newInstance();
+		EmploymentHistory employmentHistory = null;
 		try {
-			object = gson.fromJson(gsonData, clazz);
+			employmentHistory = gson.fromJson(data, EmploymentHistory.class);
 		} catch (Exception e) {
-			log.error("ExtractFromgson - Exception " + e);
+			log.info("ExtractFromgson - Exception " + e);
 		}
-		return object;
+		return employmentHistory;
+	}
+
+	public boolean validateValue(Object entiytObject) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String validateValue(HashMap<String, String> entiytMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int validTaskId(String task) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

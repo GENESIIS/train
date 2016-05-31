@@ -1,8 +1,5 @@
 package com.genesiis.hra.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
@@ -12,7 +9,7 @@ import com.google.gson.Gson;
 
 public class GetEmploymentHistory {
 
-	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
+	static Logger log = Logger.getLogger(GetEmploymentHistory.class.getName());
 
 	public String execute(int key, String employeeDetails) {
 		
@@ -31,7 +28,8 @@ public class GetEmploymentHistory {
 			//employeeHistoryList  = emp.getRetrive("1");
 			try {
 				log.info("execute");
-				EmploymentHistory employmentHistory = (EmploymentHistory)emp.getRetriveRecode("7");	
+				EmploymentHistory employmentHistory = new EmploymentHistory();
+				 employmentHistory.getRetriveRecode("7");	
 				ehGson = createGson(employmentHistory);			
 			} catch (Exception e) {
 				log.info("Exception - GetEmploymentHistory: " + e);

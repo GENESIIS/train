@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 public class UpdateEmployeeHistory {
 
-	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
+	static Logger log = Logger.getLogger(UpdateEmployeeHistory.class.getName());
 	/**
 	 * @author thumeera
 	 * @param employeeDetails ,key 
@@ -30,9 +30,9 @@ public class UpdateEmployeeHistory {
 			//Extract the particular class type object returned from the factory.
 			emp = (Employee) extractFromJason(emp.getClass().getName(),	employeeDetails);
 
-			if (emp.isValidUpdate(emp)) {
-				status = emp.updateEmployeeHistory(emp);
-			}
+//			if (emp.isValidUpdate(emp)) {
+//				status = emp.updateEmployeeHistory(emp);
+//			}
 			
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);

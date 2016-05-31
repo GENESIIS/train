@@ -25,56 +25,29 @@ public abstract class Employee implements ICrud {
 		this.employeeEpf = employeeEpf;
 	}
 
-	@Override
 	public int add(Object object) {
 		return -1;
 	}
 
-	@Override
-	public String update(Object object) {
-		return null;
+	public int update(Object object) {
+		return -1;
 	}
 
-	@Override
 	public String delete(Object object) {
 		return null;
 	}
 
-	@Override
 	public String getId(String id) {
 		return null;
 	}
 
-	@Override
 	public List<Object> getAll() {
 		return null;
 	}
 	
-	@Override
-	public boolean isValid(Object object) {
+	public boolean isValidObject(Object object) {
 		return false;
 	}
-	
-	@Override
-	public List<Object> getRetrive(String id) {
-		return null;
-	}
-	
-	@Override
-	public int updateEmployeeHistory(Object object) {
-		return -1;
-	}
 
-	@Override
-	public Object getRetriveRecode(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isValidUpdate(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

@@ -1,18 +1,24 @@
 package com.genesiis.hra.model;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.MessageList;
 
 public class EmploymentHistory extends Employee{
 
+	static Logger log = Logger.getLogger(EmploymentHistory.class.getName());
+	
 	private int ehid;
 	private int ehEmployeeid; 
 	private String ehEmployername; 
@@ -39,11 +45,8 @@ public class EmploymentHistory extends Employee{
 	
 	private String ehReferencemodby;
 	private String ehReferencemodon;
-	
-	
-	
-	
 
+	
 	public int getEhid() {
 		return ehid;
 	}
@@ -52,99 +55,99 @@ public class EmploymentHistory extends Employee{
 		this.ehid = ehid;
 	}
 
-	public int getEhEmployeeid() {
+	public int getEhemployeeid() {
 		return ehEmployeeid;
 	}
 
-	public void setEhEmployeeid(int ehEmployeeid) {
+	public void setEhemployeeid(int ehEmployeeid) {
 		this.ehEmployeeid = ehEmployeeid;
 	}
 
-	public String getEhEmployername() {
+	public String getEhemployername() {
 		return ehEmployername;
 	}
 
-	public void setEhEmployername(String ehEmployername) {
+	public void setEhemployername(String ehEmployername) {
 		this.ehEmployername = ehEmployername;
 	}
 
-	public String getEhDesignation() {
+	public String getEhdesignation() {
 		return ehDesignation;
 	}
 
-	public void setEhDesignation(String ehDesignation) {
+	public void setEhdesignation(String ehDesignation) {
 		this.ehDesignation = ehDesignation;
 	}
 
-	public String getEhStartdate() {
+	public String getEhstartdate() {
 		return ehStartdate;
 	}
 
-	public void setEhStartdate(String ehStartdate) {
+	public void setEhstartdate(String ehStartdate) {
 		this.ehStartdate = ehStartdate;
 	}
 
-	public String getEhEnddate() {
+	public String getEhenddate() {
 		return ehEnddate;
 	}
 
-	public void setEhEnddate(String ehEnddate) {
+	public void setEhenddate(String ehEnddate) {
 		this.ehEnddate = ehEnddate;
 	}
 
-	public String getEhBasis() {
+	public String getEhasis() {
 		return ehBasis;
 	}
 
-	public void setEhBasis(String ehBasis) {
+	public void setEhbasis(String ehBasis) {
 		this.ehBasis = ehBasis;
 	}
 
-	public String getEhComments() {
+	public String getEhcomments() {
 		return ehComments;
 	}
 
-	public void setEhComments(String ehComments) {
+	public void setEhcomments(String ehComments) {
 		this.ehComments = ehComments;
 	}
 
-	public String getEhEmail() {
+	public String getEhemail() {
 		return ehEmail;
 	}
 
-	public void setEhEmail(String ehEmail) {
+	public void setEhemail(String ehEmail) {
 		this.ehEmail = ehEmail;
 	}
 
-	public String getEhReferenceonename() {
+	public String getEhreferenceonename() {
 		return ehReferenceonename;
 	}
 
-	public void setEhReferenceonename(String ehReferenceonename) {
+	public void setEhreferenceonename(String ehReferenceonename) {
 		this.ehReferenceonename = ehReferenceonename;
 	}
 
-	public String getEhReferenceonephone() {
+	public String getEhreferenceonephone() {
 		return ehReferenceonephone;
 	}
 
-	public void setEhReferenceonephone(String ehReferenceonephone) {
+	public void setEhreferenceonephone(String ehReferenceonephone) {
 		this.ehReferenceonephone = ehReferenceonephone;
 	}
 
-	public String getEhReferenceonemobile() {
+	public String getEhreferenceonemobile() {
 		return ehReferenceonemobile;
 	}
 
-	public void setEhReferenceonemobile(String ehReferenceonemobile) {
+	public void setEhreferenceonemobile(String ehReferenceonemobile) {
 		this.ehReferenceonemobile = ehReferenceonemobile;
 	}
 
-	public String getEhReferenceoneaddress() {
+	public String getEhreferenceoneaddress() {
 		return ehReferenceoneaddress;
 	}
 
-	public void setEhReferenceoneaddress(String ehReferenceoneaddress) {
+	public void setEhreferenceoneaddress(String ehReferenceoneaddress) {
 		this.ehReferenceoneaddress = ehReferenceoneaddress;
 	}
 
@@ -156,75 +159,75 @@ public class EmploymentHistory extends Employee{
 		this.ehReferenceonedesignation = ehReferenceonedesignation;
 	}
 
-	public String getEhReferenceonecomments() {
+	public String getEhreferenceonecomments() {
 		return ehReferenceonecomments;
 	}
 
-	public void setEhReferenceonecomments(String ehReferenceonecomments) {
+	public void setEhreferenceonecomments(String ehReferenceonecomments) {
 		this.ehReferenceonecomments = ehReferenceonecomments;
 	}
 
-	public String getEhReferencetwoname() {
+	public String getEhreferencetwoname() {
 		return ehReferencetwoname;
 	}
 
-	public void setEhReferencetwoname(String ehReferencetwoname) {
+	public void setEhreferencetwoname(String ehReferencetwoname) {
 		this.ehReferencetwoname = ehReferencetwoname;
 	}
 
-	public String getEhReferencetwophone() {
+	public String getEhreferencetwophone() {
 		return ehReferencetwophone;
 	}
 
-	public void setEhReferencetwophone(String ehReferencetwophone) {
+	public void setEhreferencetwophone(String ehReferencetwophone) {
 		this.ehReferencetwophone = ehReferencetwophone;
 	}
 
-	public String getEhReferencetwomobile() {
+	public String getEhreferencetwomobile() {
 		return ehReferencetwomobile;
 	}
 
-	public void setEhReferencetwomobile(String ehReferencetwomobile) {
+	public void setEhreferencetwomobile(String ehReferencetwomobile) {
 		this.ehReferencetwomobile = ehReferencetwomobile;
 	}
 
-	public String getEhReferencetwoaddress() {
+	public String getEhreferencetwoaddress() {
 		return ehReferencetwoaddress;
 	}
 
-	public void setEhReferencetwoaddress(String ehReferencetwoaddress) {
+	public void setEhreferencetwoaddress(String ehReferencetwoaddress) {
 		this.ehReferencetwoaddress = ehReferencetwoaddress;
 	}
 
-	public String getEhReferencetwodesignation() {
+	public String getEhreferencetwodesignation() {
 		return ehReferencetwodesignation;
 	}
 
-	public void setEhReferencetwodesignation(String ehReferencetwodesignation) {
+	public void setEhreferencetwodesignation(String ehReferencetwodesignation) {
 		this.ehReferencetwodesignation = ehReferencetwodesignation;
 	}
 
-	public String getEhReferencetwocomments() {
+	public String getEhreferencetwocomments() {
 		return ehReferencetwocomments;
 	}
 
-	public void setEhReferencetwocomments(String ehReferencetwocomments) {
+	public void setEhreferencetwocomments(String ehReferencetwocomments) {
 		this.ehReferencetwocomments = ehReferencetwocomments;
 	}
 
-	public String getEhReferencemodby() {
+	public String getEhreferencemodby() {
 		return ehReferencemodby;
 	}
 
-	public void setEhReferencemodby(String ehReferencemodby) {
+	public void setEhreferencemodby(String ehReferencemodby) {
 		this.ehReferencemodby = ehReferencemodby;
 	}
 
-	public String getEhReferencemodon() {
+	public String getEhreferencemodon() {
 		return ehReferencemodon;
 	}
 
-	public void setEhReferencemodon(String ehReferencemodon) {
+	public void setEhreferencemodon(String ehReferencemodon) {
 		this.ehReferencemodon = ehReferencemodon;
 	}
 
@@ -239,7 +242,7 @@ public class EmploymentHistory extends Employee{
 	}
 
 	
-	static Logger log = Logger.getLogger(EmploymentHistory.class.getName());
+	
 	
 	public EmploymentHistory(int ehId, int ehEmployeeid, String ehEmployername,
 			String ehDesignation, String ehStartdate, String ehEnddate,
@@ -277,105 +280,8 @@ public class EmploymentHistory extends Employee{
 		this.ehReferencemodon = ehReferencemodon;
 	}
 
-	
-	@Override
-	public boolean isValid(Object object) {
-
-		DataValidator validator = new DataValidator();
-		EmploymentHistory eh = (EmploymentHistory) object;
-
-		if (((validator.isValidString(eh.getEhBasis()) == true)
-				&& (validator.isValidString(eh.getEhComments()) == true)
-				&& (validator.isValidString(eh.getEhDesignation()) == true)
-				&& (validator.isValidString(eh.getEhEmail()) == true)
-				&& (validator.isValidString(eh.getEhEmployername()) == true)
-				&& (validator.isValidString(eh.getEhEnddate()) == true)
-				&& (validator.isValidString(eh.getEhStartdate()) == true)
-				&&
-
-				(validator.isValidString(eh.getEhReferencemodby()) == true)
-				&&
-
-				(validator.isValidString(eh.getEhReferenceoneaddress()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonecomments()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonedesignation()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonemobile()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonename()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonephone()) == true)
-				&&
-
-				(validator.isValidString(eh.getEhReferencetwoaddress()) == true)
-				&& (validator.isValidString(eh.getEhReferencetwocomments()) == true)
-				&& (validator.isValidString(eh.getEhReferencetwodesignation()) == true)
-				&& (validator.isValidString(eh.getEhReferenceonemobile()) == true)
-				&& (validator.isValidString(eh.getEhReferencetwoname()) == true) && (validator
-					.isValidString(eh.getEhReferencetwophone()) == true)
-
-		)) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-	
-	
-	public boolean isValidEmployeeID(Object object) {
-
-		DataValidator validator = new DataValidator();
-		EmploymentHistory eh = (EmploymentHistory) object;
-
-		if (((validator.isValidInt(eh.getEhEmployeeid()) == true))) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
-	@Override
-public boolean isValidUpdate(Object object) {
-	
-	DataValidator validator = new DataValidator();
-	EmploymentHistory eh = (EmploymentHistory) object;
-
-	if ( ( (validator.isValidString(eh.getEhBasis()) == true) && 
-			(validator.isValidString(eh.getEhComments()) == true) && 
-			(validator.isValidString(eh.getEhDesignation()) == true) && 
-			(validator.isValidString(eh.getEhEmail()) == true) &&
-			(validator.isValidString(eh.getEhEmployername()) == true) &&
-			(validator.isValidString(eh.getEhEnddate()) == true) &&
-			(validator.isValidString(eh.getEhStartdate()) == true) &&
-			
-			(validator.isValidString(eh.getEhReferencemodby()) == true) &&
-			
-			(validator.isValidString(eh.getEhReferenceoneaddress()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonecomments()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonedesignation()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonename()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonephone()) == true) &&
-			
-			(validator.isValidString(eh.getEhReferencetwoaddress()) == true) &&
-			(validator.isValidString(eh.getEhReferencetwocomments()) == true) &&
-			(validator.isValidString(eh.getEhReferencetwodesignation()) == true) &&
-			(validator.isValidString(eh.getEhReferenceonemobile()) == true) &&
-			(validator.isValidString(eh.getEhReferencetwoname()) == true) &&
-			(validator.isValidString(eh.getEhReferencetwophone()) == true)
-			
-			
-			)) {
-		return true;
-	} else {
-		return false;
-	}
-	
-}
-
 	@Override
 	public int add(Object object) {
-		
-		DataValidator dataValidator = new DataValidator();
 
 		String query = "INSERT INTO [HRA.EMPLOYMENTHISTORY] (EMPLOYEEID,EMPLOYERNAME,DESIGNATION,STARTDATE,ENDDATE,BASIS,COMMENTS,EMAIL,"
 				+ "REFERENCEONENAME,REFERENCEONEPHONE,REFERENCEONEMOBILE,REFERENCEONEADDRESS,REFERENCEONEDESIGNATION,REFERENCEONECOMMENTS,"
@@ -384,40 +290,40 @@ public boolean isValidUpdate(Object object) {
 				+ "VALUES (?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE())";
 		int status = -1;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		EmploymentHistory eh = (EmploymentHistory) object;
-
+		DataValidator validator = new DataValidator();
 		try {
 			conn = ConnectionManager.getConnection();
 			
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.valueOf(eh.getEhEmployeeid()));
-			preparedStatement.setString(2, String.valueOf(eh.getEhEmployername()));
-			preparedStatement.setString(3, String.valueOf(eh.getEhDesignation()));
-			preparedStatement.setDate(4, dataValidator.convertStringDatetoSqlDate(eh.getEhStartdate()));
-			preparedStatement.setDate(5, dataValidator.convertStringDatetoSqlDate(eh.getEhEnddate()));
-			preparedStatement.setString(6, String.valueOf(eh.getEhBasis()));
-			preparedStatement.setString(7, String.valueOf(eh.getEhComments()));
-			preparedStatement.setString(8, String.valueOf(eh.getEhEmail()));
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, Integer.valueOf(eh.getEhemployeeid()));
+			ps.setString(2, String.valueOf(eh.getEhemployername()));
+			ps.setString(3, String.valueOf(eh.getEhdesignation()));
+			ps.setDate(4, validator.convertStringDatetoSqlDate(eh.getEhstartdate()));
+			ps.setDate(5, validator.convertStringDatetoSqlDate(eh.getEhenddate()));
+			ps.setString(6, String.valueOf(eh.getEhasis()));
+			ps.setString(7, String.valueOf(eh.getEhcomments()));
+			ps.setString(8, String.valueOf(eh.getEhemail()));
 			
-			preparedStatement.setString(9, String.valueOf(eh.getEhReferenceonename()));
-			preparedStatement.setString(10, String.valueOf(eh.getEhReferenceonephone()));
-			preparedStatement.setString(11, String.valueOf(eh.getEhReferenceonemobile()));
-			preparedStatement.setString(12, String.valueOf(eh.getEhReferenceoneaddress()));
-			preparedStatement.setString(13, String.valueOf(eh.getEhReferenceonedesignation()));
-			preparedStatement.setString(14, String.valueOf(eh.getEhReferenceonecomments()));
+			ps.setString(9, String.valueOf(eh.getEhreferenceonename()));
+			ps.setString(10, String.valueOf(eh.getEhreferenceonephone()));
+			ps.setString(11, String.valueOf(eh.getEhreferenceonemobile()));
+			ps.setString(12, String.valueOf(eh.getEhreferenceoneaddress()));
+			ps.setString(13, String.valueOf(eh.getEhReferenceonedesignation()));
+			ps.setString(14, String.valueOf(eh.getEhreferenceonecomments()));
 			
-			preparedStatement.setString(15, String.valueOf(eh.getEhReferencetwoname()));
-			preparedStatement.setString(16, String.valueOf(eh.getEhReferencetwophone()));
-			preparedStatement.setString(17, String.valueOf(eh.getEhReferencetwomobile()));
-			preparedStatement.setString(18, String.valueOf(eh.getEhReferencetwoaddress()));
-			preparedStatement.setString(19, String.valueOf(eh.getEhReferencetwodesignation()));
-			preparedStatement.setString(20, String.valueOf(eh.getEhReferencetwocomments()));
+			ps.setString(15, String.valueOf(eh.getEhreferencetwoname()));
+			ps.setString(16, String.valueOf(eh.getEhreferencetwophone()));
+			ps.setString(17, String.valueOf(eh.getEhreferencetwomobile()));
+			ps.setString(18, String.valueOf(eh.getEhreferencetwoaddress()));
+			ps.setString(19, String.valueOf(eh.getEhreferencetwodesignation()));
+			ps.setString(20, String.valueOf(eh.getEhreferencetwocomments()));
 			
-			preparedStatement.setString(21, String.valueOf(eh.getEhReferencemodby()));
+			ps.setString(21, String.valueOf(eh.getEhreferencemodby()));
 
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			int rowsInserted = ps.executeUpdate();
 
 			if (rowsInserted > 0) {
 				status = 1;
@@ -426,10 +332,15 @@ public boolean isValidUpdate(Object object) {
 		} catch (SQLException exception) {
 			log.info("SQLException - "+ exception);
 			exception.printStackTrace();
-		} finally {
+		}
+		catch (Exception ex) {
+			log.info("SQLException - "+ ex);
+			ex.printStackTrace();
+		}
+		finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {
@@ -440,7 +351,26 @@ public boolean isValidUpdate(Object object) {
 		return status;
 	}
 	
+	
+//	public boolean isValidEmployeeID(Object object) {
+//
+//		DataValidator validator = new DataValidator();
+//		EmploymentHistory eh = (EmploymentHistory) object;
+//
+//		if (((validator.isValidInt(eh.getEhemployeeid()) == true))) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//
+//	}
+
 	@Override
+	public int update(Object object) {
+		return 0;
+	}
+
+
 	public List<Object> getRetrive(String id) {
 		
 		// TODO Auto-generated method stub
@@ -469,31 +399,31 @@ public boolean isValidUpdate(Object object) {
 						
 						// set data to entity class
 						employee.setEhid(rsRetriveData.getInt("ID"));
-						employee.setEhEmployeeid(rsRetriveData.getInt("EMPLOYEEID"));
-						employee.setEhEmployername(rsRetriveData.getString("EMPLOYERNAME")); 						
-						employee.setEhDesignation(rsRetriveData.getString("DESIGNATION"));
-						employee.setEhStartdate(rsRetriveData.getString("STARTDATE"));
-						employee.setEhEnddate(rsRetriveData.getString("ENDDATE"));
-						employee.setEhBasis(rsRetriveData.getString("BASIS"));
-						employee.setEhComments(rsRetriveData.getString("COMMENTS"));
-						employee.setEhEmail(rsRetriveData.getString("EMAIL"));
+						employee.setEhemployeeid(rsRetriveData.getInt("EMPLOYEEID"));
+						employee.setEhemployername(rsRetriveData.getString("EMPLOYERNAME")); 						
+						employee.setEhdesignation(rsRetriveData.getString("DESIGNATION"));
+						employee.setEhstartdate(rsRetriveData.getString("STARTDATE"));
+						employee.setEhenddate(rsRetriveData.getString("ENDDATE"));
+						employee.setEhbasis(rsRetriveData.getString("BASIS"));
+						employee.setEhcomments(rsRetriveData.getString("COMMENTS"));
+						employee.setEhemail(rsRetriveData.getString("EMAIL"));
 						
-						employee.setEhReferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
-						employee.setEhReferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
-						employee.setEhReferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
-						employee.setEhReferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
+						employee.setEhreferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
+						employee.setEhreferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
+						employee.setEhreferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
+						employee.setEhreferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
 						employee.setEhReferenceonedesignation(rsRetriveData.getString("REFERENCEONEDESIGNATION"));
-						employee.setEhReferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
+						employee.setEhreferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
 						
-						employee.setEhReferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
-						employee.setEhReferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
-						employee.setEhReferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
-						employee.setEhReferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
-						employee.setEhReferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
-						employee.setEhReferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
+						employee.setEhreferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
+						employee.setEhreferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
+						employee.setEhreferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
+						employee.setEhreferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
+						employee.setEhreferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
+						employee.setEhreferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
 						
-						employee.setEhReferencemodby(rsRetriveData.getString("MODBY"));
-						employee.setEhReferencemodon(rsRetriveData.getString("MODON"));
+						employee.setEhreferencemodby(rsRetriveData.getString("MODBY"));
+						employee.setEhreferencemodon(rsRetriveData.getString("MODON"));
 						
 						
 						employeeHistoryList.add(employee);//add data to list
@@ -524,7 +454,6 @@ public boolean isValidUpdate(Object object) {
 	}
 	
 	
-	@Override
 	public Object getRetriveRecode(String id) {
 		
 		log.info("*****************************getRetriveRecode"+id);
@@ -555,31 +484,31 @@ public boolean isValidUpdate(Object object) {
 						
 						// set data to entity class
 						employee.setEhid(rsRetriveData.getInt("ID"));
-						employee.setEhEmployeeid(rsRetriveData.getInt("EMPLOYEEID"));
-						employee.setEhEmployername(rsRetriveData.getString("EMPLOYERNAME")); 						
-						employee.setEhDesignation(rsRetriveData.getString("DESIGNATION"));
-						employee.setEhStartdate(rsRetriveData.getString("STARTDATE"));
-						employee.setEhEnddate(rsRetriveData.getString("ENDDATE"));
-						employee.setEhBasis(rsRetriveData.getString("BASIS"));
-						employee.setEhComments(rsRetriveData.getString("COMMENTS"));
-						employee.setEhEmail(rsRetriveData.getString("EMAIL"));
+						employee.setEhemployeeid(rsRetriveData.getInt("EMPLOYEEID"));
+						employee.setEhemployername(rsRetriveData.getString("EMPLOYERNAME")); 						
+						employee.setEhdesignation(rsRetriveData.getString("DESIGNATION"));
+						employee.setEhstartdate(rsRetriveData.getString("STARTDATE"));
+						employee.setEhenddate(rsRetriveData.getString("ENDDATE"));
+						employee.setEhbasis(rsRetriveData.getString("BASIS"));
+						employee.setEhcomments(rsRetriveData.getString("COMMENTS"));
+						employee.setEhemail(rsRetriveData.getString("EMAIL"));
 						
-						employee.setEhReferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
-						employee.setEhReferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
-						employee.setEhReferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
-						employee.setEhReferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
+						employee.setEhreferenceonename(rsRetriveData.getString("REFERENCEONENAME"));
+						employee.setEhreferenceonephone(rsRetriveData.getString("REFERENCEONEPHONE"));
+						employee.setEhreferenceonemobile(rsRetriveData.getString("REFERENCEONEMOBILE")); 
+						employee.setEhreferenceoneaddress(rsRetriveData.getString("REFERENCEONEADDRESS"));
 						employee.setEhReferenceonedesignation(rsRetriveData.getString("REFERENCEONEDESIGNATION"));
-						employee.setEhReferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
+						employee.setEhreferenceonecomments(rsRetriveData.getString("REFERENCEONECOMMENTS"));
 						
-						employee.setEhReferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
-						employee.setEhReferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
-						employee.setEhReferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
-						employee.setEhReferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
-						employee.setEhReferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
-						employee.setEhReferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
+						employee.setEhreferencetwoname(rsRetriveData.getString("REFERENCETWOENAME"));
+						employee.setEhreferencetwophone(rsRetriveData.getString("REFERENCETWOPHONE"));
+						employee.setEhreferencetwomobile(rsRetriveData.getString("REFERENCETWOMOBILE")); 
+						employee.setEhreferencetwoaddress(rsRetriveData.getString("REFERENCETWOADDRESS"));
+						employee.setEhreferencetwodesignation(rsRetriveData.getString("REFERENCETWODESIGNATION"));
+						employee.setEhreferencetwocomments(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
 						
-						employee.setEhReferencemodby(rsRetriveData.getString("MODBY"));
-						employee.setEhReferencemodon(rsRetriveData.getString("MODON"));
+						employee.setEhreferencemodby(rsRetriveData.getString("MODBY"));
+						employee.setEhreferencemodon(rsRetriveData.getString("MODON"));
 
 					}
 				}catch(Exception e){
@@ -606,9 +535,7 @@ public boolean isValidUpdate(Object object) {
 	}
 	
 	
-	
-	
-	@Override
+
 	public int updateEmployeeHistory(Object object) {
 		
 		
@@ -626,27 +553,27 @@ public boolean isValidUpdate(Object object) {
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, eh.getEhEmployername());
-			preparedStatement.setString(2, eh.getEhDesignation());
-			preparedStatement.setString(3, eh.getEhStartdate());
-			preparedStatement.setString(4, eh.getEhEnddate());
-			preparedStatement.setString(5, eh.getEhBasis());
-			preparedStatement.setString(6, eh.getEhComments());
-			preparedStatement.setString(7, eh.getEhEmail());
+			preparedStatement.setString(1, eh.getEhemployername());
+			preparedStatement.setString(2, eh.getEhdesignation());
+			preparedStatement.setString(3, eh.getEhstartdate());
+			preparedStatement.setString(4, eh.getEhenddate());
+			preparedStatement.setString(5, eh.getEhasis());
+			preparedStatement.setString(6, eh.getEhcomments());
+			preparedStatement.setString(7, eh.getEhemail());
 			
-			preparedStatement.setString(8, eh.getEhReferenceonename());
-			preparedStatement.setString(9, eh.getEhReferenceonephone());
-			preparedStatement.setString(10, eh.getEhReferenceonemobile());
-			preparedStatement.setString(11, eh.getEhReferenceoneaddress());
+			preparedStatement.setString(8, eh.getEhreferenceonename());
+			preparedStatement.setString(9, eh.getEhreferenceonephone());
+			preparedStatement.setString(10, eh.getEhreferenceonemobile());
+			preparedStatement.setString(11, eh.getEhreferenceoneaddress());
 			preparedStatement.setString(12, eh.getEhReferenceonedesignation());
-			preparedStatement.setString(13, eh.getEhReferenceonecomments());
+			preparedStatement.setString(13, eh.getEhreferenceonecomments());
 			
-			preparedStatement.setString(14, eh.getEhReferencetwoname());
-			preparedStatement.setString(15, eh.getEhReferencetwophone());
-			preparedStatement.setString(16, eh.getEhReferencetwomobile());
-			preparedStatement.setString(17, eh.getEhReferencetwoaddress());
-			preparedStatement.setString(18, eh.getEhReferencetwodesignation());
-			preparedStatement.setString(19, eh.getEhReferencetwocomments());
+			preparedStatement.setString(14, eh.getEhreferencetwoname());
+			preparedStatement.setString(15, eh.getEhreferencetwophone());
+			preparedStatement.setString(16, eh.getEhreferencetwomobile());
+			preparedStatement.setString(17, eh.getEhreferencetwoaddress());
+			preparedStatement.setString(18, eh.getEhreferencetwodesignation());
+			preparedStatement.setString(19, eh.getEhreferencetwocomments());
 			
 			
 			preparedStatement.setString(20, "SYSTEM");
@@ -676,4 +603,60 @@ public boolean isValidUpdate(Object object) {
 		return status;
 	}
 
+	
+	
+	public boolean isValid(Object object) {
+		return false;
+	}
+	
+	
+	public boolean isValidObject(Object object) {
+		return false;
+	}
+
+	public String isValidObjectd(Object object) {
+
+		String messagetxt = MessageList.SUCCESS.message();
+
+		DataValidator val = new DataValidator();
+		EmploymentHistory employmentHistory = (EmploymentHistory) object;
+
+		for (Field f : employmentHistory.getClass().getFields()) {
+			  f.setAccessible(true);
+			  log.info(""+val.isValidString(f.toString()));
+			  if (val.isValidString(f.toString())) 
+			  {
+				  MessageList.SUCCESS.message();
+			  }
+		}
+
+		return messagetxt;
+
+	}
+	
+	public String validateValue(HashMap<String, String> errorList) {
+		DataValidator dv = new DataValidator();
+		String messagetxt = "";
+
+		for (Entry<String, String> e : errorList.entrySet()) {
+
+			String key = e.getKey();
+			String value = e.getValue();
+
+			if (!dv.isValidString(value)) {
+				messagetxt = key;
+			} else {
+				MessageList.SUCCESS.message();
+			}
+
+		}
+		return messagetxt;
+	}
+
+	public String getEmployee(int employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

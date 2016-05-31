@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddDepartment;
-import com.genesiis.hra.command.GetManager;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -37,12 +35,12 @@ public class DepartmentController extends HttpServlet {
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
 
 	public void init() throws ServletException {
-		AddDepartment addDepartment = new AddDepartment();
-		GetManager manager = new GetManager();
+//		AddDepartment addDepartment = new AddDepartment();
+//		GetManager manager = new GetManager();
 
-		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addDepartment);
-		hmap.put(5, manager);
+//		hmap = new HashMap<Integer, Object>();
+//		hmap.put(1, addDepartment);
+//		hmap.put(5, manager);
 		// hmap.put(2, null);
 		// hmap.put(3, null);
 		// hmap.put(4, null);
@@ -63,8 +61,8 @@ public class DepartmentController extends HttpServlet {
 			case 1:
 				break;
 			case 5:
-				GetManager manager = (GetManager) hmap.get(5);
-				gson = new Gson().toJson(manager.execute());
+//				GetManager manager = (GetManager) hmap.get(5);
+//				gson = new Gson().toJson(manager.execute());
 				response.getWriter().write(gson);
 				break;
 			// For other operations.
@@ -102,8 +100,8 @@ public class DepartmentController extends HttpServlet {
 		try {
 			switch (validTask) {
 			case 1:
-				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
-				message = addDepartment.execute(departmentDetails);
+//				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
+//				message = addDepartment.execute(departmentDetails);
 				response.getWriter().write(gson.toJson(message));
 				break;
 			// For other operations.

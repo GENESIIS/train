@@ -31,18 +31,19 @@
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
+<script src="dist/js/hra/hra.employeehistory.js"></script>
 
-<style type="text/css">
-/* label { */
-/* 	font-weight: normal !important; */
-/* } */
-input {
-	font-weight: normal !important;
-}
-select {
-	font-weight: normal !important;
-}
-</style>
+	<style type="text/css">
+	/* label { */
+	/* 	font-weight: normal !important; */
+	/* } */
+	input {
+		font-weight: normal !important;
+	}
+	select {
+		font-weight: normal !important;
+	}
+	</style>
 
 
 </head>
@@ -115,6 +116,7 @@ select {
 	<script src="dist/js/bootstrap-datepicker.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>
 	<script src="dist/js/jquery.dataTables.min.js"></script>
+
 	
 
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
