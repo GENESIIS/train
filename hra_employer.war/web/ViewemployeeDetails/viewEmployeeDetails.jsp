@@ -57,7 +57,7 @@
 						<div class="row-fluid" style="border-top: 1px;">
 							<div class="col-xs-6 col-md-4" style="font-size: 16px;">
 								<label class="control-label col-xs-12"
-									style="font-size: 13px; font-size: 13px;">Employee
+									style="font-size: 13px; font-size: 13px;">Employee EPF
 									Number</label> <label class="control-label col-xs-12 iceLabel"
 									style="font-size: 13px; font-weight: bold;" id="employee_id">EMP002</label>
 							</div>
@@ -148,7 +148,7 @@
 											style="font-size: 13px;">Permenant Address</label> <label
 											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;" id="address1">109,
-											Galle RD, colombo07 vfsdfgsdfg dfasgfsdfg sgfsg sgfsdfgsdfg
+											Galle RD, colombo07  sgfsdfgsdfg
 											sgfdsfgsdf</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">

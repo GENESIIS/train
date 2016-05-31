@@ -76,13 +76,15 @@ public class EmployeeCrudJDBC extends Employee {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		EmployeeCrudJDBC emp = new EmployeeCrudJDBC();
+	
 		String employeeDetails = null;
+	
 		Gson gson = new Gson();
 		log.info(id + "////");
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn
-					.prepareStatement("SELECT * FROM [HRA.EMPLOYEE] WHERE EPF=?");
+					.prepareStatement("SELECT [HRA.EMPLOYEE].ID, [HRA.EMPLOYEE].NAME, [HRA.EMPLOYEE].DESIGNATION, [HRA.EMPLOYEE].EMAIL, [HRA.EMPLOYEE].DOB, [HRA.EMPLOYEE].NIC, [HRA.EMPLOYEE].GENDER, [HRA.EMPLOYEE].PERMENENTADDRESS, [HRA.EMPLOYEE].TEMPORARYADDRESS, [HRA.EMPLOYEE].MOBILENO, [HRA.EMPLOYEE].OTHERNO, [HRA.DEPARTMENT].NAME, [HRA.EMPLOYEE].MARITALSTATUS, [HRA.EMPLOYEE].DATEOFJOIN, [HRA.EMPLOYEE].EPF, [HRA.EMPLOYEE].BASIS  FROM [HRA.EMPLOYEE] INNER JOIN [HRA.DEPARTMENT] ON [HRA.EMPLOYEE].DEPTID = [HRA.DEPARTMENT].ID WHERE EPF = ?");
 			preparedStatement.setString(1, id);
 			ResultSet res = preparedStatement.executeQuery();
 			if (res.next()) {
@@ -100,9 +102,11 @@ public class EmployeeCrudJDBC extends Employee {
 				emp.setEmployeedepartment(res.getString(12));
 				emp.setEmployeemaritalstatus(res.getString(13));
 				emp.setEmployeejoindate(res.getString(14));
-				emp.setEmployeeepf(res.getString(17));
-				emp.setEmployeebasis(res.getString(18));
+				emp.setEmployeeepf(res.getString(15));
+				emp.setEmployeebasis(res.getString(16));
 
+				
+			
 				employeeDetails = gson.toJson(emp);
 			}
 		} catch (Exception e) {
@@ -112,6 +116,8 @@ public class EmployeeCrudJDBC extends Employee {
 		return employeeDetails;
 
 	}
+	
+	
 
 	@Override
 	public List<Object> getAll() {

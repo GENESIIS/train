@@ -588,7 +588,14 @@ function loademployeeDetails() {
 			$("#nic_num").text(json.employeeNic);
 			$("#nic_num1").text(json.employeeNic);
 			$("#birthday").val(json.employeeDateofbirth);
-			$("#gender").text(json.employeeGender);
+			// $("#gender").text(json.employeeGender);
+
+			if (json.employeeGender == 'M') {
+				$("#gender").text('Male');
+			} else {
+				$("#gender").text('Female');
+			}
+
 			$("#marital_status").text(json.employeeMaritalstatus);
 			$("#address1").text(json.employeePermenetaddress);
 			$("#address2").text(json.employeeTemporaryaddress);
