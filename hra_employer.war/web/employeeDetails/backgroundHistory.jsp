@@ -20,18 +20,6 @@
 				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css.map" rel="stylesheet">
 				<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.min.css" rel="stylesheet">
 
-
-				<style>
-					th#tbledit {
-						text-align: center;
-					}
-					
-					th#tbldelete {
-						text-align: center;
-					}
-				</style>
-
-
 				<!--Add Medical History Modal -->	
 				<div>
 					<div>
@@ -39,9 +27,11 @@
 						<div class="modal-body">
 
 							<div>
-								<label><h3 class="modal-title">
+								<h3 class="modal-title">
+									<label>
 										<i class="glyphicon glyphicon-check"></i> Add Medical History
-									</h3></label>
+									</label>
+								</h3>
 							</div>
 				
 					

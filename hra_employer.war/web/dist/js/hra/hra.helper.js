@@ -88,13 +88,7 @@ function loadEditContentfamilydetails() {
 function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
-/**
- * thumeera
- * Employee > new employee > more details > add Employeement details 
- * **/
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeDetails/employementHistory.jsp");
-}
+
 /**
  * thumeera
  * Employee > edit employee > more details > edit Employeement details 

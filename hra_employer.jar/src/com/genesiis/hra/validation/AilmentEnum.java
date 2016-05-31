@@ -9,13 +9,13 @@ import com.genesiis.hra.model.MedicalHistory;
 
 /**
  * Load ailment (deseases) to the Medical history form
- * 
- * @author @tr - thumeera
+ *  * @author @tr - thumeera
  * **/
+
 public enum AilmentEnum {
 
-	OTHERSURGERY("Other Surgery"), CARDIACSURGERY("Cardiac Surgery"),
-	ORTHOPAEDICSURGERY( "Orthopaedic Surgery");
+	
+	OTHERSURGERY("Other Surgery"),CARDIACSURGERY("Cardiac Surgery"),ORTHOPAEDICSURGERY( "Orthopaedic Surgery");
 
 	private String key;
 
@@ -31,7 +31,7 @@ public enum AilmentEnum {
 		this.key = key;
 	}
 
-	static Logger log = Logger.getLogger(AilmentEnum.class.getName());
+	
 
 	public List<String> getAilmentenum() {
 
@@ -44,9 +44,10 @@ public enum AilmentEnum {
 				list.add(dd.getKey());
 			}
 		} catch (Exception e) {
-			log.info("" + e);
+			e.printStackTrace();
 		}
 		return list;
 	}
 
 }
+

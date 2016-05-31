@@ -40,17 +40,6 @@
 					<th>Delete</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr>
-					<th>Employee Number</th>
-					<th>Employee Name</th>
-					<th>Designation</th>
-					<th>Contact Details</th>
-					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-			</tfoot>
 			<tbody>
 				<tr>
 					<td>EMP001</td>
@@ -63,6 +52,17 @@
 					<td align="center"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmployeeDetailsForm"> <i class="glyphicon glyphicon-trash"></i> </button></td>
 				</tr>
 			</tbody>
+			<tfoot>
+				<tr>
+					<th>Employee Number</th>
+					<th>Employee Name</th>
+					<th>Designation</th>
+					<th>Contact Details</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 </div>
@@ -296,7 +296,7 @@
 
 				<div class="btn-group btn-group-justified">
 					<a id="btnEduDat" href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 
-					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementHIstoryDetails()"	class="btn btn-primary">Employee History Details</a> 
+					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementHIstoryDetails();"	class="btn btn-primary">Employee History Details</a> 
 					<a id="btnLoanDet" href="#"	onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
 					<a id="btnFamilyDet"  href="#" onclick="loadContentfamilydetails()"	class="btn btn-primary">Family Details</a>
 					<a id="btnMedicalHistory"  href="#" onclick="loadaddBackgrounddetails()" class="btn btn-primary">Medical History</a>
