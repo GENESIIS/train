@@ -27,12 +27,12 @@
 	<br></br>
 	<div class="row">
 	<div class="col-sm-4">
-	 <select class="selectpicker">
+	 <!-- <select class="selectpicker">
       <option value="Basic" selected="selected">Basic detail</option>
-      <option value="Family">Family detail</option>
-      <option value="medical">Medical detail</option>
-      <option value="Education">Education detail</option>
-     </select> 
+      <option value="Family">Department detail</option>
+      <option value="medical"></option>
+      <option value="Education"></option>
+     </select> -->
      </div>
      <div class="col-sm-8" align="right">
        <input aria-controls="employeeDetails" placeholder="" class="input-medium search-query" type="text" id="serchEmployeeText">
