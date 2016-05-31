@@ -1,5 +1,8 @@
 package com.genesiis.hra.model;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public class BasicData extends Employee {
 	private String employeeName;
 	private String employeeDesignation;
@@ -14,7 +17,6 @@ public class BasicData extends Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-	private String employeeEpf;
 	private String employeeBasis;
 
 	public String getEmployeename() {
@@ -128,6 +130,9 @@ public class BasicData extends Employee {
 	public void setEmployeebasis(String employeeBasis) {
 		this.employeeBasis = employeeBasis;
 	}
+	
+	public BasicData() {
+	}
 
 	public BasicData(String employeeName, String employeeDesignation,
 			String employeeEmail, String employeeDateofbirth,
@@ -154,7 +159,24 @@ public class BasicData extends Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
-	public BasicData() {
+	
+
+	@Override
+	public String retrive(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

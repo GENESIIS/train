@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.jboss.logging.Logger;
-
-import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
 import com.google.gson.Gson;
@@ -25,7 +23,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 		 List<Object>  empList = null ;
 		 try {			
 				  empList =  employeeManager.find(keyWord); 
-				  loger.info("execute -----------------------------------------------------");								
+				  loger.info("This execute method"+empList);								
 					
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -63,7 +61,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 			try {
 				empList = gson.toJson(emp);			
 			} catch (Exception e) {
-				
+				loger.info("This CretaeGson method"+empList);
 			}
 			return empList;
 	}

@@ -1,9 +1,7 @@
 package com.genesiis.hra.employer;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
-
 import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.command.SerchEmployee;
-import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
@@ -71,14 +67,14 @@ public class EmployeeController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
-		log.info(task +serchVlaue+ details+ "............................................");
-		log.info(o + "............................................");
+		log.info("task-"+task+"serchVlaue-"+serchVlaue+ "details-"+details);
+		log.info("Operation"+o);
 		try { 
 			switch (o) {
 			
 			 case SERCH_EMPLOYEE:					
 					message = commands.get(o).execute(serchVlaue);
-					log.info("SERCH_EMPLOYEE" + "............................................");
+					log.info(message);
 		        break;	
 			 case REGISTER_LOAN:					
 				    message =commands.get(o).execute("1");							
@@ -87,11 +83,11 @@ public class EmployeeController extends HttpServlet {
 				break;
 			}			
 			writeResponse(gson.toJson(message), response);
-			
+			log.info(gson.toJson(message));
 		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: EmployeeController" + exception);
+			message = MessageList.FAILED_TO_CREATE.message();			
 			response.getWriter().write(gson.toJson(message));
+			log.error("Exception: EmployeeController" + exception+" "+ "message-"+gson.toJson(message));
 		}
 		response.getWriter().close();
 	}
@@ -99,7 +95,7 @@ public class EmployeeController extends HttpServlet {
 	private void writeResponse(String message, HttpServletResponse response) throws IOException {		
 		try {
 			response.getWriter().write(message);
-			log.info(message + "............................................");
+			log.info(message);
 		} catch (Exception e) {
 			log.error("WriteResponse method error. " + e);
 		} finally {
