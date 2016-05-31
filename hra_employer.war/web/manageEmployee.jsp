@@ -93,26 +93,35 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="employeeFirstname">First Name</label><input
+								<label for="employeeFirstname">First Name</label>&nbsp;&nbsp;<span
+									id="employeeFirstnameerror" name="employeeFirstnameerror"
+									style="color: red; font-weight: normal !important;"></span><input
 									type="text" class="form-control" id="employeeFirstname"
 									name="employeeFirstname" placeholder=""
-									onkeypress="return isLetter(event);">
+									onkeypress="return isLetter(event);" maxlength="499" size="499"
+									onblur="setEmptyerrormessage('#employeeFirstname','employeeFirstnameerror','First Name')">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="employeeMiddlename">Middle Name</label> <input
+								<label for="employeeMiddlename">Middle Name</label>&nbsp;&nbsp;<span
+									id="employeeMiddlenameerror" name="employeeMiddlenameerror"
+									style="color: red; font-weight: normal !important;"></span> <input
 									type="text" class="form-control" id="employeeMiddlename"
 									name="employeeMiddlename" placeholder=""
-									onkeypress="return isLetter(event);">
+									onkeypress="return isLetter(event);" maxlength="499" size="499"
+									onblur="setEmptyerrormessage('#employeeMiddlename','employeeMiddlenameerror','Middle Name')">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="employeeLastname">Last Name</label> <input
+								<label for="employeeLastname">Last Name</label>&nbsp;&nbsp;<span
+									id="employeeLastnameerror" name="employeeLastnameerror"
+									style="color: red; font-weight: normal !important;"></span> <input
 									type="text" class="form-control" id="employeeLastname"
 									name="employeeLastname" placeholder=""
-									onkeypress="return isLetter(event);">
+									onkeypress="return isLetter(event);" maxlength="499" size="499"
+									onblur="setEmptyerrormessage('#employeeLastname','employeeLastnameerror','Last Name')">
 							</div>
 						</div>
 					</div>
@@ -120,16 +129,21 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="employeeDateofbirth">Date of Birth</label> <input
+								<label for="employeeDateofbirth">Date of Birth</label>&nbsp;&nbsp;<span
+									id="employeeDateofbirtherror" name="employeeDateofbirtherror"
+									style="color: red; font-weight: normal !important;"></span> <input
 									type="date" class="form-control" id="employeeDateofbirth"
 									name="employeeDateofbirth" placeholder="">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="employeeNic">NIC</label> <input type="text"
-									class="form-control" id="employeeNic" name="employeeNic"
-									placeholder="" maxlength="10" size="10">
+								<label for="employeeNic">NIC</label>&nbsp;&nbsp;<span
+									id="employeeNicerror" name="employeeNicerror"
+									style="color: red; font-weight: normal !important;"></span> <input
+									type="text" class="form-control" id="employeeNic"
+									name="employeeNic" placeholder="" maxlength="10" size="10"
+									onblur="setEmptyerrormessage('#employeeNic','employeeNicerror','NIC')">
 							</div>
 						</div>
 					</div>
@@ -168,9 +182,13 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="employeeEpf">EPF Number</label> <input type="text"
-									class="form-control" id="employeeEpf" name="employeeEpf"
-									placeholder="" onkeypress="return isNumberKey(event)">
+								<label for="employeeEpf">EPF Number</label>&nbsp;&nbsp;<span
+									id="employeeEpferror" name="employeeEpferror"
+									style="color: red; font-weight: normal !important;"></span> <input
+									type="text" class="form-control" id="employeeEpf"
+									name="employeeEpf" placeholder=""
+									onkeypress="return isNumberKey(event)" maxlength="9" size="9"
+									onblur="setEmptyerrormessage('#employeeEpf','employeeEpferror','EPF Number')">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -196,9 +214,14 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="employeeDesignation">Designation</label> <input
+								<label for="employeeDesignation">Designation</label>
+								&nbsp;&nbsp;<span id="employeeDesignationerror"
+									name="employeeDesignationerror"
+									style="color: red; font-weight: normal !important;"></span><input
 									type="text" class="form-control" id="employeeDesignation"
-									name="employeeDesignation" placeholder="">
+									name="employeeDesignation" placeholder="" maxlength="499"
+									size="499"
+									onblur="setEmptyerrormessage('#employeeDesignation','employeeDesignationerror','Designation')">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -220,14 +243,16 @@
 							<div class="form-group">
 								<label for="employeePermenetaddress">Permanent Address</label>
 								<textarea class="form-control" id="employeePermenetaddress"
-									name="employeePermenetaddress" placeholder=""></textarea>
+									name="employeePermenetaddress" placeholder="" maxlength="499"
+									size="499"></textarea>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="employeeTemporaryaddress">Temporary Address</label>
 								<textarea class="form-control" id="employeeTemporaryaddress"
-									name="employeeTemporaryaddress" placeholder=""></textarea>
+									name="employeeTemporaryaddress" placeholder="" maxlength="499"
+									size="499"></textarea>
 							</div>
 						</div>
 					</div>
@@ -254,7 +279,7 @@
 					<div class="form-group">
 						<label for="employeeEmail">Email</label> <input type="text"
 							class="form-control" id="employeeEmail" name="employeeEmail"
-							placeholder="">
+							placeholder="" maxlength="499" size="499">
 					</div>
 				</div>
 			</div>

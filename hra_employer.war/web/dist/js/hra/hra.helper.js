@@ -67,7 +67,6 @@ function getDepartment() {
 		},
 		dataType : "json",
 		success : function(data) {
-			alert(data);
 			var select = $('#employeeDepartment');
 			select.find('option').remove();
 			$('<option>').val("").text("--Select--").appendTo(select);
@@ -156,9 +155,11 @@ function isLetter(evt) {
 
 // Get data and sent to EmployeeController.java.
 function addEmployeeDetails() {
-	var employeeFirstname = $("#employeeFirstname").val() + ","
-			+ $("#employeeMiddlename").val() + ","
-			+ $("#employeeLastname").val();
+	var fname = $("#employeeFirstname").val();
+	var mname = $("#employeeMiddlename").val();
+	var lname = $("#employeeLastname").val();
+
+	var employeeFirstname = fname + "," + mname + "," + lname;
 	var employeeDateofbirth = $("#employeeDateofbirth").val();
 	var employeeNic = $("#employeeNic").val();
 	var employeeGender = $("#employeeGender").val();
@@ -173,6 +174,13 @@ function addEmployeeDetails() {
 	var employeeMobile = $("#employeeMobile").val();
 	var employeeEmail = $("#employeeEmail").val();
 	var employeeJoindate = $("#employeeJoindate").val();
+
+	var employeeFirstnameerror = $("#employeeFirstnameerror").text();
+	var employeeMiddlenameerror = $("#employeeMiddlenameerror").text();
+	var employeeLastnameerror = $("#employeeLastnameerror").text();
+	var employeeNicerror = $("#employeeNicerror").text();
+	var employeeEpferror = $("#employeeEpferror").text();
+	var employeeDesignationerror = $("#employeeDesignationerror").text();
 
 	var employeeData = {
 		"employeeName" : employeeFirstname,
@@ -192,26 +200,36 @@ function addEmployeeDetails() {
 		"employeeJoindate" : employeeJoindate,
 	};
 
-	$.ajax({
-		type : "POST",
-		url : 'EmployerController',
-		data : {
-			jsonData : JSON.stringify(employeeData),
-			task : "AEB"
-		},
-		dataType : "json",
-		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
-				clearAddemployeeform();
-				document.getElementById("moredetails").disabled = false;
+	if ((fname == "") || (mname == "") || (lname == "") || (employeeNic == "")
+			|| (employeeEpf == "") || (employeeDesignation == "")) {
+		alert("Please fill the Empty fields.");
+	} else if ((employeeFirstnameerror != "")
+			|| (employeeMiddlenameerror != "") || (employeeLastnameerror != "")
+			|| (employeeNicerror != "") || (employeeEpferror != "")
+			|| (employeeDesignationerror != "")) {
+		alert("Please fill the details correctly.");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : 'EmployerController',
+			data : {
+				jsonData : JSON.stringify(employeeData),
+				task : "AEB"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearAddemployeeform();
+					document.getElementById("moredetails").disabled = false;
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
 			}
-		},
-		error : function(e) {
-			alert("Error " + e);
-			console.log(e);
-		}
-	});
+		});
+	}
 }
 
 function clearAddemployeeform() {
@@ -231,5 +249,11 @@ function clearAddemployeeform() {
 	$("#employeeMobile").val("");
 	$("#employeeEmail").val("");
 	$("#employeeJoindate").val("");
+	$("#employeeFirstnameerror").text("");
+	$("#employeeMiddlenameerror").text("");
+	$("#employeeLastnameerror").text("");
+	$("#employeeNicerror").text("");
+	$("#employeeEpferror").text("");
+	$("#employeeDesignationerror").text("");
 	getDepartment();
 }

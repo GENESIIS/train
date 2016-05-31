@@ -162,8 +162,6 @@ public class Department implements ICrud {
 			while (result.next()) {
 				departments
 						.add(result.getString(1) + "#" + result.getString(2));
-				log.info("result.getString(1) + + result.getString(2)"
-						+ result.getString(1) + "#" + result.getString(2));
 			}
 			statement.close();
 			conn.close();
