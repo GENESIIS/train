@@ -17,6 +17,12 @@ import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
+
+///***********************************************
+//* 20160427 PN HRA-3 created EmployeeController.java class
+//* 20160428 PN HRA-3 name changed to EmployerController.java class. 
+//* 20160531 PN HRA-3 modified doPost() method. 
+//***********************************************/
 /**
  * Servlet implementation class EmployerController
  */

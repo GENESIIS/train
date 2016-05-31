@@ -1,5 +1,10 @@
 package com.genesiis.hra.command;
 
+///***********************************************
+//* 20160531 PN HRA-3 created GetDepartment.java class
+//* 20160531 PN HRA-3 execute() method modified.. 
+//***********************************************/
+
 import java.util.HashMap;
 import java.util.List;
 
