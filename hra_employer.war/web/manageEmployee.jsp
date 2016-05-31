@@ -35,9 +35,9 @@
      </select> -->
      </div>
      <div class="col-sm-8" align="right">
-       <input aria-controls="employeeDetails" placeholder="" class="input-medium search-query" type="text" id="serchEmployeeText">
-       <button type="button" onclick = "serchEmployee()" value="Search" class="glyphicon glyphicon-search">
-       <i class="icon-search"></i></button>
+       <input aria-controls="employeeDetails" placeholder="Search" class="form-control" type="text" id="serchEmployeeText">
+       <button type="button" onclick = "serchEmployee()" class="btn btn-default" class="glyphicon glyphicon-search">Search
+      </button>
 	</div>
 	</div>	
 <div id = "basicTable">
