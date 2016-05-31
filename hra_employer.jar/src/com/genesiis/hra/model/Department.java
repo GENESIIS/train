@@ -5,17 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.MessageList;
 
 ///***********************************************
 //* 20160422 PN HRA-3 created Department.java class
 //* 
 //***********************************************/
 
-public class Department implements ICrud{
-	
+public class Department implements ICrud {
+	static Logger log = Logger.getLogger(Department.class.getName());
+
 	private String departmentNumber;
 	private String departmentName;
 	private String departmentLocation;
@@ -56,18 +61,18 @@ public class Department implements ICrud{
 	public Department() {
 	}
 
-	public Department(String dnum, String dname,
-			String dl, String dh) {
+	public Department(String dnum, String dname, String dl, String dh) {
 		this.departmentNumber = dnum;
 		this.departmentName = dname;
 		this.departmentLocation = dl;
 		this.departmentHead = dh;
 	}
-	
+
 	@Override
-    public String toString() {
-        return departmentNumber + " - " + departmentName+ " - " +departmentLocation+ " - " +departmentHead;
-    }
+	public String toString() {
+		return departmentNumber + " - " + departmentName + " - "
+				+ departmentLocation + " - " + departmentHead;
+	}
 
 	@Override
 	public int add(Object object) {
@@ -143,5 +148,49 @@ public class Department implements ICrud{
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<String> getDepartments() {
+		String query = "SELECT * FROM [HRA.DEPARTMENT]";
+		Connection conn = null;
+		List<String> departments = new ArrayList<String>();
+		Statement statement = null;
+		try {
+			conn = ConnectionManager.getConnection();
+			statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			while (result.next()) {
+				departments
+						.add(result.getString(1) + "#" + result.getString(2));
+				log.info("result.getString(1) + + result.getString(2)"
+						+ result.getString(1) + "#" + result.getString(2));
+			}
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return departments;
+	}
+
+	public List<String> getManagers() {
+		String query = "SELECT * FROM [HRA.EMPLOYEE] WHERE DESIGNATION='Manager';";
+		Connection conn = null;
+		List<String> managers = new ArrayList<String>();
+		Statement statement = null;
+		try {
+			conn = ConnectionManager.getConnection();
+			statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			while (result.next()) {
+				managers.add(result.getString(1) + "#" + result.getString(2));
+			}
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return managers;
 	}
 }
