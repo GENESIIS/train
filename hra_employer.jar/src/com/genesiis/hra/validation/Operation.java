@@ -7,7 +7,8 @@ public enum Operation {
 	BAD_OPERATION("BO"),
 	ADD_DEPARTMENT("ADP"),
 	GET_MANAGER("GMN"),
-	GET_DEPARTMENT("GDP");
+	GET_DEPARTMENT("GDP"),
+	ADD_FAMILY_MEMBER("AFM");
 
 	private final String value;
 

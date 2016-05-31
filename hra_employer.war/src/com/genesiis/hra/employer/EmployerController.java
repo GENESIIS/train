@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployeeBasicdata;
+import com.genesiis.hra.command.AddFamilyDetails;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
@@ -37,6 +38,7 @@ public class EmployerController extends HttpServlet {
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
 				new AddEmployeeBasicdata());
+		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
 	}
 
 	/**
@@ -66,6 +68,9 @@ public class EmployerController extends HttpServlet {
 		try {
 			switch (o) {
 			case ADD_EMPLOYEE_BASICDATA:
+				message = commands.get(o).execute(details);
+				break;
+			case ADD_FAMILY_MEMBER:
 				message = commands.get(o).execute(details);
 				break;
 			default:

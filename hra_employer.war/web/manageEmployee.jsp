@@ -326,7 +326,7 @@
 						onclick="loadContentstudyprograms()" href="#"
 						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadContentfamilydetails()"
+						Details</a> <a href="#" onclick="loadfamilydetails()"
 						class="btn btn-primary">Family Details</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>

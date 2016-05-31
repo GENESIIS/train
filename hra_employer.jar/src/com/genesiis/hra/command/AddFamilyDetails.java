@@ -1,34 +1,36 @@
+/**
+ * 20160531 PN created AddFamilyDetails.java command class.
+ */
 package com.genesiis.hra.command;
 
 import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.model.Familymember;
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 
-///***********************************************
-//* 20160422 PN HRA-3 created AddDepartment.java class.
-//* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method.
-//* 20160429 PN HRA-3 modified executeAdddepartment(String gsonData), method with providing proper error messages.
-//* 20160503 PN HRA-3 modified the execute method.
-//***********************************************/
-
-public class AddDepartment implements ICommandAJX {
-	static Logger log = Logger.getLogger(AddDepartment.class.getName());
+/**
+ * @author pabodha
+ *
+ */
+public class AddFamilyDetails implements ICommandAJX{
+	static Logger log = Logger.getLogger(AddFamilyDetails.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-	@Override
+	/* (non-Javadoc)
+	 * @see com.genesiis.hra.command.ICommandAJX#execute(java.lang.String)
+	 */
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
-			Department department = getDepartmentdetails(gsonData);
+			Familymember familymember = getFamilymemberdetails(gsonData);
 			validateComponent(errorList);
-			id = department.add(department);
+			id = familymember.add(familymember);
 			message = MessageList.ADDED;
 		} catch (Exception mne) { // User Defined exception. This comes from the
 									// validation of the Component ->
@@ -39,26 +41,31 @@ public class AddDepartment implements ICommandAJX {
 		return message.message();
 	}
 	
+	/**
+	 * @param errorList
+	 */
 	private void validateComponent(HashMap<Integer, Object> errorList) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private Department getDepartmentdetails(String data) {
-		Department department = (Department) extractFromJason(data);
-		return department;
+	private Familymember getFamilymemberdetails(String data) {
+		Familymember familymember = (Familymember) extractFromJason(data);
+		return familymember;
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see com.genesiis.hra.command.ICommandAJX#extractFromJason(java.lang.String)
+	 */
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
-		Department department = null;
+		Familymember familymember = null;
 		try {
-			department = gson.fromJson(data, Department.class);
+			familymember = gson.fromJson(data, Familymember.class);
 		} catch (Exception e) {
 			log.info("ExtractFromgson - Exception " + e);
 		}
-		return department;
+		return familymember;
 	}
 
 	/* (non-Javadoc)
@@ -77,4 +84,5 @@ public class AddDepartment implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }
