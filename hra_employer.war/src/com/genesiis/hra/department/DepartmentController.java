@@ -2,10 +2,6 @@ package com.genesiis.hra.department;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddDepartment;
-import com.genesiis.hra.model.EmployeeManager;
+import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -32,19 +30,16 @@ import com.google.gson.Gson;
  */
 @WebServlet("/DepartmentController")
 public class DepartmentController extends HttpServlet {
-	HashMap<Integer, Object> hmap = null;
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
+	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
-		AddDepartment addDepartment = new AddDepartment();
-
-		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addDepartment);
-		// hmap.put(2, null);
-		// hmap.put(3, null);
-		// hmap.put(4, null);
+		// HashMap to map commands into Operation enum.
+		commands = new HashMap<Operation, ICommandAJX>();
+		commands.put(Operation.ADD_DEPARTMENT, new AddDepartment());
+		commands.put(Operation.GET_DEPARTMENT, new GetDepartment());
 	}
 
 	/**
@@ -53,15 +48,7 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		try {
-			EmployeeManager employeeManager = new EmployeeManager();
-			List<String> list = employeeManager.getManagers();
-			String gson = null;
-			gson = new Gson().toJson(list);
-			response.getWriter().write(gson);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.doPost(request, response);
 	}
 
 	/**
@@ -71,35 +58,46 @@ public class DepartmentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String departmentDetails = request.getParameter("jsonData");
+		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
-		// Method to verify it and return integer;
-		int validTask = 1;
+
+		// Get the retrieve the operation from the task.
+		Operation o = Operation.BAD_OPERATION;
+		o = Operation.getOperation(task);
 		Gson gson = new Gson();
 
 		try {
-			switch (validTask) {
-			case 1:
-				AddDepartment addDepartment = (AddDepartment) hmap.get(1);
-				message = addDepartment.execute(departmentDetails);
-				response.getWriter().write(gson.toJson(message));
+			switch (o) {
+			case ADD_DEPARTMENT:
+				message = commands.get(o).execute(details);
 				break;
-			// For other operations.
-			// case 2:
-			// break;
-			// case 3:
-			// break;
-			// case 4:
-			// break;
+			case GET_DEPARTMENT:
+				message = commands.get(o).execute(details);
+				break;
 			default:
 				break;
 			}
-		} catch (Exception exception) {
-			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: DepartmentController" + exception);
-			response.getWriter().write(gson.toJson(message));
+
+		} catch (Exception e) {
+			// Client see an error from here
+			message = MessageList.ERROR.message();
+			log.error("Department Controller Error. " + e);
 		}
-		response.getWriter().close();
+
+		writeResponse(gson.toJson(message), response);
+	}
+
+	private void writeResponse(String message, HttpServletResponse response)
+			throws IOException {
+		try {
+			response.getWriter().write(message);
+		} catch (Exception e) {
+			log.error("WriteResponse method error. " + e);
+		} finally {
+			response.getWriter().flush();
+			response.getWriter().close();
+		}
+
 	}
 }

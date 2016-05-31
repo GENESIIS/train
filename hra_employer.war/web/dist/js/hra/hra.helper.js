@@ -31,44 +31,23 @@ function updatedAlert() {
 
 // Get Employees for Add Department Form
 function getManager() {
-	$.getJSON('DepartmentController', {}, function(data) {
-		var select = $('#departmentHead');
-		select.find('option').remove();
-		$('<option>').val("").text("--Select--").appendTo(select);
-		$.each(data, function(index, value) {
-			var result = value.split("#");
-			$('<option>').val(result[0]).text(result[1]).appendTo(select);
-		});
-	});
-}
-
-// Get data and sent to DepartmentController.java.
-function addDepartmentDetails() {
-	var departmentNumber = $("#departmentNumber").val();
-	var departmentName = $("#departmentName").val();
-	var departmentLocation = $("#departmentLocation").val();
-	var departmentHead = $("#departmentHead").val();
-
-	var jsonData = {
-		"departmentNumber" : departmentNumber,
-		"departmentName" : departmentName,
-		"departmentLocation" : departmentLocation,
-		"departmentHead" : departmentHead
-	};
-
+	var jsonData = {};
 	$.ajax({
 		type : "POST",
 		url : 'DepartmentController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
-			task : "ADD"
+			task : "GDP"
 		},
 		dataType : "json",
 		success : function(data) {
-			alert(data);
-			if (data == "Details added successfully.") {
-				clearDepartmentform();
-			}
+			var select = $('#departmentHead');
+			select.find('option').remove();
+			$('<option>').val("").text("--Select--").appendTo(select);
+			$.each(JSON.parse(data), function(index, value) {
+				var result = value.split("#");
+				$('<option>').val(result[0]).text(result[1]).appendTo(select);
+			});
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -78,15 +57,58 @@ function addDepartmentDetails() {
 }
 
 // Get data and sent to DepartmentController.java.
+function addDepartmentDetails() {
+	var departmentName = $("#departmentName").val();
+	var departmentLocation = $("#departmentLocation").val();
+	var departmentHead = $("#departmentHead").val();
+
+	var departmentNameerror = $("#departmentNameerror").text();
+	var departmentHeaderror = $("#departmentHeaderror").text();
+
+	var jsonData = {
+		"departmentName" : departmentName,
+		"departmentLocation" : departmentLocation,
+		"departmentHead" : departmentHead
+	};
+
+	if ((departmentName == "") || (departmentHead == "")) {
+		alert("Please fill the Empty fields.");
+	} else if ((departmentNameerror != "") || (departmentHeaderror)) {
+		alert("Please fill the details correctly.");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : 'DepartmentController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ADP"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearDepartmentform();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+}
+
+// Get data and sent to DepartmentController.java.
 function deleteDepartmentDetails() {
 
 }
 
 function clearDepartmentform() {
-	$("#departmentNumber").val("");
 	$("#departmentName").val("");
 	$("#departmentLocation").val("");
 	getManager();
+	$("#departmentNameerror").text("");
+	$("#departmentHeaderror").text("");
 }
 
 function isNumberKey(evt) {
@@ -99,7 +121,8 @@ function isNumberKey(evt) {
 
 function isLetter(evt) {
 	var inputValue = evt.charCode;
-    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)){
-    	evt.preventDefault();
-    }
+	if (!(inputValue >= 65 && inputValue <= 120)
+			&& (inputValue != 32 && inputValue != 0)) {
+		evt.preventDefault();
+	}
 }
