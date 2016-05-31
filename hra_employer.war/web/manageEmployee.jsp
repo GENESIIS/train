@@ -20,6 +20,8 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
 <h2 class="sub-header">Employee Management</h2>
 
+
+    
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#addEmployeedetails" onclick="disableButton()">
 		<i class="glyphicon glyphicon-plus"></i> New Employee
@@ -35,9 +37,12 @@
      </select> -->
      </div>
      <div class="col-sm-8" align="right">
-       <input aria-controls="employeeDetails" placeholder="Search" class="form-control" type="text" id="serchEmployeeText">
-       <button type="button" onclick = "serchEmployee()" class="btn btn-default" class="glyphicon glyphicon-search">Search
-      </button>
+       <div class="input-group add-on">
+      <input class="form-control" placeholder="Search"  id="serchEmployeeText" type="text">
+      <div class="input-group-btn">
+        <button class="btn btn-default" onclick = "serchEmployee()" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
 	</div>
 	</div>	
 <div id = "basicTable">
