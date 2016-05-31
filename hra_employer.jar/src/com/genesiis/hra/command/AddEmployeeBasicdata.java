@@ -1,20 +1,22 @@
 package com.genesiis.hra.command;
 
 import java.util.HashMap;
+
 import org.jboss.logging.Logger;
+
+import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 
 ///***********************************************
-//* 20160422 PN HRA-3 created AddDepartment.java class.
-//* 20160425 PN HRA-3 modified executeAdddepartment(String gsonData), method.
-//* 20160429 PN HRA-3 modified executeAdddepartment(String gsonData), method with providing proper error messages.
-//* 20160503 PN HRA-3 modified the execute method.
+//* 20160422 PN HRA-2 created AddEmployee.java class.
+//* 20160425 PN HRA-2 modified executeAddEmployee(String gsonData), method.
+//* 20160429 PN HRA-2 modified executeAddEmployee(String gsonData), method with providing proper error messages.
+//* 20160503 PN HRA-2 modified the execute method.
 //***********************************************/
 
-public class AddDepartment implements ICommandAJX {
-	static Logger log = Logger.getLogger(AddDepartment.class.getName());
+public class AddEmployeeBasicdata implements ICommandAJX {
+	static Logger log = Logger.getLogger(BasicData.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
 	@Override
@@ -24,9 +26,8 @@ public class AddDepartment implements ICommandAJX {
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
-			Department department = getDepartmentdetails(gsonData);
-			validateComponent(errorList);
-			id = department.add(department);
+			BasicData data = geBasicdetails(gsonData);
+			id = data.add(data);
 			message = MessageList.ADDED;
 		} catch (Exception mne) { // User Defined exception. This comes from the
 									// validation of the Component ->
@@ -37,26 +38,21 @@ public class AddDepartment implements ICommandAJX {
 		return message.message();
 	}
 	
-	private void validateComponent(HashMap<Integer, Object> errorList) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private Department getDepartmentdetails(String data) {
-		Department department = (Department) extractFromJason(data);
-		return department;
-	}
+	private BasicData geBasicdetails(String data) {
+		BasicData basicData = (BasicData) extractFromJason(data);
+		return basicData;
+	}	
 
 	@Override
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
-		Department department = null;
+		BasicData basicData = null;
 		try {
-			department = gson.fromJson(data, Department.class);
+			basicData = gson.fromJson(data, BasicData.class);
 		} catch (Exception e) {
 			log.info("ExtractFromgson - Exception " + e);
 		}
-		return department;
+		return basicData;
 	}
 
 	@Override
@@ -71,4 +67,5 @@ public class AddDepartment implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

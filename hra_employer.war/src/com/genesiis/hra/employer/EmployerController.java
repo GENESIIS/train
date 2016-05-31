@@ -1,4 +1,4 @@
-package com.genesiis.hra.department;
+package com.genesiis.hra.employer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,38 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddDepartment;
-import com.genesiis.hra.command.GetDepartment;
-import com.genesiis.hra.command.GetManager;
+import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
+
 ///***********************************************
-//* 20160416 PN HRA-3 DepartmentController.java class
-//* 20160425 PN HRA-3 modified doPost()
-//* 20160429 PN Modified the doPost() by separating the execute method for ADD,UPDATE,DELETE etc.
-//* 20160501 PN Modified the doGet() method to display managers for Departments.
-//* 20160504 PN Modified the doPost method with a Switch-Case statement and init() method with a hashMap.
+//* 20160427 PN HRA-3 created EmployeeController.java class
+//* 20160428 PN HRA-3 name changed to EmployerController.java class. 
+//* 20160531 PN HRA-3 modified doPost() method. 
 //***********************************************/
-
 /**
- * Servlet implementation class DeptServlet
+ * Servlet implementation class EmployerController
  */
-@WebServlet("/DepartmentController")
-public class DepartmentController extends HttpServlet {
-
+@WebServlet("/EmployerController")
+public class EmployerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static Logger log = Logger.getLogger(DepartmentController.class.getName());
+	static Logger log = Logger.getLogger(EmployerController.class.getName());
 	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
 		commands = new HashMap<Operation, ICommandAJX>();
-		commands.put(Operation.ADD_DEPARTMENT, new AddDepartment());
-		commands.put(Operation.GET_MANAGER, new GetManager());
-		commands.put(Operation.GET_DEPARTMENT, new GetDepartment());
+		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
+				new AddEmployeeBasicdata());
 	}
 
 	/**
@@ -60,7 +54,6 @@ public class DepartmentController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
@@ -72,13 +65,7 @@ public class DepartmentController extends HttpServlet {
 
 		try {
 			switch (o) {
-			case ADD_DEPARTMENT:
-				message = commands.get(o).execute(details);
-				break;
-			case GET_MANAGER:
-				message = commands.get(o).execute(details);
-				break;
-			case GET_DEPARTMENT:
+			case ADD_EMPLOYEE_BASICDATA:
 				message = commands.get(o).execute(details);
 				break;
 			default:

@@ -31,6 +31,8 @@
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
+<script src="dist/js/hra/hra.payroll.helper.js"></script>
+<script src="dist/js/hra/hra.validation.js"></script>
 
 <style type="text/css">
 /* label { */
