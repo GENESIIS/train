@@ -1,12 +1,5 @@
 package com.genesiis.hra.command;
 
-
-
-///***********************************************
-//* 20160531 PN HRA-3 created GetDepartment.java class
-//* 20160531 PN HRA-3 execute() method modified.. 
-//***********************************************/
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,8 +9,8 @@ import com.genesiis.hra.model.Department;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-public class GetDepartment implements ICommandAJX {
-	static Logger log = Logger.getLogger(GetDepartment.class.getName());
+public class GetManager implements ICommandAJX {
+	static Logger log = Logger.getLogger(GetManager.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 	@Override
@@ -25,7 +18,7 @@ public class GetDepartment implements ICommandAJX {
 		String message = MessageList.ERROR.message();
 		try {
 			Department department = new Department();
-			List<String> list = department.getDepartments();
+			List<String> list = department.getManagers();
 			String gson = null;
 			gson = new Gson().toJson(list);
 			message = gson;
