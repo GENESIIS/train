@@ -14,6 +14,7 @@ public enum MessageList {
 	IDFOUND("ID found."), 
 	IDNOTFOUND("ID not found."), 
 	ERROR("Unsuccessful."), 
+	MANDATORYFIELDREQUIRED("Fields marked with asterisk (*) are required"), 
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
@@ -37,25 +38,7 @@ public enum MessageList {
 	EHDELETE("EHDELETE"),//EMPLOYE HISTORY DELETE
 	EHFIND("EHFIND"),
 
-	INVALIDEMPLOYEEID("Invalid Employee Id"),
-	INVALIDEMPLOYERNAME("Invalid Employer Name"),
-	INVALIDEMPLOYERDESIGNATION("Invalid Employer Name"),
-	INVALIDEMPLOYEMENTBASIS("Invalid Employment Basis"),
-	INVALIDSTARTEDDATE("Invalid Started Date"),
-	INVALIDCOMPLETEDDATE("Invalid Completed Date"),
-	
-	INVALID_REFERENCE_ONE_NAME("Invalid Reference One Name"),
-	INVALID_REFERENCE_TWO_NAME("Invalid Reference Two Name"),
-	INVALID_REFERENCE_ONE_COMMENT("Invalid Reference One Comment"),
-	INVALID_REFERENCE_TWO_COMMENT("Invalid Reference Two Comment"),
-	INVALID_REFERENCE_ONE_PHONE("Invalid Reference One Phone"),
-	INVALID_REFERENCE_TWO_PHONE("Invalid Reference Two Phone"),
-	INVALID_REFERENCE_ONE_MOBILE("Invalid Reference One Mobile"),
-	INVALID_REFERENCE_TWO_MOBILE("Invalid Reference Two Mobile"),
-	INVALID_REFERENCE_ONE_ADDRESS("Invalid Reference One Address"),
-	INVALID_REFERENCE_TWO_ADDRESS("Invalid Reference Two Address"),
-	INVALID_REFERENCE_ONE_DESIGNATION("Invalid Reference One Designation"),
-	INVALID_REFERENCE_TWO_DESIGNATION("Invalid Reference Two Designation"),
+	NOTADDED("Problem when inserting data."), 
 	;
 	
 	private String message;

@@ -1,6 +1,6 @@
 package com.genesiis.hra.command;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface ICommand {
 
@@ -8,8 +8,6 @@ public interface ICommand {
 
 	public Object extractFromJason(String data);
 
-	public boolean validateValue(Object entiytObject);
-
-	public String validateValue(HashMap<String, String> entiytMap);
+	public boolean validateValue(Map<String, String> entiytMap);
 	
 }

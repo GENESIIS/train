@@ -299,37 +299,7 @@ function clearDepartmentform() {
 
 
 
-/**
- * thumeera
- * Employee > new employee > more details > add new > clear 
- * **/
-function clearEmployeementHisory() {
-	
-	$("#employeeId").val("");
-	$("#employer").val("");
-	$("#designation").val("");
-	$("#basis").val("");
-	$("#ehEmail").val("");
-	$("#ehComments").val("");
-	
-	$("#startedOn").val("");
-	$("#compleatedOn").val("");
-	
-	$("#ehReferenceonename").val("");
-	$("#ehReferenceonecomments").val("");
-	$("#ehReferenceonephone").val("");
-	$("#ehReferenceonemobile").val("");
-	$("#ehReferenceoneaddress").val("");
-	$("#ehReferenceonedesignation").val("");
-	
-	$("#ehReferencetwoname").val("");
-	$("#ehReferencetwocomments").val("");
-	$("#ehReferencetwophone").val("");
-	$("#ehReferencetwomobile").val("");
-	$("#ehReferencetwoaddress").val("");
-	$("#ehReferencetwodesignation").val("");
 
-}
 
 $("#buttonAddemployee").click(function() {
 	alert(this.id);

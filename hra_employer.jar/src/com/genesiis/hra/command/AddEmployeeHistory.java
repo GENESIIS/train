@@ -1,12 +1,13 @@
 package com.genesiis.hra.command;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.EmploymentHistory;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -18,66 +19,98 @@ public class AddEmployeeHistory implements ICommand {
 
 		// insert fiels validation
 		MessageList message = MessageList.ERROR;
+		boolean hasError = false;
 
 		try {
 
-			// extracting gson data to object
+			// extracting gson data to OBJECT
 			EmploymentHistory employmentHistory = (EmploymentHistory) extractFromJason(gsonData);
 
-			// error fields will be visible
-			String hasError = employmentHistory.isValidObjectd(employmentHistory);
+			// extracting gson data to MAP for error check
+			Map<String, String> attributeMap = jsonToMap(gsonData);
 
-			// if no error
-			if (MessageList.SUCCESS.message().equalsIgnoreCase(hasError)) {
+			// validating map return error map
+			hasError = validateValue(attributeMap);
 
+			// return error map is empty -> no errors
+			if (!hasError) {
 				// adding employee history to database table
 				int hasInserted = employmentHistory.add(employmentHistory);
 
-				// if ADD EMPLOYMENT HISTORY DETAILS success
+				// employee history data added
 				if (hasInserted == 1) {
 					message = MessageList.ADDED;
-				} else {// if ADD EMPLOYMENT HISTORY DETAILS fails
-					message = MessageList.ERROR;
+				} else {// employee history data not added
+					message = MessageList.NOTADDED;
 				}
-
 			} else {
-				// if error
-				return message.message();
+				// if return error map is not empty -> errors
+				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
+				message = MessageList.MANDATORYFIELDREQUIRED;
 			}
 		} catch (Exception e) {
 			// if error
-			log.info("execute - Exception " + e);
+			log.info("Execute - Exception " + e);
+			return message.message();
 		}
 		return message.message();
 
 	}
 
-	/**
-	 * @tr extracting json data to object
-	 * **/
+	// @tr - extracting Gson data to object for save
 	public Object extractFromJason(String data) {
+
 		Gson gson = new Gson();
 		EmploymentHistory employmentHistory = null;
 		try {
+			// convert gson into object
 			employmentHistory = gson.fromJson(data, EmploymentHistory.class);
 		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
+			// error handling
+			log.info("ExtractFromgson - Exception " + e.getMessage());
 		}
 		return employmentHistory;
 	}
 
-	public boolean validateValue(Object entiytObject) {
-		// TODO Auto-generated method stub
-		return false;
+	// @tr - converting Gson string to map for check errors
+	public Map<String, String> jsonToMap(String t) {
+
+		// local initialization
+		Gson gson = new Gson();
+		Map<String, String> map = new HashMap<String, String>();
+
+		try {
+			// convert gson into map
+			map = (Map<String, String>) gson.fromJson(t, map.getClass());
+		} catch (Exception e) {
+			// error handling
+			log.info("GsonToMap - Exception " + e.getMessage());
+		}
+		return map;
 	}
 
-	public String validateValue(HashMap<String, String> entiytMap) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean validateValue(Map<String, String> entiytMap) {
+
+		// get isValidString()
+		DataValidator dataValidator = new DataValidator();
+		// errors are caught to
+		boolean hasError = false;
+		
+		try {
+			for (Entry<String, String> e : entiytMap.entrySet()) {
+				// attribute key
+				String value = e.getValue();
+
+				// when fails add to errorFieldList
+				if (!dataValidator.isValidString(value)) {
+					hasError = true;
+				}
+			}
+		} catch (Exception e) {
+			// error handling
+			log.info("ValidateValue - Exception " + e.getMessage());
+		}
+		return hasError;
 	}
 
-	public int validTaskId(String task) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

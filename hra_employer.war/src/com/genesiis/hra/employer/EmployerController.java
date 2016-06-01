@@ -79,8 +79,6 @@ public class EmployerController extends HttpServlet {
 
 		operation = Operation.getOperation(task);
 
-		Gson gson = new Gson();
-
 		try {
 			switch (operation) {
 			case ADD_EMPLOYEE_HISTORY:
@@ -96,7 +94,7 @@ public class EmployerController extends HttpServlet {
 			log.error("Payroll Controloler Error. " + e);
 		}
 
-		writeResponse(gson.toJson(message), response);
+		writeResponse(message, response);
 	}
 
 	private void writeResponse(String insertedSuccess,
