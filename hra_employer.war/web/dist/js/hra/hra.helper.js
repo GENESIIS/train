@@ -158,7 +158,7 @@ function isLetter(evt) {
 	}
 }
 
-// Get data and sent to EmployeeController.java.
+// Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
 	var fname = $("#employeeFirstname").val();
 	var mname = $("#employeeMiddlename").val();
@@ -304,10 +304,10 @@ function addFamilyDetails() {
 
 		$.ajax({
 			type : "POST",
-			url : 'EmployeeController',
+			url : 'EmployerController',
 			data : {
 				jsonData : JSON.stringify(jsonData),
-				task : "ADD"
+				task : "AFM"
 			},
 			dataType : "json",
 			success : function(data) {

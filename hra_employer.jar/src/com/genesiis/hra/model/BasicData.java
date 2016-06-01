@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import com.genesiis.hra.utill.ConnectionManager;
 
 public class BasicData extends Employee {
+	static Logger log = Logger.getLogger(BasicData.class.getName());
+	
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;

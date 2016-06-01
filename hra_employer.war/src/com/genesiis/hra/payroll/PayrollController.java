@@ -1,4 +1,4 @@
-package com.genesiis.hra.employer;
+package com.genesiis.payroll;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,41 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.logging.Logger;
-
-import com.genesiis.hra.command.AddEmployeeBasicdata;
-import com.genesiis.hra.command.AddFamilyDetails;
+import com.genesiis.hra.command.AddSalaryComponent;
+import com.genesiis.hra.command.AddSalaryScheme;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
+import org.jboss.logging.Logger;
 
-///***********************************************
-//* 20160427 PN HRA-3 created EmployeeController.java class
-//* 20160428 PN HRA-3 name changed to EmployerController.java class. 
-//* 20160531 PN HRA-3 modified doPost() method. 
-//***********************************************/
 /**
- * Servlet implementation class EmployerController
+ * 20160524 PN created PayrollController.java class. doPost() method created.
  */
-@WebServlet("/EmployerController")
-public class EmployerController extends HttpServlet {
+@WebServlet("/PayrollController")
+public class PayrollController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	static Logger log = Logger.getLogger(EmployerController.class.getName());
+	static Logger log = Logger.getLogger(PayrollController.class.getName());
 	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
 		commands = new HashMap<Operation, ICommandAJX>();
-		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
-				new AddEmployeeBasicdata());
-		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
+		commands.put(Operation.ADD_SALARY_SCHEME, new AddSalaryScheme());
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#HttpServlet()
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -56,21 +49,26 @@ public class EmployerController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
+
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
+
 		o = Operation.getOperation(task);
+
 		Gson gson = new Gson();
+
 		try {
 			switch (o) {
-			case ADD_EMPLOYEE_BASICDATA:
+			case ADD_SALARY_COMPONENT:
 				message = commands.get(o).execute(details);
 				break;
-			case ADD_FAMILY_MEMBER:
+			case ADD_SALARY_SCHEME:
 				message = commands.get(o).execute(details);
-				break;
+				break;	
 			default:
 				break;
 			}
@@ -78,7 +76,7 @@ public class EmployerController extends HttpServlet {
 		} catch (Exception e) {
 			// Client see an error from here
 			message = MessageList.ERROR.message();
-			log.error("Department Controller Error. " + e);
+			log.error("Payroll Controloler Error. " + e);
 		}
 
 		writeResponse(gson.toJson(message), response);

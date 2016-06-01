@@ -1,16 +1,14 @@
 /**
- * 
+ * 20160523 PN HRA-31 created SchemeComponent.java class
  */
+
 package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
-import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 
@@ -18,68 +16,52 @@ import com.genesiis.hra.utill.ConnectionManager;
  * @author pabodha
  * 
  */
-public class Familymember extends Employee {
-	static Logger log = Logger.getLogger(Familymember.class.getName());
+public class SchemeComponent implements ICrud {
+	int scheme, component;
+	String componenttemp, modby;
 
-	private String fmName;
-	private String fmDateofbirth;
-	private String fmRelationship;
-	private String fmOccupation;
-	private String fmWorkingplace;
-
-	public String getFmname() {
-		return fmName;
+	public int getScheme() {
+		return scheme;
 	}
 
-	public void setFmname(String fmName) {
-		this.fmName = fmName;
+	public void setScheme(int scheme) {
+		this.scheme = scheme;
 	}
 
-	public String getFmdateofbirth() {
-		return fmDateofbirth;
+	public int getComponent() {
+		return component;
 	}
 
-	public void setFmdateofbirth(String fmDateofbirth) {
-		this.fmDateofbirth = fmDateofbirth;
+	public void setComponent(int component) {
+		this.component = component;
 	}
 
-	public String getFmrelationship() {
-		return fmRelationship;
+	public String getComponenttemp() {
+		return componenttemp;
 	}
 
-	public void setFmrelationship(String fmRelationship) {
-		this.fmRelationship = fmRelationship;
+	public void setComponenttemp(String componenttemp) {
+		this.componenttemp = componenttemp;
 	}
 
-	public String getFmoccupation() {
-		return fmOccupation;
+	public String getModby() {
+		return modby;
 	}
 
-	public void setFmoccupation(String fmOccupation) {
-		this.fmOccupation = fmOccupation;
+	public void setModby(String modby) {
+		this.modby = modby;
 	}
 
-	public String getFmWorkingplace() {
-		return fmWorkingplace;
-	}
-
-	public void setFmWorkingplace(String fmWorkingplace) {
-		this.fmWorkingplace = fmWorkingplace;
-	}
-
-	public Familymember() {
-	}
-
-	public Familymember(String fmName, String fmDateofbirth,
-			String fmRelationship, String fmOccupation, String fmWorkingplace,
-			String employeeEpf) {
+	public SchemeComponent(int scheme, int component, String componenttemp,
+			String mb) {
 		super();
-		this.fmName = fmName;
-		this.fmDateofbirth = fmDateofbirth;
-		this.fmRelationship = fmRelationship;
-		this.fmOccupation = fmOccupation;
-		this.fmWorkingplace = fmWorkingplace;
-		this.employeeEpf = employeeEpf;
+		this.scheme = scheme;
+		this.component = component;
+		this.componenttemp = componenttemp;
+		this.modby = mb;
+	}
+
+	public SchemeComponent() {
 	}
 
 	/*
@@ -87,24 +69,23 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#add(java.lang.Object)
 	 */
+	@Override
 	public int add(Object object) {
-		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
-				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO [HRA.SCHEMECOMPONENT] (SCHEME, COMPONENTTEMP, MODBY) VALUES (?, ?, ?)";
+
 		Connection conn = null;
 		PreparedStatement ps = null;
-		Familymember fm = (Familymember) object;
+		SchemeComponent ss = (SchemeComponent) object;
 		int status = 0;
-		
+
 		try {
+			// Use the mask here
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, fm.getEmployeeepf());
-			ps.setString(2, fm.getFmname());
-			ps.setString(3, fm.getFmdateofbirth());
-			ps.setString(4, fm.getFmrelationship());
-			ps.setString(5, fm.getFmoccupation());
-			ps.setString(6, fm.getFmWorkingplace());
-			ps.setString(7, "SYSTEM");
+
+			ps.setInt(1, ss.getScheme());
+			ps.setString(2, ss.getComponenttemp());
+			ps.setString(3, "SYSTEM");
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
@@ -115,7 +96,7 @@ public class Familymember extends Employee {
 				}
 				status = generatedKey;
 			}
-		} catch (SQLException exception) {
+		} catch (Exception exception) {
 			exception.printStackTrace();
 		} finally {
 			try {
@@ -123,7 +104,7 @@ public class Familymember extends Employee {
 					ps.close();
 				}
 				conn.close();
-			} catch (SQLException exception) {
+			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
 		}
@@ -135,6 +116,7 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#update(java.lang.Object)
 	 */
+	@Override
 	public int update(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -145,6 +127,7 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#delete(java.lang.Object)
 	 */
+	@Override
 	public String delete(Object object) {
 		// TODO Auto-generated method stub
 		return null;
@@ -155,6 +138,7 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#getId(java.lang.String)
 	 */
+	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -165,6 +149,7 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#getAll()
 	 */
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
@@ -175,6 +160,7 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#isValid(java.lang.Object)
 	 */
+	@Override
 	public boolean isValid(Object object) {
 		// TODO Auto-generated method stub
 		return false;
@@ -185,8 +171,10 @@ public class Familymember extends Employee {
 	 * 
 	 * @see com.genesiis.hra.model.ICrud#getEmployee(int)
 	 */
+	@Override
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
