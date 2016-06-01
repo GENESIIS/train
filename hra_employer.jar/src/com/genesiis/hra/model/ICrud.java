@@ -1,5 +1,6 @@
 package com.genesiis.hra.model;
 
+import java.sql.SQLException;
 import java.util.List;
 
 ///***********************************************
@@ -8,13 +9,20 @@ import java.util.List;
 //***********************************************/
 
 public interface ICrud {
-	public String add(Object object);
-
-	public String update(Object object);
+	
+	public int add(Object object);
+	 
+	public int update(Object object);
 
 	public String delete(Object object);
+	
+	public String retrive(int id);
 
-	public String getObjectid(String id);
+	public Object find(int empEpf);
+	
+	public List<Object> find(String empIdenti) throws SQLException, Exception;
 
 	public List<Object> getAll();
+
+	Object retrive(String id);
 }

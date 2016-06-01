@@ -10,7 +10,6 @@
 	$(document).ready(function() {
 		$('#employeeDetails').DataTable();
 	});
-	getDepartment();
 </script>
 
 
@@ -339,7 +338,6 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h3 class="modal-title">
 						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
-						<i class="glyphicon glyphicon-user"></i> Employee Details
 					</h3>
 				</div>
 				<div class="modal-body">

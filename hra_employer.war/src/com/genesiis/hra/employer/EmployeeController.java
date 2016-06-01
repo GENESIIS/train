@@ -9,15 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployee;
-import com.genesiis.hra.command.GetDepartment;
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.command.RegisterLoan;
-import com.genesiis.hra.model.DepartmentCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -34,20 +32,14 @@ public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
-	HashMap<Integer, Object> hmap = null;
+	HashMap<Operation, ICommandAJX> commands  = null;
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {
-		AddEmployee addEmployee = new AddEmployee();
-		GetDepartment department = new GetDepartment();
-		RegisterLoan  loan = new RegisterLoan();
 
-		hmap = new HashMap<Integer, Object>();
-		hmap.put(1, addEmployee);
-		hmap.put(2, loan);
-		hmap.put(5, department);
-		// hmap.put(3, null);
-		// hmap.put(4, null);
+		commands = new HashMap<Operation, ICommandAJX>();	
+		commands.put(Operation.REGISTER_LOAN, new RegisterLoan());
+		
 	}
 
 	/**
@@ -56,28 +48,8 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String task = request.getParameter("task");
-		String gson = null;
-		int validTask = validator.validTaskId(task);
-		try {
-			switch (validTask) {
-			case 1:
-				break;
-			case 5:
-				GetDepartment department = (GetDepartment) hmap.get(5);
-				gson = new Gson().toJson(department.execute());
-				response.getWriter().write(gson);
-				break;
-			// For other operations.			
-			default:
-				break;
-			}
-		} catch (Exception exception) {
-			String message = MessageList.ERROR.message();
-			log.error("Exception: EmployeeController " + exception);
-			response.getWriter().write(message);
-		}
-		response.getWriter().close();
+		
+		this.doPost(request, response);		
 
 	}
 
@@ -87,33 +59,51 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String employeeDetails = request.getParameter("jsonData");
+		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
+		Gson gson = new Gson();
 		String message = "";
 
-		// Method to verify it and return integer;
-		int validTask = validator.validTaskId(task);
-		Gson gson = new Gson();		
+		// Get the retrieve the operation from the task.
+		Operation o = Operation.BAD_OPERATION;
+		o = Operation.getOperation(task);
+		log.info("task-"+task+"details-"+details);
+		log.info("Operation"+o);	
 
 		try {
-			switch (1) {
-			case 1:		
-				RegisterLoan regLoan = (RegisterLoan) hmap.get(2);
-				message = regLoan.execute(employeeDetails);
-				response.getWriter().write(gson.toJson(message));
-				break;
-			// For other operations.
-		    case 2:		    	
+			switch (o) {
+			 case SERCH_EMPLOYEE:	
+				 message = commands.get(o).execute("");
+					log.info(message);
+			 case REGISTER_LOAN:
+				 message = commands.get(o).execute(details);
+					log.info(message);
 			    break;			
-			default:
+			 default:
 				break;
 			}
+			writeResponse(gson.toJson(message), response);
+			log.info(gson.toJson(message));
 		} catch (Exception exception) {
 			message = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: EmployeeController" + exception);
 			response.getWriter().write(gson.toJson(message));
+			log.error("Exception: EmployeeController" + exception+" "+ "message-"+gson.toJson(message));
 		}
 		response.getWriter().close();
+	}
+	
+	private void writeResponse(String message, HttpServletResponse response) throws IOException {		
+		try {
+			response.getWriter().write(message);
+			log.info(message);
+		} catch (Exception e) {
+			log.error("WriteResponse method error. " + e);
+		} finally {
+			response.getWriter().flush();
+			response.getWriter().close();
+		}
+
+
 	}
 
 }

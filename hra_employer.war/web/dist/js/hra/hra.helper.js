@@ -412,7 +412,7 @@ function addLoanDetailes() {
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
-			task : "1"
+			task : "RL"
 		},
 		dataType : "json",
 		success : function(data) {

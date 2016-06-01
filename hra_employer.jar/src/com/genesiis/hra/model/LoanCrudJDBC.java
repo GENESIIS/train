@@ -17,16 +17,16 @@ import com.genesiis.hra.validation.MessageList;
 //* 20160510 PC HRA-13 created LoanCrudJDBC.java class
 //* 20160513 PC HRA-13  validateEmployee() method Modified.
 //***********************************************/
-public class LoanCrudJDBC implements IDataAccessor {
-	static Logger log = Logger.getLogger(DepartmentCrudJDBC.class.getName());
+public class LoanCrudJDBC implements ICrud {
+	static Logger log = Logger.getLogger(LoanCrudJDBC.class.getName());
 
 	@Override
-	//Add data to DB
-	public String add(Object object) {
+	//Add data to DB Table EMPLOYEE
+	public int add(Object object) {
 		String query = "INSERT INTO [HRA.LOAN] (EMPLOYEEID , DUEDATE , "
 				+ "TOTALOUTSTANDING , GUARANTOR1 , GUARANTOR2, MONTHLYPAYMENT , ENDDATE, MODBY)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
-		String message = MessageList.UNKNOWN.message();
+		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		Loan lnDetail = (Loan) object;
@@ -42,13 +42,14 @@ public class LoanCrudJDBC implements IDataAccessor {
 			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
 			preparedStatement.setString(7, lnDetail.getLoanEndDate());
 			preparedStatement.setString(8, "Saman");
+			
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {
-				message = MessageList.ADDED.message();
+				status = 1;
 			}
 		} catch (SQLException exception) {
+			
 			exception.printStackTrace();
-			message = MessageList.ERROR.message();
 		} finally {
 			try {
 				preparedStatement.close();
@@ -57,12 +58,12 @@ public class LoanCrudJDBC implements IDataAccessor {
 				exception.printStackTrace();
 			}
 		}
-		return message;
+		return status;
 	}
 
 	@Override
-	public String update(Object object) {
-		return null;
+	public int update(Object object) {
+		return (Integer) null;
 	}
 
 	@Override
@@ -77,6 +78,24 @@ public class LoanCrudJDBC implements IDataAccessor {
 
 	@Override
 	public List<Object> getAll() {
+		return null;
+	}
+
+	@Override
+	public String retrive(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

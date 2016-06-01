@@ -43,11 +43,11 @@
 			</div>
 		</div>
 				<div class="modal-footer">
-			<button type="button" class="btn btn-success pull-left"
+			<button type="button" class="btn btn-success pull-right"
 				onclick="addLoanDetailes()" data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
-			<button type="button" class="btn btn-danger pull-right"
+			<button type="button" class="btn btn-danger pull-left"
 				data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 			</button>
