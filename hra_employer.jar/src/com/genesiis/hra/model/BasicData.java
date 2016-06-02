@@ -2,8 +2,18 @@ package com.genesiis.hra.model;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import org.jboss.logging.Logger;
+
+import com.genesiis.hra.utill.ConnectionManager;
 
 public class BasicData extends Employee {
+	static Logger log = Logger.getLogger(BasicData.class.getName());
+	
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -17,6 +27,8 @@ public class BasicData extends Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
+	
+	// private String employeeEpf;
 	private String employeeBasis;
 
 	public String getEmployeename() {
@@ -132,7 +144,9 @@ public class BasicData extends Employee {
 	}
 	
 	public BasicData() {
+		
 	}
+	
 
 	public BasicData(String employeeName, String employeeDesignation,
 			String employeeEmail, String employeeDateofbirth,
@@ -159,7 +173,87 @@ public class BasicData extends Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
+	public int add(Object object) {
+		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
+				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
+				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, EPF, BASIS) "
+				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		BasicData data = (BasicData) object;
+		int status = 0;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, data.getEmployeename());
+			ps.setString(2, data.getEmployeedesignation());
+			ps.setString(3, data.getEmployeeemail());
+			ps.setString(4, data.getEmployeedateofbirth());
+			ps.setString(5, data.getEmployeenic());
+			ps.setString(6, data.getEmployeegender());
+			ps.setString(7, data.getEmployeepermenetaddress());
+			ps.setString(8, data.getEmployeetemporaryaddress());
+			ps.setString(9, data.getEmployeemobile());
+			ps.setString(10, data.getEmployeetelephone());
+			ps.setString(11, data.getEmployeedepartment());
+			ps.setString(12, data.getEmployeemaritalstatus());
+			ps.setString(13, data.getEmployeejoindate());
+			ps.setString(14, "SYSTEM");
+			ps.setString(15, data.getEmployeeepf());
+			ps.setString(16, data.getEmployeebasis());
+
+			int rowsInserted = ps.executeUpdate();
+			if (rowsInserted > 0) {
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
+
+	@Override
+	public int update(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String delete(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
+	public List<Object> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public String retrive(int id) {
@@ -174,7 +268,7 @@ public class BasicData extends Employee {
 	}
 
 	@Override
-	public List<Object> find(String empIdenti) throws SQLException, Exception {
+	public Employee retrive(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

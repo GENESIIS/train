@@ -93,12 +93,12 @@ public class DataValidator {
 	public boolean isValidTelephone(String number) {
 		boolean status = false;
 		if (number.matches("[0-9]+") && number.length() == 10) {
-			status = true;
 		}
 		return status;
 	}
-	
 
+	
+	
 	public int validTaskId(String task) {
 		if (task.equalsIgnoreCase(MessageList.ADD.message())) {
 			return 1;
@@ -114,4 +114,5 @@ public class DataValidator {
 			return -1;
 		}
 	}
+		
 }

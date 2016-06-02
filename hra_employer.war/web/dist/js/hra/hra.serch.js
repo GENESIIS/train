@@ -66,7 +66,7 @@ function listEmployee(empData) {
 		                	  "name": "Edit",
 		                      className: "center",
 		                      defaultContent: '<button type="button" class="btn btn-warning" '+
-		                    	  'data-toggle="modal" id = "edit"><i class="glyphicon glyphicon-edit"></i></button>'
+		                    	  'data-toggle="modal" id = "edit" data-target="#editEmployeeDetailsForm" ><i class="glyphicon glyphicon-edit"></i></button>'
 		                  },
 		                  {
 		                	  "name": "Delete",
@@ -94,8 +94,26 @@ function listEmployee(empData) {
               ///////////////Edit Button click event//////////////
 			 $('#employeeDetails tbody').on( 'click', '#edit', function () {
 			        var data = eTable.row( $(this).parents('tr') ).data();
-			      //  eTable.row( $(this).parents('tr') ).remove().draw();	
-			        alert('Edit button click' +data.employeeName);
+			        $.get("EmployerController", function(data, status) {
+
+			    		alert(data);
+			    		json = JSON.parse(data);
+			    		$(".modal-body #employeeNumberEdit").val( json.employeeId);
+			    		$(".modal-body #employeeNameEdit").val( json.employeeName);
+			    		$(".modal-body #employeeDesignationEdit").val( json.employeeDesignation);
+			    		$(".modal-body #employeeEmailEdit").val( json.employeeEmail);
+			    		$(".modal-body #employeeDateofBothEdit").val( json.employeeDateofbirth);
+			    		$(".modal-body #employeeNICEdit").val( json.employeeNic);
+			    		$(".modal-body #employeeGenderEdit").val( json.employeeGender);
+			    		$(".modal-body #employeeAddressEdit").val( json.employeePermenetaddress);
+			    		$(".modal-body #employeeTempADDEdit").val( json.employeeTemporaryaddress);
+			    		$(".modal-body #employeeMobileNumberEdit").val( json.employeeMobile);
+			    		$(".modal-body #employeeOtherNumberEdit").val( json.employeeTelephone);
+			    		$(".modal-body #employeeDepartmentEdit").val( json.employeeDepartment);
+			    		$(".modal-body #employeeJoinDateEdit").val( json.employeeJoindate);
+			    		$(".modal-body #employeeMaritalEdit").val( json.employeeMaritalstatus);
+			    		$(".modal-body #employeeEPFEdit").val( json.employeeEpf);   		
+			   	   });
 			    } );
 			 
              ///////////////Delete Button click event//////////////
@@ -104,4 +122,7 @@ function listEmployee(empData) {
 			        eTable.row( $(this).parents('tr') ).remove().draw();	
 			        alert('Delete button click' +data.employeeName);
 			    } );
+			 
 }
+
+

@@ -2,6 +2,13 @@ package com.genesiis.hra.model;
 
 import java.util.List;
 
+
+///***********************************************
+//* 20160407 PN HRA-1 created Employee.java class
+//* 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
+//* 
+//***********************************************/
+
 //@Entity
 public abstract class Employee implements ICrud {
 
@@ -47,8 +54,7 @@ public abstract class Employee implements ICrud {
 	public List<Object> getAll() {
 		return null;
 	}
-	
-	
+}
 	
 
-}
+

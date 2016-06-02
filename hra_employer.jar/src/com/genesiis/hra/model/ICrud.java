@@ -22,4 +22,6 @@ public interface ICrud {
 	public List<Object> find(String empIdenti) throws SQLException, Exception;
 
 	public List<Object> getAll();
+
+	Employee retrive(String id);
 }

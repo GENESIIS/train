@@ -7,7 +7,8 @@ public enum Operation {
 	BAD_OPERATION("BO"),
 	SERCH_EMPLOYEE("SE"),
 	REGISTER_LOAN("RL"),
-	EDIT_LOAN("EL");
+	EDIT_LOAN("EL"),
+	EDIT_EMPLOYEE_BASIC("E");
 	 
 	private final String value;
 

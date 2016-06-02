@@ -311,42 +311,21 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h3 class="modal-title">
 						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
-						<i class="glyphicon glyphicon-user"></i> Employee Details
 					</h3>
 				</div>
 				<div class="modal-body">
 					<div class="well">
 						<h3 class="">General Details</h3>
-						<!-- 						<div class="row"> -->
-						<!-- 							<div class="col-md-6"> -->
 						<div class="form-group">
-							<label for="editemployeeId">Name</label> <input type="text"
-								class="form-control" id="employeeNameEdit" name="editemployeeId"
+							<label for="employeeNameEdit">Name</label> <input type="text"
+								class="form-control" id="employeeNameEdit" name="employeeNameEdit"
 								placeholder="">
-						</div>
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Middle Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<div class="form-group"> -->
-						<!-- 									<label for="editemployeeId">Last Name</label> <input -->
-						<!-- 										type="text" class="form-control" id="editemployeeId" -->
-						<!-- 										name="editemployeeId" placeholder=""> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
+						</div>						
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Date of Birth</label> <input
+									<label for="employeeDateofBothEdit">Date of Birth</label> <input
 										type="date" class="form-control" id="employeeDateofBothEdit"
-										type="date" class="form-control" id="editemployeeId"
 										name="employeeDateofBothEdit" placeholder="">
 								</div>
 							</div>
@@ -358,19 +337,20 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Gender</label> <input type="text"
+									<label for="employeeGenderEdit">Gender</label> <input type="text"
 										class="form-control" id="employeeGenderEdit" name="employeeGenderEdit"
 										placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Marital Status</label> <input
+									<label for="employeeMaritalEdit">Marital Status</label> <input
 										type="text" class="form-control" id="employeeMaritalEdit"
-										name="editemployeeId" placeholder="">
+										name="employeeMaritalEdit" placeholder="">
 								</div>
 							</div>
 						</div>
@@ -381,14 +361,14 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">EPF Number</label> <input
+									<label for="employeeEPFEdit">EPF Number</label> <input
 										type="text" class="form-control" id="employeeEPFEdit"
 										name="employeeEPFEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Employment Status</label> <input
+									<label for="employeeStatusEdit">Employment Status</label> <input
 										type="text" class="form-control" id="employeeStatusEdit"
 										name="employeeStatusEdit" placeholder="">
 								</div>
@@ -404,12 +384,11 @@
 										name="employeeDesignationEdit" placeholder="">
 								</div>
 							</div>
-
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Department</label> <input
+									<label for="employeeDesignationEdit">Department</label> <input
 										type="text" class="form-control" id="employeeDepartmentEdit"
-										name="employeeDepartmentEdit" placeholder="">
+										name="employeeDesignationEdit" placeholder="">
 								</div>
 							</div>
 						</div>
@@ -420,14 +399,14 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Permanent Address</label>
+									<label for="employeeAddressEdit">Permanent Address</label>
 									<textarea class="form-control" id="employeeAddressEdit"
 										name="employeeAddressEdit" placeholder=""></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Temporary Address</label>
+									<label for="employeeTempADDEdit">Temporary Address</label>
 									<textarea class="form-control" id="employeeTempADDEdit"
 										name="employeeTempADDEdit" placeholder=""></textarea>
 								</div>
@@ -437,15 +416,15 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Telephone</label> <input
-										type="text" class="form-control" id="employeeOtherNumberEdit"
+									<label for="employeeOtherNumberEdit">Telephone</label> <input
+										type="Number" class="form-control" id="employeeOtherNumberEdit"
 										name="employeeOtherNumberEdit" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="editemployeeId">Mobile Number</label> <input
-										type="text" class="form-control" id="employeeMobileNumberEdit"
+									<label for="employeeMobileNumberEdit">Mobile Number</label> <input
+										type="Number" class="form-control" id="employeeMobileNumberEdit"
 										name="employeeMobileNumberEdit" placeholder="">
 								</div>
 							</div>
@@ -453,8 +432,8 @@
 
 
 						<div class="form-group">
-							<label for="editemployeeId">Email</label> <input type="text"
-								class="form-control" id="employeeEmailEdit" name="editemployeeId"
+							<label for="employeeEmailEdit">Email</label> <input type="text"
+								class="form-control" id="employeeEmailEdit" name="employeeEmailEdit"
 								placeholder="">
 						</div>
 					</div>
@@ -480,6 +459,37 @@
 	</div>
 </div>
 
+
+<!--////////////////////////////////////////-->
+
+<div class="modal fade" id="editmoreEmployeedetails" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-user"></i>Edit More Employee Details
+				</h3>
+			</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success pull-right"
+						onclick="updateEmployeeDetails()" data-dismiss="">
+						<i class="glyphicon glyphicon-floppy-disk"></i> Update
+					</button>
+					<button type="button" class="btn btn-warning pull-right" id="moredetails"
+						name="moredetails" onclick="" data-dismiss="modal" 
+						data-toggle="modal" data-target="#editmoreEmployeedetails">
+						<i class="glyphicon glyphicon-file"></i>Edit More Details
+					</button>					
+					<button type="button" class="btn btn-danger pull-left"
+						data-dismiss="modal" onclick="">
+						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!--////////////////////////////////////////-->
 
@@ -553,6 +563,47 @@
 <!-- group byn model-->
 <div class="modal fade" id="viewmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
+<!-- group byn model-->
+<div class="modal fade" id="viewmoreEmployeedetails" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-user"></i>More Employee Details
+				</h3>
+			</div>
+			<div class="modal-body">
+
+				<div class="btn-group btn-group-justified">
+					<a href="#" onclick="loadviewqlifications()" class="btn btn-primary">Educaional Data</a> 
+					<a onclick="loadviewstudyprograms()" href="#" class="btn btn-primary">Study Programs</a>
+					<a href="#" onclick="loadviewloandetails()" class="btn btn-primary">Loan Details</a> 
+					<a href="#" onclick="loadviewfamilydetails()" class="btn btn-primary">Family Details</a>
+				</div>
+				<div id="viewmodelrest" name="viewmodelrest"></div>
+
+			</div>
+			<!-- 			<div class="modal-footer"> -->
+			<!-- 				<button type="button" class="btn btn-success pull-side" -->
+			<!-- 					onclick="updatedAlert()" data-dismiss=""> -->
+			<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
+			<!-- 				</button> -->
+			<!-- 				<button type="button" class="btn btn-warning " id="moredetails" -->
+			<!-- 					name="moredetails" onclick="" data-dismiss="modal" disabled="true"> -->
+			<!-- 					<i class="glyphicon glyphicon-file"></i> More Details -->
+			<!-- 				</button> -->
+			<!-- 			</div> -->
+		</div>
+	</div>
+</div>
+
+
+<!-- Delete Employee Details -->
+<div class="modal fade bs-example-modal-sm"
+	id="deleteEmployeeDetailsForm" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
