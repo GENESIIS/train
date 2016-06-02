@@ -17,6 +17,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.AddMedicalReport;
+import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
@@ -55,13 +56,21 @@ public class EmployerController extends HttpServlet {
 		
 		// ADD employee  history (AEH)
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, 
-				new AddEmployeeHistory());
+				new AddEmployeeHistory());// ID = AEH
+		
+		commands.put(Operation.GET_EMPLOYEE_HISTORY, 
+				new GetEmployee());// ID = GEH
+		
+		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY, 
+				new AddEmployeeHistory());// ID = UEH
 		
 		commands.put(Operation.ADD_MEDICAL_HISTORY, 
-				new AddMedicalHistory());// MEDICAL_HISTORY==7
+				new AddMedicalHistory());// ID = AMH
 		
 		commands.put(Operation.ADD_MEDICAL_REPORT, 
-				new AddMedicalReport());// MEDICAL_REPORT==10
+				new AddMedicalReport());// ID = AMR
+		
+		
 	}
 
 	/**
@@ -93,33 +102,36 @@ public class EmployerController extends HttpServlet {
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(operation).execute(details);
 				break;
-				
+			case GET_EMPLOYEE_HISTORY:
+				message = commands.get(operation).execute(details);
+				break;
+			case UPDATE_EMPLOYEE_HISTORY:
+				message = commands.get(operation).execute(details,task);
+				break;
 			case ADD_MEDICAL_HISTORY:
 				message = commands.get(operation).execute(details);
 				break;
 				
 			case ADD_MEDICAL_REPORT:
+				// this code segment will improve in next sprint as much as possible 
+				FileUploader fileUploader = new FileUploader();
 				Part filePart = request.getPart("file");
 				InputStream fileContent = filePart.getInputStream();
 				String fileName = getSubmittedFileName(filePart);
 				String employeeId = request.getParameter("employeeId");
+				String path = fileUploader.setFileToBeUpload(fileContent,fileName,employeeId);
 				
-				FileUploader fileUploader = new FileUploader();
-				HashMap<Integer, String> map = fileUploader.setFileToBeUpload(fileContent,fileName,employeeId);
-				
-				message = map.get(2);
-
-				if(message == "fileSaved"){
+				if(path!=null){
 					
 					details = "{\"code\":\""+MaskValidator.SQL_RECODE+"\","
 							+ "\"reportDescription\":\""+request.getParameter("reportDescription")+"\","
-							+ "\"reportPath\":\""+map.get(1)+"\","
+							+ "\"reportPath\":\""+path+"\","
 							+ "\"modby\":\""+request.getParameter("ehReferencemodby")+"\","
 							+ "\"crtby\":\""+request.getParameter("ehReferencemodby")+"\""
 							+"}";
-
-					message = commands.get(operation).execute(details);// do not delete need to improve
 					
+					message = commands.get(operation).execute(details);// do not delete need to improve
+
 				}else{
 					message = MessageList.ERROR.message();
 				}
@@ -131,7 +143,7 @@ public class EmployerController extends HttpServlet {
 
 		} catch (Exception e) {
 			// Client see an error from here
-			message = MessageList.ERROR.message();
+			writeResponse(MessageList.ERROR.message(), response);
 			log.error("EmployerController Error. " + e);
 		}
 
@@ -144,6 +156,7 @@ public class EmployerController extends HttpServlet {
 		Gson gson = new Gson();
 		try {
 			response.getWriter().write(gson.toJson(insertedSuccess));
+			response.getWriter().close();
 		} catch (Exception e) {
 			insertedSuccess = MessageList.FAILED_TO_CREATE.message();
 			log.error("Exception: EmployeeController - writeResponse" + e);

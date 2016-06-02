@@ -1,38 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.genesiis.hra.validation.BasisEnum"%>
 
-<script type="text/javascript">
-	//To load the Datatable
-	$(document).ready(function() {
-
-		$("#btn3").click(function() {
-
-			$("#employeeId").val("2");
-			$("#employer").val("employer name");
-			$("#designation").val("designation");
-			$("#ehComments").val("ehComments");
-			$("#ehEmail").val("ehEmail@gmail.com");
-
-			$("#ehReferenceonename").val("Referenceonename 1");
-			$("#ehReferenceonecomments").val("Referenceonecomments1");
-			$("#ehReferenceonephone").val("45313131");
-			$("#ehReferenceonemobile").val("01255455");
-			$("#ehReferenceoneaddress").val("Referenceoneaddress1");
-			$("#ehReferenceonedesignation").val("Referenceonedesignation1");
-
-			$("#ehReferencetwoname").val("Reference two name");
-			$("#ehReferencetwocomments").val("Reference two comments");
-			$("#ehReferencetwophone").val("012222222");
-			$("#ehReferencetwomobile").val("3453422222");
-			$("#ehReferencetwoaddress").val("referenceTwo 22222");
-			$("#ehReferencetwodesignation").val("referenceTwocomments 22222");
-
-			$("#ehReferencemodby").val("ADMIN_USER_TR");
-		});
-
-	});
-</script>
-
 <style>
 .lable-space {
     margin-right: 5px;
@@ -40,20 +8,19 @@
 </style>
 
 
-<!--Add Employee History Modal -->
+<!--Edit Employee History Modal -->
 <div>
 	<div>
 		<!-- Modal content-->
 		<div class="modal-body">
 
 			<div>
-				<h3 class="modal-title"><label><span class="glyphicon glyphicon-check lable-space"></span>Employment History</label></h3>
+				<h3 class="modal-title"><label><span class="glyphicon glyphicon-check lable-space"></span>Edit Employment History</label></h3>
 			</div>
 
 			<div class="well">
-
+			
 				<div class="row">
-
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="employeeId">Employee EPF</label> <input type="text"
@@ -69,7 +36,6 @@
 								placeholder="" maxlength="100">
 						</div>
 					</div>
-
 				</div>
 
 				<div class="row">
@@ -118,9 +84,7 @@
 
 
 				<div class="row">
-
 					<div class="col-md-6">
-
 						<div class="form-group">
 							<label for="ehEmail">Employee E-mail Address</label> <input
 								type="text" class="form-control" id="ehEmail" name="ehEmail"
@@ -135,11 +99,7 @@
 								placeholder="" maxlength="200">
 						</div>
 					</div>
-
 				</div>
-
-
-
 
 			</div>
 
@@ -153,7 +113,6 @@
 				<!-- refreee 1-->
 
 				<div class="row">
-				
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="ehReferenceonename">Reference Name</label> <input
@@ -161,7 +120,6 @@
 								name="ehReferenceonename" placeholder="" maxlength="300">
 						</div>
 					</div>
-
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="ehReferenceonecomments">Reference Comments</label>
@@ -170,10 +128,7 @@
 								placeholder="" maxlength="300"></textarea>
 						</div>
 					</div>
-
 				</div>
-
-
 
 
 				<div class="row">
@@ -197,9 +152,7 @@
 				</div>
 
 				<div class="row">
-
 					<div class="col-md-6">
-
 						<div class="form-group">
 							<label for="ehReferenceoneaddress">Reference Address</label> <input
 								type="text" class="form-control" id="ehReferenceoneaddress"
@@ -215,6 +168,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			
 			
@@ -273,13 +227,13 @@
 				<div class="row">
 
 					<div class="col-md-6">
-
 						<div class="form-group">
 							<label for="ehReferencetwoaddress">Reference Address</label> <input
 								type="text" class="form-control" id="ehReferencetwoaddress"
 								name="ehReferencetwoaddress" placeholder="" maxlength="500">
 						</div>
 					</div>
+					
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="ehReferencetwodesignation">Reference
@@ -300,8 +254,8 @@
 
 
 				<button type="button" class="btn btn-success full pull-right"
-					onclick="addEmployeeHistoryDetails();">
-					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+					onclick="updateEmployeeHistoryDetails();">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
 
 
@@ -318,14 +272,10 @@
 				</button>
 
 
-				<button type="button" class="btn btn-success full pull-right"
-					id=btn3>
-					<i class="glyphicon glyphicon-floppy-disk"></i> Test
-				</button>
-
 
 			</div>
-
+			
+				<input type="hidden" id="ehEmpid" name="ehEmpid" value="9" hidden="true">
 
 
 		</div>

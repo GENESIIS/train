@@ -5,13 +5,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
-import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.EmployeeFactory;
-import com.genesiis.hra.model.EmploymentHistory;
 import com.genesiis.hra.model.MedicalHistory;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
@@ -126,6 +122,11 @@ public class AddMedicalHistory implements ICommand {
 					+ e.getMessage());
 		}
 		return hasError;
+	}
+
+	public String execute(String gsonData, String employeeEpf) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

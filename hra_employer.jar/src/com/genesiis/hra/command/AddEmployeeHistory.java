@@ -60,6 +60,50 @@ public class AddEmployeeHistory implements ICommand {
 
 	}
 
+	public String execute(String gsonData,String task) {
+
+		// insert fiels validation
+		MessageList message = MessageList.ERROR;
+		boolean hasError = false;
+
+		try {
+
+			// extracting gson data to OBJECT
+			EmploymentHistory employmentHistory = (EmploymentHistory) extractFromJason(gsonData);
+
+			// extracting gson data to MAP for error check
+			Map<String, String> attributeMap = jsonToMap(gsonData);
+
+			// validating map return error map
+			hasError = validateValue(attributeMap);
+
+			// return error map is empty -> no errors
+			if (!hasError) {
+				
+				// adding employee history to database table
+				int hasUpdated = employmentHistory.update(employmentHistory);
+
+				// employee history data added
+				if (hasUpdated == 1) {
+					message = MessageList.UPDATED;
+				} else {// employee history data not added
+					message = MessageList.NOTUPDATED;
+				}
+				
+			} else {
+				// if return error map is not empty -> errors
+				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
+				message = MessageList.MANDATORYFIELDREQUIRED;
+			}
+		} catch (Exception e) {
+			// if error
+			log.info("Execute - AddEmployeeHistory - Exception " + e);
+			return message.message();
+		}
+		return message.message();
+
+	}
+	
 	// @tr - extracting Gson data to object for save
 	public Object extractFromJason(String data) {
 

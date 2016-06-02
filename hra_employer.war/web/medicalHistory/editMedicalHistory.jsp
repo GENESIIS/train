@@ -6,6 +6,7 @@
 }
 </style>
 
+
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.genesiis.hra.validation.AilmentEnum"%>
 

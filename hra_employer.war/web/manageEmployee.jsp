@@ -86,6 +86,11 @@
 								<label for="employeeNumber">Employee Number</label><input
 									type="text" class="form-control" id="employeeNumber"
 									name="employeeNumber" placeholder="" maxlength="6" size="6">
+									
+									<input type="text"
+								class="form-control" id="employeeId" name="employeeId"
+								placeholder="" maxlength="10" value="2" readonly hidden="true">
+								
 							</div>
 						</div>
 					</div>

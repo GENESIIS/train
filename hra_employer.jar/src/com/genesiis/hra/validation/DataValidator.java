@@ -70,6 +70,7 @@ public class DataValidator {
 		return status;
 	}
 
+	//
 	public boolean isValidInt(int text) {
 		boolean status = false;
 		if  (text != 0) {
@@ -79,12 +80,14 @@ public class DataValidator {
 		return status;
 	}
 	
+	//validate email address
 	public boolean isValidemail(String email) {
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		Boolean b = email.matches(EMAIL_REGEX);
 		return b;
 	}
 
+	//validate telephone number
 	public boolean isValidTelephone(String number) {
 		boolean status = false;
 		if (number.matches("[0-9]+") && number.length() == 10) {
@@ -93,7 +96,7 @@ public class DataValidator {
 		return status;
 	}
 	
-
+	//convert String Date to Sql Date
 	public java.sql.Date convertStringDatetoSqlDate(String stringDate){
 		
 		java.sql.Date sqlDate = null;
@@ -119,4 +122,5 @@ public class DataValidator {
 		}
 		return sqlDate;
 	}
+	
 }

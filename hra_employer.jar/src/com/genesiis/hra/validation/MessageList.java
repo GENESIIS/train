@@ -35,6 +35,9 @@ public enum MessageList {
 	//PROBLEM WHEN INSERTING DATA TO DATABASE
 	NOTADDED("Problem when inserting data."), 
 	
+	//PROBLEM WHEN UPDATING DATA TO DATABASE
+	NOTUPDATED("Problem when updating data."), 
+	
 	//PROBLEM WHEN MANDATORY REQUIREDS
 	MANDATORYFIELDREQUIRED("Fields marked with asterisk (*) are required"), 
 	

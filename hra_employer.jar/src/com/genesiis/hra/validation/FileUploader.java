@@ -9,13 +9,15 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Logger;
 
+
+
 public class FileUploader{
 
 	static Logger log = Logger.getLogger(FileUploader.class.getName());
 	
-	public HashMap<Integer, String> setFileToBeUpload(InputStream inputStream,String filename,String folder){
+	public String setFileToBeUpload(InputStream inputStream,String filename,String folder){
 		
-		HashMap<Integer, String> map = new HashMap<Integer, String>();
+		String path =null;
 		
 		//folder name is employee id
 		String filePath = "C:/sdb/ctxdeploy/hras.war/"+folder+"/";
@@ -38,7 +40,7 @@ public class FileUploader{
 				filePath = filePath +randomInt + "_" +filename;
 				outputStream = new FileOutputStream(filePath);
 
-				map.put(1, filePath);
+				
 				byte[] buffer = new byte[10 * 1024];
 
 				for (int length; (length = inputStream.read(buffer)) != -1;) 
@@ -46,12 +48,13 @@ public class FileUploader{
 					outputStream.write(buffer, 0, length);
 					outputStream.flush();
 				}
-				map.put(2, "fileSaved");
+				
+				path=filePath;
 				
 			}
 			else{
 				
-				map.put(3, "fileNotSaved");
+				path=null;
 				log.info("Error while folder creation");
 				
 			}
@@ -59,7 +62,7 @@ public class FileUploader{
 			
 		} catch (Exception e) {
 			
-			map.put(3, "fileNotSaved");
+			path=null;
 			log.info("Error while recode insert");
 			e.printStackTrace();
 			
@@ -69,7 +72,7 @@ public class FileUploader{
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					map.put(3, "fileNotSaved");
+					path=null;
 					log.info("Error while closing input stream");
 				}
 			}
@@ -77,14 +80,14 @@ public class FileUploader{
 				try {
 					outputStream.close();
 				} catch (IOException e) {
-					map.put(3, "fileNotSaved");
+					path=null;
 					log.info("Error while closing output stream");
 				}
 			}
 
 		}
 
-		return map;
+		return path;
 	}
 	
 	
@@ -118,4 +121,5 @@ public class FileUploader{
 		}
 		return created;
 	}
+	
 }

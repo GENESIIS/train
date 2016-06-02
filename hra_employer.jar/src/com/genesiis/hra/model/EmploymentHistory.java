@@ -95,7 +95,7 @@ public class EmploymentHistory extends Employee {
 		this.ehEnddate = ehEnddate;
 	}
 
-	public String getEhasis() {
+	public String getEhbasis() {
 		return ehBasis;
 	}
 
@@ -302,7 +302,7 @@ public class EmploymentHistory extends Employee {
 			ps.setDate
 			(5,	validator.convertStringDatetoSqlDate(eh.getEhenddate()));
 			
-			ps.setString(6, String.valueOf(eh.getEhasis()));
+			ps.setString(6, String.valueOf(eh.getEhbasis()));
 			ps.setString(7, String.valueOf(eh.getEhcomments()));
 			ps.setString(8, String.valueOf(eh.getEhemail()));
 
@@ -348,119 +348,85 @@ public class EmploymentHistory extends Employee {
 		return status;
 	}
 
-	// public boolean isValidEmployeeID(Object object) {
-	//
-	// DataValidator validator = new DataValidator();
-	// EmploymentHistory eh = (EmploymentHistory) object;
-	//
-	// if (((validator.isValidInt(eh.getEhemployeeid()) == true))) {
-	// return true;
-	// } else {
-	// return false;
-	// }
-	//
-	// }
 
-	@Override
-	public int update(Object object) {
-		return 0;
-	}
+	public Object find(String id) {
 
-	public List<Object> getRetrive(String id) {
+		String query = "SELECT EH.ID,EH.EMPLOYEEID,EH.EMPLOYERNAME,EH.DESIGNATION,EH.STARTDATE,EH.ENDDATE, EH.BASIS,EH.COMMENTS,EH.EMAIL, "
+				+ "EH.REFERENCEONENAME, EH.REFERENCEONEPHONE, EH.REFERENCEONEMOBILE, EH.REFERENCEONEADDRESS, EH.REFERENCEONEDESIGNATION, EH.REFERENCEONECOMMENTS, "
+				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS, "
+				+ "EH.MODBY, EH.MODON  "
+				+ "FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM "
+				+ "WHERE EM.ID = EH.EMPLOYEEID AND EH.ID = ? ";
 
-		String query = "SELECT EH.ID,EH.EMPLOYEEID,EH.EMPLOYERNAME,EH.DESIGNATION,EH.STARTDATE,EH.ENDDATE,EH.BASIS,EH.COMMENTS,EH.EMAIL,"
-				+ "EH.REFERENCEONENAME, EH.REFERENCEONEPHONE, EH.REFERENCEONEMOBILE, EH.REFERENCEONEADDRESS, EH.REFERENCEONEDESIGNATION, EH.REFERENCEONECOMMENTS,"
-				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS,"
-				+ "EH.MODBY, EH.MODON  FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM WHERE EM.EMPLOYEEID = EH.EMPLOYEEID AND EMPLOYEEID = ?";
 
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet rsRetriveData = null;
-		List<Object> employeeHistoryList = new ArrayList<Object>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 
 		EmploymentHistory employee = new EmploymentHistory();
 		try {
 
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, Integer.parseInt(id));
 
-			rsRetriveData = preparedStatement.executeQuery();
+			rs = ps.executeQuery();
 
 			try {
-				if (rsRetriveData.next()) {
+				if (rs.next()) {
 
 					// set data to entity class
 					employee.setEhid
-					(rsRetriveData.getInt("ID"));
+					(rs.getInt("ID"));
 					
 					employee.setEhemployeeid
-					(rsRetriveData.getString("EMPLOYEEID"));
+					(rs.getString("EMPLOYEEID"));
 					
 					employee.setEhemployername
-					(rsRetriveData.getString("EMPLOYERNAME"));
+					(rs.getString("EMPLOYERNAME"));
 					
 					employee.setEhdesignation
-					(rsRetriveData.getString("DESIGNATION"));
+					(rs.getString("DESIGNATION"));
 					
 					employee.setEhstartdate
-					(rsRetriveData.getString("STARTDATE"));
+					(rs.getString("STARTDATE"));
 					
-					employee.setEhenddate
-					(rsRetriveData.getString("ENDDATE"));
-					
-					employee.setEhbasis
-					(rsRetriveData.getString("BASIS"));
-					
-					employee.setEhcomments
-					(rsRetriveData.getString("COMMENTS"));
-					
-					employee.setEhemail
-					(rsRetriveData.getString("EMAIL"));
+					employee.setEhenddate(rs.getString("ENDDATE"));
+					employee.setEhbasis(rs.getString("BASIS"));
+					employee.setEhcomments(rs.getString("COMMENTS"));
+					employee.setEhemail(rs.getString("EMAIL"));
 
 					employee.setEhreferenceonename
-					(rsRetriveData.getString("REFERENCEONENAME"));
+					(rs.getString("REFERENCEONENAME"));
 					
 					employee.setEhreferenceonephone
-					(rsRetriveData.getString("REFERENCEONEPHONE"));
-					
+					(rs.getString("REFERENCEONEPHONE"));
 					employee.setEhreferenceonemobile
-					(rsRetriveData.getString("REFERENCEONEMOBILE"));
-					
+					(rs.getString("REFERENCEONEMOBILE"));
 					employee.setEhreferenceoneaddress
-					(rsRetriveData.getString("REFERENCEONEADDRESS"));
-					
+					(rs.getString("REFERENCEONEADDRESS"));
 					employee.setEhReferenceonedesignation
-					(rsRetriveData.getString("REFERENCEONEDESIGNATION"));
-					
+					(rs.getString("REFERENCEONEDESIGNATION"));
 					employee.setEhreferenceonecomments
-					(rsRetriveData.getString("REFERENCEONECOMMENTS"));
+					(rs.getString("REFERENCEONECOMMENTS"));
 
 					employee.setEhreferencetwoname
-					(rsRetriveData.getString("REFERENCETWOENAME"));
-					
+					(rs.getString("REFERENCETWOENAME"));
 					employee.setEhreferencetwophone
-					(rsRetriveData.getString("REFERENCETWOPHONE"));
-					
+					(rs.getString("REFERENCETWOPHONE"));
 					employee.setEhreferencetwomobile
-					(rsRetriveData.getString("REFERENCETWOMOBILE"));
-					
+					(rs.getString("REFERENCETWOMOBILE"));
 					employee.setEhreferencetwoaddress
-					(rsRetriveData.getString("REFERENCETWOADDRESS"));
-					
+					(rs.getString("REFERENCETWOADDRESS"));
 					employee.setEhreferencetwodesignation
-					(rsRetriveData.getString("REFERENCETWODESIGNATION"));
-					
+					(rs.getString("REFERENCETWODESIGNATION"));
 					employee.setEhreferencetwocomments
-					(rsRetriveData.getString("REFERENCETWOCOMMENTS"));
+					(rs.getString("REFERENCETWOCOMMENTS"));
 
 					employee.setEhreferencemodby
-					(rsRetriveData.getString("MODBY"));
-					
+					(rs.getString("MODBY"));
 					employee.setEhreferencemodon
-					(rsRetriveData.getString("MODON"));
-
-					employeeHistoryList.add(employee);// add data to list
+					(rs.getString("MODON"));
 
 				}
 			} catch (Exception e) {
@@ -472,100 +438,14 @@ public class EmploymentHistory extends Employee {
 			exception.printStackTrace();
 		} finally {
 			try {
-				if (conn != null && preparedStatement != null) {
-					preparedStatement.close();
+				if (conn != null) {
 					conn.close();
 				}
-			} catch (SQLException e) {
-				log.info("Exception - " + e);
-				e.printStackTrace();
-			}
-		}
-		return employeeHistoryList;
-	}
-
-	public Object getRetriveRecode(String id) {
-
-		String query = "SELECT EH.ID,EH.EMPLOYEEID,EH.EMPLOYERNAME,EH.DESIGNATION,EH.STARTDATE,EH.ENDDATE,EH.BASIS,EH.COMMENTS,EH.EMAIL,"
-				+ "EH.REFERENCEONENAME, EH.REFERENCEONEPHONE, EH.REFERENCEONEMOBILE, EH.REFERENCEONEADDRESS, EH.REFERENCEONEDESIGNATION, EH.REFERENCEONECOMMENTS,"
-				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS,"
-				+ "EH.MODBY, EH.MODON  FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM WHERE EM.ID = EH.EMPLOYEEID AND EH.ID = ?";
-
-
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet rsRetriveData = null;
-
-		EmploymentHistory employee = new EmploymentHistory();
-		try {
-
-			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.parseInt(id));
-
-			rsRetriveData = preparedStatement.executeQuery();
-
-			try {
-				if (rsRetriveData.next()) {
-
-					// set data to entity class
-					employee.setEhid(rsRetriveData.getInt("ID"));
-					employee.setEhemployeeid(rsRetriveData.getString("EMPLOYEEID"));
-					employee.setEhemployername(rsRetriveData
-							.getString("EMPLOYERNAME"));
-					employee.setEhdesignation(rsRetriveData
-							.getString("DESIGNATION"));
-					employee.setEhstartdate(rsRetriveData
-							.getString("STARTDATE"));
-					employee.setEhenddate(rsRetriveData.getString("ENDDATE"));
-					employee.setEhbasis(rsRetriveData.getString("BASIS"));
-					employee.setEhcomments(rsRetriveData.getString("COMMENTS"));
-					employee.setEhemail(rsRetriveData.getString("EMAIL"));
-
-					employee.setEhreferenceonename(rsRetriveData
-							.getString("REFERENCEONENAME"));
-					employee.setEhreferenceonephone(rsRetriveData
-							.getString("REFERENCEONEPHONE"));
-					employee.setEhreferenceonemobile(rsRetriveData
-							.getString("REFERENCEONEMOBILE"));
-					employee.setEhreferenceoneaddress(rsRetriveData
-							.getString("REFERENCEONEADDRESS"));
-					employee.setEhReferenceonedesignation(rsRetriveData
-							.getString("REFERENCEONEDESIGNATION"));
-					employee.setEhreferenceonecomments(rsRetriveData
-							.getString("REFERENCEONECOMMENTS"));
-
-					employee.setEhreferencetwoname(rsRetriveData
-							.getString("REFERENCETWOENAME"));
-					employee.setEhreferencetwophone(rsRetriveData
-							.getString("REFERENCETWOPHONE"));
-					employee.setEhreferencetwomobile(rsRetriveData
-							.getString("REFERENCETWOMOBILE"));
-					employee.setEhreferencetwoaddress(rsRetriveData
-							.getString("REFERENCETWOADDRESS"));
-					employee.setEhreferencetwodesignation(rsRetriveData
-							.getString("REFERENCETWODESIGNATION"));
-					employee.setEhreferencetwocomments(rsRetriveData
-							.getString("REFERENCETWOCOMMENTS"));
-
-					employee.setEhreferencemodby(rsRetriveData
-							.getString("MODBY"));
-					employee.setEhreferencemodon(rsRetriveData
-							.getString("MODON"));
-
+				if (ps != null) {
+					ps.close();
 				}
-			} catch (Exception e) {
-				log.info("Exception - " + e);
-			}
-
-		} catch (SQLException exception) {
-			log.info("Exception - " + exception);
-			exception.printStackTrace();
-		} finally {
-			try {
-				if (conn != null && preparedStatement != null) {
-					preparedStatement.close();
-					conn.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				log.info("Exception - " + e);
@@ -574,49 +454,52 @@ public class EmploymentHistory extends Employee {
 		}
 		return employee;
 	}
+	
+	
+	
 
-	public int updateEmployeeHistory(Object object) {
-
+	@Override
+	public int update(Object object) {
 		String query = "UPDATE [HRA.EMPLOYMENTHISTORY] SET EMPLOYERNAME=? , DESIGNATION =? , STARTDATE=? , ENDDATE=? , BASIS=? , COMMENTS=? , EMAIL=? ,"
 				+ "REFERENCEONENAME=? , REFERENCEONEPHONE=? , REFERENCEONEMOBILE=? , REFERENCEONEADDRESS=? , REFERENCEONEDESIGNATION =? , REFERENCEONECOMMENTS=? ,"
 				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE ID=?";
 
 		int status = -1;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		EmploymentHistory eh = (EmploymentHistory) object;
 
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, eh.getEhemployername());
-			preparedStatement.setString(2, eh.getEhdesignation());
-			preparedStatement.setString(3, eh.getEhstartdate());
-			preparedStatement.setString(4, eh.getEhenddate());
-			preparedStatement.setString(5, eh.getEhasis());
-			preparedStatement.setString(6, eh.getEhcomments());
-			preparedStatement.setString(7, eh.getEhemail());
+			ps = conn.prepareStatement(query);
+			ps.setString(1, eh.getEhemployername());
+			ps.setString(2, eh.getEhdesignation());
+			ps.setString(3, eh.getEhstartdate());
+			ps.setString(4, eh.getEhenddate());
+			ps.setString(5, eh.getEhbasis());
+			ps.setString(6, eh.getEhcomments());
+			ps.setString(7, eh.getEhemail());
 
-			preparedStatement.setString(8, eh.getEhreferenceonename());
-			preparedStatement.setString(9, eh.getEhreferenceonephone());
-			preparedStatement.setString(10, eh.getEhreferenceonemobile());
-			preparedStatement.setString(11, eh.getEhreferenceoneaddress());
-			preparedStatement.setString(12, eh.getEhReferenceonedesignation());
-			preparedStatement.setString(13, eh.getEhreferenceonecomments());
+			ps.setString(8, eh.getEhreferenceonename());
+			ps.setString(9, eh.getEhreferenceonephone());
+			ps.setString(10, eh.getEhreferenceonemobile());
+			ps.setString(11, eh.getEhreferenceoneaddress());
+			ps.setString(12, eh.getEhReferenceonedesignation());
+			ps.setString(13, eh.getEhreferenceonecomments());
 
-			preparedStatement.setString(14, eh.getEhreferencetwoname());
-			preparedStatement.setString(15, eh.getEhreferencetwophone());
-			preparedStatement.setString(16, eh.getEhreferencetwomobile());
-			preparedStatement.setString(17, eh.getEhreferencetwoaddress());
-			preparedStatement.setString(18, eh.getEhreferencetwodesignation());
-			preparedStatement.setString(19, eh.getEhreferencetwocomments());
+			ps.setString(14, eh.getEhreferencetwoname());
+			ps.setString(15, eh.getEhreferencetwophone());
+			ps.setString(16, eh.getEhreferencetwomobile());
+			ps.setString(17, eh.getEhreferencetwoaddress());
+			ps.setString(18, eh.getEhreferencetwodesignation());
+			ps.setString(19, eh.getEhreferencetwocomments());
 
-			preparedStatement.setString(20, "SYSTEM");
-			preparedStatement.setInt(21, eh.getEhid());
+			ps.setString(20, "SYSTEM");
+			ps.setInt(21, eh.getEhid());
 
 			log.info("getEhid:-" + eh.getEhid());
 
-			int rowsUpdated = preparedStatement.executeUpdate();
+			int rowsUpdated = ps.executeUpdate();
 
 			if (rowsUpdated > 0) {
 				status = 1;
@@ -626,8 +509,8 @@ public class EmploymentHistory extends Employee {
 			exception.printStackTrace();
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {
