@@ -145,7 +145,7 @@
 
 
 			<div>
-				<h3 class="modal-title"><label><span class="glyphicon glyphicon-plus-sign lable-space"></span>First Reference Details</label></h3>
+				<h4 class="modal-title"><label><span class="glyphicon glyphicon-plus-sign lable-space"></span>First Reference Details</label></h4>
 			</div>
 			
 			<div class="well">
@@ -219,7 +219,7 @@
 			
 			
 			<div>
-				<h3 class="modal-title"><label><span class="glyphicon glyphicon-plus-sign lable-space">&</span>Second Reference Details</label></h3>
+				<h4 class="modal-title"><label><span class="glyphicon glyphicon-plus-sign lable-space"></span>Second Reference Details</label></h4>
 			</div>
 			
 			
