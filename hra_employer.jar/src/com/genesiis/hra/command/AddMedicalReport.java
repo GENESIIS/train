@@ -3,18 +3,18 @@ package com.genesiis.hra.command;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.jboss.logging.Logger;
+import java.util.logging.Logger;
 
 import com.genesiis.hra.model.EmploymentHistory;
+import com.genesiis.hra.model.MedicalHistory;
+import com.genesiis.hra.model.MedicalReport;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
+public class AddMedicalReport implements ICommand {
 
-public class AddEmployeeHistory implements ICommand {
-
-	static Logger log = Logger.getLogger(AddEmployeeHistory.class.getName());
+	static Logger log = Logger.getLogger(AddMedicalReport.class.getName());
 
 	public String execute(String gsonData) {
 
@@ -24,8 +24,8 @@ public class AddEmployeeHistory implements ICommand {
 
 		try {
 
-			// extracting gson data to OBJECT
-			EmploymentHistory employmentHistory = (EmploymentHistory) extractFromJason(gsonData);
+			// extracting gson data to object
+			MedicalReport medicalReport = (MedicalReport) extractFromJason(gsonData);
 
 			// extracting gson data to MAP for error check
 			Map<String, String> attributeMap = jsonToMap(gsonData);
@@ -35,17 +35,18 @@ public class AddEmployeeHistory implements ICommand {
 
 			// return error map is empty -> no errors
 			if (!hasError) {
-				
-				// adding employee history to database table
-				int hasInserted = employmentHistory.add(employmentHistory);
 
-				// employee history data added
+				// adding medical reports to database table
+				int hasInserted = medicalReport.add(medicalReport);
+
+				// adding medical reports to database table pass
 				if (hasInserted == 1) {
 					message = MessageList.ADDED;
-				} else {// employee history data not added
+				} else {
+					// adding medical history to database table fail
 					message = MessageList.NOTADDED;
 				}
-				
+
 			} else {
 				// if return error map is not empty -> errors
 				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
@@ -53,11 +54,10 @@ public class AddEmployeeHistory implements ICommand {
 			}
 		} catch (Exception e) {
 			// if error
-			log.info("Execute - AddEmployeeHistory - Exception " + e);
+			log.info("Execute - AddMedicalReports - Exception " + e);
 			return message.message();
 		}
 		return message.message();
-
 	}
 
 	// @tr - extracting Gson data to object for save
@@ -70,7 +70,8 @@ public class AddEmployeeHistory implements ICommand {
 			employmentHistory = gson.fromJson(data, EmploymentHistory.class);
 		} catch (Exception e) {
 			// error handling
-			log.info("ExtractFromgson - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("ExtractFromgson - AddMedicalReports - Exception "
+					+ e.getMessage());
 		}
 		return employmentHistory;
 	}
@@ -87,7 +88,8 @@ public class AddEmployeeHistory implements ICommand {
 			map = (HashMap<String, String>) gson.fromJson(t, map.getClass());
 		} catch (Exception e) {
 			// error handling
-			log.info("GsonToMap - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("GsonToMap - AddMedicalReports - Exception "
+					+ e.getMessage());
 		}
 		return map;
 	}
@@ -99,10 +101,10 @@ public class AddEmployeeHistory implements ICommand {
 		DataValidator dataValidator = new DataValidator();
 		// errors are caught to
 		boolean hasError = false;
-		
+
 		try {
 			for (Entry<String, String> e : entiytMap.entrySet()) {
-				
+
 				// attribute value
 				String value = e.getValue();
 
@@ -113,7 +115,8 @@ public class AddEmployeeHistory implements ICommand {
 			}
 		} catch (Exception e) {
 			// error handling
-			log.info("ValidateValue - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("ValidateValue - AddMedicalReports - Exception "
+					+ e.getMessage());
 		}
 		return hasError;
 	}

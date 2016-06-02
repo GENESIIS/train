@@ -1,13 +1,17 @@
+/**
+ * file - hra.employeehistory.js
+ * 
+ * @auther -@TR
+ * @git branch used - hra-12-add-employee-history-details-tr
+ * @created on- 2016-05-25
+ */
 
 //field empty check
 function isEmpty(value) {
 	return (value == null || value.length === 0);
 }
 
-// @thumeera - Employee > new employee > more details > add Employeement details 
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
-}
+
 
 //field number check
 function isNumber(evt) {
@@ -153,8 +157,7 @@ function addEmployeeHistoryDetails() {
 				success : function(data) {
 					alert(data);
 					if (data == "Details added successfully.") {
-						clearEmployeementHisory();
-		//				document.getElementById("moredetails").disabled = false;
+						clearEmploymentHisory();
 					}
 				},
 				error : function(e) {
@@ -167,9 +170,9 @@ function addEmployeeHistoryDetails() {
 /*****************END addEmployeeHistoryDetails*************************/
 
 
-/*****************START clearEmployeementHisory*************************/
+/*****************START clearEmploymentHisory*************************/
  // thumeera employee > new employee > more details > add new > clear 
-function clearEmployeementHisory() {
+function clearEmploymentHisory() {
 	
 	$("#employer").val("");
 	$("#designation").val("");
@@ -194,5 +197,8 @@ function clearEmployeementHisory() {
 	$("#ehReferencetwoaddress").val("");
 	$("#ehReferencetwodesignation").val("");
 
+	$('#basis option').prop('selected', function() {
+		return this.defaultSelected;
+	});
 }
 /*****************END clearEmployeementHisory*************************/

@@ -15,6 +15,7 @@ public class MaskValidator {
 	public static int MSK_ISREADING						=64;
 	public static int MSK_ISMARRIED						=128;
 	
-	
+	//STATIC MEMORY HOLDER IN MEDICAL HISTORY / MEDICAL REPORTS
+	public static int SQL_RECODE = 0;
 	
 }

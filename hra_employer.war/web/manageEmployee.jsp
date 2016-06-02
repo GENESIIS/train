@@ -67,7 +67,7 @@
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal ADD EMPLOYEE DETAILS-->
 <div class="modal fade" id="addEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -280,7 +280,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal ADD MORE DETAILS-->
 <div class="modal fade" id="addmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 
@@ -299,6 +299,7 @@
 					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementHIstoryDetails()"	class="btn btn-primary">Employee History Details</a> 
 					<a id="btnLoanDet" href="#"	onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
 					<a id="btnFamilyDet"  href="#" onclick="loadContentfamilydetails()"	class="btn btn-primary">Family Details</a>
+					<a id="btnMedicalHistory"  href="#" onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical History</a>
 				</div>
 
 				<div class="modal-body1" style="overflow-y: auto;">
@@ -314,19 +315,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Modal -->
+<!-- Modal EDIT EMPLOYEE DETAILS-->
 <div class="modal fade" id="editEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content" style="overflow-y: auto;">
@@ -539,7 +528,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal EDIT MORE DETAILS-->
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 
@@ -555,9 +544,10 @@
 
 				<div class="btn-group btn-group-justified">
 					<a id="btnEduDat" href="#" onclick="loadContentqualifications()" class="btn btn-primary">Educaional Data</a> 
-					<a id="btnEmpHisDet" href="#" onclick="loadEditEmployementHIstoryDetails()"	class="btn btn-primary">Employee History Details</a> 
+					<a id="btnEmployeeHistory" href="#" onclick="loadEditEmployementHIstoryDetails()"	class="btn btn-primary">Employee History Details</a> 
 					<a id="btnLoanDet" href="#"	onclick="loadContentloandetails()" class="btn btn-primary">Loan	Details</a> 
 					<a id="btnFamilyDet"  href="#" onclick="loadContentfamilydetails()"	class="btn btn-primary">Family Details</a>
+					<a id="btnMedicalHistory"  href="#" onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical History</a>
 				</div>
 
 				<div class="modal-body1" style="overflow-y: auto;">

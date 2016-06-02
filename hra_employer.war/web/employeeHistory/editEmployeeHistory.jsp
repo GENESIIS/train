@@ -306,14 +306,14 @@
 
 
 				<button type="button" class="btn btn-warning pull-left"
-					onclick="clearEmploymentHisory()">
+					onclick="clearEmployeeHistoryDetails()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 
 
 				<button type="button" id="buttonCancelemployee"
 					class="btn btn-danger pull-left" data-dismiss="modal"
-					onclick="clearEmploymentHisory()">
+					onclick="clearEmployeeHistoryDetails()">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 

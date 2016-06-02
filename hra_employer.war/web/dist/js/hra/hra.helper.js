@@ -549,6 +549,9 @@ function clearFamilydetails() {
 
 }
 
+
+
+
 function clearEmployeeHistoryDetails() {
 	
 	$("#employeeId").val("");
@@ -634,17 +637,24 @@ function loadEditemergencycontacts() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
 }
 
-/**
- * thumeera
- * Employee > edit employee > more details > edit Employeement details 
- * **/
-function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
-	$("#modelrestedit").load("employeeDetails/editEmployementHistory.jsp");
+// @TR - Employee > new employee > more details > add Employment details 
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
 }
 
-function loadEditEmployementDetail() {
-	$("#modelrestedit").load("employeeDetails/editEmployementHistory.jsp");
+// @TR - Employee > edit employee > more details > edit Employment details 
+function loadEditEmployementHIstoryDetails() {
+	$("#modelrestedit").load("employeeHistory/editEmployeeHistory.jsp");
+}
+
+// @TR - Employee > new employee > more details > add Medical history details 
+function loadAddMedicalHIstoryDetails() {
+	$("#modelrest").load("medicalHistory/addMedicalHistory.jsp");
+}
+
+// @TR - Employee > edit employee > more details > edit medical history details 
+function loadEditMedicalHIstoryDetails() {
+	$("#modelrestedit").load("medicalHistory/editMedicalHistory.jsp");
 }
 
 function disableButton() {

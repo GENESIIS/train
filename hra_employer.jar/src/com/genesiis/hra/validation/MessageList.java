@@ -14,7 +14,7 @@ public enum MessageList {
 	IDFOUND("ID found."), 
 	IDNOTFOUND("ID not found."), 
 	ERROR("Unsuccessful."), 
-	MANDATORYFIELDREQUIRED("Fields marked with asterisk (*) are required"), 
+	
 	UNKNOWN(""),
     EMPTYFIELD("Field is Empty."),
     SUCCESS("Successfull"),
@@ -31,14 +31,26 @@ public enum MessageList {
 	INVALIDDATE("Invalid DateFormat."),
 	EMPTYVALUES("Empty data Fields."),
 	INVALIDBIRTDAY("Invalid Birthdate."),
-	
-	EHADD("EHADD"),//EMPLOYE HISTORY ADD
-	EHUPDATE("EHUPDATE"),//EMPLOYE HISTORY UPDATE
-	EHGET("EHGET"),//EMPLOYE HISTORY UPDATE
-	EHDELETE("EHDELETE"),//EMPLOYE HISTORY DELETE
-	EHFIND("EHFIND"),
 
+	//PROBLEM WHEN INSERTING DATA TO DATABASE
 	NOTADDED("Problem when inserting data."), 
+	
+	//PROBLEM WHEN MANDATORY REQUIREDS
+	MANDATORYFIELDREQUIRED("Fields marked with asterisk (*) are required"), 
+	
+	//EMPOYEE MEDICAL HISTORY ATTRIBUTES ERROR MESSAGES
+	MEDICALHISTORYEMPLOYEEID("Medical History Employee id not valid."),
+	MEDICALHISTORYAILMENT("Medical History Ailment not valid."),
+	MEDICALHISTORYDESCRIPTION("Medical History Description not valid"),
+	MEDICALHISTORYPASS("pass"),
+	MEDICALHISTORYSUCCESS("success"),
+	MEDICALHISTORYNOID("No Medical History ID obtained."),
+		
+	//EMPOYEE MEDICAL REPORT ATTRIBUTES ERROR MESSAGES
+	MEDICALREPORTDESCRIPTIONNOTVALID("Medical Report Description not valid."),
+	MEDICALREPORTPATHNOTVALID("Medical Report path not valid."),
+	MEDICALREPORTNOTVALID("Medical Report not valid"),
+
 	;
 	
 	private String message;
