@@ -97,35 +97,40 @@ public class EducationData extends Employee {
 	@Override
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.QUALIFICATION] (EMPLOYEEID, STUDYPLACE, ADDMISSIONDATE, QUALIFICATION, MEDIUM, LEAVINGDATE, STUDYTIME, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		int status = -1;
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		EducationData edu = (EducationData) object;
 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		EducationData edu = (EducationData) object;
+		int status = 0;
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
+			ps = conn.prepareStatement(query);
 
-			preparedStatement.setString(1, edu.getEmployeeepf());
-			preparedStatement.setString(2, edu.getEduUniversity());
-			preparedStatement.setString(3, edu.getEduStartedon());
-			preparedStatement.setString(4, edu.getEduQualification());
-			preparedStatement.setString(5, edu.getEduMedium());
-			preparedStatement.setString(6, edu.getEduCompltedon());
-			preparedStatement.setString(7, edu.getEduStudytime());
-			preparedStatement.setString(8, "SYSTEM");
+			ps.setString(1, edu.getEmployeeepf());
+			ps.setString(2, edu.getEduUniversity());
+			ps.setString(3, edu.getEduStartedon());
+			ps.setString(4, edu.getEduQualification());
+			ps.setString(5, edu.getEduMedium());
+			ps.setString(6, edu.getEduCompltedon());
+			ps.setString(7, edu.getEduStudytime());
+			ps.setString(8, "SYSTEM");
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				status = 1;
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			log.error("Exception: EducationData Add" + exception);
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {
@@ -201,8 +206,7 @@ public class EducationData extends Employee {
 		EducationData edu = new EducationData();
 		String educationDetails = null;
 		Gson gson = new Gson();
-		log.info(id
-				+ "//");
+		log.info(id + "//");
 		try {
 
 			conn = ConnectionManager.getConnection();
@@ -241,35 +245,40 @@ public class EducationData extends Employee {
 	@Override
 	public int update(Object object) {
 		String query = "UPDATE [HRA.QUALIFICATION] SET STUDYPLACE=?, ADDMISSIONDATE=?,QUALIFICATION=?, MEDIUM=?, LEAVINGDATE=?, STUDYTIME=?,  MODBY=? WHERE ID=?";
-		int status = -1;
+		int status = 0;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		EducationData edu = (EducationData) object;
 
 		try {
 			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
+			ps = conn.prepareStatement(query);
 
-			preparedStatement.setString(1, edu.getEduUniversity());
-			preparedStatement.setString(2, edu.getEduStartedon());
-			preparedStatement.setString(3, edu.getEduQualification());
-			preparedStatement.setString(4, edu.getEduMedium());
-			preparedStatement.setString(5, edu.getEduCompltedon());
-			preparedStatement.setString(6, edu.getEduStudytime());
-			preparedStatement.setString(7, "SYSTEM");
-			preparedStatement.setString(8, edu.getEmployeeepf());
+			ps.setString(1, edu.getEduUniversity());
+			ps.setString(2, edu.getEduStartedon());
+			ps.setString(3, edu.getEduQualification());
+			ps.setString(4, edu.getEduMedium());
+			ps.setString(5, edu.getEduCompltedon());
+			ps.setString(6, edu.getEduStudytime());
+			ps.setString(7, "SYSTEM");
+			ps.setString(8, edu.getEmployeeepf());
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				status = 1;
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			log.error("Exception: EducationData Edit" + exception);
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {

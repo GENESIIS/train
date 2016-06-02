@@ -3,7 +3,6 @@
 	<name>hra_employer.jar</name>
 	<comment></comment>
 	<projects>
-		<project>hra_employer.war</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

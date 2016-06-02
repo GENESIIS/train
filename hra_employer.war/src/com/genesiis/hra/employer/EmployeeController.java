@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.GetEducation;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetFamilyMember;
@@ -20,7 +21,6 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.EducationData;
-
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.Operation;
 import com.genesiis.hra.validation.DataValidator;
@@ -51,6 +51,8 @@ public class EmployeeController extends HttpServlet {
 		commands.put(Operation.GET_BASIC_DATA, new GetEmployee());
 		commands.put(Operation.GET_FAMILY, new GetFamilyMember());
 		commands.put(Operation.GET_EDUCATION, new GetEducation());
+		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,new AddEmployeeBasicdata());
+	//	commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
 	}
 
 	/**
@@ -86,6 +88,12 @@ public class EmployeeController extends HttpServlet {
 		Gson gson = new Gson();
 		try {
 			switch (o) {
+			case ADD_EMPLOYEE_BASICDATA:
+				message = commands.get(o).execute(details);
+				break;
+			case ADD_FAMILY_MEMBER:
+				message = commands.get(o).execute(details);
+				break;
 			case GET_BASIC_DATA:
 				message = commands.get(o).execute(findDetaile);
 				log.info("Search Employee details" + findDetaile);
