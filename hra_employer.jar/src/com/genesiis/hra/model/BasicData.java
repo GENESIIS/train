@@ -1,17 +1,19 @@
 package com.genesiis.hra.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
-import javax.persistence.Entity;
+import org.jboss.logging.Logger;
 
-///***********************************************
-// * 20160407 PN HRA-1 created Employee.java class
-// * 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.
-// * 
-// ***********************************************/
-@Entity
-public class Employee {
-	private String employeeId;
+import com.genesiis.hra.utill.ConnectionManager;
+
+public class BasicData extends Employee {
+	static Logger log = Logger.getLogger(BasicData.class.getName());
+	
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -25,21 +27,8 @@ public class Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-	protected String employeeEpf;
+	// private String employeeEpf;
 	private String employeeBasis;
-
-	
-	
-	public Employee() {
-	}
-
-	public String getEmployeeid() {
-		return employeeId;
-	}
-
-	public void setEmployeeid(String employeeId) {
-		this.employeeId = employeeId;
-	}
 
 	public String getEmployeename() {
 		return employeeName;
@@ -145,14 +134,6 @@ public class Employee {
 		this.employeeJoindate = employeeJoindate;
 	}
 
-	public String getEmployeeepf() {
-		return employeeEpf;
-	}
-
-	public void setEmployeeepf(String employeeEpf) {
-		this.employeeEpf = employeeEpf;
-	}
-
 	public String getEmployeebasis() {
 		return employeeBasis;
 	}
@@ -161,16 +142,14 @@ public class Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
-	public Employee(String employeeId, String employeeName,
-			String employeeDesignation, String employeeEmail,
-			String employeeDateofbirth, String employeeNic,
-			String employeeGender, String employeePermenetaddress,
-			String employeeTemporaryaddress, String employeeMobile,
-			String employeeTelephone, String employeeDepartment,
-			String employeeMaritalstatus, String employeeJoindate,
-			String employeeEpf, String employeeBasis) {
+	public BasicData(String employeeName, String employeeDesignation,
+			String employeeEmail, String employeeDateofbirth,
+			String employeeNic, String employeeGender,
+			String employeePermenetaddress, String employeeTemporaryaddress,
+			String employeeMobile, String employeeTelephone,
+			String employeeDepartment, String employeeMaritalstatus,
+			String employeeJoindate, String employeeEpf, String employeeBasis) {
 		super();
-		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeeDesignation = employeeDesignation;
 		this.employeeEmail = employeeEmail;
@@ -188,36 +167,95 @@ public class Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
-	public int add(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
+	public BasicData() {
 	}
 
+	@Override
+	public int add(Object object) {
+		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
+				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
+				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, EPF, BASIS) "
+				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		BasicData data = (BasicData) object;
+		int status = 0;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, data.getEmployeename());
+			ps.setString(2, data.getEmployeedesignation());
+			ps.setString(3, data.getEmployeeemail());
+			ps.setString(4, data.getEmployeedateofbirth());
+			ps.setString(5, data.getEmployeenic());
+			ps.setString(6, data.getEmployeegender());
+			ps.setString(7, data.getEmployeepermenetaddress());
+			ps.setString(8, data.getEmployeetemporaryaddress());
+			ps.setString(9, data.getEmployeemobile());
+			ps.setString(10, data.getEmployeetelephone());
+			ps.setString(11, data.getEmployeedepartment());
+			ps.setString(12, data.getEmployeemaritalstatus());
+			ps.setString(13, data.getEmployeejoindate());
+			ps.setString(14, "SYSTEM");
+			ps.setString(15, data.getEmployeeepf());
+			ps.setString(16, data.getEmployeebasis());
+
+			int rowsInserted = ps.executeUpdate();
+			if (rowsInserted > 0) {
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
+
+	@Override
 	public int update(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	@Override
 	public String delete(Object object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public boolean isValid(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;

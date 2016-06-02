@@ -92,8 +92,6 @@ function updateEmployeeDetails(){
                 "employeeDepartment": employeeDepartment,
                 "employeeJoindate": employeeJoinDate,
                 "employeeMaritalstatus" : employeeMaritslStatus,
-               // "MODBY" : employeeModby,
-               /// "MODON" : employeeModon,
                 "employeeEpf" : employeeEpf,
                 "employeeBasis" : employeeBasis
            
