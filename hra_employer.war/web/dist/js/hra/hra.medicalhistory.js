@@ -86,7 +86,7 @@ function addMedicalhistorydetails() {
 
 		$.ajax({
 			type : "POST",
-			url : 'EmployeeController',
+			url : 'EmployerController',
 			data : {
 				jsonData : JSON.stringify(formData),
 				task : "AMH"
@@ -166,7 +166,7 @@ $(document).on("click", "#upload", function() {
 //		};
 		$.ajax({
 			type : "POST",
-			url : "EmployeeController",
+			url : "EmployerController",
 //			data : {
 //				jsonData : JSON.stringify(formData),
 //				task : "AMR",

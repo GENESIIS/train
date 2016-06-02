@@ -32,6 +32,7 @@
 <script src="dist/js/hra/hra.helper.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
 <script src="dist/js/hra/hra.employeehistory.js"></script>
+<script src="dist/js/hra/hra.medicalhistory.js"></script>
 
 	<style type="text/css">
 	/* label { */

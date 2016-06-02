@@ -136,7 +136,7 @@ public class MedicalHistory extends Employee {
 			try  {
 	            if (rs.next()) {
 	            	MaskValidator.SQL_RECODE = Integer.parseInt(rs.getString(1));
-	            	log.info("Medical History ID:"+medicalHistory.getMedicalhistoryemployeeid());
+	            	log.info("Medical History ID:"+MaskValidator.SQL_RECODE);
 	            }
 	            else {
 	                throw new SQLException(MessageList.MEDICALHISTORYNOID.message());

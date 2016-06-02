@@ -71,16 +71,16 @@ public class AddMedicalHistory implements ICommand {
 	public Object extractFromJason(String data) {
 
 		Gson gson = new Gson();
-		EmploymentHistory employmentHistory = null;
+		MedicalHistory medicalHistory = null;
 		try {
 			// convert gson into object
-			employmentHistory = gson.fromJson(data, EmploymentHistory.class);
+			medicalHistory = gson.fromJson(data, MedicalHistory.class);
 		} catch (Exception e) {
 			// error handling
 			log.info("ExtractFromgson - AddMedicalHistory - Exception "
 					+ e.getMessage());
 		}
-		return employmentHistory;
+		return medicalHistory;
 	}
 
 	// @TR - converting Gson string to map for check errors
