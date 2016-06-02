@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Employee;
-import com.genesiis.hra.model.FamilyMember;
+import com.genesiis.hra.model.Familymember;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -17,7 +17,7 @@ public class GetFamilyMember implements ICommandAJX {
 		MessageList message = MessageList.ERROR;
 		String familydetails = null;
 
-		FamilyMember familyManger = new FamilyMember();
+		Familymember familyManger = new Familymember();
 
 		try {
 			log.info(epf + "=========");

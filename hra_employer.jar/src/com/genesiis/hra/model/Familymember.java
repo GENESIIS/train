@@ -15,14 +15,14 @@ import com.google.gson.Gson;
  * 20160509 PN created Familymember.java Entity class.
  * 
  * **/
-public class FamilyMember extends Employee {
+public class Familymember extends Employee {
+	static Logger log = Logger.getLogger(Familymember.class.getName());
+
 	private String fmName;
 	private String fmDateofbirth;
 	private String fmRelationship;
 	private String fmOccupation;
 	private String fmWorkingplace;
-
-	static Logger log = Logger.getLogger(FamilyMember.class.getName());
 
 	public String getFmname() {
 		return fmName;
@@ -64,10 +64,10 @@ public class FamilyMember extends Employee {
 		this.fmWorkingplace = fmWorkingplace;
 	}
 
-	public FamilyMember() {
+	public Familymember() {
 	}
 
-	public FamilyMember(String fmName, String fmDateofbirth,
+	public Familymember(String fmName, String fmDateofbirth,
 			String fmRelationship, String fmOccupation, String fmWorkingplace,
 			String employeeEpf) {
 		super();
@@ -82,7 +82,7 @@ public class FamilyMember extends Employee {
 	@Override
 	public boolean isValid(Object object) {
 		DataValidator validator = new DataValidator();
-		FamilyMember fm = (FamilyMember) object;
+		Familymember fm = (Familymember) object;
 		if ((validator.isValidString(fm.getFmname()) == true)
 				&& (validator.isValidString(fm.getFmdateofbirth())) == true) {
 			return true;
@@ -91,36 +91,45 @@ public class FamilyMember extends Employee {
 		}
 	}
 
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.genesiis.hra.model.ICrud#add(java.lang.Object)
+	 */
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
 				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		int status = -1;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		FamilyMember fm = (FamilyMember) object;
+		PreparedStatement ps = null;
+		Familymember fm = (Familymember) object;
+		int status = 0;
 
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, fm.getEmployeeepf());
-			preparedStatement.setString(2, fm.getFmname());
-			preparedStatement.setString(3, fm.getFmdateofbirth());
-			preparedStatement.setString(4, fm.getFmrelationship());
-			preparedStatement.setString(5, fm.getFmoccupation());
-			preparedStatement.setString(6, fm.getFmWorkingplace());
-			preparedStatement.setString(7, "SYSTEM");
+			//ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, fm.getEmployeeepf());
+			ps.setString(2, fm.getFmname());
+			ps.setString(3, fm.getFmdateofbirth());
+			ps.setString(4, fm.getFmrelationship());
+			ps.setString(5, fm.getFmoccupation());
+			ps.setString(6, fm.getFmWorkingplace());
+			ps.setString(7, "SYSTEM");
 
-			int rowsInserted = preparedStatement.executeUpdate();
+			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				status = 1;
+				ResultSet rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {
@@ -136,7 +145,7 @@ public class FamilyMember extends Employee {
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		FamilyMember fm = (FamilyMember) object;
+		Familymember fm = (Familymember) object;
 
 		try {
 			conn = ConnectionManager.getConnection();
@@ -172,8 +181,8 @@ public class FamilyMember extends Employee {
 	public String getEmployee(int emploeeId) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		FamilyMember fm = new FamilyMember();
-		String familymember = null;
+		Familymember fm = new Familymember();
+		String Familymember = null;
 		Gson gson = new Gson();
 		try {
 			conn = ConnectionManager.getConnection();
@@ -188,13 +197,13 @@ public class FamilyMember extends Employee {
 				fm.setFmoccupation(res.getString(6));
 				fm.setFmrelationship(res.getString(5));
 				fm.setFmWorkingplace(res.getString(7));
-				familymember = gson.toJson(fm);
+				Familymember = gson.toJson(fm);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return familymember;
+		return Familymember;
 	}
 
 	@Override
@@ -202,8 +211,8 @@ public class FamilyMember extends Employee {
 
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		FamilyMember fm = new FamilyMember();
-		String familymember = null;
+		Familymember fm = new Familymember();
+		String Familymember = null;
 		Gson gson = new Gson();
 		try {
 			conn = ConnectionManager.getConnection();
@@ -224,12 +233,12 @@ public class FamilyMember extends Employee {
 				log.info("res.getString(5)" + res.getString(5));
 				fm.setFmWorkingplace(res.getString(7));
 				log.info("res.getString(7)" + res.getString(7));
-				familymember = gson.toJson(fm);
+				Familymember = gson.toJson(fm);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return familymember;
+		return Familymember;
 	}
 }

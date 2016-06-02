@@ -45,6 +45,7 @@
 input {
 	font-weight: normal !important;
 }
+
 select {
 	font-weight: normal !important;
 }
@@ -107,11 +108,15 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentDepartment()"> Department</a></li>
+					<li><a href="#viewEmployee"
+						class="list-group-item list-group-item-primary"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadViewEmployee()">View Employee Details</a></li>
 					<li><a href="#salarycomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalarycomponentdetails()"> Salary Component</a></li>
-						<li><a href="#salarycomponent"
+					<li><a href="#salarycomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalaryschemedetails()"> Salary Scheme</a></li>

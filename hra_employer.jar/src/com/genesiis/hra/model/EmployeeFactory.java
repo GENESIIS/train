@@ -9,7 +9,7 @@ public class EmployeeFactory {
 		case 1:
 			return new BasicData();
 		case 2:
-			return new FamilyMember();
+			return new Familymember();
 		case 3:
 			return new EducationData();
 		case 4:

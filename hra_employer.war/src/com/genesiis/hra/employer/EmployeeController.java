@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.AddEmployee;
 import com.genesiis.hra.command.GetEducation;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetFamilyMember;
@@ -21,7 +20,7 @@ import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.EducationData;
-//import com.genesiis.hra.model.DepartmentCrudJDBC;
+
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.Operation;
 import com.genesiis.hra.validation.DataValidator;
