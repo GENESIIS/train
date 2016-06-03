@@ -38,7 +38,7 @@ public class EmployeeController extends HttpServlet {
 
 	public void init() throws ServletException {
 		AddEmployee addEmployee = new AddEmployee();
-		GetDepartment department = new GetDepartment();
+		GetDepartment department = new GetDepartment(); 
 		RegisterLoan  loan = new RegisterLoan();
 
 		hmap = new HashMap<Integer, Object>();
