@@ -148,8 +148,7 @@ function clearAddemployeeform() {
 	$("#employeeMobile").val("");
 	$("#employeeEmail").val("");
 	$("#employeeJoindate").val("");
-	$("#employeeNumber").val("");
-	//getDepartment();
+	$("#employeeNumber").val("");	
 }
 
 function isNumberKey(evt) {
