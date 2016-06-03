@@ -18,5 +18,5 @@ public interface ICrud {
 	public Object find(int empEpf)throws SQLException, Exception;
 	
 	public List<Object> find(String empIdenti) throws SQLException, Exception;
-	
+
 }

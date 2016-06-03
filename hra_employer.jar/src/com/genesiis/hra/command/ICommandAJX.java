@@ -4,8 +4,9 @@ import java.text.ParseException;
 import java.util.HashMap;
 
 
-public interface ICommand {	
-		public String execute(String gsonData) ;
+public interface ICommandAJX {			
+		
+        public String execute(String gsonData) ;
 		
 		public Object extractFromJason(String data);
 		

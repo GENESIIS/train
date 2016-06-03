@@ -13,7 +13,7 @@ import com.google.gson.Gson;
  * 20160520 HRA 30 pc create SercEmPloyee class 
  * 20160520 HRA 30 pc create execute method
 */
-public class SerchEmployee implements ICommand {
+public class SerchEmployee implements ICommandAJX {
 static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	@Override
 	public String execute(String keyWord) {

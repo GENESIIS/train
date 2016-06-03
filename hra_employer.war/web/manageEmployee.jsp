@@ -12,8 +12,7 @@
 	$(document).ready(function() {	
 		loadBasicTable();
 		//listEmployee(empData); 
-} );	
-	 
+} );
 </script>
 	
 

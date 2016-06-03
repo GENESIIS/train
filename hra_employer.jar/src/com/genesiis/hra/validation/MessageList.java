@@ -33,7 +33,6 @@ public enum MessageList {
 	INVALIDENDDATE("Invalid End date."),
 	INVALIDAMOUNT("Invalid Amount.");
 
-
 	private String message;
 
 	MessageList(String message) {

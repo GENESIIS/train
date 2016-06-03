@@ -210,7 +210,6 @@ function updateEmployeeDetails(){
 	var employeeDepartment = $("#employeeDepartmentEdit").val();
 	var employeeJoinDate ="2011-10-06";
 	var employeeMaritslStatus =$("#employeeMaritalEdit").val();
-	var employeeModon ="mod" ;
 	var employeeEpf = $("#employeeEPFEdit").val();
 	var employeeBasis ="Permernent";
 	
@@ -407,34 +406,35 @@ function loadEditemergencycontacts() {
 function loadlonedetails() {
 	$("#modelrest").load("employeeDetails/loanDetails.jsp");
 }
-/////Update Loan Detaile////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function updateLoanDetailes() {
-	
-	var employeeEpf = $("#employeeIdEdit").val();
-	var loanAmount = $("#totalOutstandingEdit").val();
-	var loanGuarantor1= $("#guaranter1Edit").val();
-	var loanGuarantor2 = $("#guaranter2Edit").val();
-	var loanmonthlyPayment = $("#monthlyPaymentEdit").val();
-	var loanDueDate = $("#dueDateEdit").val();
-	var loanEndDate = $("#endDateEdit").val();
-    var employeeEpf
+
+/////////////////////add Loan Detaile///////////////////
+function addLoanDetailes() {
+	var employeeEpf = $("#employeeId").val();
+	var loanAmount = $("#totalOutstanding").val();
+	var loanGuarantor1 = $("#guarantor1").val();
+	var loanGuarantor2 = $("#guarantor2").val();
+	var loanmonthlyPayment = $("#monthlyPayment").val();
+	var loanDueDate = $("#dueDate").val();
+	var loanEndDate = $("#endDate").val();
+   
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
 		"loanAmount" : loanAmount,
 		"loanGuarantor1" : loanGuarantor1,
 		"loanGuarantor2" : loanGuarantor2,
 		"loanmonthlyPayment" : loanmonthlyPayment,
-		"loanDueDate" : loanDueDate,
+		"loanDueDate" : loanDueDate ,
 		"loanEndDate" : loanEndDate
 	};
+    
 	alert(JSON.stringify(jsonData));
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
-			task : "1"
+			task : "RL"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -449,5 +449,15 @@ function updateLoanDetailes() {
 		}		
 	});
 	
+}
+
+function clearLoanDetails() {
+	$("#employeeId").val("");
+	$("#totalOutstanding").val("");
+	$("#guarantor1").val("");
+	$("#guarantor2").val("");
+	$("#monthlyPayment").val("");
+	$("#dueDate").val("");
+	$("#endDate").val("");
 }
 

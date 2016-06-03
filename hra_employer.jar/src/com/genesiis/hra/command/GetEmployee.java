@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
-public class GetEmployee implements ICommand{
+public class GetEmployee implements ICommandAJX{
 
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());	
 	

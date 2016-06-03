@@ -63,7 +63,7 @@ function listEmployee(empData) {
 		                    	  'data-toggle="modal" id = "add" ><i class="glyphicon glyphicon-modal-window"></i></button>'
 		                  },
 		                  {
-		                	  "name": "Edit",
+		                	  "name": "Edit", 
 		                      className: "center",
 		                      defaultContent: '<button type="button" class="btn btn-warning" '+
 		                    	  'data-toggle="modal" id = "edit" data-target="#editEmployeeDetailsForm" ><i class="glyphicon glyphicon-edit"></i></button>'

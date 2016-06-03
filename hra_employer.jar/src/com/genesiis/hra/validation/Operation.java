@@ -1,6 +1,5 @@
 package com.genesiis.hra.validation;
 
-
 public enum Operation {
 	ADD_SALARY_COMPONENT("ASC"),
 	ADD_SALARY_SCHEME("ASL"),
