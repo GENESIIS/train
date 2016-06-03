@@ -8,7 +8,8 @@ public enum Operation {
 	SERCH_EMPLOYEE("SE"),
 	REGISTER_LOAN("RL"),
 	EDIT_LOAN("EL"),
-	EDIT_EMPLOYEE_BASIC("E");
+	UPDATE_EMPLOYEE_BASIC("UEB"),
+	GET_EMPLOYEE_BASIC("GEB");
 	 
 	private final String value;
 

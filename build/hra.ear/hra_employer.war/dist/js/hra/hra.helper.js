@@ -171,7 +171,7 @@ function isLetter(evt) {
 
 // load data to edit
 ///////////////Edit Button click event//////////////
-$('#employeeDetails tbody').on( 'click', '#edit', function () {
+/*$('#employeeDetails tbody').on( 'click', '#edit', function () {
        var data = eTable.row( $(this).parents('tr') ).data();
        $.get("EmployerController", function(data, status) {
 
@@ -193,7 +193,7 @@ $('#employeeDetails tbody').on( 'click', '#edit', function () {
     		$(".modal-body #employeeMaritalEdit").val( json.employeeMaritalstatus);
     		$(".modal-body #employeeEPFEdit").val( json.employeeEpf);   		
    	});
-  });
+  });*/
 //ajax Json parsing
 function updateEmployeeDetails(){
 	var employeeNumber = $("#employeeNumberEdit").val();
@@ -243,7 +243,7 @@ function updateEmployeeDetails(){
         data: {
         	
         	jsonData: JSON.stringify(employeeData) ,
-        	task : "UPDATE"
+        	task : "UEB"
         },
         dataType: "json",
         success: function (data) {

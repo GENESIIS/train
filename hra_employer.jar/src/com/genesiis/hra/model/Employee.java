@@ -39,21 +39,11 @@ public abstract class Employee implements ICrud {
 	public int update(Object object) {
 		return -1;
 	}
-
-	@Override
-	public String delete(Object object) {
-		return null;
-	}
-
 	
 	public String getId(String id) {
 		return null;
 	}
-
-	@Override
-	public List<Object> getAll() {
-		return null;
-	}
+	
 }
 	
 

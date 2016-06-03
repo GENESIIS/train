@@ -95,22 +95,74 @@ public class EmployeeCrudJDBC implements ICrud {
 
 
 	@Override
-	public String delete(Object object) {
+	public int delete(Object object) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return (Integer) null;
+	}	
 	
+	@Override
+	public Object find(int empEpf)throws SQLException, Exception {
+		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet retriveData = null;
 
-	@Override
-	public String retrive(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Object find(int empEpf) {
-		// TODO Auto-generated method stub
-		return null;
+		BasicData employee = new BasicData();
+		log.info(employee.getEmployeeepf());
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, "1");
+
+			retriveData = preparedStatement.executeQuery();
+
+			try {
+				if (retriveData.next()) {
+					// set data to entity class
+					employee.setEmployeeepf(retriveData.getString("ID"));
+					employee.setEmployeename(retriveData.getString("NAME"));
+					employee.setEmployeedesignation(retriveData
+							.getString("DESIGNATION"));
+					employee.setEmployeeemail(retriveData.getString("EMAIL"));
+					employee.setEmployeedateofbirth(retriveData
+							.getString("DOB"));
+					employee.setEmployeenic(retriveData.getString("NIC"));
+					employee.setEmployeegender(retriveData.getString("GENDER"));
+					employee.setEmployeepermenetaddress(retriveData
+							.getString("PERMENENTADDRESS"));
+					employee.setEmployeemobile(retriveData
+							.getString("MOBILENO"));
+					employee.setEmployeedepartment(retriveData
+							.getString("DEPTID"));
+					employee.setEmployeetelephone(retriveData
+							.getString("OTHERNO"));
+					employee.setEmployeejoindate(retriveData
+							.getString("DATEOFJOIN"));
+					employee.setEmployeeepf(retriveData.getString("EPF"));
+					employee.setEmployeemaritalstatus(retriveData
+							.getString("MARITALSTATUS"));
+					employee.setEmployeebasis(retriveData.getString("BASIS"));
+					employee.setEmployeetemporaryaddress(retriveData
+							.getString("TEMPORARYADDRESS"));			
+					log.info(employee.getEmployeeepf());
+				}
+			} catch (Exception e) {
+				log.info(e.toString());
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return employee;
 	}
 
 	@Override
@@ -165,108 +217,7 @@ public class EmployeeCrudJDBC implements ICrud {
 		
 		return employList;
 	
-	}
-	
-	
+	}	
 
-	@Override
-	public Employee retrive(String id) {
-		// TODO Auto-generated method stub
-
-		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
-		String message = "Error";
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
-
-		BasicData employee = new BasicData();
-
-		try {
-			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
-
-			retriveData = preparedStatement.executeQuery();
-
-			try {
-				if (retriveData.next()) {
-					// set data to entity class
-					employee.setEmployeeepf(retriveData.getString("ID"));
-					employee.setEmployeename(retriveData.getString("NAME"));
-					employee.setEmployeedesignation(retriveData
-							.getString("DESIGNATION"));
-					employee.setEmployeeemail(retriveData.getString("EMAIL"));
-					employee.setEmployeedateofbirth(retriveData
-							.getString("DOB"));
-					employee.setEmployeenic(retriveData.getString("NIC"));
-					employee.setEmployeegender(retriveData.getString("GENDER"));
-					employee.setEmployeepermenetaddress(retriveData
-							.getString("PERMENENTADDRESS"));
-					employee.setEmployeemobile(retriveData
-							.getString("MOBILENO"));
-					employee.setEmployeedepartment(retriveData
-							.getString("DEPTID"));
-					employee.setEmployeetelephone(retriveData
-							.getString("OTHERNO"));
-					employee.setEmployeejoindate(retriveData
-							.getString("DATEOFJOIN"));
-					employee.setEmployeeepf(retriveData.getString("EPF"));
-					employee.setEmployeemaritalstatus(retriveData
-							.getString("MARITALSTATUS"));
-					employee.setEmployeebasis(retriveData.getString("BASIS"));
-					employee.setEmployeetemporaryaddress(retriveData
-							.getString("TEMPORARYADDRESS"));			
-
-				}
-			} catch (Exception e) {
-				log.info(e.toString());
-			}
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return employee;
-	}
-
-	@Override
-	public List<Object> getAll() {
-		return null;
-	}
-
-	// Method to extract EmployeeDetails from jsonData.
-	public Employee extractFromgson(String gsonData)throws Exception {
-		Gson gson = new Gson();
-		Employee employee = null;
-		try {
-			employee = gson.fromJson(gsonData, Employee.class);
-		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
-		}
-		return employee;
-	}
-
-	public String validateEmployee(Employee employee) throws ParseException {
-		
-		return null;
-	}
-
-	
-	public boolean validEmployee(Employee employee) throws ParseException {
-		
-			return false;		
-	}
-	
-	public List<String> getManagers() {
-		
-		return null;
-	}
 
 }

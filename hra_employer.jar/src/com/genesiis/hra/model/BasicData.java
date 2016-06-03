@@ -234,9 +234,9 @@ public class BasicData extends Employee {
 	}
 
 	@Override
-	public String delete(Object object) {
+	public int delete(Object object) {
 		// TODO Auto-generated method stub
-		return null;
+		return (Integer) null;
 	}
 
 	public String getId(String id) {
@@ -254,23 +254,10 @@ public class BasicData extends Employee {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public String retrive(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Object find(int empEpf) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public Employee retrive(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+	}	
 }

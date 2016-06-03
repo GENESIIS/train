@@ -9,7 +9,7 @@ function serchEmployee() {
 	};
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			serchVlaue : serchContent,
@@ -94,25 +94,31 @@ function listEmployee(empData) {
               ///////////////Edit Button click event//////////////
 			 $('#employeeDetails tbody').on( 'click', '#edit', function () {
 			        var data = eTable.row( $(this).parents('tr') ).data();
-			        $.get("EmployerController", function(data, status) {
-
-			    		alert(data);
-			    		json = JSON.parse(data);
-			    		$(".modal-body #employeeNumberEdit").val( json.employeeId);
-			    		$(".modal-body #employeeNameEdit").val( json.employeeName);
-			    		$(".modal-body #employeeDesignationEdit").val( json.employeeDesignation);
-			    		$(".modal-body #employeeEmailEdit").val( json.employeeEmail);
-			    		$(".modal-body #employeeDateofBothEdit").val( json.employeeDateofbirth);
-			    		$(".modal-body #employeeNICEdit").val( json.employeeNic);
-			    		$(".modal-body #employeeGenderEdit").val( json.employeeGender);
-			    		$(".modal-body #employeeAddressEdit").val( json.employeePermenetaddress);
-			    		$(".modal-body #employeeTempADDEdit").val( json.employeeTemporaryaddress);
-			    		$(".modal-body #employeeMobileNumberEdit").val( json.employeeMobile);
-			    		$(".modal-body #employeeOtherNumberEdit").val( json.employeeTelephone);
-			    		$(".modal-body #employeeDepartmentEdit").val( json.employeeDepartment);
-			    		$(".modal-body #employeeJoinDateEdit").val( json.employeeJoindate);
-			    		$(".modal-body #employeeMaritalEdit").val( json.employeeMaritalstatus);
-			    		$(".modal-body #employeeEPFEdit").val( json.employeeEpf);   		
+			        $.get("EmployerController",
+			        		{
+			        	      serchVlaue : data.employeeEpf,
+			        	      task : "GEB"
+			        		}, 
+			        		function(data, status) {
+			        			
+			    		       alert(data);
+			    		       json1 = JSON.parse(data);
+			    		       json = JSON.parse(json1);
+			    		       $(".modal-body #employeeNumberEdit").val( json.employeeId);
+			    		       $(".modal-body #employeeNameEdit").val( json.employeeName);
+			    		       $(".modal-body #employeeDesignationEdit").val( json.employeeDesignation);
+			    		       $(".modal-body #employeeEmailEdit").val( json.employeeEmail);
+			    		       $(".modal-body #employeeDateofBothEdit").val( json.employeeDateofbirth);
+			    		       $(".modal-body #employeeNICEdit").val( json.employeeNic);
+			    		       $(".modal-body #employeeGenderEdit").val( json.employeeGender);
+			    		       $(".modal-body #employeeAddressEdit").val( json.employeePermenetaddress);
+			    		       $(".modal-body #employeeTempADDEdit").val( json.employeeTemporaryaddress);
+			    		       $(".modal-body #employeeMobileNumberEdit").val( json.employeeMobile);
+			    		       $(".modal-body #employeeOtherNumberEdit").val( json.employeeTelephone);
+			    		       $(".modal-body #employeeDepartmentEdit").val( json.employeeDepartment);
+			    		       $(".modal-body #employeeJoinDateEdit").val( json.employeeJoindate);
+			    		       $(".modal-body #employeeMaritalEdit").val( json.employeeMaritalstatus);
+			    		       $(".modal-body #employeeEPFEdit").val( json.employeeEpf);   		
 			   	   });
 			    } );
 			 

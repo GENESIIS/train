@@ -1,24 +1,23 @@
 package com.genesiis.hra.command;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.EmployeeCrudJDBC;
-import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-import java.text.ParseException;
-
 ///***********************************************
 //* 20160430 PC HRA-4 created EditEmployee.java class
 //* 20160516 PC HRA-4  execute() method Modified.
+//* 20160603 PC HRA-36  execute() method Modified.
 //***********************************************/
 
-public class EditEmployee {
+public class AddBasic implements ICommand{
 
-	static Logger log = Logger.getLogger(EditEmployee.class.getName());
+	static Logger log = Logger.getLogger(AddBasic.class.getName());
 	
 	// Method to execute JsonData 
 	public String execute(String gsonData) {		
@@ -26,7 +25,7 @@ public class EditEmployee {
 		int id = -1;
 		MessageList message = MessageList.ERROR;
 		try{
-			BasicData employee = extractFromgson(gsonData);	
+			BasicData employee = (BasicData)extractFromJason(gsonData);	
 		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     id = accessdata.update(employee);
 		       } else {
@@ -37,20 +36,19 @@ public class EditEmployee {
 		}
 		return message.message();
 	}
-	
 	// Method to extract DepartmentDetails from jsonData.
-		public BasicData extractFromgson(String gsonData) {
-			Gson gson = new Gson();
-			String message = "";
-			BasicData employee = null;
-			try {
-				employee = gson.fromJson(gsonData, BasicData.class);				
-			} catch (Exception e) {
-				 message = MessageList.ERROR.message();;
-			}
-			return employee;
-		}			
-		
+	@Override
+	public Object extractFromJason(String gsonData) {
+		Gson gson = new Gson();
+		String message = "";
+		BasicData employee = null;
+		try {
+			employee = gson.fromJson(gsonData, BasicData.class);				
+		} catch (Exception e) {
+			 message = MessageList.ERROR.message();;
+		}
+		return employee;
+	}
 		
 		public String validateEmployee(BasicData employee) throws ParseException  {
 			DataValidator validator = new DataValidator();
@@ -77,6 +75,24 @@ public class EditEmployee {
 				message = message + MessageList.EMAILERROR.message() +" ";
 			}
 			return message;
+		}
+
+		
+		@Override
+		public String validateValue(Object entiytObject) throws ParseException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public String execute(int epf) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 }

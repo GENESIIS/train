@@ -5,11 +5,13 @@ import java.util.HashMap;
 
 
 public interface ICommand {	
-		public String execute(String gsonData) throws ParseException ;
+		public String execute(String gsonData) ;
 		
 		public Object extractFromJason(String data);
 		
 		public String validateValue(Object entiytObject) throws ParseException; 
 		
 		public Boolean validateValue(HashMap<Integer, Object> entitytMap);
+
+		public String execute(int epf);
 }

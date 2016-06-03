@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.command.EditEmployee;
+import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.command.SerchEmployee;
@@ -27,14 +27,16 @@ import com.google.gson.Gson;
 public class EmployerController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	static Logger log = Logger.getLogger(EmployeeController.class.getName());
+	static Logger log = Logger.getLogger(EmployerController.class.getName());
 	HashMap<Operation, ICommand> commands = null;
 
 	public void init() throws ServletException {		
 
 		commands = new HashMap<Operation, ICommand>();		
 		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
-		// hmap.put(4, null);
+		commands.put(Operation.REGISTER_LOAN, new AddBasic());
+		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
+		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 	}
 
 
@@ -45,9 +47,7 @@ public class EmployerController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");		
 
-		//this.doPost(request, response);
-		GetEmployee empgson = new GetEmployee();
-		response.getWriter().write(empgson.createGson());
+		this.doPost(request, response);		
 	}
 
 	/**
@@ -78,8 +78,12 @@ public class EmployerController extends HttpServlet {
 			 case REGISTER_LOAN:					
 				    message =commands.get(o).execute("1");							
 		        break;	
-			 case EDIT_EMPLOYEE_BASIC:					
-				    message =commands.get(o).execute("1");							
+			 case GET_EMPLOYEE_BASIC:					
+				    log.info(gson.toJson("Inside case get"));
+				    message =commands.get(o).execute(1);					
+		        break;	
+			 case UPDATE_EMPLOYEE_BASIC:					
+				    message =commands.get(o).execute(details);							
 		        break;	
 			default:
 				break;

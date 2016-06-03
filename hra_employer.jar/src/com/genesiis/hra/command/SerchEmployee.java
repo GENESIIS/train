@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.jboss.logging.Logger;
+
 import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
 import com.google.gson.Gson;
@@ -15,9 +16,7 @@ import com.google.gson.Gson;
 public class SerchEmployee implements ICommand {
 static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	@Override
-	public String execute(String keyWord) throws ParseException {
-		// TODO Auto-generated method stub
-		 String message = "";
+	public String execute(String keyWord) {
 		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
 		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
 		 List<Object>  empList = null ;
@@ -64,6 +63,12 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 				loger.info("This CretaeGson method"+empList);
 			}
 			return empList;
+	}
+
+	@Override
+	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

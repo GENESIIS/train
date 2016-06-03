@@ -13,15 +13,10 @@ public interface ICrud {
  
 	public int update(Object object);
 
-	public String delete(Object object);
-	
-	public String retrive(int id);
+	public int delete(Object object);
 
-	public Object find(int empEpf);
+	public Object find(int empEpf)throws SQLException, Exception;
 	
 	public List<Object> find(String empIdenti) throws SQLException, Exception;
-
-	public List<Object> getAll();
-
-	Employee retrive(String id);
+	
 }
