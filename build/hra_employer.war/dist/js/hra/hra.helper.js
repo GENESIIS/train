@@ -35,7 +35,7 @@ function loadfamilydetails() {
 // load more edit Employeee Detail
 
 function loadEditContentqualifications() {
-	$("#Editmodelrest").load("\EditemployeeDetails/EditeducationalDetails.jsp");
+	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
 
 }
 
@@ -292,7 +292,7 @@ function clearAddemployeeform() {
 	getDepartment();
 }
 
-// load data to edit emplyee details no changed 
+// load data to edit emplyee details no changed
 $(document).on("click", "#ebutton", function() {
 	$.get("EmployerController", function(data, status) {
 
@@ -376,8 +376,8 @@ function updateEmployeeDetails() {
 	});
 }
 
-/////Familydetails
-////Add Family Details
+// ///Familydetails
+// //Add Family Details
 function addFamilyDetails() {
 	var fmemployeeId = $("#fmemployeeId").val();
 	var relationship = $("#relationship").val();
@@ -559,7 +559,6 @@ function disableButton() {
 	// document.getElementById("moredetails").disabled = true;
 }
 
-
 // ////Add Education Details /////////
 
 function AddEducationDetails() {
@@ -588,7 +587,7 @@ function AddEducationDetails() {
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(EducationData),
-			task : "ADD"
+			task : "AED"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -781,7 +780,7 @@ function loadEducationDetails() {
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			serchVlaue : serchContent,
-			task : "GETEDUCATION"
+			task : "GED"
 		},
 		dataType : "json",
 		success : function(responseText) {

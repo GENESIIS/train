@@ -115,15 +115,16 @@ public class EducationData extends Employee {
 			ps.setString(7, edu.getEduStudytime());
 			ps.setString(8, "SYSTEM");
 
-			int rowsInserted = ps.executeUpdate();
-			if (rowsInserted > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
-				int generatedKey = 0;
-				if (rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				status = generatedKey;
-			}
+			// throws exception in SQL
+//			int rowsInserted = ps.executeUpdate();
+//			if (rowsInserted > 0) {
+//				ResultSet rs = ps.getGeneratedKeys();
+//				int generatedKey = 0;
+//				if (rs.next()) {
+//					generatedKey = rs.getInt(1);
+//				}
+//				status = generatedKey;
+//			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			log.error("Exception: EducationData Add" + exception);
@@ -202,7 +203,7 @@ public class EducationData extends Employee {
 	@Override
 	public String find(String id) {
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		EducationData edu = new EducationData();
 		String educationDetails = null;
 		Gson gson = new Gson();
@@ -210,11 +211,11 @@ public class EducationData extends Employee {
 		try {
 
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn
+			ps = conn
 					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE EMPLOYEEID=?");
-			preparedStatement.setString(1, id);
+			ps.setString(1, id);
 
-			ResultSet res = preparedStatement.executeQuery();
+			ResultSet res = ps.executeQuery();
 			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
 				log.info("res.getString(2)" + res.getString(2));
@@ -236,8 +237,17 @@ public class EducationData extends Employee {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-
+		}finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+				log.error("Exception: EducationData Find" + exception);
+			}
+			}
 		return educationDetails;
 
 	}

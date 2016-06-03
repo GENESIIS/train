@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.command.AddEducationDetails;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.GetEducation;
 import com.genesiis.hra.command.GetEmployee;
@@ -50,9 +51,10 @@ public class EmployeeController extends HttpServlet {
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.GET_BASIC_DATA, new GetEmployee());
 		commands.put(Operation.GET_FAMILY, new GetFamilyMember());
-		commands.put(Operation.GET_EDUCATION, new GetEducation());
+		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,new AddEmployeeBasicdata());
-	//	commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
+		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 	}
 
 	/**
@@ -98,13 +100,21 @@ public class EmployeeController extends HttpServlet {
 				message = commands.get(o).execute(findDetaile);
 				log.info("Search Employee details" + findDetaile);
 				break;
-			case GET_EDUCATION:
+			case GET_EDU_DETAILS:
 				message = commands.get(o).execute(findDetaile);
 				log.info("Search Educational details");
 				break;
 			case GET_FAMILY:
 				message = commands.get(o).execute(findDetaile);
 				log.info("Search family details");
+				break;
+			case ADD_EDU_DETAILS:
+				message = commands.get(o).execute(details);
+				log.info("add education details" + details);
+				break;
+			case UPDATE_EDU_DETAILS:
+				message = commands.get(o).execute(details);
+				log.info("update education details" + details);
 				break;
 			default:
 				break;
