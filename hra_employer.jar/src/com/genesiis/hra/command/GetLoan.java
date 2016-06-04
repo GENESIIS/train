@@ -20,7 +20,7 @@ public class GetLoan {
 			message = MessageList.EMPTYFIELD.message();
 			//log.info("Exception-employee: " + e);
 		}	
-		return loanGson;
+		return loanGson; 
 	}
 	
 	// Create geson object
