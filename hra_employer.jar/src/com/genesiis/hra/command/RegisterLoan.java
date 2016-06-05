@@ -17,9 +17,10 @@ import com.google.gson.Gson;
 public class RegisterLoan implements ICommandAJX {
 	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
 	// command class execution method
+	@Override
 	public String execute(String gsonData)  {
 		int id = -1;
-		MessageList message = MessageList.ERROR;;
+		MessageList message = null;
 		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
 		try {
 			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 
@@ -41,6 +42,32 @@ public class RegisterLoan implements ICommandAJX {
 		}		
 		return message.message();
 	}
+	
+	@Override
+	public String execute(String gsonData, String epf)  {
+		int id = -1;
+		MessageList message = null;
+		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
+		try {
+			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 			
+			if(extractedLndetail!=null){								
+				if (validateValue(extractedLndetail).equalsIgnoreCase("True")) {					
+					id = loanManager.update(extractedLndetail);
+					message = MessageList.UPDATED;
+					log.info(message + " "+ MessageList.UPDATED);
+				}
+			}
+		} catch (NullPointerException e) {
+			message = MessageList.EMPTYFIELD;
+			//log.info("Exception-employee: " + e);
+		}catch (ClassCastException e) {
+			// TODO: handle exception
+			message = MessageList.ERROR;
+		}		
+		return message.message();
+	}
+	
+	
 	
 	@Override
 	public String execute(int epf) {

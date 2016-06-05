@@ -15,6 +15,12 @@ import com.google.gson.Gson;
 */
 public class SerchEmployee implements ICommandAJX {
 static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
+
+    @Override
+    public String execute(String gsonData, String epf) {
+	     // TODO Auto-generated method stub
+	     return null;
+    }
 	@Override
 	public String execute(String keyWord) {
 		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();

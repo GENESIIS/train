@@ -1,7 +1,7 @@
 
 package com.genesiis.hra.command;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
-import com.genesiis.hra.model.Employee;import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.model.Employee;import com.genesiis.hra.model.EmployeeFactory;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 import java.sql.SQLException;
@@ -11,21 +11,21 @@ import java.util.logging.Logger;
 
 public class GetEmployee implements ICommandAJX{
 
-	static Logger log = Logger.getLogger(GetEmployee.class.getName());	
-	
+	static Logger log = Logger.getLogger(GetEmployee.class.getName());		
 	@Override
-	public String execute(String gsonData) {
+	public String execute(int gsonData) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public String execute(int epf) {
-		EmployeeCrudJDBC dataAcse = new EmployeeCrudJDBC();	
+	public String execute(String inputValue, String task) {
+		EmployeeFactory empOblect = new EmployeeFactory();	
 		String message = MessageList.ERROR.message();	
 		Employee employee = null;
 		try{			
-			employee = (Employee)dataAcse.find(epf);	
+			employee = (Employee) empOblect.getEmployeeObject(task).findByEpf(inputValue);
+			log.info(task);
 			message = createGson(employee);	
 			log.info(message);
 		}catch(SQLException e){
@@ -66,8 +66,10 @@ public class GetEmployee implements ICommandAJX{
 		return null;
 	}
 
-	
-	
-	
+	@Override
+	public String execute(String gsonData) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 	
 }

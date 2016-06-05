@@ -8,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.jboss.logging.Logger;
+
+import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.GetEmployee;
+import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.command.SerchEmployee;
@@ -32,8 +36,10 @@ public class EmployerController extends HttpServlet {
 		commands = new HashMap<Operation, ICommandAJX>();		
 		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
 		commands.put(Operation.REGISTER_LOAN, new RegisterLoan());
+		commands.put(Operation.UPDATE_LOAN, new RegisterLoan());
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
-		//commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new RegisterLoan());
+		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
+		commands.put(Operation.GET_LOAN, new GetLoan());
 	}
 
 
@@ -75,9 +81,16 @@ public class EmployerController extends HttpServlet {
 			 case REGISTER_LOAN:					
 				    message =commands.get(o).execute(details);							
 		        break;	
+			 case GET_LOAN:					
+				    message =commands.get(o).execute(serchVlaue);	
+				    log.info(serchVlaue +"...............................................");
+		        break;
+			 case UPDATE_LOAN:					
+				    message =commands.get(o).execute(details,serchVlaue);							
+		        break;	
 			 case GET_EMPLOYEE_BASIC:					
 				    log.info(gson.toJson("Inside case get"));
-				    message =commands.get(o).execute(1);					
+				    message =commands.get(o).execute(serchVlaue, task);					
 		        break;	
 			 case UPDATE_EMPLOYEE_BASIC:					
 				    message =commands.get(o).execute(details);							

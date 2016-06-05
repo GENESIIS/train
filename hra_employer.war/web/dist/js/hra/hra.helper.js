@@ -69,7 +69,7 @@ function getDepartment() {
 	});
 }
 
-// Get data and sent to EmployeeController.java.
+// Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
 	var employeeFirstname = $("#employeeFirstname").val() + ","
 			+ $("#employeeMiddlename").val() + ","
@@ -380,10 +380,16 @@ function loadviewemergencycontacts() {
 
 function loadEditContentloandetails() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp", function(datatl) {
-	$.get("EmployeeController", function(data, status) {
+		var employeeEpf = $("#employeeEPFEdit").val();
+	$.get("EmployerController",
+			{
+	          serchVlaue : employeeEpf,
+	          task : "GL"
+		    },  
+			function(data, status) {
 		alert(data);
-		json = JSON.parse(data);
-		$("#employeeIdEdit").val(json.employeeEpf);
+		json = JSON.parse(JSON.parse(data));
+		$("#employeeEPFEdit").val(json.employeeEpf);
 		$("#totalOutstandingEdit").val(json.loanAmount);
 		$("#guaranter1Edit").val(json.loanGuarantor1);	
 		$("#guaranter2Edit").val(json.loanGuarantor2);	
@@ -393,7 +399,7 @@ function loadEditContentloandetails() {
 		
 		});
 	});
-}
+}	
 	
 function loadEditContentfamilydetails() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditfamilyDetails.jsp");
@@ -458,5 +464,51 @@ function clearLoanDetails() {
 	$("#monthlyPayment").val("");
 	$("#dueDate").val("");
 	$("#endDate").val("");
+}
+	
+
+/////Update Loan Detaile////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function updateLoanDetailes() {
+	
+	var employeeEpf = $("#employeeEPFEdit").val();
+	var loanAmount = $("#totalOutstandingEdit").val();
+	var loanGuarantor1= $("#guaranter1Edit").val();
+	var loanGuarantor2 = $("#guaranter2Edit").val();
+	var loanmonthlyPayment = $("#monthlyPaymentEdit").val();
+	var loanDueDate = $("#dueDateEdit").val();
+	var loanEndDate = $("#endDateEdit").val();
+	
+	var jsonData = {
+		"employeeEpf" : employeeEpf,
+		"loanAmount" : loanAmount,
+		"loanGuarantor1" : loanGuarantor1,
+		"loanGuarantor2" : loanGuarantor2,
+		"loanmonthlyPayment" : loanmonthlyPayment,
+		"loanDueDate" : loanDueDate,
+		"loanEndDate" : loanEndDate
+	};
+	alert(JSON.stringify(jsonData));
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify(jsonData),
+			task : "UL",
+			serchVlaue : employeeEpf
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			if (data == "Details added successfully.") {
+				clearLoanDetails();
+			}
+		},
+		error : function(e) {
+			//alert("Error " + e);
+			console.log(e);
+		}		
+	});
+	
 }
 

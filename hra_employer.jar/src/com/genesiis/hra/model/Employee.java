@@ -1,6 +1,5 @@
 package com.genesiis.hra.model;
 
-import java.util.List;
 
 
 ///***********************************************
@@ -41,6 +40,11 @@ public abstract class Employee implements ICrud {
 	}
 	
 	public String getId(String id) {
+		return null;
+	}
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

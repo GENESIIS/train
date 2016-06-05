@@ -36,6 +36,17 @@ public class AddBasic implements ICommandAJX{
 		}
 		return message.message();
 	}
+	
+	@Override
+	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String execute(String gsonData, String epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	// Method to extract DepartmentDetails from jsonData.
 	@Override
 	public Object extractFromJason(String gsonData) {
@@ -88,12 +99,7 @@ public class AddBasic implements ICommandAJX{
 		public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 			// TODO Auto-generated method stub
 			return null;
-		}
-		@Override
-		public String execute(int epf) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		}	
 		
 }
 

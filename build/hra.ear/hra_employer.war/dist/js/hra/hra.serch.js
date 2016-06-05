@@ -60,7 +60,7 @@ function listEmployee(empData) {
 		                	  "name": "Add",
 		                      className: "center",
 		                      defaultContent: '<button type="button" class="btn btn-info" '+
-		                    	  'data-toggle="modal" id = "add" data-target="#addEmployeedetails" ><i class="glyphicon glyphicon-modal-window"></i></button>'
+		                    	  'data-toggle="modal" id = "add" ><i class="glyphicon glyphicon-modal-window"></i></button>'
 		                  },
 		                  {
 		                	  "name": "Edit", 

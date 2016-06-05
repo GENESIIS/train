@@ -5,8 +5,8 @@
 			<i class="glyphicon glyphicon-edit"></i> Loan Details
 		</h3>
 		<div class="form-group">
-			<label for="employeeId">Employee</label> <input type="text"
-				class="form-control" id="employeeIdEdit" name="employeeIdEdit"
+			<label for="employeeEPFEdit">Employee</label> <input type="text"
+				class="form-control" id="employeeEPFEdit" name="employeeEPFEdit"
 				placeholder="">
 		</div>
 		<div class="form-group">

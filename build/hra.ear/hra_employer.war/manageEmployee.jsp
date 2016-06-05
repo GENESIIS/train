@@ -458,38 +458,6 @@
 	</div>
 </div>
 
-
-<!--////////////////////////////////////////-->
-
-<div class="modal fade" id="editmoreEmployeedetails" role="dialog">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>Edit More Employee Details
-				</h3>
-			</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success pull-right"
-						onclick="updateEmployeeDetails()" data-dismiss="">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Update
-					</button>
-					<button type="button" class="btn btn-warning pull-right" id="moredetails"
-						name="moredetails" onclick="" data-dismiss="modal" 
-						data-toggle="modal" data-target="#editmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i>Edit More Details
-					</button>					
-					<button type="button" class="btn btn-danger pull-left"
-						data-dismiss="modal" onclick="">
-						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!--////////////////////////////////////////-->
 
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
@@ -513,18 +481,7 @@
 						class="btn btn-primary">Family Details</a>
 				</div>
 				<div id="Editmodelrest" name="Editmodelrest"></div>
-
-			</div>
-			<!-- 			<div class="modal-footer"> -->
-			<!-- 				<button type="button" class="btn btn-success pull-side" -->
-			<!-- 					onclick="updatedAlert()" data-dismiss=""> -->
-			<!-- 					<i class="glyphicon glyphicon-floppy-disk"></i> Save -->
-			<!-- 				</button> -->
-			<!-- 				<button type="button" class="btn btn-warning " id="moredetails" -->
-			<!-- 					name="moredetails" onclick="" data-dismiss="modal" disabled="true"> -->
-			<!-- 					<i class="glyphicon glyphicon-file"></i> More Details -->
-			<!-- 				</button> -->
-			<!-- 			</div> -->
+			</div>			
 		</div>
 	</div>
 </div>

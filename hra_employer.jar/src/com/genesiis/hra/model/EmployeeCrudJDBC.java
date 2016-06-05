@@ -217,6 +217,12 @@ public class EmployeeCrudJDBC implements ICrud {
 		
 		return employList;
 	
+	}
+
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 
 
