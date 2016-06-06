@@ -154,17 +154,18 @@ public class EmployerController extends HttpServlet {
 
 	}
 
-	private void writeResponse(String insertedSuccess,
-			HttpServletResponse response) {
-
-		Gson gson = new Gson();
+	private void writeResponse(String message, HttpServletResponse response) throws IOException {		
 		try {
-			response.getWriter().write(gson.toJson(insertedSuccess));
-			response.getWriter().close();
+			response.getWriter().write(message);
+			log.info(message);
 		} catch (Exception e) {
-			insertedSuccess = MessageList.FAILED_TO_CREATE.message();
-			log.error("Exception: EmployeeController - writeResponse" + e);
+			log.error("WriteResponse method error. " + e);
+		} finally {
+			response.getWriter().flush();
+			response.getWriter().close();
 		}
+
+
 	}
 	
 	private static String getSubmittedFileName(Part part) {

@@ -28,14 +28,13 @@ function serchEmployee() {
 
 function listEmployee(empData) {
 	
-			json = JSON.parse(JSON.parse(empData));	
+			json = JSON.parse(empData);	
 			jsonData : JSON.stringify(empData);
 			//////Check whether Table is Initialize or not 
 			if($.fn.dataTable.isDataTable( '#employeeDetails' )){
 				////////Destroy table
 				eTable.destroy();				
 			}			
-			alert(json);
 			eTable = $('#employeeDetails').DataTable({
 				data: json,
 				"aoColumns": [ 
