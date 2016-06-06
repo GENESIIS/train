@@ -8,7 +8,10 @@ public enum Operation {
 	ADD_DEPARTMENT("ADP"),
 	GET_MANAGER("GMN"),
 	GET_DEPARTMENT("GDP"),
-	ADD_FAMILY_MEMBER("AFM");
+	
+	ADD_FAMILY_MEMBER("AFM"),
+	UPDATE_FAMILY_MEMBER("UFM"),
+	GET_FAMILY_MEMBER("GFM");
 
 	private final String value;
 

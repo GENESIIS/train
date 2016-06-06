@@ -9,13 +9,14 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.SalaryComponent;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
  * @author pabodha
  * 
  */
-public class AddSalaryComponent implements ICommandAJX {
+public class AddSalaryComponent implements ICommand {
 	static Logger log = Logger.getLogger(AddSalaryComponent.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
@@ -69,6 +70,12 @@ public class AddSalaryComponent implements ICommandAJX {
 	public boolean validateValue(HashMap<Integer, Object> entiytMap) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public String execute(String gsonData, Operation operation) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

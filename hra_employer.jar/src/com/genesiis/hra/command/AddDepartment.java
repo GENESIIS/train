@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 
@@ -15,7 +16,7 @@ import com.google.gson.Gson;
 //* 20160503 PN HRA-3 modified the execute method.
 //***********************************************/
 
-public class AddDepartment implements ICommandAJX {
+public class AddDepartment implements ICommand {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
@@ -76,5 +77,11 @@ public class AddDepartment implements ICommandAJX {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String execute(String gsonData, Operation operation) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.genesiis.hra.command.AddSalaryComponent;
 import com.genesiis.hra.command.AddSalaryScheme;
-import com.genesiis.hra.command.ICommandAJX;
+import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -26,11 +26,11 @@ public class PayrollController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(PayrollController.class.getName());
-	HashMap<Operation, ICommandAJX> commands = null;
+	HashMap<Operation, ICommand> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
-		commands = new HashMap<Operation, ICommandAJX>();
+		commands = new HashMap<Operation, ICommand>();
 		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
 		commands.put(Operation.ADD_SALARY_SCHEME, new AddSalaryScheme());
 	}

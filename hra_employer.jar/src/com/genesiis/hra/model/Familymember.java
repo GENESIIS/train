@@ -13,6 +13,8 @@ import java.util.List;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.validation.DataValidator;
+import com.google.gson.Gson;
 
 /**
  * @author pabodha
@@ -89,7 +91,7 @@ public class Familymember extends Employee {
 	 */
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
-				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ "OCCUPATION, PLACE, MODBY, MODON) VALUES (?, ?, ?, ?, ?, ?, ?, GETDATE())";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Familymember fm = (Familymember) object;
@@ -100,7 +102,7 @@ public class Familymember extends Employee {
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, fm.getEmployeeepf());
 			ps.setString(2, fm.getFmname());
-			ps.setString(3, fm.getFmdateofbirth());
+			ps.setDate(3, new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth()));
 			ps.setString(4, fm.getFmrelationship());
 			ps.setString(5, fm.getFmoccupation());
 			ps.setString(6, fm.getFmWorkingplace());
@@ -112,6 +114,7 @@ public class Familymember extends Employee {
 				int generatedKey = 0;
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
+					
 				}
 				status = generatedKey;
 			}
@@ -186,7 +189,35 @@ public class Familymember extends Employee {
 	 * @see com.genesiis.hra.model.ICrud#getEmployee(int)
 	 */
 	public String getEmployee(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Familymember fm = new Familymember();
+		String familymember = null;
+		Gson gson = new Gson();
+		try {
+			conn = ConnectionManager.getConnection();
+			
+			preparedStatement = 
+					conn.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
+			
+			preparedStatement.setInt(1, employeeId);
+			
+			ResultSet res = 
+					preparedStatement.executeQuery();
+			
+			if (res.next()) {
+				fm.setEmployeeepf(res.getString(2));
+				fm.setFmdateofbirth(res.getString(4));
+				fm.setFmname(res.getString(3));
+				fm.setFmoccupation(res.getString(6));
+				fm.setFmrelationship(res.getString(5));
+				fm.setFmWorkingplace(res.getString(7));
+				familymember = gson.toJson(fm);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return familymember;
 	}
 }

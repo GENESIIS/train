@@ -16,10 +16,7 @@ function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 }
 
-// Load more details contents
-function loadfamilydetails() {
-	$("#modelrest").load("employeeDetails/familyDetails.jsp");
-}
+
 
 // Only for Sprint -1 demo.
 function deleteAlert() {

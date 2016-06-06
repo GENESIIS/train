@@ -37,6 +37,7 @@
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
 <script src="dist/js/hra/hra.validation.js"></script>
 <script src="dist/js/hra/hra.dynamictable.js"></script>
+<script src="dist/js/hra/hra.familydetails.js"></script>
 
 <style type="text/css">
 /* label { */

@@ -13,7 +13,8 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.AddFamilyDetails;
-import com.genesiis.hra.command.ICommandAJX;
+import com.genesiis.hra.command.GetEmployee;
+import com.genesiis.hra.command.ICommand;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -31,14 +32,19 @@ import com.google.gson.Gson;
 public class EmployerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployerController.class.getName());
-	HashMap<Operation, ICommandAJX> commands = null;
+	HashMap<Operation, ICommand> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
-		commands = new HashMap<Operation, ICommandAJX>();
+		commands = new HashMap<Operation, ICommand>();
 		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
 				new AddEmployeeBasicdata());
-		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.ADD_FAMILY_MEMBER, 
+				new AddFamilyDetails());
+		commands.put(Operation.UPDATE_FAMILY_MEMBER, 
+				new AddFamilyDetails());
+		commands.put(Operation.GET_FAMILY_MEMBER, 
+				new GetEmployee());
 	}
 
 	/**
@@ -63,6 +69,7 @@ public class EmployerController extends HttpServlet {
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
 		Gson gson = new Gson();
+		log.info("1");
 		try {
 			switch (o) {
 			case ADD_EMPLOYEE_BASICDATA:
@@ -71,6 +78,13 @@ public class EmployerController extends HttpServlet {
 			case ADD_FAMILY_MEMBER:
 				message = commands.get(o).execute(details);
 				break;
+			case UPDATE_FAMILY_MEMBER:
+				message = commands.get(o).execute(details);
+				break;
+			case GET_FAMILY_MEMBER:
+				message = commands.get(o).execute(details,o);
+				System.out.println("doPost"+message);
+				break;
 			default:
 				break;
 			}
@@ -78,7 +92,7 @@ public class EmployerController extends HttpServlet {
 		} catch (Exception e) {
 			// Client see an error from here
 			message = MessageList.ERROR.message();
-			log.error("Department Controller Error. " + e);
+			log.error("Employer Controller Error. " + e);
 		}
 
 		writeResponse(gson.toJson(message), response);
@@ -87,6 +101,7 @@ public class EmployerController extends HttpServlet {
 	private void writeResponse(String message, HttpServletResponse response)
 			throws IOException {
 		try {
+			System.out.println("writeResponse"+message);
 			response.getWriter().write(message);
 		} catch (Exception e) {
 			log.error("WriteResponse method error. " + e);

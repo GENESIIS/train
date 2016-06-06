@@ -68,13 +68,10 @@ public class Department implements ICrud {
 		this.departmentHead = dh;
 	}
 
-	@Override
-	public String toString() {
-		return departmentNumber + " - " + departmentName + " - "
-				+ departmentLocation + " - " + departmentHead;
-	}
 
-	@Override
+	
+
+
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?)";
 		Connection conn = null;

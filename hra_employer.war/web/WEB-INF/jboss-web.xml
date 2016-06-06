@@ -2,7 +2,7 @@
 
 <jboss-web> 
 
-<virtual-host>www.topjobs.pn</virtual-host>
+<virtual-host>www.topjobs.tr</virtual-host>
 
 <context-root>/</context-root>
 
