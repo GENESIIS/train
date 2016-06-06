@@ -79,11 +79,10 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case UPDATE_FAMILY_MEMBER:
-				message = commands.get(o).execute(details);
+				message = commands.get(o).execute(details,o);
 				break;
 			case GET_FAMILY_MEMBER:
 				message = commands.get(o).execute(details,o);
-				System.out.println("doPost"+message);
 				break;
 			default:
 				break;

@@ -260,8 +260,111 @@ function clearAddemployeeform() {
 	getDepartment();
 }
 
+// ///Familydetails
+// //Add Family Details
+function addFamilyDetails() {
+	var fmemployeeId = $("#fmemployeeId").val();
+	var relationship = $("#relationship").val();
+	var relationDateofbirth = $("#relationDateofbirth").val();
+	var relationName = $("#relationName").val();
+	var occupation = $("#occupation").val();
+	var workingPlace = $("#workingPlace").val();
 
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
 
+	if (employeeIdtb == false) {
+		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	}
+	if (relationNametb == false) {
+		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
+	}
 
+	if ((employeeIdtb == true) && (relationshiptb == true)
+			&& (relationDateofbirthtb == true) && (relationNametb == true)) {
+		var jsonData = {
+			"employeeEpf" : fmemployeeId,
+			"fmRelationship" : relationship,
+			"fmDateofbirth" : relationDateofbirth,
+			"fmName" : relationName,
+			"fmOccupation" : occupation,
+			"fmWorkingplace" : workingPlace
+		};
 
+		$.ajax({
+			type : "POST",
+			url : 'EmployerController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "AFM"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearFamilydetails();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+}
 
+function resetLabels() {
+	var fmemployeeId = $("#fmemployeeId").val();
+	var relationship = $("#relationship").val();
+	var relationDateofbirth = $("#relationDateofbirth").val();
+	var relationName = $("#relationName").val();
+
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
+
+	if (employeeIdtb == false) {
+		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	} else {
+		document.getElementById('fmemployeeidError').innerHTML = "";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
+	} else {
+		document.getElementById('relationshipError').innerHTML = "";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	} else {
+		document.getElementById('relationbirthdateError').innerHTML = "";
+	}
+	if (relationNametb == false) {
+		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
+	} else {
+		document.getElementById('relationnameError').innerHTML = "";
+	}
+}
+
+function clearFamilydetails() {
+	$("#relationDateofbirth").val("");
+	$("#relationName").val("");
+	$("#occupation").val("");
+	$("#workingPlace").val("");
+	$("#fmemployeeidError").text("");
+	$("#relationshipError").text("");
+	$("#relationbirthdateError").text("");
+	$("#relationnameError").text("");
+	$('#relationship option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+}

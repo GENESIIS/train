@@ -19,4 +19,5 @@ public interface ICommand {
 	public boolean validateValue(Object entiytObject);
 
 	public boolean validateValue(HashMap<Integer, Object> entiytMap) throws Exception;
+
 }

@@ -139,8 +139,40 @@ public class Familymember extends Employee {
 	 * @see com.genesiis.hra.model.ICrud#update(java.lang.Object)
 	 */
 	public int update(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Familymember fm = (Familymember) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, fm.getFmname());
+			preparedStatement.setString(2, fm.getFmdateofbirth());
+			preparedStatement.setString(3, fm.getFmrelationship());
+			preparedStatement.setString(4, fm.getFmoccupation());
+			preparedStatement.setString(5, fm.getFmWorkingplace());
+			preparedStatement.setString(6, "SYSTEM");
+			preparedStatement.setString(7, "2");
+
+			int rowsUpdated = preparedStatement.executeUpdate();
+			if (rowsUpdated > 0) {
+				status = 1;
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		return status;
 	}
 
 	/*
