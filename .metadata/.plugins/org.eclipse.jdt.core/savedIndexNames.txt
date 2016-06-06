@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+C:\DEV\hra\.metadata\.plugins\org.eclipse.jdt.core
