@@ -1,4 +1,5 @@
 package com.genesiis.hra.model;
+
 import java.util.logging.Logger;
 import com.genesiis.hra.validation.Operation;
 
@@ -9,7 +10,6 @@ public class EmployeeFactory {
 	static Logger log = Logger.getLogger(EmployeeFactory.class.getName());	
 	public Employee getEmployeeObject(String task) {
 		
-		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
 		log.info("Operation"+o);
@@ -18,6 +18,12 @@ public class EmployeeFactory {
 			return new BasicData();
 		case GET_EMPLOYEE_HISTORY:
 			return new EmploymentHistory();
+		case GET_BASIC_DATA:
+			return new BasicData();
+		case GET_EDU_DETAILS:
+			return new EducationData();
+		case GET_FAMILY:
+			return new Familymember();
 		default:
 			return null;
 		}

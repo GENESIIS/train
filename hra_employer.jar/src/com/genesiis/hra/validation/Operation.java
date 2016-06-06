@@ -14,18 +14,32 @@ public enum Operation {
 	GET_EMPLOYEE_HISTORY("GEH"), //get employee history data from database
 	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
 	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
-	ADD_MEDICAL_REPORT("AMR"); //add medical report data to database
+	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
+	EMPLOYEE("EMP"), 
+	ADD_EMPLOYEE_BASICDATA("AEB"),
+	BASIC_DATA("BASIC"),
+	GET_BASIC_DATA("GETBASIC"),
+	ADD_FAMILY_MEMBER("AFM"),
+	GET_FAMILY("GETFAMILY"),
+	ADD_DEPARTMENT("ADP"),
+	GET_MANAGER("GMN"), 
+	GET_DEPARTMENT("GDP"),
+	ADD_EDU_DETAILS("AED"),
+	UPDATE_EDU_DETAILS("UED"),
+	GET_EDU_DETAILS("GED"),
+	STUDY_PROGRAM("STD"),
+	LOAN("LOAN"), 
+	EMPLOYMENT_HISTORY("HIS");
 	 
 	private final String value;
 
-	Operation(String newValue) {
+	Operation(final String newValue) {
 		this.value = newValue;
 	}
 
 	public String getValue() {
 		return value;
 	}
-	
 	public static Operation getOperation(String o){		
 		for(Operation op : values()){
 			
@@ -36,5 +50,3 @@ public enum Operation {
 	}
 
 }
-
-	

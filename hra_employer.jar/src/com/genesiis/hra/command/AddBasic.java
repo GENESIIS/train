@@ -90,7 +90,7 @@ public class AddBasic implements ICommandAJX{
 
 		
 		@Override
-		public String validateValue(Object entiytObject) throws ParseException {
+		public String validateValue(Object entiytObject) {
 			// TODO Auto-generated method stub
 			return null;
 		}

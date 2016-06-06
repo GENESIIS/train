@@ -13,7 +13,7 @@ import org.jboss.logging.Logger;
 //* 20160505 PN created isValidemail(), isValidTelephone() methods.
 //***********************************************/
 
-public class DataValidator {
+public class DataValidator { 
 	static Logger log = Logger.getLogger(DataValidator.class.getName());
 
 	Date date = new Date();
@@ -110,8 +110,6 @@ public class DataValidator {
 		}
 		return status;
 	}
-
-	
 	
 	public int validTaskId(String task) {
 		if (task.equalsIgnoreCase(MessageList.ADD.message())) {

@@ -1,8 +1,8 @@
 package com.genesiis.hra.command;
+
 import com.genesiis.hra.model.Employee;import com.genesiis.hra.model.EmployeeFactory;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
-
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class GetEmployee implements ICommandAJX{
 
-	static Logger log = Logger.getLogger(GetEmployee.class.getName());		
+	static Logger log = Logger.getLogger(GetEmployee.class.getName());	
 	@Override
 	public String execute(int gsonData) {
 		// TODO Auto-generated method stub
@@ -39,8 +39,9 @@ public class GetEmployee implements ICommandAJX{
 	public Object extractFromJason(String data) {	
 		
 		return null;
-	}
-	
+	}	
+
+	// Create geson object
 	public String createGson(Object employee) throws Exception {			
 		Gson gson = new Gson();  		 
 		String employeeGoson = null;						
@@ -52,12 +53,6 @@ public class GetEmployee implements ICommandAJX{
 		}		  
 		return employeeGoson;
 	}
-	
-	@Override
-	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String execute(String gsonData) {
@@ -66,9 +61,15 @@ public class GetEmployee implements ICommandAJX{
 	}
 
 	@Override
-	public String validateValue(Object entiytObject) throws ParseException {
+	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
-	}	
-	
+	}
+
+	@Override
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

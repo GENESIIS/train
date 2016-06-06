@@ -27,8 +27,6 @@ public class BasicData extends Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-	
-	// private String employeeEpf;
 	private String employeeBasis;
 
 	public String getEmployeename() {
@@ -142,11 +140,10 @@ public class BasicData extends Employee {
 	public void setEmployeebasis(String employeeBasis) {
 		this.employeeBasis = employeeBasis;
 	}
-	
+
 	public BasicData() {
-		
+
 	}
-	
 
 	public BasicData(String employeeName, String employeeDesignation,
 			String employeeEmail, String employeeDateofbirth,
@@ -249,6 +246,8 @@ public class BasicData extends Employee {
 			ps.setString(6, empBasic.getEmployeegender());
 			ps.setString(7,	empBasic.getEmployeepermenetaddress());
 			ps.setString(8,	empBasic.getEmployeetemporaryaddress());
+			ps.setString(7, empBasic.getEmployeepermenetaddress());
+			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(9, empBasic.getEmployeemobile());
 			ps.setString(10, empBasic.getEmployeetelephone());
 			ps.setString(11, empBasic.getEmployeedepartment());
@@ -260,12 +259,11 @@ public class BasicData extends Employee {
 			ps.setString(17, "1");
 			
 			int rows = ps.executeUpdate();
-			
+
 			if (rows > 0) {
 				ResultSet rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
-				message = "Succesfull";
-				
+				message = "Succesfull";				
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
 				}
@@ -287,24 +285,6 @@ public class BasicData extends Employee {
 		return status;
 	}
 
-
-
-	public String getId(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Object> find(String empIdenti) throws SQLException, Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public List<Object> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@Override
 	public Object findByEpf(String empEpf) {
 		String query = "select * from [dbo].[HRA.EMPLOYEE] where ID = ?";
@@ -319,7 +299,6 @@ public class BasicData extends Employee {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1,empEpf);
-
 			retriveData = preparedStatement.executeQuery();
 
 			try {
@@ -349,7 +328,7 @@ public class BasicData extends Employee {
 							.getString("MARITALSTATUS"));
 					employee.setEmployeebasis(retriveData.getString("BASIS"));
 					employee.setEmployeetemporaryaddress(retriveData
-							.getString("TEMPORARYADDRESS"));			
+							.getString("TEMPORARYADDRESS"));
 					log.info(employee.getEmployeeepf());
 				}
 			} catch (Exception e) {
@@ -371,7 +350,25 @@ public class BasicData extends Employee {
 	}
 
 	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -380,11 +377,5 @@ public class BasicData extends Employee {
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public int delete(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 }

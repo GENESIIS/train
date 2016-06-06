@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
+
 import java.io.InputStream;
+
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,11 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.AddBasic;
+import com.genesiis.hra.command.AddEducationDetails;
+import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.GetEmployee;
+import com.genesiis.hra.command.GetFamilyMember;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.command.SerchEmployee;
+
 import javax.servlet.http.Part;
 
 import com.genesiis.hra.command.AddEmployeeHistory;
@@ -54,6 +60,11 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
 		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());
 		commands.put(Operation.ADD_MEDICAL_REPORT, new AddMedicalReport());
+		commands.put(Operation.GET_FAMILY, new GetFamilyMember());
+		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
+		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,new AddEmployeeBasicdata());
+		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
+		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -115,6 +126,31 @@ public class EmployerController extends HttpServlet {
 					break;
 				case ADD_MEDICAL_HISTORY:
 					message = commands.get(o).execute(details);
+				case ADD_EMPLOYEE_BASICDATA:
+					message = commands.get(o).execute(details);
+					break;
+				case ADD_FAMILY_MEMBER:
+					message = commands.get(o).execute(details);
+					break;
+				case GET_BASIC_DATA:
+					message = commands.get(o).execute(details, task);
+					log.info("Search Employee details" + details);
+					break;
+				case GET_EDU_DETAILS:
+					message = commands.get(o).execute(details, task);
+					log.info("Search Educational details");
+					break;
+				case GET_FAMILY:
+					message = commands.get(o).execute(details, task);
+					log.info("Search family details");
+					break;
+				case ADD_EDU_DETAILS:
+					message = commands.get(o).execute(details);
+					log.info("add education details" + details);
+					break;
+				case UPDATE_EDU_DETAILS:
+					message = commands.get(o).execute(details);
+					log.info("update education details" + details);
 					break;					
 				case ADD_MEDICAL_REPORT:
 					// this code segment will improve in next sprint as much as possible 

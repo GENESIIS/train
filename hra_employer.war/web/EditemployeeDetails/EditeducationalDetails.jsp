@@ -1,4 +1,11 @@
-<!--Add Educational Modal -->
+!--Edit Educational Modal -->
+<script type="text/javascript">
+	//To load the Datatable
+	$(document).ready(function() {
+		$('#employeeDetails').DataTable();
+		loadDataEducationalDetails();
+	});
+</script>
 <div class="">
 	<div class="">
 		<h3 class="">
@@ -8,22 +15,24 @@
 		<div class="form-group">
 			<label for="employeeId">Employee</label> <input type="text"
 				class="form-control" id="employeeId" name="employeeId"
-				placeholder="">
+				placeholder="" onkeypress="return isNumberKey(event)">
 		</div>
 		<div class="form-group">
 			<label for="qualificationName">Qualification</label> <input
 				type="text" class="form-control" id="qualificationName"
-				name="qualificationName" placeholder="">
+				name="qualificationName" placeholder=""
+				onkeypress="return isLetter(event)">
 		</div>
 		<div class="form-group">
 			<label for="educatedPlace">University/College/School</label> <input
 				type="text" class="form-control" id="educatedPlace"
-				name="educatedPlace" placeholder="">
+				name="educatedPlace" placeholder=""
+				onkeypress="return isLetter(event)">
 		</div>
 		<div class="form-group">
 			<label for="mediumStudied">Medium</label> <input type="text"
 				class="form-control" id="mediumStudied" name="mediumStudied"
-				placeholder="">
+				placeholder="" onkeypress="return isLetter(event)">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -40,10 +49,20 @@
 						placeholder="">
 				</div>
 			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="studyTime">Study Time</label><br> <label
+						for="weekdays"><input type="checkbox" class="form-control"
+						id="weekdays" name="weekdays" placeholder="">Weekdays </label> <label
+						for=weekends> <input type="checkbox" class="form-control"
+						id="weekends" name="weekends" placeholder="">Weekends
+					</label>
+				</div>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-left"
-				onclick="updatedAlert()" data-dismiss="modal">
+				onclick="EditEducationDetails()" data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
 			<button type="button" class="btn btn-danger pull-right"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 20121007 SW CCNNNN Namespace added, remove bad 'description' element -->
+<!-- 20140402 LE CC3937 Adding careers modules -->
+<!-- 20150113 SW SYS-84-4162 Exclude modules for JBAS630 migration -->
+<!-- 20150119 LE CC4164 SDB-319  Adding admin modules  -->
+<!-- 20150310 LE CC4182 SDB-4182 adding sdb_common.war -->
+<!-- 20150513 LE SDB-344 adding common.jar -->
+<!-- 20150814 SW SDB-344-4193 merging sys-86 with development v293 sha b5ed345 -->
+<!-- 20150818 SW SDB-344-4193 fix merge error (move and terminate xml comment) -->
+
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd"
+	version="5">
+	<display-name>HRA</display-name>
+	<module>
+		<ejb>hra_employer.jar</ejb>
+	</module>
+	<module>
+		<web>
+			<web-uri>hra_employer.war</web-uri>
+			<context-root>/</context-root>
+		</web>
+	</module>
+</application>

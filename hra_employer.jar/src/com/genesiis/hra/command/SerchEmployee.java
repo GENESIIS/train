@@ -44,7 +44,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	}
 
 	@Override
-	public String validateValue(Object entiytObject) throws ParseException {
+	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
