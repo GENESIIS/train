@@ -56,7 +56,7 @@ function addedAlert() {
 
 // Get Departments for Add Employee Form
 function getDepartment() {
-	$.get('EmployeeController', {
+	$.get('EmployerController', {
 		task : "FIND"
 	}, function(data) {
 		var select = $('#employeeDepartment');
@@ -111,7 +111,7 @@ function addEmployeeDetails() {
 
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(employeeData),
 			task : "ADD"
@@ -388,7 +388,7 @@ function addFamilyDetails() {
 
 		$.ajax({
 			type : "POST",
-			url : 'EmployeeController',
+			url : 'EmployerController',
 			data : {
 				jsonData : JSON.stringify(jsonData),
 				task : "ADD"
@@ -601,28 +601,5 @@ function updateLoanDetailes() {
 	});
 }
 	
-// @TR - Employee > new employee > more details > add Employment details 
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
-}
 
-// @TR - Employee > edit employee > more details > edit Employment details 
-function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
-	$("#modelrestedit").load("employeeHistory/editEmployeeHistory.jsp");
-}
-
-// @TR - Employee > new employee > more details > add Medical history details 
-function loadAddMedicalHIstoryDetails() {
-	$("#modelrest").load("medicalHistory/addMedicalHistory.jsp");
-}
-
-// @TR - Employee > edit employee > more details > edit medical history details 
-function loadEditMedicalHIstoryDetails() {
-	$("#modelrestedit").load("medicalHistory/editMedicalHistory.jsp");
-}
-
-function disableButton() {
-//	document.getElementById("moredetails").disabled = true;
-}
 
