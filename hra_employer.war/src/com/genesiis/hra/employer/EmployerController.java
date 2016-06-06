@@ -35,6 +35,7 @@ import com.google.gson.Gson;
  * Servlet implementation class AddEmployeeDetails
  */
 @WebServlet("/EmployerController")
+@MultipartConfig
 public class EmployerController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -77,7 +78,7 @@ public class EmployerController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
-		log.info("task-"+task+"serchVlaue-"+serchVlaue+ "details-"+details);
+		log.info("task-"+task+" searchValue-"+serchVlaue+ " details-"+details);
 		log.info("Operation"+o);
 		try { 
 			switch (o) {
@@ -124,6 +125,7 @@ public class EmployerController extends HttpServlet {
 					String employeeId = request.getParameter("employeeId");
 					String path = fileUploader.setFileToBeUpload(fileContent,fileName,employeeId);
 					
+					log.info(":"+fileName+":"+employeeId+":"+path+":");
 					if(path!=null){
 						
 						details = "{\"code\":\""+MaskValidator.SQL_RECODE+"\","
@@ -132,6 +134,7 @@ public class EmployerController extends HttpServlet {
 								+ "\"modby\":\""+request.getParameter("ehReferencemodby")+"\","
 								+ "\"crtby\":\""+request.getParameter("ehReferencemodby")+"\""
 								+"}";
+						log.info(details);
 						
 						message = commands.get(o).execute(details);// do not delete need to improve
 

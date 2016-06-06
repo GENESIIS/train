@@ -9,41 +9,44 @@
 
 <script type="text/javascript">
 	//To load the Datatable
-	$(document).ready(function() {	
+	$(document).ready(function() {
 		loadBasicTable();
 		//listEmployee(empData); 
-} );
+	});
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
 
-    
+
 	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#addEmployeedetails" >
+		data-target="#addEmployeedetails">
 		<i class="glyphicon glyphicon-plus"></i> New Employee
 	</button>
 	<br></br>
 	<div class="row">
-	<div class="col-sm-4">
-	 <!-- <select class="selectpicker">
+		<div class="col-sm-4">
+			<!-- <select class="selectpicker">
       <option value="Basic" selected="selected">Basic detail</option>
       <option value="Family">Department detail</option>
       <option value="medical"></option>
       <option value="Education"></option>
      </select> -->
-     </div>
-     <div class="col-sm-8" align="right">
-       <div class="input-group add-on">
-      <input class="form-control" placeholder="Search"  id="serchEmployeeText" type="text">
-      <div class="input-group-btn">
-        <button class="btn btn-default" onclick = "serchEmployee()" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </div>
-    </div>
+		</div>
+		<div class="col-sm-8" align="right">
+			<div class="input-group add-on">
+				<input class="form-control" placeholder="Search"
+					id="serchEmployeeText" type="text">
+				<div class="input-group-btn">
+					<button class="btn btn-default" onclick="serchEmployee()"
+						type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
- </div>	
-<div id = "basicTable">
-</div>
+	<div id="basicTable"></div>
 </div>
 
 <!-- Modal ADD EMPLOYEE DETAILS-->
@@ -64,7 +67,7 @@
 							<div class="form-group">
 								<label for="employeeNumber">Employee Number</label><input
 									type="text" class="form-control" id="employeeNumber"
-									name="employeeNumber" placeholder="" maxlength="6" size="6">								
+									name="employeeNumber" placeholder="" maxlength="6" size="6">
 							</div>
 						</div>
 					</div>
@@ -239,8 +242,8 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" 
-					data-toggle="modal" data-target="#addmoreEmployeedetails">
+					id="moredetails" name="moredetails" data-toggle="modal"
+					data-target="#addmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
 				<button type="button" class="btn btn-warning pull-left"
@@ -278,11 +281,12 @@
 						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadlonedetails()" class="btn btn-primary">Loan
 						Details</a> <a href="#" onclick="loadfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-					<a id="btnEmpHisDet" href="#" onclick="loadAddEmployementHIstoryDetails()"
-					class="btn btn-primary">Employee History Details</a>
-					<a id="btnMedicalHistory"  href="#" onclick="loadAddMedicalHIstoryDetails()"
-					class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Family Details</a> <a id="btnEmpHisDet"
+						href="#" onclick="loadAddEmployementHIstoryDetails()"
+						class="btn btn-primary">Employee History Details</a> <a
+						id="btnMedicalHistory" href="#"
+						onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div class="modal-body1" style="overflow-y: auto;">
 					<div id="modelrest" style="overflow-y: auto;"></div>
@@ -294,167 +298,170 @@
 
 	</div>
 </div>
-<!--"Edit Employee Details Form" Modal -->
-<!--//////////////////////////////////////////////// new edit/////////////////////////////////////////////////////// -->
 
-<!-- Modal -->
-	<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h3 class="modal-title">
-						<i class="glyphicon glyphicon-user"></i>Edit Employee Details
-					</h3>
-				</div>
-				<div class="modal-body">
-					<div class="well">
-						<h3 class="">General Details</h3>
-						<div class="form-group">
-							<label for="employeeNameEdit">Name</label> <input type="text"
-								class="form-control" id="employeeNameEdit" name="employeeNameEdit"
-								placeholder="">
-						</div>						
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeDateofBothEdit">Date of Birth</label> <input
-										type="date" class="form-control" id="employeeDateofBothEdit"
-										name="employeeDateofBothEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">NIC</label> <input type="text"
-										class="form-control" id="employeeNICEdit" name="editemployeeNIC"
-										placeholder="">
-								</div>
+
+
+
+
+
+<!-- Modal EDIT EMPLOYEE DETAILS -->
+<div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">
+					<i class="glyphicon glyphicon-user"></i>Edit Employee Details
+				</h3>
+			</div>
+			<div class="modal-body">
+				<div class="well">
+					<h3 class="">General Details</h3>
+					<div class="form-group">
+						<label for="employeeNameEdit">Name</label> <input type="text"
+							class="form-control" id="employeeNameEdit"
+							name="employeeNameEdit" placeholder="">
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeDateofBothEdit">Date of Birth</label> <input
+									type="date" class="form-control" id="employeeDateofBothEdit"
+									name="employeeDateofBothEdit" placeholder="">
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeGenderEdit">Gender</label> <input type="text"
-										class="form-control" id="employeeGenderEdit" name="employeeGenderEdit"
-										placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeMaritalEdit">Marital Status</label> <input
-										type="text" class="form-control" id="employeeMaritalEdit"
-										name="employeeMaritalEdit" placeholder="">
-								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="editemployeeId">NIC</label> <input type="text"
+									class="form-control" id="employeeNICEdit"
+									name="editemployeeNIC" placeholder="">
 							</div>
 						</div>
 					</div>
 
-					<div class="well">
-						<h3 class="">Job Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeEPFEdit">EPF Number</label> <input
-										type="text" class="form-control" id="employeeEPFEdit"
-										name="employeeEPFEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeStatusEdit">Employment Status</label> <input
-										type="text" class="form-control" id="employeeStatusEdit"
-										name="employeeStatusEdit" placeholder="">
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeGenderEdit">Gender</label> <input
+									type="text" class="form-control" id="employeeGenderEdit"
+									name="employeeGenderEdit" placeholder="">
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-
-									<label for="editemployeeId">Designation</label> <input
-										type="text" class="form-control" id="employeeDesignationEdit"
-										name="employeeDesignationEdit" placeholder="">
-								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeMaritalEdit">Marital Status</label> <input
+									type="text" class="form-control" id="employeeMaritalEdit"
+									name="employeeMaritalEdit" placeholder="">
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeDesignationEdit">Department</label> <input
-										type="text" class="form-control" id="employeeDepartmentEdit"
-										name="employeeDesignationEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="well">
-						<h3 class="">Contact Details</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeAddressEdit">Permanent Address</label>
-									<textarea class="form-control" id="employeeAddressEdit"
-										name="employeeAddressEdit" placeholder=""></textarea>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeTempADDEdit">Temporary Address</label>
-									<textarea class="form-control" id="employeeTempADDEdit"
-										name="employeeTempADDEdit" placeholder=""></textarea>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeOtherNumberEdit">Telephone</label> <input
-										type="Number" class="form-control" id="employeeOtherNumberEdit"
-										name="employeeOtherNumberEdit" placeholder="">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="employeeMobileNumberEdit">Mobile Number</label> <input
-										type="Number" class="form-control" id="employeeMobileNumberEdit"
-										name="employeeMobileNumberEdit" placeholder="">
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label for="employeeEmailEdit">Email</label> <input type="text"
-								class="form-control" id="employeeEmailEdit" name="employeeEmailEdit"
-								placeholder="">
 						</div>
 					</div>
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success pull-right"
-						onclick="updateEmployeeDetails()" data-dismiss="">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Update
-					</button>
-					<button type="button" class="btn btn-warning pull-right" id="moredetails"
-						name="moredetails" onclick="" data-dismiss="modal" 
-						data-toggle="modal" data-target="#editmoreEmployeedetails">
-						<i class="glyphicon glyphicon-file"></i>Edit More Details
-					</button>					
-					<button type="button" class="btn btn-danger pull-left"
-						data-dismiss="modal" onclick="">
-						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
-					</button>
+				<div class="well">
+					<h3 class="">Job Details</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeEPFEdit">EPF Number</label> <input
+									type="text" class="form-control" id="employeeEPFEdit"
+									name="employeeEPFEdit" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeStatusEdit">Employment Status</label> <input
+									type="text" class="form-control" id="employeeStatusEdit"
+									name="employeeStatusEdit" placeholder="">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+
+								<label for="editemployeeId">Designation</label> <input
+									type="text" class="form-control" id="employeeDesignationEdit"
+									name="employeeDesignationEdit" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeDesignationEdit">Department</label> <input
+									type="text" class="form-control" id="employeeDepartmentEdit"
+									name="employeeDesignationEdit" placeholder="">
+							</div>
+						</div>
+					</div>
 				</div>
+
+				<div class="well">
+					<h3 class="">Contact Details</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeAddressEdit">Permanent Address</label>
+								<textarea class="form-control" id="employeeAddressEdit"
+									name="employeeAddressEdit" placeholder=""></textarea>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeTempADDEdit">Temporary Address</label>
+								<textarea class="form-control" id="employeeTempADDEdit"
+									name="employeeTempADDEdit" placeholder=""></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeOtherNumberEdit">Telephone</label> <input
+									type="Number" class="form-control" id="employeeOtherNumberEdit"
+									name="employeeOtherNumberEdit" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="employeeMobileNumberEdit">Mobile Number</label> <input
+									type="Number" class="form-control"
+									id="employeeMobileNumberEdit" name="employeeMobileNumberEdit"
+									placeholder="">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label for="employeeEmailEdit">Email</label> <input type="text"
+							class="form-control" id="employeeEmailEdit"
+							name="employeeEmailEdit" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success pull-right"
+					onclick="updateEmployeeDetails()" data-dismiss="">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Update
+				</button>
+				<button type="button" class="btn btn-warning pull-right"
+					id="moredetails" name="moredetails" onclick="" data-dismiss="modal"
+					data-toggle="modal" data-target="#editmoreEmployeedetails">
+					<i class="glyphicon glyphicon-file"></i>Edit More Details
+				</button>
+				<button type="button" class="btn btn-danger pull-left"
+					data-dismiss="modal" onclick="">
+					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
+				</button>
 			</div>
 		</div>
 	</div>
 </div>
-<!--////////////////////////////////////////-->
-<!--////////////////////////////////////////-->
 
+
+<!-- Modal EDIT MORE EMPLOYEE DETAILS -->
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -467,20 +474,23 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" onclick="loadEditContentqualifications()"
+
+					<a onclick="loadEditContentqualifications()"
 						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-						<a id="btnEmployeeHistory" href="#" onclick="loadEditEmployementHIstoryDetails()"	
-						class="btn btn-primary">Employee History Details</a>
-						<a id="btnMedicalHistory"  href="#" onclick="loadEditMedicalHIstoryDetails()" 
+						onclick="loadEditContentstudyprograms()" class="btn btn-primary">Study
+						Programs</a> <a onclick="loadEditContentloandetails()"
+						class="btn btn-primary">Loan Details</a> <a
+						onclick="loadEditContentfamilydetails()" class="btn btn-primary">Family
+						Details</a> <a id="btnEmployeeHistory"
+						onclick="loadEditEmployementHIstoryDetails()"
+						class="btn btn-primary">Employee History Details</a> <a
+						id="btnMedicalHistory" onclick="loadEditMedicalHIstoryDetails()"
 						class="btn btn-primary">Medical History</a>
+
 				</div>
+
 				<div id="Editmodelrest" name="Editmodelrest"></div>
-			</div>			
+			</div>
 		</div>
 	</div>
 </div>

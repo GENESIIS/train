@@ -402,5 +402,14 @@ function clearEmployeeHistoryDetails() {
 }
 
 
+//@TR - Employee > new employee > more details > add Employment details 
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
+}
 
+// @TR - Employee > edit employee > more details > edit Employment details 
+function loadEditEmployementHIstoryDetails() {
+	loadEditContentEmployeeHistoryDetails();
+	$("#modelrestedit").load("employeeHistory/editEmployeeHistory.jsp");
+}
 

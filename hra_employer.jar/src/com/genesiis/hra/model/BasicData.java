@@ -229,7 +229,7 @@ public class BasicData extends Employee {
 
 	@Override
 	public int update(Object employee) {
-		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
+		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
 				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
 		String message = "Error";
@@ -287,11 +287,7 @@ public class BasicData extends Employee {
 		return status;
 	}
 
-	@Override
-	public int delete(Object object) {
-		// TODO Auto-generated method stub
-		return (Integer) null;
-	}
+
 
 	public String getId(String id) {
 		// TODO Auto-generated method stub
@@ -311,7 +307,7 @@ public class BasicData extends Employee {
 	
 	@Override
 	public Object findByEpf(String empEpf) {
-		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
+		String query = "select * from [dbo].[HRA.EMPLOYEE] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -384,5 +380,11 @@ public class BasicData extends Employee {
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

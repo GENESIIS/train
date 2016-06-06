@@ -143,6 +143,7 @@ $(document).on("click", "#upload", function() {
 	var hasReportdescription = isEmpty(reportDescription);
 	var hasReportupload = isValidImage();
 
+	alert(formData);
 
 	if (hasReportdescription) {
 		message = "Report description cannot be empty";

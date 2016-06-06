@@ -119,9 +119,10 @@ function addEmployeeDetails() {
 		dataType : "json",
 		success : function(data) {
 			alert(data);
+			document.getElementById("moredetails").disabled = false;
 			if (data == "Details added successfully.") {
 				clearAddemployeeform();
-//				document.getElementById("moredetails").disabled = false;
+				document.getElementById("moredetails").disabled = false;
 			}
 		},
 		error : function(e) {
