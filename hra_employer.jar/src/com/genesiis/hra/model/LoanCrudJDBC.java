@@ -155,7 +155,22 @@ public class LoanCrudJDBC implements ICrud {
 		return null;
 	}
 
-	
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public List<Object> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

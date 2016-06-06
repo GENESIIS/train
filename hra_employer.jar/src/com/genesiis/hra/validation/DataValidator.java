@@ -2,6 +2,7 @@ package com.genesiis.hra.validation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.jboss.logging.Logger;
@@ -62,9 +63,10 @@ public class DataValidator {
 
 	public boolean isValidString(String text) {
 		boolean status = false;
-		if ((text.isEmpty() == false) && text != null) {
+		if ( (text != null) &&  (text.isEmpty() == false)) {
 			status = true;
 		}
+		log.error("isValidString - status " + status);
 		return status;
 	}
 	
@@ -84,12 +86,24 @@ public class DataValidator {
 		return status;
 	}
 
+	//
+	public boolean isValidInt(int text) {
+		boolean status = false;
+		if  (text != 0) {
+			status = true;
+		}
+		log.error("isValidInt - status " + status);
+		return status;
+	}
+	
+	//validate email address
 	public boolean isValidemail(String email) {
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		Boolean b = email.matches(EMAIL_REGEX);
 		return b;
 	}
 
+	//validate telephone number
 	public boolean isValidTelephone(String number) {
 		boolean status = false;
 		if (number.matches("[0-9]+") && number.length() == 10) {
@@ -114,5 +128,31 @@ public class DataValidator {
 			return -1;
 		}
 	}
+	
+	//convert String Date to Sql Date
+	public java.sql.Date convertStringDatetoSqlDate(String stringDate){
 		
+		java.sql.Date sqlDate = null;
+		
+		try {
+			
+			if (!stringDate.equals(null) && stringDate != null) {
+				stringDate = stringDate.trim().toString();
+				if (stringDate != "" && !stringDate.equals("")) {
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+					Date parsed = format.parse(stringDate);
+					sqlDate = new java.sql.Date(parsed.getTime());
+				} else {
+					sqlDate = new java.sql.Date(Calendar.getInstance()
+							.getTime().getTime());
+				}
+			}
+			
+	        
+		} catch (Exception e) {
+			log.info(e);
+			e.printStackTrace();
+		}
+		return sqlDate;
+	}
 }

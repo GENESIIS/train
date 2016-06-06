@@ -1,5 +1,4 @@
 package com.genesiis.hra.model;
-
 import java.util.logging.Logger;
 import com.genesiis.hra.validation.Operation;
 
@@ -17,6 +16,8 @@ public class EmployeeFactory {
 		switch (o) {
 		case GET_EMPLOYEE_BASIC:
 			return new BasicData();
+		case GET_EMPLOYEE_HISTORY:
+			return new EmploymentHistory();
 		default:
 			return null;
 		}

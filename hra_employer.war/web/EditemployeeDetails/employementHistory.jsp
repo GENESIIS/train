@@ -7,12 +7,15 @@
 
 
 <div>
-<label><h2>Employment History</h2> </label>
+		<div> <h1>Employment History</h1> </div>
+		<div> 
+			<button type="button" class="btn btn-primary pull-side" data-toggle="modal" data-target="#addEmploymenthistorydetails"> 
+				<i class="glyphicon glyphicon-plus"> Add New </i>
+			</button> 
+		</div>
+		
+		<!--<label> <h1>Employment History</h1> </label>-->
 	
-	<button type="button" class="btn btn-primary pull-side"
-		data-toggle="modal" data-target="#addEmploymenthistorydetails">
-		<i class="glyphicon glyphicon-plus"></i> Add New
-	</button>
 </div>
 
 <br></br>
@@ -174,6 +177,8 @@
 	</div>
 </div>
 
+
+
 <!--edit Educational Modal -->
 <div class="modal fade" id="editEmploymenthistorydetails"
 	name="addEducationaldetails" role="dialog">
@@ -273,3 +278,8 @@
 
 	</div>
 </div>
+
+
+
+
+

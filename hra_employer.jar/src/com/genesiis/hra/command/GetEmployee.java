@@ -1,4 +1,3 @@
-
 package com.genesiis.hra.command;
 import com.genesiis.hra.model.Employee;import com.genesiis.hra.model.EmployeeFactory;
 import com.genesiis.hra.validation.MessageList;
@@ -53,13 +52,7 @@ public class GetEmployee implements ICommandAJX{
 		}		  
 		return employeeGoson;
 	}
-
-	@Override
-	public String validateValue(Object entiytObject) throws ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
@@ -68,6 +61,12 @@ public class GetEmployee implements ICommandAJX{
 
 	@Override
 	public String execute(String gsonData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String validateValue(Object entiytObject) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}	

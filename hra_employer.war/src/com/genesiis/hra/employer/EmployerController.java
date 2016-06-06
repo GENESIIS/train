@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
+import java.io.InputStream;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,14 @@ import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.command.RegisterLoan;
 import com.genesiis.hra.command.SerchEmployee;
+import javax.servlet.http.Part;
+
+import com.genesiis.hra.command.AddEmployeeHistory;
+import com.genesiis.hra.command.AddMedicalHistory;
+import com.genesiis.hra.command.AddMedicalReport;
+import com.genesiis.hra.utill.MaskValidator;
+import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.FileUploader;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -40,12 +50,11 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 		commands.put(Operation.GET_LOAN, new GetLoan());
+		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
+		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());
+		commands.put(Operation.ADD_MEDICAL_REPORT, new AddMedicalReport());
 	}
 
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");		
@@ -59,7 +68,6 @@ public class EmployerController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		String details = request.getParameter("jsonData");
 		String serchVlaue = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");			
@@ -95,6 +103,42 @@ public class EmployerController extends HttpServlet {
 			 case UPDATE_EMPLOYEE_BASIC:					
 				    message =commands.get(o).execute(details);							
 		        break;	
+			 case ADD_EMPLOYEE_HISTORY:
+					message = commands.get(o).execute(details);
+					break;
+				case GET_EMPLOYEE_HISTORY:
+					message = commands.get(o).execute(details);
+					break;
+				case UPDATE_EMPLOYEE_HISTORY:
+					message = commands.get(o).execute(details,task);
+					break;
+				case ADD_MEDICAL_HISTORY:
+					message = commands.get(o).execute(details);
+					break;					
+				case ADD_MEDICAL_REPORT:
+					// this code segment will improve in next sprint as much as possible 
+					FileUploader fileUploader = new FileUploader();
+					Part filePart = request.getPart("file");
+					InputStream fileContent = filePart.getInputStream();
+					String fileName = getSubmittedFileName(filePart);
+					String employeeId = request.getParameter("employeeId");
+					String path = fileUploader.setFileToBeUpload(fileContent,fileName,employeeId);
+					
+					if(path!=null){
+						
+						details = "{\"code\":\""+MaskValidator.SQL_RECODE+"\","
+								+ "\"reportDescription\":\""+request.getParameter("reportDescription")+"\","
+								+ "\"reportPath\":\""+path+"\","
+								+ "\"modby\":\""+request.getParameter("ehReferencemodby")+"\","
+								+ "\"crtby\":\""+request.getParameter("ehReferencemodby")+"\""
+								+"}";
+						
+						message = commands.get(o).execute(details);// do not delete need to improve
+
+					}else{
+						message = MessageList.ERROR.message();
+					}
+						break;
 			default:
 				break;
 			}			
@@ -110,18 +154,27 @@ public class EmployerController extends HttpServlet {
 
 	}
 
-	private void writeResponse(String message, HttpServletResponse response) throws IOException {		
+	private void writeResponse(String insertedSuccess,
+			HttpServletResponse response) {
+
+		Gson gson = new Gson();
 		try {
-			response.getWriter().write(message);
-			log.info(message);
-		} catch (Exception e) {
-			log.error("WriteResponse method error. " + e);
-		} finally {
-			response.getWriter().flush();
+			response.getWriter().write(gson.toJson(insertedSuccess));
 			response.getWriter().close();
+		} catch (Exception e) {
+			insertedSuccess = MessageList.FAILED_TO_CREATE.message();
+			log.error("Exception: EmployeeController - writeResponse" + e);
 		}
-
-
 	}
-
+	
+	private static String getSubmittedFileName(Part part) {
+	    for (String cd : part.getHeader("content-disposition").split(";")) {
+	        if (cd.trim().startsWith("filename")) {
+	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+	            return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); 
+	        }
+	    }
+	    return null;
+	}
+  
 }

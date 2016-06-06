@@ -9,7 +9,12 @@ public enum Operation {
 	UPDATE_LOAN("UL"),
 	GET_LOAN("GL"),
 	UPDATE_EMPLOYEE_BASIC("UEB"),
-	GET_EMPLOYEE_BASIC("GEB");
+	GET_EMPLOYEE_BASIC("GEB"),
+	ADD_EMPLOYEE_HISTORY("AEH"), //add employee history data to database
+	GET_EMPLOYEE_HISTORY("GEH"), //get employee history data from database
+	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
+	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
+	ADD_MEDICAL_REPORT("AMR"); //add medical report data to database
 	 
 	private final String value;
 
@@ -31,3 +36,5 @@ public enum Operation {
 	}
 
 }
+
+	

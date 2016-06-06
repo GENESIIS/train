@@ -1,7 +1,6 @@
 package com.genesiis.hra.model;
 
 
-
 ///***********************************************
 //* 20160407 PN HRA-1 created Employee.java class
 //* 20160411 PN HRA-1 changes Employee.java class. Added employeeNic attribute.

@@ -378,5 +378,11 @@ public class BasicData extends Employee {
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}
+
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

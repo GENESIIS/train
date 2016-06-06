@@ -121,7 +121,7 @@ function addEmployeeDetails() {
 			alert(data);
 			if (data == "Details added successfully.") {
 				clearAddemployeeform();
-				document.getElementById("moredetails").disabled = false;
+//				document.getElementById("moredetails").disabled = false;
 			}
 		},
 		error : function(e) {
@@ -130,6 +130,7 @@ function addEmployeeDetails() {
 		}
 	});
 }
+
 
 function clearAddemployeeform() {
 	$("#employeeFirstname").val("");
@@ -303,22 +304,18 @@ function clearDepartmentform() {
 
 //////load more edit Employeee Detail///////////////
 
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-}
-
-function loadEditemployementhistory() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
-}
-
-function loadEditContentstudyprograms() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-}
-
 function loadEditlanguages() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
 }
 // ///////////////////////////////////////////////
+
+$("#buttonAddemployee").click(function() {
+	alert(this.id);
+});
+
+
+// ////load more edit Employeee Detail///////////////
+/////////////////////////////////////////////////
 $(document).on("click", "#vbutton", function() {
 
 	$.get("EmployerController", function(data, status) {
@@ -351,6 +348,98 @@ $(document).on("click", "#vbutton", function() {
 });
 
 // ///load more employee views/////////////////////////////////////
+/*****************START Add Family Details*************************/
+function addFamilyDetails() {
+	var fmemployeeId = $("#fmemployeeId").val();
+	var relationship = $("#relationship").val();
+	var relationDateofbirth = $("#relationDateofbirth").val();
+	var relationName = $("#relationName").val();
+	var occupation = $("#occupation").val();
+	var workingPlace = $("#workingPlace").val();
+
+	var employeeIdtb = isEmptyfield(fmemployeeId);
+	var relationshiptb = isEmptyfield(relationship);
+	var relationDateofbirthtb = isPastdate(relationDateofbirth);
+	var relationNametb = isEmptyfield(relationName);
+
+	if (employeeIdtb == false) {
+		document.getElementById('fmemployeeidError').innerHTML = "** Invalid EPF Number.";
+	}
+	if (relationshiptb == false) {
+		document.getElementById('relationshipError').innerHTML = "** Relationship can not be Empty.";
+	}
+	if (relationDateofbirthtb == false) {
+		document.getElementById('relationbirthdateError').innerHTML = "** Invalid Birth Date.";
+	}
+	if (relationNametb == false) {
+		document.getElementById('relationnameError').innerHTML = "** Name cannot be Empty.";
+	}
+
+	if ((employeeIdtb == true) && (relationshiptb == true) && (relationDateofbirthtb == true) && (relationNametb == true)) {
+		var jsonData = {
+			"employeeEpf" : fmemployeeId,
+			"fmRelationship" : relationship,
+			"fmDateofbirth" : relationDateofbirth,
+			"fmName" : relationName,
+			"fmOccupation" : occupation,
+			"fmWorkingplace" : workingPlace
+		};
+
+		$.ajax({
+			type : "POST",
+			url : 'EmployeeController',
+			data : {
+				jsonData : JSON.stringify(jsonData),
+				task : "ADD"
+			},
+			dataType : "json",
+			success : function(data) {
+				alert(data);
+				if (data == "Details added successfully.") {
+					clearFamilydetails();
+				}
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	}
+
+}
+
+/*****************END Add Family Details*************************/
+function clearFamilydetails() {
+	$("#relationDateofbirth").val("");
+	$("#relationName").val("");
+	$("#occupation").val("");
+	$("#workingPlace").val("");
+	$("#fmemployeeidError").text("");
+	$("#relationshipError").text("");
+	$("#relationbirthdateError").text("");
+	$("#relationnameError").text("");
+	$('#relationship option').prop('selected', function() {
+		return this.defaultSelected;
+	});
+
+}
+
+
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
+}
+
+function loadEditemployementhistory() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
+}
+
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
+}
+
+function loadEditlanguages() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
+}
 
 function loadviewqlifications() {
 	$("#viewmodelrest").load("viewemployeeDetails/vieweducationalDetails.jsp");
@@ -509,6 +598,30 @@ function updateLoanDetailes() {
 			console.log(e);
 		}		
 	});
+}
 	
+// @TR - Employee > new employee > more details > add Employment details 
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
+}
+
+// @TR - Employee > edit employee > more details > edit Employment details 
+function loadEditEmployementHIstoryDetails() {
+	loadEditContentEmployeeHistoryDetails();
+	$("#modelrestedit").load("employeeHistory/editEmployeeHistory.jsp");
+}
+
+// @TR - Employee > new employee > more details > add Medical history details 
+function loadAddMedicalHIstoryDetails() {
+	$("#modelrest").load("medicalHistory/addMedicalHistory.jsp");
+}
+
+// @TR - Employee > edit employee > more details > edit medical history details 
+function loadEditMedicalHIstoryDetails() {
+	$("#modelrestedit").load("medicalHistory/editMedicalHistory.jsp");
+}
+
+function disableButton() {
+//	document.getElementById("moredetails").disabled = true;
 }
 
