@@ -24,7 +24,7 @@ public class GetFamilyMember implements ICommandAJX {
 			familydetails = familyManger.find(epf);
 			log.info("execute");
 		} catch (Exception e) {
-			log.error("execute - Exception " + e);
+			log.error("execute - Exception " + e); 
 		}
 		return familydetails;
 	}

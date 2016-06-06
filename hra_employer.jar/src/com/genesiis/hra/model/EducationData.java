@@ -28,7 +28,7 @@ public class EducationData extends Employee {
 	private String eduStudytime;
 
 	public String getEduQualification() {
-		return eduQualification;
+		return eduQualification; 
 	}
 
 	public void setEduQualification(String eduQualification) {

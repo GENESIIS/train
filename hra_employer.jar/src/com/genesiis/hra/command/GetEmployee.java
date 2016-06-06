@@ -29,11 +29,11 @@ public class GetEmployee implements ICommandAJX {
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-
-		return empdetails;
+ 
+		return empdetails; 
 	}
-
-	private Employee getEmployeeDetails(String data) {
+ 
+	private Employee getEmployeeDetails(String data) { 
 		Employee employee = (Employee) extractFromJason(data);
 		return employee;
 	}

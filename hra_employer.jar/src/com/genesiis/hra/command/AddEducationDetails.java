@@ -27,7 +27,7 @@ public class AddEducationDetails implements ICommandAJX{
 		} catch (Exception e ) {
 			message = MessageList.ERROR;
 			log.error(" execute(): ERR" + e);
-		}
+		} 
 		
 		// TODO Auto-generated method stub
 		return message.message();

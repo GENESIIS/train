@@ -30,7 +30,7 @@ public class GetEducation implements ICommandAJX {
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} 
 
 	// Create geson object
 	public String createGson(Employee emp) {

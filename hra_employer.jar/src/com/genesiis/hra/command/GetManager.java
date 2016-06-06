@@ -26,7 +26,7 @@ public class GetManager implements ICommandAJX {
 									// validation of the Component ->
 									// validateComponent()
 			message = MessageList.ERROR.message();
-			log.error("--> execute(): ERR" + mne);
+			log.error("--> execute(): ERR" + mne); 
 		}
 		return message;
 	}

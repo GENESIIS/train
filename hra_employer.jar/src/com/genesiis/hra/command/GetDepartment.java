@@ -31,13 +31,13 @@ public class GetDepartment implements ICommandAJX {
 			message = gson;
 		} catch (Exception mne) { // User Defined exception. This comes from the
 									// validation of the Component ->
-									// validateComponent()
+									// validateComponent() 
 			message = MessageList.ERROR.message();
 			log.error("--> execute(): ERR" + mne);
 		}
 		return message;
 	}
-
+ 
 	@Override
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub

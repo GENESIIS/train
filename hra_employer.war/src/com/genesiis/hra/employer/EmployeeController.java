@@ -40,7 +40,7 @@ import com.google.gson.Gson;
 @WebServlet("/EmployeeController")
 public class EmployeeController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	static Logger log = Logger.getLogger(EmployeeController.class.getName());
 	HashMap<Operation, ICommandAJX> commands = null;
 	HashMap<Integer, Object> hmap = null;

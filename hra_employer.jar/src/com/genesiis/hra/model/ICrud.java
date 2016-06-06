@@ -10,7 +10,7 @@ import java.util.List;
 public interface ICrud {
 	public int add(Object object);
 
-	public int update(Object object);
+	public int update(Object object); 
 
 	public String delete(Object object);
 
@@ -20,5 +20,5 @@ public interface ICrud {
 
 	public boolean isValid(Object object);
 
-	String getEmployee(int employeeId);
+	String getEmployee(int employeeId); 
 }

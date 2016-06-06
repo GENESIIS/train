@@ -19,7 +19,7 @@ public class ConnectionManager {
 	static Logger log = Logger.getLogger(ConnectionManager.class.getName());
 	// The DB_JNDI_NAME is the property for data source name that the
 	// application looking at runtime.
-	private static final String DB_JNDI_NAME = "java:/hraDatabase";
+	private static final String DB_JNDI_NAME = "java:/hraDatabase"; 
 	private static DataSource dataSource;
 
 	// This static{} block runs first when running the ConnectionManager class

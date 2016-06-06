@@ -33,7 +33,7 @@ public class Familymember extends Employee {
 	}
 
 	public String getFmdateofbirth() {
-		return fmDateofbirth;
+		return fmDateofbirth; 
 	}
 
 	public void setFmdateofbirth(String fmDateofbirth) {
@@ -213,7 +213,7 @@ public class Familymember extends Employee {
 		PreparedStatement preparedStatement = null;
 		Familymember fm = new Familymember();
 		String Familymember = null;
-		Gson gson = new Gson();
+		Gson gson = new Gson(); 
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn
@@ -225,7 +225,7 @@ public class Familymember extends Employee {
 				log.info("res.getString(2)" + res.getString(2));
 				fm.setFmdateofbirth(res.getString(4));
 				log.info("res.getString(4)" + res.getString(4));
-				fm.setFmname(res.getString(3));
+				fm.setFmname(res.getString(3));  
 				log.info("res.getString(3)" + res.getString(3));
 				fm.setFmoccupation(res.getString(6));
 				log.info("res.getString(6)" + res.getString(6));

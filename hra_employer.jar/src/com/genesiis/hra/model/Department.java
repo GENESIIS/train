@@ -26,7 +26,7 @@ public class Department implements ICrud {
 	private String departmentLocation;
 	private String departmentHead;
 
-	public String getDepartmentnumber() {
+	public String getDepartmentnumber() { 
 		return departmentNumber;
 	}
 

@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 public class UpdateEmployee implements ICommandAJX {
 	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
 
-	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
+	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>(); 
 
 //	@Override
 //	public String execute(String gsonData) {

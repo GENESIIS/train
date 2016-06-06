@@ -15,8 +15,8 @@ public class BasicData extends Employee {
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
 	private String employeeEpf;
-	private String employeeBasis;
-
+	private String employeeBasis; 
+ 
 	public String getEmployeename() {
 		return employeeName;
 	}

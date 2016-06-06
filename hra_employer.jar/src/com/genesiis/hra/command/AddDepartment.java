@@ -20,7 +20,7 @@ public class AddDepartment implements ICommandAJX {
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
 	@Override
-	public String execute(String gsonData) {
+	public String execute(String gsonData) { 
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
