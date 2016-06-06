@@ -1,5 +1,6 @@
 package com.genesiis.hra.model;
 
+import java.sql.SQLException;
 import java.util.List;
 
 ///***********************************************
@@ -10,15 +11,19 @@ import java.util.List;
 public interface ICrud {
 	public int add(Object object);
 
-	public int update(Object object); 
+	public int update(Object object);
 
-	public String delete(Object object);
+	public int delete(Object object);
 
-	public String find(String id);
+	public Object find(int empEpf) throws SQLException, Exception;
+
+	public List<Object> find(String empIdenti) throws SQLException, Exception;
+
+	public Object findByEpf(String empEpf);
+
+	public String getId(String id);
 
 	public List<Object> getAll();
 
-	public boolean isValid(Object object);
-
-	String getEmployee(int employeeId); 
+	public boolean isValidObject(Object object);
 }

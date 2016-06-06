@@ -1,10 +1,13 @@
- package com.genesiis.hra.command;
+package com.genesiis.hra.command;
 
+import java.text.ParseException;
 import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.BasicData;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -21,19 +24,18 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 
 	@Override
 	public String execute(String gsonData) {
-		int id = -1; // The new row id created when a department is inserted
+		EmployeeCrudJDBC accessdata = new EmployeeCrudJDBC();
+		int id = -1;
 		MessageList message = MessageList.ERROR;
-		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
-
 		try {
-			BasicData data = geBasicdetails(gsonData);
-			id = data.add(data);
-			message = MessageList.ADDED;
-		} catch (Exception mne) { // User Defined exception. This comes from the
-									// validation of the Component ->
-									// validateComponent()
+			BasicData employee = (BasicData) extractFromJason(gsonData);
+			if (validateEmployee(employee).equalsIgnoreCase("True")) {
+				id = accessdata.update(employee);
+			} else {
+
+			}
+		} catch (Exception e) {
 			message = MessageList.ERROR;
-			log.error("--> execute(): ERR" + mne);
 		}
 		return message.message();
 	}
@@ -44,32 +46,66 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 	}
 
 	@Override
-	public Object extractFromJason(String data) {
+	public Object extractFromJason(String gsonData) {
 		Gson gson = new Gson();
-		BasicData basicData = null;
+		String message = "";
+		BasicData employee = null;
 		try {
-			basicData = gson.fromJson(data, BasicData.class);
+			employee = gson.fromJson(gsonData, BasicData.class);
 		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
+			message = MessageList.ERROR.message();
+			;
 		}
-		return basicData;
+		return employee;
 	}
 
-	@Override
-	public boolean validateValue(Object entiytObject) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean validateValue(HashMap<Integer, Object> entiytMap)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public String validateEmployee(BasicData employee) throws ParseException {
+		DataValidator validator = new DataValidator();
+		String message = "True";
+		if (!validator.isValidString(employee.getEmployeename())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		if (!validator.isValidNic(employee.getEmployeenic())) {
+			message = message + MessageList.NICERROR.message() + " ";
+		}
+		if (!validator.isValidString(employee.getEmployeeepf())) {
+			message = message + MessageList.EMPTYFIELD.message() + " ";
+		}
+		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
+			message = message + MessageList.INVALIDBIRTDAY.message() + " ";
+		}
+		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
+			message = message + MessageList.MOBILENUMBERERROR.message() + " ";
+		}
+		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
+			message = message + MessageList.PHONENUMBERERROR.message() + " ";
+		}
+		if (!validator.isValidemail(employee.getEmployeeemail())) {
+			message = message + MessageList.EMAILERROR.message() + " ";
+		}
+		return message;
 	}
 
 	@Override
 	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String execute(String gsonData, String epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String validateValue(Object entiytObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}

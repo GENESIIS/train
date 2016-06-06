@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.Employee;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.model.EmployeeFactory;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -16,39 +18,39 @@ import com.google.gson.Gson;
 public class UpdateEmployee implements ICommandAJX {
 	static Logger log = Logger.getLogger(UpdateEmployee.class.getName());
 
-	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>(); 
+	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-//	@Override
-//	public String execute(String gsonData) {
-//		int id = -1;
-//		MessageList message = MessageList.ERROR;
-//		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
-//		try {
-//			// Returns a Subclass object of Employee super class according to
-//			// the key. Key implies the sub class name
-//			EmployeeFactory factory = new EmployeeFactory();
-//			Employee emp = factory.getEmployeefactory(3);
-//			// Extract the particular class type object returned from the
-//			// factory.
-//			// emp = (Employee) extractFromJason(emp.getClass().getName(),
-//			// employeeDetails);
-//
-//			emp = (Employee) createGson(emp.getClass().getName(),
-//					employeeDetails);
-//			log.info("emp.getClass().getName()" + emp.getClass().getName());
-//			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
-//			// Only a valid object will added to the database.
-//			// if (emp.isValid(emp)) {
-//			validateComponent(errorList);
-//			id = emp.update(emp);
-//			// }else{
-//			log.info("status" + id);
-//			// }
-//		} catch (Exception e) {
-//			log.error("execute - Exception " + e);
-//		}
-//		return message.message();
-//	}
+	// @Override
+	// public String execute(String gsonData) {
+	// int id = -1;
+	// MessageList message = MessageList.ERROR;
+	// HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
+	// try {
+	// // Returns a Subclass object of Employee super class according to
+	// // the key. Key implies the sub class name
+	// EmployeeFactory factory = new EmployeeFactory();
+	// Employee emp = factory.getEmployeefactory(3);
+	// // Extract the particular class type object returned from the
+	// // factory.
+	// // emp = (Employee) extractFromJason(emp.getClass().getName(),
+	// // employeeDetails);
+	//
+	// emp = (Employee) createGson(emp.getClass().getName(),
+	// employeeDetails);
+	// log.info("emp.getClass().getName()" + emp.getClass().getName());
+	// log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
+	// // Only a valid object will added to the database.
+	// // if (emp.isValid(emp)) {
+	// validateComponent(errorList);
+	// id = emp.update(emp);
+	// // }else{
+	// log.info("status" + id);
+	// // }
+	// } catch (Exception e) {
+	// log.error("execute - Exception " + e);
+	// }
+	// return message.message();
+	// }
 
 	@Override
 	public String execute(String epf) {
@@ -60,29 +62,30 @@ public class UpdateEmployee implements ICommandAJX {
 			// Returns a Subclass object of Employee super class according to
 			// the key. Key implies the sub class name
 			EmployeeFactory factory = new EmployeeFactory();
-			Employee emp = factory.getEmployeefactory(3);
+			Employee emp = factory.getEmployeeObject("GED");
 			// Extract the particular class type object returned from the
 			// factory.
 			// emp = (Employee) extractFromJason(emp.getClass().getName(),
 			// employeeDetails);
 
-			educationaDetails = emp.find(epf);
-			
+//			educationaDetails = emp.findByEpf(epf);
+
 			log.info("emp.getClass().getName()" + emp.getClass().getName());
 			log.info("emp.getEmployeeepf()" + emp.getEmployeeepf());
 			// Only a valid object will added to the database.
 			// if (emp.isValid(emp)) {
 			validateComponent(errorList);
-			
+
 			// }else{
 			log.info("status" + id);
 			// }
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
-	
+
 		return educationaDetails;
 	}
+
 	private void validateComponent(HashMap<Integer, Object> errorList) {
 
 	}
@@ -119,19 +122,25 @@ public class UpdateEmployee implements ICommandAJX {
 	}
 
 	@Override
-	public boolean validateValue(Object entiytObject) {
+	public String execute(int epf) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
-	public boolean validateValue(HashMap<Integer, Object> entiytMap)
-			throws Exception {
+	public String execute(String gsonData, String epf) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
+
 	@Override
-	public String execute(int epf) {
+	public String validateValue(Object entiytObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}

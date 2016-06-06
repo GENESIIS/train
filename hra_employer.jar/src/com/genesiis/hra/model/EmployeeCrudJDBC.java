@@ -72,7 +72,7 @@ public class EmployeeCrudJDBC extends Employee {
 	}
 
 	@Override
-	public String find(String id) {
+	public String findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		EmployeeCrudJDBC emp = new EmployeeCrudJDBC();

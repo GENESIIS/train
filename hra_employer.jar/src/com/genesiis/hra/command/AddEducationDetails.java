@@ -72,19 +72,21 @@ public class AddEducationDetails implements ICommandAJX{
 		}
 		return educationdata;
 	}
-	@Override
-	public boolean validateValue(Object entiytObject) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean validateValue(HashMap<Integer, Object> entiytMap)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	@Override
 	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String validateValue(Object entiytObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}

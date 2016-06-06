@@ -114,42 +114,7 @@ public class Department implements ICrud {
 		return status;
 	}
 
-	@Override
-	public int update(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String delete(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String find(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Object> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isValid(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String getEmployee(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public List<String> getDepartments() {
 		String query = "SELECT * FROM [HRA.DEPARTMENT]";
 		Connection conn = null;
@@ -190,5 +155,53 @@ public class Department implements ICrud {
 			e.printStackTrace();
 		}
 		return managers;
+	}
+
+	@Override
+	public int update(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

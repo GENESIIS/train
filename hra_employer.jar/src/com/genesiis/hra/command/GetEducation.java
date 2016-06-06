@@ -19,7 +19,7 @@ public class GetEducation implements ICommandAJX {
 
 		EducationData EducationManager = new EducationData();
 		try {
-			educationdetails = EducationManager.find(epf);
+			educationdetails = EducationManager.findByEpf(epf);
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}
@@ -46,16 +46,21 @@ public class GetEducation implements ICommandAJX {
 	}
 
 	@Override
-	public boolean validateValue(Object entiytObject) {
+	public String execute(String gsonData, String epf) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
-	public boolean validateValue(HashMap<Integer, Object> entiytMap)
-			throws Exception {
+	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+
+	@Override
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -63,5 +68,7 @@ public class GetEducation implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

@@ -67,30 +67,14 @@ public class Employee implements ICrud {
 		return -1;
 	}
 
-	@Override
-	public String delete(Object object) {
-		return null;
-	}
-
-	@Override
-	public String find(String id) {
-		return null;
-	}
+	
 
 	@Override
 	public List<Object> getAll() {
 		return null;
 	}
 
-	@Override
-	public boolean isValid(Object object) {
-		return false;
-	}
 	
-	@Override
-	public String getEmployee(int emploeeId) {
-		return "";
-	}
 	
 	
 	public String getEmployeename() {
@@ -232,6 +216,44 @@ public class Employee implements ICrud {
 		this.employeeJoindate = employeeJoindate;
 		this.employeeEpf = employeeEpf;
 		this.employeeBasis = employeeBasis;
+	}
+	
+	
+
+	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object find(int empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> find(String empIdenti) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

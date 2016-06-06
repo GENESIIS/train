@@ -142,66 +142,66 @@ public class EducationData extends Employee {
 		return status;
 	}
 
+//	@Override
+//	public boolean isValid(Object object) {
+//
+//		DataValidator val = new DataValidator();
+//		EducationData edu = (EducationData) object;
+//
+//		if ((val.isValidString(edu.getEduQualification()) == true)
+//				&& (val.isValidString(edu.getEduCompltedon())) == true) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//
+//	}
+
+//	@Override
+//	public String getEmployee(int employeeId) {
+//		// TODO Auto-generated method stub
+//		Connection conn = null;
+//		PreparedStatement preparedStatement = null;
+//		EducationData edu = new EducationData();
+//		String educationDetails = null;
+//		Gson gson = new Gson();
+//
+//		try {
+//
+//			conn = ConnectionManager.getConnection();
+//			preparedStatement = conn
+//					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
+//			preparedStatement.setInt(1, employeeId);
+//
+//			ResultSet res = preparedStatement.executeQuery();
+//			if (res.next()) {
+//				edu.setEmployeeepf(res.getString(2));
+//				log.info("res.getString(2)" + res.getString(2));
+//				edu.setEduUniversity(res.getString(3));
+//				log.info("res.getString(3)" + res.getString(3));
+//				edu.setEduStartedon(res.getString(4));
+//				log.info("res.getString(4)" + res.getString(4));
+//				edu.setEduQualification(res.getString(5));
+//				log.info("res.getString(5)" + res.getString(5));
+//				edu.setEduMedium(res.getString(6));
+//				log.info("res.getString(6)" + res.getString(6));
+//				edu.setEduCompltedon(res.getString(7));
+//				log.info("res.getString(7)" + res.getString(7));
+//				edu.setEduStudytime(res.getString(8));
+//				log.info("res.getString(8)" + res.getString(8));
+//
+//				educationDetails = gson.toJson(edu);
+//
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return educationDetails;
+//	}
+
 	@Override
-	public boolean isValid(Object object) {
-
-		DataValidator val = new DataValidator();
-		EducationData edu = (EducationData) object;
-
-		if ((val.isValidString(edu.getEduQualification()) == true)
-				&& (val.isValidString(edu.getEduCompltedon())) == true) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
-	@Override
-	public String getEmployee(int employeeId) {
-		// TODO Auto-generated method stub
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		EducationData edu = new EducationData();
-		String educationDetails = null;
-		Gson gson = new Gson();
-
-		try {
-
-			conn = ConnectionManager.getConnection();
-			preparedStatement = conn
-					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
-			preparedStatement.setInt(1, employeeId);
-
-			ResultSet res = preparedStatement.executeQuery();
-			if (res.next()) {
-				edu.setEmployeeepf(res.getString(2));
-				log.info("res.getString(2)" + res.getString(2));
-				edu.setEduUniversity(res.getString(3));
-				log.info("res.getString(3)" + res.getString(3));
-				edu.setEduStartedon(res.getString(4));
-				log.info("res.getString(4)" + res.getString(4));
-				edu.setEduQualification(res.getString(5));
-				log.info("res.getString(5)" + res.getString(5));
-				edu.setEduMedium(res.getString(6));
-				log.info("res.getString(6)" + res.getString(6));
-				edu.setEduCompltedon(res.getString(7));
-				log.info("res.getString(7)" + res.getString(7));
-				edu.setEduStudytime(res.getString(8));
-				log.info("res.getString(8)" + res.getString(8));
-
-				educationDetails = gson.toJson(edu);
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return educationDetails;
-	}
-
-	@Override
-	public String find(String id) {
+	public String findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		EducationData edu = new EducationData();

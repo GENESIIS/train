@@ -97,15 +97,15 @@ public class EmployeeController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case GET_BASIC_DATA:
-				message = commands.get(o).execute(findDetaile);
+				message = commands.get(o).execute(findDetaile, task);
 				log.info("Search Employee details" + findDetaile);
 				break;
 			case GET_EDU_DETAILS:
-				message = commands.get(o).execute(findDetaile);
+				message = commands.get(o).execute(findDetaile, task);
 				log.info("Search Educational details");
 				break;
 			case GET_FAMILY:
-				message = commands.get(o).execute(findDetaile);
+				message = commands.get(o).execute(findDetaile, task);
 				log.info("Search family details");
 				break;
 			case ADD_EDU_DETAILS:
