@@ -9,7 +9,7 @@ public interface ICommandAJX {
 
 	public Object extractFromJason(String data);
 
-	public String validateValue(Object entiytObject);
+	public String validateValue(Object entiytObject); 
 
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap);
 
