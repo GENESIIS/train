@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 //* 20160603 PC HRA-36  execute() method Modified.
 //***********************************************/
 
-public class AddBasic implements ICommandAJX{
+public class AddBasic implements ICommandAJX{ 
 
 	static Logger log = Logger.getLogger(AddBasic.class.getName());
 	
