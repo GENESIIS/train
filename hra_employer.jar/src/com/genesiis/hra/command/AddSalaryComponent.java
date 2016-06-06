@@ -16,7 +16,7 @@ import com.google.gson.Gson;
  * @author pabodha
  * 
  */
-public class AddSalaryComponent implements ICommand {
+public class AddSalaryComponent implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddSalaryComponent.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 

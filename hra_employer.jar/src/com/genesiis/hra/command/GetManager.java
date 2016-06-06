@@ -10,7 +10,7 @@ import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
-public class GetManager implements ICommand {
+public class GetManager implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetManager.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 

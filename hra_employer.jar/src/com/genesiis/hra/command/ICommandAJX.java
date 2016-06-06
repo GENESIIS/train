@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import com.genesiis.hra.validation.Operation;
 
-public interface ICommand {
+public interface ICommandAJX {
 	
 	public String execute(String gsonData);
 	

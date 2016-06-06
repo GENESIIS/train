@@ -16,7 +16,7 @@ import com.google.gson.Gson;
  * @author pabodha
  *
  */
-public class AddFamilyDetails implements ICommand{
+public class AddFamilyDetails implements ICommandAJX{
 	
 	
 	static Logger log = Logger.getLogger(AddFamilyDetails.class.getName());
@@ -113,6 +113,7 @@ public class AddFamilyDetails implements ICommand{
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
+			log.info("execute");
 			Familymember familymember = getFamilymemberdetails(gsonData);
 			validateComponent(errorList);
 			id = familymember.update(familymember);

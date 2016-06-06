@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 //* 20160503 PN HRA-3 modified the execute method.
 //***********************************************/
 
-public class AddDepartment implements ICommand {
+public class AddDepartment implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 

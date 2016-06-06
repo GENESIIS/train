@@ -115,7 +115,7 @@ function editFamilyDetails() {
 			url : 'EmployerController',
 			data : {
 				jsonData : JSON.stringify(jsonData),
-				task : "UPDATE_FAMILYMEMBER"
+				task : "UFM"
 			},
 			dataType : "json",
 			success : function(data) {

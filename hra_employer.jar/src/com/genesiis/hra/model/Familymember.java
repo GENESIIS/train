@@ -139,33 +139,37 @@ public class Familymember extends Employee {
 	 * @see com.genesiis.hra.model.ICrud#update(java.lang.Object)
 	 */
 	public int update(Object object) {
-		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=? , OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
 		int status = -1;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		Familymember fm = (Familymember) object;
 
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, fm.getFmname());
-			preparedStatement.setString(2, fm.getFmdateofbirth());
-			preparedStatement.setString(3, fm.getFmrelationship());
-			preparedStatement.setString(4, fm.getFmoccupation());
-			preparedStatement.setString(5, fm.getFmWorkingplace());
-			preparedStatement.setString(6, "SYSTEM");
-			preparedStatement.setString(7, "2");
+			ps = conn.prepareStatement(query);
+			ps.setString(1, fm.getFmname());
+			ps.setDate(2, new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth()));
+			ps.setString(3, fm.getFmrelationship());
+			ps.setString(4, fm.getFmoccupation());
+			ps.setString(5, fm.getFmWorkingplace());
+			ps.setString(6, "SYSTEM");
+			ps.setInt(7, 2);
 
-			int rowsUpdated = preparedStatement.executeUpdate();
+			log.info("***"+fm.getFmname()+"***"+new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth())+"***"+fm.getFmrelationship()+"***"+fm.getFmoccupation()+"***"+fm.getFmWorkingplace());
+			
+			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated > 0) {
 				status = 1;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-		} finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {

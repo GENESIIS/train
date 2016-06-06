@@ -9,7 +9,7 @@
 			<label for="fmemployeeId">Employee</label>&nbsp;&nbsp;<span
 				style="color: red; font-weight: normal !important;"
 				id="fmemployeeidError" name="fmemployeeidError"></span> <input
-				type="text" class="form-control" id="fmemployeeId"
+				type="text" class="form-control" id="fmemployeeId" value="2" readonly
 				name="fmemployeeId" placeholder="">
 		</div>
 		<div class="form-group">

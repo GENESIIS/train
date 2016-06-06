@@ -15,7 +15,7 @@ import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
-public class GetDepartment implements ICommand {
+public class GetDepartment implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetDepartment.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 

@@ -14,7 +14,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.AddFamilyDetails;
 import com.genesiis.hra.command.GetEmployee;
-import com.genesiis.hra.command.ICommand;
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -32,11 +32,11 @@ import com.google.gson.Gson;
 public class EmployerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(EmployerController.class.getName());
-	HashMap<Operation, ICommand> commands = null;
+	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
-		commands = new HashMap<Operation, ICommand>();
+		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
 				new AddEmployeeBasicdata());
 		commands.put(Operation.ADD_FAMILY_MEMBER, 

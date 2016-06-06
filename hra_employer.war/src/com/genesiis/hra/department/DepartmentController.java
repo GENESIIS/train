@@ -14,7 +14,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.AddDepartment;
 import com.genesiis.hra.command.GetDepartment;
 import com.genesiis.hra.command.GetManager;
-import com.genesiis.hra.command.ICommand;
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
@@ -35,11 +35,11 @@ public class DepartmentController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
-	HashMap<Operation, ICommand> commands = null;
+	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
-		commands = new HashMap<Operation, ICommand>();
+		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_DEPARTMENT, new AddDepartment());
 		commands.put(Operation.GET_MANAGER, new GetManager());
 		commands.put(Operation.GET_DEPARTMENT, new GetDepartment());

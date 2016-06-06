@@ -10,7 +10,7 @@
 				style="color: red; font-weight: normal !important;"
 				id="editfmemployeeidError" name="editfmemployeeidError"></span> <input
 				type="text" class="form-control" id="editfmemployeeId"
-				name="editfmemployeeId" placeholder="">
+				name="editfmemployeeId" placeholder="" value="2" readonly>
 		</div>
 		<div class="form-group">
 			<label for="editrelationship">Relationship</label>&nbsp;&nbsp;<span

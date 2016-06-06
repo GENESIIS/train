@@ -9,7 +9,7 @@ import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
-public class GetEmployee implements ICommand {
+public class GetEmployee implements ICommandAJX {
 
 	static Logger log = Logger.getLogger(GetEmployee.class.getName());
 
