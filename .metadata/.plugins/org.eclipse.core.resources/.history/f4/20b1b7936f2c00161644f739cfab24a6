@@ -16,7 +16,6 @@
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	
 	<h2 class="sub-header">Employee Management</h2>
 
 
@@ -27,7 +26,12 @@
 	<br></br>
 	<div class="row">
 		<div class="col-sm-4">
-
+			<!-- <select class="selectpicker">
+      <option value="Basic" selected="selected">Basic detail</option>
+      <option value="Family">Department detail</option>
+      <option value="medical"></option>
+      <option value="Education"></option>
+     </select> -->
 		</div>
 		<div class="col-sm-8" align="right">
 			<div class="input-group add-on">
@@ -42,13 +46,15 @@
 			</div>
 		</div>
 	</div>
-
+<<<<<<< HEAD
 	<div id="basicTable"></div>
-	
 </div>
 
+<!-- Modal ADD EMPLOYEE DETAILS-->
+<div class="modal fade" id="addEmployeedetails" role="dialog">
+</div>
 
-<!-- Modal ADD EMPLOYEE DETAILS -->
+<!-- Modal -->
 <div class="modal fade" id="addEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -261,7 +267,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick="" disabled="true"
+					id="moredetails" name="moredetails" onclick=""
 					data-toggle="modal" data-target="#addmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
@@ -277,6 +283,7 @@
 		</div>
 	</div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="addmoreEmployeedetails" role="dialog">	<div class="modal-dialog modal-lg">

@@ -222,7 +222,7 @@ function clearDepartmentform() {
 
 
 
-//Get data and sent to EmployerController.java.
+// Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
 	var fname = $("#employeeFirstname").val();
 	var mname = $("#employeeMiddlename").val();
@@ -268,7 +268,7 @@ function addEmployeeDetails() {
 		"employeeEmail" : employeeEmail,
 		"employeeJoindate" : employeeJoindate,
 	};
-
+	
 	if ((fname == "") || (mname == "") || (lname == "") || (employeeNic == "")
 			|| (employeeEpf == "") || (employeeDesignation == "")) {
 		alert("Please fill the Empty fields.");
@@ -277,7 +277,24 @@ function addEmployeeDetails() {
 			|| (employeeNicerror != "") || (employeeEpferror != "")
 			|| (employeeDesignationerror != "")) {
 		alert("Please fill the details correctly.");
-	} else {
+	}
+	
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify(employeeData),
+			task : "ADD"
+		},
+		dataType : "json",
+		success : function(data) {
+			alert(data);
+			document.getElementById("moredetails").disabled = false;
+			if (data == "Details added successfully.") {
+				clearAddemployeeform();
+				document.getElementById("moredetails").disabled = false;
+				
+	 else {
 		$.ajax({
 			type : "POST",
 			url : 'EmployerController',
@@ -300,6 +317,7 @@ function addEmployeeDetails() {
 		});
 	}
 }
+
 
 function clearAddemployeeform() {
 	$("#employeeFirstname").val("");
