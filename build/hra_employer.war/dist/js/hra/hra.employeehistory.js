@@ -12,6 +12,19 @@ function isEmpty(value) {
 }
 
 
+function loadviewemployementhistory() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
+}
+
+function loadEditemployementhistory() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
+}
+
+
+function loadEditemployementhistory() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
+}
+
 
 //field number check
 function isNumber(evt) {

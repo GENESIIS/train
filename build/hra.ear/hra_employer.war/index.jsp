@@ -29,14 +29,12 @@
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="dit/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="dist/assets/js/ie-emulation-modes-warning.js"></script>
-<<<<<<< HEAD
-<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script> 
+<script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script>
 
-=======
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <!-- <script src="dist/js/jquery-1.11.1.js" type="text/javascript"></script> -->
 <script src="dist/editablesearch/source/jquery-latest.min.js"></script>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
+
 <!-- Importing hra.helper.js file -->
 <script src="dist/js/hra/hra.helper.js"></script>
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
@@ -45,6 +43,13 @@
 <script src="dist/js/hra/hra.serch.js"></script>
 <script src="dist/js/hra/hra.employeehistory.js"></script>
 <script src="dist/js/hra/hra.medicalhistory.js"></script>
+<script src="dist/js/hra/hra.loan.js"></script>
+<script src="dist/js/hra/hra.department.js"></script>
+<script src="dist/js/hra/hra.employer.js"></script>
+<script src="dist/js/hra/hra.familydetails.js"></script>
+<script src="dist/js/hra/hra.payroll.helper.js"></script>
+
+
 
 <style type="text/css">
 /* label { */
@@ -53,22 +58,15 @@
 input {
 	font-weight: normal !important;
 }
+
 select {
 	font-weight: normal !important;
 }
 </style>
 
-	<style type="text/css">
-	/* label { */
-	/* 	font-weight: normal !important; */
-	/* } */
-	input {
-		font-weight: normal !important;
-	}
-	select {
-		font-weight: normal !important;
-	}
-	</style>
+
+
+
 </head>
 
 <body>
@@ -167,17 +165,12 @@ select {
 	<script>
 		window.jQuery
 				|| document
-						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>')
+						.write('<script src="dist/assets/js/vendor/jquery.min.js"><\/script>');
 	</script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/js/bootstrap-datepicker.js"></script>
 	<script src="dist/js/dataTables.bootstrap.min.js"></script>
 	<script src="dist/js/jquery.dataTables.min.js"></script>
-
-<<<<<<< HEAD
-	
-=======
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="dist/assets/js/vendor/holder.min.js"></script>
@@ -185,9 +178,7 @@ select {
 	<script src="dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
-	<script>
-		//Demo On
-	</script>
+
 
 </body>
 </html>

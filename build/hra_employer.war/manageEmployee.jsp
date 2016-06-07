@@ -16,6 +16,7 @@
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	
 	<h2 class="sub-header">Employee Management</h2>
 
 
@@ -26,12 +27,7 @@
 	<br></br>
 	<div class="row">
 		<div class="col-sm-4">
-			<!-- <select class="selectpicker">
-      <option value="Basic" selected="selected">Basic detail</option>
-      <option value="Family">Department detail</option>
-      <option value="medical"></option>
-      <option value="Education"></option>
-     </select> -->
+
 		</div>
 		<div class="col-sm-8" align="right">
 			<div class="input-group add-on">
@@ -46,16 +42,13 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
+
 	<div id="basicTable"></div>
+	
 </div>
 
-<!-- Modal ADD EMPLOYEE DETAILS-->
-<div class="modal fade" id="addEmployeedetails" role="dialog">
-=======
-</div>
 
-<!-- Modal -->
+<!-- Modal ADD EMPLOYEE DETAILS -->
 <div class="modal fade" id="addEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -268,7 +261,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-info pull-left"
-					id="moredetails" name="moredetails" onclick=""
+					id="moredetails" name="moredetails" onclick="" disabled="true"
 					data-toggle="modal" data-target="#addmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i> More Details
 				</button>
@@ -285,16 +278,12 @@
 	</div>
 </div>
 
-
 <!-- Modal -->
-<div class="modal fade" id="addmoreEmployeedetails" role="dialog">
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
-	<div class="modal-dialog modal-lg">
+<div class="modal fade" id="addmoreEmployeedetails" role="dialog">	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-<<<<<<< HEAD
 					<i class="glyphicon glyphicon-user"></i> Add Employee Details
 				</h3>
 			</div>
@@ -463,7 +452,6 @@
 									type="text" class="form-control" id="employeeMobile"
 									name="employeeMobile" maxlength="10" size="10"
 									onkeypress="return isNumberKey(event)">
-=======
 					<i class="glyphicon glyphicon-user"></i>More Employee Details
 				</h3>
 			</div>
@@ -567,12 +555,10 @@
 										type="text" class="form-control" id="employeeMaritalEdit"
 										name="editemployeeId" placeholder="">
 								</div>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 							</div>
 						</div>
 					</div>
 
-<<<<<<< HEAD
 					<div class="form-group">
 						<label for="employeeEmail">Email</label> <input type="text"
 							class="form-control" id="employeeEmail" name="employeeEmail"
@@ -717,7 +703,6 @@
 								<label for="employeeStatusEdit">Employment Status</label> <input
 									type="text" class="form-control" id="employeeStatusEdit"
 									name="employeeStatusEdit" placeholder="">
-=======
 					<div class="well">
 						<h3 class="">Job Details</h3>
 						<div class="row">
@@ -753,12 +738,9 @@
 										type="text" class="form-control" id="employeeDepartmentEdit"
 										name="employeeDepartmentEdit" placeholder="">
 								</div>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 							</div>
 						</div>
 					</div>
-
-<<<<<<< HEAD
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -773,7 +755,6 @@
 								<label for="employeeDesignationEdit">Department</label> <input
 									type="text" class="form-control" id="employeeDepartmentEdit"
 									name="employeeDesignationEdit" placeholder="">
-=======
 					<div class="well">
 						<h3 class="">Contact Details</h3>
 						<div class="row">
@@ -790,13 +771,10 @@
 									<textarea class="form-control" id="employeeTempADDEdit"
 										name="employeeTempADDEdit" placeholder=""></textarea>
 								</div>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 							</div>
 						</div>
 					</div>
 				</div>
-
-<<<<<<< HEAD
 				<div class="well">
 					<h3 class="">Contact Details</h3>
 					<div class="row">
@@ -812,7 +790,6 @@
 								<label for="employeeTempADDEdit">Temporary Address</label>
 								<textarea class="form-control" id="employeeTempADDEdit"
 									name="employeeTempADDEdit" placeholder=""></textarea>
-=======
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -827,12 +804,10 @@
 										type="text" class="form-control" id="employeeMobileNumberEdit"
 										name="employeeMobileNumberEdit" placeholder="">
 								</div>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 							</div>
 						</div>
 					</div>
 
-<<<<<<< HEAD
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -848,24 +823,19 @@
 									id="employeeMobileNumberEdit" name="employeeMobileNumberEdit"
 									placeholder="">
 							</div>
-=======
 
 						<div class="form-group">
 							<label for="editemployeeId">Email</label> <input type="text"
 								class="form-control" id="employeeEmailEdit" name="editemployeeId"
 								placeholder="">
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 						</div>
 					</div>
-
-<<<<<<< HEAD
 
 					<div class="form-group">
 						<label for="employeeEmailEdit">Email</label> <input type="text"
 							class="form-control" id="employeeEmailEdit"
 							name="employeeEmailEdit" placeholder="">
 					</div>
-=======
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success pull-right"
 						onclick="updateEmployeeDetails()" data-dismiss="">
@@ -880,7 +850,6 @@
 						data-dismiss="modal" onclick="">
 						<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 					</button>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 				</div>
 			</div>
 
@@ -902,14 +871,8 @@
 		</div>
 	</div>
 </div>
-
-
-<<<<<<< HEAD
 <!-- Modal EDIT MORE EMPLOYEE DETAILS -->
-=======
 <!--////////////////////////////////////////-->
-
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -922,7 +885,6 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-<<<<<<< HEAD
 
 					<a onclick="loadEditContentqualifications()"
 						class="btn btn-primary">Educaional Data</a> <a
@@ -935,20 +897,7 @@
 						class="btn btn-primary">Employee History Details</a> <a
 						id="btnMedicalHistory" onclick="loadEditMedicalHIstoryDetails()"
 						class="btn btn-primary">Medical History</a>
-
-				</div>
-=======
-					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-				</div>
-				<div id="Editmodelrest" name="Editmodelrest"></div>
->>>>>>> 5865b028598a2885b290118a301afec6bac98d9b
-
+				</div>			
 				<div id="Editmodelrest" name="Editmodelrest"></div>
 			</div>
 		</div>

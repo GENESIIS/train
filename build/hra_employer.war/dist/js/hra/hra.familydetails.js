@@ -115,7 +115,7 @@ function editFamilyDetails() {
 			url : 'EmployerController',
 			data : {
 				jsonData : JSON.stringify(jsonData),
-				task : "UPDATE_FAMILYMEMBER"
+				task : "UFM"
 			},
 			dataType : "json",
 			success : function(data) {
@@ -217,8 +217,7 @@ function getEmployeetoupdate() {
 	// alert(response);
 	// });
 
-	alert("gone");
-	
+
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
 		task : "GFM"
