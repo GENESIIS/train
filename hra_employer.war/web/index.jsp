@@ -43,6 +43,7 @@
 <script src="dist/js/hra/hra.serch.js"></script>
 <script src="dist/js/hra/hra.employeehistory.js"></script>
 <script src="dist/js/hra/hra.medicalhistory.js"></script>
+<script src="dist/js/hra/hra.loan.js"></script>
 
 <style type="text/css">
 /* label { */
