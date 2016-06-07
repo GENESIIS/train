@@ -36,7 +36,7 @@ public class EmployeeCrudJDBC extends Employee {
 	@Override
 	public int update(Object employee) {
 		// TODO Auto-generated method stub
-		String query = "UPDATE [hra-2].[dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
+		String query = "UPDATE [HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
 				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
 		String message = "Error";
@@ -104,7 +104,7 @@ public class EmployeeCrudJDBC extends Employee {
 	
 	@Override
 	public Object find(int empEpf)throws SQLException, Exception {
-		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where ID = ?";
+		String query = "select * from [HRA.EMPLOYEE] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -169,8 +169,8 @@ public class EmployeeCrudJDBC extends Employee {
 	@Override
 	public List<Object> find(String keyWord) throws SQLException, Exception {
 		List<Object> employList = new LinkedList<Object>();
-		String query = "select EPF, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where (EPF LIKE   ? OR NAME LIKE ? OR DESIGNATION LIKE  ? OR MOBILENO LIKE  ?)";
-		String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
+		String query = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where (EPF LIKE   ? OR NAME LIKE ? OR DESIGNATION LIKE  ? OR MOBILENO LIKE  ?)";
+		String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
 		String messege = "";
 		Connection conn = null;
 		PreparedStatement pd = null;

@@ -16,7 +16,7 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 
 	public Object find(int empEpf) {
 		// TODO Auto-generated method stub
-		String query = "select * from [hra-2].[dbo].[HRA.EMPLOYEE] where EPF = ?";
+		String query = "select * from [HRA.EMPLOYEE] where EPF = ?";
 		Connection conn = null;
 		PreparedStatement pd = null;
 		ResultSet findData = null;
