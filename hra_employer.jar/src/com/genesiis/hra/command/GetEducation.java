@@ -19,7 +19,7 @@ public class GetEducation implements ICommandAJX {
 
 		EducationData EducationManager = new EducationData();
 		try {
-			educationdetails = EducationManager.findByEpf(epf);
+		//	educationdetails = EducationManager.findByEpf(epf);
 		} catch (Exception e) {
 			log.error("execute - Exception " + e);
 		}

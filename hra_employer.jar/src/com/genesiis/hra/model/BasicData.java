@@ -10,10 +10,11 @@ import java.sql.Statement;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.google.gson.Gson;
 
 public class BasicData extends Employee {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
-	
+
 	private String employeeName;
 	private String employeeDesignation;
 	private String employeeEmail;
@@ -233,8 +234,8 @@ public class BasicData extends Employee {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		int status = 0;
-		
-        BasicData empBasic = (BasicData)employee;
+
+		BasicData empBasic = (BasicData) employee;
 		try {
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query);
@@ -244,8 +245,8 @@ public class BasicData extends Employee {
 			ps.setString(4, empBasic.getEmployeedateofbirth());
 			ps.setString(5, empBasic.getEmployeenic());
 			ps.setString(6, empBasic.getEmployeegender());
-			ps.setString(7,	empBasic.getEmployeepermenetaddress());
-			ps.setString(8,	empBasic.getEmployeetemporaryaddress());
+			ps.setString(7, empBasic.getEmployeepermenetaddress());
+			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(7, empBasic.getEmployeepermenetaddress());
 			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(9, empBasic.getEmployeemobile());
@@ -257,13 +258,13 @@ public class BasicData extends Employee {
 			ps.setString(15, empBasic.getEmployeeepf());
 			ps.setString(16, empBasic.getEmployeebasis());
 			ps.setString(17, "1");
-			
+
 			int rows = ps.executeUpdate();
 
 			if (rows > 0) {
 				ResultSet rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
-				message = "Succesfull";				
+				message = "Succesfull";
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
 				}
@@ -285,68 +286,45 @@ public class BasicData extends Employee {
 		return status;
 	}
 
+	// use for View basci data and department 
 	@Override
-	public Object findByEpf(String empEpf) {
-		String query = "select * from [dbo].[HRA.EMPLOYEE] where ID = ?";
-		String message = "Error";
+	public Object findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
+		BasicData emp = new BasicData();
 
-		BasicData employee = new BasicData();
-		log.info(employee.getEmployeeepf());
+		log.info(id + "id String");
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1,empEpf);
-			retriveData = preparedStatement.executeQuery();
+			preparedStatement = conn
+					.prepareStatement("SELECT [HRA.EMPLOYEE].ID, [HRA.EMPLOYEE].NAME, [HRA.EMPLOYEE].DESIGNATION, [HRA.EMPLOYEE].EMAIL, [HRA.EMPLOYEE].DOB, [HRA.EMPLOYEE].NIC, [HRA.EMPLOYEE].GENDER, [HRA.EMPLOYEE].PERMENENTADDRESS, [HRA.EMPLOYEE].TEMPORARYADDRESS, [HRA.EMPLOYEE].MOBILENO, [HRA.EMPLOYEE].OTHERNO, [HRA.DEPARTMENT].NAME, [HRA.EMPLOYEE].MARITALSTATUS, [HRA.EMPLOYEE].DATEOFJOIN, [HRA.EMPLOYEE].EPF, [HRA.EMPLOYEE].BASIS  FROM [HRA.EMPLOYEE] INNER JOIN [HRA.DEPARTMENT] ON [HRA.EMPLOYEE].DEPTID = [HRA.DEPARTMENT].ID WHERE EPF = ?");
+			preparedStatement.setString(1, id);
+			ResultSet res = preparedStatement.executeQuery();
+			if (res.next()) {
 
-			try {
-				if (retriveData.next()) {
-					// set data to entity class
-					employee.setEmployeeepf(retriveData.getString("ID"));
-					employee.setEmployeename(retriveData.getString("NAME"));
-					employee.setEmployeedesignation(retriveData
-							.getString("DESIGNATION"));
-					employee.setEmployeeemail(retriveData.getString("EMAIL"));
-					employee.setEmployeedateofbirth(retriveData
-							.getString("DOB"));
-					employee.setEmployeenic(retriveData.getString("NIC"));
-					employee.setEmployeegender(retriveData.getString("GENDER"));
-					employee.setEmployeepermenetaddress(retriveData
-							.getString("PERMENENTADDRESS"));
-					employee.setEmployeemobile(retriveData
-							.getString("MOBILENO"));
-					employee.setEmployeedepartment(retriveData
-							.getString("DEPTID"));
-					employee.setEmployeetelephone(retriveData
-							.getString("OTHERNO"));
-					employee.setEmployeejoindate(retriveData
-							.getString("DATEOFJOIN"));
-					employee.setEmployeeepf(retriveData.getString("EPF"));
-					employee.setEmployeemaritalstatus(retriveData
-							.getString("MARITALSTATUS"));
-					employee.setEmployeebasis(retriveData.getString("BASIS"));
-					employee.setEmployeetemporaryaddress(retriveData
-							.getString("TEMPORARYADDRESS"));
-					log.info(employee.getEmployeeepf());
-				}
-			} catch (Exception e) {
-				log.info(e.toString());
+				emp.setEmployeename(res.getString(2));
+				emp.setEmployeedesignation(res.getString(3));
+				emp.setEmployeeemail(res.getString(4));
+				emp.setEmployeedateofbirth(res.getString(5));
+				emp.setEmployeenic(res.getString(6));
+				emp.setEmployeegender(res.getString(7));
+				emp.setEmployeepermenetaddress(res.getString(8));
+				emp.setEmployeetemporaryaddress(res.getString(9));
+				emp.setEmployeemobile(res.getString(10));
+				emp.setEmployeetelephone(res.getString(11));
+				emp.setEmployeedepartment(res.getString(12));
+				emp.setEmployeemaritalstatus(res.getString(13));
+				emp.setEmployeejoindate(res.getString(14));
+				emp.setEmployeeepf(res.getString(15));
+				emp.setEmployeebasis(res.getString(16));
+
+				
 			}
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.info(e);
 		}
-		return employee;
+		return emp;
 	}
 
 	@Override

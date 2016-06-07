@@ -34,7 +34,7 @@ public class Familymember extends Employee {
 	}
 
 	public String getFmdateofbirth() {
-		return fmDateofbirth; 
+		return fmDateofbirth;
 	}
 
 	public void setFmdateofbirth(String fmDateofbirth) {
@@ -80,17 +80,17 @@ public class Familymember extends Employee {
 		this.employeeEpf = employeeEpf;
 	}
 
-//	@Override
-//	public boolean isValid(Object object) {
-//		DataValidator validator = new DataValidator();
-//		Familymember fm = (Familymember) object;
-//		if ((validator.isValidString(fm.getFmname()) == true)
-//				&& (validator.isValidString(fm.getFmdateofbirth())) == true) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
+	// @Override
+	// public boolean isValid(Object object) {
+	// DataValidator validator = new DataValidator();
+	// Familymember fm = (Familymember) object;
+	// if ((validator.isValidString(fm.getFmname()) == true)
+	// && (validator.isValidString(fm.getFmdateofbirth())) == true) {
+	// return true;
+	// } else {
+	// return false;
+	// }
+	// }
 
 	/*
 	 * (non-Javadoc)
@@ -107,7 +107,8 @@ public class Familymember extends Employee {
 
 		try {
 			conn = ConnectionManager.getConnection();
-			//ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			// ps = conn.prepareStatement(query,
+			// Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, fm.getEmployeeepf());
 			ps.setString(2, fm.getFmname());
 			ps.setString(3, fm.getFmdateofbirth());
@@ -178,43 +179,43 @@ public class Familymember extends Employee {
 		return status;
 	}
 
-//	@Override
-//	public String getEmployee(int emploeeId) {
-//		Connection conn = null;
-//		PreparedStatement preparedStatement = null;
-//		Familymember fm = new Familymember();
-//		String Familymember = null;
-//		Gson gson = new Gson();
-//		try {
-//			conn = ConnectionManager.getConnection();
-//			preparedStatement = conn
-//					.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
-//			preparedStatement.setInt(1, emploeeId);
-//			ResultSet res = preparedStatement.executeQuery();
-//			if (res.next()) {
-//				fm.setEmployeeepf(res.getString(2));
-//				fm.setFmdateofbirth(res.getString(4));
-//				fm.setFmname(res.getString(3));
-//				fm.setFmoccupation(res.getString(6));
-//				fm.setFmrelationship(res.getString(5));
-//				fm.setFmWorkingplace(res.getString(7));
-//				Familymember = gson.toJson(fm);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return Familymember;
-//	}
+	// @Override
+	// public String getEmployee(int emploeeId) {
+	// Connection conn = null;
+	// PreparedStatement preparedStatement = null;
+	// Familymember fm = new Familymember();
+	// String Familymember = null;
+	// Gson gson = new Gson();
+	// try {
+	// conn = ConnectionManager.getConnection();
+	// preparedStatement = conn
+	// .prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
+	// preparedStatement.setInt(1, emploeeId);
+	// ResultSet res = preparedStatement.executeQuery();
+	// if (res.next()) {
+	// fm.setEmployeeepf(res.getString(2));
+	// fm.setFmdateofbirth(res.getString(4));
+	// fm.setFmname(res.getString(3));
+	// fm.setFmoccupation(res.getString(6));
+	// fm.setFmrelationship(res.getString(5));
+	// fm.setFmWorkingplace(res.getString(7));
+	// Familymember = gson.toJson(fm);
+	// }
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// return Familymember;
+	// }
 
 	@Override
-	public String findByEpf(String id) {
+	public Object findByEpf(String id) {
 
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		Familymember fm = new Familymember();
 		String Familymember = null;
-		Gson gson = new Gson(); 
+		Gson gson = new Gson();
 		try {
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn
@@ -226,7 +227,7 @@ public class Familymember extends Employee {
 				log.info("res.getString(2)" + res.getString(2));
 				fm.setFmdateofbirth(res.getString(4));
 				log.info("res.getString(4)" + res.getString(4));
-				fm.setFmname(res.getString(3));  
+				fm.setFmname(res.getString(3));
 				log.info("res.getString(3)" + res.getString(3));
 				fm.setFmoccupation(res.getString(6));
 				log.info("res.getString(6)" + res.getString(6));
@@ -240,7 +241,7 @@ public class Familymember extends Employee {
 			e.printStackTrace();
 		}
 
-		return Familymember;
+		return fm;
 	}
 
 	@Override

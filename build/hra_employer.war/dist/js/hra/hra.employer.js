@@ -203,19 +203,13 @@ $(document).on("click", "#vbutton", function() {
 
 function loademployeeDetails() {
 
-	var serchContent = "1";
-
-	var jsonData = {
-		"serchContent" : serchContent
-	};
-
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
-			jsonData : JSON.stringify(jsonData),
-			serchVlaue : serchContent,
-			task : "GETBASIC"
+			jsonData : JSON.stringify("1"),
+			serchVlaue : empEpf,
+			task : "GEB"
 		},
 		dataType : "json",
 		success : function(responseText) {

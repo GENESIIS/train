@@ -201,8 +201,8 @@ public class EducationData extends Employee {
 //		return educationDetails;
 //	}
 
-	@Override
-	public String findByEpf(String id) {
+	@Override   
+	public Object findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		EducationData edu = new EducationData();
@@ -233,7 +233,7 @@ public class EducationData extends Employee {
 				edu.setEduStudytime(res.getString(8));
 				log.info("res.getString(8)" + res.getString(8));
 
-				educationDetails = gson.toJson(edu);
+			
 
 			}
 		} catch (SQLException e) {
@@ -249,7 +249,7 @@ public class EducationData extends Employee {
 				log.error("Exception: EducationData Find" + exception);
 			}
 			}
-		return educationDetails;
+		return edu;
 
 	}
 

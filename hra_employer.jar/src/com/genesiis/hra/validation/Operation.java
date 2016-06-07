@@ -18,9 +18,9 @@ public enum Operation {
 	EMPLOYEE("EMP"), 
 	ADD_EMPLOYEE_BASICDATA("AEB"),
 	BASIC_DATA("BASIC"),
-	GET_BASIC_DATA("GETBASIC"),
+	
 	ADD_FAMILY_MEMBER("AFM"),
-	GET_FAMILY("GETFAMILY"),
+	GET_FAMILY("GF"),
 	ADD_DEPARTMENT("ADP"),
 	GET_MANAGER("GMN"), 
 	GET_DEPARTMENT("GDP"),
@@ -29,8 +29,8 @@ public enum Operation {
 	GET_EDU_DETAILS("GED"),
 	STUDY_PROGRAM("STD"),
 	LOAN("LOAN"), 
-	EMPLOYMENT_HISTORY("HIS");
-	 
+	EMPLOYMENT_HISTORY("HIS"),
+	VIEW_EMPLOYEE_DETAILS("VPD");
 	private final String value;
 
 	Operation(final String newValue) {

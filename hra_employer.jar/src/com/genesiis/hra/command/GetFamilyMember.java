@@ -21,10 +21,10 @@ public class GetFamilyMember implements ICommandAJX {
 
 		try {
 			log.info(epf + "=========");
-			familydetails = familyManger.findByEpf(epf);
+			// familydetails = familyManger.findByEpf(epf);
 			log.info("execute");
 		} catch (Exception e) {
-			log.error("execute - Exception " + e); 
+			log.error("execute - Exception " + e);
 		}
 		return familydetails;
 	}
@@ -47,8 +47,6 @@ public class GetFamilyMember implements ICommandAJX {
 		return empList;
 
 	}
-
-	
 
 	@Override
 	public String execute(int epf) {

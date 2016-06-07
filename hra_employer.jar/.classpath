@@ -12,6 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/JBAP643GA/modules/com/google/gson/main/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/JBAP643GA/modules/com/google/gson/main/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

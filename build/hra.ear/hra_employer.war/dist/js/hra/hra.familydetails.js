@@ -266,3 +266,34 @@ function resetLabels() {
 		document.getElementById('relationnameError').innerHTML = "";
 	}
 }
+
+/////load family Details//////
+
+function loadFamilyDetails() { 
+	
+	$.ajax({
+		type : "POST",
+		url : 'EmployeeController',
+		data : {
+			jsonData : JSON.stringify("1"),
+			serchVlaue : empEpf,
+			task : "GF"
+		},
+		dataType : "json",
+		success : function(responseText) {
+
+			json = JSON.parse(responseText);
+
+			$("#relationship").text(json.fmRelationship);
+			$("#relationDateofbirth").text(json.fmDateofbirth);
+			$("#relationName").text(json.fmName);
+			$("#occupation").text(json.fmOccupation);
+			$("#workingPlace").text(json.fmWorkingplace);
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}

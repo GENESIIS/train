@@ -8,6 +8,8 @@
 var theNewScript = document.createElement("script");
 theNewScript.type = "text/javascript";
 theNewScript.src = "hra.validation.js";
+theNewScript.src = "hra.employer.js";
+var empEpf = null;
 
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
@@ -47,6 +49,7 @@ function loadfamilydetails() {
 // load more edit Employeee Detail
 function loadEditContentqualifications() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
+	loadDataEducationalDetails();
 }
 
 function loadEditContentstudyprograms() {

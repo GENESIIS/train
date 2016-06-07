@@ -48,7 +48,7 @@
 <script src="dist/js/hra/hra.employer.js"></script>
 <script src="dist/js/hra/hra.familydetails.js"></script>
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
-
+<script src="dist/js/hra/hra.education.js"></script>
 
 
 <style type="text/css">
@@ -123,10 +123,7 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentDepartment()"> Department</a></li>
-					<li><a href="#viewEmployee"
-						class="list-group-item list-group-item-primary"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="loadViewEmployee()">View Employee Details</a></li>
+
 					<li><a href="#salarycomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"

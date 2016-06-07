@@ -77,7 +77,7 @@
 				<li onclick="loademployeeDetails()" class="active"><a
 					id="tabBasic" href="#tabPageBasic" role="tab" data-toggle="tab"
 					aria-controls="basic" aria-expanded="false">Basic Information</a></li>
-				<li onclick="loadEducationDetails()" class=""><a
+				<li onclick="loadDataEducationalDetails()" class=""><a
 					id="tabQualifications" href="#tabPageQualifications" role="tab"
 					data-toggle="tab" aria-controls="qualifications"
 					aria-expanded="false">Qualifications</a></li>
@@ -148,8 +148,7 @@
 											style="font-size: 13px;">Permenant Address</label> <label
 											class="control-label col-xs-12 iceLabel"
 											style="font-size: 13px; font-weight: bold;" id="address1">109,
-											Galle RD, colombo07  sgfsdfgsdfg
-											sgfdsfgsdf</label>
+											Galle RD, colombo07 sgfsdfgsdfg sgfdsfgsdf</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
