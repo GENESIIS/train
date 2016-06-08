@@ -59,7 +59,7 @@ public class GetEmployee implements ICommandAJX {
 		return null;
 	}
 
-	@Override
+
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub
 		return null;
@@ -71,13 +71,13 @@ public class GetEmployee implements ICommandAJX {
 		return false;
 	}
 
-	@Override
+
 	public boolean validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean validateValue(HashMap<Integer, Object> entiytMap)
 			throws Exception {
 		// TODO Auto-generated method stub

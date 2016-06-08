@@ -20,7 +20,6 @@ public class AddSalaryComponent implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddSalaryComponent.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-	@Override
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a salary component is
 						// inserted
@@ -48,7 +47,7 @@ public class AddSalaryComponent implements ICommandAJX {
 		return component;
 	}
 
-	@Override
+
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
 		SalaryComponent component = null;
@@ -60,19 +59,19 @@ public class AddSalaryComponent implements ICommandAJX {
 		return component;
 	}
 
-	@Override
+
 	public boolean validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean validateValue(HashMap<Integer, Object> entiytMap) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
+
 	public String execute(String gsonData, Operation operation) {
 		// TODO Auto-generated method stub
 		return null;

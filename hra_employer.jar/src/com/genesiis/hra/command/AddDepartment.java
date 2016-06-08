@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.model.Department;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
-import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -16,11 +16,10 @@ import com.google.gson.Gson;
 //* 20160503 PN HRA-3 modified the execute method.
 //***********************************************/
 
-public class AddDepartment implements ICommandAJX {
+public abstract class AddDepartment implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-	@Override
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
@@ -50,7 +49,6 @@ public class AddDepartment implements ICommandAJX {
 		return department;
 	}
 
-	@Override
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
 		Department department = null;
@@ -79,7 +77,6 @@ public class AddDepartment implements ICommandAJX {
 		return false;
 	}
 
-	@Override
 	public String execute(String gsonData, Operation operation) {
 		// TODO Auto-generated method stub
 		return null;

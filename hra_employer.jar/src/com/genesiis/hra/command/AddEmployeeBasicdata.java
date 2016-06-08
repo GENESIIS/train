@@ -20,7 +20,6 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-	@Override
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
@@ -44,7 +43,6 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 		return basicData;
 	}	
 
-	@Override
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
 		BasicData basicData = null;
@@ -56,20 +54,19 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 		return basicData;
 	}
 
-	@Override
 	public boolean validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean validateValue(HashMap<Integer, Object> entiytMap)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public String execute(String gsonData, Operation operation) {
 		// TODO Auto-generated method stub
 		return null;

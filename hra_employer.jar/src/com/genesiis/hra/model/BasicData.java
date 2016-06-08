@@ -170,7 +170,7 @@ public class BasicData extends Employee {
 	public BasicData() {
 	}
 
-	@Override
+
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
 				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
@@ -225,39 +225,36 @@ public class BasicData extends Employee {
 		return status;
 	}
 
-	@Override
 	public int update(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public String delete(Object object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean isValid(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public String getEmployee(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 }

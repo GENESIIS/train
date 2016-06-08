@@ -14,7 +14,7 @@ public class GetManager implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetManager.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
-	@Override
+
 	public String execute(String gsonData) {
 		String message = MessageList.ERROR.message();
 		try {
@@ -32,26 +32,26 @@ public class GetManager implements ICommandAJX {
 		return message;
 	}
 
-	@Override
+
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public boolean validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean validateValue(HashMap<Integer, Object> entiytMap)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public String execute(String gsonData, Operation operation) {
 		// TODO Auto-generated method stub
 		return null;
