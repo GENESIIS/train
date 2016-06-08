@@ -61,6 +61,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.VIEW_EMPLOYEE_DETAILS, new GetEmployee());
+		commands.put(Operation.GET_EMPLOYEE_HISTORY, new GetEmployee());
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -101,7 +102,7 @@ public class EmployerController extends HttpServlet {
 			case GET_LOAN:
 				message = commands.get(o).execute(inputVAlue);
 				log.info(inputVAlue
-						+ "...............................................");
+						+ "***inputVAlue***");
 				break;
 			case UPDATE_LOAN:
 				message = commands.get(o).execute(details, inputVAlue);
@@ -117,7 +118,7 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case GET_EMPLOYEE_HISTORY:
-				message = commands.get(o).execute(details);
+				message = commands.get(o).execute(details, inputVAlue);
 				break;
 			case UPDATE_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details, inputVAlue);

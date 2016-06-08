@@ -16,15 +16,6 @@ function loadviewemployementhistory() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
 }
 
-function loadEditemployementhistory() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
-}
-
-
-function loadEditemployementhistory() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemployementHistory.jsp");
-}
-
 
 //@TR - Employee > new employee > more details > add Employment details 
 function loadAddEmployementHIstoryDetails() {
@@ -34,7 +25,7 @@ function loadAddEmployementHIstoryDetails() {
 //@TR - Employee > edit employee > more details > edit Employment details 
 function loadEditEmployementHIstoryDetails() {
 	loadEditContentEmployeeHistoryDetails();
-	$("#modelrestedit").load("employeeHistory/editEmployeeHistory.jsp");
+	$("#Editmodelrest").load("employeeHistory/editEmployeeHistory.jsp");
 }
 //field number check
 function isNumber(evt) {
@@ -265,6 +256,7 @@ function loadEditContentEmployeeHistoryDetails() {
 				type : "POST",
 				url : 'EmployerController',
 				data : {
+					serchVlaue : employeeEpf,
 					jsonData : JSON.stringify(employeeData),
 					task : "GEH"
 				},
