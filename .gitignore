@@ -5,7 +5,7 @@
 
 # Package Files #
 
-.gitignore
+*.gitignore
 *.classpath
 *.project
 /build
