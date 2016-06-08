@@ -5,7 +5,7 @@ import java.util.HashMap;
 public interface ICommandAJX {
 	public String execute(String gsonData);
 
-	public String execute(String gsonData, String epf);
+	public String execute(String inputValue, String epf);
 
 	public Object extractFromJason(String data);
 

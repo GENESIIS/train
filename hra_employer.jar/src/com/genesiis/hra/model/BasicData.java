@@ -203,12 +203,12 @@ public class BasicData extends Employee {
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
+				/*ResultSet rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
 				}
-				status = generatedKey;
+				status = generatedKey;*/
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -226,10 +226,10 @@ public class BasicData extends Employee {
 	}
 
 	@Override
-	public int update(Object employee) {
+	public int update(Object employee, String epf) {
 		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
-				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
+				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE EPF = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -257,18 +257,18 @@ public class BasicData extends Employee {
 			ps.setString(14, "S");
 			ps.setString(15, empBasic.getEmployeeepf());
 			ps.setString(16, empBasic.getEmployeebasis());
-			ps.setString(17, "1");
+			ps.setString(17, epf);
 
 			int rows = ps.executeUpdate();
 
 			if (rows > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
+				/*ResultSet rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				message = "Succesfull";
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
 				}
-				status = generatedKey;
+				status = generatedKey;*/
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -356,4 +356,6 @@ public class BasicData extends Employee {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
 }

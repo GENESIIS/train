@@ -459,7 +459,7 @@ public class EmploymentHistory extends Employee {
 	
 
 	@Override
-	public int update(Object object) {
+	public int update(Object object, String epf) {
 		String query = "UPDATE [HRA.EMPLOYMENTHISTORY] SET EMPLOYERNAME=? , DESIGNATION =? , STARTDATE=? , ENDDATE=? , BASIS=? , COMMENTS=? , EMAIL=? ,"
 				+ "REFERENCEONENAME=? , REFERENCEONEPHONE=? , REFERENCEONEMOBILE=? , REFERENCEONEADDRESS=? , REFERENCEONEDESIGNATION =? , REFERENCEONECOMMENTS=? ,"
 				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE ID=?";
@@ -495,7 +495,7 @@ public class EmploymentHistory extends Employee {
 			ps.setString(19, eh.getEhreferencetwocomments());
 
 			ps.setString(20, "SYSTEM");
-			ps.setInt(21, eh.getEhid());
+			ps.setString(21, epf);
 
 			log.info("getEhid:-" + eh.getEhid());
 

@@ -58,7 +58,7 @@ public class LoanCrudJDBC implements ICrud {
 	}
 
 	@Override
-	public int update(Object object) {
+	public int update(Object object, String epf) {
 		String query = "UPDATE [hra-2].[dbo].[HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
 				+ "  TOTALOUTSTANDING = ? ,  GUARANTOR1 = ? , GUARANTOR2 = ? ,  MONTHLYPAYMENT = ?, ENDDATE = ?,  MODBY = ?  WHERE ID = ?";
 		Connection conn = null;
@@ -76,7 +76,7 @@ public class LoanCrudJDBC implements ICrud {
 			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
 			preparedStatement.setString(7, lnDetail.getLoanEndDate());
 			preparedStatement.setString(8, "Saman");
-			preparedStatement.setString(9, "1");			
+			preparedStatement.setString(9, epf);			
 
 			int rowsInserted = preparedStatement.executeUpdate();
 			if (rowsInserted > 0) {

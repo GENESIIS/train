@@ -34,7 +34,7 @@ public abstract class Employee implements ICrud {
 	}
 
 	@Override
-	public int update(Object object) {
+	public int update(Object object, String epf) {
 		return -1;
 	}
 	

@@ -154,7 +154,8 @@ function updateEmployeeDetails() {
 		data : {
 
 			jsonData : JSON.stringify(employeeData),
-			task : "UEB"
+			task : "UEB",
+			serchVlaue : empEpf
 		},
 		dataType : "json",
 		success : function(data) {

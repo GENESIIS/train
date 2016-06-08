@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 import com.genesiis.hra.model.BasicData;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -21,20 +21,8 @@ public class AddBasic implements ICommandAJX{
 	
 	// Method to execute JsonData 
 	public String execute(String gsonData) {		
-		EmployeeCrudJDBC accessdata = new EmployeeCrudJDBC();		
-		int id = -1;
-		MessageList message = MessageList.ERROR;
-		try{
-			BasicData employee = (BasicData)extractFromJason(gsonData);	
-		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
-			     id = accessdata.update(employee);
-		       } else {
-			     
-		       }
-		}catch(Exception e){
-			 message = MessageList.ERROR;
-		}
-		return message.message();
+		
+		return null;
 	}
 	
 	@Override
@@ -44,8 +32,20 @@ public class AddBasic implements ICommandAJX{
 	}
 	@Override
 	public String execute(String gsonData, String epf) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee accessdata = new BasicData();		
+		int id = -1;
+		MessageList message = MessageList.ERROR;
+		try{
+			BasicData employee = (BasicData)extractFromJason(gsonData);	
+		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
+			     id = accessdata.update(employee,epf);
+		       } else {
+			     
+		       }
+		}catch(Exception e){
+			 message = MessageList.ERROR;
+		}
+		return message.message();
 	}
 	// Method to extract DepartmentDetails from jsonData.
 	@Override
@@ -67,7 +67,7 @@ public class AddBasic implements ICommandAJX{
 			if (!validator.isValidString(employee.getEmployeename())) {
 				message = message + MessageList.EMPTYFIELD.message() +" ";
 			}
-			if (!validator.isValidNic(employee.getEmployeenic())) {
+			/*if (!validator.isValidNic(employee.getEmployeenic())) {
 				message = message + MessageList.NICERROR.message() +" ";
 			}
 			if (!validator.isValidString(employee.getEmployeeepf())) {
@@ -84,7 +84,7 @@ public class AddBasic implements ICommandAJX{
 			}
 			if (!validator.isValidemail(employee.getEmployeeemail())) {
 				message = message + MessageList.EMAILERROR.message() +" ";
-			}
+			}*/
 			return message;
 		}
 

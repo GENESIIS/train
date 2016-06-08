@@ -52,7 +52,7 @@ public class RegisterLoan implements ICommandAJX {
 			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 			
 			if(extractedLndetail!=null){								
 				if (validateValue(extractedLndetail).equalsIgnoreCase("True")) {					
-					id = loanManager.update(extractedLndetail);
+					id = loanManager.update(extractedLndetail,epf);
 					message = MessageList.UPDATED;
 					log.info(message + " "+ MessageList.UPDATED);
 				}

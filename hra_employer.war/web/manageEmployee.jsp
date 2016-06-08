@@ -387,10 +387,7 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
-									<label for="editemployeeId">Employment Status</label> <input
-										type="text" class="form-control" id="employeeStatusEdit"
-										name="employeeStatusEdit" placeholder="">
+								<div class="form-group">									
 								</div>
 							</div>
 						</div>

@@ -24,74 +24,19 @@ import com.google.gson.Gson;
 //* 20160505 PN HRA-2  validateEmployee() method Modified.
 //* 20160525 AS HRA-30  Find method Created 
 //***********************************************/
-public class EmployeeCrudJDBC extends Employee {
+public class EmployeeCrudJDBC extends SerchCrud {
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
 	@Override
 	public int add(Object object) {
 		
-		return (Integer) null;
+		return 0;
 	}
 
 	@Override
-	public int update(Object employee) {
-		// TODO Auto-generated method stub
-		String query = "UPDATE [HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
-				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
-				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE ID = ?";
-		String message = "Error";
-		Connection conn = null;
-		PreparedStatement ps = null;
-		int status = 0;
-		
-        BasicData empBasic = (BasicData)employee;
-		try {
-			conn = ConnectionManager.getConnection();
-			ps = conn.prepareStatement(query);
-			ps.setString(1, empBasic.getEmployeename());
-			ps.setString(2, empBasic.getEmployeedesignation());
-			ps.setString(3, empBasic.getEmployeeemail());
-			ps.setString(4, empBasic.getEmployeedateofbirth());
-			ps.setString(5, empBasic.getEmployeenic());
-			ps.setString(6, empBasic.getEmployeegender());
-			ps.setString(7,	empBasic.getEmployeepermenetaddress());
-			ps.setString(8,	empBasic.getEmployeetemporaryaddress());
-			ps.setString(9, empBasic.getEmployeemobile());
-			ps.setString(10, empBasic.getEmployeetelephone());
-			ps.setString(11, empBasic.getEmployeedepartment());
-			ps.setString(12, empBasic.getEmployeemaritalstatus());
-			ps.setString(13, empBasic.getEmployeejoindate());
-			ps.setString(14, "S");
-			ps.setString(15, empBasic.getEmployeeepf());
-			ps.setString(16, empBasic.getEmployeebasis());
-			ps.setString(17, "1");
-			
-			int rows = ps.executeUpdate();
-			
-			if (rows > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
-				int generatedKey = 0;
-				message = "Succesfull";
-				
-				if (rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				status = generatedKey;
-			}
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-
-		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				conn.close();
-			} catch (SQLException exception) {
-				exception.printStackTrace();
-			}
-		}
-		return status;
+	public int update(Object employee, String epf) {
+		// TODO Auto-generated method stub		
+		return 0;
 	}
 		
 
@@ -99,7 +44,7 @@ public class EmployeeCrudJDBC extends Employee {
 	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
-		return (Integer) null;
+		return 0;
 	}	
 	
 	@Override
@@ -291,38 +236,7 @@ public class EmployeeCrudJDBC extends Employee {
 			log.info("ExtractFromgson - Exception " + e);
 		}
 		return employee;
-	}
-
-	public String validateEmployee(BasicData employee) throws ParseException {
-		DataValidator validator = new DataValidator();
-		String message = "";
-
-		if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message() + " ";
-		}
-		if (!validator.isValidString(employee.getEmployeename())) {
-			message = message + MessageList.EMPTYFIELD.message() + " ";
-		}
-		if (!validator.isValidNic(employee.getEmployeenic())) {
-			message = message + MessageList.NICERROR.message() + " ";
-		}
-		if (!validator.isValidString(employee.getEmployeeepf())) {
-			message = message + MessageList.EMPTYFIELD.message() + " ";
-		}
-		if (!validator.isPastDate(employee.getEmployeedateofbirth())) {
-			message = message + MessageList.INVALIDBIRTDAY.message() + " ";
-		}
-		if (!validator.isValidTelephone(employee.getEmployeemobile())) {
-			message = message + MessageList.MOBILENUMBERERROR.message() + " ";
-		}
-		if (!validator.isValidTelephone(employee.getEmployeetelephone())) {
-			message = message + MessageList.PHONENUMBERERROR.message() + " ";
-		}
-		if (!validator.isValidemail(employee.getEmployeeemail())) {
-			message = message + MessageList.EMAILERROR.message() + " ";
-		}
-		return message;
-	}
+	}	
 
 	public boolean validEmployee(BasicData employee) throws ParseException {
 		if (validateEmployee(employee).isEmpty()) {
@@ -330,6 +244,12 @@ public class EmployeeCrudJDBC extends Employee {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

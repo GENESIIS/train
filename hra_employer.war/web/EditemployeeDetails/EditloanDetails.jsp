@@ -7,7 +7,7 @@
 		<div class="form-group">
 			<label for="employeeEPFEdit">Employee</label> <input type="text"
 				class="form-control" id="employeeEPFEdit" name="employeeEPFEdit"
-				placeholder="">
+				placeholder="" readonly>
 		</div>
 		<div class="form-group">
 			<label for="totalOutstanding">Total Outstanding Amount</label> <input

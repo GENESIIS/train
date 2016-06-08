@@ -60,7 +60,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 
 	}
 
-	public String execute(String gsonData,String task) {
+	public String execute(String gsonData,String epf) {
 
 		// insert fiels validation
 		MessageList message = MessageList.ERROR;
@@ -81,7 +81,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 			if (!hasError) {
 				
 				// adding employee history to database table
-				int hasUpdated = employmentHistory.update(employmentHistory);
+				int hasUpdated = employmentHistory.update(employmentHistory, epf);
 
 				// employee history data added
 				if (hasUpdated == 1) {

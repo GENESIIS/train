@@ -254,7 +254,7 @@ public class EducationData extends Employee {
 	}
 
 	@Override
-	public int update(Object object) {
+	public int update(Object object, String epf) {
 		String query = "UPDATE [HRA.QUALIFICATION] SET STUDYPLACE=?, ADDMISSIONDATE=?,QUALIFICATION=?, MEDIUM=?, LEAVINGDATE=?, STUDYTIME=?,  MODBY=? WHERE ID=?";
 		int status = 0;
 		Connection conn = null;

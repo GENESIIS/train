@@ -33,14 +33,14 @@ public class AddEducationDetails implements ICommandAJX{
 		return message.message();
 	}
 	
-	public String execute(String gsonData,String task) {
+	public String execute(String gsonData,String epf) {
 		int id = -1;
 		MessageList message = MessageList.ERROR;
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 		try {
 		EducationData educationData = getEducationDetails(gsonData);
 		validateComponent(errorList);
-		id = educationData.update(educationData);
+		id = educationData.update(educationData, epf);
 		message = MessageList.UPDATED;
 		} catch (Exception e) {
 			log.info("ExcuteUpdate() : ERR "+e);

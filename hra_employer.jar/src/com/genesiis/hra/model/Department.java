@@ -155,13 +155,7 @@ public class Department implements ICrud {
 			e.printStackTrace();
 		}
 		return managers;
-	}
-
-	@Override
-	public int update(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	}	
 
 	@Override
 	public int delete(Object object) {
@@ -203,6 +197,12 @@ public class Department implements ICrud {
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public int update(Object object, String epf) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

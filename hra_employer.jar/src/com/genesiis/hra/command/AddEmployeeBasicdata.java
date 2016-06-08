@@ -30,7 +30,7 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 		try {
 			BasicData employee = (BasicData) extractFromJason(gsonData);
 			if (validateEmployee(employee).equalsIgnoreCase("True")) {
-				id = accessdata.update(employee);
+				id = accessdata.update(employee, "1");
 			} else {
 
 			}

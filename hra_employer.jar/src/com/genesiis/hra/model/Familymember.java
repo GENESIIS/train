@@ -142,7 +142,7 @@ public class Familymember extends Employee {
 	}
 
 	@Override
-	public int update(Object object) {
+	public int update(Object object, String epf) {
 		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
 		int status = -1;
 		Connection conn = null;
@@ -158,7 +158,7 @@ public class Familymember extends Employee {
 			preparedStatement.setString(4, fm.getFmoccupation());
 			preparedStatement.setString(5, fm.getFmWorkingplace());
 			preparedStatement.setString(6, "SYSTEM");
-			preparedStatement.setString(7, "2");
+			preparedStatement.setString(7, epf);
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 			if (rowsUpdated > 0) {

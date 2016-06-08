@@ -43,11 +43,7 @@ function addLoanDetailes() {
 	var loanmonthlyPayment = $("#monthlyPayment").val();
 	var loanDueDate = $("#dueDate").val();
 	var loanEndDate = $("#endDate").val();
-
-	// var isemployeeEpf = isEmptyfield(employeeEpf);
-	// var isrelationship = isEmptyfield(relationship);
-	// var isrelationDateofbirth = isPastdate(relationDateofbirth);
-	// var isrelationName = isEmptyfield(relationName);
+	
 
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
@@ -136,14 +132,14 @@ function updateLoanDetailes() {
 function loadEditContentloandetails() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp",
 			function(datatl) {
-				var employeeEpf = $("#employeeEPFEdit").val();
+				var employeeEpf = empEpf;
 				$.get("EmployerController", {
 					serchVlaue : employeeEpf,
 					task : "GL"
 				}, function(data, status) {
 					alert(data);
 					json = JSON.parse(JSON.parse(data));
-					$("#employeeEPFEdit").val(json.employeeEpf);
+					$("#employeeEPFEdit").val(empEpf);
 					$("#totalOutstandingEdit").val(json.loanAmount);
 					$("#guaranter1Edit").val(json.loanGuarantor1);
 					$("#guaranter2Edit").val(json.loanGuarantor2);

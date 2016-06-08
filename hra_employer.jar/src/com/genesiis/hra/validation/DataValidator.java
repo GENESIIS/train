@@ -66,7 +66,7 @@ public class DataValidator {
 		if ( (text != null) &&  (text.isEmpty() == false)) {
 			status = true;
 		}
-		log.error("isValidString - status " + status);
+		log.info("isValidString - status " + status);
 		return status;
 	}
 	

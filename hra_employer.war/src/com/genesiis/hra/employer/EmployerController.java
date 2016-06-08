@@ -77,7 +77,7 @@ public class EmployerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String details = request.getParameter("jsonData");
-		String serchVlaue = request.getParameter("serchVlaue");
+		String inputVAlue = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
 		String message = "";
@@ -85,33 +85,33 @@ public class EmployerController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
-		log.info("task-" + task + " searchValue-" + serchVlaue + " details-"
+		log.info("task-" + task + " searchValue-" + inputVAlue + " details-"
 				+ details);
 		log.info("Operation" + o);
 		try {
 			switch (o) {
 
 			case SERCH_EMPLOYEE:
-				message = commands.get(o).execute(serchVlaue);
+				message = commands.get(o).execute(inputVAlue);
 				log.info(message);
 				break;
 			case REGISTER_LOAN:
 				message = commands.get(o).execute(details);
 				break;
 			case GET_LOAN:
-				message = commands.get(o).execute(serchVlaue);
-				log.info(serchVlaue
+				message = commands.get(o).execute(inputVAlue);
+				log.info(inputVAlue
 						+ "...............................................");
 				break;
 			case UPDATE_LOAN:
-				message = commands.get(o).execute(details, serchVlaue);
+				message = commands.get(o).execute(details, inputVAlue);
 				break;
 			case GET_EMPLOYEE_BASIC:
 				log.info(gson.toJson("Inside case get"));
-				message = commands.get(o).execute(serchVlaue, task);
+				message = commands.get(o).execute(inputVAlue, task);
 				break;
 			case UPDATE_EMPLOYEE_BASIC:
-				message = commands.get(o).execute(details);
+				message = commands.get(o).execute(details,inputVAlue );
 				break;
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
@@ -120,7 +120,7 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case UPDATE_EMPLOYEE_HISTORY:
-				message = commands.get(o).execute(details, task);
+				message = commands.get(o).execute(details, inputVAlue);
 				break;
 			case ADD_MEDICAL_HISTORY:
 				message = commands.get(o).execute(details);
@@ -131,12 +131,12 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case GET_EDU_DETAILS:
-				message = commands.get(o).execute(serchVlaue, task);
+				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search Educational details");
 				break;
 
 			case GET_FAMILY:
-				message = commands.get(o).execute(serchVlaue, task);
+				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search family details");
 				break;
 			case ADD_EDU_DETAILS:
