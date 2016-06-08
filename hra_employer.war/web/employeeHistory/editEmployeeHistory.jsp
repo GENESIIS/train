@@ -25,7 +25,7 @@
 						<div class="form-group">
 							<label for="employeeId">Employee EPF</label> <input type="text"
 								class="form-control" id="employeeId" name="employeeId"
-								placeholder="" maxlength="10" value="2" readonly>
+								placeholder="" maxlength="10" >
 						</div>
 					</div>
 

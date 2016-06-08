@@ -75,7 +75,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 			Map<String, String> attributeMap = jsonToMap(gsonData);
 
 			// validating map return error map
-			hasError = validateValue(attributeMap);
+			//hasError = validateValue(attributeMap);
 
 			// return error map is empty -> no errors
 			if (!hasError) {

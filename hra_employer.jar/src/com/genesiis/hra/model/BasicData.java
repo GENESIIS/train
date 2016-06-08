@@ -318,7 +318,7 @@ public class BasicData extends Employee {
 				emp.setEmployeeepf(res.getString(15));
 				emp.setEmployeebasis(res.getString(16));
 
-				
+				log.info(id);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

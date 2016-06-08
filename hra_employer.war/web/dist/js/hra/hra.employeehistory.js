@@ -6,6 +6,13 @@
  * @created on- 2016-05-25
  */
 
+
+$(document).ready(function() {
+		
+	
+});
+	
+	
 //field empty check
 function isEmpty(value) {
 	return (value == null || value.length === 0);
@@ -246,23 +253,26 @@ function clearEmploymentHisory() {
 /*****************START EDIT EMPLOYEE HISTORY Details*************************/
 function loadEditContentEmployeeHistoryDetails() {
 
-			var employeeId = $("#employeeId").val();
+			alert(empEpf);
+	
+//			var employeeId = $("#employeeId").val();
+			$("#employeeId").val(empEpf);
 			
 			var employeeData = {
-				"ehEmployeeid" 			: employeeId,
+				"ehEmployeeid" 			: empEpf,
 			};
 		
 			$.ajax({
 				type : "POST",
 				url : 'EmployerController',
 				data : {
-					serchVlaue : employeeEpf,
+					serchVlaue : empEpf,
 					jsonData : JSON.stringify(employeeData),
 					task : "GEH"
 				},
 				dataType : "json",
 				success : function(data) {
-					alert("success"+data);
+
 					json = JSON.parse(data);
 					$("#employeeId").val(json.ehEmployeeid);
 					$("#employer").val(json.ehEmployername);
@@ -304,8 +314,8 @@ function loadEditContentEmployeeHistoryDetails() {
 /*****************START EDIT Employee History*************************/
 function updateEmployeeHistoryDetails() {
 
-	var ehEmpid 				= $("#ehEmpid").val();
-	var employeeId 				= $("#employeeId").val();
+
+//	var employeeId 				= $("#employeeId").val();
 	var employer 				= $("#employer").val();
 	var designation 			= $("#designation").val();
 	var basis 					= $("#basis").val();
@@ -330,11 +340,10 @@ function updateEmployeeHistoryDetails() {
 	var ehReferencetwodesignation= $("#ehReferencetwodesignation").val();
 	var ehReferencemodby			= $("#ehReferencemodby").val();
 	
-	var x = parseInt(employeeId, 10);
-	
+
 	var employeeData = {
-		"ehid"					: ehEmpid,	
-		"ehEmployeeid" 			: x,
+
+
 		"ehEmployername" 		: employer,
 		"ehDesignation" 		: designation,
 		"ehBasis" 				: basis,
@@ -364,6 +373,7 @@ function updateEmployeeHistoryDetails() {
 		type : "POST",
 		url : 'EmployerController',
 		data : {
+			serchVlaue : empEpf,
 			jsonData : JSON.stringify(employeeData),
 			task : "UEH"
 		},
@@ -371,7 +381,6 @@ function updateEmployeeHistoryDetails() {
 		success : function(data) {
 			alert(data);
 			if (data == "Details updated successfully.") {
-				alert(data);
 			}
 		},
 		error : function(e) {

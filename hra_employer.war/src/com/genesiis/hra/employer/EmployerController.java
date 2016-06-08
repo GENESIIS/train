@@ -50,6 +50,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.UPDATE_LOAN, new RegisterLoan());
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
+		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY, new AddEmployeeHistory());
 		commands.put(Operation.GET_LOAN, new GetLoan());
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
 		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());
@@ -118,7 +119,7 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case GET_EMPLOYEE_HISTORY:
-				message = commands.get(o).execute(details, inputVAlue);
+				message = commands.get(o).execute(inputVAlue, task);
 				break;
 			case UPDATE_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details, inputVAlue);
