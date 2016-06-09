@@ -93,6 +93,9 @@ public class EmployerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String details = request.getParameter("jsonData");
+		
+		log.info(details);
+		
 		String inputVAlue = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();

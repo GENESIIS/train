@@ -1,18 +1,19 @@
 package com.genesiis.hra.model;
 
-import java.lang.reflect.Field;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 import java.util.logging.Logger;
 
+import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.utill.MaskValidator;
-import com.genesiis.hra.validation.DataValidator;
+
 import com.genesiis.hra.validation.MessageList;
 
 /**
@@ -117,7 +118,7 @@ public class MedicalHistory extends Employee {
 		MedicalHistory medicalHistory = (MedicalHistory) object;
 
 		try {
-			conn = com.genesiis.hra.utill.ConnectionManager.getConnection();
+			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, medicalHistory.getMedicalhistoryemployeeid());

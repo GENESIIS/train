@@ -10,6 +10,9 @@ import java.sql.Statement;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
+import com.genesiis.hra.utill.MaskValidator;
+import com.genesiis.hra.validation.DataValidator;
+import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class BasicData extends Employee {
@@ -174,12 +177,13 @@ public class BasicData extends Employee {
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
 				+ "EMAIL, DOB, NIC, GENDER, PERMENENTADDRESS, TEMPORARYADDRESS, "
-				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, EPF, BASIS) "
-				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)";
+				+ "MOBILENO, OTHERNO, DEPTID, MARITALSTATUS, DATEOFJOIN, MODBY, MODON, EPF, BASIS) "
+				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,GETDATE(),?,?)";
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		BasicData data = (BasicData) object;
-		int status = 0;
+		int insertStatus = 0;
 
 		try {
 			conn = ConnectionManager.getConnection();
@@ -187,32 +191,39 @@ public class BasicData extends Employee {
 			ps.setString(1, data.getEmployeename());
 			ps.setString(2, data.getEmployeedesignation());
 			ps.setString(3, data.getEmployeeemail());
-			ps.setString(4, data.getEmployeedateofbirth());
+			ps.setDate(4, new DataValidator().
+					convertStringDatetoSqlDate
+					(data.getEmployeedateofbirth()));
 			ps.setString(5, data.getEmployeenic());
 			ps.setString(6, data.getEmployeegender());
 			ps.setString(7, data.getEmployeepermenetaddress());
 			ps.setString(8, data.getEmployeetemporaryaddress());
 			ps.setString(9, data.getEmployeemobile());
 			ps.setString(10, data.getEmployeetelephone());
-			ps.setString(11, data.getEmployeedepartment());
+			ps.setInt(11, Integer.parseInt(data.getEmployeedepartment()));
 			ps.setString(12, data.getEmployeemaritalstatus());
-			ps.setString(13, data.getEmployeejoindate());
+			ps.setDate(13, new DataValidator().
+					convertStringDatetoSqlDate
+					(data.getEmployeejoindate()));
 			ps.setString(14, "SYSTEM");
 			ps.setString(15, data.getEmployeeepf());
 			ps.setString(16, data.getEmployeebasis());
 
-			int rowsInserted = ps.executeUpdate();
-			if (rowsInserted > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
-				int generatedKey = 0;
-				if (rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				status = generatedKey;
-			}
+			insertStatus = ps.executeUpdate();
+
+//			if (rowsInserted > 0) {
+//				insertStatus = 1;// when valid insert
+//			}
+
+			rs = ps.getGeneratedKeys();
+
+
+
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-		} finally {
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
 			try {
 				if (ps != null) {
 					ps.close();
@@ -222,7 +233,8 @@ public class BasicData extends Employee {
 				exception.printStackTrace();
 			}
 		}
-		return status;
+
+		return insertStatus;
 	}
 
 	@Override
@@ -262,13 +274,11 @@ public class BasicData extends Employee {
 			int rows = ps.executeUpdate();
 
 			if (rows > 0) {
-				/*ResultSet rs = ps.getGeneratedKeys();
-				int generatedKey = 0;
-				message = "Succesfull";
-				if (rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				status = generatedKey;*/
+				/*
+				 * ResultSet rs = ps.getGeneratedKeys(); int generatedKey = 0;
+				 * message = "Succesfull"; if (rs.next()) { generatedKey =
+				 * rs.getInt(1); } status = generatedKey;
+				 */
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -286,7 +296,7 @@ public class BasicData extends Employee {
 		return status;
 	}
 
-	// use for View basci data and department 
+	// use for View basci data and department
 	@Override
 	public Object findByEpf(String id) {
 		Connection conn = null;
@@ -356,6 +366,5 @@ public class BasicData extends Employee {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
+
 }

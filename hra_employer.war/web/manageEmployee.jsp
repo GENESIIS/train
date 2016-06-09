@@ -11,6 +11,7 @@
 	//To load the Datatable
 	$(document).ready(function() {
 		loadBasicTable();
+		getDepartment()
 		//listEmployee(empData); 
 	});
 </script>
@@ -58,15 +59,7 @@
 			<div class="modal-body">
 				<div class="well">
 					<h3 class="">General Details</h3>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="employeeNumber">Employee Number</label><input
-									type="text" class="form-control" id="employeeNumber"
-									name="employeeNumber" placeholder="" maxlength="6" size="6">
-							</div>
-						</div>
-					</div>
+
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
@@ -117,8 +110,8 @@
 								<label for="employeeGender">Gender</label> <select
 									class="form-control" id="employeeGender" name="employeeGender">
 									<option value="">--Select--</option>
-									<option value="Female">Female</option>
-									<option value="Male">Male</option>
+									<option value="2">Female</option>
+									<option value="4">Male</option>
 								</select>
 							</div>
 						</div>
@@ -307,29 +300,13 @@
 			<div class="modal-body">
 				<div class="well">
 					<h3 class="">General Details</h3>
-					<!-- 						<div class="row"> -->
-					<!-- 							<div class="col-md-6"> -->
+
 					<div class="form-group">
 						<label for="editemployeeId">Name</label> <input type="text"
 							class="form-control" id="employeeNameEdit" name="editemployeeId"
 							placeholder="">
 					</div>
-					<!-- 							</div> -->
-					<!-- 							<div class="col-md-6"> -->
-					<!-- 								<div class="form-group"> -->
-					<!-- 									<label for="editemployeeId">Middle Name</label> <input -->
-					<!-- 										type="text" class="form-control" id="editemployeeId" -->
-					<!-- 										name="editemployeeId" placeholder=""> -->
-					<!-- 								</div> -->
-					<!-- 							</div> -->
-					<!-- 							<div class="col-md-6"> -->
-					<!-- 								<div class="form-group"> -->
-					<!-- 									<label for="editemployeeId">Last Name</label> <input -->
-					<!-- 										type="text" class="form-control" id="editemployeeId" -->
-					<!-- 										name="editemployeeId" placeholder=""> -->
-					<!-- 								</div> -->
-					<!-- 							</div> -->
-					<!-- 						</div> -->
+
 
 					<div class="row">
 						<div class="col-md-6">
