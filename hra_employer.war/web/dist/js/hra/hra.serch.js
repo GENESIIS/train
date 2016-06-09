@@ -80,7 +80,7 @@ function listEmployee(empData) {
 					});
 
 	$("#employeeDetails_filter").css("display", "none"); // hiding global
-															// search box
+	// search box
 	eTable = $('#employeeDetails').DataTable();
 	$('#serchEmployeeText').keyup(function() {
 		eTable.search($(this).val()).draw();
@@ -122,8 +122,15 @@ function listEmployee(empData) {
 									json.employeeDateofbirth);
 							$(".modal-body #employeeNICEdit").val(
 									json.employeeNic);
-							$(".modal-body #employeeGenderEdit").val(
-									json.employeeGender);
+
+							if (json.employeeGender == 'M') {
+								$(".modal-body #employeeGenderEdit")
+										.val('Male');
+							} else {
+								$(".modal-body #employeeGenderEdit").val(
+										'Female');
+							}
+
 							$(".modal-body #employeeAddressEdit").val(
 									json.employeePermenetaddress);
 							$(".modal-body #employeeTempADDEdit").val(

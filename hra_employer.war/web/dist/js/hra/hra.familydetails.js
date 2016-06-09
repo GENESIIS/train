@@ -8,9 +8,8 @@ function loadEditContentfamilydetails() {
 	getEmployeetoupdate();
 }
 
-
-/////Familydetails
-////Add Family Details
+// ///Familydetails
+// //Add Family Details
 function addFamilyDetails() {
 	var fmemployeeId = $("#fmemployeeId").val();
 	var relationship = $("#relationship").val();
@@ -69,8 +68,6 @@ function addFamilyDetails() {
 		});
 	}
 }
-
-
 
 // //Edit Family Details
 function editFamilyDetails() {
@@ -132,9 +129,6 @@ function editFamilyDetails() {
 	}
 
 }
-
-
-
 
 function editclearFamilydetails() {
 	$("#editrelationDateofbirth").val("");
@@ -199,24 +193,18 @@ function resetFieldsadd() {
 	}
 }
 
-
-
-
-
-
 function getEmployeetoupdate() {
 	var fmemployeeId = 2;
 
 	var jsonData = {
-			"employeeEpf" : fmemployeeId,
-		};
-	
+		"employeeEpf" : fmemployeeId,
+	};
+
 	// $.getJSON('EmployeeController', {
 	// // 'jsonData' : jsonData
 	// }, function(response) {
 	// alert(response);
 	// });
-
 
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
@@ -232,7 +220,6 @@ function getEmployeetoupdate() {
 	});
 
 }
-
 
 function resetLabels() {
 	var fmemployeeId = $("#fmemployeeId").val();
@@ -267,13 +254,13 @@ function resetLabels() {
 	}
 }
 
-/////load family Details//////
+// ///load family Details//////
 
-function loadFamilyDetails() { 
-	
+function loadFamilyDetails() {
+
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
 			serchVlaue : empEpf,

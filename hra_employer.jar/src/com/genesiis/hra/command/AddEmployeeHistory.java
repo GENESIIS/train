@@ -11,7 +11,6 @@ import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-
 public class AddEmployeeHistory implements ICommandAJX {
 
 	static Logger log = Logger.getLogger(AddEmployeeHistory.class.getName());
@@ -35,7 +34,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 
 			// return error map is empty -> no errors
 			if (!hasError) {
-				
+
 				// adding employee history to database table
 				int hasInserted = employmentHistory.add(employmentHistory);
 
@@ -45,7 +44,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 				} else {// employee history data not added
 					message = MessageList.NOTADDED;
 				}
-				
+
 			} else {
 				// if return error map is not empty -> errors
 				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
@@ -60,7 +59,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 
 	}
 
-	public String execute(String gsonData,String epf) {
+	public String execute(String gsonData, String epf) {
 
 		// insert fiels validation
 		MessageList message = MessageList.ERROR;
@@ -75,13 +74,14 @@ public class AddEmployeeHistory implements ICommandAJX {
 			Map<String, String> attributeMap = jsonToMap(gsonData);
 
 			// validating map return error map
-			//hasError = validateValue(attributeMap);
+			// hasError = validateValue(attributeMap);
 
 			// return error map is empty -> no errors
 			if (!hasError) {
-				
+
 				// adding employee history to database table
-				int hasUpdated = employmentHistory.update(employmentHistory, epf);
+				int hasUpdated = employmentHistory.update(employmentHistory,
+						epf);
 
 				// employee history data added
 				if (hasUpdated == 1) {
@@ -89,7 +89,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 				} else {// employee history data not added
 					message = MessageList.NOTUPDATED;
 				}
-				
+
 			} else {
 				// if return error map is not empty -> errors
 				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
@@ -103,7 +103,7 @@ public class AddEmployeeHistory implements ICommandAJX {
 		return message.message();
 
 	}
-	
+
 	// @tr - extracting Gson data to object for save
 	public Object extractFromJason(String data) {
 
@@ -114,7 +114,8 @@ public class AddEmployeeHistory implements ICommandAJX {
 			employmentHistory = gson.fromJson(data, EmploymentHistory.class);
 		} catch (Exception e) {
 			// error handling
-			log.info("ExtractFromgson - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("ExtractFromgson - AddEmployeeHistory - Exception "
+					+ e.getMessage());
 		}
 		return employmentHistory;
 	}
@@ -131,7 +132,8 @@ public class AddEmployeeHistory implements ICommandAJX {
 			map = (HashMap<String, String>) gson.fromJson(t, map.getClass());
 		} catch (Exception e) {
 			// error handling
-			log.info("GsonToMap - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("GsonToMap - AddEmployeeHistory - Exception "
+					+ e.getMessage());
 		}
 		return map;
 	}
@@ -143,10 +145,10 @@ public class AddEmployeeHistory implements ICommandAJX {
 		DataValidator dataValidator = new DataValidator();
 		// errors are caught to
 		boolean hasError = false;
-		
+
 		try {
 			for (Entry<String, String> e : entiytMap.entrySet()) {
-				
+
 				// attribute value
 				String value = e.getValue();
 
@@ -157,11 +159,11 @@ public class AddEmployeeHistory implements ICommandAJX {
 			}
 		} catch (Exception e) {
 			// error handling
-			log.info("ValidateValue - AddEmployeeHistory - Exception " + e.getMessage());
+			log.info("ValidateValue - AddEmployeeHistory - Exception "
+					+ e.getMessage());
 		}
 		return hasError;
 	}
-
 
 	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {

@@ -79,10 +79,10 @@ function checkStudyTime() {
 	}
 }
 
-/ ///Load data to edit Educational Details
+//Load data to edit Educational Details
 
-function loadDataEducationalDetails() {
-	
+function loadeditEducationalDetails() {
+
 	var jsonData = "1";
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
@@ -90,6 +90,8 @@ function loadDataEducationalDetails() {
 		task : "GED"
 	}, function(data) {
 		json = JSON.parse(data);
+		alert(data + "		" + json);
+
 		$("#employeeId").val(json.employeeEpf);
 		$("#qualificationName").val(json.eduQualification);
 		$("#educatedPlace").val(json.eduUniversity);
@@ -130,7 +132,7 @@ function EditEducationDetails() {
 		"eduCompltedon" : compleatedOn,
 		"eduStudytime" : studyTime
 	};
-	// alert(JSON.stringify(EducationData));
+	alert(JSON.stringify(EducationData));
 
 	$.ajax({
 		type : "POST",
@@ -155,40 +157,33 @@ function EditEducationDetails() {
 
 // /////////////// load employee education details///////////////
 
-//function loadEducationDetails() {
-//
-//	var serchContent = "1";
-//
-//	var jsonData = {
-//		"serchContent" : serchContent
-//	};
-//	$.ajax({
-//		type : "POST",
-//		url : 'EmployeeController',
-//		data : {
-//			jsonData : JSON.stringify(jsonData),
-//			serchVlaue : serchContent,
-//			task : "GED"
-//		},
-//		dataType : "json",
-//		success : function(responseText) {
-//			// alert("ajax" + responseText);
-//			json = JSON.parse(responseText);
-//			// alert(responseText + " " + json.eduUniversity + " "
-//			// + json.eduMedium + " " + json.eduStartedon + " "
-//			// + json.eduCompltedon);
-//			$("#employeeId").text(json.employeeEpf);
-//			$("#qualificationName").text(json.eduQualification);
-//			$("#educatedPlace").text(json.eduUniversity);
-//			$("#mediumStudied").text(json.eduMedium);
-//			$("#startedOn").text(json.eduStartedon);
-//			$("#compleatedOn").text(json.eduCompltedon);
-//
-//		},
-//		error : function(e) {
-//			alert("Error " + e);
-//			console.log(e);
-//		},
-//	});
-//
-//}
+function loadDataEducationalDetails() {
+
+	var serchContent = "1";
+
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify(1),
+			serchVlaue : empEpf,
+			task : "GED"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			json = JSON.parse(responseText);
+			$("#employeeId").text(json.employeeEpf);
+			$("#qualificationName").text(json.eduQualification);
+			$("#educatedPlace").text(json.eduUniversity);
+			$("#mediumStudied").text(json.eduMedium);
+			$("#startedOn").text(json.eduStartedon);
+			$("#compleatedOn").text(json.eduCompltedon);
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		},
+	});
+
+}

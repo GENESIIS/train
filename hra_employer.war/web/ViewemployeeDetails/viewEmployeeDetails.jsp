@@ -1,5 +1,6 @@
 <!-- 20160521 AS HRA-32 created ViewEmployeeDetails.jsp class -->
 
+<script src="dist/js/hra/hra.education.js"></script>
 
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

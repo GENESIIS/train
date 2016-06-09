@@ -1,9 +1,9 @@
-!--Edit Educational Modal -->
+
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
 		$('#employeeDetails').DataTable();
-		loadDataEducationalDetails();
+		loadeditEducationalDetails();
 	});
 </script>
 <div class="">

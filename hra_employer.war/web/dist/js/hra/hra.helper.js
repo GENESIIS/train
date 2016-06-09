@@ -49,7 +49,7 @@ function loadfamilydetails() {
 // load more edit Employeee Detail
 function loadEditContentqualifications() {
 	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-	loadDataEducationalDetails();
+	loadeditEducationalDetails();
 }
 
 function loadEditContentstudyprograms() {

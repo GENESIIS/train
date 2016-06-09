@@ -206,8 +206,7 @@ public class EducationData extends Employee {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		EducationData edu = new EducationData();
-		String educationDetails = null;
-		Gson gson = new Gson();
+	
 		log.info(id + "//");
 		try {
 
