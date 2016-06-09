@@ -1,3 +1,11 @@
+
+/**
+ * @author pabodha
+ * 20160509 PN created Familymember.java Entity class.
+ * @author tr
+ * 20160608 tr modified Familymember.java Entity class.
+ */
+
 package com.genesiis.hra.model;
 
 import java.sql.Connection;
@@ -12,10 +20,7 @@ import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
-/**
- * 20160509 PN created Familymember.java Entity class.
- * 
- * **/
+
 public class Familymember extends Employee {
 	static Logger log = Logger.getLogger(Familymember.class.getName());
 
@@ -80,26 +85,11 @@ public class Familymember extends Employee {
 		this.employeeEpf = employeeEpf;
 	}
 
-	// @Override
-	// public boolean isValid(Object object) {
-	// DataValidator validator = new DataValidator();
-	// Familymember fm = (Familymember) object;
-	// if ((validator.isValidString(fm.getFmname()) == true)
-	// && (validator.isValidString(fm.getFmdateofbirth())) == true) {
-	// return true;
-	// } else {
-	// return false;
-	// }
-	// }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.genesiis.hra.model.ICrud#add(java.lang.Object)
-	 */
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.FAMILY] (EMPLOYEEID, NAME, DATEOFBIRTH, RELATIONSHIP, "
-				+ "OCCUPATION, PLACE, MODBY) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ "OCCUPATION, PLACE, MODBY, MODON) VALUES (?, ?, ?, ?, ?, ?, ?, GETDATE())";
+
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Familymember fm = (Familymember) object;
@@ -107,11 +97,10 @@ public class Familymember extends Employee {
 
 		try {
 			conn = ConnectionManager.getConnection();
-			// ps = conn.prepareStatement(query,
-			// Statement.RETURN_GENERATED_KEYS);
+			ps = conn.prepareStatement(query, ps.RETURN_GENERATED_KEYS);
 			ps.setString(1, fm.getEmployeeepf());
 			ps.setString(2, fm.getFmname());
-			ps.setString(3, fm.getFmdateofbirth());
+			ps.setDate(3, new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth()));
 			ps.setString(4, fm.getFmrelationship());
 			ps.setString(5, fm.getFmoccupation());
 			ps.setString(6, fm.getFmWorkingplace());
@@ -141,35 +130,48 @@ public class Familymember extends Employee {
 		return status;
 	}
 
-	@Override
+
+
+	/*
+	 * @param Object object
+	   @param String epf
+	 * @return status 
+	 * @see com.genesiis.hra.model.ICrud#update(java.lang.Object)
+	 */
 	public int update(Object object, String epf) {
-		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=?,OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=? , OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
 		int status = -1;
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
+
 		Familymember fm = (Familymember) object;
 
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, fm.getFmname());
-			preparedStatement.setString(2, fm.getFmdateofbirth());
-			preparedStatement.setString(3, fm.getFmrelationship());
-			preparedStatement.setString(4, fm.getFmoccupation());
-			preparedStatement.setString(5, fm.getFmWorkingplace());
-			preparedStatement.setString(6, "SYSTEM");
-			preparedStatement.setString(7, epf);
 
-			int rowsUpdated = preparedStatement.executeUpdate();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, fm.getFmname());
+			ps.setDate(2, new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth()));
+			ps.setString(3, fm.getFmrelationship());
+			ps.setString(4, fm.getFmoccupation());
+			ps.setString(5, fm.getFmWorkingplace());
+			ps.setString(6, "SYSTEM");
+			ps.setString(7, epf);
+
+			log.info("***"+fm.getFmname()+"***"+new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth())+"***"+fm.getFmrelationship()+"***"+fm.getFmoccupation()+"***"+fm.getFmWorkingplace());
+			
+			int rowsUpdated = ps.executeUpdate();
 			if (rowsUpdated > 0) {
 				status = 1;
 			}
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-		} finally {
+		
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {
@@ -179,34 +181,6 @@ public class Familymember extends Employee {
 		return status;
 	}
 
-	// @Override
-	// public String getEmployee(int emploeeId) {
-	// Connection conn = null;
-	// PreparedStatement preparedStatement = null;
-	// Familymember fm = new Familymember();
-	// String Familymember = null;
-	// Gson gson = new Gson();
-	// try {
-	// conn = ConnectionManager.getConnection();
-	// preparedStatement = conn
-	// .prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
-	// preparedStatement.setInt(1, emploeeId);
-	// ResultSet res = preparedStatement.executeQuery();
-	// if (res.next()) {
-	// fm.setEmployeeepf(res.getString(2));
-	// fm.setFmdateofbirth(res.getString(4));
-	// fm.setFmname(res.getString(3));
-	// fm.setFmoccupation(res.getString(6));
-	// fm.setFmrelationship(res.getString(5));
-	// fm.setFmWorkingplace(res.getString(7));
-	// Familymember = gson.toJson(fm);
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// return Familymember;
-	// }
 
 	@Override
 	public Object findByEpf(String id) {
@@ -244,33 +218,71 @@ public class Familymember extends Employee {
 		return fm;
 	}
 
-	@Override
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.genesiis.hra.model.ICrud#getEmployee(int)
+	 */
+	public String getEmployee(int employeeId) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		Familymember fm = new Familymember();
+		String familymember = null;
+		Gson gson = new Gson();
+		try {
+			conn = ConnectionManager.getConnection();
+			
+			preparedStatement = 
+					conn.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE ID=?");
+			
+			preparedStatement.setInt(1, employeeId);
+			
+			ResultSet res = 
+					preparedStatement.executeQuery();
+			
+			if (res.next()) {
+				fm.setEmployeeepf(res.getString(2));
+				fm.setFmdateofbirth(res.getString(4));
+				fm.setFmname(res.getString(3));
+				fm.setFmoccupation(res.getString(6));
+				fm.setFmrelationship(res.getString(5));
+				fm.setFmWorkingplace(res.getString(7));
+				familymember = gson.toJson(fm);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return familymember;
+	}
+
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
 }

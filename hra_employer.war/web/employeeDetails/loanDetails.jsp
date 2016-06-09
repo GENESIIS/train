@@ -10,8 +10,8 @@
 				placeholder="">
 		</div>
 		<div class="form-group">
-			<label for="totalOutstanding">Total Outstanding Amount</label> <input
-				type="number" class="form-control" id="totalOutstanding"
+			<label for="totalOutstanding">Total Outstanding Amount</label> 
+			<input type="number" class="form-control" id="totalOutstanding"
 				name="totalOutstanding" placeholder="">
 		</div>
 		<div class="form-group">
@@ -23,9 +23,17 @@
 		
 		<div class="form-group">
 			<label for="monthlyPayment">Monthly Payment</label> <input
-				type="number" class="form-control" id="monthlyPayment"
-				name="monthlyPayment" placeholder="">
+				type="number" class="form-control" id="monthlyPayment" placeholder="">
 		</div>
+		<div class="form-group">
+			<label for="borrowers">Borrowers</label> <input type="text"
+				class="form-control" id="borrowers" name="borrowers" placeholder="">
+		</div>
+		<div class="form-group">
+			<label for="monthlyPayment">Monthly Payment</label> <input
+				type="text" class="form-control" id="monthlyPayment" name="monthlyPayment" placeholder="">
+		</div>
+		
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -34,6 +42,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -42,15 +51,22 @@
 				</div>
 			</div>
 		</div>
-				<div class="modal-footer">
+		
+		<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-right"
 				onclick="addLoanDetailes()" data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-disk"></i> Save
 			</button>
-			<button type="button" class="btn btn-danger pull-left"
-				data-dismiss="modal">
+			<button type="button" class="btn btn-success pull-left"
+				onclick="updatedAlert()" data-dismiss="modal">
+				<i class="glyphicon glyphicon-floppy-disk"></i> Save
+			</button>
+			
+			<button type="button" class="btn btn-danger pull-right"	
+			data-dismiss="modal">
 				<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 			</button>
+
 		</div>
 	</div>
 

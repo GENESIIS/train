@@ -162,23 +162,22 @@ public class AddEmployeeHistory implements ICommandAJX {
 		return hasError;
 	}
 
-
-	@Override
-	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
 
 }

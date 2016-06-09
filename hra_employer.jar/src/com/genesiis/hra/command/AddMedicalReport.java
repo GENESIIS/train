@@ -1,6 +1,5 @@
 package com.genesiis.hra.command;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -120,27 +119,26 @@ public class AddMedicalReport implements ICommandAJX {
 		return hasError;
 	}
 
-	public String execute(String gsonData, String employeeEpf) {
+	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	public String execute(String inputValue, String epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public String execute(int epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

@@ -16,7 +16,7 @@ import com.genesiis.hra.utill.ConnectionManager;
 public class LoanCrudJDBC implements ICrud {
 	static Logger log = Logger.getLogger(LoanCrudJDBC.class.getName());
 
-	@Override
+
 	//Add data to DB Table EMPLOYEE
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.LOAN] (EMPLOYEEID , DUEDATE , "
@@ -57,7 +57,7 @@ public class LoanCrudJDBC implements ICrud {
 		return status;
 	}
 
-	@Override
+
 	public int update(Object object, String epf) {
 		String query = "UPDATE [hra-2].[dbo].[HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
 				+ "  TOTALOUTSTANDING = ? ,  GUARANTOR1 = ? , GUARANTOR2 = ? ,  MONTHLYPAYMENT = ?, ENDDATE = ?,  MODBY = ?  WHERE ID = ?";
@@ -94,7 +94,7 @@ public class LoanCrudJDBC implements ICrud {
 		return 1;
 	}	
 
-	@Override
+
 	public Object find(int empEpf) {
 		
 		String query = "select * from [hra-2].[dbo].[HRA.LOAN] where ID = ?";
@@ -137,37 +137,37 @@ public class LoanCrudJDBC implements ICrud {
 		return loan;
 	}
 
-	@Override
+
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+
 	public Object findByEpf(String empEpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;

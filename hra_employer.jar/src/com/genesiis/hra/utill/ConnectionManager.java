@@ -1,12 +1,16 @@
+
 package com.genesiis.hra.utill;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Logger;
+
+
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import org.jboss.logging.Logger;
 
 ///***********************************************
 //* 20160427 PN HRA-9 created SqlServerConnectionManager.java class
@@ -18,6 +22,8 @@ import javax.sql.DataSource;
 public class ConnectionManager {
 	static Logger log = Logger.getLogger(ConnectionManager.class.getName());
 
+	// The DB_JNDI_NAME is the property for data source name that the
+	// application looking at runtime.
 	private static final String DB_JNDI_NAME = "java:/hraDatabase";
 	// The DB_JNDI_NAME is the property for data source name that the
 	// application looking at runtime.	
@@ -33,13 +39,13 @@ public class ConnectionManager {
 		} catch (NullPointerException e) {
 			log.info("NullPointerException: look up dataSource: " + e);
 		} catch (NamingException e) {
-			e.printStackTrace();
-			log.info("NullPointerException: look up dataSource: " + e);
+			log.error("NamingException: nameing the dataSource " + e);
 		} catch (ClassCastException e) {
-			log.info("ClassCastException: casting dataSource = (DataSource) " + e);
+			log.error("ClassCastException: casting dataSource = (DataSource) "
+					+ e);
 		} finally {
 			log.info("ConnectionManager static block execution over.");
-		}
+		} 
 	}
 
 	// This method only return the Connection type variable for other classed,

@@ -12,7 +12,9 @@ public class AddEducationDetails implements ICommandAJX{
 
 	static Logger log = Logger.getLogger(AddEducationDetails.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
-	@Override
+	
+	
+
 	public String execute(String gsonData) {
 		int id = -1;
 		MessageList message = MessageList.ERROR;
@@ -60,7 +62,7 @@ public class AddEducationDetails implements ICommandAJX{
 		
 	}
 
-	@Override
+
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
 		EducationData educationdata =  null;
@@ -73,19 +75,19 @@ public class AddEducationDetails implements ICommandAJX{
 		return educationdata;
 	}
 	
-	@Override
+
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;

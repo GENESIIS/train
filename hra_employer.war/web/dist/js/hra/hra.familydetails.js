@@ -217,7 +217,6 @@ function getEmployeetoupdate() {
 	// alert(response);
 	// });
 
-
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
 		task : "GFM"
@@ -296,4 +295,5 @@ function loadFamilyDetails() {
 			console.log(e);
 		}
 	});
+
 }

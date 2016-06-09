@@ -4,13 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.validation.DataValidator;
 import com.google.gson.Gson;
 
 /**
@@ -29,7 +27,7 @@ public class EducationData extends Employee {
 	private String eduStudytime;
 
 	public String getEduQualification() {
-		return eduQualification; 
+		return eduQualification;
 	}
 
 	public void setEduQualification(String eduQualification) {
@@ -117,15 +115,15 @@ public class EducationData extends Employee {
 			ps.setString(8, "SYSTEM");
 
 			// throws exception in SQL
-//			int rowsInserted = ps.executeUpdate();
-//			if (rowsInserted > 0) {
-//				ResultSet rs = ps.getGeneratedKeys();
-//				int generatedKey = 0;
-//				if (rs.next()) {
-//					generatedKey = rs.getInt(1);
-//				}
-//				status = generatedKey;
-//			}
+			// int rowsInserted = ps.executeUpdate();
+			// if (rowsInserted > 0) {
+			// ResultSet rs = ps.getGeneratedKeys();
+			// int generatedKey = 0;
+			// if (rs.next()) {
+			// generatedKey = rs.getInt(1);
+			// }
+			// status = generatedKey;
+			// }
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			log.error("Exception: EducationData Add" + exception);
@@ -143,65 +141,65 @@ public class EducationData extends Employee {
 		return status;
 	}
 
-//	@Override
-//	public boolean isValid(Object object) {
-//
-//		DataValidator val = new DataValidator();
-//		EducationData edu = (EducationData) object;
-//
-//		if ((val.isValidString(edu.getEduQualification()) == true)
-//				&& (val.isValidString(edu.getEduCompltedon())) == true) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//
-//	}
+	// @Override
+	// public boolean isValid(Object object) {
+	//
+	// DataValidator val = new DataValidator();
+	// EducationData edu = (EducationData) object;
+	//
+	// if ((val.isValidString(edu.getEduQualification()) == true)
+	// && (val.isValidString(edu.getEduCompltedon())) == true) {
+	// return true;
+	// } else {
+	// return false;
+	// }
+	//
+	// }
 
-//	@Override
-//	public String getEmployee(int employeeId) {
-//		// TODO Auto-generated method stub
-//		Connection conn = null;
-//		PreparedStatement preparedStatement = null;
-//		EducationData edu = new EducationData();
-//		String educationDetails = null;
-//		Gson gson = new Gson();
-//
-//		try {
-//
-//			conn = ConnectionManager.getConnection();
-//			preparedStatement = conn
-//					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
-//			preparedStatement.setInt(1, employeeId);
-//
-//			ResultSet res = preparedStatement.executeQuery();
-//			if (res.next()) {
-//				edu.setEmployeeepf(res.getString(2));
-//				log.info("res.getString(2)" + res.getString(2));
-//				edu.setEduUniversity(res.getString(3));
-//				log.info("res.getString(3)" + res.getString(3));
-//				edu.setEduStartedon(res.getString(4));
-//				log.info("res.getString(4)" + res.getString(4));
-//				edu.setEduQualification(res.getString(5));
-//				log.info("res.getString(5)" + res.getString(5));
-//				edu.setEduMedium(res.getString(6));
-//				log.info("res.getString(6)" + res.getString(6));
-//				edu.setEduCompltedon(res.getString(7));
-//				log.info("res.getString(7)" + res.getString(7));
-//				edu.setEduStudytime(res.getString(8));
-//				log.info("res.getString(8)" + res.getString(8));
-//
-//				educationDetails = gson.toJson(edu);
-//
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return educationDetails;
-//	}
+	// @Override
+	// public String getEmployee(int employeeId) {
+	// // TODO Auto-generated method stub
+	// Connection conn = null;
+	// PreparedStatement preparedStatement = null;
+	// EducationData edu = new EducationData();
+	// String educationDetails = null;
+	// Gson gson = new Gson();
+	//
+	// try {
+	//
+	// conn = ConnectionManager.getConnection();
+	// preparedStatement = conn
+	// .prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE ID=?");
+	// preparedStatement.setInt(1, employeeId);
+	//
+	// ResultSet res = preparedStatement.executeQuery();
+	// if (res.next()) {
+	// edu.setEmployeeepf(res.getString(2));
+	// log.info("res.getString(2)" + res.getString(2));
+	// edu.setEduUniversity(res.getString(3));
+	// log.info("res.getString(3)" + res.getString(3));
+	// edu.setEduStartedon(res.getString(4));
+	// log.info("res.getString(4)" + res.getString(4));
+	// edu.setEduQualification(res.getString(5));
+	// log.info("res.getString(5)" + res.getString(5));
+	// edu.setEduMedium(res.getString(6));
+	// log.info("res.getString(6)" + res.getString(6));
+	// edu.setEduCompltedon(res.getString(7));
+	// log.info("res.getString(7)" + res.getString(7));
+	// edu.setEduStudytime(res.getString(8));
+	// log.info("res.getString(8)" + res.getString(8));
+	//
+	// educationDetails = gson.toJson(edu);
+	//
+	// }
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// return educationDetails;
+	// }
 
-	@Override   
+	@Override
 	public Object findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -233,12 +231,10 @@ public class EducationData extends Employee {
 				edu.setEduStudytime(res.getString(8));
 				log.info("res.getString(8)" + res.getString(8));
 
-			
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (ps != null) {
 					ps.close();
@@ -248,7 +244,7 @@ public class EducationData extends Employee {
 				exception.printStackTrace();
 				log.error("Exception: EducationData Find" + exception);
 			}
-			}
+		}
 		return edu;
 
 	}
@@ -300,33 +296,29 @@ public class EducationData extends Employee {
 		return status;
 	}
 
-	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

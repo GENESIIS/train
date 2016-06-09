@@ -13,7 +13,6 @@ public class GetManager implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetManager.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
-	@Override
 	public String execute(String gsonData) {
 		String message = MessageList.ERROR.message();
 		try {
@@ -26,38 +25,34 @@ public class GetManager implements ICommandAJX {
 									// validation of the Component ->
 									// validateComponent()
 			message = MessageList.ERROR.message();
-			log.error("--> execute(): ERR" + mne); 
+
+			log.error("--> execute(): ERR" + mne);
+
 		}
 		return message;
 	}
 
-	@Override
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	 
-	@Override
-	public String execute(int epf) {
+	public String execute(String inputValue, String epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public String execute(String gsonData, String epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
