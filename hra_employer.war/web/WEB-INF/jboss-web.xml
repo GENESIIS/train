@@ -1,9 +1,7 @@
 <!-- SDB-134/CC3951 config:jboss-web.xml file should copy automatically to sdb.war and careers.war-->
 
 <jboss-web> 
-
 <virtual-host>www.topjobs.tr</virtual-host>
-
 <context-root>/</context-root>
 
 </jboss-web>

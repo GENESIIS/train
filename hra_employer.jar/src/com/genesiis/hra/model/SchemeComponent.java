@@ -65,10 +65,12 @@ public class SchemeComponent implements ICrud {
 	public SchemeComponent() {
 	}
 
-/**
- * @author @PN
- * @modified author @TR
- * **/
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.genesiis.hra.model.ICrud#add(java.lang.Object)
+	 */
+	@Override
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.SCHEMECOMPONENT] (SCHEME, COMPONENTTEMP, MODBY) VALUES (?, ?, ?)";
 
@@ -110,45 +112,53 @@ public class SchemeComponent implements ICrud {
 		return status;
 	}
 
-public int update(Object object, String epf) {
-	// TODO Auto-generated method stub
-	return 0;
-}
+	@Override
+	public int update(Object object, String epf) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-public int delete(Object object) {
-	// TODO Auto-generated method stub
-	return 0;
-}
+	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-public Object find(int empEpf) throws SQLException, Exception {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public Object find(int empEpf) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-public List<Object> find(String empIdenti) throws SQLException, Exception {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-public Object findByEpf(String empEpf) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-public String getId(String id) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-public List<Object> getAll() {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public List<Object> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-public boolean isValidObject(Object object) {
-	// TODO Auto-generated method stub
-	return false;
-}
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	
 }

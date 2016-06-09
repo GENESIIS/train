@@ -22,21 +22,44 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
-	public String execute(String inputdata, String task) {
-		EmployeeCrudJDBC accessdata = new EmployeeCrudJDBC();
-		int id = -1;
+	@Override
+	public String execute(String gsonData) {
+		
+		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
-		try {
-			BasicData employee = (BasicData) extractFromJason(inputdata);
-			if (validateEmployee(employee).equalsIgnoreCase("True")) {
-				id = accessdata.update(employee, "1");
-			} else {
+		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
-			}
-		} catch (Exception e) {
+		try {
+			BasicData data = geBasicdetails(gsonData);
+			id = data.add(data);
+			message = MessageList.ADDED;
+		} catch (Exception mne) { // User Defined exception. This comes from the
+									// validation of the Component ->
+									// validateComponent()
 			message = MessageList.ERROR;
+			log.error("--> execute(): ERR" + mne);
 		}
 		return message.message();
+		
+	}
+
+	private BasicData geBasicdetails(String data) {
+		BasicData basicData = (BasicData) extractFromJason(data);
+		return basicData;
+	}
+
+	@Override
+	public Object extractFromJason(String gsonData) {
+		Gson gson = new Gson();
+		String message = "";
+		BasicData employee = null;
+		try {
+			employee = gson.fromJson(gsonData, BasicData.class);
+		} catch (Exception e) {
+			message = MessageList.ERROR.message();
+			;
+		}
+		return employee;
 	}
 
 	public String validateEmployee(BasicData employee) throws ParseException {
@@ -66,50 +89,37 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 		return message;
 	}
 
-	public String execute(String gsonData) {
-		int id = -1; // The new row id created when a department is inserted
-		MessageList message = MessageList.ERROR;
-		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
-
-		try {
-			BasicData data = geBasicdetails(gsonData);
-			id = data.add(data);
-			message = MessageList.ADDED;
-		} catch (Exception mne) { // User Defined exception. This comes from the
-									// validation of the Component ->
-									// validateComponent()
-			message = MessageList.ERROR;
-			log.error("--> execute(): ERR" + mne);
-		}
-		return message.message();
-	}
-
-	private BasicData geBasicdetails(String data) {
-		BasicData basicData = (BasicData) extractFromJason(data);
-		return basicData;
-	}
-
-	public Object extractFromJason(String data) {
-		Gson gson = new Gson();
-		BasicData basicData = null;
-		try {
-			basicData = gson.fromJson(data, BasicData.class);
-		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
-		}
-		return basicData;
-	}
-
+	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public String execute(String gsonData, String epf) {
+		EmployeeCrudJDBC accessdata = new EmployeeCrudJDBC();
+		int id = -1;
+		MessageList message = MessageList.ERROR;
+		try {
+			BasicData employee = (BasicData) extractFromJason(gsonData);
+			if (validateEmployee(employee).equalsIgnoreCase("True")) {
+				id = accessdata.update(employee, "1");
+			} else {
+				
+			}
+		} catch (Exception e) {
+			message = MessageList.ERROR;
+		}
+		return message.message();
+	}
+
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;

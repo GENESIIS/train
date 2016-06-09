@@ -17,8 +17,7 @@ import com.google.gson.Gson;
 public class RegisterLoan implements ICommandAJX {
 	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
 	// command class execution method
-
-
+	@Override
 	public String execute(String gsonData)  {
 		int id = -1;
 		MessageList message = null;
@@ -44,7 +43,7 @@ public class RegisterLoan implements ICommandAJX {
 		return message.message();
 	}
 	
-
+	@Override
 	public String execute(String gsonData, String epf)  {
 		int id = -1;
 		MessageList message = null;
@@ -68,7 +67,9 @@ public class RegisterLoan implements ICommandAJX {
 		return message.message();
 	}
 	
-
+	
+	
+	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;

@@ -195,31 +195,31 @@ public class MedicalHistory extends Employee {
 		return null;
 	}
 
-
+	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	
+	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
+	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;

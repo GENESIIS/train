@@ -1,55 +1,53 @@
 package com.genesiis.hra.model;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
-public class SerchCrud implements ICrud {
-
-	public int add(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int update(Object object, String epf) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int delete(Object object) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Object find(int empEpf) throws SQLException, Exception {
-		// TODO Auto-generated method stub
+public abstract class SerchCrud implements ICrud {
+	
+	@Override
+	public Object find(int empEpf)throws SQLException, Exception {
+		
 		return null;
 	}
 
-	public List<Object> find(String empIdenti) throws SQLException, Exception {
-		// TODO Auto-generated method stub
+	@Override
+	public List<Object> find(String keyWord) throws SQLException, Exception {
+				
+		return null;
+	
+	}
+	
+	@Override
+	public Object findByEpf(String id) {
+		
 		return null;
 	}
 
-	public Object findByEpf(String empEpf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getId(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	// Method to extract EmployeeDetails from jsonData.
+	public Employee extractFromgson(String gsonData) {
+		
+		return null;
+	}
+
+	public String validateEmployee(BasicData employee) throws ParseException {
+		
+		return null;
+	}
+
 	
 	
 }

@@ -27,23 +27,26 @@ public class AddSalaryComponent implements ICommandAJX {
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
-			SalaryComponent component = (SalaryComponent)extractFromJason(gsonData);
-			boolean isValid = validateValue(errorList);
-			isValid = true; //not yet implemented
-			if(isValid){
-				id = component.add(component);
-				message = MessageList.ADDED;
-			}else{
-				message = MessageList.ERROR;
-				log.error("ERR" + message);
-			}
-			
+			SalaryComponent component = getComponentDetails(gsonData);
+			validateComponent(errorList);
+			id = component.add(component);
+			message = MessageList.ADDED;
 		} catch (Exception mne) { // User Defined exception. This comes from the validation of the Component -> validateComponent()
 			message = MessageList.ERROR;
 			log.error("--> execute(): ERR" + mne);
 		}
 		return message.message();
 	}
+
+	private void validateComponent(HashMap<Integer, Object> errorList) {
+		
+	}
+
+	private SalaryComponent getComponentDetails(String data) {
+		SalaryComponent component = (SalaryComponent) extractFromJason(data);
+		return component;
+	}
+
 
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
@@ -56,25 +59,36 @@ public class AddSalaryComponent implements ICommandAJX {
 		return component;
 	}
 
-	public String execute(int epf) {
+
+
+
+	public String execute(String gsonData, Operation operation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String execute(String inputValue, String epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

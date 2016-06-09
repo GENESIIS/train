@@ -9,6 +9,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.SalaryScheme;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
@@ -60,26 +61,29 @@ public class AddSalaryScheme implements ICommandAJX {
 		return scheme;
 	}
 
-	public String execute(int epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	@Override
 	public String execute(String inputValue, String epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
+	@Override
+	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

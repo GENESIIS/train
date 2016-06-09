@@ -1,56 +1,50 @@
 package com.genesiis.hra.validation;
 
 public enum Operation {
-
-	EMPLOYEE("EMP"), 
-	BAD_OPERATION("BO"),
-	
 	ADD_SALARY_COMPONENT("ASC"),
 	ADD_SALARY_SCHEME("ASL"),
-	REGISTER_LOAN("RL"),
+	BAD_OPERATION("BO"),
+	SERCH_EMPLOYEE("SE"),
+	REGISTER_LOAN("RL"),	
+	UPDATE_LOAN("UL"),
+	GET_LOAN("GL"),
+	UPDATE_EMPLOYEE_BASIC("UEB"),
+	GET_EMPLOYEE_BASIC("GEB"),
 	ADD_EMPLOYEE_HISTORY("AEH"), //add employee history data to database
-	ADD_EMPLOYEE_BASICDATA("AEB"),
+	GET_EMPLOYEE_HISTORY("GEH"), //get employee history data from database
+	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
 	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
 	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
-	ADD_DEPARTMENT("ADP"),
-	ADD_FAMILY_MEMBER("AFM"),
-	ADD_EDU_DETAILS("AED"),
-		
-	SERCH_EMPLOYEE("SE"),
+	EMPLOYEE("EMP"), 
+	ADD_EMPLOYEE_BASICDATA("AEB"),
 	BASIC_DATA("BASIC"),
-	STUDY_PROGRAM("STD"),
-	LOAN("LOAN"),
-	EMPLOYMENT_HISTORY("HIS"),
 	
-	UPDATE_LOAN("UL"),
-	UPDATE_EMPLOYEE_BASIC("UEB"),
-	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
-	UPDATE_EDU_DETAILS("UED"),
-	UPDATE_FAMILY_MEMBER("UFM"),
-	
-	GET_LOAN("GL"),
-	GET_EMPLOYEE_BASIC("GEB"),
-	GET_EMPLOYEE_HISTORY("GEH"), //get employee history data from database
+	ADD_FAMILY_MEMBER("AFM"),
+	GET_FAMILY("GF"),
+	ADD_DEPARTMENT("ADP"),
 	GET_MANAGER("GMN"), 
 	GET_DEPARTMENT("GDP"),
-	GET_FAMILY("GF"),
+	ADD_EDU_DETAILS("AED"),
+	UPDATE_EDU_DETAILS("UED"),
 	GET_EDU_DETAILS("GED"),
-	GET_FAMILY_MEMBER("GFM"),
-	
-	
-	VIEW_EMPLOYEE_DETAILS("VPD");
+	STUDY_PROGRAM("STD"),
+	LOAN("LOAN"), 
+	EMPLOYMENT_HISTORY("HIS"),
+	VIEW_EMPLOYEE_DETAILS("VPD"),
 
+	UPDATE_FAMILY_MEMBER("UFM"),
+	GET_FAMILY_MEMBER("GFM");
+	
+	
 	private final String value;
 
-	Operation(String newValue) {
-
+	Operation(final String newValue) {
 		this.value = newValue;
 	}
 
 	public String getValue() {
 		return value;
 	}
-
 	public static Operation getOperation(String o){		
 		for(Operation op : values()){
 			
@@ -61,6 +55,3 @@ public enum Operation {
 	}
 
 }
-
-
-

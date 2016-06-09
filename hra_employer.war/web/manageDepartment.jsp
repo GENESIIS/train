@@ -4,11 +4,10 @@
 <!-- JavaScripts to help to load  -->
 <script type="text/javascript">
 	//To load the Datatable
-	getManager();
 	$(document).ready(function() {
 		$('#departmentDetails').DataTable();
 	});
-	
+	getManager();
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -82,35 +81,38 @@
 				</h3>
 			</div>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="departmentNumber">Department Number</label> <input
+								type="text" class="form-control" id="departmentNumber"
+								name="departmentNumber" placeholder="" value="" maxlength="5"
+								size="5">
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
-					<label for="departmentName">Department Name</label>&nbsp;&nbsp;<span
-						id="departmentNameerror" name="departmentNameerror"
-						style="color: red; font-weight: normal !important;"></span> <input
+					<label for="departmentName">Department Name</label> <input
 						type="text" class="form-control" id="departmentName"
-						name="departmentName" placeholder="" value="" maxlength="499"
-						size="499" onkeypress="return isLetter(event);"
-						onblur="setEmptyerrormessage('#departmentName','departmentNameerror','Department Name')">
+						name="departmentName" placeholder="" value="">
 				</div>
 
 				<div class="form-group">
 					<label for="departmentLocation">Department Location</label> <input
 						type="text" class="form-control" id="departmentLocation"
-						name="departmentLocation" placeholder="" value="" maxlength="499"
-						size="499" onkeypress="return isLetter(event);">
+						name="departmentLocation" placeholder="" value="">
 				</div>
 				<div class="form-group">
-					<label for="departmentHead">Department Head</label>&nbsp;&nbsp;<span
-						id="departmentHeaderror" name="departmentHeaderror"
-						style="color: red; font-weight: normal !important;"></span> <select
-						class="form-control" id="departmentHead" name="departmentHead"
-						onchange="setEmptyerrormessage('#departmentHead','departmentHeaderror','Department Head')">
-						<option value="" selected="selected">--Select--</option>
+					<label for="departmentHead">Department Head</label> <select
+						class="form-control" id="departmentHead" name="departmentHead">
+						<option>-Select-</option>
 					</select>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"
-					data-dismiss="" onclick="addDepartmentDetails()">
+					onclick="addDepartmentDetails()">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left"

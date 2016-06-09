@@ -27,13 +27,13 @@ import com.google.gson.Gson;
 public class EmployeeCrudJDBC extends SerchCrud {
 	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
 
-
+	@Override
 	public int add(Object object) {
 		
 		return 0;
 	}
 
-
+	@Override
 	public int update(Object employee, String epf) {
 		// TODO Auto-generated method stub		
 		return 0;
@@ -41,7 +41,7 @@ public class EmployeeCrudJDBC extends SerchCrud {
 		
 
 
-
+	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -239,18 +239,17 @@ public class EmployeeCrudJDBC extends SerchCrud {
 	}	
 
 	public boolean validEmployee(BasicData employee) throws ParseException {
-		if (employee.isValidObject(employee)) {
+		if (validateEmployee(employee).isEmpty()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-
+	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

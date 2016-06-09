@@ -1,4 +1,4 @@
-package com.genesiis.hra.payroll;
+package com.genesiis.payroll;
 
 import java.io.IOException;
 import java.util.HashMap;

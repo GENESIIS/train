@@ -1,6 +1,5 @@
 package com.genesiis.hra.model;
 
-
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.Connection;
@@ -11,7 +10,7 @@ import java.sql.Statement;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-
+import com.google.gson.Gson;
 
 public class BasicData extends Employee {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
@@ -29,7 +28,6 @@ public class BasicData extends Employee {
 	private String employeeDepartment;
 	private String employeeMaritalstatus;
 	private String employeeJoindate;
-
 	private String employeeBasis;
 
 	public String getEmployeename() {
@@ -144,6 +142,9 @@ public class BasicData extends Employee {
 		this.employeeBasis = employeeBasis;
 	}
 
+	public BasicData() {
+
+	}
 
 	public BasicData(String employeeName, String employeeDesignation,
 			String employeeEmail, String employeeDateofbirth,
@@ -169,12 +170,6 @@ public class BasicData extends Employee {
 		this.employeeEpf = employeeEpf;
 		this.employeeBasis = employeeBasis;
 	}
-
-
-	public BasicData() {
-	}
-
-
 
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.EMPLOYEE] (NAME, DESIGNATION, "
@@ -208,13 +203,12 @@ public class BasicData extends Employee {
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-
-				/*ResultSet rs = ps.getGeneratedKeys();
+				ResultSet rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
 				}
-				status = generatedKey;*/
+				status = generatedKey;
 			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -276,16 +270,6 @@ public class BasicData extends Employee {
 				}
 				status = generatedKey;*/
 			}
-		
-
-
-				ResultSet rs = ps.getGeneratedKeys();
-				int generatedKey = 0;
-				if (rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				status = generatedKey;
-			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 
@@ -301,7 +285,6 @@ public class BasicData extends Employee {
 		}
 		return status;
 	}
-
 
 	// use for View basci data and department 
 	@Override
@@ -344,30 +327,35 @@ public class BasicData extends Employee {
 		return emp;
 	}
 
+	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	
 }
-

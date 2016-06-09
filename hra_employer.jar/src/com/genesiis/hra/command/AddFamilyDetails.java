@@ -9,7 +9,6 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Familymember;
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
@@ -22,9 +21,10 @@ public class AddFamilyDetails implements ICommandAJX {
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
 	/**
-	 * @param String
-	 *            gsonData
-	 * @return String message
+	 * @param 
+	 * String gsonData
+	 * @return 
+	 * String message
 	 * **/
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a department is inserted
@@ -32,7 +32,7 @@ public class AddFamilyDetails implements ICommandAJX {
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
-			Familymember familymember = getFamilymemberdetails(gsonData);
+			Familymember familymember = (Familymember)extractFromJason(gsonData);
 			validateComponent(errorList);
 			id = familymember.add(familymember);
 			if (id != -1) {
@@ -41,9 +41,9 @@ public class AddFamilyDetails implements ICommandAJX {
 				message = MessageList.ERROR;
 			}
 
-		} catch (Exception e) { // User Defined exception.
-			// This comes from the
-			// validation of the Component validateComponent()
+		} catch (Exception e) { // User Defined exception. This comes from the
+								// validation of the Component ->
+								// validateComponent()
 			message = MessageList.ERROR;
 			log.error("Exception - execute(): ERR" + e);
 		}
@@ -51,49 +51,21 @@ public class AddFamilyDetails implements ICommandAJX {
 	}
 
 	/**
-	 * @param errorList
-	 * @return void
-	 */
-	private void validateComponent(HashMap<Integer, Object> errorList) {
-		// TODO Auto-generated method stub
-	}
-
-	private Familymember getFamilymemberdetails(String data) {
-		Familymember familymember = (Familymember) extractFromJason(data);
-		return familymember;
-	}
-
-	/**
-	 * @param - String data
-	 * @return - family members object
-	 * 
-	 * ***/
-	public Object extractFromJason(String data) {
-		Gson gson = new Gson();
-		Familymember familymember = null;
-		try {
-			familymember = gson.fromJson(data, Familymember.class);
-		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
-		}
-		return familymember;
-	}
-
-	/**
 	 * @param 
 	 * String gsonData
-	 * String epf
-	 * @category updating family details
-	 * @return String message
+	 * String task
+	 * @return 
+	 * String message
 	 * **/
-	public String execute(String gsonData, String epf) {
+	@Override
+	public String execute(String inputValue, String epf) {
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
 		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
 		try {
 			log.info("execute");
-			Familymember familymember = getFamilymemberdetails(gsonData);
+			Familymember familymember = (Familymember) extractFromJason(inputValue);
 			validateComponent(errorList);
 			id = familymember.update(familymember, epf);
 			if (id != -1) {
@@ -111,16 +83,38 @@ public class AddFamilyDetails implements ICommandAJX {
 		return message.message();
 	}
 
+	/**
+	 * @param errorList
+	 * @return void
+	 */
+	private void validateComponent(HashMap<Integer, Object> errorList) {
+		// TODO Auto-generated method stub
+	}
+
+	public Object extractFromJason(String data) {
+		Gson gson = new Gson();
+		Familymember familymember = null;
+		try {
+			familymember = gson.fromJson(data, Familymember.class);
+		} catch (Exception e) {
+			log.info("ExtractFromgson - Exception " + e);
+		}
+		return familymember;
+	}
+
+	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;

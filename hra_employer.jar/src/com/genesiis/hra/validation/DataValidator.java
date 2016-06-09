@@ -85,7 +85,6 @@ public class DataValidator {
 		}
 		return status;
 	}
-	
 
 	//
 	public boolean isValidInt(int text) {

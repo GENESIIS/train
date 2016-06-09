@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.model.Department;
 import com.genesiis.hra.validation.MessageList;
+import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 
 ///***********************************************
@@ -19,6 +19,7 @@ public class AddDepartment implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddDepartment.class.getName());
 	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
+	@Override
 	public String execute(String gsonData) { 
 		int id = -1; // The new row id created when a department is inserted
 		MessageList message = MessageList.ERROR;
@@ -48,6 +49,7 @@ public class AddDepartment implements ICommandAJX {
 		return department;
 	}
 
+	@Override
 	public Object extractFromJason(String data) {
 		Gson gson = new Gson();
 		Department department = null;
@@ -60,24 +62,25 @@ public class AddDepartment implements ICommandAJX {
 	}
 
 
-
-
-
-	public String execute(String inputValue, String epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public String execute(String gsonData, String epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;

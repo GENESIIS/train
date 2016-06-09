@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 public class GetFamilyMember implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetFamilyMember.class.getName());
 
-
+	@Override
 	public String execute(String epf) {
 		MessageList message = MessageList.ERROR;
 		String familydetails = null;
@@ -29,7 +29,11 @@ public class GetFamilyMember implements ICommandAJX {
 		return familydetails;
 	}
 
-
+	@Override
+	public Object extractFromJason(String data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	// Create geson object
 	public String createGson(Employee emp) {
@@ -44,36 +48,25 @@ public class GetFamilyMember implements ICommandAJX {
 
 	}
 
-
-
+	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-	public String execute(String inputValue, String epf) {
+	@Override
+	public String execute(String gsonData, String epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-	public Object extractFromJason(String data) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;

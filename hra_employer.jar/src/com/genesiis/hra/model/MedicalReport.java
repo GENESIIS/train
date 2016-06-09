@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.genesiis.hra.validation.DataValidator;
-import com.genesiis.hra.validation.MessageList;
 
 public class MedicalReport extends Employee{
 
@@ -145,30 +143,31 @@ public class MedicalReport extends Employee{
 		return null;
 	}
 
-
+	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
+	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;

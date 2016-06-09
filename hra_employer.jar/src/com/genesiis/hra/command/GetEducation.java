@@ -10,33 +10,30 @@ import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class GetEducation implements ICommandAJX {
-	
 	static Logger log = Logger.getLogger(GetEducation.class.getName());
 
-
+	@Override
 	public String execute(String epf) {
 		MessageList message = MessageList.ERROR;
 		String educationdetails = null;
 
 		EducationData EducationManager = new EducationData();
 		try {
-			EducationData educationData = (EducationData)EducationManager.findByEpf(epf);
-			educationdetails = createGson(educationData);
+		//	educationdetails = EducationManager.findByEpf(epf);
 		} catch (Exception e) {
-			educationdetails = message.message();
 			log.error("execute - Exception " + e);
 		}
 		return educationdetails;
 	}
 
-
+	@Override
 	public Object extractFromJason(String data) {
 		// TODO Auto-generated method stub
 		return null;
 	} 
 
 	// Create geson object
-	public String createGson(EducationData emp) {
+	public String createGson(Employee emp) {
 		Gson gson = new Gson();
 		String empList = " ";
 		try {
@@ -48,30 +45,30 @@ public class GetEducation implements ICommandAJX {
 
 	}
 
-
-	public String execute(int epf) {
+	@Override
+	public String execute(String gsonData, String epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	public String execute(String inputValue, String epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	@Override
 	public String validateValue(Object entiytObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	
 
 }
