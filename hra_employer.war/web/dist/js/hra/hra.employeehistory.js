@@ -6,16 +6,6 @@
  * @created on- 2016-05-25
  */
 
-//@TR
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeDetails/addEmployeeHistory.jsp");
-}
-
-//@TR
-function loadEditEmployementHIstoryDetails() {
-	//loadEditContentEmployeeHistoryDetails();
-	$("#Editmodelrest").load("editEmployeeDetails/editEmployeeHistory.jsp");
-}
 
 $(document).ready(function() {
 
@@ -26,9 +16,6 @@ function isEmpty(value) {
 	return (value == null || value.length === 0);
 }
 
-function loadviewemployementhistory() {
-	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
-}
 
 
 // field number check

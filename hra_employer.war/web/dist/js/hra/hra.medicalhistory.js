@@ -6,17 +6,6 @@
  * @created on- 2016-05-25
  */
 
-//@TR - Employee > new employee > more details > add Medical history details 
-function loadAddMedicalHIstoryDetails() {
-	$("#modelrest").load("employeeDetails/addMedicalHistory.jsp");
-}
-
-// @TR - Employee > edit employee > more details > edit medical history details 
-function loadEditMedicalHIstoryDetails() {
-	$("#Editmodelrest").load("editEmployeeDetails/editMedicalHistory.jsp");
-}
-
-
 
 
 // ready function

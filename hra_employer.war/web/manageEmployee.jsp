@@ -14,8 +14,14 @@
 		getDepartment();
 		//listEmployee(empData); 
 	});
+	
+	$("#addEmployeedetails").on("show", function () {
+		  $("body").addClass("modal-open");
+		}).on("hidden", function () {
+		  $("body").removeClass("modal-open")
+	});
+	
 </script>
-
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>

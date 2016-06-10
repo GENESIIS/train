@@ -1,6 +1,4 @@
-function loadContentEmployee() {
-	$("#mainContent").load("manageEmployee.jsp");
-}
+
 
 // Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
