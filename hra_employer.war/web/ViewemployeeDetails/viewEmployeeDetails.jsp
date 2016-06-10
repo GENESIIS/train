@@ -1,7 +1,7 @@
 <!-- 20160521 AS HRA-32 created ViewEmployeeDetails.jsp class -->
 
 <script src="dist/js/hra/hra.education.js"></script>
-
+<script src="dist/js/hra/hra.loan.js"></script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">EMPLOYEES</h2>
@@ -78,20 +78,28 @@
 				<li onclick="loademployeeDetails()" class="active"><a
 					id="tabBasic" href="#tabPageBasic" role="tab" data-toggle="tab"
 					aria-controls="basic" aria-expanded="false">Basic Information</a></li>
+
 				<li onclick="loadDataEducationalDetails()" class=""><a
 					id="tabQualifications" href="#tabPageQualifications" role="tab"
 					data-toggle="tab" aria-controls="qualifications"
 					aria-expanded="false">Qualifications</a></li>
+
 				<li class=""><a id="tabEmployementHistory"
 					href="#tabEmployement" role="tab" data-toggle="tab"
 					aria-controls="employementHistorytab" aria-expanded="false">Employement
 						History</a></li>
+
 				<li onclick="loadFamilyDetails()" class=""><a id="tabFamily"
 					href="#tabfamily" role="tab" data-toggle="tab"
 					aria-controls="familytab" aria-expanded="false">Family Details</a></li>
-				<li class=""><a id="tabLoan" href="#" role="tab"
-					data-toggle="tab" aria-controls="loan" aria-expanded="false">Loan
-						Details</a></li>
+
+				<li onclick="loadLoanDetails()" class=""><a id="tabloan"
+					href="#tabloandetails" role="tab" data-toggle="tab"
+					aria-controls="loan" aria-expanded="false">Loan Details</a></li>
+
+				<li class=""><a id="tabmedical" href="tabMedical" role="tab"
+					data-toggle="tab" aria-controls="medicalDetailstab"
+					aria-expanded="false">Medical History Details</a></li>
 			</ul>
 
 			<div class="tab-content">
@@ -392,6 +400,118 @@
 				</div>
 
 				<!-- 				tabFamily Details End -->
+
+				<div class="tab-pane fade" id="tabloandetails" role="tabpanel"
+					aria-labelledby="loanDetailstab" style="border: 1px solid #DDD;">
+					<div class="row" style="margin-left: 10px; margin-top: 20px;">
+						<div class="panel panel-default" style="width: 97.5%;">
+							<div class="panel-heading">
+								<h4>Loan Details</h4>
+							</div>
+							<div class="panel-body">
+								<div class="row-fluid">
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Total Outstanding amount</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="amount">amount</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Garanter 1 </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="guarantor1">garanter
+											1</label>
+									</div>
+
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Garanter 2 </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="guarantor2">garanter
+											2</label>
+									</div>
+
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Monthly Payment</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="payment">payment
+										</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Due Date</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="dueDate">due
+											date</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> End Date</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="endDate">end
+											date</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 						   tabLoanDetails model end  -->
+
+
+				<div class="tab-pane fade" id="tabMedical" role="tabpanel"
+					aria-labelledby="medicalHistory" style="border: 1px solid #DDD;">
+					<div class="row" style="margin-left: 10px; margin-top: 20px;">
+						<div class="panel panel-default" style="width: 97.5%;">
+							<div class="panel-heading">
+								<h4>Medical History Details</h4>
+							</div>
+							<div class="panel-body">
+								<div class="row-fluid">
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Qualification </label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;"
+											id="Qualification">BSc. in Information Technologies </label>
+									</div>
+
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">University | College |
+											School </label> <label class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Medium</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Started On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;"> Completed On</label> <label
+											class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 		</div>

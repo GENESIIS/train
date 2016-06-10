@@ -150,3 +150,40 @@ function loadEditContentloandetails() {
 				});
 			});
 }
+
+
+// load loan details
+
+function loadLoanDetails() {
+
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify("1"),
+			serchVlaue : empEpf,
+			task : "GL"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			// alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+		//	 alert(responseText);
+		//	$("#employee_id").text(json.employeeEpf);
+			$("#amount").text(json.loanAmount);
+			$("#guarantor1").text(json.loanGuarantor1);
+			$("#guarantor2").text(json.loanGuarantor2);
+			$("#payment").text(json.loanmonthlyPayment);
+			$("#dueDate").text(json.loanDueDate);
+			$("#endDate").text(json.loanEndDate);
+			
+
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
+}
+
