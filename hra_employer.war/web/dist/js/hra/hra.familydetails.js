@@ -258,7 +258,7 @@ function loadFamilyDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GF"
 		},
 		dataType : "json",

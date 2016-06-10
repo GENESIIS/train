@@ -7,6 +7,20 @@
 <!-- JavaScripts to help to load  -->
 
 
+<!-- Importing hra.helper.js file -->
+<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.js"></script>
+<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.min.js"></script>
+<script src="dist/js/jasny-bootstrap-js/jquery.form.js"></script>
+
+<!-- Styles for this template -->
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css"
+	rel="stylesheet">
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css.map"
+	rel="stylesheet">
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.min.css"
+	rel="stylesheet">
+
+
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
@@ -14,13 +28,6 @@
 		getDepartment();
 		//listEmployee(empData); 
 	});
-	
-	$("#addEmployeedetails").on("show", function () {
-		  $("body").addClass("modal-open");
-		}).on("hidden", function () {
-		  $("body").removeClass("modal-open")
-	});
-	
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -34,8 +41,7 @@
 	</button>
 	<br></br>
 	<div class="row">
-		<div class="col-sm-4">
-		</div>
+		<div class="col-sm-4"></div>
 		<div class="col-sm-8" align="right">
 			<div class="input-group add-on">
 				<input class="form-control" placeholder="Search"
@@ -67,51 +73,42 @@
 					<h3 class="">General Details</h3>
 
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-6">
+
 							<div class="form-group">
 								<label for="employeeFirstname">First Name</label><input
 									type="text" class="form-control" id="employeeFirstname"
 									name="employeeFirstname" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-						<div class="col-md-4">
+
 							<div class="form-group">
 								<label for="employeeMiddlename">Middle Name</label> <input
 									type="text" class="form-control" id="employeeMiddlename"
 									name="employeeMiddlename" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-						<div class="col-md-4">
+
 							<div class="form-group">
 								<label for="employeeLastname">Last Name</label> <input
 									type="text" class="form-control" id="employeeLastname"
 									name="employeeLastname" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
 							<div class="form-group">
 								<label for="employeeDateofbirth">Date of Birth</label> <input
 									type="date" class="form-control" id="employeeDateofbirth"
 									name="employeeDateofbirth" placeholder="">
 							</div>
-						</div>
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeNic">NIC</label> <input type="text"
 									class="form-control" id="employeeNic" name="employeeNic"
 									placeholder="" maxlength="10" size="10">
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeGender">Gender</label> <select
 									class="form-control" id="employeeGender" name="employeeGender">
@@ -120,8 +117,7 @@
 									<option value="Male">Male</option>
 								</select>
 							</div>
-						</div>
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeMaritalstatus">Marital Status</label> <select
 									class="form-control" id="employeeMaritalstatus"
@@ -134,9 +130,51 @@
 									<option value="Separated">Separated</option>
 								</select>
 							</div>
+
+
 						</div>
+
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label class="control-label col-xs-6" for="reportUpload"
+									style="vertical-align: top;">Profile Picture Upload</label>
+
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+
+									<div class="fileinput-new thumbnail"
+										style="width: 400px; height: 400px;">
+										<img data-src="holder.js/100%x100%"
+											src="dist/demoimages/dummy-image.jpg">
+									</div>
+
+									<div class="fileinput-preview fileinput-exists thumbnail"
+										style="max-width: 400px; max-height: 400px;"></div>
+
+									<div>
+										<span class="btn btn-default btn-file"> <span
+											class="fileinput-new">Select image</span> <span
+											class="fileinput-exists">Change</span> <input type="file"
+											id="avatar" name="filesd">
+										</span> <a href="#" class="btn btn-default fileinput-exists"
+											data-dismiss="fileinput">Remove</a>
+
+									</div>
+								</div>
+								<!-- FILE UPLOAD -->
+								<button type="button"
+									class="btn btn-success full pull-right btn-space"
+									id="upload">
+									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports
+								</button>
+							</div>
+						</div>
+
 					</div>
+
 				</div>
+
+
+
 
 				<div class="well">
 					<h3 class="">Job Details</h3>
@@ -270,28 +308,18 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					
+
 					<a href="#" onclick="loadContentqualifications()"
-						class="btn btn-primary">Educaional Data</a>
-						
-						 <a
+						class="btn btn-primary">Educaional Data</a> <a
 						onclick="loadAddStudyProgramsDetails()" href="#"
-						class="btn btn-primary">Study Programs</a>
-						
-						 <a href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadlonedetails()" class="btn btn-primary">Loan
-						Details</a>
-						
-						 <a href="#" onclick="loadfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-						
-						 <a href="#"
+						Details</a> <a href="#" onclick="loadfamilydetails()"
+						class="btn btn-primary">Family Details</a> <a href="#"
 						onclick="loadAddEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
-						
-						<a href="#"
-						onclick="loadAddMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Employee History</a> <a href="#"
+						onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -444,10 +472,12 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
 
-				<button type="button" class="btn btn-info pull-left" id="moredetails" name="moredetails" data-toggle="modal" data-target="#editmoreEmployeedetails">
+				<button type="button" class="btn btn-info pull-left"
+					id="moredetails" name="moredetails" data-toggle="modal"
+					data-target="#editmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i>Edit More Details
 				</button>
-				
+
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal" onclick="">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
@@ -471,28 +501,18 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					
+
 					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a>
-						
-						 <a
+						class="btn btn-primary">Educaional Data</a> <a
 						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> 
-						
-						<a href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> 
-						
-						<a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a> 
-						
-						<a href="#"
+						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
+						class="btn btn-primary">Family Details</a> <a href="#"
 						onclick="loadEditEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
-						
-						<a href="#"
-						onclick="loadEditMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Employee History</a> <a href="#"
+						onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div id="Editmodelrest"></div>
 

@@ -46,7 +46,9 @@ function loadContentqualifications() {
 function loadAddMedicalHIstoryDetails() {
 	$("#modelrest").load("employeeDetail/addMedicalHistory.jsp");
 }
-
+function loadAddStudyProgramsDetails() {
+	$("#modelrest").load("employeeDetails/addStudyPrograms.jsp");
+}
 
 
 
@@ -143,6 +145,8 @@ function loadEditMedicalHIstoryDetails() {
 
 
 
+
+
 // ///////////////////////////////////////////////
 
 $("#buttonAddemployee").click(function() {
@@ -209,4 +213,6 @@ function loadviewemergencycontacts() {
 function loadviewemployementhistory() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
 }
-
+function loadViewStudyProgramsDetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
+}

@@ -15,6 +15,10 @@ public enum Operation {
 	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
 	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
 	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
+	GET_MEDICAL_HISTORY("GMH"), //get medical history data to database
+	GET_MEDICAL_REPORT("GMR"), //get medical report data to database
+	UPDATE_MEDICAL_HISTORY("UMH"), //get medical history data to database
+	UPDATE_MEDICAL_REPORT("UMR"), //get medical report data to database
 	EMPLOYEE("EMP"), 
 	ADD_EMPLOYEE_BASICDATA("AEB"),
 	BASIC_DATA("BASIC"),

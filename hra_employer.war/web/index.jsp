@@ -119,6 +119,7 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentEmployee()"> Employee</a></li>
+					
 					<li><a href="#department"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
@@ -128,6 +129,7 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalarycomponentdetails()"> Salary Component</a></li>
+					
 					<li><a href="#salarycomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"

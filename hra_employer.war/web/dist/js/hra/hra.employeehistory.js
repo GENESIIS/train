@@ -8,7 +8,7 @@
 
 
 $(document).ready(function() {
-
+	
 });
 
 // field empty check
@@ -243,7 +243,7 @@ function loadEditContentEmployeeHistoryDetails() {
 				type : "POST",
 				url : 'EmployerController',
 				data : {
-					serchVlaue : empEpf,
+					inputValue : empEpf,
 					jsonData : JSON.stringify(employeeData),
 					task : "GEH"
 				},
@@ -350,7 +350,7 @@ function updateEmployeeHistoryDetails() {
 		type : "POST",
 		url : 'EmployerController',
 		data : {
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			jsonData : JSON.stringify(employeeData),
 			task : "UEH"
 		},

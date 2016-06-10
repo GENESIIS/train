@@ -29,10 +29,10 @@ function AddEducationDetails() {
 
 	$.ajax({
 		type : "POST",
-		url : 'EmployeeController',
+		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(EducationData),
-			task : "ADD"
+			task : "AED"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -80,13 +80,12 @@ function checkStudyTime() {
 }
 
 //Load data to edit Educational Details
-
 function loadeditEducationalDetails() {
 
 	var jsonData = "1";
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
-		serchVlaue : empEpf,
+		inputValue : empEpf,
 		task : "GED"
 	}, function(data) {
 		json = JSON.parse(data);
@@ -155,8 +154,8 @@ function EditEducationDetails() {
 	});
 }
 
-// /////////////// load employee education details///////////////
 
+// /////////////// load employee education details///////////////
 function loadDataEducationalDetails() {
 
 	var serchContent = "1";
@@ -166,7 +165,7 @@ function loadDataEducationalDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(1),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GED"
 		},
 		dataType : "json",
