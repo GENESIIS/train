@@ -19,6 +19,7 @@ import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.AddEducationDetails;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.AddFamilyDetails;
+import com.genesiis.hra.command.AddStuddyProgram;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommandAJX;
@@ -76,6 +77,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
+		commands.put(Operation.ADD_STADY_PROGRAM, new AddStuddyProgram());
 		
 		
 	}
@@ -96,7 +98,7 @@ public class EmployerController extends HttpServlet {
 		
 		log.info(details);
 		
-		String inputVAlue = request.getParameter("serchVlaue");
+		String inputValue = request.getParameter("inputValue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
 		String message = "";
@@ -107,7 +109,7 @@ public class EmployerController extends HttpServlet {
 		
 		log.info(""
 				+ "task-" +  task 
-				+ " searchValue-" + inputVAlue + 
+				+ " searchValue-" + inputValue + 
 				" details-" + details);
 		
 		log.info("Operation" + o);
@@ -115,35 +117,35 @@ public class EmployerController extends HttpServlet {
 			switch (o) {
 
 			case SERCH_EMPLOYEE:
-				message = commands.get(o).execute(inputVAlue);
+				message = commands.get(o).execute(inputValue);
 				log.info(message);
 				break;
 			case REGISTER_LOAN:
 				message = commands.get(o).execute(details);
 				break;
 			case GET_LOAN:
-				message = commands.get(o).execute(inputVAlue);
-				log.info(inputVAlue
+				message = commands.get(o).execute(inputValue);
+				log.info(inputValue
 						+ "***inputVAlue***");
 				break;
 			case UPDATE_LOAN:
-				message = commands.get(o).execute(details, inputVAlue);
+				message = commands.get(o).execute(details, inputValue);
 				break;
 			case GET_EMPLOYEE_BASIC:
 				log.info(gson.toJson("Inside case get"));
-				message = commands.get(o).execute(inputVAlue, task);
+				message = commands.get(o).execute(inputValue, task);
 				break;
 			case UPDATE_EMPLOYEE_BASIC:
-				message = commands.get(o).execute(details,inputVAlue );
+				message = commands.get(o).execute(details,inputValue );
 				break;
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
 				break;
 			case GET_EMPLOYEE_HISTORY:
-				message = commands.get(o).execute(inputVAlue, task);
+				message = commands.get(o).execute(inputValue, task);
 				break;
 			case UPDATE_EMPLOYEE_HISTORY:
-				message = commands.get(o).execute(details, inputVAlue);
+				message = commands.get(o).execute(details, inputValue);
 				break;
 			case ADD_MEDICAL_HISTORY:
 				message = commands.get(o).execute(details);
@@ -154,12 +156,12 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				break;
 			case GET_EDU_DETAILS:
-				message = commands.get(o).execute(inputVAlue, task);
+				message = commands.get(o).execute(inputValue, task);
 				log.info("Search Educational details");
 				break;
 
 			case GET_FAMILY:
-				message = commands.get(o).execute(inputVAlue, task);
+				message = commands.get(o).execute(inputValue, task);
 				log.info("Search family details");
 				break;
 			case ADD_EDU_DETAILS:
@@ -169,6 +171,10 @@ public class EmployerController extends HttpServlet {
 			case UPDATE_EDU_DETAILS:
 				message = commands.get(o).execute(details);
 				log.info("update education details" + details);
+				break;
+			case ADD_STADY_PROGRAM:
+				message = commands.get(o).execute(details);
+				log.info("Add Studdy Program" + details);
 				break;
 			case ADD_MEDICAL_REPORT:
 				// this code segment will improve in next sprint as much as

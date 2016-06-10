@@ -33,8 +33,8 @@ public enum Operation {
 	VIEW_EMPLOYEE_DETAILS("VPD"),
 
 	UPDATE_FAMILY_MEMBER("UFM"),
-	GET_FAMILY_MEMBER("GFM");
-	
+	GET_FAMILY_MEMBER("GFM"),
+	ADD_STADY_PROGRAM("ASP");
 	
 	private final String value;
 
