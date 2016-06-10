@@ -11,7 +11,7 @@
 	//To load the Datatable
 	$(document).ready(function() {
 		loadBasicTable();
-		getDepartment()
+		getDepartment();
 		//listEmployee(empData); 
 	});
 </script>
@@ -110,8 +110,8 @@
 								<label for="employeeGender">Gender</label> <select
 									class="form-control" id="employeeGender" name="employeeGender">
 									<option value="">--Select--</option>
-									<option value="2">Female</option>
-									<option value="4">Male</option>
+									<option value="Female">Female</option>
+									<option value="Male">Male</option>
 								</select>
 							</div>
 						</div>
@@ -264,13 +264,22 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
+					
 					<a href="#" onclick="loadContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
+						class="btn btn-primary">Educaional Data</a>
+						
+						 <a
+						onclick="loadAddStudyProgramsDetails()" href="#"
+						class="btn btn-primary">Study Programs</a>
+						
+						 <a href="#"
 						onclick="loadlonedetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadfamilydetails()"
-						class="btn btn-primary">Family Details</a> <a href="#"
+						Details</a>
+						
+						 <a href="#" onclick="loadfamilydetails()"
+						class="btn btn-primary">Family Details</a>
+						
+						 <a href="#"
 						onclick="loadAddEmployementHIstoryDetails()"
 						class="btn btn-primary">Employee History</a>
 						
@@ -442,6 +451,7 @@
 	</div>
 </div>
 
+
 <!-- Modal EDIT-->
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">
@@ -456,12 +466,20 @@
 
 				<div class="btn-group btn-group-justified">
 					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
+						class="btn btn-primary">Educaional Data</a>
+						
+						 <a
 						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
+						class="btn btn-primary">Study Programs</a> 
+						
+						<a href="#"
 						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a> <a href="#"
+						Details</a> 
+						
+						<a href="#" onclick="loadEditContentfamilydetails()"
+						class="btn btn-primary">Family Details</a> 
+						
+						<a href="#"
 						onclick="loadEditEmployementHIstoryDetails()"
 						class="btn btn-primary">Employee History</a>
 						

@@ -1,11 +1,13 @@
 // Load more details contents
 function loadfamilydetails() {
-	$("#modelrest").load("familyDetails/familyDetails.jsp");
+	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
 }
 
 function loadEditContentfamilydetails() {
-	$("#Editmodelrest").load("familyDetails/editfamilyDetails.jsp");
 	getEmployeetoupdate();
+	
+	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
+
 }
 
 // ///Familydetails
@@ -194,6 +196,9 @@ function resetFieldsadd() {
 }
 
 function getEmployeetoupdate() {
+	
+	alert(empEpf);
+	
 	var fmemployeeId = 2;
 
 	var jsonData = {

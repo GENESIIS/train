@@ -49,7 +49,7 @@
 <script src="dist/js/hra/hra.familydetails.js"></script>
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
 <script src="dist/js/hra/hra.education.js"></script>
-
+<script src="dist/js/hra/hra.study.js"></script>
 
 <style type="text/css">
 /* label { */

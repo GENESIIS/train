@@ -19,16 +19,7 @@ function loadviewemployementhistory() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
 }
 
-// @TR - Employee > new employee > more details > add Employment details
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
-}
 
-// @TR - Employee > edit employee > more details > edit Employment details
-function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
-	$("#Editmodelrest").load("employeeHistory/editEmployeeHistory.jsp");
-}
 // field number check
 function isNumber(evt) {
 	evt = (evt) ? evt : window.event;
@@ -239,6 +230,10 @@ function loadEditContentEmployeeHistoryDetails() {
 
 	alert(empEpf);
 
+	document.getElementById("employeeIdtext").value = empEpf;
+	
+	alert("66"+document.getElementById("employeeIdtext").value);
+	
 	// var employeeId = $("#employeeId").val();
 	$("#employeeId").val(empEpf);
 
@@ -246,8 +241,7 @@ function loadEditContentEmployeeHistoryDetails() {
 		"ehEmployeeid" : empEpf,
 	};
 
-	$
-			.ajax({
+	$.ajax({
 				type : "POST",
 				url : 'EmployerController',
 				data : {

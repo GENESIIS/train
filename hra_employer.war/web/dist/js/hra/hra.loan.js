@@ -1,6 +1,6 @@
 
 function loadlonedetails() {
-	$("#modelrest").load("employeeDetails/loanDetails.jsp");
+	$("#modelrest").load("employeeDetails/addLoanDetails.jsp");
 }
 
 function loadviewloandetails() {
@@ -130,7 +130,7 @@ function updateLoanDetailes() {
 };
 
 function loadEditContentloandetails() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditloanDetails.jsp",
+	$("#Editmodelrest").load("editEmployeeDetails/editLoanDetails.jsp",
 			function(datatl) {
 				var employeeEpf = empEpf;
 				$.get("EmployerController", {
