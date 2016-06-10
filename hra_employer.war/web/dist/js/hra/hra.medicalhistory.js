@@ -13,8 +13,10 @@ function loadAddMedicalHIstoryDetails() {
 
 // @TR - Employee > edit employee > more details > edit medical history details 
 function loadEditMedicalHIstoryDetails() {
-	$("#modelrestedit").load("editEmployeeDetails/editMedicalHistory.jsp");
+	$("#Editmodelrest").load("editEmployeeDetails/editMedicalHistory.jsp");
 }
+
+
 
 
 // ready function

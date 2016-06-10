@@ -6,6 +6,17 @@
  * @created on- 2016-05-25
  */
 
+//@TR
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeDetails/addEmployeeHistory.jsp");
+}
+
+//@TR
+function loadEditEmployementHIstoryDetails() {
+	//loadEditContentEmployeeHistoryDetails();
+	$("#Editmodelrest").load("editEmployeeDetails/editEmployeeHistory.jsp");
+}
+
 $(document).ready(function() {
 
 });

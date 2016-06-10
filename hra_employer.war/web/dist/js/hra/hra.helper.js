@@ -11,56 +11,39 @@ theNewScript.src = "hra.validation.js";
 theNewScript.src = "hra.employer.js";
 var empEpf = null;
 
+//@PN
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 };
-
+//@PN
 function loadContentEmployee() {
 	$("#mainContent").load("manageEmployee.jsp");
 };
-
+//@PN
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 };
-
-
-//@TR
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeDetails/addEmployeeHistory.jsp");
-}
-
-//@TR
-function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
-	$("#Editmodelrest").load("editEmployeeDetails/editEmployeeHistory.jsp");
-}
-
-//@TR - Load more details contents
-function loadfamilydetails() {
-	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
-}
-
-//@TR
-function loadEditContentfamilydetails() {
-	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
-}
-
-
-//@AS
-function loadContentqualifications() {
-	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
-}
-
 //@AS
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
 	loademployeeDetails();
 }
 
+
+
+
+//@AS
+function loadContentqualifications() {
+	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
+}
 //@AS - load more edit Employeee Detail
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("editEmployeeDetails/editEducationalDetails.jsp");
-	loadeditEducationalDetails();
+//function loadEditContentqualifications() {
+//	$("#Editmodelrest").load("editEmployeeDetails/editEducationalDetails.jsp");
+//	//loadeditEducationalDetails();
+//}
+function loadEditContentqualifications1() {
+$("#Editmodelrest").load("newfolder/editStudyPrograms.jsp");
+//loadeditEducationalDetails();
 }
 
 //@PC
@@ -72,15 +55,17 @@ function loadEditContentstudyprograms() {
 	$("#Editmodelrest").load("editEmployeeDetails/editStudyPrograms.jsp");
 }
 
+function loadEditlanguages() {
+	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
+}
+
 // Only for Sprint -1 demo.
 function deleteAlert() {
 	alert("Data Deleted Successfully.");
 }
 
 
-function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
-}
+
 
 // Only for Sprint -1 demo.
 function addedAlert() {
@@ -161,10 +146,6 @@ function resetLabels() {
 	} else {
 		document.getElementById('relationnameError').innerHTML = "";
 	}
-}
-
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("editEmployeeDetails/editEducationalDetails.jsp");
 }
 
 function loadEditContentstudyprograms() {

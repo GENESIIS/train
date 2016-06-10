@@ -437,11 +437,11 @@
 					onclick="updateEmployeeDetails()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
-				<button type="button" class="btn btn-warning pull-right"
-					id="moredetails" name="moredetails" onclick="" data-dismiss="modal"
-					data-toggle="modal" data-target="#editmoreEmployeedetails">
+
+				<button type="button" class="btn btn-info pull-left" id="moredetails" name="moredetails" data-toggle="modal" data-target="#editmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i>Edit More Details
 				</button>
+				
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal" onclick="">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
@@ -465,6 +465,7 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
+					
 					<a href="#" onclick="loadEditContentqualifications()"
 						class="btn btn-primary">Educaional Data</a>
 						
@@ -487,7 +488,7 @@
 						onclick="loadEditMedicalHIstoryDetails()"
 						class="btn btn-primary">Medical History</a>
 				</div>
-				<div id="Editmodelrest" name="Editmodelrest"></div>
+				<div id="Editmodelrest"></div>
 
 			</div>
 		</div>

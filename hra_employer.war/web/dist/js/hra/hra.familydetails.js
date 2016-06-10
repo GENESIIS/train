@@ -1,14 +1,24 @@
 // Load more details contents
+//function loadfamilydetails() {
+//	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
+//}
+
+//function loadEditContentfamilydetails() {
+//	getEmployeetoupdate();
+//	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
+//}
+
+
+//@TR - Load more details contents
 function loadfamilydetails() {
 	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
 }
 
+//@TR
 function loadEditContentfamilydetails() {
-	getEmployeetoupdate();
-	
 	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
-
 }
+
 
 // ///Familydetails
 // //Add Family Details
