@@ -1,12 +1,4 @@
-// Load more details contents
-function loadfamilydetails() {
-	$("#modelrest").load("familyDetails/familyDetails.jsp");
-}
 
-function loadEditContentfamilydetails() {
-	$("#Editmodelrest").load("familyDetails/editfamilyDetails.jsp");
-	getEmployeetoupdate();
-}
 
 // ///Familydetails
 // //Add Family Details
@@ -48,9 +40,11 @@ function addFamilyDetails() {
 		};
 
 		$.ajax({
+			
 			type : "POST",
 			url : 'EmployerController',
 			data : {
+				inputValue : empEpf,
 				jsonData : JSON.stringify(jsonData),
 				task : "AFM"
 			},
@@ -108,9 +102,11 @@ function editFamilyDetails() {
 		};
 
 		$.ajax({
+			
 			type : "POST",
 			url : 'EmployerController',
 			data : {
+				inputValue : empEpf,
 				jsonData : JSON.stringify(jsonData),
 				task : "UFM"
 			},
@@ -194,6 +190,7 @@ function resetFieldsadd() {
 }
 
 function getEmployeetoupdate() {
+
 	var fmemployeeId = 2;
 
 	var jsonData = {
@@ -206,7 +203,10 @@ function getEmployeetoupdate() {
 	// alert(response);
 	// });
 
+//	alert("empEpf:"+empEpf);
+//	
 	$.getJSON('EmployerController', {
+		inputValue : empEpf,
 		jsonData : JSON.stringify(jsonData),
 		task : "GFM"
 	}, function(data) {
@@ -263,7 +263,7 @@ function loadFamilyDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GF"
 		},
 		dataType : "json",

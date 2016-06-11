@@ -16,6 +16,10 @@ public class EmployeeFactory {
 		switch (o) {
 		case GET_EMPLOYEE_BASIC:
 			return new BasicData();
+		
+		case GET_FAMILY_MEMBER:
+			return new Familymember();
+			
 		case GET_EMPLOYEE_HISTORY:
 			return new EmploymentHistory();
 	

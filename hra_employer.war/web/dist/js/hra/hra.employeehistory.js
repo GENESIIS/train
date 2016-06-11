@@ -5,9 +5,11 @@
  * @git branch used - hra-12-add-employee-history-details-tr
  * @created on- 2016-05-25
  */
+var doUpdateEnable = true;
+var doAddEnable = false;
 
 $(document).ready(function() {
-
+	
 });
 
 // field empty check
@@ -15,20 +17,8 @@ function isEmpty(value) {
 	return (value == null || value.length === 0);
 }
 
-function loadviewemployementhistory() {
-	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
-}
 
-// @TR - Employee > new employee > more details > add Employment details
-function loadAddEmployementHIstoryDetails() {
-	$("#modelrest").load("employeeHistory/addEmployeeHistory.jsp");
-}
 
-// @TR - Employee > edit employee > more details > edit Employment details
-function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
-	$("#Editmodelrest").load("employeeHistory/editEmployeeHistory.jsp");
-}
 // field number check
 function isNumber(evt) {
 	evt = (evt) ? evt : window.event;
@@ -237,21 +227,21 @@ function clearEmploymentHisory() {
 /** ***************START EDIT EMPLOYEE HISTORY Details************************ */
 function loadEditContentEmployeeHistoryDetails() {
 
-	alert(empEpf);
-
+	
+	$("#employeeIdhidden").val(empEpf);
 	// var employeeId = $("#employeeId").val();
 	$("#employeeId").val(empEpf);
-
+	
 	var employeeData = {
 		"ehEmployeeid" : empEpf,
 	};
 
-	$
-			.ajax({
+	$.ajax({
+				inputValue : empEpf,
 				type : "POST",
 				url : 'EmployerController',
 				data : {
-					serchVlaue : empEpf,
+					inputValue : empEpf,
 					jsonData : JSON.stringify(employeeData),
 					task : "GEH"
 				},
@@ -259,7 +249,7 @@ function loadEditContentEmployeeHistoryDetails() {
 				success : function(data) {
 
 					json = JSON.parse(data);
-					$("#employeeId").val(json.ehEmployeeid);
+					$("#employeeId").val(empEpf);
 					$("#employer").val(json.ehEmployername);
 					$("#designation").val(json.ehDesignation);
 					$("#ehComments").val(json.ehComments);
@@ -285,6 +275,16 @@ function loadEditContentEmployeeHistoryDetails() {
 
 					$("#startedOn").val(json.ehStartdate);
 					$("#compleatedOn").val(json.ehEnddate);
+					
+//					if (!$.trim(data)){   
+//					    alert("What follows is blank: " + data);
+//					}
+//					else{   
+//					    alert("What follows is not blank: " + data);
+//					}
+					
+					
+					 $("#btnSaveeditEmpHistory").hide();
 				},
 				error : function(e) {
 					alert("Error " + e);
@@ -358,7 +358,7 @@ function updateEmployeeHistoryDetails() {
 		type : "POST",
 		url : 'EmployerController',
 		data : {
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			jsonData : JSON.stringify(employeeData),
 			task : "UEH"
 		},

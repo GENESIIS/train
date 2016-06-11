@@ -87,6 +87,7 @@ public class SalaryScheme implements ICrud {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		SalaryScheme ss = (SalaryScheme) object;
 		int status = 0;
 
@@ -102,7 +103,7 @@ public class SalaryScheme implements ICrud {
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
+				rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
@@ -123,6 +124,8 @@ public class SalaryScheme implements ICrud {
 			try {
 				if (ps != null) {
 					ps.close();
+				}if (rs != null) {
+					rs.close();
 				}
 				conn.close();
 			} catch (Exception exception) {

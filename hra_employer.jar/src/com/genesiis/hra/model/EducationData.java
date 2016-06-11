@@ -101,6 +101,7 @@ public class EducationData extends Employee {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		EducationData edu = (EducationData) object;
 		int status = 0;
 		try {
@@ -117,15 +118,15 @@ public class EducationData extends Employee {
 			ps.setString(8, "SYSTEM");
 
 			// throws exception in SQL
-//			int rowsInserted = ps.executeUpdate();
-//			if (rowsInserted > 0) {
-//				ResultSet rs = ps.getGeneratedKeys();
-//				int generatedKey = 0;
-//				if (rs.next()) {
-//					generatedKey = rs.getInt(1);
-//				}
-//				status = generatedKey;
-//			}
+			int rowsInserted = ps.executeUpdate();
+			if (rowsInserted > 0) {
+				rs = ps.getGeneratedKeys();
+				int generatedKey = 0;
+				if (rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				status = generatedKey;
+			}
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			log.error("Exception: EducationData Add" + exception);
@@ -205,6 +206,7 @@ public class EducationData extends Employee {
 	public Object findByEpf(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet res = null;
 		EducationData edu = new EducationData();
 	
 		log.info(id + "//");
@@ -215,7 +217,7 @@ public class EducationData extends Employee {
 					.prepareStatement("SELECT * FROM [HRA.QUALIFICATION] WHERE EMPLOYEEID=?");
 			ps.setString(1, id);
 
-			ResultSet res = ps.executeQuery();
+			res = ps.executeQuery();
 			if (res.next()) {
 				edu.setEmployeeepf(res.getString(2));
 				log.info("res.getString(2)" + res.getString(2));
@@ -241,6 +243,9 @@ public class EducationData extends Employee {
 			try {
 				if (ps != null) {
 					ps.close();
+				}
+				if (res != null) {
+					res.close();
 				}
 				conn.close();
 			} catch (SQLException exception) {

@@ -7,15 +7,28 @@
 <!-- JavaScripts to help to load  -->
 
 
+<!-- Importing hra.helper.js file -->
+<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.js"></script>
+<script src="dist/js/jasny-bootstrap-js/jasny-bootstrap.min.js"></script>
+<script src="dist/js/jasny-bootstrap-js/jquery.form.js"></script>
+
+<!-- Styles for this template -->
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css"
+	rel="stylesheet">
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.css.map"
+	rel="stylesheet">
+<link href="dist/css/jasny-bootstrap-css/jasny-bootstrap.min.css"
+	rel="stylesheet">
+
+
 <script type="text/javascript">
 	//To load the Datatable
 	$(document).ready(function() {
 		loadBasicTable();
-		getDepartment()
+		getDepartment();
 		//listEmployee(empData); 
 	});
 </script>
-
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
@@ -28,8 +41,7 @@
 	</button>
 	<br></br>
 	<div class="row">
-		<div class="col-sm-4">
-		</div>
+		<div class="col-sm-4"></div>
 		<div class="col-sm-8" align="right">
 			<div class="input-group add-on">
 				<input class="form-control" placeholder="Search"
@@ -61,61 +73,51 @@
 					<h3 class="">General Details</h3>
 
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-6">
+
 							<div class="form-group">
 								<label for="employeeFirstname">First Name</label><input
 									type="text" class="form-control" id="employeeFirstname"
 									name="employeeFirstname" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-						<div class="col-md-4">
+
 							<div class="form-group">
 								<label for="employeeMiddlename">Middle Name</label> <input
 									type="text" class="form-control" id="employeeMiddlename"
 									name="employeeMiddlename" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-						<div class="col-md-4">
+
 							<div class="form-group">
 								<label for="employeeLastname">Last Name</label> <input
 									type="text" class="form-control" id="employeeLastname"
 									name="employeeLastname" placeholder=""
 									onkeypress="return isLetter(event);">
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
 							<div class="form-group">
 								<label for="employeeDateofbirth">Date of Birth</label> <input
 									type="date" class="form-control" id="employeeDateofbirth"
 									name="employeeDateofbirth" placeholder="">
 							</div>
-						</div>
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeNic">NIC</label> <input type="text"
 									class="form-control" id="employeeNic" name="employeeNic"
 									placeholder="" maxlength="10" size="10">
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeGender">Gender</label> <select
 									class="form-control" id="employeeGender" name="employeeGender">
 									<option value="">--Select--</option>
-									<option value="2">Female</option>
-									<option value="4">Male</option>
+									<option value="Female">Female</option>
+									<option value="Male">Male</option>
 								</select>
 							</div>
-						</div>
-						<div class="col-md-6">
+
 							<div class="form-group">
 								<label for="employeeMaritalstatus">Marital Status</label> <select
 									class="form-control" id="employeeMaritalstatus"
@@ -128,9 +130,18 @@
 									<option value="Separated">Separated</option>
 								</select>
 							</div>
+
+
 						</div>
+
+						
+
 					</div>
+
 				</div>
+
+
+
 
 				<div class="well">
 					<h3 class="">Job Details</h3>
@@ -264,19 +275,18 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
+
 					<a href="#" onclick="loadContentqualifications()"
 						class="btn btn-primary">Educaional Data</a> <a
-						onclick="loadContentstudyprograms()" href="#"
+						onclick="loadAddStudyProgramsDetails()" href="#"
 						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadlonedetails()" class="btn btn-primary">Loan
 						Details</a> <a href="#" onclick="loadfamilydetails()"
 						class="btn btn-primary">Family Details</a> <a href="#"
 						onclick="loadAddEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
-						
-						<a href="#"
-						onclick="loadAddMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Employee History</a> <a href="#"
+						onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -293,8 +303,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 class="modal-title">
-					<i class="glyphicon glyphicon-user"></i>Edit Employee Details <i
-						class="glyphicon glyphicon-user"></i> Employee Details
+					<i class="glyphicon glyphicon-user"></i>Edit Employee Details
 				</h3>
 			</div>
 			<div class="modal-body">
@@ -428,11 +437,13 @@
 					onclick="updateEmployeeDetails()" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
-				<button type="button" class="btn btn-warning pull-right"
-					id="moredetails" name="moredetails" onclick="" data-dismiss="modal"
-					data-toggle="modal" data-target="#editmoreEmployeedetails">
+
+				<button type="button" class="btn btn-info pull-left"
+					id="moredetails" name="moredetails" data-toggle="modal"
+					data-target="#editmoreEmployeedetails">
 					<i class="glyphicon glyphicon-file"></i>Edit More Details
 				</button>
+
 				<button type="button" class="btn btn-danger pull-left"
 					data-dismiss="modal" onclick="">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
@@ -441,6 +452,7 @@
 		</div>
 	</div>
 </div>
+
 
 <!-- Modal EDIT-->
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
@@ -455,21 +467,30 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
+
 					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
+						class="btn btn-primary">Educaional Data</a> 
+						
+						<a
 						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a> <a href="#"
-						onclick="loadEditEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
+						class="btn btn-primary">Study Programs</a> 
 						
 						<a href="#"
-						onclick="loadEditMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
+						Details</a> 
+						
+						<a href="#" onclick="loadEditContentfamilydetails()"
+						class="btn btn-primary">Family Details</a>
+						
+						 <a href="#"
+						onclick="loadEditEmployementHIstoryDetails()"
+						class="btn btn-primary">Employee History</a> 
+						
+						<a href="#"
+						onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
-				<div id="Editmodelrest" name="Editmodelrest"></div>
+				<div id="Editmodelrest"></div>
 
 			</div>
 		</div>

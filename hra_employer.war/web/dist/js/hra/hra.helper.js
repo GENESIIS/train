@@ -11,53 +11,59 @@ theNewScript.src = "hra.validation.js";
 theNewScript.src = "hra.employer.js";
 var empEpf = null;
 
+//@PN
 function loadContentDashboard() {
 	$("#mainContent").load("hraDashboard.jsp");
 };
-
+//@PN
 function loadContentEmployee() {
 	$("#mainContent").load("manageEmployee.jsp");
 };
-
+//@PN
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 };
-
-function loadContentqualifications() {
-	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
-}
-
+//@AS
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
 	loademployeeDetails();
 }
 
+
+//Load more details contents
+function loadfamilydetails() {
+	$("#modelrest").load("employeeDetail/addFamilyDetails.jsp");
+}
+//@TR
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeDetail/addEmployeeHistory.jsp");
+}
+//@AS
+function loadContentqualifications() {
+	$("#modelrest").load("employeeDetail/educationalDetails.jsp");
+}
+//@TR - Employee > new employee > more details > add Medical history details 
+function loadAddMedicalHIstoryDetails() {
+	$("#modelrest").load("employeeDetail/addMedicalHistory.jsp");
+}
+function loadAddStudyProgramsDetails() {
+	$("#modelrest").load("employeeDetail/addStudyPrograms.jsp");
+}
+
+
+
+//@PC
 function loadBasicTable() {
 	$("#basicTable").load("TableDetail/serchBasic.jsp");
 }
 
+
+
+
+
 // Only for Sprint -1 demo.
 function deleteAlert() {
 	alert("Data Deleted Successfully.");
-}
-
-// Load more details contents
-function loadfamilydetails() {
-	$("#modelrest").load("employeeDetails/familyDetails.jsp");
-}
-
-// load more edit Employeee Detail
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-	loadeditEducationalDetails();
-}
-
-function loadEditContentstudyprograms() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-}
-
-function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
 }
 
 // Only for Sprint -1 demo.
@@ -89,7 +95,6 @@ function getManager() {
 function addedAlert() {
 	alert("Data Added Successfully.");
 	document.getElementById("moredetails").disabled = false;
-	alert("Data Added Successfully.");
 }
 
 function updatedAlert() {
@@ -99,8 +104,49 @@ function updatedAlert() {
 // ////load more edit Employeee Detail///////////////
 
 function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
+	$("#Editmodelrest").load("employeeDetailEdit/EditlanguageProficiency.jsp");
 }
+
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("employeeDetailEdit/editStudyPrograms.jsp");
+}
+
+function loadEditemergencycontacts() {
+	$("#Editmodelrest").load("employeeDetailEdit/editEmergencyContacts.jsp");
+}
+//@PC
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("employeeDetailEdit/editStudyPrograms.jsp");
+}
+//@TR
+function loadEditlanguages() {
+	$("#Editmodelrest").load("employeeDetailEdit/editLanguageProficiency.jsp");
+}
+//@PN
+function loadEditContentfamilydetails() {
+	alert("loadEditContentfamilydetails");
+	getEmployeetoupdate();
+	$("#Editmodelrest").load("employeeDetailEdit/editFamilyDetails.jsp");
+}
+//@TR
+function loadEditEmployementHIstoryDetails() {
+	$("#Editmodelrest").load("employeeDetailEdit/editEmployeeHistory.jsp");
+	loadEditContentEmployeeHistoryDetails();
+}
+//@AS - load more edit Employeee Detail
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("employeeDetailEdit/editEducationalDetails.jsp");
+	loadeditEducationalDetails();
+}
+// @TR - Employee > edit employee > more details > edit medical history details 
+function loadEditMedicalHIstoryDetails() {
+	$("#Editmodelrest").load("editEmployeeDetails/editMedicalHistory.jsp");
+}
+
+
+
+
+
 // ///////////////////////////////////////////////
 
 $("#buttonAddemployee").click(function() {
@@ -141,17 +187,7 @@ function resetLabels() {
 	}
 }
 
-function loadEditContentqualifications() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditeducationalDetails.jsp");
-}
 
-function loadEditContentstudyprograms() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditstudyPrograms.jsp");
-}
-
-function loadEditlanguages() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditlanguageProficiency.jsp");
-}
 
 // ///load more employee views/////////////////////////////////////
 
@@ -173,10 +209,10 @@ function loadviewfamilydetails() {
 function loadviewemergencycontacts() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemergencyContacts.jsp");
 }
-
-function loadEditContentfamilydetails() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditfamilyDetails.jsp");
+//@AS
+function loadviewemployementhistory() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
 }
-function loadEditemergencycontacts() {
-	$("#Editmodelrest").load("EditemployeeDetails/EditemergencyContacts.jsp");
+function loadViewStudyProgramsDetails() {
+	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
 }
