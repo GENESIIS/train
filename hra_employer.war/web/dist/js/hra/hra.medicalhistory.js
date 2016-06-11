@@ -7,6 +7,16 @@
  * @created on- 2016-05-25
  */
 
+//@TR - Employee > new employee > more details > add Medical history details 
+function loadAddMedicalHIstoryDetails() {
+	$("#modelrest").load("employeeDetails/addMedicalHistory.jsp");
+}
+
+// @TR - Employee > edit employee > more details > edit medical history details 
+function loadEditMedicalHIstoryDetails() {
+	$("#modelrestedit").load("editEmployeeDetails/editMedicalHistory.jsp");
+}
+
 
 // ready function
  $(document).on('ready', function() {
@@ -247,3 +257,7 @@ function clearMedicalHisory(){
  * End Clear medical history data
  */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff621bb2107dad8bc27996a562affe349b9f6697

@@ -130,7 +130,9 @@ function updateLoanDetailes() {
 };
 
 function loadEditContentloandetails() {
+
 	$("#Editmodelrest").load("employeeDetailEdit/editLoanDetails.jsp",
+
 			function(datatl) {
 				var employeeEpf = empEpf;
 				$.get("EmployerController", {

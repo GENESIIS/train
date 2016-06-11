@@ -276,17 +276,37 @@
 
 				<div class="btn-group btn-group-justified">
 
+
 					<a href="#" onclick="loadContentqualifications()"
 						class="btn btn-primary">Educaional Data</a> <a
 						onclick="loadAddStudyProgramsDetails()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
-						onclick="loadlonedetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadfamilydetails()"
-						class="btn btn-primary">Family Details</a> <a href="#"
+						class="btn btn-primary">Study Programs</a> 
+						
+						
+<!-- 						<a href="#" onclick="loadContentqualifications()" -->
+<!-- 						class="btn btn-primary">Educaional Data</a> -->
+						
+<!-- 						<a -->
+<!-- 						onclick="loadAddStudyProgramsDetails()" href="#" -->
+<!-- 						class="btn btn-primary">Study Programs</a> -->
+						
+			
+						 <a onclick="loadlonedetails()" class="btn btn-primary">Loan
+						Details</a>
+						
+						 <a  onclick="loadfamilydetails()"
+						class="btn btn-primary">Family Details</a>
+						
+						 <a 
 						onclick="loadAddEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a> <a href="#"
+						class="btn btn-primary">Employee History</a> 
+						
+						
+						<a 
 						onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical
 						History</a>
+						
+						
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -468,27 +488,12 @@
 
 				<div class="btn-group btn-group-justified">
 
-					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> 
-						
-						<a
-						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> 
-						
-						<a href="#"
-						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> 
-						
-						<a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-						
-						 <a href="#"
-						onclick="loadEditEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a> 
-						
-						<a href="#"
-						onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical
-						History</a>
+					<a  onclick="loadEditContentqualifications()" 	class="btn btn-primary">Educaional Data</a> 
+					<a onclick="loadEditContentstudyprograms()"  class="btn btn-primary">Study Programs</a> 
+					<a  onclick="loadEditContentloandetails()" class="btn btn-primary">Loan Details</a> 
+					<a  onclick="loadEditContentfamilydetails()" class="btn btn-primary">Family Details</a>
+					<a  onclick="loadEditEmployementHIstoryDetails()" class="btn btn-primary">Employee History</a> 
+					<a  onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical History</a>
 				</div>
 				<div id="Editmodelrest"></div>
 

@@ -23,6 +23,43 @@ function loadContentEmployee() {
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 };
+
+//@TR
+function loadAddEmployementHIstoryDetails() {
+	$("#modelrest").load("employeeDetails/addEmployeeHistory.jsp");
+}
+
+//@TR
+function loadEditEmployementHIstoryDetails() {
+	$("#Editmodelrest").load("editEmployeeDetails/editEmployeeHistory.jsp");
+	loadEditContentEmployeeHistoryDetails();
+}
+
+//@TR - Load more details contents
+function loadfamilydetails() {
+	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
+}
+
+//@TR
+function loadEditContentfamilydetails() {
+	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
+}
+
+//Load more details contents
+function loadfamilydetails() {
+	$("#modelrest").load("employeeDetails/addFamilyDetails.jsp");
+}
+
+function loadEditContentfamilydetails() {
+	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
+	getEmployeetoupdate();
+}
+
+//@AS
+function loadContentqualifications() {
+	$("#modelrest").load("employeeDetails/educationalDetails.jsp");
+}
+
 //@AS
 function loadViewEmployee() {
 	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
@@ -50,15 +87,23 @@ function loadAddStudyProgramsDetails() {
 	$("#modelrest").load("employeeDetail/addStudyPrograms.jsp");
 }
 
-
+//@AS - load more edit Employeee Detail
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("editEmployeeDetails/editEducationalDetails.jsp");
+	loadeditEducationalDetails();
+}
+function loadEditemergencycontacts() {
+	$("#Editmodelrest").load("editEmployeeDetails/editEmergencyContacts.jsp");
+}
 
 //@PC
 function loadBasicTable() {
 	$("#basicTable").load("TableDetail/serchBasic.jsp");
 }
-
-
-
+//@PC
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("editEmployeeDetails/editStudyPrograms.jsp");
+}
 
 
 // Only for Sprint -1 demo.
@@ -147,6 +192,7 @@ function loadEditMedicalHIstoryDetails() {
 
 
 
+
 // ///////////////////////////////////////////////
 
 $("#buttonAddemployee").click(function() {
@@ -188,6 +234,17 @@ function resetLabels() {
 }
 
 
+function loadEditContentqualifications() {
+	$("#Editmodelrest").load("editEmployeeDetails/editEducationalDetails.jsp");
+}
+
+function loadEditContentstudyprograms() {
+	$("#Editmodelrest").load("editEmployeeDetails/editStudyPrograms.jsp");
+}
+
+function loadEditlanguages() {
+	$("#Editmodelrest").load("editEmployeeDetails/EditlanguageProficiency.jsp");
+}
 
 // ///load more employee views/////////////////////////////////////
 
@@ -209,6 +266,7 @@ function loadviewfamilydetails() {
 function loadviewemergencycontacts() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemergencyContacts.jsp");
 }
+
 //@AS
 function loadviewemployementhistory() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
@@ -216,3 +274,6 @@ function loadviewemployementhistory() {
 function loadViewStudyProgramsDetails() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
 }
+
+
+

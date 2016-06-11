@@ -23,9 +23,13 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="employeeId">Employee EPF</label> <input type="text"
+							<label for="employeeId">Employee EPF</label> 
+							<input type="text"
 								class="form-control" id="employeeId" name="employeeId"
-								placeholder="" maxlength="10" >
+								placeholder="" maxlength="10" > 
+								
+								<label id="employeeIdtext" name="employeeIdtext"></label>
+								
 						</div>
 					</div>
 

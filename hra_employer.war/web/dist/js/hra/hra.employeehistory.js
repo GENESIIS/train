@@ -227,8 +227,10 @@ function clearEmploymentHisory() {
 /** ***************START EDIT EMPLOYEE HISTORY Details************************ */
 function loadEditContentEmployeeHistoryDetails() {
 
+
 	
 	$("#employeeIdhidden").val(empEpf);
+
 	// var employeeId = $("#employeeId").val();
 	$("#employeeId").val(empEpf);
 	
@@ -237,7 +239,6 @@ function loadEditContentEmployeeHistoryDetails() {
 	};
 
 	$.ajax({
-				inputValue : empEpf,
 				type : "POST",
 				url : 'EmployerController',
 				data : {
