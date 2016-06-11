@@ -465,7 +465,7 @@ public class EmploymentHistory extends Employee {
 	public int update(Object object, String epf) {
 		String query = "UPDATE [HRA.EMPLOYMENTHISTORY] SET EMPLOYERNAME=? , DESIGNATION =? , STARTDATE=? , ENDDATE=? , BASIS=? , COMMENTS=? , EMAIL=? ,"
 				+ "REFERENCEONENAME=? , REFERENCEONEPHONE=? , REFERENCEONEMOBILE=? , REFERENCEONEADDRESS=? , REFERENCEONEDESIGNATION =? , REFERENCEONECOMMENTS=? ,"
-				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE ID=?";
+				+ "REFERENCETWOENAME=? , REFERENCETWOPHONE=? , REFERENCETWOMOBILE=? , REFERENCETWOADDRESS=? , REFERENCETWODESIGNATION=? , REFERENCETWOCOMMENTS=? , MODBY=? WHERE EMPLOYEEID=?";
 
 		int status = -1;
 		Connection conn = null;
@@ -499,9 +499,7 @@ public class EmploymentHistory extends Employee {
 
 			ps.setString(20, "SYSTEM");
 			ps.setString(21, epf);
-
-			log.info("getEhid:-" + eh.getEhid());
-
+			
 			int rowsUpdated = ps.executeUpdate();
 
 			if (rowsUpdated > 0) {
