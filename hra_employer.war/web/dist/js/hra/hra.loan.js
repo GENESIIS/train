@@ -1,6 +1,6 @@
 
 function loadlonedetails() {
-	$("#modelrest").load("employeeDetails/addLoanDetails.jsp");
+	$("#modelrest").load("employeeDetail/addLoanDetails.jsp");
 }
 
 function loadviewloandetails() {

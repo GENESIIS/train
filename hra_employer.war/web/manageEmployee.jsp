@@ -134,40 +134,7 @@
 
 						</div>
 
-						<div class="col-xs-6">
-							<div class="form-group">
-								<label class="control-label col-xs-6" for="reportUpload"
-									style="vertical-align: top;">Profile Picture Upload</label>
-
-								<div class="fileinput fileinput-new" data-provides="fileinput">
-
-									<div class="fileinput-new thumbnail"
-										style="width: 400px; height: 400px;">
-										<img data-src="holder.js/100%x100%"
-											src="dist/demoimages/dummy-image.jpg">
-									</div>
-
-									<div class="fileinput-preview fileinput-exists thumbnail"
-										style="max-width: 400px; max-height: 400px;"></div>
-
-									<div>
-										<span class="btn btn-default btn-file"> <span
-											class="fileinput-new">Select image</span> <span
-											class="fileinput-exists">Change</span> <input type="file"
-											id="avatar" name="filesd">
-										</span> <a href="#" class="btn btn-default fileinput-exists"
-											data-dismiss="fileinput">Remove</a>
-
-									</div>
-								</div>
-								<!-- FILE UPLOAD -->
-								<button type="button"
-									class="btn btn-success full pull-right btn-space"
-									id="upload">
-									<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports
-								</button>
-							</div>
-						</div>
+						
 
 					</div>
 
@@ -503,14 +470,24 @@
 				<div class="btn-group btn-group-justified">
 
 					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a> <a
+						class="btn btn-primary">Educaional Data</a> 
+						
+						<a
 						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> <a href="#"
+						class="btn btn-primary">Study Programs</a> 
+						
+						<a href="#"
 						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a> <a href="#"
+						Details</a> 
+						
+						<a href="#" onclick="loadEditContentfamilydetails()"
+						class="btn btn-primary">Family Details</a>
+						
+						 <a href="#"
 						onclick="loadEditEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a> <a href="#"
+						class="btn btn-primary">Employee History</a> 
+						
+						<a href="#"
 						onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical
 						History</a>
 				</div>

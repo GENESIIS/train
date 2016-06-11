@@ -24,11 +24,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="employeeId">Employee EPF</label> 
+							
 							<input type="text"
 								class="form-control" id="employeeId" name="employeeId"
 								placeholder="" maxlength="10" > 
+							
+							<input type="hidden"
+								id="employeeIdhidden" name="employeeIdhidden" > 	
 								
-								<label id="employeeIdtext" name="employeeIdtext"></label>
 								
 						</div>
 					</div>
@@ -262,6 +265,11 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
 
+				<button id = "btnSaveeditEmpHistory" type="button" class="btn btn-success full pull-right"
+					onclick="addEmployeeHistoryDetails();">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				</button>
+				
 
 				<button type="button" class="btn btn-warning pull-left"
 					onclick="clearEmployeeHistoryDetails()">

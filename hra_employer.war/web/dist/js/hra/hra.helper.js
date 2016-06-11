@@ -47,7 +47,7 @@ function loadAddMedicalHIstoryDetails() {
 	$("#modelrest").load("employeeDetail/addMedicalHistory.jsp");
 }
 function loadAddStudyProgramsDetails() {
-	$("#modelrest").load("employeeDetails/addStudyPrograms.jsp");
+	$("#modelrest").load("employeeDetail/addStudyPrograms.jsp");
 }
 
 
@@ -95,7 +95,6 @@ function getManager() {
 function addedAlert() {
 	alert("Data Added Successfully.");
 	document.getElementById("moredetails").disabled = false;
-	alert("Data Added Successfully.");
 }
 
 function updatedAlert() {
@@ -125,13 +124,14 @@ function loadEditlanguages() {
 }
 //@PN
 function loadEditContentfamilydetails() {
+	alert("loadEditContentfamilydetails");
 	getEmployeetoupdate();
 	$("#Editmodelrest").load("employeeDetailEdit/editFamilyDetails.jsp");
 }
 //@TR
 function loadEditEmployementHIstoryDetails() {
-	loadEditContentEmployeeHistoryDetails();
 	$("#Editmodelrest").load("employeeDetailEdit/editEmployeeHistory.jsp");
+	loadEditContentEmployeeHistoryDetails();
 }
 //@AS - load more edit Employeee Detail
 function loadEditContentqualifications() {

@@ -40,9 +40,11 @@ function addFamilyDetails() {
 		};
 
 		$.ajax({
+			
 			type : "POST",
 			url : 'EmployerController',
 			data : {
+				inputValue : empEpf,
 				jsonData : JSON.stringify(jsonData),
 				task : "AFM"
 			},
@@ -100,9 +102,11 @@ function editFamilyDetails() {
 		};
 
 		$.ajax({
+			
 			type : "POST",
 			url : 'EmployerController',
 			data : {
+				inputValue : empEpf,
 				jsonData : JSON.stringify(jsonData),
 				task : "UFM"
 			},
@@ -186,9 +190,7 @@ function resetFieldsadd() {
 }
 
 function getEmployeetoupdate() {
-	
-	alert(empEpf);
-	
+
 	var fmemployeeId = 2;
 
 	var jsonData = {
@@ -201,7 +203,10 @@ function getEmployeetoupdate() {
 	// alert(response);
 	// });
 
+//	alert("empEpf:"+empEpf);
+//	
 	$.getJSON('EmployerController', {
+		inputValue : empEpf,
 		jsonData : JSON.stringify(jsonData),
 		task : "GFM"
 	}, function(data) {

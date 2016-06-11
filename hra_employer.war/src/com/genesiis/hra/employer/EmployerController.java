@@ -176,6 +176,9 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details,inputValue);
 				log.info("Search family details");
 				break;	
+			case GET_FAMILY_MEMBER:
+				message = commands.get(o).execute(inputValue, task);
+				break;
 				
 			case ADD_EDU_DETAILS:
 				message = commands.get(o).execute(details);

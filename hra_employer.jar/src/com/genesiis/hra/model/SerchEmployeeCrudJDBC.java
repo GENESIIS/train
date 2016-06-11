@@ -28,6 +28,7 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 			pd.setInt(1, empEpf);
 			findData = pd.executeQuery();
 			log.info("find int" + empEpf);
+			
 			try { 
 				if(findData.next()){
 					// set data to entity class				
@@ -67,6 +68,9 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 			try {
 				if (pd != null) {
 					pd.close();
+				}
+				if (findData != null) {
+					findData.close();
 				}
 				conn.close();
 			} catch (SQLException e) {
@@ -113,6 +117,9 @@ public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
 			try {
 				if (pd != null) {
 					pd.close();
+				}
+				if (findData != null) {
+					findData.close();
 				}
 				conn.close();
 			} catch (SQLException e) {

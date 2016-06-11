@@ -52,44 +52,44 @@ public class EmployeeCrudJDBC extends SerchCrud {
 		String query = "select * from [HRA.EMPLOYEE] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		BasicData employee = new BasicData();
 		log.info(employee.getEmployeeepf());
 		try { 
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
+			ps = conn.prepareStatement(query);
+			ps.setString(1, "1");
 
-			retriveData = preparedStatement.executeQuery();
+			rs = ps.executeQuery();
 
 			try {
-				if (retriveData.next()) {
+				if (rs.next()) {
 					// set data to entity class
-					employee.setEmployeeepf(retriveData.getString("ID"));
-					employee.setEmployeename(retriveData.getString("NAME"));
-					employee.setEmployeedesignation(retriveData
+					employee.setEmployeeepf(rs.getString("ID"));
+					employee.setEmployeename(rs.getString("NAME"));
+					employee.setEmployeedesignation(rs
 							.getString("DESIGNATION"));
-					employee.setEmployeeemail(retriveData.getString("EMAIL"));
-					employee.setEmployeedateofbirth(retriveData
+					employee.setEmployeeemail(rs.getString("EMAIL"));
+					employee.setEmployeedateofbirth(rs
 							.getString("DOB"));
-					employee.setEmployeenic(retriveData.getString("NIC"));
-					employee.setEmployeegender(retriveData.getString("GENDER"));
-					employee.setEmployeepermenetaddress(retriveData
+					employee.setEmployeenic(rs.getString("NIC"));
+					employee.setEmployeegender(rs.getString("GENDER"));
+					employee.setEmployeepermenetaddress(rs
 							.getString("PERMENENTADDRESS"));
-					employee.setEmployeemobile(retriveData
+					employee.setEmployeemobile(rs
 							.getString("MOBILENO"));
-					employee.setEmployeedepartment(retriveData
+					employee.setEmployeedepartment(rs
 							.getString("DEPTID"));
-					employee.setEmployeetelephone(retriveData
+					employee.setEmployeetelephone(rs
 							.getString("OTHERNO"));
-					employee.setEmployeejoindate(retriveData
+					employee.setEmployeejoindate(rs
 							.getString("DATEOFJOIN"));
-					employee.setEmployeeepf(retriveData.getString("EPF"));
-					employee.setEmployeemaritalstatus(retriveData
+					employee.setEmployeeepf(rs.getString("EPF"));
+					employee.setEmployeemaritalstatus(rs
 							.getString("MARITALSTATUS"));
-					employee.setEmployeebasis(retriveData.getString("BASIS"));
-					employee.setEmployeetemporaryaddress(retriveData
+					employee.setEmployeebasis(rs.getString("BASIS"));
+					employee.setEmployeetemporaryaddress(rs
 							.getString("TEMPORARYADDRESS"));			
 					log.info(employee.getEmployeeepf());
 				}
@@ -100,10 +100,16 @@ public class EmployeeCrudJDBC extends SerchCrud {
 			exception.printStackTrace();
 		} finally {
 			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
+				if (ps != null) {
+					ps.close();
 				}
-				conn.close();
+				if (rs != null) {
+					rs.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -118,19 +124,19 @@ public class EmployeeCrudJDBC extends SerchCrud {
 		String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
 		String messege = "";
 		Connection conn = null;
-		PreparedStatement pd = null;
+		PreparedStatement ps = null;
 		ResultSet findData = null;
 		 
 		
 		
 		try {
 			conn = ConnectionManager.getConnection();
-			pd = conn.prepareStatement(query);
-			pd.setString(1, "%"+keyWord+"%"); 
-			pd.setString(2, "%"+keyWord+"%");
-			pd.setString(3, "%"+keyWord+"%");
-			pd.setString(4, "%"+keyWord+"%");
-			findData = pd.executeQuery();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, "%"+keyWord+"%"); 
+			ps.setString(2, "%"+keyWord+"%");
+			ps.setString(3, "%"+keyWord+"%");
+			ps.setString(4, "%"+keyWord+"%");
+			findData = ps.executeQuery();
 			
 			try {
 				while(findData.next()){					
@@ -152,8 +158,11 @@ public class EmployeeCrudJDBC extends SerchCrud {
 			log.info("find methode "+ex.toString());
 		}finally{
 			try {
-				if (pd != null) {
-					pd.close();
+				if (ps != null) {
+					ps.close();
+				}
+				if (findData != null) {
+					findData.close();
 				}
 				conn.close();
 			} catch (SQLException e) {
@@ -171,18 +180,18 @@ public class EmployeeCrudJDBC extends SerchCrud {
 	@Override
 	public String findByEpf(String id) {
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
 		BasicData emp = new BasicData();
-	
+		ResultSet res = null;
 		String employeeDetails = null;
 	
 		Gson gson = new Gson();
 		log.info(id + "////");
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn.prepareStatement("SELECT [HRA.EMPLOYEE].ID, [HRA.EMPLOYEE].NAME, [HRA.EMPLOYEE].DESIGNATION, [HRA.EMPLOYEE].EMAIL, [HRA.EMPLOYEE].DOB, [HRA.EMPLOYEE].NIC, [HRA.EMPLOYEE].GENDER, [HRA.EMPLOYEE].PERMENENTADDRESS, [HRA.EMPLOYEE].TEMPORARYADDRESS, [HRA.EMPLOYEE].MOBILENO, [HRA.EMPLOYEE].OTHERNO, [HRA.DEPARTMENT].NAME, [HRA.EMPLOYEE].MARITALSTATUS, [HRA.EMPLOYEE].DATEOFJOIN, [HRA.EMPLOYEE].EPF, [HRA.EMPLOYEE].BASIS  FROM [HRA.EMPLOYEE] INNER JOIN [HRA.DEPARTMENT] ON [HRA.EMPLOYEE].DEPTID = [HRA.DEPARTMENT].ID WHERE EPF = ?");
-			preparedStatement.setString(1, id);
-			ResultSet res = preparedStatement.executeQuery();
+			ps = conn.prepareStatement("SELECT [HRA.EMPLOYEE].ID, [HRA.EMPLOYEE].NAME, [HRA.EMPLOYEE].DESIGNATION, [HRA.EMPLOYEE].EMAIL, [HRA.EMPLOYEE].DOB, [HRA.EMPLOYEE].NIC, [HRA.EMPLOYEE].GENDER, [HRA.EMPLOYEE].PERMENENTADDRESS, [HRA.EMPLOYEE].TEMPORARYADDRESS, [HRA.EMPLOYEE].MOBILENO, [HRA.EMPLOYEE].OTHERNO, [HRA.DEPARTMENT].NAME, [HRA.EMPLOYEE].MARITALSTATUS, [HRA.EMPLOYEE].DATEOFJOIN, [HRA.EMPLOYEE].EPF, [HRA.EMPLOYEE].BASIS  FROM [HRA.EMPLOYEE] INNER JOIN [HRA.DEPARTMENT] ON [HRA.EMPLOYEE].DEPTID = [HRA.DEPARTMENT].ID WHERE EPF = ?");
+			ps.setString(1, id);
+			res = ps.executeQuery();
 			if (res.next()) {
 
 				emp.setEmployeename(res.getString(2));
@@ -208,6 +217,18 @@ public class EmployeeCrudJDBC extends SerchCrud {
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.info(e);
+		}finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (res != null) {
+					res.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
 		}
 		return employeeDetails;
 	}

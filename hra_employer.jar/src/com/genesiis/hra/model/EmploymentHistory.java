@@ -339,6 +339,7 @@ public class EmploymentHistory extends Employee {
 				if (ps != null) {
 					ps.close();
 				}
+				
 				conn.close();
 			} catch (SQLException exception) {
 				log.info("SQLException - Finally - add" + exception);
@@ -358,7 +359,7 @@ public class EmploymentHistory extends Employee {
 				+ "EH.REFERENCETWOENAME, EH.REFERENCETWOPHONE, EH.REFERENCETWOMOBILE, EH.REFERENCETWOADDRESS, EH.REFERENCETWODESIGNATION, EH.REFERENCETWOCOMMENTS, "
 				+ "EH.MODBY, EH.MODON  "
 				+ "FROM [HRA.EMPLOYMENTHISTORY] EH, [HRA.EMPLOYEE] EM "
-				+ "WHERE EM.ID = EH.EMPLOYEEID AND EH.EMPLOYEEID = ? ";
+				+ "WHERE EM.EPF = EH.EMPLOYEEID AND EH.EMPLOYEEID = ? ";
 
 
 		Connection conn = null;
