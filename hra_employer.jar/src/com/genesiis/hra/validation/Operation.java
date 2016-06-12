@@ -34,7 +34,8 @@ public enum Operation {
 
 	UPDATE_FAMILY_MEMBER("UFM"),
 	GET_FAMILY_MEMBER("GFM"),
-	ADD_STADY_PROGRAM("ASP");
+	ADD_STADY_PROGRAM("ASP"),
+	UPDATE_STADY_PROGRAM("USP");
 	
 	private final String value;
 

@@ -176,6 +176,10 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				log.info("Add Studdy Program" + details);
 				break;
+			case UPDATE_STADY_PROGRAM:
+				message = commands.get(o).execute(details, inputValue);
+				log.info("Update Studdy Program" + details);
+				break;
 			case ADD_MEDICAL_REPORT:
 				// this code segment will improve in next sprint as much as
 				// possible

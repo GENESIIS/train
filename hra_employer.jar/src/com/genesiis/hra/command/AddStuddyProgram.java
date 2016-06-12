@@ -3,6 +3,8 @@ package com.genesiis.hra.command;
 import java.util.HashMap;
 
 import org.jboss.logging.Logger;
+
+import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.StudyProgram;
 import com.genesiis.hra.validation.DataValidator;
@@ -40,7 +42,22 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 	@Override
 	public String execute(String gsonData, String epf) {
 		
-		return null;
+		Employee accessdata = new StudyProgram();		
+		int id = -1;
+		MessageList message = MessageList.ERROR;
+		try{
+			StudyProgram employee = (StudyProgram)extractFromJason(gsonData);	
+			 if (validateEmployee(employee).equalsIgnoreCase("True")) {
+			     id = accessdata.update(employee,epf);
+			     if(id > 0)
+			    	 message = MessageList.ADDED;
+		       } else {
+			     
+		       }
+		}catch(Exception e){
+			 message = MessageList.ERROR;
+		}
+		return message.message();
 	}
 	// Method to extract Employee detail from jsonData.
 	@Override

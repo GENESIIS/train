@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+
 import org.jboss.logging.Logger;
+
 import com.genesiis.hra.utill.ConnectionManager;
 
 public class StudyProgram extends Employee {
@@ -109,6 +111,60 @@ public class StudyProgram extends Employee {
 		return insertStatus;
 	}
 	
+	@Override
+	public int update(Object object, String epf) {
+		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET EMPLOYEEID = ? ,  STUDYTIME = ? , "
+				+ "  INSTITUTION = ? ,  COURSETYPE = ? ,  ADDMISIONDATE = ?,  ENDDATE = ?,  DURATION = ?, MODBY = ?, "
+				+ "  MODON = ?, WHERE EMPLOYEEID = ?";
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;		
+		int insertStatus = 0;
+		log.info("Inside add method");	
+		try {
+			StudyProgram employee = (StudyProgram) object;			
+			conn = ConnectionManager.getConnection();			
+			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, employee.getEmployeeepf());
+			ps.setString(2, employee.getStudyTime());
+			ps.setString(3, employee.getInstitution());
+			ps.setString(4, employee.getTypofCourse());
+			ps.setString(5, employee.getAdmissionDate());
+			ps.setString(6, employee.getProgramEndDate());
+			ps.setString(7, employee.getDuration());
+			ps.setString(8, "SYSTEM");	
+			ps.setString(9, epf);	
+			
+			log.info("prepared statment executed");			
+		int rowsInserted = ps.executeUpdate();
+			if (rowsInserted > 0) {
+				rs = ps.getGeneratedKeys();
+				if(rs.next()){
+					insertStatus = rs.getInt(1);
+					log.info(insertStatus);
+				}
+			}		
+
+		} catch (SQLException exception) {
+			log.error(exception);			
+		} catch (ClassCastException e) {
+			log.error(e);			
+		}catch (Exception ex) {
+			log.error(ex);			
+		}finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();				
+			} catch (SQLException exception) {
+				log.error(exception);
+			}
+		}
+		log.error(insertStatus);
+		return insertStatus;
+	}
 	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
