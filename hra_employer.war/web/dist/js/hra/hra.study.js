@@ -72,7 +72,7 @@ function updateStudyProgram(){
 
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
-		"institution" : institution,
+		"institution" : institution, 
 		"typofCourse" : typofCourse,
 		"admissionDate" : admissionDate,
 		"ProgramEndDate" : ProgramEndDate,
