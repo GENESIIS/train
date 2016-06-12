@@ -236,7 +236,8 @@ public class BasicData extends Employee {
 	public int update(Object employee, String epf) {
 		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
-				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE EPF = ?";
+				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  MODON = GETDATE(), EPF = ?,  BASIS  = ? WHERE EPF = ?";
+	
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -252,8 +253,6 @@ public class BasicData extends Employee {
 			ps.setString(4, empBasic.getEmployeedateofbirth());
 			ps.setString(5, empBasic.getEmployeenic());
 			ps.setString(6, empBasic.getEmployeegender());
-			ps.setString(7, empBasic.getEmployeepermenetaddress());
-			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(7, empBasic.getEmployeepermenetaddress());
 			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(9, empBasic.getEmployeemobile());

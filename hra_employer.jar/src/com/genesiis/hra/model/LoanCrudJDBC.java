@@ -162,8 +162,55 @@ public class LoanCrudJDBC implements ICrud {
 
 	@Override
 	public Object findByEpf(String empEpf) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from [hra-2].[dbo].[HRA.LOAN] where ID = ?";
+		String message = "Error";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;		
+		Loan loan = new Loan();
+		try {
+
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, empEpf);			
+			 rs = ps.executeQuery();			 
+				
+				try{
+					if (rs.next()) {
+						// set data to entity class						
+						loan.setEmployeeId(rs.getString("EMPLOYEEID"));
+						loan.setLoanDueDate(rs.getString("DUEDATE")); 						
+						loan.setLoanAmount(rs.getString("TOTALOUTSTANDING"));
+						loan.setLoanGuarantor1(rs.getString("GUARANTOR1"));
+						loan.setLoanGuarantor2(rs.getString("GUARANTOR2"));
+						loan.setLoanmonthlyPayment(rs.getString("MONTHLYPAYMENT"));
+						loan.setLoanEndDate(rs.getString("ENDDATE"));
+						loan.setmodBy(rs.getString("MODBY"));
+						loan.setModOn(rs.getString("MODON"));
+					}
+				}catch(Exception e){
+					log.info(e.toString());
+				}
+				
+			ps.close();
+			conn.close();
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			
+		}finally{
+			try {
+				if (ps != null) {
+					ps.close();
+				}if (rs != null) {
+					rs.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
+		
+		return loan;
 	}
 
 	@Override

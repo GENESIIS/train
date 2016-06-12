@@ -15,8 +15,6 @@ import java.util.List;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.validation.DataValidator;
-import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 ///***********************************************

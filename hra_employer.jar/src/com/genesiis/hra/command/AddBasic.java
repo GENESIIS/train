@@ -1,7 +1,8 @@
 package com.genesiis.hra.command;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.logging.Logger;
+
+import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.Employee;
@@ -21,8 +22,21 @@ public class AddBasic implements ICommandAJX{
 	
 	// Method to execute JsonData 
 	public String execute(String gsonData) {		
-		
-		return null;
+		int id = -1; // The new row id created when a department is inserted
+		MessageList message = MessageList.ERROR;
+		HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
+
+		try {
+			BasicData data = geBasicdetails(gsonData);
+			id = data.add(data);
+			message = MessageList.ADDED;
+		} catch (Exception mne) { // User Defined exception. This comes from the
+									// validation of the Component ->
+									// validateComponent()
+			message = MessageList.ERROR;
+			log.error("--> execute(): ERR" + mne);
+		}
+		return message.message();
 	}
 	
 	@Override
@@ -39,6 +53,7 @@ public class AddBasic implements ICommandAJX{
 			BasicData employee = (BasicData)extractFromJason(gsonData);	
 		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     id = accessdata.update(employee,epf);
+			     message = MessageList.ADDED;
 		       } else {
 			     
 		       }
@@ -67,7 +82,7 @@ public class AddBasic implements ICommandAJX{
 			if (!validator.isValidString(employee.getEmployeename())) {
 				message = message + MessageList.EMPTYFIELD.message() +" ";
 			}
-			/*if (!validator.isValidNic(employee.getEmployeenic())) {
+			if (!validator.isValidNic(employee.getEmployeenic())) {
 				message = message + MessageList.NICERROR.message() +" ";
 			}
 			if (!validator.isValidString(employee.getEmployeeepf())) {
@@ -84,7 +99,7 @@ public class AddBasic implements ICommandAJX{
 			}
 			if (!validator.isValidemail(employee.getEmployeeemail())) {
 				message = message + MessageList.EMAILERROR.message() +" ";
-			}*/
+			}
 			return message;
 		}
 
@@ -100,6 +115,11 @@ public class AddBasic implements ICommandAJX{
 			// TODO Auto-generated method stub
 			return null;
 		}	
+		
+		private BasicData geBasicdetails(String data) {
+			BasicData basicData = (BasicData) extractFromJason(data);
+			return basicData;
+		}
 		
 }
 

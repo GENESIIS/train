@@ -57,7 +57,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.UPDATE_LOAN, new RegisterLoan());
 		commands.put(Operation.GET_LOAN, new GetLoan());
 		
-		commands.put(Operation.ADD_EMPLOYEE_BASICDATA, new AddEmployeeBasicdata());
+		commands.put(Operation.ADD_EMPLOYEE_BASICDATA, new AddBasic());
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 		commands.put(Operation.VIEW_EMPLOYEE_DETAILS, new GetEmployee());

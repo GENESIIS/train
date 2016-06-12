@@ -26,6 +26,8 @@ public class DataValidator {
 		if (date1.before(date2)) {
 			status = true;
 		}
+
+		log.info("isFutureDate" +status);
 		return status;
 	}
 
@@ -37,6 +39,7 @@ public class DataValidator {
 		if (date1.after(date2)) {
 			status = true;
 		}
+		log.info("isPastDate" +status);
 		return status;
 	}
 
@@ -49,6 +52,7 @@ public class DataValidator {
 		if (date1.equals(date2)) {
 			status = true;
 		}
+		log.info("isEqualDate" +status);
 		return status;
 	}
 
@@ -58,6 +62,7 @@ public class DataValidator {
 		if(nic.matches("[0-9]{9}V")){
 			status = true;
 		}
+		log.info("isValidNic" +status);
 		return status;
 	}
 
@@ -83,6 +88,7 @@ public class DataValidator {
 			}
 			status = true;
 		}
+		log.info("isNumber" +status);
 		return status;
 	}
 
@@ -100,6 +106,7 @@ public class DataValidator {
 	public boolean isValidemail(String email) {
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		Boolean b = email.matches(EMAIL_REGEX);
+		log.info("isValidemail" +b);
 		return b;
 	}
 
@@ -107,7 +114,9 @@ public class DataValidator {
 	public boolean isValidTelephone(String number) {
 		boolean status = false;
 		if (number.matches("[0-9]+") && number.length() == 10) {
+			status = true;
 		}
+		log.info("isValidTelephone" +status);
 		return status;
 	}
 	
