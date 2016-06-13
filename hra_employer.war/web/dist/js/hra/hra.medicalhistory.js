@@ -1,3 +1,4 @@
+
 /**
  * file - hra.medicalhistory.js
  * 
@@ -153,6 +154,7 @@ $(document).on("click", "#upload", function() {
 	var hasReportdescription = isEmpty(reportDescription);
 	var hasReportupload = isValidImage();
 
+
 	if (hasReportdescription) {
 		message = "Report description cannot be empty";
 		noError = false;
@@ -255,4 +257,7 @@ function clearMedicalHisory(){
  * End Clear medical history data
  */
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> ff621bb2107dad8bc27996a562affe349b9f6697

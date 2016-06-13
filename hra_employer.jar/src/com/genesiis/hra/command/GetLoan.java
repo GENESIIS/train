@@ -1,7 +1,5 @@
 package com.genesiis.hra.command;
 
-
-import java.text.ParseException;
 import java.util.HashMap;
 
 import org.jboss.logging.Logger;
@@ -19,7 +17,7 @@ public class GetLoan implements ICommandAJX {
 		
 		try {
 			log.info("GEtloan excecute");
-			Loan loan = (Loan)loanManager.find(1);	
+			Loan loan = (Loan)loanManager.findByEpf(epf);	
 			message = createGson(loan);			
 			log.info("GEtloan excecute" +message);
 		} catch (Exception e) {

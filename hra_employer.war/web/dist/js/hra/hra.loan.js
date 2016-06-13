@@ -1,6 +1,6 @@
 
 function loadlonedetails() {
-	$("#modelrest").load("employeeDetails/addLoanDetails.jsp");
+	$("#modelrest").load("employeeDetail/addLoanDetails.jsp");
 }
 
 function loadviewloandetails() {
@@ -109,7 +109,7 @@ function updateLoanDetailes() {
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			task : "UL",
-			serchVlaue : employeeEpf,
+			inputValue : employeeEpf,
 		},
 		dataType : "json",
 		success : function(data) {
@@ -130,11 +130,13 @@ function updateLoanDetailes() {
 };
 
 function loadEditContentloandetails() {
-	$("#Editmodelrest").load("editEmployeeDetails/editLoanDetails.jsp",
+
+	$("#Editmodelrest").load("employeeDetailEdit/editLoanDetails.jsp",
+
 			function(datatl) {
 				var employeeEpf = empEpf;
 				$.get("EmployerController", {
-					serchVlaue : employeeEpf,
+					inputValue : employeeEpf,
 					task : "GL"
 				}, function(data, status) {
 					alert(data);

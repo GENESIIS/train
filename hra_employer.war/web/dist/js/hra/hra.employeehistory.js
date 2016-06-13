@@ -5,9 +5,11 @@
  * @git branch used - hra-12-add-employee-history-details-tr
  * @created on- 2016-05-25
  */
+var doUpdateEnable = true;
+var doAddEnable = false;
 
 $(document).ready(function() {
-
+	
 });
 
 // field empty check
@@ -15,9 +17,6 @@ function isEmpty(value) {
 	return (value == null || value.length === 0);
 }
 
-function loadviewemployementhistory() {
-	$("#viewmodelrest").load("viewemployeeDetails/viewemployementHistory.jsp");
-}
 
 
 // field number check
@@ -228,15 +227,13 @@ function clearEmploymentHisory() {
 /** ***************START EDIT EMPLOYEE HISTORY Details************************ */
 function loadEditContentEmployeeHistoryDetails() {
 
-	alert(empEpf);
 
-	document.getElementById("employeeIdtext").value = empEpf;
 	
-	alert("66"+document.getElementById("employeeIdtext").value);
-	
+	$("#employeeIdhidden").val(empEpf);
+
 	// var employeeId = $("#employeeId").val();
 	$("#employeeId").val(empEpf);
-
+	
 	var employeeData = {
 		"ehEmployeeid" : empEpf,
 	};
@@ -245,7 +242,7 @@ function loadEditContentEmployeeHistoryDetails() {
 				type : "POST",
 				url : 'EmployerController',
 				data : {
-					serchVlaue : empEpf,
+					inputValue : empEpf,
 					jsonData : JSON.stringify(employeeData),
 					task : "GEH"
 				},
@@ -253,7 +250,7 @@ function loadEditContentEmployeeHistoryDetails() {
 				success : function(data) {
 
 					json = JSON.parse(data);
-					$("#employeeId").val(json.ehEmployeeid);
+					$("#employeeId").val(empEpf);
 					$("#employer").val(json.ehEmployername);
 					$("#designation").val(json.ehDesignation);
 					$("#ehComments").val(json.ehComments);
@@ -279,6 +276,16 @@ function loadEditContentEmployeeHistoryDetails() {
 
 					$("#startedOn").val(json.ehStartdate);
 					$("#compleatedOn").val(json.ehEnddate);
+					
+//					if (!$.trim(data)){   
+//					    alert("What follows is blank: " + data);
+//					}
+//					else{   
+//					    alert("What follows is not blank: " + data);
+//					}
+					
+					
+					 $("#btnSaveeditEmpHistory").hide();
 				},
 				error : function(e) {
 					alert("Error " + e);
@@ -352,7 +359,7 @@ function updateEmployeeHistoryDetails() {
 		type : "POST",
 		url : 'EmployerController',
 		data : {
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			jsonData : JSON.stringify(employeeData),
 			task : "UEH"
 		},

@@ -1,6 +1,4 @@
-function loadContentEmployee() {
-	$("#mainContent").load("manageEmployee.jsp");
-}
+
 
 // Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
@@ -155,7 +153,7 @@ function updateEmployeeDetails() {
 
 			jsonData : JSON.stringify(employeeData),
 			task : "UEB",
-			serchVlaue : empEpf
+			inputValue : empEpf
 		},
 		dataType : "json",
 		success : function(data) {
@@ -209,7 +207,7 @@ function loademployeeDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GEB"
 		},
 		dataType : "json",
