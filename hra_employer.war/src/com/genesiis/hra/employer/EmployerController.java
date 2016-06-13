@@ -18,6 +18,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.AddEducationDetails;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
+import com.genesiis.hra.command.AddEmployeeImage;
 import com.genesiis.hra.command.AddFamilyDetails;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetLoan;
@@ -61,6 +62,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 		commands.put(Operation.VIEW_EMPLOYEE_DETAILS, new GetEmployee());
+		commands.put(Operation.ADD_EMPLOYEE_IMAGE_DETAILS, new AddEmployeeImage());
 		
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
 		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY, new AddEmployeeHistory());
@@ -145,6 +147,13 @@ public class EmployerController extends HttpServlet {
 			case UPDATE_EMPLOYEE_BASIC:
 				message = commands.get(o).execute(details,inputValue );
 				break;
+			case ADD_EMPLOYEE_IMAGE_DETAILS:
+				FileUploadController  fileUploadController = new FileUploadController();
+				details = fileUploadController.fileUpload(request,o);
+				message = commands.get(o).execute(details);
+				break;
+				
+				
 			
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
@@ -194,8 +203,8 @@ public class EmployerController extends HttpServlet {
 				break;
 			
 			case ADD_MEDICAL_REPORT:
-				FileUploadController  fileUploadController = new FileUploadController();
-				details = fileUploadController.fileUpload(request);
+				FileUploadController  fileUpload = new FileUploadController();
+				details = fileUpload.fileUpload(request,o);
 				message = commands.get(o).execute(details);
 				break;
 			default:
@@ -227,16 +236,6 @@ public class EmployerController extends HttpServlet {
 
 	}
 
-	private static String getSubmittedFileName(Part part) {
-		for (String cd : part.getHeader("content-disposition").split(";")) {
-			if (cd.trim().startsWith("filename")) {
-				String fileName = cd.substring(cd.indexOf('=') + 1).trim()
-						.replace("\"", "");
-				return fileName.substring(fileName.lastIndexOf('/') + 1)
-						.substring(fileName.lastIndexOf('\\') + 1);
-			}
-		}
-		return null;
-	}
+
 
 }

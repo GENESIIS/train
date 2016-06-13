@@ -129,9 +129,9 @@ $(document).on("click", "#upload", function() {
 	var ehReferencemodby = $("#ehReferencemodby").val();
 	var employeeId = $("#employeeId").val();
 	
+
 	// Getting the properties of file from file field
 	var reportUpload = $("#avatar").prop("files")[0]; 
-	
 	// Creating object of FormData class 
 	// and appending every attributes
 	var formData = new FormData();

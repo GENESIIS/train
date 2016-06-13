@@ -18,4 +18,12 @@ public class MaskValidator {
 	//STATIC MEMORY HOLDER IN MEDICAL HISTORY / MEDICAL REPORTS
 	public static int SQL_RECODE = 0;
 	
+	
+	//STATIC MEMORY HOLDER IN FILE UPLOAD
+	public static String DEFULT_FILE_NAME_PNG = "profileimage.png";
+	public static String DEFULT_FILE_NAME_JPG = "profileimage.jpg";
+	public static String DEFULT_FILE_NAME_BMP = "profileimage.bmp";
+	public static String DEFULT_FILE_NAME_OTH = "profileimage.png";//other
+	public static String DEFULT_EMPLOYER_NAME = "ABC";
+	
 }

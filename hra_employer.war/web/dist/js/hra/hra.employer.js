@@ -1,4 +1,8 @@
-
+function isValidEmployeeImage() {
+	if (document.getElementById("avatarEmployee").files.length == 0) {
+		return true;
+	}
+}
 
 // Get data and sent to EmployerController.java.
 function addEmployeeDetails() {
@@ -78,6 +82,76 @@ function addEmployeeDetails() {
 		});
 	}
 }
+
+$(document).on(
+		"click",
+		"#btnupload",
+		function() {
+
+			var isEmployeeEpfFound = true;
+			var employeeId = $("#employeeEpf").val();
+			var ehReferencemodby = $("#ehReferencemodby").val();
+			
+			
+			alert("employeeId"+employeeId);
+			
+			if (employeeId == "") {
+				isEmployeeEpfFound = false;
+			}
+
+			if (isEmployeeEpfFound) {
+				// Getting the properties of file from file field
+				var reportUpload = $("#avatarEmployee").prop("files")[0];
+				var fileName1 = reportUpload.name;
+				var fileSize1 = reportUpload.size;
+				alert("reportUpload: " + reportUpload + " @ " + "Uploading: "
+						+ fileName1 + " @ " + fileSize1 + "bytes");
+
+				// Creating object of FormData class
+				// and appending every attributes
+				var formData = new FormData();
+				formData.append("file", reportUpload);
+				formData.append("task", "AEID");
+				formData.append("modBy", ehReferencemodby);
+				formData.append("crtBy", ehReferencemodby);
+				formData.append("employeeId", employeeId);
+
+				alert(formData);
+
+				$.ajax({
+					type : "POST",
+					url : "EmployerController",
+
+					data : formData, // Setting the data attribute of ajax
+										// with file_data
+					cache : false,
+					contentType : false,
+					processData : false,
+					dataType : "JSON",
+					success : function(data) {
+						alert(data);
+
+						// clearMedicalHisory();
+
+						$('#save').prop('disabled', false);
+						$('#upload').prop('disabled', true);
+
+						$('#employeeAilment').attr('disabled', false);
+						$('#ailmentDescription').attr('disabled', false);
+
+						if (data == "Details added successfully.") {
+							// clearMedicalReports();
+						}
+					},
+					error : function(e) {
+						alert("Error " + e);
+						console.log(e);
+					}
+				});
+			}else{
+				alert("Please fill the Employee EPF.");
+			}
+		});
 
 function clearAddemployeeform() {
 	$("#employeeFirstname").val("");

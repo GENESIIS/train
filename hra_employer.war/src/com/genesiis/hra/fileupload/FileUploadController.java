@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.commons.io.FilenameUtils;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.ICommandAJX;
@@ -52,22 +53,6 @@ public class FileUploadController extends HttpServlet {
 		log.info(inputValue);
 		String task = request.getParameter("task");
 		log.info(task);
-		
-		
-
-	}
-
-	private void writeResponse(String message, HttpServletResponse response)
-			throws IOException {
-		try {
-			response.getWriter().write(message);
-			log.info(message);
-		} catch (Exception e) {
-			log.error("WriteResponse method error. " + e);
-		} finally {
-			response.getWriter().flush();
-			response.getWriter().close();
-		}
 
 	}
 
@@ -84,51 +69,119 @@ public class FileUploadController extends HttpServlet {
 	}
 
 	/**
-	 * @PARM req,res
+	 * @PARM request,response
+	 * @return jsonString
 	 * **/
-	public String fileUpload(HttpServletRequest req) {
+	public String fileUpload(HttpServletRequest req, Operation operation) {
 
 		String details = "";
-		try{
+		try {
+
+
 			
-			
+			switch (operation) {
+			case ADD_MEDICAL_REPORT:
+				details = AddMedicalDetails(req);
+				break;
+			case ADD_EMPLOYEE_IMAGE_DETAILS:
+				details = AddEmployeeImage(req);
+				break;
+
+			default:
+				break;
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return details;
+
+	}
+
+	private String AddMedicalDetails(HttpServletRequest req) {
+		
+		String details = "";
+
+		try {
+
 			FileUploader fileUploader = new FileUploader();
 			Part filePart = req.getPart("file");
-			
 			InputStream fileContent = filePart.getInputStream();
+			
 			String fileName = getSubmittedFileName(filePart);
 			String employeeId = req.getParameter("employeeId");
+			String path = fileUploader.setFileToBeUpload(fileContent, fileName,	employeeId);
 			
-			String path = fileUploader.setFileToBeUpload(fileContent,
-					fileName, employeeId);
-
 			log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
+			
+			if (path != null) {
+
+				
+				details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
+						+ "\"reportDescription\":\""+ req.getParameter("reportDescription") + "\","
+						+ "\"reportPath\":\"" + path + "\"," 
+						+ "\"modby\":\""+ req.getParameter("ehReferencemodby") + "\","
+						+ "\"crtby\":\"" + req.getParameter("ehReferencemodby") + "\"" 
+						+ "}";
+
+				log.info(details);
+
+			} else {
+				details = MessageList.ERROR.message();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return details;
+	}
+	
+	
+	private String AddEmployeeImage(HttpServletRequest req) {
+		String details = "";
+
+		try {
+			FileUploader fileUploader = new FileUploader();
+			Part filePart = req.getPart("file");
+
+			InputStream fileContent = filePart.getInputStream();
+			String fileName = getSubmittedFileName(filePart);
+			String ext = FilenameUtils.getExtension(fileName);
+			
+			String modBy = req.getParameter("modBy");
+			String crtBy = req.getParameter("crtBy");
+			
+			String employeeId = req.getParameter("employeeId");
+
+			String path = fileUploader.setFileToBeUpload
+					(fileContent, fileName,	employeeId,ext);
+
+
 			if (path != null) {
 
 				details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
-						+ "\"reportDescription\":\""
-						+ req.getParameter("reportDescription") + "\","
-						+ "\"reportPath\":\"" + path + "\","
-						+ "\"modby\":\""
-						+ req.getParameter("ehReferencemodby") + "\","
-						+ "\"crtby\":\""
-						+ req.getParameter("ehReferencemodby") + "\""
+						+ "\"employeeEpf\":\""+ employeeId + "\","
+						+ "\"status\":\"" + "INIT" + "\","
+						+ "\"imagePath\":\"" + path + "\","
+						+ "\"modBy\":\""+ modBy + "\","
+						+ "\"crtBy\":\"" + crtBy + "\"" 
 						+ "}";
-				
+
 				log.info(details);
-			
-			}else {
+
+			} else {
 				details = MessageList.ERROR.message();
 			}
-			
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return details;
-		
 	}
+	
 
 }
