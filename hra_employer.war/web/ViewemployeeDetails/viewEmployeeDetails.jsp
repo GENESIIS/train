@@ -2,7 +2,7 @@
 
 <script src="dist/js/hra/hra.education.js"></script>
 <script src="dist/js/hra/hra.loan.js"></script>
-
+<script src="dist/js/hra/hra.medicalhistory.js"></script>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">EMPLOYEES</h2>
 
@@ -97,9 +97,10 @@
 					href="#tabloandetails" role="tab" data-toggle="tab"
 					aria-controls="loan" aria-expanded="false">Loan Details</a></li>
 
-				<li class=""><a id="tabmedical" href="tabMedical" role="tab"
-					data-toggle="tab" aria-controls="medicalDetailstab"
-					aria-expanded="false">Medical History Details</a></li>
+				<li onclick="viewMedicalDetails()" class=""><a id="tabmedical"
+					href="#tabMedical" role="tab" data-toggle="tab"
+					aria-controls="medicalDetailstab" aria-expanded="false">Medical
+						History Details</a></li>
 			</ul>
 
 			<div class="tab-content">
@@ -475,43 +476,66 @@
 								<div class="row-fluid">
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Qualification </label> <label
+											style="font-size: 13px;">Ailment Type </label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
-											id="Qualification">BSc. in Information Technologies </label>
+											style="font-size: 13px; font-weight: bold;" id="ailment">Ailment
+										</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">University | College |
-											School </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+											style="font-size: 13px;">Ailment Description </label>
+										<p class="control-label col-xs-12 iceLabel"
+											style="font-size: 13px; font-weight: bold;"
+											id="ailmentDescription">Description</p>
 									</div>
+
+
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Medium</label> <label
+											style="font-size: 13px;"> Report Description</label> <label
 											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+											style="font-size: 13px; font-weight: bold;"
+											id="reportDescription">Report Description</label>
 									</div>
+
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
-										<label class="control-label col-xs-12"
-											style="font-size: 13px;"> Started On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+
+										<button type="button" class="btn btn-primary view-pdf"
+											id="report" href="">
+											<span class="glyphicon glyphicon-folder-open"></span> Report
+										</button>
 									</div>
 									<hr>
-									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
-										<label class="control-label col-xs-12"
-											style="font-size: 13px;"> Completed On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
-									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
 				</div>
+
+				<!-- 	end medical history details  -->
+				<!-- 				<div id="pdfView" class="modal fade" role="dialog"> -->
+				<!-- 					<div class="modal-dialog"> -->
+
+				<!-- 						Modal content -->
+				<!-- 						<div class="modal-content"> -->
+				<!-- 							<div class="modal-header"> -->
+				<!-- 								<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+				<!-- 								<h4 class="modal-title">Modal Header</h4> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="modal-body"> -->
+				<!-- 								<p>Some text in the modal.</p> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="modal-footer"> -->
+				<!-- 								<button type="button" class="btn btn-default" -->
+				<!-- 									data-dismiss="modal">Close</button> -->
+				<!-- 							</div> -->
+				<!-- 						</div> -->
+
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+				<!-- 			end image and pdf load modal  -->
 
 			</div>
 		</div>

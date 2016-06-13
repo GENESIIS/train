@@ -18,7 +18,8 @@ public class EmployeeFactory {
 			return new BasicData();
 		case GET_EMPLOYEE_HISTORY:
 			return new EmploymentHistory();
-	
+		case GET_MEDICAL_HISTORY:
+			return new MedicalHistory();
 		case GET_EDU_DETAILS:
 			return new EducationData();
 		case GET_FAMILY:

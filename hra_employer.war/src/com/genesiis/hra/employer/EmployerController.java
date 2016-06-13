@@ -51,33 +51,35 @@ public class EmployerController extends HttpServlet {
 
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
-		
+
 		commands.put(Operation.REGISTER_LOAN, new RegisterLoan());
 		commands.put(Operation.UPDATE_LOAN, new RegisterLoan());
 		commands.put(Operation.GET_LOAN, new GetLoan());
-		
-		commands.put(Operation.ADD_EMPLOYEE_BASICDATA, new AddEmployeeBasicdata());
+
+		commands.put(Operation.ADD_EMPLOYEE_BASICDATA,
+				new AddEmployeeBasicdata());
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 		commands.put(Operation.VIEW_EMPLOYEE_DETAILS, new GetEmployee());
-		
+
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
-		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY, new AddEmployeeHistory());
+		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY,
+				new AddEmployeeHistory());
 		commands.put(Operation.GET_EMPLOYEE_HISTORY, new GetEmployee());
 
 		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());
 		commands.put(Operation.ADD_MEDICAL_REPORT, new AddMedicalReport());
-		
-		commands.put(Operation.ADD_FAMILY_MEMBER,	new AddFamilyDetails());
-		commands.put(Operation.UPDATE_FAMILY_MEMBER,  new AddFamilyDetails());
-		commands.put(Operation.GET_FAMILY_MEMBER,  new GetEmployee());
+		commands.put(Operation.GET_MEDICAL_HISTORY, new GetEmployee());
+
+		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.UPDATE_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.GET_FAMILY_MEMBER, new GetEmployee());
 		commands.put(Operation.GET_FAMILY, new GetEmployee());
-		
+
 		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
-		
-		
+
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -93,9 +95,9 @@ public class EmployerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String details = request.getParameter("jsonData");
-		
+
 		log.info(details);
-		
+
 		String inputVAlue = request.getParameter("serchVlaue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
@@ -104,12 +106,10 @@ public class EmployerController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
-		
-		log.info(""
-				+ "task-" +  task 
-				+ " searchValue-" + inputVAlue + 
-				" details-" + details);
-		
+
+		log.info("" + "task-" + task + " searchValue-" + inputVAlue
+				+ " details-" + details);
+
 		log.info("Operation" + o);
 		try {
 			switch (o) {
@@ -123,8 +123,7 @@ public class EmployerController extends HttpServlet {
 				break;
 			case GET_LOAN:
 				message = commands.get(o).execute(inputVAlue);
-				log.info(inputVAlue
-						+ "***inputVAlue***");
+				log.info(inputVAlue + "***inputVAlue***");
 				break;
 			case UPDATE_LOAN:
 				message = commands.get(o).execute(details, inputVAlue);
@@ -134,7 +133,7 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(inputVAlue, task);
 				break;
 			case UPDATE_EMPLOYEE_BASIC:
-				message = commands.get(o).execute(details,inputVAlue );
+				message = commands.get(o).execute(details, inputVAlue);
 				break;
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
@@ -157,7 +156,10 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search Educational details");
 				break;
-
+			case GET_MEDICAL_HISTORY:
+				message = commands.get(o).execute(inputVAlue, task);
+				log.info("Search Medical History details");
+				break;
 			case GET_FAMILY:
 				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search family details");

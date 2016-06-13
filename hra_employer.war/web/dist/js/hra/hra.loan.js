@@ -1,4 +1,3 @@
-
 function loadlonedetails() {
 	$("#modelrest").load("employeeDetails/addLoanDetails.jsp");
 }
@@ -43,7 +42,6 @@ function addLoanDetailes() {
 	var loanmonthlyPayment = $("#monthlyPayment").val();
 	var loanDueDate = $("#dueDate").val();
 	var loanEndDate = $("#endDate").val();
-	
 
 	var jsonData = {
 		"employeeEpf" : employeeEpf,
@@ -151,7 +149,6 @@ function loadEditContentloandetails() {
 			});
 }
 
-
 // load loan details
 
 function loadLoanDetails() {
@@ -168,15 +165,14 @@ function loadLoanDetails() {
 		success : function(responseText) {
 			// alert("ajax" + responseText);
 			json = JSON.parse(responseText);
-		//	 alert(responseText);
-		//	$("#employee_id").text(json.employeeEpf);
+			// alert(responseText);
+			// $("#employee_id").text(json.employeeEpf);
 			$("#amount").text(json.loanAmount);
 			$("#guarantor1").text(json.loanGuarantor1);
 			$("#guarantor2").text(json.loanGuarantor2);
 			$("#payment").text(json.loanmonthlyPayment);
 			$("#dueDate").text(json.loanDueDate);
 			$("#endDate").text(json.loanEndDate);
-			
 
 		},
 		error : function(e) {
@@ -186,4 +182,3 @@ function loadLoanDetails() {
 	});
 
 }
-

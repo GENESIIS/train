@@ -6,23 +6,21 @@
  * @created on- 2016-05-25
  */
 
-//@TR - Employee > new employee > more details > add Medical history details 
+// @TR - Employee > new employee > more details > add Medical history details
 function loadAddMedicalHIstoryDetails() {
 	$("#modelrest").load("employeeDetails/addMedicalHistory.jsp");
 }
 
-// @TR - Employee > edit employee > more details > edit medical history details 
+// @TR - Employee > edit employee > more details > edit medical history details
 function loadEditMedicalHIstoryDetails() {
 	$("#modelrestedit").load("editEmployeeDetails/editMedicalHistory.jsp");
 }
 
-
 // ready function
- $(document).on('ready', function() {
-	 $('#upload').prop('disabled', true); 
- });
- 
- 
+$(document).on('ready', function() {
+	$('#upload').prop('disabled', true);
+});
+
 // number cheker
 function isNumber(evt) {
 	evt = (evt) ? evt : window.event;
@@ -38,7 +36,7 @@ function isEmpty(value) {
 }
 
 function isValidImage() {
-	if( document.getElementById("avatar").files.length == 0 ){
+	if (document.getElementById("avatar").files.length == 0) {
 		return true;
 	}
 }
@@ -66,7 +64,6 @@ function addMedicalhistorydetails() {
 
 	var hasEmptyehReferencemodby = isEmpty(ehReferencemodby);
 
-	
 	if (hasEmptyemployeeid) {
 		message = "Employee id cannot be empty";
 		noError = false;
@@ -103,17 +100,16 @@ function addMedicalhistorydetails() {
 			},
 			dataType : "JSON",
 			success : function(data) {
-				
+
 				alert(data);
-				$('#save').prop('disabled', true); 
-				$('#upload').prop('disabled', false); 
-				
-				$('#employeeAilment').attr('disabled',true);
-				$('#ailmentDescription').attr('disabled',true);
- 
-				
+				$('#save').prop('disabled', true);
+				$('#upload').prop('disabled', false);
+
+				$('#employeeAilment').attr('disabled', true);
+				$('#ailmentDescription').attr('disabled', true);
+
 				if (data == "Details added successfully.") {
-					//clearMedicalHisory();
+					// clearMedicalHisory();
 				}
 			},
 			error : function(e) {
@@ -137,11 +133,11 @@ $(document).on("click", "#upload", function() {
 	var reportDescription = $("#reportDescription").val();
 	var ehReferencemodby = $("#ehReferencemodby").val();
 	var employeeId = $("#employeeId").val();
-	
+
 	// Getting the properties of file from file field
-	var reportUpload = $("#avatar").prop("files")[0]; 
-	
-	// Creating object of FormData class 
+	var reportUpload = $("#avatar").prop("files")[0];
+
+	// Creating object of FormData class
 	// and appending every attributes
 	var formData = new FormData();
 	formData.append("file", reportUpload);
@@ -157,8 +153,7 @@ $(document).on("click", "#upload", function() {
 		message = "Report description cannot be empty";
 		noError = false;
 		alert(message);
-	} 
-	else if (hasReportupload) {
+	} else if (hasReportupload) {
 		message = "Please upload your file(s)";
 		noError = false;
 		alert(message);
@@ -166,22 +161,23 @@ $(document).on("click", "#upload", function() {
 
 	if (noError) {
 
-//		var formData2 = {
-//			"reportDescription" : reportDescription,
-//			"task" : "AMR",
-//			"medicalHistorymodby" : ehReferencemodby,
-//			"medicalHistorycrtby" : ehReferencemodby,
-//			"employeeId" : employeeId,
-//		};
+		// var formData2 = {
+		// "reportDescription" : reportDescription,
+		// "task" : "AMR",
+		// "medicalHistorymodby" : ehReferencemodby,
+		// "medicalHistorycrtby" : ehReferencemodby,
+		// "employeeId" : employeeId,
+		// };
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-//			data : {
-//				jsonData : JSON.stringify(formData),
-//				task : "AMR",
-//				reportUpload :reportUpload,
-//			},
-			data : formData, // Setting the data attribute of ajax with file_data
+			// data : {
+			// jsonData : JSON.stringify(formData),
+			// task : "AMR",
+			// reportUpload :reportUpload,
+			// },
+			data : formData, // Setting the data attribute of ajax with
+			// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -191,14 +187,14 @@ $(document).on("click", "#upload", function() {
 
 				clearMedicalHisory();
 
-				$('#save').prop('disabled', false); 
+				$('#save').prop('disabled', false);
 				$('#upload').prop('disabled', true);
-				
-				$('#employeeAilment').attr('disabled',false);
-				$('#ailmentDescription').attr('disabled',false);
-				
+
+				$('#employeeAilment').attr('disabled', false);
+				$('#ailmentDescription').attr('disabled', false);
+
 				if (data == "Details added successfully.") {
-					//clearMedicalReports();
+					// clearMedicalReports();
 				}
 			},
 			error : function(e) {
@@ -209,34 +205,34 @@ $(document).on("click", "#upload", function() {
 	}
 });
 
-//$(document).on("click", "#upload", function() {
-//	var file_data = $("#avatar").prop("files")[0]; // Getting the properties of file from file field
-//	var reportDescription = $("#reportDescription").val();
-//	var employeeId = $("#employeeId").val();
-//	var form_data = new FormData(); // Creating object of FormData class
-//	form_data.append("file", file_data);
-//	form_data.append("reportDescription", reportDescription);// Appending parameter named reportDescription with properties of file_field to form_data
-//	form_data.append("employeeId", employeeId);// Appending parameter named file with properties of file_field to form_data
-//	form_data.append("task", "AMR"); // Adding extra parameters to form_data
-//	$.ajax({
-//		url : "EmployeeController",
-//		dataType : 'scrpt',
-//		cache : false,
-//		contentType : false,
-//		processData : false,
-//		data : form_data, // Setting the data attribute of ajax with file_data
-//		type : 'post'
-//	});
-//});
-
-
-
+// $(document).on("click", "#upload", function() {
+// var file_data = $("#avatar").prop("files")[0]; // Getting the properties of
+// file from file field
+// var reportDescription = $("#reportDescription").val();
+// var employeeId = $("#employeeId").val();
+// var form_data = new FormData(); // Creating object of FormData class
+// form_data.append("file", file_data);
+// form_data.append("reportDescription", reportDescription);// Appending
+// parameter named reportDescription with properties of file_field to form_data
+// form_data.append("employeeId", employeeId);// Appending parameter named file
+// with properties of file_field to form_data
+// form_data.append("task", "AMR"); // Adding extra parameters to form_data
+// $.ajax({
+// url : "EmployeeController",
+// dataType : 'scrpt',
+// cache : false,
+// contentType : false,
+// processData : false,
+// data : form_data, // Setting the data attribute of ajax with file_data
+// type : 'post'
+// });
+// });
 
 /*******************************************************************************
  * Start Clear medical history data
  */
 
-function clearMedicalHisory(){
+function clearMedicalHisory() {
 	$('.fileinput').fileinput('reset');
 
 	$("#employeeAilment").val("");
@@ -255,4 +251,93 @@ function clearMedicalHisory(){
  * End Clear medical history data
  */
 
+// View Medical History details
+function viewMedicalDetails() {
 
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify("1"),
+			serchVlaue : empEpf,
+			task : "GMH"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			// alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+			// alert(responseText);
+			// $("#employee_id").text(json.employeeEpf);
+			$("#ailment").text(json.medicalHistoryailment);
+			$("#ailmentDescription").text(json.medicalHistorydescription);
+			$("#reportDescription").text(json.mdeicalReportDis);
+			// $("#report").attr(json.MedicalReportPath);
+			// document.getElementById("report").href="json.MedicalReportPath";
+			$("#report").attr("href", json.MedicalReportPath);
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}
+
+/**
+ * creating modal for view pdf and images
+ */
+
+(function(a) {
+	a.createModal = function(b) {
+		defaults = {
+			title : "",
+			message : "Your Message Goes Here!",
+			closeButton : true,
+			scrollable : false
+		};
+		var b = a.extend({}, defaults, b);
+		var c = (b.scrollable === true) ? 'style="max-height: 420px;overflow-y: auto;"'
+				: "";
+		html = '<div class="modal fade" id="myModal">';
+		html += '<div class="modal-dialog">';
+		html += '<div class="modal-content">';
+		html += '<div class="modal-header">';
+		html += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
+		if (b.title.length > 0) {
+			html += '<h4 class="modal-title">' + b.title + "</h4>"
+		}
+		html += "</div>";
+		html += '<div class="modal-body" ' + c + ">";
+		html += b.message;
+		html += "</div>";
+		html += '<div class="modal-footer">';
+		if (b.closeButton === true) {
+			html += '<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'
+		}
+		html += "</div>";
+		html += "</div>";
+		html += "</div>";
+		html += "</div>";
+		a("body").prepend(html);
+		a("#myModal").modal().on("hidden.bs.modal", function() {
+			a(this).remove()
+		})
+	}
+})(jQuery);
+
+
+
+$(function(){    
+    $('.view-pdf').on('click',function(){
+        var pdf_link = $(this).attr('href');
+        //var iframe = '<div class="iframe-container"><iframe src="'+pdf_link+'"></iframe></div>'
+        //var iframe = '<object data="'+pdf_link+'" type="application/pdf"><embed src="'+pdf_link+'" type="application/pdf" /></object>'        
+        var iframe = '<object type="application/pdf" data="'+pdf_link+'" width="100%" height="500">No Support</object>'
+        $.createModal({
+            title:'Report',
+            message: iframe,
+            closeButton:true,
+            scrollable:false
+        });
+        return false;        
+    });    
+})
