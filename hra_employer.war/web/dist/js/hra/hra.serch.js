@@ -22,7 +22,7 @@ function serchEmployee() {
 		error : function(e) {
 			alert("Error " + e);
 			console.log(e);
-		}
+		} 
 	});
 }
 

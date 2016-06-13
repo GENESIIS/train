@@ -173,7 +173,7 @@ public class StudyProgram extends Employee {
 			PreparedStatement preparedStatement = null;
 			StudyProgram emp = new StudyProgram();
 
-			log.info(epf + "id String");
+			log.info(epf + "id String"); 
 			try {
 				conn = ConnectionManager.getConnection();
 				preparedStatement = conn

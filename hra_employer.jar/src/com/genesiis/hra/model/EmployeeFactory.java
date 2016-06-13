@@ -21,7 +21,7 @@ public class EmployeeFactory {
 		case GET_EDU_DETAILS:
 			return new EducationData();
 		case GET_FAMILY:
-			return new Familymember();
+			return new Familymember(); 
 		case GET_STUDY_PROGRAM:
 			return new StudyProgram();
 		default:

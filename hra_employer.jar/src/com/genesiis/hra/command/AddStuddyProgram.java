@@ -31,7 +31,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		}catch(Exception e){
 			 message = MessageList.ERROR;
 		}
-		return message.message();
+		return message.message(); 
 	}
 	
 	@Override

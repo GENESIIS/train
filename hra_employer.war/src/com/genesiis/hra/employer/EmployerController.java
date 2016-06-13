@@ -125,7 +125,7 @@ public class EmployerController extends HttpServlet {
 			case REGISTER_LOAN:
 				message = commands.get(o).execute(details);
 				break;
-			case GET_LOAN:
+			case GET_LOAN: 
 				message = commands.get(o).execute(inputValue);
 				log.info(inputValue
 						+ "***inputVAlue***");

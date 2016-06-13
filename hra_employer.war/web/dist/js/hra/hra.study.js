@@ -95,7 +95,7 @@ function updateStudyProgram(){
 		"ProgramEndDate" : ProgramEndDate,
 		"duration" : duration,
 		"studyTime" : studyTime,
-	};
+	}; 
 
 	alert( JSON.stringify(jsonData));
 	$.ajax({
