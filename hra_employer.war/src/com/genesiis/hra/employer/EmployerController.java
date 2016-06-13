@@ -77,7 +77,9 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
-		commands.put(Operation.ADD_STADY_PROGRAM, new AddStuddyProgram());
+		commands.put(Operation.ADD_STUDY_PROGRAM, new AddStuddyProgram());
+		commands.put(Operation.GET_STUDY_PROGRAM, new GetEmployee());
+		commands.put(Operation.UPDATE_STUDY_PROGRAM, new AddStuddyProgram());
 		
 		
 	}
@@ -109,7 +111,7 @@ public class EmployerController extends HttpServlet {
 		
 		log.info(""
 				+ "task-" +  task 
-				+ " searchValue-" + inputValue + 
+				+ " inputValue-" + inputValue + 
 				" details-" + details);
 		
 		log.info("Operation" + o);
@@ -172,13 +174,17 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details);
 				log.info("update education details" + details);
 				break;
-			case ADD_STADY_PROGRAM:
+			case ADD_STUDY_PROGRAM:
 				message = commands.get(o).execute(details);
-				log.info("Add Studdy Program" + details);
+				log.info("Add Study Program" + details);
 				break;
-			case UPDATE_STADY_PROGRAM:
+			case GET_STUDY_PROGRAM:
+				message = commands.get(o).execute(inputValue, task);
+				log.info("Get Study Program" + inputValue);
+				break;
+			case UPDATE_STUDY_PROGRAM:
 				message = commands.get(o).execute(details, inputValue);
-				log.info("Update Studdy Program" + details);
+				log.info("Update Study Program" + details);
 				break;
 			case ADD_MEDICAL_REPORT:
 				// this code segment will improve in next sprint as much as

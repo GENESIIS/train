@@ -49,7 +49,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 			StudyProgram employee = (StudyProgram)extractFromJason(gsonData);	
 			 if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     id = accessdata.update(employee,epf);
-			     if(id > 0)
+			    // if(id > 0)
 			    	 message = MessageList.ADDED;
 		       } else {
 			     
@@ -66,7 +66,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		StudyProgram employee = null;
 		try {
 			employee = gson.fromJson(gsonData, StudyProgram.class);	
-			log.error("Inside the extract from gson method -" + employee.getEmployeeepf());
+			log.info("Inside the extract from gson method -" + employee.getEmployeeepf());
 		} catch (Exception e) {
 			log.error(e);
 		}

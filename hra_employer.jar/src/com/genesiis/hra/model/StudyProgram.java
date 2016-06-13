@@ -113,20 +113,20 @@ public class StudyProgram extends Employee {
 	
 	@Override
 	public int update(Object object, String epf) {
-		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET EMPLOYEEID = ? ,  STUDYTIME = ? , "
+		String query = "UPDATE [dbo].[HRA.STUDYPROGRAM] SET EMPLOYEEID = ? ,  STUDYTIME = ? , "
 				+ "  INSTITUTION = ? ,  COURSETYPE = ? ,  ADDMISIONDATE = ?,  ENDDATE = ?,  DURATION = ?, MODBY = ?, "
-				+ "  MODON = ?, WHERE EMPLOYEEID = ?";
+				+ "  MODON = GETDATE() WHERE EMPLOYEEID = ?";
 		
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;		
-		int insertStatus = 0;
+		int insertStatus = -1;
 		log.info("Inside add method");	
 		try {
 			StudyProgram employee = (StudyProgram) object;			
 			conn = ConnectionManager.getConnection();			
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, employee.getEmployeeepf());
+			ps.setString(1,epf);
 			ps.setString(2, employee.getStudyTime());
 			ps.setString(3, employee.getInstitution());
 			ps.setString(4, employee.getTypofCourse());
@@ -162,9 +162,40 @@ public class StudyProgram extends Employee {
 				log.error(exception);
 			}
 		}
-		log.error(insertStatus);
+		log.info(insertStatus);
 		return insertStatus;
 	}
+	
+	// use for View study data data 
+		@Override
+		public Object findByEpf(String epf) {
+			Connection conn = null;
+			PreparedStatement preparedStatement = null;
+			StudyProgram emp = new StudyProgram();
+
+			log.info(epf + "id String");
+			try {
+				conn = ConnectionManager.getConnection();
+				preparedStatement = conn
+						.prepareStatement("SELECT * FROM [dbo].[HRA.STUDYPROGRAM] WHERE EMPLOYEEID = ?");
+				preparedStatement.setString(1, epf);
+				ResultSet res = preparedStatement.executeQuery();
+				if (res.next()) {
+
+					emp.setStudyTime(res.getString(3));
+					emp.setInstitution(res.getString(4));
+					emp.setTypofCourse(res.getString(5));
+					emp.setAdmissionDate(res.getString(6));
+					emp.setProgramEndDate(res.getString(7));
+					emp.setDuration(res.getString(8));
+					log.info(epf);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info(e);
+			}
+			return emp;
+		}
 	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
