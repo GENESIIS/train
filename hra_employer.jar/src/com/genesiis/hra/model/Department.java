@@ -76,7 +76,7 @@ public class Department implements ICrud {
 
 	@Override
 	public int add(Object object) {
-		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY,MODON) VALUES (?, ?, ?, ?,GETDATE())";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Department department = (Department) object;
