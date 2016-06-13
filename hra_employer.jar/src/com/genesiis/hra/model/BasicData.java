@@ -10,10 +10,7 @@ import java.sql.Statement;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
-import com.genesiis.hra.validation.MessageList;
-import com.google.gson.Gson;
 
 public class BasicData extends Employee {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
@@ -181,17 +178,19 @@ public class BasicData extends Employee {
 				+ "VALUES (?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,GETDATE(),?,?)";
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		BasicData data = (BasicData) object;
 		int insertStatus = 0;
 
 		try {
 			conn = ConnectionManager.getConnection();
-			ps = conn.prepareStatement(query);
+			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, data.getEmployeename());
 			ps.setString(2, data.getEmployeedesignation());
 			ps.setString(3, data.getEmployeeemail());
-			ps.setDate(4, new DataValidator().convertStringDatetoSqlDate(data
-					.getEmployeedateofbirth()));
+			ps.setDate(4, new DataValidator().
+					convertStringDatetoSqlDate
+					(data.getEmployeedateofbirth()));
 			ps.setString(5, data.getEmployeenic());
 			ps.setString(6, data.getEmployeegender());
 			ps.setString(7, data.getEmployeepermenetaddress());
@@ -200,25 +199,28 @@ public class BasicData extends Employee {
 			ps.setString(10, data.getEmployeetelephone());
 			ps.setInt(11, Integer.parseInt(data.getEmployeedepartment()));
 			ps.setString(12, data.getEmployeemaritalstatus());
-			ps.setDate(13, new DataValidator().convertStringDatetoSqlDate(data
-					.getEmployeejoindate()));
+			ps.setDate(13, new DataValidator().
+					convertStringDatetoSqlDate
+					(data.getEmployeejoindate()));
 			ps.setString(14, "SYSTEM");
 			ps.setString(15, data.getEmployeeepf());
 			ps.setString(16, data.getEmployeebasis());
 
 			insertStatus = ps.executeUpdate();
 
-			// if (rowsInserted > 0) {
-			// insertStatus = 1;// when valid insert
-			// }
+//			if (rowsInserted > 0) {
+//				insertStatus = 1;// when valid insert
+//			}
 
-//			rs = ps.getGeneratedKeys();
+			rs = ps.getGeneratedKeys();
+
+
 
 		} catch (SQLException exception) {
 			exception.printStackTrace();
-		} catch (Exception ex) {
+		}catch (Exception ex) {
 			ex.printStackTrace();
-		} finally {
+		}finally {
 			try {
 				if (ps != null) {
 					ps.close();
@@ -236,8 +238,7 @@ public class BasicData extends Employee {
 	public int update(Object employee, String epf) {
 		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
-				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  MODON = GETDATE(), EPF = ?,  BASIS  = ? WHERE EPF = ?";
-	
+				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE EPF = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -253,6 +254,8 @@ public class BasicData extends Employee {
 			ps.setString(4, empBasic.getEmployeedateofbirth());
 			ps.setString(5, empBasic.getEmployeenic());
 			ps.setString(6, empBasic.getEmployeegender());
+			ps.setString(7, empBasic.getEmployeepermenetaddress());
+			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(7, empBasic.getEmployeepermenetaddress());
 			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(9, empBasic.getEmployeemobile());
@@ -294,17 +297,16 @@ public class BasicData extends Employee {
 	@Override
 	public Object findByEpf(String id) {
 		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet res = null;
+		PreparedStatement preparedStatement = null;
 		BasicData emp = new BasicData();
 
 		log.info(id + "id String");
 		try {
 			conn = ConnectionManager.getConnection();
-			ps = conn
+			preparedStatement = conn
 					.prepareStatement("SELECT [HRA.EMPLOYEE].ID, [HRA.EMPLOYEE].NAME, [HRA.EMPLOYEE].DESIGNATION, [HRA.EMPLOYEE].EMAIL, [HRA.EMPLOYEE].DOB, [HRA.EMPLOYEE].NIC, [HRA.EMPLOYEE].GENDER, [HRA.EMPLOYEE].PERMENENTADDRESS, [HRA.EMPLOYEE].TEMPORARYADDRESS, [HRA.EMPLOYEE].MOBILENO, [HRA.EMPLOYEE].OTHERNO, [HRA.DEPARTMENT].NAME, [HRA.EMPLOYEE].MARITALSTATUS, [HRA.EMPLOYEE].DATEOFJOIN, [HRA.EMPLOYEE].EPF, [HRA.EMPLOYEE].BASIS  FROM [HRA.EMPLOYEE] INNER JOIN [HRA.DEPARTMENT] ON [HRA.EMPLOYEE].DEPTID = [HRA.DEPARTMENT].ID WHERE EPF = ?");
-			ps.setString(1, id);
-			res = ps.executeQuery();
+			preparedStatement.setString(1, id);
+			ResultSet res = preparedStatement.executeQuery();
 			if (res.next()) {
 
 				emp.setEmployeename(res.getString(2));
@@ -328,19 +330,6 @@ public class BasicData extends Employee {
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.info(e);
-		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (res != null) {
-					res.close();
-				}
-				conn.close();
-			} catch (SQLException exception) {
-				exception.printStackTrace();
-				log.error("Exception: EducationData Find" + exception);
-			}
 		}
 		return emp;
 	}
