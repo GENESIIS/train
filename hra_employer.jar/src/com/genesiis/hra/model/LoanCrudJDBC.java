@@ -108,7 +108,7 @@ public class LoanCrudJDBC implements ICrud {
 
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
+			preparedStatement.setInt(1, empEpf);
 			retriveData = preparedStatement.executeQuery();
 
 			try {
@@ -164,7 +164,7 @@ public class LoanCrudJDBC implements ICrud {
 
 			conn = ConnectionManager.getConnection();
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
+			preparedStatement.setString(1, empEpf);
 			retriveData = preparedStatement.executeQuery();
 
 			try {
