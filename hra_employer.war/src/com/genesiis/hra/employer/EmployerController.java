@@ -207,6 +207,9 @@ public class EmployerController extends HttpServlet {
 				details = fileUpload.fileUpload(request,o);
 				message = commands.get(o).execute(details);
 				break;
+			case GET_MEDICAL_REPORT:
+				message = commands.get(o).execute(inputValue, task);
+				break;
 			default:
 				break;
 			}

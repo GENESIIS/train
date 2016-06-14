@@ -245,5 +245,80 @@ function clearMedicalHisory(){
 }
 /*******************************************************************************
  * End Clear medical history data
- */
+ *******************************************************************************/
 
+function loadeditMedicalHIstoryDetails(){
+	alert("empEpf:"+empEpf);
+	$("#employeeIdhidden").val(empEpf);
+	// var employeeId = $("#employeeId").val();
+	$("#employeeId").val(empEpf);
+	
+	 $("#lbl_count").text(empEpf);
+	 
+	var employeeData = {
+		"ehEmployeeid" : empEpf,
+	};
+
+	$.ajax({
+				type : "POST",
+				url : 'EmployerController',
+				data : {
+					inputValue : empEpf,
+					jsonData : JSON.stringify(employeeData),
+					task : "GMH"
+				},
+				dataType : "json",
+				success : function(data) {
+
+					json = JSON.parse(data);
+
+					$("#employeeAilment").val(json.ehDesignation);
+					$("#ailmentDescription").val(json.ehComments);
+					
+					// $("#btnSaveeditEmpHistory").hide();
+				},
+				error : function(e) {
+					alert("Error " + e);
+					console.log(e);
+				}
+			});
+	
+}
+
+
+
+function loadeditMedicalReportDetails(){
+	alert("empEpf:"+empEpf);
+	$("#employeeIdhidden").val(empEpf);
+	// var employeeId = $("#employeeId").val();
+	$("#employeeId").val(empEpf);
+
+	var employeeData = {
+		"ehEmployeeid" : empEpf,
+	};
+
+	$.ajax({
+				type : "POST",
+				url : 'EmployerController',
+				data : {
+					inputValue : empEpf,
+					jsonData : JSON.stringify(employeeData),
+					task : "GMR"
+				},
+				dataType : "json",
+				success : function(data) {
+
+					json = JSON.parse(data);
+
+					$("#employeeAilment").val(json.ehDesignation);
+					$("#ailmentDescription").val(json.ehComments);
+					
+					// $("#btnSaveeditEmpHistory").hide();
+				},
+				error : function(e) {
+					alert("Error " + e);
+					console.log(e);
+				}
+			});
+	
+}

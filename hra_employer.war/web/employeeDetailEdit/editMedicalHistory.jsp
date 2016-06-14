@@ -41,7 +41,7 @@
 						
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="employeeId">Employee ID</label> 
+												<label for="employeeId">Employee EPF</label> 
 												<input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="" maxlength="10" value="2" readonly >
 											</div>
 										</div>
