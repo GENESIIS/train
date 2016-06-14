@@ -501,10 +501,11 @@
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 
-										<button type="button" class="btn btn-primary view-pdf"
-											id="report" href="">
-											<span class="glyphicon glyphicon-folder-open"></span> Report
-										</button>
+										<!-- 										<a class="btn btn-primary view-pdf" -->
+										<li><a id="report" href="" target="_blank"> <img
+												id="imagereport" alt="" src=""> <span
+												class="glyphicon glyphicon-folder-open"> </span> Report
+										</a></li>
 									</div>
 									<hr>
 								</div>
