@@ -129,8 +129,9 @@ function loadEditContentStudyProgram(){
 			function(data, status) {
 
 				alert(data);
-				json1 = JSON.parse(data);
-				json = JSON.parse(json1);
+				json = JSON.parse(JSON.parse(data));
+				$("#editEmployeEpf").val(
+						json.employeeEpf);
 				$("#editInstitution").val(
 						json.institution);
 				$("#editCourseType").val(
@@ -143,12 +144,12 @@ function loadEditContentStudyProgram(){
 						json.duration);
 				
 				if (json.studyTime == '1') {
-					document.getElementById("editStWeekdays").checked;
-					document.getElementById("editStWeekends").checked;
+					document.getElementById("editStWeekdays").checked = true;
+					document.getElementById("editStWeekends").checked = true;
 				} else if (json.studyTime == '2') {
-					document.getElementById("editStWeekdays").checked;
+					document.getElementById("editStWeekdays").checked = true;
 				} else if (json.studyTime == '3') {
-					document.getElementById("editStWeekends").checked;
+					document.getElementById("editStWeekends").checked = true;
 				} else {
 				}				
 			});
