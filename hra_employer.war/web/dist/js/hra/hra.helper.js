@@ -140,9 +140,8 @@ function loadEditContentqualifications() {
 }
 // @TR - Employee > edit employee > more details > edit medical history details 
 function loadEditMedicalHIstoryDetails() {
-	$("#Editmodelrest").load("employeeDetailEdit/editMedicalHistory.jsp");
 	loadeditMedicalHIstoryDetails();
-	loadeditMedicalReportDetails();
+	$("#Editmodelrest").load("employeeDetailEdit/editMedicalHistory.jsp");
 }
 
 

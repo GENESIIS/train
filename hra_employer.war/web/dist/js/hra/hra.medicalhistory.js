@@ -1,4 +1,3 @@
-
 /**
  * file - hra.medicalhistory.js
  * 
@@ -7,13 +6,11 @@
  * @created on- 2016-05-25
  */
 
-
 // ready function
- $(document).on('ready', function() {
-	 $('#upload').prop('disabled', true); 
- });
- 
- 
+$(document).on('ready', function() {
+	$('#upload').prop('disabled', true);
+});
+
 // number cheker
 function isNumber(evt) {
 	evt = (evt) ? evt : window.event;
@@ -29,7 +26,7 @@ function isEmpty(value) {
 }
 
 function isValidImage() {
-	if( document.getElementById("avatar").files.length == 0 ){
+	if (document.getElementById("avatar").files.length == 0) {
 		return true;
 	}
 }
@@ -57,7 +54,6 @@ function addMedicalhistorydetails() {
 
 	var hasEmptyehReferencemodby = isEmpty(ehReferencemodby);
 
-	
 	if (hasEmptyemployeeid) {
 		message = "Employee id cannot be empty";
 		noError = false;
@@ -94,17 +90,16 @@ function addMedicalhistorydetails() {
 			},
 			dataType : "JSON",
 			success : function(data) {
-				
+
 				alert(data);
-				$('#save').prop('disabled', true); 
-				$('#upload').prop('disabled', false); 
-				
-				$('#employeeAilment').attr('disabled',true);
-				$('#ailmentDescription').attr('disabled',true);
- 
-				
+				$('#save').prop('disabled', true);
+				$('#upload').prop('disabled', false);
+
+				$('#employeeAilment').attr('disabled', true);
+				$('#ailmentDescription').attr('disabled', true);
+
 				if (data == "Details added successfully.") {
-					//clearMedicalHisory();
+					// clearMedicalHisory();
 				}
 			},
 			error : function(e) {
@@ -128,11 +123,10 @@ $(document).on("click", "#upload", function() {
 	var reportDescription = $("#reportDescription").val();
 	var ehReferencemodby = $("#ehReferencemodby").val();
 	var employeeId = $("#employeeId").val();
-	
 
 	// Getting the properties of file from file field
-	var reportUpload = $("#avatar").prop("files")[0]; 
-	// Creating object of FormData class 
+	var reportUpload = $("#avatar").prop("files")[0];
+	// Creating object of FormData class
 	// and appending every attributes
 	var formData = new FormData();
 	formData.append("file", reportUpload);
@@ -144,13 +138,11 @@ $(document).on("click", "#upload", function() {
 	var hasReportdescription = isEmpty(reportDescription);
 	var hasReportupload = isValidImage();
 
-
 	if (hasReportdescription) {
 		message = "Report description cannot be empty";
 		noError = false;
 		alert(message);
-	} 
-	else if (hasReportupload) {
+	} else if (hasReportupload) {
 		message = "Please upload your file(s)";
 		noError = false;
 		alert(message);
@@ -158,22 +150,23 @@ $(document).on("click", "#upload", function() {
 
 	if (noError) {
 
-//		var formData2 = {
-//			"reportDescription" : reportDescription,
-//			"task" : "AMR",
-//			"medicalHistorymodby" : ehReferencemodby,
-//			"medicalHistorycrtby" : ehReferencemodby,
-//			"employeeId" : employeeId,
-//		};
+		// var formData2 = {
+		// "reportDescription" : reportDescription,
+		// "task" : "AMR",
+		// "medicalHistorymodby" : ehReferencemodby,
+		// "medicalHistorycrtby" : ehReferencemodby,
+		// "employeeId" : employeeId,
+		// };
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-//			data : {
-//				jsonData : JSON.stringify(formData),
-//				task : "AMR",
-//				reportUpload :reportUpload,
-//			},
-			data : formData, // Setting the data attribute of ajax with file_data
+			// data : {
+			// jsonData : JSON.stringify(formData),
+			// task : "AMR",
+			// reportUpload :reportUpload,
+			// },
+			data : formData, // Setting the data attribute of ajax with
+								// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -183,14 +176,14 @@ $(document).on("click", "#upload", function() {
 
 				clearMedicalHisory();
 
-				$('#save').prop('disabled', false); 
+				$('#save').prop('disabled', false);
 				$('#upload').prop('disabled', true);
-				
-				$('#employeeAilment').attr('disabled',false);
-				$('#ailmentDescription').attr('disabled',false);
-				
+
+				$('#employeeAilment').attr('disabled', false);
+				$('#ailmentDescription').attr('disabled', false);
+
 				if (data == "Details added successfully.") {
-					//clearMedicalReports();
+					// clearMedicalReports();
 				}
 			},
 			error : function(e) {
@@ -201,34 +194,34 @@ $(document).on("click", "#upload", function() {
 	}
 });
 
-//$(document).on("click", "#upload", function() {
-//	var file_data = $("#avatar").prop("files")[0]; // Getting the properties of file from file field
-//	var reportDescription = $("#reportDescription").val();
-//	var employeeId = $("#employeeId").val();
-//	var form_data = new FormData(); // Creating object of FormData class
-//	form_data.append("file", file_data);
-//	form_data.append("reportDescription", reportDescription);// Appending parameter named reportDescription with properties of file_field to form_data
-//	form_data.append("employeeId", employeeId);// Appending parameter named file with properties of file_field to form_data
-//	form_data.append("task", "AMR"); // Adding extra parameters to form_data
-//	$.ajax({
-//		url : "EmployeeController",
-//		dataType : 'scrpt',
-//		cache : false,
-//		contentType : false,
-//		processData : false,
-//		data : form_data, // Setting the data attribute of ajax with file_data
-//		type : 'post'
-//	});
-//});
-
-
-
+// $(document).on("click", "#upload", function() {
+// var file_data = $("#avatar").prop("files")[0]; // Getting the properties of
+// file from file field
+// var reportDescription = $("#reportDescription").val();
+// var employeeId = $("#employeeId").val();
+// var form_data = new FormData(); // Creating object of FormData class
+// form_data.append("file", file_data);
+// form_data.append("reportDescription", reportDescription);// Appending
+// parameter named reportDescription with properties of file_field to form_data
+// form_data.append("employeeId", employeeId);// Appending parameter named file
+// with properties of file_field to form_data
+// form_data.append("task", "AMR"); // Adding extra parameters to form_data
+// $.ajax({
+// url : "EmployeeController",
+// dataType : 'scrpt',
+// cache : false,
+// contentType : false,
+// processData : false,
+// data : form_data, // Setting the data attribute of ajax with file_data
+// type : 'post'
+// });
+// });
 
 /*******************************************************************************
  * Start Clear medical history data
  */
 
-function clearMedicalHisory(){
+function clearMedicalHisory() {
 	$('.fileinput').fileinput('reset');
 
 	$("#employeeAilment").val("");
@@ -245,80 +238,92 @@ function clearMedicalHisory(){
 }
 /*******************************************************************************
  * End Clear medical history data
- *******************************************************************************/
+ ******************************************************************************/
+var medicalCode;
+var employeeAilment;
 
-function loadeditMedicalHIstoryDetails(){
-	alert("empEpf:"+empEpf);
-	$("#employeeIdhidden").val(empEpf);
-	// var employeeId = $("#employeeId").val();
-	$("#employeeId").val(empEpf);
-	
-	 $("#lbl_count").text(empEpf);
-	 
+function loadeditMedicalHIstoryDetails() {
+
 	var employeeData = {
-		"ehEmployeeid" : empEpf,
+		"employeeIdEdit" : empEpf,
 	};
 
 	$.ajax({
-				type : "POST",
-				url : 'EmployerController',
-				data : {
-					inputValue : empEpf,
-					jsonData : JSON.stringify(employeeData),
-					task : "GMH"
-				},
-				dataType : "json",
-				success : function(data) {
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			inputValue : empEpf,
+			jsonData : JSON.stringify(employeeData),
+			task : "GMH"
+		},
+		dataType : "json",
+		success : function(data) {
 
-					json = JSON.parse(data);
+			json = JSON.parse(data);
 
-					$("#employeeAilment").val(json.ehDesignation);
-					$("#ailmentDescription").val(json.ehComments);
-					
-					// $("#btnSaveeditEmpHistory").hide();
-				},
-				error : function(e) {
-					alert("Error " + e);
-					console.log(e);
-				}
-			});
-	
+			// alert("Employee id:"+json.medicalHistoryemployeeid);
+			// alert("Code:"+json.medicalHistorycode);
+			// alert("Ailment:"+json.medicalHistoryailment);
+			// alert("Description:"+json.medicalHistorydescription);
+
+			employeeAilment = json.medicalHistoryailment;
+			medicalCode = json.medicalHistorycode;
+
+			$("#codeEdit").val(json.medicalHistorycode);
+			$("#employeeIdEdit").val(json.medicalHistoryemployeeid);
+			$("#employeeAilmentedit").val(json.medicalHistoryailment);
+			$("#ailmentDescriptionedit").val(json.medicalHistorydescription);
+
+			alert("Medical Code:" + medicalCode);
+			loadeditMedicalReportDetails(medicalCode);
+
+			// $("#btnSaveeditEmpHistory").hide();
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
 }
 
+function loadeditMedicalReportDetails(medicalCode) {
 
-
-function loadeditMedicalReportDetails(){
-	alert("empEpf:"+empEpf);
-	$("#employeeIdhidden").val(empEpf);
-	// var employeeId = $("#employeeId").val();
-	$("#employeeId").val(empEpf);
+	alert("Code:" + medicalCode);
 
 	var employeeData = {
-		"ehEmployeeid" : empEpf,
+		"medicalCode" : medicalCode,
 	};
 
 	$.ajax({
-				type : "POST",
-				url : 'EmployerController',
-				data : {
-					inputValue : empEpf,
-					jsonData : JSON.stringify(employeeData),
-					task : "GMR"
-				},
-				dataType : "json",
-				success : function(data) {
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			inputValue : medicalCode,
+			jsonData : JSON.stringify(employeeData),
+			task : "GMR"
+		},
+		dataType : "json",
+		success : function(data) {
 
-					json = JSON.parse(data);
+			json = JSON.parse(data);
 
-					$("#employeeAilment").val(json.ehDesignation);
-					$("#ailmentDescription").val(json.ehComments);
-					
-					// $("#btnSaveeditEmpHistory").hide();
-				},
-				error : function(e) {
-					alert("Error " + e);
-					console.log(e);
-				}
-			});
-	
+			var description = json.reportDescription;
+			var path = json.reportPath;
+			path = "http://localhost/hras" + path;
+			alert("path:" + path + " description:" + description);
+			$("#reportDescriptionEdit").val(description);
+
+			// $(this).attr('src', path);
+			$('.changesrc').attr('src', path);
+			// $("#reportDescriptionEdit").val(path);
+
+			// $("#btnSaveeditEmpHistory").hide();
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+
 }

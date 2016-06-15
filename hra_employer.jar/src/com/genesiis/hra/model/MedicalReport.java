@@ -2,9 +2,12 @@ package com.genesiis.hra.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
+
+import com.genesiis.hra.utill.ConnectionManager;
 
 
 public class MedicalReport extends Employee{
@@ -150,10 +153,72 @@ public class MedicalReport extends Employee{
 	}
 
 	@Override
-	public Object find(int empEpf) throws SQLException, Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Object findByEpf(String empEpf) {
+
+		log.info("epf"+empEpf);
+    	
+		String query = "SELECT CODE, REPORTDESCRIPTION, REPORTPATH, MODBY, MODON, CRTBY, CRTON FROM dbo.[HRA.MEDICALREPORT]  "
+				+ " WHERE CODE = ?";
+
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		MedicalReport object = new MedicalReport();
+		try {
+
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, empEpf);
+
+			rs = ps.executeQuery();
+
+			try {
+				if (rs.next()) {
+
+					// set data to entity class
+					object.setCode
+					(rs.getInt("CODE"));
+					
+					object.setReportdescription
+					(rs.getString("REPORTDESCRIPTION"));
+					
+					object.setReportpath
+					(rs.getString("REPORTPATH"));
+
+					String subString = object.getReportpath();
+					String retval[] = subString.split("C:/sdb/ctxdeploy/hras.war");
+					
+					object.setReportpath
+					(retval[1]);
+				}
+			} catch (Exception e) {
+				log.info("Exception - " + e);
+			}
+
+		} catch (SQLException exception) {
+			log.info("Exception - " + exception);
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				log.info("Exception - " + e);
+				e.printStackTrace();
+			}
+		}
+		return object;
 	}
+	
 
 	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
@@ -171,5 +236,11 @@ public class MedicalReport extends Employee{
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Object find(int empEpf) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

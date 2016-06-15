@@ -156,8 +156,7 @@ public class FileUploadController extends HttpServlet {
 			
 			String employeeId = req.getParameter("employeeId");
 
-			String path = fileUploader.setFileToBeUpload
-					(fileContent, fileName,	employeeId,ext);
+			String path = fileUploader.setFileToBeUpload(fileContent, fileName,	employeeId,ext);
 
 
 			if (path != null) {

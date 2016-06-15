@@ -1,11 +1,12 @@
 package com.genesiis.hra.command;
 
-import java.text.ParseException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
+import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.MedicalHistory;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -147,5 +148,6 @@ public class AddMedicalHistory implements ICommandAJX {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -16,17 +16,18 @@ public class EmployeeFactory {
 		switch (o) {
 		case GET_EMPLOYEE_BASIC:
 			return new BasicData();
-		
 		case GET_FAMILY_MEMBER:
 			return new Familymember();
-			
 		case GET_EMPLOYEE_HISTORY:
 			return new EmploymentHistory();
-	
 		case GET_EDU_DETAILS:
 			return new EducationData();
 		case GET_FAMILY:
 			return new Familymember();
+		case GET_MEDICAL_HISTORY:
+			return new MedicalHistory();
+		case GET_MEDICAL_REPORT:
+			return new MedicalReport();
 		default:
 			return null;
 		}

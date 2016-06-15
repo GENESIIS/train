@@ -32,6 +32,7 @@ import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.AddMedicalReport;
 import com.genesiis.hra.fileupload.FileUploadController;
+import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.FileUploader;
 import com.genesiis.hra.validation.MessageList;
@@ -148,9 +149,12 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details,inputValue );
 				break;
 			case ADD_EMPLOYEE_IMAGE_DETAILS:
-				FileUploadController  fileUploadController = new FileUploadController();
-				details = fileUploadController.fileUpload(request,o);
-				message = commands.get(o).execute(details);
+//				FileUploadController  fileUploadController = new FileUploadController();
+//				details = fileUploadController.fileUpload(request,o);
+				
+				RequestHttpWrapper httpRequest = new RequestHttpWrapper(request);
+				
+				message = commands.get(o).executeWapper(details,httpRequest);
 				break;
 				
 				
@@ -168,12 +172,13 @@ public class EmployerController extends HttpServlet {
 				
 			case ADD_MEDICAL_HISTORY:
 				message = commands.get(o).execute(details);
+				break;
 			case GET_MEDICAL_HISTORY:
 				message = commands.get(o).execute(inputValue, task);
+				break;
 			case UPDATE_MEDICAL_HISTORY:
 				message = commands.get(o).execute(details,inputValue);
-				
-
+				break;
 			case ADD_FAMILY_MEMBER:
 				message = commands.get(o).execute(details);
 				break;

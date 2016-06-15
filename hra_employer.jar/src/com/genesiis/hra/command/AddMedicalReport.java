@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
+import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.MedicalReport;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -139,6 +140,13 @@ public class AddMedicalReport implements ICommandAJX {
 
 	@Override
 	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String executeWapper(String details,
+			RequestHttpWrapper httpRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

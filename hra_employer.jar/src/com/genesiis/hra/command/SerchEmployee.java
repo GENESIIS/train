@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.EmployeeCrudJDBC;
 import com.genesiis.hra.model.SerchCrud;
 import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
@@ -74,6 +75,12 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 
 	@Override
 	public String execute(int epf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String executeWapper(String details,
+			RequestHttpWrapper httpRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
