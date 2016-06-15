@@ -30,6 +30,7 @@ import javax.servlet.http.Part;
 import com.genesiis.hra.command.AddEmployeeHistory;
 import com.genesiis.hra.command.AddMedicalHistory;
 import com.genesiis.hra.command.AddMedicalReport;
+import com.genesiis.hra.model.StudyProgram;
 import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.FileUploader;
 import com.genesiis.hra.validation.MessageList;
@@ -80,6 +81,7 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 
+		commands.put(Operation.GET_STUDY_PROGRAM, new GetEmployee());
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -155,6 +157,9 @@ public class EmployerController extends HttpServlet {
 			case GET_EDU_DETAILS:
 				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search Educational details");
+				break;
+			case GET_STUDY_PROGRAM:
+				message = commands.get(o).execute(inputVAlue, task);
 				break;
 			case GET_MEDICAL_HISTORY:
 				message = commands.get(o).execute(inputVAlue, task);

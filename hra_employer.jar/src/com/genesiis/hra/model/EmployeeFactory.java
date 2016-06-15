@@ -24,6 +24,8 @@ public class EmployeeFactory {
 			return new EducationData();
 		case GET_FAMILY:
 			return new Familymember();
+		case GET_STUDY_PROGRAM:
+			return new StudyProgram();
 		default:
 			return null;
 		}

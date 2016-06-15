@@ -83,6 +83,9 @@
 					id="tabQualifications" href="#tabPageQualifications" role="tab"
 					data-toggle="tab" aria-controls="qualifications"
 					aria-expanded="false">Qualifications</a></li>
+				<li onclick="viewStudyDetails()" class=""><a id="tabStudy"
+					href="#tabPageStudy" role="tab" data-toggle="tab"
+					aria-controls="study" aria-expanded="false">Study Programmes </a></li>
 
 				<li class=""><a id="tabEmployementHistory"
 					href="#tabEmployement" role="tab" data-toggle="tab"
@@ -117,27 +120,28 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">National Identity card
-											Number </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="nic_num1">970980613V</label>
+											Number </label> <label class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="nic_num1">
+											970980613V </label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Date of Birth</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="birthday">1984-02-05</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="birthday">1984-02-05</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Gender</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="gender">Male</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="gender">Male</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Marital Status</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="marital_status">Single</label>
 									</div>
 								</div>
@@ -156,29 +160,30 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Permenant Address</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="address1">109,
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="address1">109,
 											Galle RD, colombo07 sgfsdfgsdfg sgfdsfgsdf</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Temporary Address</label><label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="address2">
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="address2">
 											rtsertsertg serftawertaer gertgerg srg ergerg wrg ergergerg
 											---</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Private Email</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="work_email1">Ruwan@genesis.com</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="work_email1">Ruwan@genesis.com</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Mobile Number</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="mobilenumber1">+94779952998</label>
 									</div>
 								</div>
@@ -187,8 +192,9 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Land Number</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="landnumber1">0112567181</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="landnumber1">0112567181</label>
 									</div>
 
 								</div>
@@ -206,30 +212,30 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Job Title</label> <label
-											id="job_title" class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;">Pre-Sales
+											id="job_title" class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;">Pre-Sales
 											Executive</label>
 									</div>
 									<div class="row-fluid">
 										<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 											<label class="control-label col-xs-12"
 												style="font-size: 13px;">Department</label> <label
-												class="control-label col-xs-12 iceLabel"
-												style="font-size: 13px; font-weight: bold;"
+												class="control-label col-xs-12 text-primary"
+												style="font-size: 12px; font-weight: normal;"
 												id="department_Name">Head Office</label>
 										</div>
 										<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 											<label class="control-label col-xs-12"
 												style="font-size: 13px;">Employment Basis</label> <label
-												id="bassis" class="control-label col-xs-12 iceLabel"
-												style="font-size: 13px; font-weight: bold;">Full
+												id="bassis" class="control-label col-xs-12 text-primary"
+												style="font-size: 12px; font-weight: normal;">Full
 												Time Contract</label>
 										</div>
 										<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 											<label class="control-label col-xs-12"
 												style="font-size: 13px;">Join Date</label> <label
-												class="control-label col-xs-12 iceLabel"
-												style="font-size: 13px; font-weight: bold;" id="joindate">2016-05-01</label>
+												class="control-label col-xs-12 text-primary"
+												style="font-size: 12px; font-weight: normal;" id="joindate">2016-05-01</label>
 										</div>
 
 									</div>
@@ -255,8 +261,8 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Qualification </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="qualificationName">BSc. in Information
 											Technologies </label>
 									</div>
@@ -264,29 +270,30 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">University | College |
-											School </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											School </label> <label class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="educatedPlace">UCSC</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Medium</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="mediumStudied">Eng</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Started On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedOn">2000-02-05</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="startedOn">2000-02-05</label>
 									</div>
 									<hr>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Completed On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="compleatedOn">2004-02-05</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="compleatedOn">2004-02-05</label>
 									</div>
 								</div>
 
@@ -296,6 +303,71 @@
 				</div>
 				<!-- 						   tabPageQualifications model end  -->
 
+				<div class="tab-pane fade" id="tabPageStudy" role="tabpanel"
+					aria-labelledby="study-tab" style="border: 1px solid #DDD;">
+					<div class="row" style="margin-left: 10px; margin-top: 20px;">
+						<div class="panel panel-default" style="width: 97.5%;">
+							<div class="panel-heading">
+								<h4>Study Programmes Details</h4>
+							</div>
+							<div class="panel-body">
+								<div class="row-fluid">
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Institution </label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="Institution">Institution </label>
+									</div>
+
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Type of Course</label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="CourseType">Type
+											of Course</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Admission Date</label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="AdmissionDate">Admission Date</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">End Date</label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="ProgramEndDate">Date</label>
+									</div>
+									<hr>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Duration (In months)</label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="Duration">Duration</label>
+									</div>
+									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
+										<label class="control-label col-xs-12"
+											style="font-size: 13px;">Study Time</label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;">
+											<input type="checkbox" value="" id="StWeekdays" disabled>
+											Weekdays
+										</label> <label class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;">
+											<input type="checkbox" value="" id="StWeekends" disabled>
+											Weekends
+										</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 						   tabPageStudy details model end  -->
 
 				<div class="tab-pane fade" id="tabEmployement" role="tabpanel"
 					aria-labelledby="employementHistory"
@@ -310,35 +382,35 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Qualification </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="Qualification">BSc. in Information Technologies </label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">University | College |
-											School </label> <label class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="university">UCSC</label>
+											School </label> <label class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="university">UCSC</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Medium</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="medium">English</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="medium">English</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Started On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2000-02-05</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="startedon">2000-02-05</label>
 									</div>
 									<hr>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Completed On</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="startedon">2004-02-05</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="startedon">2004-02-05</label>
 									</div>
 								</div>
 
@@ -362,36 +434,39 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Relation Name</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="relationName">relationName</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="relationName">relationName</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Relationship </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="relationship">Singel</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="relationship">Singel</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Relation Date of birth </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="relationDateofbirth">relationDateofbirth</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Occupation</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="occupation">occupation</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="occupation">occupation</label>
 									</div>
 									<hr>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> WorkingPlace</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="workingPlace">workingPlace</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
+											id="workingPlace">workingPlace</label>
 									</div>
 								</div>
 
@@ -414,46 +489,47 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Total Outstanding amount</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="amount">amount</label>
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="amount">amount</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Garanter 1 </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="guarantor1">garanter
+											style="font-size: 13px;">Guarantor 1 </label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="guarantor1">guarantor
 											1</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Garanter 2 </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="guarantor2">garanter
+											style="font-size: 13px;">Guarantor 2 </label> <label
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="guarantor2">guarantor
 											2</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Monthly Payment</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="payment">payment
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="payment">payment
 										</label>
 									</div>
 									<hr>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Due Date</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="dueDate">due
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="dueDate">due
 											date</label>
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> End Date</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="endDate">end
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="endDate">end
 											date</label>
+
 									</div>
 								</div>
 
@@ -461,7 +537,6 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- 						   tabLoanDetails model end  -->
 
 
@@ -477,16 +552,16 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Ailment Type </label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;" id="ailment">Ailment
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;" id="ailment">Ailment
 										</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;">Ailment Description </label>
-										<p class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+										<p class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="ailmentDescription">Description</p>
 									</div>
 
@@ -494,8 +569,8 @@
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
 											style="font-size: 13px;"> Report Description</label> <label
-											class="control-label col-xs-12 iceLabel"
-											style="font-size: 13px; font-weight: bold;"
+											class="control-label col-xs-12 text-primary"
+											style="font-size: 12px; font-weight: normal;"
 											id="reportDescription">Report Description</label>
 									</div>
 
