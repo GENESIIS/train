@@ -153,4 +153,13 @@ public class DataValidator {
 		}
 		return sqlDate;
 	}
+	
+	//computer path converting to web path 
+//	public void webPathConvetor(String text){
+//		 String path= null;
+//		 String[] parts = path.split("/");
+//		 
+//		
+//	}
 }
+

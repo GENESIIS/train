@@ -268,14 +268,14 @@ function viewMedicalDetails() {
 			json = JSON.parse(responseText);
 			// alert(responseText);
 			// $("#employee_id").text(json.employeeEpf);
-			
+
 			$("#ailment").text(json.medicalHistoryailment);
 			$("#ailmentDescription").text(json.medicalHistorydescription);
 			$("#reportDescription").text(json.mdeicalReportDis);
 			// $("#report").attr(json.MedicalReportPath);
 			// document.getElementById("report").href="json.MedicalReportPath";
-			$("#report").attr("href", "file:///" + json.MedicalReportPath);
-			$("#imagereport").attr("src", "file:///" + json.MedicalReportPath);
+			$("#report").attr("href", json.MedicalReportPath);
+		//	$("#imagereport").attr("src", json.MedicalReportPath);
 		},
 		error : function(e) {
 			alert("Error " + e);

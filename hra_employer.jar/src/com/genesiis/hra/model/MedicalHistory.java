@@ -11,6 +11,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.utill.MaskValidator;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 
 /**
@@ -239,7 +240,7 @@ public class MedicalHistory extends Employee {
 		MedicalHistory mh = new MedicalHistory();
 		log.info(id + "//");
 		try {
-
+			String path = null;
 			conn = ConnectionManager.getConnection();
 			ps = conn
 					.prepareStatement("SELECT [HRA.MEDICALHISTORY].EMPLOYEEID, [HRA.MEDICALHISTORY].AILMENT, [HRA.MEDICALHISTORY].DESCRIPTION, [HRA.MEDICALREPORT].REPORTDESCRIPTION, [HRA.MEDICALREPORT].REPORTPATH FROM [HRA.MEDICALHISTORY] INNER JOIN [HRA.MEDICALREPORT] ON [HRA.MEDICALHISTORY].CODE=[HRA.MEDICALREPORT].CODE WHERE [HRA.MEDICALHISTORY].EMPLOYEEID =?");
@@ -251,8 +252,10 @@ public class MedicalHistory extends Employee {
 				mh.setMedicalhistoryailment(res.getString(2));
 				mh.setMedicalhistorydescription(res.getString(3));
 				mh.setMedicalReportDiscription(res.getString(4));
-				mh.setMedicalReportPath(res.getString(5));
-
+				// mh.setMedicalReportPath(res.getString(5));
+				path = res.getString(5);
+				String retvell[] = path.split("C:/sdb/ctxdeploy/hras.war");
+				mh.setMedicalReportPath("http://localhost/hras" + retvell[1]);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
