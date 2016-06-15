@@ -33,8 +33,7 @@ function checkEditedStudyTime() {
 		return 4;
 	}
 }
-function addStudyProgram(){
-	
+function addStudyProgram(){	
 	var employeeEpf = $("#employeEpf").val();
 	var institution = $("#institution").val();
 	var typofCourse = $("#courseType").val();
@@ -77,8 +76,7 @@ function addStudyProgram(){
 	});
 }
 
-function updateStudyProgram(){
-	
+function updateStudyProgram(){	
 	var employeeEpf = empEpf;
 	var institution = $("#editInstitution").val();
 	var typofCourse = $("#editCourseType").val();
@@ -120,8 +118,7 @@ function updateStudyProgram(){
 		},
 	});
 }
-function loadEditContentStudyProgram(){
-	
+function loadEditContentStudyProgram(){	
 	$.get("EmployerController", {
 		inputValue : empEpf,
 		task : "GSP"
@@ -132,6 +129,8 @@ function loadEditContentStudyProgram(){
 				json = JSON.parse(JSON.parse(data));
 				$("#editEmployeEpf").val(
 						json.employeeEpf);
+				$("#editEmployeEpf").attr(
+						'readonly', true);
 				$("#editInstitution").val(
 						json.institution);
 				$("#editCourseType").val(
@@ -155,7 +154,7 @@ function loadEditContentStudyProgram(){
 			});
 }
 
-//Clear Function Education Details
+//Clear Function Edit Study Details forms
 function clearAddStudyProgramform() {
 	$("#editInstitution").val("");
 	$("#editCourseType").val("");
@@ -166,6 +165,8 @@ function clearAddStudyProgramform() {
 	$("#editStWeekends").attr('checked', false);
 
 }
+
+//Clear Function Study Details forms
 function clearEditStudyProgramform() {
 	$("#institution").val("");
 	$("#courseType").val("");

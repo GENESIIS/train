@@ -21,7 +21,7 @@ function addEmployeeDetails() {
 	var employeeTemporaryaddress = $("#employeeTemporaryaddress").val();
 	var employeeTelephone = $("#employeeTelephone").val();
 	var employeeMobile = $("#employeeMobile").val();
-	var employeeEmail = $("#employeeEmail").val();
+	var employeeEmail = $("#employeeEmail").val(); 
 	var employeeJoindate = $("#employeeJoindate").val();
 
 	var employeeFirstnameerror = $("#employeeFirstnameerror").text();

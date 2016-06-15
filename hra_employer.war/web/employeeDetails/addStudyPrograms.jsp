@@ -8,17 +8,17 @@
 		<div class="form-group">
 			<label for="employeeId">Employee</label> <input type="text"
 				class="form-control" id="employeEpf" name="employeeId"
-				placeholder="">
+				placeholder="" maxlength="16" >
 		</div>
 		<div class="form-group">
 			<label for="institution">Institution</label> <input type="text"
 				class="form-control" id="institution" name="institution"
-				placeholder="">
+				placeholder="" maxlength="200">
 		</div>
 		<div class="form-group">
 			<label for="courseType">Type of Course</label> <input type="text"
 				class="form-control" id="courseType" name="courseType"
-				placeholder="">
+				placeholder="" maxlength="50">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -39,8 +39,8 @@
 		<div class="row">
 		  <div class="col-md-6">
 		      <div class="form-group">
-			      <label for="duration">Duration (In months)</label> <input type="text"
-				   class="form-control" id="duration" name="duration" placeholder="">
+			      <label for="duration">Duration (In months)</label> <input type="number"
+				   class="form-control" id="duration" name="duration" placeholder="" maxlength="16">
 		     </div>
 		 </div>
 		 <div class="col-md-6" >

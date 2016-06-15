@@ -451,7 +451,7 @@
 	</div>
 </div>
 
-
+ 
 <!-- Modal EDIT-->
 <div class="modal fade" id="editmoreEmployeedetails" role="dialog">
 	<div class="modal-dialog modal-lg">

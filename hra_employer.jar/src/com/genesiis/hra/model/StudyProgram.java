@@ -1,5 +1,8 @@
 package com.genesiis.hra.model;
-
+/*
+ * 20160609 PC HRA 38 created StudyProgram.java class
+ * 20160610 PC HRA 39 modified  Update method and findByEpf
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -111,6 +114,7 @@ public class StudyProgram extends Employee {
 		return insertStatus;
 	}
 	
+	//update study program detail
 	@Override
 	public int update(Object object, String epf) {
 		String query = "UPDATE [dbo].[HRA.STUDYPROGRAM] SET EMPLOYEEID = ? ,  STUDYTIME = ? , "
@@ -118,14 +122,13 @@ public class StudyProgram extends Employee {
 				+ "  MODON = GETDATE() WHERE EMPLOYEEID = ?";
 		
 		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;		
+		PreparedStatement ps = null;		
 		int insertStatus = -1;
 		log.info("Inside add method");	
 		try {
 			StudyProgram employee = (StudyProgram) object;			
 			conn = ConnectionManager.getConnection();			
-			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			ps = conn.prepareStatement(query);
 			ps.setString(1,epf);
 			ps.setString(2, employee.getStudyTime());
 			ps.setString(3, employee.getInstitution());
@@ -137,14 +140,8 @@ public class StudyProgram extends Employee {
 			ps.setString(9, epf);	
 			
 			log.info("prepared statment executed");			
-		int rowsInserted = ps.executeUpdate();
-			if (rowsInserted > 0) {
-				rs = ps.getGeneratedKeys();
-				if(rs.next()){
-					insertStatus = rs.getInt(1);
-					log.info(insertStatus);
-				}
-			}		
+		 insertStatus = ps.executeUpdate();
+				
 
 		} catch (SQLException exception) {
 			log.error(exception);			
@@ -182,6 +179,7 @@ public class StudyProgram extends Employee {
 				ResultSet res = preparedStatement.executeQuery();
 				if (res.next()) {
 
+					emp.setEmployeeepf(res.getString(2));
 					emp.setStudyTime(res.getString(3));
 					emp.setInstitution(res.getString(4));
 					emp.setTypofCourse(res.getString(5));

@@ -16,7 +16,7 @@
 				placeholder="">
 		</div>
 		<div class="form-group">
-			<label for="courseType">Type of Course</label> <input type="text"
+			<label for="courseType">Type of Course</label> <input type="text" 
 				class="form-control" id="editCourseType" name="editCourseType"
 				placeholder="">
 		</div>

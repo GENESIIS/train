@@ -1,10 +1,10 @@
 package com.genesiis.hra.command;
-
+/*
+ * 20160609 PC HRA 38 created AddStuddyProgram.java class
+ * 20160610 PC HRA 39 modified and overloaded execute method
+*/
 import java.util.HashMap;
-
 import org.jboss.logging.Logger;
-
-import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.model.StudyProgram;
 import com.genesiis.hra.validation.DataValidator;
@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 public class AddStuddyProgram implements ICommandAJX{
 static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 	
-	// Method to execute JsonData and add employee 
+	// Method to execute JsonData and add employee study
 	public String execute(String gsonData) {		
 		Employee accessdata = new StudyProgram();		
 		int id = -1;
@@ -24,7 +24,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     id = accessdata.add(employee);
 			     if(id > 0)
-			    	 message = MessageList.ADDED;
+			    	 message = MessageList.UPDATED;
 		       } else {
 			     
 		       }
@@ -39,6 +39,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		// TODO Auto-generated method stub
 		return null;
 	}
+	// Method to execute JsonData and Update employee Study
 	@Override
 	public String execute(String gsonData, String epf) {
 		
@@ -72,7 +73,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		}
 		return employee;
 	}
-		
+		//validating employee data
 		public String validateEmployee(StudyProgram employee)  {
 			DataValidator validator = new DataValidator();
 			String message = "True";		

@@ -1,5 +1,6 @@
 <!--Add Study program Modal -->
 <div class="">
+	<div class="">
 	<div class="well">
 		<h3 class="">
 			<i class="glyphicon glyphicon-edit"></i> Study Program Details
@@ -39,7 +40,7 @@
 		<div class="row">
 		  <div class="col-md-6">
 		      <div class="form-group">
-			      <label for="duration">Duration (In months)</label> <input type="text"
+			      <label for="duration">Duration (In months)</label> <input type="number"
 				   class="form-control" id="editDuration" name="editDuration" placeholder="">
 		     </div>
 		 </div>
@@ -54,6 +55,7 @@
 				</div>
 			</div>
 		</div>
+	 </div>
 
 		<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-right"
