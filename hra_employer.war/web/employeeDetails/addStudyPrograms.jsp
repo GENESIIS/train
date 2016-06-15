@@ -39,7 +39,7 @@
 		<div class="row">
 		  <div class="col-md-6">
 		      <div class="form-group">
-			      <label for="duration">Duration (In months)</label> <input type="text"
+			      <label for="duration">Duration (In months)</label> <input type="number"
 				   class="form-control" id="duration" name="duration" placeholder="">
 		     </div>
 		 </div>
