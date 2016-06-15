@@ -425,17 +425,17 @@
 									</div>
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Garanter 1 </label> <label
+											style="font-size: 13px;">Guarantor 1 </label> <label
 											class="control-label col-xs-12 text-primary"
-											style="font-size: 12px; font-weight: normal;" id="guarantor1">garanter
+											style="font-size: 12px; font-weight: normal;" id="guarantor1">guarantor
 											1</label>
 									</div>
 
 									<div class="col-xs-6 col-md-3" style="font-size: 16px;">
 										<label class="control-label col-xs-12"
-											style="font-size: 13px;">Garanter 2 </label> <label
+											style="font-size: 13px;">Guarantor 2 </label> <label
 											class="control-label col-xs-12 text-primary"
-											style="font-size: 12px; font-weight: normal;" id="guarantor2">garanter
+											style="font-size: 12px; font-weight: normal;" id="guarantor2">guarantor
 											2</label>
 									</div>
 
