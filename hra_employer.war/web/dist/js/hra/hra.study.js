@@ -48,7 +48,7 @@ function addStudyProgram(){
 		success : function(data) {
 			alert(data);
 			if (data == "Details added successfully.") {
-				clearAddeducationform();
+				clearAddStudyform();
 			} else {
 				alert(data);
 			};
@@ -58,6 +58,17 @@ function addStudyProgram(){
 			console.log(e);
 		},
 	});
+}
+
+function clearAddStudyform() {
+	$("#employeEpf").val("");
+	$("#institution").val("");
+	$("#courseType").val("");
+	$("#admissionDate").val("");
+	$("#ProgramEndDate").val("");
+	$("#duration").val("");
+	$("#stWeekends").attr('checked', false);
+	$("#stWeekdays").attr('checked', false);
 }
 
 function loadViewStudyProgramsDetails() {
