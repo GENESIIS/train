@@ -61,7 +61,7 @@ function addSalarycomponent(num) {
 	var salaryComponentminerror = $("#salaryComponentminerror").text();
 	var salaryComponentmaxerror = $("#salaryComponentmaxerror").text();
 
-	var jsonData = {
+	var data = {
 		"componentType" : salaryComponenttype,
 		"componentName" : salaryComponenttitle,
 		"description" : salaryComponentdescription,
@@ -88,7 +88,7 @@ function addSalarycomponent(num) {
 			type : "POST",
 			url : 'PayrollController',
 			data : {
-				jsonData : JSON.stringify(jsonData),
+				data : JSON.stringify(data),
 				task : "ASC"
 			},
 			dataType : "json",
@@ -117,7 +117,7 @@ function addSalaryscheme() {
 	var salarySchemetitleerror = $("#salarySchemetitleerror").text();
 	var salaryCriteriaerror = $("#salaryCriteriaerror").text();
 
-	var jsonData = {
+	var data = {
 		"title" : salarySchemetitle,
 		"criteria" : salaryCriteria,
 		"description" : salarySchemedescription,
@@ -133,7 +133,7 @@ function addSalaryscheme() {
 			type : "POST",
 			url : 'PayrollController',
 			data : {
-				jsonData : JSON.stringify(jsonData),
+				data : JSON.stringify(data),
 				task : "ASL"
 			},
 			dataType : "json",
@@ -268,3 +268,79 @@ function deleteRows() {
 		salarySchemetbl.deleteRow(i);
 	}
 }
+
+//select component and disply componet 
+$("#selectsalaryComponenttype").change(function() {
+	  //var id = $(this).children(":selected").attr("id");
+	 var selectsalaryComponenttype = ("#selectsalaryComponenttype").val();
+	 
+	 $.ajax({
+			type : "POST",
+			url : 'PayrollController',
+			data : {
+				data : selectsalaryComponenttype,			
+				task : "GSC"
+			},
+			dataType : "json",
+			success : function(responseText) {
+				listEmployee(responseText);
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+	});
+
+function listEmployee(empData) {
+
+	json = JSON.parse(empData);
+	jsonData: JSON.stringify(empData);
+	////Check whether Table is Initialize or not
+	if ($.fn.dataTable.isDataTable('#salaryComTbl')) {
+		//////Destroy table
+		eTable.destroy();
+	}
+	eTable = $('#salaryComTbl')
+			.DataTable(
+					{
+						data : json,
+						"aoColumns" : [
+								{
+									"mDataProp" : "salaryComponenttype",
+									className : "center"
+								},
+								{
+									"mDataProp" : "salaryComponenttitle",
+									className : "center"
+								},
+
+								{
+									"mDataProp" : "salaryComponentdescription",
+									className : "center"
+								},
+								{
+									"mDataProp" : "salaryComponentamount",
+									className : "center"
+								},
+								{
+									"mDataProp" : "salaryComponentmin",
+									className : "center"
+								},
+								{
+									"mDataProp" : "salaryComponentmax",
+									className : "center"
+								},
+								{
+									"mDataProp" : "salaryCurrency",
+									className : "center"
+								},
+								{
+									"name" : "Add",
+									className : "center",
+									defaultContent : '<button type="button" class="btn btn-info" '
+											+ 'data-toggle="modal" id = "addComponent" ><i class="glyphicon glyphicon-modal-window"></i></button>'
+								} ]
+
+					});
+	}

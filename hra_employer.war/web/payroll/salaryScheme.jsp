@@ -120,9 +120,17 @@
 						<div class="form-group">
 							<label for="salaryComponent">Add Component</label>
 							<div class="inner-addon right-addon">
-								<i class="glyphicon glyphicon-search"></i> <input type="text"
+								<!-- <i class="glyphicon glyphicon-search"></i> <input type="text"
 									class="form-control" id="salaryComponent"
-									name="salaryComponent" placeholder="" onkeypress="loadModel();">
+									name="salaryComponent" placeholder="" onkeypress="loadModel();"> -->
+									<select class="selectpicker" selected data-style="btn-info" id="selectsalaryComponenttype">
+									 <option value="0" selected="selected" >Component</option>
+									 <option value="1">Basic</option>
+									 <option value="2">Allowance</option>
+									 <option value="3">Bonus</option>
+									 <option value="4">Deduction</option>
+									 <option value="5">Other</option>
+									</select>
 							</div>
 						</div>
 					</div>
@@ -136,6 +144,20 @@
 				<div>
 					<div class="table-responsive">
 						<table id="salarySchemetbl"
+							class="table table-striped table-bordered table-responsive"
+							cellspacing="0" width="100%">
+							<tr>
+								<td><b>Type</b></td>
+								<td><b>Title</b></td>
+								<td><b>Currency</b></td>
+								<td><b>Description</b></td>
+								<td><b>Rate/Amount</b></td>
+								<td><b>Min.Value</b></td>
+								<td><b>Max.Value</b></td>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+						<table id="salaryComTbl"
 							class="table table-striped table-bordered table-responsive"
 							cellspacing="0" width="100%">
 							<tr>
