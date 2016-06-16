@@ -85,7 +85,7 @@
 				<pathelement path="${jbossLibDir}/system/layers/base/org/jboss/ejb3/main/jboss-ejb3-ext-api-2.1.0.redhat-1.jar" />
 				<pathelement path="${jbossLibDir}/system/layers/base/javax/persistence/api/main/hibernate-jpa-2.0-api-1.0.1.Final-redhat-3.jar" />				
 				<pathelement path="${jbossLibDir}/system/layers/base/.overlays/layer-base-jboss-eap-6.4.3.CP/org/jboss/log4j/logmanager/main/log4j-jboss-logmanager-1.1.2.Final-redhat-1.jar" />
-				
+				<pathelement path="${jbossLibDir}/system/layers/base/javax/servlet/api/main/jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-2.jar" />
 			</classpath>
 		</javac>
 		<!-- dd copy step -->

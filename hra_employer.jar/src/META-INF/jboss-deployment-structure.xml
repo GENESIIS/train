@@ -18,7 +18,9 @@
 			<module name="org.apache.commons.io" />
 			<module name="com.lowagie.text" />
 			<module name="com.google.gson" />
-			<module name="org.apache.commons.lang3"/><!-- merged in from release 294 sha 917b431-->
+			<module name="org.apache.commons.lang3"/>
+			<!-- merged in from release 294 sha 917b431-->
+			
 			<!-- <module name="org.apache.catalina.connector" /> remove until JBAP6 implementation of catalina.connector can be found. this is a JBAS5 implementation--> 
 			<!--add twitter4j-core-2.2.6-SNAPSHOT.jar -->
 		</dependencies>
@@ -30,6 +32,7 @@
 			<module name="org.apache.commons.lang3" />
 			<module name="com.lowagie.text" />
 			<module name="com.google.gson" />
+			<module name="javax.servlet.http"/>
 		</dependencies>
 	</sub-deployment>
 </jboss-deployment-structure>

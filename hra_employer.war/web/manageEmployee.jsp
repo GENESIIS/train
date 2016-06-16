@@ -30,6 +30,12 @@
 	});
 </script>
 
+<style>
+.lable-space {
+    margin-right: 5px;
+}
+</style>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Employee Management</h2>
 
@@ -139,7 +145,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="control-label" for="reportUpload"
-										style="vertical-align: top;">Report Upload</label>
+										style="vertical-align: top;">Profile Image Upload</label>
 									<div class="fileinput fileinput-new" data-provides="fileinput">
 										<div class="fileinput-new thumbnail"
 											style="width: 200px; height: 150px;">
@@ -270,7 +276,7 @@
 				<input type="hidden" class="form-control" id="ehReferencemodby" 
 				name="ehReferencemodby" value="ADMIN_USER_TR" >
 				
-				<button type="button" class="btn btn-success pull-right"
+				<button type="button" class="btn btn-success pull-right lable-space"
 					id="btnupload" data-dismiss="">
 					<i class="glyphicon glyphicon-floppy-disk"></i> Upload Image
 				</button>

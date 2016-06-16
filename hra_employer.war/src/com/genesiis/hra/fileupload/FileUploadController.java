@@ -83,9 +83,6 @@ public class FileUploadController extends HttpServlet {
 			case ADD_MEDICAL_REPORT:
 				details = AddMedicalDetails(req);
 				break;
-			case ADD_EMPLOYEE_IMAGE_DETAILS:
-				details = AddEmployeeImage(req);
-				break;
 
 			default:
 				break;
@@ -140,48 +137,7 @@ public class FileUploadController extends HttpServlet {
 	}
 	
 	
-	private String AddEmployeeImage(HttpServletRequest req) {
-		String details = "";
-
-		try {
-			FileUploader fileUploader = new FileUploader();
-			Part filePart = req.getPart("file");
-
-			InputStream fileContent = filePart.getInputStream();
-			String fileName = getSubmittedFileName(filePart);
-			String ext = FilenameUtils.getExtension(fileName);
-			
-			String modBy = req.getParameter("modBy");
-			String crtBy = req.getParameter("crtBy");
-			
-			String employeeId = req.getParameter("employeeId");
-
-			String path = fileUploader.setFileToBeUpload
-					(fileContent, fileName,	employeeId,ext);
-
-
-			if (path != null) {
-
-				details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
-						+ "\"employeeEpf\":\""+ employeeId + "\","
-						+ "\"status\":\"" + "INIT" + "\","
-						+ "\"imagePath\":\"" + path + "\","
-						+ "\"modBy\":\""+ modBy + "\","
-						+ "\"crtBy\":\"" + crtBy + "\"" 
-						+ "}";
-
-				log.info(details);
-
-			} else {
-				details = MessageList.ERROR.message();
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return details;
-	}
+	
 	
 
 }

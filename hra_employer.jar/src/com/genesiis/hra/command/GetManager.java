@@ -7,6 +7,7 @@ import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Department;
 import com.genesiis.hra.validation.MessageList;
+
 import com.google.gson.Gson;
 
 public class GetManager implements ICommandAJX {
