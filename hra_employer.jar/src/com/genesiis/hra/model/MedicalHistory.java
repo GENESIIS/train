@@ -291,4 +291,46 @@ public class MedicalHistory extends Employee {
 		return null;
 	}
 	
+	@Override
+	public int update(Object object, String epf) {
+		
+		String query = "UPDATE [HRA.MEDICALHISTORY] SET AILMENT=? , DESCRIPTION =? , MODBY=? , CRTBY=?  WHERE EMPLOYEEID=?";
+
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		MedicalHistory medicalHistory = (MedicalHistory) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, medicalHistory.getMedicalhistoryailment());
+			ps.setString(2, medicalHistory.getMedicalhistorydescription());
+			ps.setString(3, medicalHistory.getMedicalhistorymodby());
+			ps.setString(4, medicalHistory.getMedicalhistorycrtby());
+			ps.setString(5, epf);
+			
+			int rowsUpdated = ps.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				status = 1;
+			}
+			
+		} catch (SQLException exception) {
+			log.info("Exception - " + exception);
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				log.info("Exception - " + exception);
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
+	
 }

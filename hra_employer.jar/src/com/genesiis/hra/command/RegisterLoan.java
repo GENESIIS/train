@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.Loan;
 import com.genesiis.hra.model.LoanCrudJDBC;
 import com.genesiis.hra.validation.DataValidator;
@@ -119,12 +118,4 @@ public class RegisterLoan implements ICommandAJX {
 		return null;
 	}
 
-	@Override
-	public String executeWapper(String details,
-			RequestHttpWrapper httpRequest) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

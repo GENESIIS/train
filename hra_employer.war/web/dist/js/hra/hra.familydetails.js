@@ -63,7 +63,7 @@ function addFamilyDetails() {
 	}
 }
 
-// //Edit Family Details
+//Edit Family Details
 function editFamilyDetails() {
 	var fmemployeeId = $("#editfmemployeeId").val();
 	var relationship = $("#editrelationship").val();

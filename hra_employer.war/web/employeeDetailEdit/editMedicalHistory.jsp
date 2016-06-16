@@ -113,7 +113,7 @@
 									<span class="btn btn-default btn-file"> <span
 										class="fileinput-new">Select image</span> <span
 										class="fileinput-exists">Change</span> <input type="file"
-										id="avatar" name="file">
+										id="avatarMedicalReportEdit" name="files">
 									</span> <a href="#" class="btn btn-default fileinput-exists"
 										data-dismiss="fileinput">Remove</a>
 
@@ -135,16 +135,16 @@
 
 				<!-- FILE UPLOAD -->
 				<button type="button"
-					class="btn btn-success full pull-right btn-space" id="upload"
-					disabled="disabled">
+					class="btn btn-success full pull-right btn-space" id="uploadMedicalReportEdit"
+					>
 					<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports
 				</button>
 
 				<!-- SAVE -->
 				<button type="button"
 					class="btn btn-success full pull-right btn-space"
-					onclick="addMedicalhistorydetails();" id="save">
-					<i class="glyphicon glyphicon-floppy-disk"></i> Save
+					onclick="updateMedicalHistoryDetails();" id="save">
+					<i class="glyphicon glyphicon-floppy-disk"></i> Update
 				</button>
 
 				<!-- CLEAR -->

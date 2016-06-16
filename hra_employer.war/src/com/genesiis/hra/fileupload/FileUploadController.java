@@ -83,6 +83,9 @@ public class FileUploadController extends HttpServlet {
 			case ADD_MEDICAL_REPORT:
 				details = AddMedicalDetails(req);
 				break;
+			case UPDATE_MEDICAL_REPORT:
+				details = AddMedicalDetails(req);
+				break;
 			case ADD_EMPLOYEE_IMAGE_DETAILS:
 				details = AddEmployeeImage(req);
 				break;

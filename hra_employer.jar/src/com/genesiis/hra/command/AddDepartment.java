@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.Department;
 import com.google.gson.Gson;
 

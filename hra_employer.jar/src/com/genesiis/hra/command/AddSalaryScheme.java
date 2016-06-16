@@ -7,10 +7,8 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.SalaryScheme;
 import com.genesiis.hra.validation.MessageList;
-import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
@@ -82,13 +80,6 @@ public class AddSalaryScheme implements ICommandAJX {
 
 	@Override
 	public String execute(int epf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String executeWapper(String details,
-			RequestHttpWrapper httpRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

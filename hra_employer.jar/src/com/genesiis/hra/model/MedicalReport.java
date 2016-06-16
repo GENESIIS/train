@@ -243,4 +243,47 @@ public class MedicalReport extends Employee{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public int update(Object object, String code) {
+		
+		String query = "UPDATE [HRA.MEDICALREPORT] SET REPORTDESCRIPTION=? , REPORTPATH =? , MODBY=? , CRTBY=?  WHERE CODE=?";
+
+		int status = -1;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		MedicalReport medicalReport = (MedicalReport) object;
+
+		try {
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, medicalReport.getReportdescription());
+			ps.setString(2, medicalReport.getReportpath());
+			ps.setString(3, medicalReport.getModby());
+			ps.setString(4, medicalReport.getCrtby());
+			ps.setString(5, code);
+			
+			int rowsUpdated = ps.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				status = 1;
+			}
+			
+		} catch (SQLException exception) {
+			log.info("Exception - " + exception);
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				log.info("Exception - " + exception);
+				exception.printStackTrace();
+			}
+		}
+		return status;
+	}
+	
 }

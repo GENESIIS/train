@@ -1,12 +1,12 @@
 package com.genesiis.hra.command;
 
-import java.text.ParseException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
+import com.genesiis.hra.model.MedicalHistory;
 import com.genesiis.hra.model.MedicalReport;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
@@ -60,7 +60,7 @@ public class AddMedicalReport implements ICommandAJX {
 		return message.message();
 	}
 
-	// @tr - extracting Gson data to object for save
+	// @TR - extracting Gson data to object for save
 	public Object extractFromJason(String data) {
 
 		Gson gson = new Gson();
@@ -121,9 +121,47 @@ public class AddMedicalReport implements ICommandAJX {
 		return hasError;
 	}
 
-	public String execute(String gsonData, String employeeEpf) {
-		// TODO Auto-generated method stub
-		return null;
+	public String execute(String gsonData, String code) {
+
+		// insert fiels validation
+		MessageList message = MessageList.ERROR;
+		boolean hasError = false;
+
+		try {
+
+			// extracting gson data to OBJECT
+			MedicalReport medicalReport = (MedicalReport) extractFromJason(gsonData);
+
+			// extracting gson data to MAP for error check
+			Map<String, String> attributeMap = jsonToMap(gsonData);
+
+			// validating map return error map
+			// hasError = validateValue(attributeMap);
+
+			// return error map is empty -> no errors
+			if (!hasError) {
+
+				// adding employee history to database table
+				int hasUpdated = medicalReport.update(medicalReport,code);
+
+				// employee history data added
+				if (hasUpdated == 1) {
+					message = MessageList.UPDATED;
+				} else {// employee history data not added
+					message = MessageList.NOTUPDATED;
+				}
+
+			} else {
+				// if return error map is not empty -> errors
+				log.info("Execute - Error in mandatory fields are marked with an asterisk in *");
+				message = MessageList.MANDATORYFIELDREQUIRED;
+			}
+		} catch (Exception e) {
+			// if error
+			log.info("Execute - AddEmployeeHistory - Exception " + e);
+			return message.message();
+		}
+		return message.message();
 	}
 
 	@Override
@@ -144,11 +182,5 @@ public class AddMedicalReport implements ICommandAJX {
 		return null;
 	}
 
-	@Override
-	public String executeWapper(String details,
-			RequestHttpWrapper httpRequest) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

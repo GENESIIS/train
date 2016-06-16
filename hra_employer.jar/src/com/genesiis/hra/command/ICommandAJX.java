@@ -1,9 +1,6 @@
 package com.genesiis.hra.command;
 import java.util.HashMap;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
-
-
 public interface ICommandAJX {
 	public String execute(String gsonData);
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.Department;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -59,13 +58,6 @@ public class GetManager implements ICommandAJX {
 
 	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String executeWapper(String details,
-			RequestHttpWrapper httpRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

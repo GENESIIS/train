@@ -1,6 +1,5 @@
 package com.genesiis.hra.command;
 
-import com.genesiis.hra.fileupload.RequestHttpWrapper;
 import com.genesiis.hra.model.Employee;import com.genesiis.hra.model.EmployeeFactory;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -69,13 +68,6 @@ public class GetEmployee implements ICommandAJX{
 
 	@Override
 	public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String executeWapper(String details,
-			RequestHttpWrapper httpRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

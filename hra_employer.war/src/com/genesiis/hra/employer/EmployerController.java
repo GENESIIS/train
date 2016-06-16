@@ -112,6 +112,7 @@ public class EmployerController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
+		FileUploadController  fileUpload = new FileUploadController();
 		
 		log.info(""
 				+ "task-" +  task 
@@ -149,16 +150,11 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(details,inputValue );
 				break;
 			case ADD_EMPLOYEE_IMAGE_DETAILS:
-//				FileUploadController  fileUploadController = new FileUploadController();
-//				details = fileUploadController.fileUpload(request,o);
-				
-				RequestHttpWrapper httpRequest = new RequestHttpWrapper(request);
-				
-				message = commands.get(o).executeWapper(details,httpRequest);
+				FileUploadController  fileUploadController = new FileUploadController();
+				details = fileUploadController.fileUpload(request,o);
+//				RequestHttpWrapper httpRequest = new RequestHttpWrapper(request);
+				message = commands.get(o).execute(details);
 				break;
-				
-				
-			
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
 				break;
@@ -208,9 +204,12 @@ public class EmployerController extends HttpServlet {
 				break;
 			
 			case ADD_MEDICAL_REPORT:
-				FileUploadController  fileUpload = new FileUploadController();
 				details = fileUpload.fileUpload(request,o);
 				message = commands.get(o).execute(details);
+				break;
+			case UPDATE_MEDICAL_REPORT:
+				details = fileUpload.fileUpload(request,o);
+				message = commands.get(o).execute(details,inputValue);
 				break;
 			case GET_MEDICAL_REPORT:
 				message = commands.get(o).execute(inputValue, task);
