@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.genesiis.hra.command.AddSalaryComponent;
 import com.genesiis.hra.command.AddSalaryScheme;
+import com.genesiis.hra.command.GetSalaryComponent;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
@@ -33,6 +34,7 @@ public class PayrollController extends HttpServlet {
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.ADD_SALARY_COMPONENT, new AddSalaryComponent());
 		commands.put(Operation.ADD_SALARY_SCHEME, new AddSalaryScheme());
+		commands.put(Operation.GET_SALARY_COMPONENT, new GetSalaryComponent());
 	}
 
 	/**
@@ -50,7 +52,7 @@ public class PayrollController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String details = request.getParameter("jsonData");
+		String details = request.getParameter("data");
 		String task = request.getParameter("task");
 		String message = "";
 
@@ -69,6 +71,9 @@ public class PayrollController extends HttpServlet {
 			case ADD_SALARY_SCHEME:
 				message = commands.get(o).execute(details);
 				break;	
+			case GET_SALARY_COMPONENT:
+				message = commands.get(o).execute(details);
+				break;
 			default:
 				break;
 			}
@@ -78,7 +83,7 @@ public class PayrollController extends HttpServlet {
 			message = MessageList.ERROR.message();
 			log.error("Payroll Controloler Error. " + e);
 		}
-
+		log.info("message" + message);
 		writeResponse(gson.toJson(message), response);
 	}
 

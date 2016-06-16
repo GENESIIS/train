@@ -3,6 +3,7 @@ package com.genesiis.hra.validation;
 public enum Operation {
 	ADD_SALARY_COMPONENT("ASC"),
 	ADD_SALARY_SCHEME("ASL"),
+	GET_SALARY_COMPONENT("GSC"),
 	BAD_OPERATION("BO"),
 	SERCH_EMPLOYEE("SE"),
 	REGISTER_LOAN("RL"),	

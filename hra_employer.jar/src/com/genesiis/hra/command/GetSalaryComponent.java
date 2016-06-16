@@ -2,6 +2,7 @@ package com.genesiis.hra.command;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.jboss.logging.Logger;
 
@@ -10,14 +11,15 @@ import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class GetSalaryComponent implements ICommandAJX{
-	static Logger log = Logger.getLogger(GetLoan.class.getName());
+	static Logger log = Logger.getLogger(GetSalaryComponent.class.getName());
 	@Override
-	public String execute(String inputValue) {
+	public String execute(String compKey) {
 		SalaryComponent component = new  SalaryComponent();
 		String message = MessageList.ERROR.message();
+		 List<Object>  componentList = null ;
 		try {
-			component = (SalaryComponent) component.find(inputValue);
-			message = createGson(component);
+			componentList = component.find(compKey);
+			message = createGson(componentList);
 		} catch (SQLException e) {
 			log.error(e);
 			message = MessageList.ERROR.message();
@@ -30,11 +32,11 @@ public class GetSalaryComponent implements ICommandAJX{
 	}
 	
 	// Create Gson object
-	public String createGson(SalaryComponent com) {					
+	public String createGson(List<Object> componentList) {					
 		Gson gson = new Gson();	
 		String component = " ";
 		try {
-			component = gson.toJson(com);			
+			component = gson.toJson(componentList);			
 		} catch (Exception e) {
 			
 		}

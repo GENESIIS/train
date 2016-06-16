@@ -79,7 +79,7 @@ function listEmployee(empData) {
 
 					});
 
-	$("#employeeDetails_filter").css("display", "none"); // hiding global
+	$("#employeeDetails_filter").css("display", "none"); // hiding Search box
 	// search box
 	eTable = $('#employeeDetails').DataTable();
 	$('#serchEmployeeText').keyup(function() {

@@ -119,7 +119,7 @@ public class EmployeeCrudJDBC extends SerchCrud {
 	public List<Object> find(String keyWord) throws SQLException, Exception {
 		List<Object> employList = new LinkedList<Object>();
 		String query = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where (EPF LIKE   ? OR NAME LIKE ? OR DESIGNATION LIKE  ? OR MOBILENO LIKE  ?)";
-		String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
+		///String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
 		String messege = "";
 		Connection conn = null;
 		PreparedStatement ps = null;

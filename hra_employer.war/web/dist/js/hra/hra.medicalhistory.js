@@ -256,8 +256,3 @@ function clearMedicalHisory(){
 /*******************************************************************************
  * End Clear medical history data
  */
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ff621bb2107dad8bc27996a562affe349b9f6697
