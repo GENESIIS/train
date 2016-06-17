@@ -81,34 +81,50 @@
 				</h3>
 			</div>
 			<div class="modal-body">
+
 				<div class="row">
+
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="departmentNumber">Department Number</label> <input
-								type="text" class="form-control" id="departmentNumber"
-								name="departmentNumber" placeholder="" value="" maxlength="5"
-								size="5">
+							<label for="departmentName">Department Name</label> <input
+								type="text" class="form-control" id="departmentName"
+								name="departmentName" placeholder="Department name" value="" maxlength="20">
 						</div>
 					</div>
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="departmentCode">Department Code</label> <input
+								type="text" class="form-control" id="departmentCode"
+								name="departmentCode" placeholder="Department code" value="" maxlength="20">
+						</div>
+					</div>
+
 				</div>
 
-				<div class="form-group">
-					<label for="departmentName">Department Name</label> <input
-						type="text" class="form-control" id="departmentName"
-						name="departmentName" placeholder="" value="">
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="departmentLocation">Department Location</label> <input
+								type="text" class="form-control" id="departmentLocation"
+								name="departmentLocation" placeholder="Department Location"
+								value="" maxlength="20">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="departmentHead">Department Head</label> <select
+								class="form-control" id="departmentHead" name="departmentHead">
+								<option>-Select-</option>
+							</select>
+						</div>
+					</div>
+
 				</div>
 
-				<div class="form-group">
-					<label for="departmentLocation">Department Location</label> <input
-						type="text" class="form-control" id="departmentLocation"
-						name="departmentLocation" placeholder="" value="">
-				</div>
-				<div class="form-group">
-					<label for="departmentHead">Department Head</label> <select
-						class="form-control" id="departmentHead" name="departmentHead">
-						<option>-Select-</option>
-					</select>
-				</div>
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success pull-right"

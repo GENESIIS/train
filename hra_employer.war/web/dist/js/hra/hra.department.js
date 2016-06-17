@@ -41,17 +41,18 @@ function addDepartmentDetails() {
 	var departmentName = $("#departmentName").val();
 	var departmentLocation = $("#departmentLocation").val();
 	var departmentHead = $("#departmentHead").val();
-
+	var departmentCode = $("#departmentCode").val();
 	var departmentNameerror = $("#departmentNameerror").text();
 	var departmentHeaderror = $("#departmentHeaderror").text();
 
 	var jsonData = {
 		"departmentName" : departmentName,
 		"departmentLocation" : departmentLocation,
-		"departmentHead" : departmentHead
+		"departmentHead" : departmentHead,
+		"departmentCode" : departmentCode
 	};
 
-	if ((departmentName == "") || (departmentHead == "")) {
+	if ((departmentName == "") || (departmentHead == "")|| (departmentCode == "")) {
 		alert("Please fill the Empty fields.");
 	} else if ((departmentNameerror != "") || (departmentHeaderror)) {
 		alert("Please fill the details correctly.");
@@ -86,9 +87,11 @@ function deleteDepartmentDetails() {
 function clearDepartmentform() {
 	$("#departmentName").val("");
 	$("#departmentLocation").val("");
+	$("#departmentCode").val("");
 	getManager();
 	$("#departmentNameerror").text("");
 	$("#departmentHeaderror").text("");
+
 }
 
 // Get Employees for Add Department Form

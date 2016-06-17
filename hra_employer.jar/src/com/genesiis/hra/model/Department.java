@@ -25,6 +25,7 @@ public class Department implements ICrud {
 	private String departmentName;
 	private String departmentLocation;
 	private String departmentHead;
+	private String departmentCode;
 
 	public String getDepartmentnumber() {
 		return departmentNumber;
@@ -58,9 +59,19 @@ public class Department implements ICrud {
 		this.departmentHead = departmentHead;
 	}
 
+	public String getDepartmentcode() {
+		return departmentCode;
+	}
+
+	public void setDepartmentcode(String departmentCode) {
+		this.departmentCode = departmentCode;
+	}
+
+	
 	public Department() {
 	}
 
+	
 	public Department(String dnum, String dname, String dl, String dh) {
 		this.departmentNumber = dnum;
 		this.departmentName = dname;
@@ -76,7 +87,7 @@ public class Department implements ICrud {
 
 	@Override
 	public int add(Object object) {
-		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, CODE, LOCATION, MANAGERID, MODBY,MODON) VALUES (?, ?, ?, ?,?,GETDATE())";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -87,9 +98,11 @@ public class Department implements ICrud {
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, department.getDepartmentname());
-			ps.setString(2, department.getDepartmentlocation());
-			ps.setString(3, department.getDepartmenthead());
-			ps.setString(4, "SYSTEM");
+			ps.setString(2, department.getDepartmentcode());
+			ps.setString(3, department.getDepartmentlocation());
+			ps.setInt(4, Integer.parseInt(department.getDepartmenthead()));
+			ps.setString(5, "SYSTEM");
+			
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
@@ -110,7 +123,10 @@ public class Department implements ICrud {
 				if (rs != null) {
 					rs.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
+				
 			} catch (SQLException exception) {
 				exception.printStackTrace();
 			}
@@ -152,10 +168,11 @@ public class Department implements ICrud {
 		Connection conn = null;
 		List<String> managers = new ArrayList<String>();
 		Statement statement = null;
+		ResultSet result =null;
 		try {
 			conn = ConnectionManager.getConnection();
 			statement = conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
+			result = statement.executeQuery(query);
 			while (result.next()) {
 				managers.add(result.getString(1) + "#" + result.getString(2));
 			}
@@ -167,8 +184,12 @@ public class Department implements ICrud {
 				if (statement != null) {
 					statement.close();
 				}
-
-				conn.close();
+				if (result != null) {
+					result.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException exception) {
 				exception.printStackTrace();
 			}
