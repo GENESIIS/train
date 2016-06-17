@@ -22,7 +22,10 @@ function loadContentEmployee() {
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
 };
-
+// testing fo Alertfy
+function loadtest() {
+	$("#mainContent").load("dist/js/alertify/TestAlertify.html");
+};
 
 //@TR
 function loadAddEmployementHIstoryDetails() {

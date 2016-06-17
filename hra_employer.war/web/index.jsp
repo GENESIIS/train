@@ -134,6 +134,11 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalaryschemedetails()"> Salary Scheme</a></li>
+						
+						<li><a href="loadtest"
+						class="list-group-item list-group-item-primary"
+						data-toggle="collapse" data-parent="#MainMenu"
+						> Test Alertfy</a></li>
 					<!-- 					<li><a href="#payroll" -->
 					<!-- 						class="list-group-item list-group-item-primary" -->
 					<!-- 						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i -->
