@@ -101,6 +101,7 @@ function addMedicalhistorydetails() {
 				$('#save').prop('disabled', true);
 				$('#upload').prop('disabled', false);
 
+				$('#employeeId').attr('disabled', true);
 				$('#employeeAilment').attr('disabled', true);
 				$('#ailmentDescription').attr('disabled', true);
 
@@ -185,6 +186,7 @@ $(document).on("click", "#upload", function() {
 				$('#save').prop('disabled', false);
 				$('#upload').prop('disabled', true);
 
+				$('#employeeId').attr('disabled', false);
 				$('#employeeAilment').attr('disabled', false);
 				$('#ailmentDescription').attr('disabled', false);
 
@@ -230,6 +232,7 @@ $(document).on("click", "#upload", function() {
 function clearMedicalHisory() {
 	$('.fileinput').fileinput('reset');
 
+	$("#employeeId").val("");
 	$("#employeeAilment").val("");
 	$("#ailmentDescription").val("");
 
