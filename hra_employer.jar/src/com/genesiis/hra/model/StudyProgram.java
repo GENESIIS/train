@@ -170,16 +170,16 @@ public class StudyProgram extends Employee {
 		@Override
 		public Object findByEpf(String epf) {
 			Connection conn = null;
-			PreparedStatement preparedStatement = null;
+			PreparedStatement ps = null;
 			StudyProgram emp = new StudyProgram();
 
 			log.info(epf + "id String"); 
 			try {
 				conn = ConnectionManager.getConnection();
-				preparedStatement = conn
+				ps = conn
 						.prepareStatement("SELECT * FROM [dbo].[HRA.STUDYPROGRAM] WHERE EMPLOYEEID = ?");
-				preparedStatement.setString(1, epf);
-				ResultSet res = preparedStatement.executeQuery();
+				ps.setString(1, epf);
+				ResultSet res = ps.executeQuery();
 				if (res.next()) {
 
 					emp.setStudyTime(res.getString(3));
@@ -193,7 +193,20 @@ public class StudyProgram extends Employee {
 			} catch (Exception e) {
 				e.printStackTrace();
 				log.info(e);
+			}finally {
+				try {
+
+					if (ps != null) {
+						ps.close();
+					}
+					conn.close();
+				} catch (SQLException exception) {
+					exception.printStackTrace();
+					log.error("Exception: Find Study Details" + exception);
+				}
 			}
+			
+			
 			return emp;
 		}
 	@Override
