@@ -249,6 +249,9 @@ function clearMedicalHisory() {
  * End Clear medical history data
  ******************************************************************************/
 var medicalCode;
+var medicalEmployeeid;
+var medicalAilment;
+var medicalDescription;
 var employeeAilment;
 
 function loadeditMedicalHIstoryDetails() {
@@ -270,21 +273,27 @@ function loadeditMedicalHIstoryDetails() {
 
 			json = JSON.parse(data);
 
+			if(json.medicalHistoryailment== 'undefined'){
+				isedit = false;
+			}
 			 alert("Employee id:"+json.medicalHistoryemployeeid);
 			 alert("Code:"+json.medicalHistorycode);
 			 alert("Ailment:"+json.medicalHistoryailment);
 			 alert("Description:"+json.medicalHistorydescription);
 
-			employeeAilment = json.medicalHistoryailment;
+			
 			medicalCode = json.medicalHistorycode;
+			medicalEmployeeid =json.medicalHistoryemployeeid;
+			medicalAilment = json.medicalHistoryailment;
+			medicalDescription = json.medicalHistorydescription;
+			employeeAilment = json.medicalHistoryailment;
 
 			$("#codeEdit").val(json.medicalHistorycode);
 			$("#employeeIdEdit").val(json.medicalHistoryemployeeid);
 			$("#employeeAilmentedit").val(json.medicalHistoryailment);
 			$("#ailmentDescriptionedit").val(json.medicalHistorydescription);
 
-			alert("Medical Code:" + medicalCode);
-			loadeditMedicalReportDetails(medicalCode);
+			loadeditMedicalReportDetails();
 
 			// $("#btnSaveeditEmpHistory").hide();
 		},
@@ -296,7 +305,7 @@ function loadeditMedicalHIstoryDetails() {
 
 }
 
-function loadeditMedicalReportDetails(medicalCode) {
+function loadeditMedicalReportDetails() {
 
 	alert("Code:" + medicalCode);
 
@@ -323,6 +332,13 @@ function loadeditMedicalReportDetails(medicalCode) {
 			alert("path:" + path + " description:" + description);
 			$("#reportDescriptionEdit").val(description);
 
+			//medical history load
+			$("#codeEdit").val(medicalCode);
+			$("#employeeIdEdit").val(medicalEmployeeid);
+			$("#employeeAilmentedit").val(medicalAilment);
+			$("#ailmentDescriptionedit").val(medicalDescription);
+			
+			
 			// $(this).attr('src', path);
 			$('.changesrc').attr('src', path);
 			// $("#reportDescriptionEdit").val(path);

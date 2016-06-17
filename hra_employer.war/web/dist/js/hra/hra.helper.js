@@ -140,8 +140,19 @@ function loadEditContentqualifications() {
 }
 // @TR - Employee > edit employee > more details > edit medical history details 
 function loadEditMedicalHIstoryDetails() {
+	var isedit=true;
 	loadeditMedicalHIstoryDetails();
-	$("#Editmodelrest").load("employeeDetailEdit/editMedicalHistory.jsp");
+	
+	if(isedit){
+		$("#Editmodelrest").load("employeeDetailEdit/editMedicalHistory.jsp");
+	}
+	else{
+		alert("Previously you dont have  medical history Please Add it here!");
+		$("#Editmodelrest").load("employeeDetail/addMedicalHistory.jsp");
+	}
+	
+	
+	
 }
 
 
