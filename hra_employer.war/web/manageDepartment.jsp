@@ -64,6 +64,27 @@
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>
+				<tr>
+					<td>DEPT02</td>
+					<td>Human Resourses</td>
+					<td>Head Office</td>
+					<td>Mr. Dammika Nawarathna2</td>
+					<td align="center"><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#viewdepartmentDetailsForm">
+							<i class="glyphicon glyphicon-modal-window"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-warning" data-toggle="modal"
+							data-target="#editdepartmentDetailsForm">
+							<i class="glyphicon glyphicon-edit"></i>
+						</button></td>
+					<td align="center"><button type="button"
+							class="btn btn-danger" data-toggle="modal"
+							data-target="#deletedepartmentDetailsForm">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button></td>
+				</tr>
+				
 			</tbody>
 		</table>
 	</div>
