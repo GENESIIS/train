@@ -29,7 +29,7 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 		 List<Object>  empList = null ;
 		 try {			
 				  empList =  employeeManager.find(keyWord); 
-				  loger.info("This execute method"+empList);								
+				  loger.info("This execute method");								
 					
 		} catch (Exception e) {
 			// TODO: handle exception

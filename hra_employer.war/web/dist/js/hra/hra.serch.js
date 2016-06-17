@@ -17,12 +17,13 @@ function serchEmployee() {
 		},
 		dataType : "json",
 		success : function(responseText) {
+			alert(responseText);
 			listEmployee(responseText);
 		},
 		error : function(e) {
 			alert("Error " + e);
 			console.log(e);
-		}
+		} 
 	});
 }
 

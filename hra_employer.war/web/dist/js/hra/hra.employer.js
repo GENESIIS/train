@@ -19,7 +19,7 @@ function addEmployeeDetails() {
 	var employeeTemporaryaddress = $("#employeeTemporaryaddress").val();
 	var employeeTelephone = $("#employeeTelephone").val();
 	var employeeMobile = $("#employeeMobile").val();
-	var employeeEmail = $("#employeeEmail").val();
+	var employeeEmail = $("#employeeEmail").val(); 
 	var employeeJoindate = $("#employeeJoindate").val();
 
 	var employeeFirstnameerror = $("#employeeFirstnameerror").text();
@@ -166,37 +166,6 @@ function updateEmployeeDetails() {
 	});
 }
 
-// //////////////view basic details /////////////////////////////////
-$(document).on("click", "#vbutton", function() {
-
-	$.get("EmployerController", function(data, status) {
-
-		$("#view").load("viewEmployee.jsp", function(datatl) {
-			json = JSON.parse(data);
-			$("#userid").text(json.ID);
-			$(".panel-body #username").text(json.NAME);
-			$(".panel-body #disignation").text(json.DESIGNATION);
-			// $(".panel-body #salary").text( json.Salary);
-			$(".panel-body #email").text(json.EMAIL);
-			$(".panel-body #dob").text(json.DOB);
-			$(".panel-body #Nic").text(json.NIC);
-			$(".panel-body #gender").text(json.GENDER);
-			$(".panel-body #adress").text(json.PERMENENTADDRESS);
-			$(".panel-body #MobNumber").text(json.MOBILENO);
-			$(".panel-body #OthNumber").text(json.OTHERNO);
-			$(".panel-body #depid").text(json.DEPTID);
-			$(".panel-body #doj").text(json.DATEOFJOIN);
-			$(".modal-body #userid").val(json.EPF);
-			$(".modal-body #userid").val(json.TEMPORARYADDRESS);
-
-			$(".panel-body #doj").text(json.MARITALSTATUS);
-			// $(".modal-body #userid").val( json.EPF);
-			// $(".modal-body #userid").val( json.TEMPORARYADDRESS);
-
-			alert(data);
-		});
-	});
-});
 
 // ///////////////// load employee details//////////////////////
 
@@ -226,7 +195,6 @@ function loademployeeDetails() {
 			$("#nic_num").text(json.employeeNic);
 			$("#nic_num1").text(json.employeeNic);
 			$("#birthday").val(json.employeeDateofbirth);
-			// $("#gender").text(json.employeeGender);
 
 			if (json.employeeGender == 'M') {
 				$("#gender").text('Male');
