@@ -157,23 +157,12 @@ $(document).on("click", "#upload", function() {
 
 	if (noError) {
 
-		// var formData2 = {
-		// "reportDescription" : reportDescription,
-		// "task" : "AMR",
-		// "medicalHistorymodby" : ehReferencemodby,
-		// "medicalHistorycrtby" : ehReferencemodby,
-		// "employeeId" : employeeId,
-		// };
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-			// data : {
-			// jsonData : JSON.stringify(formData),
-			// task : "AMR",
-			// reportUpload :reportUpload,
-			// },
+
 			data : formData, // Setting the data attribute of ajax with
-								// file_data
+			// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -202,32 +191,9 @@ $(document).on("click", "#upload", function() {
 	}
 });
 
-// $(document).on("click", "#upload", function() {
-// var file_data = $("#avatar").prop("files")[0]; // Getting the properties of
-// file from file field
-// var reportDescription = $("#reportDescription").val();
-// var employeeId = $("#employeeId").val();
-// var form_data = new FormData(); // Creating object of FormData class
-// form_data.append("file", file_data);
-// form_data.append("reportDescription", reportDescription);// Appending
-// parameter named reportDescription with properties of file_field to form_data
-// form_data.append("employeeId", employeeId);// Appending parameter named file
-// with properties of file_field to form_data
-// form_data.append("task", "AMR"); // Adding extra parameters to form_data
-// $.ajax({
-// url : "EmployeeController",
-// dataType : 'scrpt',
-// cache : false,
-// contentType : false,
-// processData : false,
-// data : form_data, // Setting the data attribute of ajax with file_data
-// type : 'post'
-// });
-// });
-
 /*******************************************************************************
  * Start Clear medical history data
- *******************************************************************************/
+ ******************************************************************************/
 
 function clearMedicalHisory() {
 	$('.fileinput').fileinput('reset');
@@ -273,17 +239,17 @@ function loadeditMedicalHIstoryDetails() {
 
 			json = JSON.parse(data);
 
-			if(json.medicalHistoryailment== 'undefined'){
+			if (json.medicalHistoryailment == 'undefined') {
 				isedit = false;
 			}
-			 alert("Employee id:"+json.medicalHistoryemployeeid);
-			 alert("Code:"+json.medicalHistorycode);
-			 alert("Ailment:"+json.medicalHistoryailment);
-			 alert("Description:"+json.medicalHistorydescription);
+			// alert("Employee id:"+json.medicalHistoryemployeeid);
+			// alert("Code:"+json.medicalHistorycode);
+			// alert("Ailment:"+json.medicalHistoryailment);
+			alert("Description:" + json.medicalHistorydescription);
+			//
 
-			
 			medicalCode = json.medicalHistorycode;
-			medicalEmployeeid =json.medicalHistoryemployeeid;
+			medicalEmployeeid = json.medicalHistoryemployeeid;
 			medicalAilment = json.medicalHistoryailment;
 			medicalDescription = json.medicalHistorydescription;
 			employeeAilment = json.medicalHistoryailment;
@@ -332,13 +298,12 @@ function loadeditMedicalReportDetails() {
 			alert("path:" + path + " description:" + description);
 			$("#reportDescriptionEdit").val(description);
 
-			//medical history load
+			// medical history load
 			$("#codeEdit").val(medicalCode);
 			$("#employeeIdEdit").val(medicalEmployeeid);
 			$("#employeeAilmentedit").val(medicalAilment);
 			$("#ailmentDescriptionedit").val(medicalDescription);
-			
-			
+
 			// $(this).attr('src', path);
 			$('.changesrc').attr('src', path);
 			// $("#reportDescriptionEdit").val(path);
@@ -353,7 +318,7 @@ function loadeditMedicalReportDetails() {
 
 }
 
-//update medical Details
+// update medical Details
 function updateMedicalHistoryDetails() {
 
 	var noError = true;
@@ -431,8 +396,8 @@ function updateMedicalHistoryDetails() {
 
 $(document).on("click", "#uploadMedicalReportEdit", function() {
 
-	alert(1);
-	
+	//alert(1);
+
 	var noError = true;
 	var message = "";
 
@@ -467,24 +432,12 @@ $(document).on("click", "#uploadMedicalReportEdit", function() {
 
 	if (noError) {
 
-		// var formData2 = {
-		// "reportDescription" : reportDescription,
-		// "task" : "AMR",
-		// "medicalHistorymodby" : ehReferencemodby,
-		// "medicalHistorycrtby" : ehReferencemodby,
-		// "employeeId" : employeeId,
-		// };
-		
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-			// data : {
-			// jsonData : JSON.stringify(formData),
-			// task : "AMR",
-			// reportUpload :reportUpload,
-			// },
+
 			data : formData, // Setting the data attribute of ajax with
-								// file_data
+			// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -508,5 +461,3 @@ $(document).on("click", "#uploadMedicalReportEdit", function() {
 		});
 	}
 });
-
-
