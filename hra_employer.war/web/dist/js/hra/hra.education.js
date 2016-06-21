@@ -32,7 +32,7 @@ function AddEducationDetails() {
 		url : 'EmployeeController',
 		data : {
 			jsonData : JSON.stringify(EducationData),
-			task : "ADD"
+			task : "AED"
 		},
 		dataType : "json",
 		success : function(data) {
@@ -86,7 +86,7 @@ function loadeditEducationalDetails() {
 	var jsonData = "1";
 	$.getJSON('EmployerController', {
 		jsonData : JSON.stringify(jsonData),
-		serchVlaue : empEpf,
+		inputValue : empEpf,
 		task : "GED"
 	}, function(data) {
 		json = JSON.parse(data);
@@ -166,7 +166,7 @@ function loadDataEducationalDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(1),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GED"
 		},
 		dataType : "json",

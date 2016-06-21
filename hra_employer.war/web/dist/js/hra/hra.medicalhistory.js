@@ -259,7 +259,7 @@ function viewMedicalDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GMH"
 		},
 		dataType : "json",

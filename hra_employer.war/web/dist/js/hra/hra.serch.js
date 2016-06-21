@@ -12,7 +12,7 @@ function serchEmployee() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify(jsonData),
-			serchVlaue : serchContent,
+			inputValue : serchContent,
 			task : "SE"
 		},
 		dataType : "json",
@@ -102,7 +102,7 @@ function listEmployee(empData) {
 				var data = eTable.row($(this).parents('tr')).data();
 				empEpf = data.employeeEpf;
 				$.get("EmployerController", {
-					serchVlaue : data.employeeEpf,
+					inputValue : data.employeeEpf,
 					task : "GEB"
 				},
 						function(data, status) {

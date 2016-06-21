@@ -28,8 +28,7 @@
 	</button>
 	<br></br>
 	<div class="row">
-		<div class="col-sm-4">
-		</div>
+		<div class="col-sm-4"></div>
 		<div class="col-sm-8" align="right">
 			<div class="input-group add-on">
 				<input class="form-control" placeholder="Search"
@@ -264,28 +263,18 @@
 			<div class="modal-body">
 
 				<div class="btn-group btn-group-justified">
-					
+
 					<a href="#" onclick="loadContentqualifications()"
-						class="btn btn-primary">Educaional Data</a>
-						
-						 <a
+						class="btn btn-primary">Educaional Data</a> <a
 						onclick="loadAddStudyProgramsDetails()" href="#"
-						class="btn btn-primary">Study Programs</a>
-						
-						 <a href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadlonedetails()" class="btn btn-primary">Loan
-						Details</a>
-						
-						 <a href="#" onclick="loadfamilydetails()"
-						class="btn btn-primary">Family Details</a>
-						
-						 <a href="#"
+						Details</a> <a href="#" onclick="loadfamilydetails()"
+						class="btn btn-primary">Family Details</a> <a href="#"
 						onclick="loadAddEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
-						
-						<a href="#"
-						onclick="loadAddMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Employee History</a> <a href="#"
+						onclick="loadAddMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div id="modelrest" name="modelrest"></div>
 
@@ -293,7 +282,6 @@
 		</div>
 	</div>
 </div>
-
 
 <!-- Modal EDIT-->
 <div class="modal fade" id="editEmployeeDetailsForm" role="dialog">
@@ -466,26 +454,16 @@
 
 				<div class="btn-group btn-group-justified">
 					<a href="#" onclick="loadEditContentqualifications()"
-						class="btn btn-primary">Educaional Data</a>
-						
-						 <a
-						onclick="loadEditContentstudyprograms()" href="#"
-						class="btn btn-primary">Study Programs</a> 
-						
-						<a href="#"
+						class="btn btn-primary">Educaional Data</a> <a
+						onclick="loadEditStudyProgramsDetails()" href="#"
+						class="btn btn-primary">Study Programs</a> <a href="#"
 						onclick="loadEditContentloandetails()" class="btn btn-primary">Loan
-						Details</a> 
-						
-						<a href="#" onclick="loadEditContentfamilydetails()"
-						class="btn btn-primary">Family Details</a> 
-						
-						<a href="#"
+						Details</a> <a href="#" onclick="loadEditContentfamilydetails()"
+						class="btn btn-primary">Family Details</a> <a href="#"
 						onclick="loadEditEmployementHIstoryDetails()"
-						class="btn btn-primary">Employee History</a>
-						
-						<a href="#"
-						onclick="loadEditMedicalHIstoryDetails()"
-						class="btn btn-primary">Medical History</a>
+						class="btn btn-primary">Employee History</a> <a href="#"
+						onclick="loadEditMedicalHIstoryDetails()" class="btn btn-primary">Medical
+						History</a>
 				</div>
 				<div id="Editmodelrest" name="Editmodelrest"></div>
 
@@ -493,6 +471,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 

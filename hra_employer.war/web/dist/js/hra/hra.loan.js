@@ -107,7 +107,7 @@ function updateLoanDetailes() {
 		data : {
 			jsonData : JSON.stringify(jsonData),
 			task : "UL",
-			serchVlaue : employeeEpf,
+			inputValue : employeeEpf,
 		},
 		dataType : "json",
 		success : function(data) {
@@ -132,7 +132,7 @@ function loadEditContentloandetails() {
 			function(datatl) {
 				var employeeEpf = empEpf;
 				$.get("EmployerController", {
-					serchVlaue : employeeEpf,
+					inputValue : employeeEpf,
 					task : "GL"
 				}, function(data, status) {
 					alert(data);
@@ -158,7 +158,7 @@ function loadLoanDetails() {
 		url : 'EmployerController',
 		data : {
 			jsonData : JSON.stringify("1"),
-			serchVlaue : empEpf,
+			inputValue : empEpf,
 			task : "GL"
 		},
 		dataType : "json",

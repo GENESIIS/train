@@ -19,6 +19,7 @@ import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.AddEducationDetails;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.AddFamilyDetails;
+import com.genesiis.hra.command.AddStuddyProgram;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetLoan;
 import com.genesiis.hra.command.ICommandAJX;
@@ -82,6 +83,8 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 
 		commands.put(Operation.GET_STUDY_PROGRAM, new GetEmployee());
+		commands.put(Operation.ADD_STADY_PROGRAM, new AddStuddyProgram());
+		commands.put(Operation.UPDATE_STUDY_PROGRAM, new AddStuddyProgram());
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -100,7 +103,7 @@ public class EmployerController extends HttpServlet {
 
 		log.info(details);
 
-		String inputVAlue = request.getParameter("serchVlaue");
+		String inputVAlue = request.getParameter("inputValue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
 		String message = "";
@@ -158,6 +161,15 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(inputVAlue, task);
 				log.info("Search Educational details");
 				break;
+			case ADD_STADY_PROGRAM:
+				message = commands.get(o).execute(details);
+				log.info("ADD_STADY_PROGRAM" + message);
+				message = MessageList.ADDED.message();
+				break;
+			case UPDATE_STUDY_PROGRAM:
+				message = commands.get(o).execute(details, inputVAlue);
+				log.info("UPDATE_STADY_PROGRAM" + message);
+				break;
 			case GET_STUDY_PROGRAM:
 				message = commands.get(o).execute(inputVAlue, task);
 				break;
@@ -178,41 +190,43 @@ public class EmployerController extends HttpServlet {
 				log.info("update education details" + details);
 				break;
 			case ADD_MEDICAL_REPORT:
-				// this code segment will improve in next sprint as much as
-				// possible
-				FileUploader fileUploader = new FileUploader();
-				Part filePart = request.getPart("file");
-				InputStream fileContent = filePart.getInputStream();
-				String fileName = getSubmittedFileName(filePart);
-				String employeeId = request.getParameter("employeeId");
-				String path = fileUploader.setFileToBeUpload(fileContent,
-						fileName, employeeId);
-
-				log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
-				if (path != null) {
-
-					details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
-							+ "\"reportDescription\":\""
-							+ request.getParameter("reportDescription") + "\","
-							+ "\"reportPath\":\"" + path + "\","
-							+ "\"modby\":\""
-							+ request.getParameter("ehReferencemodby") + "\","
-							+ "\"crtby\":\""
-							+ request.getParameter("ehReferencemodby") + "\""
-							+ "}";
-					log.info(details);
-
-					message = commands.get(o).execute(details);// do not delete
-																// need to
-																// improve
-
-				} else {
-					message = MessageList.ERROR.message();
-				}
+				// // this code segment will improve in next sprint as much as
+				// // possible
+				// FileUploader fileUploader = new FileUploader();
+				// Part filePart = request.getPart("file");
+				// InputStream fileContent = filePart.getInputStream();
+				// String fileName = getSubmittedFileName(filePart);
+				// String employeeId = request.getParameter("employeeId");
+				// String path = fileUploader.setFileToBeUpload(fileContent,
+				// fileName, employeeId);
+				//
+				// log.info(":" + fileName + ":" + employeeId + ":" + path +
+				// ":");
+				// if (path != null) {
+				//
+				// details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
+				// + "\"reportDescription\":\""
+				// + request.getParameter("reportDescription") + "\","
+				// + "\"reportPath\":\"" + path + "\","
+				// + "\"modby\":\""
+				// + request.getParameter("ehReferencemodby") + "\","
+				// + "\"crtby\":\""
+				// + request.getParameter("ehReferencemodby") + "\""
+				// + "}";
+				// log.info(details);
+				//
+				// message = commands.get(o).execute(details);// do not delete
+				// // need to
+				// // improve
+				//
+				// } else {
+				// message = MessageList.ERROR.message();
+				// }
 				break;
 			default:
 				break;
 			}
+			log.info("Before" + message);
 			writeResponse(gson.toJson(message), response);
 			log.info(gson.toJson(message));
 		} catch (Exception exception) {
