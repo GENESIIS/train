@@ -60,7 +60,7 @@
 		<div class="modal-footer">
 			<button type="button" class="btn btn-success pull-right"
 				onclick="updateStudyProgram()" data-dismiss="modal">
-				<i class="glyphicon glyphicon-floppy-disk"></i> Save
+				<i class="glyphicon glyphicon-floppy-disk"></i> Update
 			</button>
 			<button type="button" class="btn btn-danger pull-left"
 				data-dismiss="modal">

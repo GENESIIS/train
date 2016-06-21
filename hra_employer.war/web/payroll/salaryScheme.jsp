@@ -120,9 +120,18 @@
 						<div class="form-group">
 							<label for="salaryComponent">Add Component</label>
 							<div class="inner-addon right-addon">
-								<i class="glyphicon glyphicon-search"></i> <input type="text"
+								<!-- <i class="glyphicon glyphicon-search"></i> <input type="text"
 									class="form-control" id="salaryComponent"
-									name="salaryComponent" placeholder="" onkeypress="loadModel();">
+									name="salaryComponent" placeholder="" onkeypress="loadModel();"> -->
+									
+									<select class="selectpicker" data-style="btn-info" id="selectsalaryComponenttype" onchange="selectComponent()">
+									 <option value="0" selected="selected" >Component</option>
+									 <option value="Basic">Basic</option>
+									 <option value="Allowance">Allowance</option>
+									 <option value="Bonus">Bonus</option>
+									 <option value="Deduction">Deduction</option>
+									 <option value="Other">Other</option>
+									</select>
 							</div>
 						</div>
 					</div>
@@ -148,6 +157,22 @@
 								<td><b>Max.Value</b></td>
 								<td>&nbsp;</td>
 							</tr>
+						</table>
+						<table id="salaryComTbl"
+							class="table table-striped table-bordered table-responsive"
+							cellspacing="0" width="100%">
+							<thead>
+							<tr>
+								<td><b>Type</b></td>
+								<td><b>Title</b></td>
+								<td><b>Currency</b></td>
+								<td><b>Description</b></td>
+								<td><b>Rate/Amount</b></td>
+								<td><b>Min.Value</b></td>
+								<td><b>Max.Value</b></td>
+								<td><b>&nbsp;</b></td>
+							</tr>
+							</thead>
 						</table>
 						&nbsp;<br />
 					</div>

@@ -10,10 +10,7 @@ import java.sql.Statement;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.DataValidator;
-import com.genesiis.hra.validation.MessageList;
-import com.google.gson.Gson;
 
 public class BasicData extends Employee {
 	static Logger log = Logger.getLogger(BasicData.class.getName());
@@ -241,7 +238,7 @@ public class BasicData extends Employee {
 	public int update(Object employee, String epf) {
 		String query = "UPDATE [dbo].[HRA.EMPLOYEE] SET NAME = ? ,  DESIGNATION = ? , "
 				+ "  EMAIL = ? ,  DOB = ? ,  NIC = ?,  GENDER = ?,  PERMENENTADDRESS = ?, TEMPORARYADDRESS = ?, "
-				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,  EPF = ?,  BASIS  = ? WHERE EPF = ?";
+				+ "  MOBILENO = ?,  OTHERNO = ?,  DEPTID = ?,  MARITALSTATUS = ?,  DATEOFJOIN = ?,  MODBY = ?,MODON = GETDATE(),  EPF = ?,  BASIS  = ? WHERE EPF = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -259,13 +256,11 @@ public class BasicData extends Employee {
 			ps.setString(6, empBasic.getEmployeegender());
 			ps.setString(7, empBasic.getEmployeepermenetaddress());
 			ps.setString(8, empBasic.getEmployeetemporaryaddress());
-			ps.setString(7, empBasic.getEmployeepermenetaddress());
-			ps.setString(8, empBasic.getEmployeetemporaryaddress());
 			ps.setString(9, empBasic.getEmployeemobile());
 			ps.setString(10, empBasic.getEmployeetelephone());
-			ps.setString(11, empBasic.getEmployeedepartment());
+			ps.setString(11,  empBasic.getEmployeedepartment());
 			ps.setString(12, empBasic.getEmployeemaritalstatus());
-			ps.setString(13, empBasic.getEmployeejoindate());
+			ps.setString(13,  empBasic.getEmployeejoindate());
 			ps.setString(14, "S");
 			ps.setString(15, empBasic.getEmployeeepf());
 			ps.setString(16, empBasic.getEmployeebasis());

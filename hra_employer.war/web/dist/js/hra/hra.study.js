@@ -108,6 +108,7 @@ function updateStudyProgram(){
 		success : function(data) {			
 			if (data == "Details added successfully.") {
 				clearEditStudyProgramform();
+				alert("//"+"  "+data);
 			} else {
 				alert(data);
 			};
@@ -155,7 +156,7 @@ function loadEditContentStudyProgram(){
 }
 
 //Clear Function Edit Study Details forms
-function clearAddStudyProgramform() {
+function clearEditStudyProgramform() {
 	$("#editInstitution").val("");
 	$("#editCourseType").val("");
 	$("#editAdmissionDate").val("");
@@ -167,7 +168,7 @@ function clearAddStudyProgramform() {
 }
 
 //Clear Function Study Details forms
-function clearEditStudyProgramform() {
+function clearAddStudyProgramform() {
 	$("#institution").val("");
 	$("#courseType").val("");
 	$("#admissionDate").val("");

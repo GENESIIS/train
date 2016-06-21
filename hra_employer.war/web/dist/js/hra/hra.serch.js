@@ -17,7 +17,7 @@ function serchEmployee() {
 		},
 		dataType : "json",
 		success : function(responseText) {
-			listEmployee(responseText);
+			listSeEmployee(responseText);
 		},
 		error : function(e) {
 			alert("Error " + e);
@@ -26,13 +26,11 @@ function serchEmployee() {
 	});
 }
 
-function listEmployee(empData) {
-
+function listSeEmployee(empData) {
 	json = JSON.parse(empData);
-	jsonData: JSON.stringify(empData);
-	// ////Check whether Table is Initialize or not
+	/////Check whether Table is Initialize or not
 	if ($.fn.dataTable.isDataTable('#employeeDetails')) {
-		// //////Destroy table
+		////////Destroy table
 		eTable.destroy();
 	}
 	eTable = $('#employeeDetails')
@@ -79,7 +77,7 @@ function listEmployee(empData) {
 
 					});
 
-	$("#employeeDetails_filter").css("display", "none"); // hiding global
+	$("#employeeDetails_filter").css("display", "none"); // hiding Search box
 	// search box
 	eTable = $('#employeeDetails').DataTable();
 	$('#serchEmployeeText').keyup(function() {

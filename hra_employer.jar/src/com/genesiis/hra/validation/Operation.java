@@ -3,6 +3,7 @@ package com.genesiis.hra.validation;
 public enum Operation {
 	ADD_SALARY_COMPONENT("ASC"),
 	ADD_SALARY_SCHEME("ASL"),
+	GET_SALARY_COMPONENT("GSC"),
 	BAD_OPERATION("BO"),
 	SERCH_EMPLOYEE("SE"),
 	REGISTER_LOAN("RL"),	
@@ -15,6 +16,10 @@ public enum Operation {
 	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
 	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
 	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
+	GET_MEDICAL_HISTORY("GMH"), //get medical history data to database
+	GET_MEDICAL_REPORT("GMR"), //get medical report data to database
+	UPDATE_MEDICAL_HISTORY("UMH"), //get medical history data to database
+	UPDATE_MEDICAL_REPORT("UMR"), //get medical report data to database
 	EMPLOYEE("EMP"), 
 	ADD_EMPLOYEE_BASICDATA("AEB"),
 	BASIC_DATA("BASIC"),

@@ -61,7 +61,7 @@ function addSalarycomponent(num) {
 	var salaryComponentminerror = $("#salaryComponentminerror").text();
 	var salaryComponentmaxerror = $("#salaryComponentmaxerror").text();
 
-	var jsonData = {
+	var data = {
 		"componentType" : salaryComponenttype,
 		"componentName" : salaryComponenttitle,
 		"description" : salaryComponentdescription,
@@ -88,7 +88,7 @@ function addSalarycomponent(num) {
 			type : "POST",
 			url : 'PayrollController',
 			data : {
-				jsonData : JSON.stringify(jsonData),
+				data : JSON.stringify(data),
 				task : "ASC"
 			},
 			dataType : "json",
@@ -116,8 +116,9 @@ function addSalaryscheme() {
 
 	var salarySchemetitleerror = $("#salarySchemetitleerror").text();
 	var salaryCriteriaerror = $("#salaryCriteriaerror").text();
+		
 
-	var jsonData = {
+	var data = {
 		"title" : salarySchemetitle,
 		"criteria" : salaryCriteria,
 		"description" : salarySchemedescription,
@@ -133,7 +134,7 @@ function addSalaryscheme() {
 			type : "POST",
 			url : 'PayrollController',
 			data : {
-				jsonData : JSON.stringify(jsonData),
+				data : JSON.stringify(data),
 				task : "ASL"
 			},
 			dataType : "json",
@@ -266,5 +267,129 @@ function deleteRows() {
 	var rowCount = salarySchemetbl.rows.length;
 	for (var i = rowCount - 1; i > 0; i--) {
 		salarySchemetbl.deleteRow(i);
+	}
+}
+
+
+//select component and disply componet 
+function selectComponent() {
+	  //var id = $(this).children(":selected").attr("id");	
+	 var selectsalaryComponenttype = $("#selectsalaryComponenttype").val();
+	 
+	 $.ajax({
+			type : "POST",
+			url : 'PayrollController',
+			data : {
+				data : selectsalaryComponenttype,			
+				task : "GSC"
+			},
+			dataType : "json",
+			success : function(responseText) {
+				listComponentData(responseText);
+			},
+			error : function(e) {
+				alert("Error " + e);
+				console.log(e);
+			}
+		});
+}
+
+function listComponentData(componentData) {
+
+	json = JSON.parse(componentData);	
+	////Check whether Table is Initialize or not
+	if ($.fn.dataTable.isDataTable('#salaryComTbl')) {
+		//////Destroy table
+		sTable.destroy();
+	}	
+	sTable = $('#salaryComTbl')
+			.DataTable(
+					{
+						"paging":   false,
+						data : json,
+						"aoColumns" : [
+								{	"mDataProp" : "componentType",
+									className : "center"
+								},
+								{	"mDataProp" : "componentName",
+									className : "center"
+								},
+								{	"mDataProp" : "currency",
+									className : "center"
+								},
+								{	"mDataProp" : "description",
+									className : "center"
+								},
+								{	"mDataProp" : "rate",
+									className : "center"
+								},
+								{   "mDataProp" : "minAmount",
+									className : "center"
+								},
+								{	"mDataProp" : "maxAmount",
+									className : "center"
+								},
+								{	"name" : "Add",
+									className : "center",
+									defaultContent : '<button type="button" class="btn btn-info" '
+											+ 'data-toggle="modal" id = "addComponent" ><i class="glyphicon glyphicon-modal-window"></i></button>'
+								} ]
+
+					});
+	$("#salaryComTbl_filter").css("display", "none"); // hiding Serch box
+	// /////////////Add component Button click event//////////////
+	$('#salaryComTbl tbody').on('click', '#addComponent', function() {
+		var data = sTable.row($(this).parents('tr')).data();
+		addRow(data);		
+	});
+	}
+function addRow(data) {
+	var table = document.getElementById("salarySchemetbl");
+	var salaryComponenttype =data.componentType ;
+	var salaryComponenttitle =data.componentName ;
+	var salaryComponentdescription =data.description ;
+	var salaryComponentamount = data.rate;
+	var salaryComponentmin = data.minAmount;
+	var salaryComponentmax =data.maxAmount ;
+	var salaryCurrency = data.currency;
+
+	var rowCount = table.rows.length;
+	var row = table.insertRow(rowCount);
+	alert(rowCount + " " + salaryCurrency);
+
+	var x = document.getElementById("salarySchemetbl").rows.length;
+
+	var td0 = row.insertCell(0);
+	td0.innerHTML = salaryComponenttype;
+	td0.id = "nr" + (x);
+
+	var td1 = row.insertCell(1);
+	td1.innerHTML = salaryComponenttitle;
+
+	var td2 = row.insertCell(2);
+	td2.innerHTML = salaryCurrency;
+
+	var td3 = row.insertCell(3);
+	td3.innerHTML = salaryComponentdescription;
+
+	var td4 = row.insertCell(4);
+	td4.innerHTML = salaryComponentamount;
+
+	var td5 = row.insertCell(5);
+	td5.innerHTML = salaryComponentmin;
+
+	var td6 = row.insertCell(6);
+	td6.innerHTML = salaryComponentmax;
+
+	var td7 = row.insertCell(7);
+	td7.innerHTML = '<button type="button" class="btn btn-danger" onClick="Javacsript:deleteRow(this)"><i class="glyphicon glyphicon-trash"></i></button>';
+
+	if (table != null) {
+		for (var i = 0; i < table.rows.length; i++) {
+			if (i > 0) {
+				var ce = table.rows[i].cells[1];
+				arr.push(ce.innerHTML);
+			}
+		}
 	}
 }

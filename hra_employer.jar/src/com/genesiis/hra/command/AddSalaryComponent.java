@@ -13,12 +13,11 @@ import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
 /**
- * @author pabodha
+ * @author pabodha 
  * 
  */
 public class AddSalaryComponent implements ICommandAJX {
 	static Logger log = Logger.getLogger(AddSalaryComponent.class.getName());
-	HashMap<Integer, Object> entiytMap = new HashMap<Integer, Object>();
 
 	public String execute(String gsonData) {
 		int id = -1; // The new row id created when a salary component is

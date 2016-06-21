@@ -26,7 +26,7 @@ public class Department implements ICrud {
 	private String departmentLocation;
 	private String departmentHead;
 
-	public String getDepartmentnumber() { 
+	public String getDepartmentnumber() {
 		return departmentNumber;
 	}
 
@@ -76,9 +76,10 @@ public class Department implements ICrud {
 
 	@Override
 	public int add(Object object) {
-		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO [HRA.DEPARTMENT] (NAME, LOCATION, MANAGERID, MODBY,MODON) VALUES (?, ?, ?, ?,GETDATE())";
 		Connection conn = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		Department department = (Department) object;
 		int status = 0;
 
@@ -92,7 +93,7 @@ public class Department implements ICrud {
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
+				rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
 					generatedKey = rs.getInt(1);
@@ -106,6 +107,9 @@ public class Department implements ICrud {
 				if (ps != null) {
 					ps.close();
 				}
+				if (rs != null) {
+					rs.close();
+				}
 				conn.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
@@ -114,7 +118,6 @@ public class Department implements ICrud {
 		return status;
 	}
 
-	
 	public List<String> getDepartments() {
 		String query = "SELECT * FROM [HRA.DEPARTMENT]";
 		Connection conn = null;
@@ -128,12 +131,19 @@ public class Department implements ICrud {
 				departments
 						.add(result.getString(1) + "#" + result.getString(2));
 			}
-			statement.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
 
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
+		}
 		return departments;
 	}
 
@@ -149,13 +159,22 @@ public class Department implements ICrud {
 			while (result.next()) {
 				managers.add(result.getString(1) + "#" + result.getString(2));
 			}
-			statement.close();
-			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
+
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
 		}
 		return managers;
-	}	
+	}
 
 	@Override
 	public int delete(Object object) {

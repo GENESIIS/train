@@ -129,7 +129,7 @@ public class Familymember extends Employee {
 
 	@Override
 	public int update(Object object, String epf) {
-		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=? , OCCUPATION=?, PLACE=?, MODBY=? WHERE ID=?";
+		String query = "UPDATE [HRA.FAMILY] SET NAME=?, DATEOFBIRTH=?, RELATIONSHIP=? , OCCUPATION=?, PLACE=?, MODBY=? WHERE EMPLOYEEID=?";
 		int status = -1;
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -144,7 +144,7 @@ public class Familymember extends Employee {
 			ps.setString(4, fm.getFmoccupation());
 			ps.setString(5, fm.getFmWorkingplace());
 			ps.setString(6, "SYSTEM");
-			ps.setString(7, "2");
+			ps.setString(7, epf);
 
 			log.info("***"+fm.getFmname()+"***"+new DataValidator().convertStringDatetoSqlDate(fm.getFmdateofbirth())+"***"+fm.getFmrelationship()+"***"+fm.getFmoccupation()+"***"+fm.getFmWorkingplace());
 			
@@ -173,33 +173,53 @@ public class Familymember extends Employee {
 	public Object findByEpf(String id) {
 
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		Familymember fm = new Familymember();
 		String Familymember = null;
 		Gson gson = new Gson();
 		try {
 			conn = ConnectionManager.getConnection();
-			preparedStatement = conn
+			ps = conn
 					.prepareStatement("SELECT * FROM [HRA.FAMILY] WHERE EMPLOYEEID=?");
-			preparedStatement.setString(1, id);
-			ResultSet res = preparedStatement.executeQuery();
-			if (res.next()) {
-				fm.setEmployeeepf(res.getString(2));
-				log.info("res.getString(2)" + res.getString(2));
-				fm.setFmdateofbirth(res.getString(4));
-				log.info("res.getString(4)" + res.getString(4));
-				fm.setFmname(res.getString(3));
-				log.info("res.getString(3)" + res.getString(3));
-				fm.setFmoccupation(res.getString(6));
-				log.info("res.getString(6)" + res.getString(6));
-				fm.setFmrelationship(res.getString(5));
-				log.info("res.getString(5)" + res.getString(5));
-				fm.setFmWorkingplace(res.getString(7));
-				log.info("res.getString(7)" + res.getString(7));
+			ps.setString(1, id);
+			
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				
+				fm.setEmployeeepf(rs.getString("EMPLOYEEID"));
+				log.info("res.getString(2)" + rs.getString("EMPLOYEEID"));
+				
+				fm.setFmdateofbirth(rs.getString(4));
+				log.info("res.getString(4)" + rs.getString(4));
+				
+				fm.setFmname(rs.getString(3));
+				log.info("res.getString(3)" + rs.getString(3));
+				
+				fm.setFmoccupation(rs.getString(6));
+				log.info("res.getString(6)" + rs.getString(6));
+				
+				fm.setFmrelationship(rs.getString(5));
+				log.info("res.getString(5)" + rs.getString(5));
+				
+				fm.setFmWorkingplace(rs.getString(7));
+				log.info("res.getString(7)" + rs.getString(7));
 				Familymember = gson.toJson(fm);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				if (ps != null) {
+					ps.close();
+				}if (rs != null) {
+					rs.close();
+				}
+				conn.close();
+			} catch (SQLException exception) {
+				exception.printStackTrace();
+			}
 		}
 
 		return fm;

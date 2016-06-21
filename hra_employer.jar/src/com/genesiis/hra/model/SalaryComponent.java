@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.jboss.logging.Logger;
@@ -125,7 +126,7 @@ public class SalaryComponent implements ICrud {
 			
 			
 			
-			ps.setInt(1, 1);
+			ps.setString(1, cs.getComponentType());
 			ps.setString(2, cs.getComponentname());
 			ps.setString(3, cs.getDescription());
 			ps.setString(4, cs.getCurrency());
@@ -185,9 +186,53 @@ public class SalaryComponent implements ICrud {
 	}
 
 	@Override
-	public List<Object> find(String empIdenti) throws SQLException, Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Object> find(String compKey) throws SQLException, Exception {
+		List<Object> componentList = new LinkedList<Object>();
+		String query = "SELECT * FROM [HRA.SALARYCOMPONENT] WHERE COMPONENTTYPE = ? ";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet findData = null;
+		
+		try {
+			conn = ConnectionManager.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1,compKey);
+			findData = ps.executeQuery();
+			try {
+				while(findData.next()){					
+					// set data to entity class
+					SalaryComponent salComponent = new SalaryComponent();
+					salComponent.setComponenttype(findData.getString("COMPONENTTYPE"));
+					salComponent.setComponentname(findData.getString("NAME"));
+					salComponent.setDescription(findData.getString("DESCRIPTION"));
+					salComponent.setCurrency(findData.getString("CURRANCY"));
+					salComponent.setMinamount(findData.getDouble("MINSALARY"));
+					salComponent.setMaxamount(findData.getDouble("MAXSALARY"));
+					salComponent.setRate(findData.getString("RATE"));
+					componentList.add(salComponent);
+					log.info("Inside loop at find methode");
+				}
+			} catch (Exception e) {
+				log.error("find methode "+e.toString());
+			}
+		} catch (Exception e) {
+			log.error("find methode "+e.toString());
+		}finally{
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (findData != null) {
+					findData.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}				
+			} catch (SQLException e) {
+				log.info("find methode "+ e.toString());
+			}
+		}
+		return componentList;
 	}
 
 	@Override
