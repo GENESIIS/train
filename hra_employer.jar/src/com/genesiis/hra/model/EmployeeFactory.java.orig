@@ -21,13 +21,21 @@ public class EmployeeFactory {
 			return new Familymember();
 			
 		case GET_EMPLOYEE_HISTORY:
+<<<<<<< HEAD
+			return new EmploymentHistory();	
+		case GET_EDU_DETAILS:
+			return new EducationData();
+		case GET_FAMILY:
+			return new Familymember(); 
+=======
 			return new EmploymentHistory();
 		case GET_MEDICAL_HISTORY:
 			return new MedicalHistory();
 		case GET_EDU_DETAILS:
 			return new EducationData();
 		case GET_FAMILY:
-			return new Familymember(); 
+			return new Familymember();
+>>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 		case GET_STUDY_PROGRAM:
 			return new StudyProgram();
 		default:

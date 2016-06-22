@@ -3,6 +3,7 @@ package com.genesiis.hra.model;
  * 20160609 PC HRA 38 created StudyProgram.java class
  * 20160610 PC HRA 39 modified  Update method and findByEpf
 */
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,51 +17,57 @@ import com.genesiis.hra.utill.ConnectionManager;
 
 public class StudyProgram extends Employee {
 	static Logger log = Logger.getLogger(StudyProgram.class.getName());
-	private String institution;
-	private String typofCourse;
-	private String admissionDate;
-	private String duration;
-	private String studyTime;
-	private String ProgramEndDate;	
+	private String institution,	 typofCourse, admissionDate, duration, studyTime, ProgramEndDate;		
 	
 	public String getInstitution() {
 		return institution;
 	}
+
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
+
 	public String getTypofCourse() {
 		return typofCourse;
 	}
+
 	public void setTypofCourse(String typofCourse) {
 		this.typofCourse = typofCourse;
 	}
+
 	public String getAdmissionDate() {
 		return admissionDate;
 	}
+
 	public void setAdmissionDate(String admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
 	public String getDuration() {
 		return duration;
 	}
+
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
+
 	public String getStudyTime() {
 		return studyTime;
 	}
+
 	public void setStudyTime(String studyTime) {
 		this.studyTime = studyTime;
 	}
+
 	public String getProgramEndDate() {
 		return ProgramEndDate;
 	}
+
 	public void setProgramEndDate(String programEndDate) {
 		ProgramEndDate = programEndDate;
 	}
-	
-	//add study program detail
+
+	// add study program detail
 	@Override
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.STUDYPROGRAM] (EMPLOYEEID, STUDYTIME, "
@@ -70,10 +77,11 @@ public class StudyProgram extends Employee {
 		PreparedStatement ps = null;
 		ResultSet rs = null;		
 		int insertStatus = 0;
-		log.info("Inside add method");	
+		log.info("Inside add method");		
+		
 		try {
-			StudyProgram employee = (StudyProgram) object;			
-			conn = ConnectionManager.getConnection();			
+			StudyProgram employee = (StudyProgram) object;
+			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, employee.getEmployeeepf());
 			ps.setString(2, employee.getStudyTime());
@@ -105,7 +113,7 @@ public class StudyProgram extends Employee {
 				if (ps != null) {
 					ps.close();
 				}
-				conn.close();				
+				conn.close();	
 			} catch (SQLException exception) {
 				log.error(exception);
 			}
@@ -114,7 +122,8 @@ public class StudyProgram extends Employee {
 		return insertStatus;
 	}
 	
-	//update study program detail
+
+	// update study program detail
 	@Override
 	public int update(Object object, String epf) {
 		String query = "UPDATE [dbo].[HRA.STUDYPROGRAM] SET EMPLOYEEID = ? ,  STUDYTIME = ? , "
@@ -124,12 +133,13 @@ public class StudyProgram extends Employee {
 		Connection conn = null;
 		PreparedStatement ps = null;		
 		int insertStatus = -1;
-		log.info("Inside add method");	
+		log.info("Inside update method");	
 		try {
-			StudyProgram employee = (StudyProgram) object;			
-			conn = ConnectionManager.getConnection();			
+			StudyProgram employee = (StudyProgram) object;
+			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query);
-			ps.setString(1,epf);
+			
+			ps.setString(1, epf);
 			ps.setString(2, employee.getStudyTime());
 			ps.setString(3, employee.getInstitution());
 			ps.setString(4, employee.getTypofCourse());
@@ -154,7 +164,7 @@ public class StudyProgram extends Employee {
 				if (ps != null) {
 					ps.close();
 				}
-				conn.close();				
+				conn.close();
 			} catch (SQLException exception) {
 				log.error(exception);
 			}
@@ -194,26 +204,31 @@ public class StudyProgram extends Employee {
 			}
 			return emp;
 		}
+
 	@Override
 	public int delete(Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 	@Override
 	public Object find(int empEpf) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub

@@ -62,7 +62,7 @@ function loadContentqualifications() {
 
 //@AS
 function loadViewEmployee() {
-	$("#mainContent").load("ViewemployeeDetails/viewEmployeeDetails.jsp");
+	$("#mainContent").load("viewemployeeDetails/viewEmployeeDetails.jsp");
 	loademployeeDetails();
 }
 

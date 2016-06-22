@@ -16,10 +16,14 @@ public enum Operation {
 	UPDATE_EMPLOYEE_HISTORY("UEH"), //update employee history data to database
 	ADD_MEDICAL_HISTORY("AMH"), //add medical history data to database
 	ADD_MEDICAL_REPORT("AMR"), //add medical report data to database
+<<<<<<< HEAD
 	GET_MEDICAL_HISTORY("GMH"), //get medical history data to database
 	GET_MEDICAL_REPORT("GMR"), //get medical report data to database
 	UPDATE_MEDICAL_HISTORY("UMH"), //get medical history data to database
 	UPDATE_MEDICAL_REPORT("UMR"), //get medical report data to database
+=======
+	GET_MEDICAL_HISTORY("GMH"),
+>>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 	EMPLOYEE("EMP"), 
 	ADD_EMPLOYEE_BASICDATA("AEB"),
 	BASIC_DATA("BASIC"),
@@ -33,10 +37,12 @@ public enum Operation {
 	UPDATE_EDU_DETAILS("UED"),
 	GET_EDU_DETAILS("GED"),
 	STUDY_PROGRAM("STD"),
+	GET_STUDY_PROGRAM("GSP"),
 	LOAN("LOAN"), 
 	EMPLOYMENT_HISTORY("HIS"),
 	VIEW_EMPLOYEE_DETAILS("VPD"),
 	ADD_STADY_PROGRAM("ASP"),
+	UPDATE_STUDY_PROGRAM("USP"),
 	UPDATE_FAMILY_MEMBER("UFM"),
 	GET_FAMILY_MEMBER("GFM"),
 	ADD_STUDY_PROGRAM("ASP"),

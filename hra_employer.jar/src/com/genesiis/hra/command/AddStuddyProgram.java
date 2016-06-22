@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 
 public class AddStuddyProgram implements ICommandAJX{
 static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
-	
 	// Method to execute JsonData and add employee study
 	public String execute(String gsonData) {		
 		Employee accessdata = new StudyProgram();		
@@ -24,14 +23,14 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		      if (validateEmployee(employee).equalsIgnoreCase("True")) {
 			     id = accessdata.add(employee);
 			     if(id > 0)
-			    	 message = MessageList.UPDATED;
+			    	 message = MessageList.ADDED;
 		       } else {
 			     
 		       }
 		}catch(Exception e){
 			 message = MessageList.ERROR;
 		}
-		return message.message(); 
+		return message.message();
 	}
 	
 	@Override
@@ -39,6 +38,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	// Method to execute JsonData and Update employee Study
 	@Override
 	public String execute(String gsonData, String epf) {
@@ -60,6 +60,7 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		}
 		return message.message();
 	}
+	
 	// Method to extract Employee detail from jsonData.
 	@Override
 	public Object extractFromJason(String gsonData) {
@@ -67,7 +68,8 @@ static Logger log = Logger.getLogger(AddStuddyProgram.class.getName());
 		StudyProgram employee = null;
 		try {
 			employee = gson.fromJson(gsonData, StudyProgram.class);	
-			log.info("Inside the extract from gson method -" + employee.getEmployeeepf());
+			log.error("Inside the extract from gson method -" + employee.getEmployeeepf());
+			
 		} catch (Exception e) {
 			log.error(e);
 		}

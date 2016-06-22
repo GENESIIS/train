@@ -253,6 +253,39 @@ function clearMedicalHisory(){
 	$('#upload').prop('disabled', true);
 
 }
+
+//View Medical History details
+function viewMedicalDetails() {
+
+	$.ajax({
+		type : "POST",
+		url : 'EmployerController',
+		data : {
+			jsonData : JSON.stringify("1"),
+			inputValue : empEpf,
+			task : "GMH"
+		},
+		dataType : "json",
+		success : function(responseText) {
+			// alert("ajax" + responseText);
+			json = JSON.parse(responseText);
+			// alert(responseText);
+			// $("#employee_id").text(json.employeeEpf);
+			
+			$("#ailment").text(json.medicalHistoryailment);
+			$("#ailmentDescription").text(json.medicalHistorydescription);
+			$("#reportDescription").text(json.mdeicalReportDis);
+			// $("#report").attr(json.MedicalReportPath);
+			// document.getElementById("report").href="json.MedicalReportPath";
+			$("#report").attr("href", "file:///" + json.MedicalReportPath);
+			$("#imagereport").attr("src", "file:///" + json.MedicalReportPath);
+		},
+		error : function(e) {
+			alert("Error " + e);
+			console.log(e);
+		}
+	});
+}
 /*******************************************************************************
  * End Clear medical history data
  */
