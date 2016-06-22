@@ -51,6 +51,7 @@ public class EmployeePersistJDBC extends SearchPersistJDBC {
 		return null;
 	}
 
+	//find employees matching with keyword
 	@Override
 	public List<Object> find(String keyWord) throws SQLException, Exception {
 		List<Object> employList = new LinkedList<Object>();
