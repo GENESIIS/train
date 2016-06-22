@@ -13,7 +13,7 @@ public abstract class SearchPersistJDBC implements ICrud {
 		
 		return 0;
 	}
-
+ 
 	@Override
 	public int update(Object object) {
 		// TODO Auto-generated method stub

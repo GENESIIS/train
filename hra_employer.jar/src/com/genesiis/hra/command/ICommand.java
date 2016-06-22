@@ -13,3 +13,4 @@ public interface ICommand {
 		
 		public Boolean validateValue(HashMap<Integer, Object> entitytMap);
 }
+ 

@@ -10,7 +10,7 @@ public class BasicData extends Employee {
 	private String employeeDateofbirth;
 	private String employeeNic;
 	private String employeeGender;
-	private String employeePermenetaddress;
+	private String employeePermenetaddress; 
 	private String employeeTemporaryaddress;
 	private String employeeMobile;
 	private String employeeTelephone;

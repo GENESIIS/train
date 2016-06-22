@@ -9,7 +9,7 @@ import java.util.List;
 //***********************************************/
 
 public interface ICrud {
-	public int add(Object object);
+	public int add(Object object); 
  
 	public int update(Object object);
 
