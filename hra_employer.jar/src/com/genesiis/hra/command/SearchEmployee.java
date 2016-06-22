@@ -5,23 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.jboss.logging.Logger;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
-import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
+
+import com.genesiis.hra.model.EmployeePersistJDBC;
+import com.genesiis.hra.model.SearchPersistJDBC;
 import com.google.gson.Gson;
 /* *********************************************
- * 20160520 HRA 30 pc create SercEmPloyee class 
- * 20160520 HRA 30 pc create execute method
+ * 20160520 HRA 30 PC create SercEmPloyee class 
+ * 20160520 HRA 30 PC create execute method
 */
-public class SerchEmployee implements ICommand {
-static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
+public class SearchEmployee extends Search {
+static Logger loger = Logger.getLogger(SearchEmployee.class.getName());
 	@Override
 	public String execute(String keyWord) throws ParseException {
-		// TODO Auto-generated method stub
-		 String message = "";
-		 EmployeeCrudJDBC employeeManager = new EmployeeCrudJDBC();
-		 EmployeeCrudJDBC serchEmployeeManager = new SerchEmployeeCrudJDBC();
+		
+		SearchPersistJDBC employeeManager = new EmployeePersistJDBC();
 		 List<Object>  empList = null ;
-		 try {			
+		 try {	  // call employeePersistclass find method		
 				  empList =  employeeManager.find(keyWord); 
 				  loger.info("This execute method"+empList);								
 					
@@ -51,10 +50,10 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
 	}
 	public int validateFind(String emplIdenti) {
 		// TODO Auto-generated method stub
-		return (Integer) null;
+		return 0;
 	}
 	
-	// Create geson object
+	// Create gson object
 	public String createGson(List<Object> emp) {					
 			Gson gson = new Gson();	
 			String empList = " ";

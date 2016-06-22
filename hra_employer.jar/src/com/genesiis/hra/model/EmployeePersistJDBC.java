@@ -7,32 +7,29 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.jboss.logging.Logger;
-
 import com.genesiis.hra.utill.ConnectionManager;
-import com.google.gson.Gson;
 
 ///***********************************************
 //* 20160430 PN HRA-2 created EmployeeManager.java class
 //* 20160505 PN HRA-2  validateEmployee() method Modified.
+//  20160622 PC HRA-30 Rename EmployeeManager to EmployeePersistJDBC 
 //***********************************************/
 
-public class EmployeeCrudJDBC implements ICrud {
-	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
+public class EmployeePersistJDBC extends SearchPersistJDBC {
+	static Logger log = Logger.getLogger(EmployeePersistJDBC.class.getName());
 
 	@Override
 	public int add(Object object) {
 		
-		return (Integer) null;
+		return 0;
 	}
 
 	@Override
 	public int update(Object object) {
 		// TODO Auto-generated method stub
-		return (Integer) null;
-	}
-		
+		return 0;
+	}	
 
 
 	@Override
@@ -58,13 +55,9 @@ public class EmployeeCrudJDBC implements ICrud {
 	public List<Object> find(String keyWord) throws SQLException, Exception {
 		List<Object> employList = new LinkedList<Object>();
 		String query = "select EPF, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where (EPF LIKE   ? OR NAME LIKE ? OR DESIGNATION LIKE  ? OR MOBILENO LIKE  ?)";
-		String query1 = "select EPF, NAME,DESIGNATION, MOBILENO from [hra-2].[dbo].[HRA.EMPLOYEE] where match (NAME) AGAINST(?)";
-		String messege = "";
 		Connection conn = null;
 		PreparedStatement pd = null;
-		ResultSet findData = null;
-		 
-		
+		ResultSet findData = null;		
 		
 		try {
 			conn = ConnectionManager.getConnection();
@@ -87,18 +80,21 @@ public class EmployeeCrudJDBC implements ICrud {
 					log.info("Inside loop at find methode");
 				}					
 			} catch (SQLException e) {
-				// TODO: handle exception
 				log.info("find methode "+e.toString());
 			}
 		} catch (Exception ex) {
-			// TODO: handle exception
 			log.info("find methode "+ex.toString());
 		}finally{
 			try {
 				if (pd != null) {
 					pd.close();
 				}
-				conn.close();
+				if (findData != null) {
+					findData.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e) {
 				log.info("find methode "+ e.toString());
 			}
@@ -109,18 +105,6 @@ public class EmployeeCrudJDBC implements ICrud {
 	@Override
 	public List<Object> getAll() {
 		return null;
-	}
-
-	// Method to extract EmployeeDetails from jsonData.
-	public Employee extractFromgson(String gsonData)throws Exception {
-		Gson gson = new Gson();
-		Employee employee = null;
-		try {
-			employee = gson.fromJson(gsonData, Employee.class);
-		} catch (Exception e) {
-			log.info("ExtractFromgson - Exception " + e);
-		}
-		return employee;
 	}
 
 	public String validateEmployee(Employee employee) throws ParseException {

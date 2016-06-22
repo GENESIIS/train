@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.logging.Logger;
 import com.genesiis.hra.command.ICommand;
-import com.genesiis.hra.command.SerchEmployee;
+import com.genesiis.hra.command.SearchEmployee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
@@ -19,13 +19,10 @@ import com.google.gson.Gson;
 
 ///***********************************************
 //* 20160407 PN HRA-1 created EmployeeController.java class
-//* 20160430 PN HRA-1 doGet(), doPost() methods compleated.
-//* 
+//* 20160430 PN HRA-1 doGet(), doPost() methods completed.
+//* 20160530 PC HRA-30 doGet(), doPost() methods Modified.
 //***********************************************/
 
-/**
- * Servlet implementation class AddEmployeeDetails
- */
 @WebServlet("/EmployeeController")
 public class EmployeeController extends HttpServlet {
 
@@ -35,10 +32,9 @@ public class EmployeeController extends HttpServlet {
 	DataValidator validator = new DataValidator();
 
 	public void init() throws ServletException {		
-
+        //Add command class object to map
 		commands = new HashMap<Operation, ICommand>();		
-		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
-		// hmap.put(4, null);
+		commands.put(Operation.SERCH_EMPLOYEE, new SearchEmployee());
 	}
 
 	/**
@@ -72,7 +68,8 @@ public class EmployeeController extends HttpServlet {
 		try { 
 			switch (o) {
 			
-			 case SERCH_EMPLOYEE:					
+			 case SERCH_EMPLOYEE:
+				    //call search command class
 					message = commands.get(o).execute(serchVlaue);
 					log.info(message);
 		        break;	
