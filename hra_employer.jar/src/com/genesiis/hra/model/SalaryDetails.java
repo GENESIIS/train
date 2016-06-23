@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * This class is the data access class when creating a Salary Details.
+ * This class is the data access class when creating a Salary Details. 
  */
 public class SalaryDetails implements ICrud {
 	

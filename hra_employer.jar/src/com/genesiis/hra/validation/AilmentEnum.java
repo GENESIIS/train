@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * Load ailment (deseases) to the Medical history form
+ * Load ailment (deseases) to the Medical history form 
  *  * @author @tr - thumeera
  * **/
 

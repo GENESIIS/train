@@ -6,7 +6,7 @@
 /*******************************************************************************
  * To load the Salary component page.
  ******************************************************************************/
-
+ 
 var arr = [];
 function loadSalarycomponentdetails() {
 	$("#mainContent").load("payroll/salaryComponent.jsp");

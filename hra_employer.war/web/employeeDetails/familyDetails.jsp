@@ -34,7 +34,7 @@
 						type="date" class="form-control" id="relationDateofbirth"
 						name="relationDateofbirth" placeholder="">
 				</div>
-			</div>
+			</div> 
 		</div>
 		<!-- 				<div class="row"> -->
 		<!-- 					<div class="col-md-6"> -->

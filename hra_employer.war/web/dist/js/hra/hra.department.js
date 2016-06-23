@@ -8,7 +8,7 @@
 
 function loadContentDepartment() {
 	$("#mainContent").load("manageDepartment.jsp");
-}
+} 
 
 function getDepartment() {
 	var jsonData = {};

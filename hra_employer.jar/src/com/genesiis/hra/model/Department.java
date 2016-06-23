@@ -21,7 +21,7 @@ import com.genesiis.hra.validation.MessageList;
 public class Department implements ICrud {
 	static Logger log = Logger.getLogger(Department.class.getName());
 
-	private String departmentNumber;
+	private String departmentNumber; 
 	private String departmentName;
 	private String departmentLocation;
 	private String departmentHead;

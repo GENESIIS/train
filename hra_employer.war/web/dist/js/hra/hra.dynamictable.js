@@ -19,7 +19,7 @@ function addRowToTable(names, tableId, dates, selections, options) {
 	var element = {};
 	for (var i = 0; i < names.length; i++) {
 		var cellRight = row.insertCell(1 + i);
-
+ 
 		element[i] = document.createElement('input');
 
 		if (jQuery.inArray(i.toString(), dates) !== -1) {

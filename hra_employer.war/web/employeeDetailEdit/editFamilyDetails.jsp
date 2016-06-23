@@ -36,7 +36,7 @@
 				type="text" class="form-control" id="editrelationName"
 				name="editrelationName" placeholder=""
 				onkeypress="return isLetter(event);" onblur="resetFieldsadd()">
-		</div>
+		</div> 
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">

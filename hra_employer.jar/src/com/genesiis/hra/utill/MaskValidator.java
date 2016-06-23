@@ -12,7 +12,7 @@ public class MaskValidator {
 	
 	public static int MSK_ISFEATURED					=16;
 	public static int MSK_ISAPPLIED						=32;
-	public static int MSK_ISREADING						=64;
+	public static int MSK_ISREADING					 	=64;
 	public static int MSK_ISMARRIED						=128;
 	
 	//STATIC MEMORY HOLDER IN MEDICAL HISTORY / MEDICAL REPORTS

@@ -13,7 +13,7 @@ import com.google.gson.Gson;
  * 
  * 09052016 HRA 13 PC RigisterLoan.java class 
  * */
-
+ 
 public class RegisterLoan implements ICommandAJX {
 	static Logger log = Logger.getLogger(RegisterLoan.class.getName());
 	// command class execution method

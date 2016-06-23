@@ -1,7 +1,7 @@
 <!--Add Educational Modal -->
 <div class="">
 	<div class="well">
-		<h3 class="">
+		<h3 class=""> 
 			<i class="glyphicon glyphicon-edit"></i> Educational & Professional
 			Qualifications
 		</h3>

@@ -33,7 +33,7 @@
 				<th>Delete</th>
 			</tr>
 		</tfoot>
-		<tbody>
+		<tbody> 
 			<tr>
 				<td>EMP001</td>
 				<td>Dammika Nawarathna</td>

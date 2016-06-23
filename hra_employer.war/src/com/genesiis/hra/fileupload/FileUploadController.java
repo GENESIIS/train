@@ -30,7 +30,7 @@ public class FileUploadController extends HttpServlet {
 	HashMap<Operation, ICommandAJX> commands = null;
 
 	public void init() throws ServletException {
-
+ 
 	}
 
 	protected void doGet(HttpServletRequest request,

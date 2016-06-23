@@ -28,7 +28,7 @@
 					<th>Location</th>
 					<th>Head Of the Department</th>
 					<th>View</th>
-					<th>Edit</th>
+					<th>Edit</th> 
 					<th>Delete</th>
 				</tr>
 			</thead>

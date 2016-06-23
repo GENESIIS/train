@@ -36,7 +36,7 @@ public class DepartmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(DepartmentController.class.getName());
 	HashMap<Operation, ICommandAJX> commands = null;
-
+ 
 	public void init() throws ServletException {
 		// HashMap to map commands into Operation enum.
 		commands = new HashMap<Operation, ICommandAJX>();

@@ -18,7 +18,7 @@ import com.genesiis.hra.utill.ConnectionManager;
 /**
  * This class is the data access class when creating a Salary Component.
  */
-public class SalaryComponent implements ICrud {
+public class SalaryComponent implements ICrud { 
 	static Logger log = Logger.getLogger(SalaryComponent.class.getName());
 
 	String componentType, componentName, description, modBy, currency, rate;

@@ -18,7 +18,7 @@
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="dist/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
 <link href="dist/assets/css/ie10-viewport-bug-workaround.css"
 	rel="stylesheet">
 

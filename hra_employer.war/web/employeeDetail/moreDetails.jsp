@@ -5,8 +5,8 @@
 <!-- 20160505 PN HRA-2 edited the design. -->
 <!-- JavaScripts to help to load  -->
 
-<script type="text/javascript">
-	//To load the Datatable
+<script type="text/javascript"> 
+	//To load the Datatable 
 	$(document).ready(function() {
 		$('#employeeDetails').DataTable();
 	});

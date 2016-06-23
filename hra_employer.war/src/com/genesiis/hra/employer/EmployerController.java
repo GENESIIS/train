@@ -41,7 +41,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class AddEmployeeDetails
  */
-@WebServlet("/EmployerController")
+@WebServlet("/EmployerController") 
 @MultipartConfig
 public class EmployerController extends HttpServlet {
 

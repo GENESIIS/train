@@ -6,7 +6,7 @@ function loadviewloandetails() {
 	$("#viewmodelrest").load("viewemployeeDetails/viewloanDetails.jsp");
 }
 
-function clearLoanDetails() {
+function clearLoanDetails() { 
 	$("#employeeId").val("");
 	$("#totalOutstanding").val("");
 	$("#guarantor1").val("");

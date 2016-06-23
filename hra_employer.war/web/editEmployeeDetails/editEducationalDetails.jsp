@@ -7,7 +7,7 @@
 	});
 </script>
 <div class="">
-	<div class="">
+	<div class=""> 
 		<h3 class="">
 			<i class="glyphicon glyphicon-edit"></i> Educational & Professional
 			Qualifications

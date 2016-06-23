@@ -10,7 +10,7 @@ public interface ICrud {
 	public int add(Object object);
 	
 	public int update(Object object, String epf);
-
+ 
 	public int delete(Object object);
 	
 	public Object find(int empEpf)throws SQLException, Exception;

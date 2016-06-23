@@ -23,7 +23,7 @@ import org.jboss.logging.Logger;
  * 20160524 PN created PayrollController.java class. doPost() method created.
  */
 @WebServlet("/PayrollController")
-public class PayrollController extends HttpServlet {
+public class PayrollController extends HttpServlet { 
 
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(PayrollController.class.getName());

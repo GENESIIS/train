@@ -25,7 +25,7 @@
 					<th>Delete</th>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody> 
 				<tr>					
 					<td align="center"></td>
 					<td align="center"></td>

@@ -5,7 +5,7 @@ function loadfamilydetails() {
 }
 
 function loadEditContentfamilydetails() {
-	getEmployeetoupdate();
+	getEmployeetoupdate(); 
 	
 	$("#Editmodelrest").load("editEmployeeDetails/editFamilyDetails.jsp");
 

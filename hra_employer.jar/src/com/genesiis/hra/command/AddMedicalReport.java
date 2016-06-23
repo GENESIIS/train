@@ -11,7 +11,7 @@ import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
-public class AddMedicalReport implements ICommandAJX {
+public class AddMedicalReport implements ICommandAJX { 
 
 	static Logger log = Logger.getLogger(AddMedicalReport.class.getName());
 

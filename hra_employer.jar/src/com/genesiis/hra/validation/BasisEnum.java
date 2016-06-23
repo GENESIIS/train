@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum BasisEnum {
-
+ 
 	PERMANENT("Permanent"), 
 	CONTRACT("Contract"),
 	TRAINEE("Trainee");

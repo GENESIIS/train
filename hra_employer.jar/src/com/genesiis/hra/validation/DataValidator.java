@@ -8,7 +8,7 @@ import java.util.Date;
 import org.jboss.logging.Logger;
 
 ///***********************************************
-//* 20160415 PN HRA-2 created DataValidator.java class
+//* 20160415 PN HRA-2 created DataValidator.java class 
 //* 20160430 PN created isValidnic() method.
 //* 20160505 PN created isValidemail(), isValidTelephone() methods.
 //***********************************************/

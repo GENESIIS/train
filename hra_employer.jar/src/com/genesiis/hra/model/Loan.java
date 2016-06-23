@@ -1,7 +1,7 @@
 package com.genesiis.hra.model;
 
 import java.sql.Date;
-
+ 
 public class Loan {
 
 	private String employeeEpf ;	

@@ -13,7 +13,7 @@ public class GetLoan implements ICommandAJX {
 	
 	public String execute(String epf) {
 		String message = "";
-		LoanPersistJDBC loanManager = new  LoanPersistJDBC();
+		LoanPersistJDBC loanManager = new  LoanPersistJDBC(); 
 		
 		try {
 			log.info("GEtloan excecute");

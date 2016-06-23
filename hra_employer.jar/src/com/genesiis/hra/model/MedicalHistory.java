@@ -15,7 +15,7 @@ import com.genesiis.hra.validation.MessageList;
 
 /**
  * 
- * 2016-05-24 class created to add medical data - entity class
+ * 2016-05-24 class created to add medical data - entity class 
  * 
  * @author thumeera @TR
  * **/

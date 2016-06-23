@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 
 public class GetDepartment implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetDepartment.class.getName());
-	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
+	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>(); 
 
 	@Override
 	public String execute(String gsonData) {

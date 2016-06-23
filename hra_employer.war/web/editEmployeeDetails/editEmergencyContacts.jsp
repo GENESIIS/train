@@ -5,7 +5,7 @@
 		data-toggle="modal" data-target="#addEmployeeDetailsForm">
 		<i class="glyphicon glyphicon-plus"></i> Add New
 	</button>
-</div>
+</div> 
 
 <br></br>
 <div class="table-responsive">

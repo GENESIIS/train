@@ -24,7 +24,7 @@ import com.google.gson.Gson;
 //***********************************************/
 public class EmployeePersistJDBC extends SerchPersistJDBC {
 	static Logger log = Logger.getLogger(EmployeePersistJDBC.class.getName());
-
+ 
 	@Override
 	public int add(Object object) {
 		

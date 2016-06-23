@@ -5,7 +5,7 @@
 	//To load the Datatable
 	$(document).ready(function() {
 
-		$("#btn3").click(function() {
+		$("#btn3").click(function() {  
 
 			$("#employeeId").val("2");
 			$("#employer").val("employer name");

@@ -10,7 +10,7 @@ import com.genesiis.hra.model.EmploymentHistory;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
-
+ 
 public class AddEmployeeHistory implements ICommandAJX {
 
 	static Logger log = Logger.getLogger(AddEmployeeHistory.class.getName());

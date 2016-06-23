@@ -18,7 +18,7 @@ import com.google.gson.Gson;
  * 
  * **/
 public class Familymember extends Employee {
-	static Logger log = Logger.getLogger(Familymember.class.getName());
+	static Logger log = Logger.getLogger(Familymember.class.getName()); 
 
 	private String fmName;
 	private String fmDateofbirth;

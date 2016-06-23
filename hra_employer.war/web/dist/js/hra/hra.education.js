@@ -16,7 +16,7 @@ function AddEducationDetails() {
 	var studyTime = checkStudyTime();
 
 	var EducationData = {
-		"employeeEpf" : employeeId,
+		"employeeEpf" : employeeId, 
 		"eduQualification" : qualificationName,
 		"eduUniversity" : educatedPlace,
 		"eduMedium" : mediumStudied,

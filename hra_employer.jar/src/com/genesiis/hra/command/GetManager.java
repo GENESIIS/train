@@ -13,7 +13,7 @@ public class GetManager implements ICommandAJX {
 	static Logger log = Logger.getLogger(GetManager.class.getName());
 	HashMap<Integer, Object> errorList = new HashMap<Integer, Object>();
 
-	@Override
+	@Override 
 	public String execute(String gsonData) {
 		String message = MessageList.ERROR.message();
 		try {

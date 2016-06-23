@@ -28,7 +28,7 @@
 							<tr>
 								<td>Marketing</td>
 								<td>Mr. Manil Fernando</td>
-								<td>15</td>
+								<td>15</td> 
 							</tr>
 							<tr>
 								<td>Legal</td>

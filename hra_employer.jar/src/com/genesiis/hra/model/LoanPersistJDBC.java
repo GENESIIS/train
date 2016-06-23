@@ -11,7 +11,7 @@ import org.jboss.logging.Logger;
 import com.genesiis.hra.utill.ConnectionManager;
 /***********************************************
 //* 20160510 PC HRA-13 created LoanCrudJDBC.java class
-//* 20160513 PC HRA-13  validateEmployee() method Modified.
+//* 20160513 PC HRA-13  validateEmployee() method Modified. 
 //***********************************************/
 public class LoanPersistJDBC implements ICrud {
 	static Logger log = Logger.getLogger(LoanPersistJDBC.class.getName());

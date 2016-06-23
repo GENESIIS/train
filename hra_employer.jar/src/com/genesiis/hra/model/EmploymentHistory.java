@@ -21,7 +21,7 @@ public class EmploymentHistory extends Employee {
 	static Logger log = Logger.getLogger(EmploymentHistory.class.getName());
 
 	private int ehid;
-	private String ehEmployeeid;
+	private String ehEmployeeid; 
 	private String ehEmployername;
 	private String ehDesignation;
 	private String ehStartdate;

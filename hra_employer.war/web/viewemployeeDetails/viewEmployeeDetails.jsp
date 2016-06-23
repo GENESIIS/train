@@ -30,7 +30,7 @@
 									style="margin-right: 10px;">
 									<i class="fa fa-upload"></i> Upload Profile Image
 								</button>
-
+ 
 							</div>
 
 						</div>

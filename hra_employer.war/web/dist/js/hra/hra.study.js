@@ -6,7 +6,7 @@ function loadEditStudyProgramsDetails() {
 	$("#Editmodelrest").load("editEmployeeDetails/editStudyPrograms.jsp");
 }
 
-// Check study time and returns Value
+// Check study time and returns Value 
 function checkStudyTime() {
 	if ((document.getElementById('stWeekdays').checked)
 			&& (document.getElementById('stWeekends').checked)) {

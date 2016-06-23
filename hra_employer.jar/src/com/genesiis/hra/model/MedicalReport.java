@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 
-public class MedicalReport extends Employee{
+public class MedicalReport extends Employee{ 
 
 	static Logger log = Logger.getLogger(MedicalReport.class.getName());
 

@@ -33,7 +33,7 @@
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
-		</tfoot>
+		</tfoot> 
 		<tbody>
 			<tr>
 				<td>EMP001</td>

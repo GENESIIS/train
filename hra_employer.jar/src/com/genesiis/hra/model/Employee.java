@@ -8,7 +8,7 @@ package com.genesiis.hra.model;
 //***********************************************/
 
 //@Entity
-public abstract class Employee implements ICrud {
+public abstract class Employee implements ICrud { 
 
 	protected String employeeEpf;
 

@@ -27,7 +27,7 @@
 		loadBasicTable();
 		getDepartment();
 		//listEmployee(empData); 
-	});
+	}); 
 </script>
 
 <style>

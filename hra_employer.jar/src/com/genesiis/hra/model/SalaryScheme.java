@@ -17,7 +17,7 @@ import com.genesiis.hra.utill.ConnectionManager;
 /**
  * This class is the data access class when creating a Salary Scheme.
  */
-public class SalaryScheme implements ICrud {
+public class SalaryScheme implements ICrud { 
 	
 	static Logger log = Logger.getLogger(SalaryScheme.class.getName());
 

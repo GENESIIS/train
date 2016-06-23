@@ -33,7 +33,7 @@
 			<label for="mediumStudied">Medium</label> <input type="text"
 				class="form-control" id="mediumStudied" name="mediumStudied"
 				placeholder="" onkeypress="return isLetter(event)">
-		</div>
+		</div> 
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">

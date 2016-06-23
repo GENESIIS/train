@@ -9,7 +9,7 @@ var doUpdateEnable = true;
 var doAddEnable = false;
 
 $(document).ready(function() {
-	
+	 
 });
 
 // field empty check

@@ -5,7 +5,7 @@ package com.genesiis.hra.validation;
 //* 20160505 PN HRA-3 New values added to the MessageList Enum
 //***********************************************/
 
-
+ 
 public enum MessageList {	
 	//Message set that will return by the CRUD methods.
 	ADDED("Details added successfully."), 

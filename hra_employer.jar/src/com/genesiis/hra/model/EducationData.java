@@ -18,7 +18,7 @@ import com.google.gson.Gson;
  * functions
  **/
 
-public class EducationData extends Employee {
+public class EducationData extends Employee { 
 	static Logger log = Logger.getLogger(Employee.class.getName());
 
 	private String eduQualification;

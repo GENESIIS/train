@@ -1,6 +1,6 @@
 package com.genesiis.hra.command;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.List;
 
 public abstract class Serch implements ICommandAJX {

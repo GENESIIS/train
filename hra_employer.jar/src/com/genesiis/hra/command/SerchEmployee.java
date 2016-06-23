@@ -1,6 +1,6 @@
 package com.genesiis.hra.command;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.List;
 
 import org.jboss.logging.Logger;

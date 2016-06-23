@@ -18,7 +18,7 @@ import com.genesiis.hra.utill.ConnectionManager;
  * 
  */
 public class SchemeComponent implements ICrud {
-	int scheme, component;
+	int scheme, component; 
 	String componenttemp, modby;
 
 	public int getScheme() {

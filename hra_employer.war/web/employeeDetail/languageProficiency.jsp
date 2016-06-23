@@ -3,7 +3,7 @@
 	
 	<button type="button" class="btn btn-primary pull-side"
 		data-toggle="modal" data-target="#addEmployeeDetailsForm"><i class="glyphicon glyphicon-plus"></i>
-		 Add New</button>
+		 Add New</button> 
 </div>
 
 <br></br>

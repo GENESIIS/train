@@ -9,7 +9,7 @@ import com.genesiis.hra.validation.Operation;
 public class EmployeeFactory {
 	static Logger log = Logger.getLogger(EmployeeFactory.class.getName());	
 	public Employee getEmployeeObject(String task) {
-		
+		 
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
 		log.info("Operation"+o);

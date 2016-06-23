@@ -20,7 +20,7 @@ public class ConnectionManager {
 
 	private static final String DB_JNDI_NAME = "java:/hraDatabase";
 	// The DB_JNDI_NAME is the property for data source name that the
-	// application looking at runtime.	
+	// application looking at runtime.	 
 	private static DataSource dataSource;
 
 	// This static{} block runs first when running the ConnectionManager class

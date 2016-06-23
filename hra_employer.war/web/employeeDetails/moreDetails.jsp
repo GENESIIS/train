@@ -32,7 +32,7 @@
 								<label for="employeeNumber">Employee Number</label><input
 									type="text" class="form-control" id="employeeNumber"
 									name="employeeNumber" placeholder="" maxlength="6" size="6">
-							</div>
+							</div> 
 						</div>
 					</div>
 					<div class="row">

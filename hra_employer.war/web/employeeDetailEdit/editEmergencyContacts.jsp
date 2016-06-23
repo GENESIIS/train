@@ -35,7 +35,7 @@
 			</tr>
 		</tfoot>
 		<tbody>
-			<tr>
+			<tr> 
 				<td>EMP001</td>
 				<td>Dammika Nawarathna</td>
 				<td>AGM - HR</td>

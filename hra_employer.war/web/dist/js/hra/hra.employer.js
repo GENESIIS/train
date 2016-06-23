@@ -6,7 +6,7 @@ function addEmployeeDetails() {
 	var mname = $("#employeeMiddlename").val();
 	var lname = $("#employeeLastname").val();
 
-	var employeeFirstname = fname + "," + mname + "," + lname;
+	var employeeFirstname = fname + "," + mname + "," + lname; 
 	var employeeDateofbirth = $("#employeeDateofbirth").val();
 	var employeeNic = $("#employeeNic").val();
 	var employeeGender = $("#employeeGender").val();

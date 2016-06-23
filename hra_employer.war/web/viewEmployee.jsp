@@ -21,7 +21,7 @@
                       <tr>
                         <td>Employee Number</td>
                         <td><p id="userid"></p></td>
-                      </tr>
+                      </tr> 
                       <tr>
                         <td>Name</td>
                         <td><p id="username"></p>

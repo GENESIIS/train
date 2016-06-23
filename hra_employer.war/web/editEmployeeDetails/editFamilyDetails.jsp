@@ -2,7 +2,7 @@
 
 <div class="">
 	<div class="">
-		<h3 class="">
+		<h3 class=""> 
 			<i class="glyphicon glyphicon-edit"></i> Family Details
 		</h3>
 		<div class="form-group">

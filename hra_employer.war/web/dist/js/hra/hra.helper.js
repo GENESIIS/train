@@ -4,7 +4,7 @@
  * function Modified. 20160505 PN HRA-2 clearAddemployeeform() function
  * modified. 20160509 addEducationDetails() Function
  */
-
+ 
 var theNewScript = document.createElement("script");
 theNewScript.type = "text/javascript";
 theNewScript.src = "hra.validation.js";

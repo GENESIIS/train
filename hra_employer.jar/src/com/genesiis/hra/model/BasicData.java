@@ -22,7 +22,7 @@ public class BasicData extends Employee {
 	private String employeeNic;
 	private String employeeGender;
 	private String employeePermenetaddress;
-	private String employeeTemporaryaddress;
+	private String employeeTemporaryaddress; 
 	private String employeeMobile;
 	private String employeeTelephone;
 	private String employeeDepartment;

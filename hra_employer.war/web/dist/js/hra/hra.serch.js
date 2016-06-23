@@ -6,7 +6,7 @@ function serchEmployee() {
 	var serchContent = $("#serchEmployeeText").val();
 	var jsonData = {
 		"serchContent" : serchContent
-	};
+	}; 
 	$.ajax({
 		type : "POST",
 		url : 'EmployerController',

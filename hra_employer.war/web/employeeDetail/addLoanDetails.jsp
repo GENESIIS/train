@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<label for="totalOutstanding">Total Outstanding Amount</label> <input
 				type="number" class="form-control" id="totalOutstanding"
-				name="totalOutstanding" placeholder="">
+				name="totalOutstanding" placeholder=""> 
 		</div>
 		<div class="form-group">
 			<label for="borrowers">Guarantor1</label> <input type="text"

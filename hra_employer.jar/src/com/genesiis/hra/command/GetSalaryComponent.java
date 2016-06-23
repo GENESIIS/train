@@ -11,7 +11,7 @@ import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
 public class GetSalaryComponent implements ICommandAJX{
-	static Logger log = Logger.getLogger(GetSalaryComponent.class.getName());
+	static Logger log = Logger.getLogger(GetSalaryComponent.class.getName()); 
 	@Override
 	public String execute(String compKey) {
 		SalaryComponent component = new  SalaryComponent();
