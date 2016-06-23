@@ -9,16 +9,15 @@ import java.util.List;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.utill.ConnectionManager;
-
 /***********************************************
- * //* 20160510 PC HRA-13 created LoanCrudJDBC.java class //* 20160513 PC HRA-13
- * validateEmployee() method Modified. //
- ***********************************************/
-public class LoanCrudJDBC implements ICrud {
-	static Logger log = Logger.getLogger(LoanCrudJDBC.class.getName());
+//* 20160510 PC HRA-13 created LoanCrudJDBC.java class
+//* 20160513 PC HRA-13  validateEmployee() method Modified.
+//***********************************************/
+public class LoanPersistJDBC implements ICrud {
+	static Logger log = Logger.getLogger(LoanPersistJDBC.class.getName());
 
 	@Override
-	// Add data to DB Table EMPLOYEE
+	//Add data to DB Table EMPLOYEE
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.LOAN] (EMPLOYEEID , DUEDATE , "
 				+ "TOTALOUTSTANDING , GUARANTOR1 , GUARANTOR2, MONTHLYPAYMENT , ENDDATE, MODBY)"
@@ -30,7 +29,6 @@ public class LoanCrudJDBC implements ICrud {
 
 		try {
 			conn = ConnectionManager.getConnection();
-<<<<<<< HEAD
 			ps = conn.prepareStatement(query);			
 			ps.setString(1, lnDetail.getemployeeEpf());
 			ps.setString(2, lnDetail.getLoanDueDate());
@@ -42,24 +40,11 @@ public class LoanCrudJDBC implements ICrud {
 			ps.setString(8, "Saman");
 			
 			int rowsInserted = ps.executeUpdate();
-=======
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, lnDetail.getemployeeEpf());
-			preparedStatement.setString(2, lnDetail.getLoanDueDate());
-			preparedStatement.setString(3, lnDetail.getLoanAmount());
-			preparedStatement.setString(4, lnDetail.getLoanGuarantor1());
-			preparedStatement.setString(5, lnDetail.getLoanGuarantor2());
-			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
-			preparedStatement.setString(7, lnDetail.getLoanEndDate());
-			preparedStatement.setString(8, "Saman");
-
-			int rowsInserted = preparedStatement.executeUpdate();
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 			if (rowsInserted > 0) {
 				status = 1;
 			}
 		} catch (SQLException exception) {
-
+			
 			exception.printStackTrace();
 		} finally {
 			try {
@@ -74,7 +59,7 @@ public class LoanCrudJDBC implements ICrud {
 
 	@Override
 	public int update(Object object, String epf) {
-		String query = "UPDATE [HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
+		String query = "UPDATE [hra-2].[dbo].[HRA.LOAN] SET EMPLOYEEID = ? ,  DUEDATE = ? , "
 				+ "  TOTALOUTSTANDING = ? ,  GUARANTOR1 = ? , GUARANTOR2 = ? ,  MONTHLYPAYMENT = ?, ENDDATE = ?,  MODBY = ?  WHERE ID = ?";
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -82,7 +67,6 @@ public class LoanCrudJDBC implements ICrud {
 
 		try {
 			conn = ConnectionManager.getConnection();
-<<<<<<< HEAD
 			ps = conn.prepareStatement(query);			
 			ps.setString(1, lnDetail.getemployeeEpf());
 			ps.setString(2, lnDetail.getLoanDueDate());
@@ -95,24 +79,10 @@ public class LoanCrudJDBC implements ICrud {
 			ps.setString(9, epf);			
 
 			int rowsInserted = ps.executeUpdate();
-=======
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, lnDetail.getemployeeEpf());
-			preparedStatement.setString(2, lnDetail.getLoanDueDate());
-			preparedStatement.setString(3, lnDetail.getLoanAmount());
-			preparedStatement.setString(4, lnDetail.getLoanGuarantor1());
-			preparedStatement.setString(5, lnDetail.getLoanGuarantor2());
-			preparedStatement.setString(6, lnDetail.getLoanmonthlyPayment());
-			preparedStatement.setString(7, lnDetail.getLoanEndDate());
-			preparedStatement.setString(8, "Saman");
-			preparedStatement.setString(9, epf);
-
-			int rowsInserted = preparedStatement.executeUpdate();
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 			if (rowsInserted > 0) {
 			}
 		} catch (SQLException exception) {
-			exception.printStackTrace();
+			exception.printStackTrace();		
 		} finally {
 			try {
 				ps.close();
@@ -122,26 +92,20 @@ public class LoanCrudJDBC implements ICrud {
 			}
 		}
 		return 1;
-	}
+	}	
 
 	@Override
 	public Object find(int empEpf) {
-
-		String query = "select * from [HRA.LOAN] where ID = ?";
+		
+		String query = "select * from [hra-2].[dbo].[HRA.LOAN] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
-<<<<<<< HEAD
 		PreparedStatement ps = null;
 		ResultSet rs = null;		
-=======
-		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 		Loan loan = new Loan();
 		try {
 
 			conn = ConnectionManager.getConnection();
-<<<<<<< HEAD
 			ps = conn.prepareStatement(query);
 			ps.setString(1, "1");			
 			 rs = ps.executeQuery();			 
@@ -179,38 +143,8 @@ public class LoanCrudJDBC implements ICrud {
 			} catch (SQLException exception) {
 				exception.printStackTrace();
 			}
-=======
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
-			retriveData = preparedStatement.executeQuery();
-
-			try {
-				if (retriveData.next()) {
-					// set data to entity class
-					loan.setEmployeeId(retriveData.getString("EMPLOYEEID"));
-					loan.setLoanDueDate(retriveData.getString("DUEDATE"));
-					loan.setLoanAmount(retriveData
-							.getString("TOTALOUTSTANDING"));
-					loan.setLoanGuarantor1(retriveData.getString("GUARANTOR1"));
-					loan.setLoanGuarantor2(retriveData.getString("GUARANTOR2"));
-					loan.setLoanmonthlyPayment(retriveData
-							.getString("MONTHLYPAYMENT"));
-					loan.setLoanEndDate(retriveData.getString("ENDDATE"));
-					loan.setmodBy(retriveData.getString("MODBY"));
-					loan.setModOn(retriveData.getString("MODON"));
-				}
-			} catch (Exception e) {
-				log.info(e.toString());
-			}
-
-			preparedStatement.close();
-			conn.close();
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 		}
-
+		
 		return loan;
 	}
 
@@ -228,24 +162,15 @@ public class LoanCrudJDBC implements ICrud {
 
 	@Override
 	public Object findByEpf(String empEpf) {
-<<<<<<< HEAD
 		String query = "select * from [hra-2].[dbo].[HRA.LOAN] where ID = ?";
 		String message = "Error";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;		
-=======
-		String query = "select * from [HRA.LOAN] where ID = ?";
-		String message = "Error";
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet retriveData = null;
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 		Loan loan = new Loan();
 		try {
 
 			conn = ConnectionManager.getConnection();
-<<<<<<< HEAD
 			ps = conn.prepareStatement(query);
 			ps.setString(1, empEpf);			
 			 rs = ps.executeQuery();			 
@@ -285,38 +210,6 @@ public class LoanCrudJDBC implements ICrud {
 			}
 		}
 		
-=======
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, "1");
-			retriveData = preparedStatement.executeQuery();
-
-			try {
-				if (retriveData.next()) {
-					// set data to entity class
-					loan.setEmployeeId(retriveData.getString("EMPLOYEEID"));
-					loan.setLoanDueDate(retriveData.getString("DUEDATE"));
-					loan.setLoanAmount(retriveData
-							.getString("TOTALOUTSTANDING"));
-					loan.setLoanGuarantor1(retriveData.getString("GUARANTOR1"));
-					loan.setLoanGuarantor2(retriveData.getString("GUARANTOR2"));
-					loan.setLoanmonthlyPayment(retriveData
-							.getString("MONTHLYPAYMENT"));
-					loan.setLoanEndDate(retriveData.getString("ENDDATE"));
-					loan.setmodBy(retriveData.getString("MODBY"));
-					loan.setModOn(retriveData.getString("MODON"));
-				}
-			} catch (Exception e) {
-				log.info(e.toString());
-			}
-
-			preparedStatement.close();
-			conn.close();
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-
-		}
-
->>>>>>> d209ec60f2551f83f4efed63495c7a033a0c0b5c
 		return loan;
 	}
 
@@ -337,5 +230,5 @@ public class LoanCrudJDBC implements ICrud {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

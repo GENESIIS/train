@@ -22,8 +22,8 @@ import com.google.gson.Gson;
 //* 20160505 PN HRA-2  validateEmployee() method Modified.
 //* 20160525 AS HRA-30  Find method Created 
 //***********************************************/
-public class EmployeeCrudJDBC extends SerchCrud {
-	static Logger log = Logger.getLogger(EmployeeCrudJDBC.class.getName());
+public class EmployeePersistJDBC extends SerchPersistJDBC {
+	static Logger log = Logger.getLogger(EmployeePersistJDBC.class.getName());
 
 	@Override
 	public int add(Object object) {

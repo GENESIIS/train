@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.BasicData;
-import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.model.EmployeePersistJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -97,7 +97,7 @@ public class AddEmployeeBasicdata implements ICommandAJX {
 
 	@Override
 	public String execute(String gsonData, String epf) {
-		EmployeeCrudJDBC accessdata = new EmployeeCrudJDBC();
+		EmployeePersistJDBC accessdata = new EmployeePersistJDBC();
 		int id = -1;
 		MessageList message = MessageList.ERROR;
 		try {

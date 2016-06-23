@@ -12,7 +12,7 @@ import com.genesiis.hra.utill.ConnectionManager;
  * 20160520 pc HRA-30  created SercEmPloyeeCtudJDBC class 
  * 20160520 pc HRA-30  created find() method
 */
-public class SerchEmployeeCrudJDBC extends EmployeeCrudJDBC {
+public class SerchEmployeePersistJDBC extends EmployeePersistJDBC {
 
 	public Object find(int empEpf) {
 		// TODO Auto-generated method stub

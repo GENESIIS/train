@@ -4,7 +4,7 @@ import java.util.HashMap;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.model.Loan;
-import com.genesiis.hra.model.LoanCrudJDBC;
+import com.genesiis.hra.model.LoanPersistJDBC;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
@@ -21,7 +21,7 @@ public class RegisterLoan implements ICommandAJX {
 	public String execute(String gsonData)  {
 		int id = -1;
 		MessageList message = null;
-		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
+		LoanPersistJDBC loanManager = new  LoanPersistJDBC();
 		try {
 			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 
 			if(extractedLndetail!=null){
@@ -47,7 +47,7 @@ public class RegisterLoan implements ICommandAJX {
 	public String execute(String gsonData, String epf)  {
 		int id = -1;
 		MessageList message = null;
-		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
+		LoanPersistJDBC loanManager = new  LoanPersistJDBC();
 		try {
 			Loan extractedLndetail = (Loan)extractFromJason(gsonData); 			
 			if(extractedLndetail!=null){								
