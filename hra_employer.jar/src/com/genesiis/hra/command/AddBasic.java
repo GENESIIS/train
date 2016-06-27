@@ -1,14 +1,17 @@
 package com.genesiis.hra.command;
+
 import java.text.ParseException;
 import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
+
 
 ///***********************************************
 //* 20160430 PC HRA-4 created EditEmployee.java class
@@ -39,12 +42,11 @@ public class AddBasic implements ICommandAJX{
 		return message.message();
 	}
 	
-	@Override
 	public String execute(int epf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
+	
 	public String execute(String gsonData, String epf) {
 		Employee accessdata = new BasicData();		
 		int id = -1;
@@ -63,7 +65,7 @@ public class AddBasic implements ICommandAJX{
 		return message.message();
 	}
 	// Method to extract DepartmentDetails from jsonData.
-	@Override
+	
 	public Object extractFromJason(String gsonData) {
 		Gson gson = new Gson();
 		String message = "";
@@ -104,13 +106,13 @@ public class AddBasic implements ICommandAJX{
 		}
 
 		
-		@Override
+		
 		public String validateValue(Object entiytObject) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		@Override
+		
 		public Boolean validateValue(HashMap<Integer, Object> entitytMap) {
 			// TODO Auto-generated method stub
 			return null;

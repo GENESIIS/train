@@ -50,6 +50,7 @@
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
 <script src="dist/js/hra/hra.education.js"></script>
 <script src="dist/js/hra/hra.study.js"></script>
+<script src="dist/js/hra/hra.leaves.js"></script>
 
 <style type="text/css">
 /* label { */
@@ -134,6 +135,11 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalaryschemedetails()"> Salary Scheme</a></li>
+					<li><a href="#leave"
+						class="list-group-item list-group-item-primary"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="loadleaveTypesdetails()"> Leaves</a></li>
+						
 					<!-- 					<li><a href="#payroll" -->
 					<!-- 						class="list-group-item list-group-item-primary" -->
 					<!-- 						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i -->

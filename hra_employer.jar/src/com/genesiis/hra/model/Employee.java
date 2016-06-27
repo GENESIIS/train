@@ -1,5 +1,7 @@
 package com.genesiis.hra.model;
 
+import com.genesiis.hra.model.ICrud;
+
 
 ///***********************************************
 //* 20160407 PN HRA-1 created Employee.java class
@@ -28,12 +30,11 @@ public abstract class Employee implements ICrud {
 		this.employeeEpf = employeeEpf;
 	}
 
-	@Override
 	public int add(Object object) {
 		return -1;
 	}
 
-	@Override
+	
 	public int update(Object object, String epf) {
 		return -1;
 	}
@@ -41,7 +42,7 @@ public abstract class Employee implements ICrud {
 	public String getId(String id) {
 		return null;
 	}
-	@Override
+
 	public Object findByEpf(String empEpf) {
 		// TODO Auto-generated method stub
 		return null;

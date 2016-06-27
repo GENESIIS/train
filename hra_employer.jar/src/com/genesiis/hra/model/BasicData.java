@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.model.Employee;
 import com.genesiis.hra.utill.ConnectionManager;
 import com.genesiis.hra.validation.DataValidator;
 

@@ -79,7 +79,7 @@ function checkStudyTime() {
 	}
 }
 
-//Load data to edit Educational Details
+// Load data to edit Educational Details
 function loadeditEducationalDetails() {
 
 	var jsonData = "1";
@@ -153,7 +153,6 @@ function EditEducationDetails() {
 		}
 	});
 }
-
 
 // /////////////// load employee education details///////////////
 function loadDataEducationalDetails() {
