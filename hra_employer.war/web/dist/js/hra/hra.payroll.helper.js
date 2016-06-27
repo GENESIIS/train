@@ -123,14 +123,16 @@ function addSalaryscheme() {
 		"title" : salarySchemetitle,
 		"criteria" : salaryCriteria,
 		"description" : salarySchemedescription,
-		"componentCodetemp" : arr
+		"component_id" : arr
 	};
 
+	alert(data+"...."+JSON.stringify(data));
 	if ((salarySchemetitle == "") || (salaryCriteria == "")) {
 		alert("Please fill the Empty fields.");
 	} else if ((salarySchemetitleerror != "") || (salaryCriteriaerror != "")) {
 		alert("Please fill the details correctly.");
 	} else {
+		alert(arr.toString());
 		$.ajax({
 			type : "POST",
 			url : 'PayrollController',
@@ -249,7 +251,7 @@ function addRow() {
 	if (table != null) {
 		for (var i = 0; i < table.rows.length; i++) {
 			if (i > 0) {
-				var ce = table.rows[i].cells[1];
+				var ce = table.rows[i].cells[0];
 				arr.push(ce.innerHTML);
 			}
 		}
@@ -309,7 +311,7 @@ function listComponentData(componentData) {
 						"paging":   false,
 						data : json,
 						"aoColumns" : [
-								{	"mDataProp" : "componentType",
+								{	"mDataProp" : "componentId",
 									className : "center"
 								},
 								{	"mDataProp" : "componentName",
@@ -346,7 +348,7 @@ function listComponentData(componentData) {
 	}
 function addRow(data) {
 	var table = document.getElementById("salarySchemetbl");
-	var salaryComponenttype =data.componentType ;
+	var salaryComponenttype =data.componentId ;
 	var salaryComponenttitle =data.componentName ;
 	var salaryComponentdescription =data.description ;
 	var salaryComponentamount = data.rate;
@@ -388,7 +390,7 @@ function addRow(data) {
 	if (table != null) {
 		for (var i = 0; i < table.rows.length; i++) {
 			if (i > 0) {
-				var ce = table.rows[i].cells[1];
+				var ce = table.rows[i].cells[0];
 				arr.push(ce.innerHTML);
 			}
 		}

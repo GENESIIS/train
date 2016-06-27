@@ -84,7 +84,7 @@ public class SalaryScheme implements ICrud {
 
 	@Override
 	public int add(Object object) {
-		String schemeQuery = "INSERT INTO [HRA.SALARYSCHEME] (TITLE, CRITERIA, DESCRIPTION, MODBY) VALUES (?, ?, ?, ?)";
+		String schemeQuery = "INSERT INTO [HRA.SALARYSCHEME] (COMPONENTID, TITLE, CRITERIA, DESCRIPTION, MODBY) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -98,10 +98,11 @@ public class SalaryScheme implements ICrud {
 			//initialize ps prepared Statement
 			ps = conn.prepareStatement(schemeQuery, Statement.RETURN_GENERATED_KEYS);
             // add data to SalaryScheme table 
-			ps.setString(1, ss.getTitle());
-			ps.setString(2, ss.getCriteria());
-			ps.setString(3, ss.getDescription());
-			ps.setString(4, "Prabath");
+			ps.setInt(1, 1);
+			ps.setString(2, ss.getTitle());
+			ps.setString(3, ss.getCriteria());
+			ps.setString(4, ss.getDescription());
+			ps.setString(5, "Prabath");
 
 			int rowsInserted = ps.executeUpdate();
 			if (rowsInserted > 0) {

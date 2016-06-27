@@ -23,15 +23,15 @@ public class SalaryComponent implements ICrud {
 
 	private String componentType, componentName, description, modBy, currency, rate;
 	private int componentId;
+	private double minAmount, maxAmount;
+	
 	public int getComponentId() {
 		return componentId;
 	}
 
 	public void setComponentId(int componentId) {
 		this.componentId = componentId;
-	}
-
-	private double minAmount, maxAmount;
+	}	
 
 	public String getCurrency() {
 		return currency;
@@ -211,7 +211,7 @@ public class SalaryComponent implements ICrud {
 				while(findData.next()){					
 					// set data to entity class
 					SalaryComponent salComponent = new SalaryComponent();
-					salComponent.setComponentId(findData.getString("ID"));
+					salComponent.setComponentId(findData.getInt("ID"));
 					salComponent.setComponenttype(findData.getString("COMPONENTTYPE"));
 					salComponent.setComponentname(findData.getString("NAME"));
 					salComponent.setDescription(findData.getString("DESCRIPTION"));
