@@ -18,7 +18,7 @@ public class LeaveType extends Leaves {
 
 	private String leaveType;
 	private String leaveDuration;
-	private String leaveCount;
+	private int leaveCount;
 	private String leavePayment;
 	private int leaveID;
 
@@ -38,11 +38,12 @@ public class LeaveType extends Leaves {
 		this.leaveDuration = leaveDuration;
 	}
 
-	public String getLeaveCount() {
+	
+	public int getLeaveCount() {
 		return leaveCount;
 	}
 
-	public void setLeaveCount(String leaveCount) {
+	public void setLeaveCount(int leaveCount) {
 		this.leaveCount = leaveCount;
 	}
 
@@ -62,7 +63,7 @@ public class LeaveType extends Leaves {
 		this.leaveID = leaveID;
 	}
 
-	public LeaveType(String leaveType, String leaveDuration, String leaveCount,
+	public LeaveType(String leaveType, String leaveDuration, int leaveCount,
 			String leavePayment, int leaveID) {
 		super();
 		this.leaveType = leaveType;
@@ -86,7 +87,7 @@ public class LeaveType extends Leaves {
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, data.getLeaveType());
 			ps.setString(2, data.getLeaveDuration());
-			ps.setString(3, data.getLeaveCount());
+			ps.setInt(3, data.getLeaveCount());
 			ps.setString(4, data.getLeavePayment());
 			ps.setInt(5, data.getLeaveID());
 

@@ -3,8 +3,8 @@ package com.genesiis.hra.command;
 import java.util.HashMap;
 
 import com.genesiis.hra.command.ICommandAJX;
-import com.genesiis.hra.model.BasicData;
 import com.genesiis.hra.model.LeaveType;
+import com.genesiis.hra.validation.DataValidator;
 import com.genesiis.hra.validation.MessageList;
 
 import org.jboss.logging.Logger;
@@ -45,9 +45,19 @@ public class AddLeaveTypes implements ICommandAJX {
 		return null;
 	}
 
-	public String validateLeaves(Object entiytObject) {
-		// TODO Auto-generated method stub
-		return null;
+	public String validateLeaves(LeaveType leaveType) {
+		DataValidator validator = new DataValidator();
+		String message = "True";		
+		if (!validator.isValidString(leaveType.getLeaveType())) {
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		if (!validator.isValidString((leaveType.getLeaveDuration()))) {
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		if (!validator.isValidInt((leaveType.getLeaveCount()))) {
+			message = message + MessageList.EMPTYFIELD.message() +" ";
+		}
+		return message;
 	}
 
 

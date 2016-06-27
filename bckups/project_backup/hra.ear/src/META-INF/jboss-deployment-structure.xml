@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Schema: EAP_HOME/docs/schema/jboss-deployment-structure-1_2.xsd -->
+<!--	20150113 SW SYS-86-4162 init
+		20150205 SW SYS-86-4162lang3 to sdb, public wars 
+		20150205 DJ SYS-86-4162 added modules commons.fileupload, commons.io, lowagie.text, google.gson, catalina.connector,
+					commons.validator, sf.jasperreports, lucene.analysis, lucene.queryparser  to  relevant  .wars  and  .jars
+  		20150329 SW SDB-344-4193quartz support (sdb_public.war) 
+		20150903 LE SDB-397-4162 merged with development sha  917b431: adding in new dependency common.lang3 to sdb.jar
+		20151212 AM SDB-469-4297 added org.apache.commons.lang3 as a dependency to sdb_public.jar 
+		20160102 LE SDB-397-4162 adding dependency '<module name="com.lowagie.itext" />' to sub-deployment "sdb_careers.jar"
+		-->	
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--  false = deployments within the ear are not isolated and can access each other's classes -->
+<!--  eclipse editor flagging an error on the first element.  ignore for the time being -->
+	<sub-deployment name="hra_employer.jar">
+		<dependencies>
+			<module name="org.apache.commons.fileupload" />
+			<module name="org.apache.commons.io" />
+			<module name="com.lowagie.text" />
+			<module name="com.google.gson" />
+			<module name="org.apache.commons.lang3"/><!-- merged in from release 294 sha 917b431-->
+			<!-- <module name="org.apache.catalina.connector" /> remove until JBAP6 implementation of catalina.connector can be found. this is a JBAS5 implementation--> 
+			<!--add twitter4j-core-2.2.6-SNAPSHOT.jar -->
+		</dependencies>
+	</sub-deployment>
+	<sub-deployment name="hra_employer.war">
+		<dependencies>
+			<module name="org.apache.commons.fileupload" />
+			<module name="org.apache.commons.io" />
+			<module name="org.apache.commons.lang3" />
+			<module name="com.lowagie.text" />
+			<module name="com.google.gson" />
+		</dependencies>
+	</sub-deployment>
+</jboss-deployment-structure>

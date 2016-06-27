@@ -37,7 +37,8 @@
 				<tr>
 					<td>LT01</td>
 					<td>Annual leave</td>
-					<td>14</td>	
+					<td>30</td>
+					<td>1</td>
 					<td align="center"><button type="button" class="btn btn-info"
 							data-toggle="modal" data-target="#viewleaveTypesDetailsForm">
 							<i class="glyphicon glyphicon-modal-window"></i>
