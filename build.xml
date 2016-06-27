@@ -139,7 +139,11 @@
 		
 	</target>
 	
-				
+	<target name="copy">
+        <copy todir="${jbossDeployDir}/${targetEarName}/${hra_employer.war.name}/WEB-INF/${thirdPartyDirName}">
+           <fileset dir="${thirdPartyDir}" includes="**/*.*"/>
+        </copy>
+    </target>				
 	
 	<target name="redeploy">
 		<copy todir="${jbossDeployDir}/${targetEarName}">

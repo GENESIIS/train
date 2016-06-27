@@ -31,8 +31,8 @@ hra_employer.war.dir=${basedir}/${hra_employer.war.name}
 # sdb_employer.war.dir=${basedir}/${sdb_employer.war.name}
 
 # directories for third-party libraries
-
-#thirdPartyDir=${basedir}/../3p
+thirdPartyDirName=3p
+thirdPartyDir=${basedir}/../3p
 
 # directories for building
 
