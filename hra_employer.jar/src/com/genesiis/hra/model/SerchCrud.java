@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-public abstract class SerchPersistJDBC implements ICrud {
+public abstract class SerchCrud implements ICrud {
 	
 	@Override
 	public Object find(int empEpf)throws SQLException, Exception {

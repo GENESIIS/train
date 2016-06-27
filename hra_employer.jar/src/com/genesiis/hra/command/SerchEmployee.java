@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
-import com.genesiis.hra.model.EmployeePersistJDBC;
-import com.genesiis.hra.model.SerchPersistJDBC;
-import com.genesiis.hra.model.SerchEmployeePersistJDBC;
+import com.genesiis.hra.model.EmployeeCrudJDBC;
+import com.genesiis.hra.model.SerchCrud;
+import com.genesiis.hra.model.SerchEmployeeCrudJDBC;
 import com.google.gson.Gson;
 /* *********************************************
  * 20160520 HRA 30 pc create SercEmPloyee class 
@@ -23,9 +23,9 @@ static Logger loger = Logger.getLogger(SerchEmployee.class.getName());
     }
 	@Override
 	public String execute(String keyWord) {
-		 SerchPersistJDBC employeeManager = new EmployeePersistJDBC();
+		 SerchCrud employeeManager = new EmployeeCrudJDBC();
 		 //this for if want to do OveWritte find method use this
-		 SerchPersistJDBC serchEmployeeManager = new SerchEmployeePersistJDBC();
+		 SerchCrud serchEmployeeManager = new SerchEmployeeCrudJDBC();
 		 List<Object>  empList = null ;
 		 try {			
 				  empList =  employeeManager.find(keyWord); 

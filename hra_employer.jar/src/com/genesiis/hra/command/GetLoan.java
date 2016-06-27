@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.jboss.logging.Logger;
 import com.genesiis.hra.model.Loan;
-import com.genesiis.hra.model.LoanPersistJDBC;
+import com.genesiis.hra.model.LoanCrudJDBC;
 import com.genesiis.hra.validation.MessageList;
 import com.google.gson.Gson;
 
@@ -13,7 +13,7 @@ public class GetLoan implements ICommandAJX {
 	
 	public String execute(String epf) {
 		String message = "";
-		LoanPersistJDBC loanManager = new  LoanPersistJDBC();
+		LoanCrudJDBC loanManager = new  LoanCrudJDBC();
 		
 		try {
 			log.info("GEtloan excecute");
