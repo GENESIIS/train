@@ -21,8 +21,17 @@ import com.genesiis.hra.utill.ConnectionManager;
 public class SalaryComponent implements ICrud { 
 	static Logger log = Logger.getLogger(SalaryComponent.class.getName());
 
-	String componentType, componentName, description, modBy, currency, rate;
-	double minAmount, maxAmount;
+	private String componentType, componentName, description, modBy, currency, rate;
+	private int componentId;
+	public int getComponentId() {
+		return componentId;
+	}
+
+	public void setComponentId(int componentId) {
+		this.componentId = componentId;
+	}
+
+	private double minAmount, maxAmount;
 
 	public String getCurrency() {
 		return currency;
@@ -202,6 +211,7 @@ public class SalaryComponent implements ICrud {
 				while(findData.next()){					
 					// set data to entity class
 					SalaryComponent salComponent = new SalaryComponent();
+					salComponent.setComponentId(findData.getString("ID"));
 					salComponent.setComponenttype(findData.getString("COMPONENTTYPE"));
 					salComponent.setComponentname(findData.getString("NAME"));
 					salComponent.setDescription(findData.getString("DESCRIPTION"));

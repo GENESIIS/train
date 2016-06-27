@@ -1,5 +1,6 @@
 /**
  * 20160523 PN HRA-31 created SalaryScheme.java class
+ * 20160627 PC HRA-16 Modify and create addSheme method SalaryScheme.java class
  */
 package com.genesiis.hra.model;
 
@@ -21,8 +22,8 @@ public class SalaryScheme implements ICrud {
 	
 	static Logger log = Logger.getLogger(SalaryScheme.class.getName());
 
-	String[] component_id;
-	String description, criteria, modBy, title;
+	private String[] component_id;
+	private String description, criteria, modBy, title;
 
 	public String[] getcomponent_id() {
 		return component_id;
@@ -92,9 +93,11 @@ public class SalaryScheme implements ICrud {
 
 		try {
 			// Use the mask here
+			// Create connection
 			conn = ConnectionManager.getConnection();
+			//initialize ps prepared Statement
 			ps = conn.prepareStatement(schemeQuery, Statement.RETURN_GENERATED_KEYS);
-
+            // add data to SalaryScheme table 
 			ps.setString(1, ss.getTitle());
 			ps.setString(2, ss.getCriteria());
 			ps.setString(3, ss.getDescription());
@@ -105,12 +108,14 @@ public class SalaryScheme implements ICrud {
 				rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
+					//get generated key as SalaryScheme id
 					generatedKey = rs.getInt(1);
 				}
 				status = generatedKey;
-
+                //check weather component ids are existing 
 				if ((ss.getcomponent_id() != null)
-						|| (ss.getcomponent_id().length == 0)) {		
+						|| (ss.getcomponent_id().length == 0)) {
+					//call addScheme method to add 
 					addSheme(ss.getcomponent_id(),generatedKey,conn);					
 				}
 			}
@@ -123,6 +128,7 @@ public class SalaryScheme implements ICrud {
 				}if (rs != null) {
 					rs.close();
 				}
+				//closing connection
 				conn.close();
 			} catch (Exception exception) {
 				exception.printStackTrace();
@@ -132,17 +138,21 @@ public class SalaryScheme implements ICrud {
 	}
 
 	private int addSheme(String[] comp_id,int scheme_id, Connection conn) throws Exception{		
-		String schemeCompQuery = "INSERT INTO [HRA.] (SCHEME, COMPONENT, MODBY) VALUES (?, ?, ?)";
+		String schemeCompQuery = "INSERT INTO [HRA.SCHEMECOMPONENT] (SCHEME, COMPONENT, MODBY) VALUES (?, ?, ?)";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		int status = 0;
 
 		try {
 			// Use the mask here
+			// Create connection
 			conn = ConnectionManager.getConnection();
+			//initialize ps prepared Statement
 			ps = conn.prepareStatement(schemeCompQuery, Statement.RETURN_GENERATED_KEYS);
 
+			//get each component id s and add it in to schema table with schema id
 			for (String c_id : comp_id) {
+				log.info(c_id+"...............................................................");
 				ps.setInt(1, scheme_id);
 				ps.setString(2, c_id);
 				ps.setString(3, "Prabath");
@@ -152,27 +162,16 @@ public class SalaryScheme implements ICrud {
 				rs = ps.getGeneratedKeys();
 				int generatedKey = 0;
 				if (rs.next()) {
+					// get generated id 
 					generatedKey = rs.getInt(1);
 				}
 				status = generatedKey;				
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
-		} 
+		} //Connection closing is belong to parent method add
 		return status;
 	}
-	
-
-	/*private void setSchemecomponent(int scheme, String component) {
-		SchemeComponent sc = new SchemeComponent();
-		sc.setComponenttemp(component);
-		sc.setScheme(scheme);
-		try {
-			sc.add(sc);
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
-	}*/
 
 	@Override
 	public int update(Object object, String epf) {

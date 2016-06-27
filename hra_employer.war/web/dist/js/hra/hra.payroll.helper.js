@@ -1,6 +1,7 @@
 /**
  * 20160520 PN HRA-31 created hra.payroll.helper.js class. All the JS functions
  * related to payroll section listed under here.
+ * 20160627 PC HRA-16 modified hra.payroll.helper.js
  */
 
 /*******************************************************************************
