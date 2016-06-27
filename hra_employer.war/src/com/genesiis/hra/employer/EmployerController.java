@@ -19,6 +19,7 @@ import com.genesiis.hra.command.AddBasic;
 import com.genesiis.hra.command.AddEducationDetails;
 import com.genesiis.hra.command.AddEmployeeBasicdata;
 import com.genesiis.hra.command.AddFamilyDetails;
+import com.genesiis.hra.command.AddMedicalBill;
 import com.genesiis.hra.command.AddStuddyProgram;
 import com.genesiis.hra.command.GetEmployee;
 import com.genesiis.hra.command.GetLoan;
@@ -53,18 +54,19 @@ public class EmployerController extends HttpServlet {
 
 		commands = new HashMap<Operation, ICommandAJX>();
 		commands.put(Operation.SERCH_EMPLOYEE, new SerchEmployee());
-		
+
 		commands.put(Operation.REGISTER_LOAN, new RegisterLoan());
 		commands.put(Operation.UPDATE_LOAN, new RegisterLoan());
 		commands.put(Operation.GET_LOAN, new GetLoan());
-		
+
 		commands.put(Operation.ADD_EMPLOYEE_BASICDATA, new AddBasic());
 		commands.put(Operation.GET_EMPLOYEE_BASIC, new GetEmployee());
 		commands.put(Operation.UPDATE_EMPLOYEE_BASIC, new AddBasic());
 		commands.put(Operation.VIEW_EMPLOYEE_DETAILS, new GetEmployee());
-		
+
 		commands.put(Operation.ADD_EMPLOYEE_HISTORY, new AddEmployeeHistory());
-		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY, new AddEmployeeHistory());
+		commands.put(Operation.UPDATE_EMPLOYEE_HISTORY,
+				new AddEmployeeHistory());
 		commands.put(Operation.GET_EMPLOYEE_HISTORY, new GetEmployee());
 
 		commands.put(Operation.ADD_MEDICAL_HISTORY, new AddMedicalHistory());
@@ -73,20 +75,20 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.GET_MEDICAL_REPORT, new GetEmployee());
 		commands.put(Operation.UPDATE_MEDICAL_HISTORY, new AddMedicalHistory());
 		commands.put(Operation.UPDATE_MEDICAL_REPORT, new AddMedicalReport());
-		
-		commands.put(Operation.ADD_FAMILY_MEMBER,	new AddFamilyDetails());
-		commands.put(Operation.UPDATE_FAMILY_MEMBER,  new AddFamilyDetails());
-		commands.put(Operation.GET_FAMILY_MEMBER,  new GetEmployee());
+		commands.put(Operation.ADD_MEDICAL_BILL, new AddMedicalBill());
+
+		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.UPDATE_FAMILY_MEMBER, new AddFamilyDetails());
+		commands.put(Operation.GET_FAMILY_MEMBER, new GetEmployee());
 		commands.put(Operation.GET_FAMILY, new GetEmployee());
-		
+
 		commands.put(Operation.ADD_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.GET_EDU_DETAILS, new GetEmployee());
 		commands.put(Operation.UPDATE_EDU_DETAILS, new AddEducationDetails());
 		commands.put(Operation.ADD_STUDY_PROGRAM, new AddStuddyProgram());
 		commands.put(Operation.GET_STUDY_PROGRAM, new GetEmployee());
 		commands.put(Operation.UPDATE_STUDY_PROGRAM, new AddStuddyProgram());
-		
-		
+
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -102,9 +104,9 @@ public class EmployerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String details = request.getParameter("jsonData");
-		
+
 		log.info(details);
-		
+
 		String inputValue = request.getParameter("inputValue");
 		String task = request.getParameter("task");
 		Gson gson = new Gson();
@@ -113,12 +115,10 @@ public class EmployerController extends HttpServlet {
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 		o = Operation.getOperation(task);
-		
-		log.info(""
-				+ "task-" +  task 
-				+ " searchValue-" + inputValue + 
-				" details-" + details);
-		
+
+		log.info("" + "task-" + task + " searchValue-" + inputValue
+				+ " details-" + details);
+
 		log.info("Operation" + o);
 		try {
 			switch (o) {
@@ -130,13 +130,13 @@ public class EmployerController extends HttpServlet {
 			case REGISTER_LOAN:
 				message = commands.get(o).execute(details);
 				break;
-			case GET_LOAN: 
+			case GET_LOAN:
 				message = commands.get(o).execute(inputValue);
-				log.info(inputValue	+ "inputVAlue");
+				log.info(inputValue + "inputVAlue");
 				break;
 			case UPDATE_LOAN:
 				message = commands.get(o).execute(details, inputValue);
-				break;			
+				break;
 			case ADD_EMPLOYEE_BASICDATA:
 				message = commands.get(o).execute(details);
 				break;
@@ -145,8 +145,8 @@ public class EmployerController extends HttpServlet {
 				message = commands.get(o).execute(inputValue, task);
 				break;
 			case UPDATE_EMPLOYEE_BASIC:
-				message = commands.get(o).execute(details,inputValue );
-				break;			
+				message = commands.get(o).execute(details, inputValue);
+				break;
 			case ADD_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details);
 				break;
@@ -155,16 +155,16 @@ public class EmployerController extends HttpServlet {
 				break;
 			case UPDATE_EMPLOYEE_HISTORY:
 				message = commands.get(o).execute(details, inputValue);
-				break;				
+				break;
 			case ADD_MEDICAL_HISTORY:
 				message = commands.get(o).execute(details);
-				break;	
+				break;
 			case GET_MEDICAL_HISTORY:
 				message = commands.get(o).execute(inputValue, task);
-				break;	
+				break;
 			case UPDATE_MEDICAL_HISTORY:
-				message = commands.get(o).execute(details,inputValue);
-				break;	
+				message = commands.get(o).execute(details, inputValue);
+				break;
 			case ADD_FAMILY_MEMBER:
 				message = commands.get(o).execute(details);
 				break;
@@ -173,12 +173,12 @@ public class EmployerController extends HttpServlet {
 				log.info("Search family details");
 				break;
 			case UPDATE_FAMILY_MEMBER:
-				message = commands.get(o).execute(details,inputValue);
+				message = commands.get(o).execute(details, inputValue);
 				log.info("Search family details");
-				break;	
+				break;
 			case GET_FAMILY_MEMBER:
 				message = commands.get(o).execute(inputValue, task);
-				break;				
+				break;
 			case ADD_EDU_DETAILS:
 				message = commands.get(o).execute(details);
 				log.info("add education details" + details);
@@ -204,8 +204,13 @@ public class EmployerController extends HttpServlet {
 				log.info("Update Study Program" + details);
 				break;
 			case ADD_MEDICAL_REPORT:
-				FileUploadController  fileUploadController = new FileUploadController();
+				FileUploadController fileUploadController = new FileUploadController();
 				details = fileUploadController.fileUpload(request);
+				message = commands.get(o).execute(details);
+				break;
+			case ADD_MEDICAL_BILL:
+				FileUploadController fileUploadController2 = new FileUploadController();
+				details = fileUploadController2.fileUploadBill(request);
 				message = commands.get(o).execute(details);
 				break;
 			default:

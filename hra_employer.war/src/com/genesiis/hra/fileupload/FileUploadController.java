@@ -105,14 +105,60 @@ public class FileUploadController extends HttpServlet {
 			log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
 			if (path != null) {
 
-				details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
-						+ "\"reportDescription\":\""
-						+ req.getParameter("reportDescription") + "\","
-						+ "\"reportPath\":\"" + path + "\","
-						+ "\"modby\":\""
-						+ req.getParameter("ehReferencemodby") + "\","
+				details = "{\"id\":\"" + MaskValidator.SQL_RECODE + "\","
+						+ "\"billDescription\":\""
+						+ req.getParameter("billDescription") + "\","
+						+ "\"billPath\":\"" + path + "\","
 						+ "\"crtby\":\""
-						+ req.getParameter("ehReferencemodby") + "\""
+						+ req.getParameter("ehReferencecrtby") + "\""
+						+ "}";
+				
+				log.info(details);
+			
+			}else {
+				details = MessageList.ERROR.message();
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		return details;
+		
+	}
+	
+	/**
+	 * to upload medical bill 
+	 * @param req
+	 * @return
+	 */
+	public String fileUploadBill(HttpServletRequest req) {
+
+		String details = "";
+		try{
+			
+			
+			FileUploader fileUploader = new FileUploader();
+			Part filePart = req.getPart("file");
+			
+			InputStream fileContent = filePart.getInputStream();
+			String fileName = getSubmittedFileName(filePart);
+			String employeeId = req.getParameter("employeeId");
+			
+			String path = fileUploader.setFileToBeUpload(fileContent,
+					fileName, employeeId);
+
+			log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
+			if (path != null) {
+
+				details = "{\"ID\":\"" + MaskValidator.SQL_RECODE + "\","
+						+ "\"billDescription\":\""
+						+ req.getParameter("billDescription") + "\","
+						+ "\"billPath\":\"" + path + "\","
+						+ "\"crtby\":\""
+						+ req.getParameter("ehReferencecrtby") + "\""
 						+ "}";
 				
 				log.info(details);

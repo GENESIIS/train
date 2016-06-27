@@ -148,8 +148,7 @@
 				
 		<!-- ear meta information (sub-deployments)-->
 		<copy todir="${buildDir}/${hra.ear.name}/META-INF">
-			<fileset dir="${hra.ear.dir}/src/META-INF" includes="application.xml" />	
-	<fileset dir="${hra.ear.dir}/src/META-INF" includes="jboss-deployment-structure.xml" />			
+			<fileset dir="${hra.ear.dir}/src/META-INF" includes="application.xml" />			
 		</copy>
 		
 		
