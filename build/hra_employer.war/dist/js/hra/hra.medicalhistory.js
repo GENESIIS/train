@@ -18,6 +18,7 @@ function loadEditMedicalHIstoryDetails() {
 }
 
 
+
 // ready function
  $(document).on('ready', function() {
 	 $('#upload').prop('disabled', true); 
@@ -147,7 +148,7 @@ $(document).on("click", "#upload", function() {
 	var formData = new FormData();
 	formData.append("file", reportUpload);
 	formData.append("reportDescription", reportDescription);
-	formData.append("task", "AMR");
+	formData.append("task", "AMH");
 	formData.append("ehReferencemodby", ehReferencemodby);
 	formData.append("employeeId", employeeId);
 
@@ -156,7 +157,7 @@ $(document).on("click", "#upload", function() {
 
 
 	if (hasReportdescription) {
-		message = "Report description cannot be empty jkgggdfggggggggggggg";
+		message = "Report description cannot be empty";
 		noError = false;
 		alert(message);
 	} 
@@ -180,7 +181,7 @@ $(document).on("click", "#upload", function() {
 			url : "EmployerController",
 //			data : {
 //				jsonData : JSON.stringify(formData),
-//				task : "AMR",
+			task : "AMR",
 //				reportUpload :reportUpload,
 //			},
 			data : formData, // Setting the data attribute of ajax with file_data
@@ -194,7 +195,7 @@ $(document).on("click", "#upload", function() {
 				clearMedicalHisory();
 
 				$('#save').prop('disabled', false); 
-				$('#upload').prop('disabled', true);
+				$('#upload').prop('disabled', false);
 				
 				$('#employeeAilment').attr('disabled',false);
 				$('#ailmentDescription').attr('disabled',false);
@@ -249,7 +250,6 @@ function clearMedicalHisory(){
 	});
 
 	$("#reportDescription").val("");
-
 	$('#upload').prop('disabled', true);
 
 }

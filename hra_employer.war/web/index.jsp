@@ -50,7 +50,7 @@
 <script src="dist/js/hra/hra.payroll.helper.js"></script>
 <script src="dist/js/hra/hra.education.js"></script>
 <script src="dist/js/hra/hra.study.js"></script>
-
+<script src="dist/js/hra/hra.medicalScheme.js"></script>
 <style type="text/css">
 /* label { */
 /* 	font-weight: normal !important; */
@@ -119,7 +119,7 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadContentEmployee()"> Employee</a></li>
-					
+
 					<li><a href="#department"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
@@ -129,18 +129,19 @@ select {
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalarycomponentdetails()"> Salary Component</a></li>
-					
+
 					<li><a href="#salarycomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadSalaryschemedetails()"> Salary Scheme</a></li>
-						
+
+					<!-- manage medical secheme details here - JH -->
 					<li><a href="#medicalschemecomponent"
 						class="list-group-item list-group-item-primary"
 						data-toggle="collapse" data-parent="#MainMenu"
 						onclick="loadMedicalSchemeDetails()"> Medical Scheme</a></li>
-						
-			
+
+
 					<!-- 					<li><a href="#payroll" -->
 					<!-- 						class="list-group-item list-group-item-primary" -->
 					<!-- 						data-toggle="collapse" data-parent="#MainMenu"> Pay Roll <i -->

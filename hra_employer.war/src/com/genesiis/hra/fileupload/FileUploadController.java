@@ -52,8 +52,6 @@ public class FileUploadController extends HttpServlet {
 		log.info(inputValue);
 		String task = request.getParameter("task");
 		log.info(task);
-		
-		
 
 	}
 
@@ -89,92 +87,86 @@ public class FileUploadController extends HttpServlet {
 	public String fileUpload(HttpServletRequest req) {
 
 		String details = "";
-		try{
-			
-			
+		try {
+
 			FileUploader fileUploader = new FileUploader();
 			Part filePart = req.getPart("file");
-			
+
 			InputStream fileContent = filePart.getInputStream();
 			String fileName = getSubmittedFileName(filePart);
 			String employeeId = req.getParameter("employeeId");
-			
-			String path = fileUploader.setFileToBeUpload(fileContent,
-					fileName, employeeId);
+
+			String path = fileUploader.setFileToBeUpload(fileContent, fileName,
+					employeeId);
 
 			log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
 			if (path != null) {
 
-				details = "{\"id\":\"" + MaskValidator.SQL_RECODE + "\","
-						+ "\"billDescription\":\""
-						+ req.getParameter("billDescription") + "\","
-						+ "\"billPath\":\"" + path + "\","
-						+ "\"crtby\":\""
-						+ req.getParameter("ehReferencecrtby") + "\""
-						+ "}";
-				
+				details = "{\"code\":\"" + MaskValidator.SQL_RECODE + "\","
+						+ "\"reportDescription\":\""
+						+ req.getParameter("reportDescription") + "\","
+						+ "\"reportPath\":\"" + path + "\"," + "\"modby\":\""
+						+ req.getParameter("ehReferencemodby") + "\","
+						+ "\"crtby\":\"" + req.getParameter("ehReferencemodby")
+						+ "\"" + "}";
+
 				log.info(details);
-			
-			}else {
+
+			} else {
 				details = MessageList.ERROR.message();
 			}
-			
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return details;
-		
+
 	}
-	
-	/**
-	 * to upload medical bill 
-	 * @param req
-	 * @return
-	 */
+/**
+ * to upload medical bill
+ * @param req
+ * @return details
+ */
 	public String fileUploadBill(HttpServletRequest req) {
 
 		String details = "";
-		try{
-			
-			
+		try {
+
 			FileUploader fileUploader = new FileUploader();
 			Part filePart = req.getPart("file");
-			
+
 			InputStream fileContent = filePart.getInputStream();
 			String fileName = getSubmittedFileName(filePart);
 			String employeeId = req.getParameter("employeeId");
-			
-			String path = fileUploader.setFileToBeUpload(fileContent,
-					fileName, employeeId);
+
+			String path = fileUploader.setFileToBeUpload(fileContent, fileName,
+					employeeId);
 
 			log.info(":" + fileName + ":" + employeeId + ":" + path + ":");
 			if (path != null) {
 
-				details = "{\"ID\":\"" + MaskValidator.SQL_RECODE + "\","
-						+ "\"billDescription\":\""
+				details = "{\"medicalBillId\":\"" + MaskValidator.SQL_RECODE
+						+ "\"," + "\"medicalBillDescription\":\""
 						+ req.getParameter("billDescription") + "\","
-						+ "\"billPath\":\"" + path + "\","
-						+ "\"crtby\":\""
-						+ req.getParameter("ehReferencecrtby") + "\""
+						+ "\"medicalBillPath\":\"" + path + "\","
+						+ "\"medicalBillcrtby\":\""
+						+ req.getParameter("ehReferencemodby") + "\","
+						+ "\"medicalBillEmployeeId\":\"" + employeeId + "\""
 						+ "}";
-				
+
 				log.info(details);
-			
-			}else {
+
+			} else {
 				details = MessageList.ERROR.message();
 			}
-			
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return details;
-		
+
 	}
 
 }

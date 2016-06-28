@@ -62,7 +62,7 @@ public class MedicalBill {
 	}
 
 	public int add(Object object) {
-		String query = "INSERT INTO [HRA.MEDICALBILL] (ID, EMPLOYEEID, BILLDESCRIPTION, BILLPATH, CRTBY, CRTON ) VALUES (?, ?, ?, ?, ?,GETDATE())";
+		String query = "INSERT INTO [HRA.MEDICALBILL] ( EMPLOYEEID, BILLDESCRIPTION, PATH, CRTBY, CRTON ) VALUES ( ?, ?, ?, ?,GETDATE())";
 		int insertStatus = -1;// when invalid insert
 		Connection conn = null;// when connecting to database
 		PreparedStatement ps = null;
@@ -74,11 +74,11 @@ public class MedicalBill {
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setString(1, medicalBill.getMedicalBillId());
-			ps.setString(2, medicalBill.getMedicalBillEmployeeId());
-			ps.setString(3, medicalBill.getMedicalBillDescription());
-			ps.setString(4, medicalBill.getMedicalBillPath());
-			ps.setString(5, medicalBill.getMedicalBillcrtby());
+			//ps.setString(1, "4");
+			ps.setString(1, medicalBill.getMedicalBillEmployeeId());
+			ps.setString(2, medicalBill.getMedicalBillDescription());
+			ps.setString(3, medicalBill.getMedicalBillPath());
+			ps.setString(4, medicalBill.getMedicalBillcrtby());
 
 			int rowsInserted = ps.executeUpdate();
 

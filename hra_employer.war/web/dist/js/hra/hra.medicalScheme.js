@@ -1,15 +1,17 @@
 /**
- * file - hra.medicalScheme.js
+ * file - hra.medicalScheme.js 20160627
+ * @JH
  * 
  */
 
-$(document).on("click", "#billUpload", function() {
+
+$(document).on("click", "#uploadBill", function() {
 
 	var noError = true;
 	var message = "";
 
 	var billDescription = $("#billDescription").val();
-	var ehReferencecrtby = $("#ehReferencecrtby").val();
+	var ehReferencemodby = $("#ehReferencemodby").val();
 	var employeeId = $("#employeeId").val();
 
 	// Getting the properties of file from file field
@@ -21,41 +23,30 @@ $(document).on("click", "#billUpload", function() {
 	formData.append("file", reportUpload);
 	formData.append("billDescription", billDescription);
 	formData.append("task", "AMB");
-	formData.append("ehReferencecrtby", ehReferencecrtby);
+	formData.append("ehReferencemodby", ehReferencemodby);
 	formData.append("employeeId", employeeId);
 
 	var hasBilldescription = isEmpty(billDescription);
-	var hasBillload = isValidImage();
+	var hasBillupload = isValidImage();
 
 	if (hasBilldescription) {
-		message = "Bill description cannot be empty";
+		message = "Bill description cannot be empty.";
 		noError = false;
 		alert(message);
-	} else if (hasBillload) {
-		message = "Please upload your file(s)";
+	} else if (hasBillupload) {
+		message = "Please upload your file";
 		noError = false;
 		alert(message);
 	}
 
 	if (noError) {
 
-		// var formData2 = {
-		// "reportDescription" : reportDescription,
-		// "task" : "AMR",
-		// "medicalHistorymodby" : ehReferencemodby,
-		// "medicalHistorycrtby" : ehReferencemodby,
-		// "employeeId" : employeeId,
-		// };
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-			data : {
-				jsonData : JSON.stringify(formData),
-				task : "AMB",
-				reportUpload : reportUpload,
-			},
+			//task : "AMB",
 			data : formData, // Setting the data attribute of ajax with
-			// file_data
+								// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -64,9 +55,8 @@ $(document).on("click", "#billUpload", function() {
 				alert(data);
 
 				clearMedicalHisory();
-
 				if (data == "Details added successfully.") {
-					// clearMedicalReports();
+					// clearMedicalBills();
 				}
 			},
 			error : function(e) {

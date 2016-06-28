@@ -1,9 +1,5 @@
-<!-- 20160407 PN HRA-2 created manageEmployee.jsp class -->
-<!-- 20160412 PN HRA-2 edited the design. -->
-<!-- 20160419 PN HRA-2 edited the design. -->
-<!-- 20160419 PN HRA-2 edited the design. -->
-<!-- 20160505 PN HRA-2 edited the design. -->
-<!-- 20160530 PC HRA-30 edited the design. -->
+<!-- 20160628 JH HRA-47 created manageMedicalScheme.jsp class -->
+
 <!-- JavaScripts to help to load  -->
 
 
@@ -116,21 +112,15 @@
 
 				<div class="modal-footer">
 
-					<input type="hidden" class="form-control" id="ehReferencecrtby"
-						name="ehReferencecrtby" value="ADMIN_USER_TR">
+					<input type="hidden" class="form-control" id="ehReferencemodby"
+						name="ehReferencemodby" value="ADMIN_USER_TR">
 
 					<!-- FILE UPLOAD -->
-					<!-- 	<button type="button"
-						class="btn btn-success full pull-right btn-space"
-						onclick="addMedicalbill();" >
-						<i class="glyphicon glyphicon-floppy-disk"></i> Upload Report
+					<button type="button"
+						class="btn btn-success full pull-right btn-space" id="uploadBill">
+						<i class="glyphicon glyphicon-floppy-disk"></i> Upload Reports
 					</button>
-					-->
-					<button type="button" class="btn btn-success pull-right"
-						onclick="" id="billUpload">
-						<i class="glyphicon glyphicon-floppy-disk"></i> Upload
-					</button>
-
+					
 					<!-- CLEAR -->
 					<button type="button" class="btn btn-warning pull-left"
 						onclick="clearMedicalHisory()" id="reset">

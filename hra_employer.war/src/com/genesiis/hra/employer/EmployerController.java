@@ -75,6 +75,10 @@ public class EmployerController extends HttpServlet {
 		commands.put(Operation.GET_MEDICAL_REPORT, new GetEmployee());
 		commands.put(Operation.UPDATE_MEDICAL_HISTORY, new AddMedicalHistory());
 		commands.put(Operation.UPDATE_MEDICAL_REPORT, new AddMedicalReport());
+		
+		/**
+		 * to add medical bill
+		 */
 		commands.put(Operation.ADD_MEDICAL_BILL, new AddMedicalBill());
 
 		commands.put(Operation.ADD_FAMILY_MEMBER, new AddFamilyDetails());
@@ -212,6 +216,7 @@ public class EmployerController extends HttpServlet {
 				FileUploadController fileUploadController2 = new FileUploadController();
 				details = fileUploadController2.fileUploadBill(request);
 				message = commands.get(o).execute(details);
+				log.info(message);
 				break;
 			default:
 				break;

@@ -52,7 +52,7 @@ public class AddMedicalBill implements ICommandAJX {
 			}
 		} catch (Exception e) {
 			// if error
-			log.info("Execute - AddMedicalReports - Exception " + e);
+			log.info("Execute - AddMedicalBill - Exception " + e);
 			return message.message();
 		}
 		return message.message();
@@ -62,13 +62,13 @@ public class AddMedicalBill implements ICommandAJX {
 	public Object extractFromJason(String data) {
 
 		Gson gson = new Gson();
-		MedicalReport medicalReport = null;
+		MedicalBill medicalReport = null;
 		try {
 			// convert gson into object
-			medicalReport = gson.fromJson(data, MedicalReport.class);
+			medicalReport = gson.fromJson(data, MedicalBill.class);
 		} catch (Exception e) {
 			// error handling
-			log.info("ExtractFromgson - AddMedicalReports - Exception "
+			log.info("ExtractFromgson - AddMedicalBill - Exception "
 					+ e.getMessage());
 		}
 		return medicalReport;

@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 public class FileUploader{
 
 	static Logger log = Logger.getLogger(FileUploader.class.getName());
+
 	
 	public String setFileToBeUpload(InputStream inputStream,String filename,String folder){
 		
