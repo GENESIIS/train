@@ -31,29 +31,5 @@ public abstract class Leaves implements ICrud{
 		return null;
 	}
 
-	public List find(String leaveID) throws SQLException, Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object findByEpf(String leaveName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getId(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean isValidObject(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

@@ -111,7 +111,7 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left"
-					onclick="">
+					onclick="clearLeaveTypeform()">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"

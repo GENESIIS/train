@@ -18,7 +18,7 @@ public class LeaveType extends Leaves {
 
 	private String leaveType;
 	private String leaveDuration;
-	private int leaveCount;
+	private String leaveCount;
 	private String leavePayment;
 	
 
@@ -39,11 +39,12 @@ public class LeaveType extends Leaves {
 	}
 
 	
-	public int getLeaveCount() {
+
+	public String getLeaveCount() {
 		return leaveCount;
 	}
 
-	public void setLeaveCount(int leaveCount) {
+	public void setLeaveCount(String leaveCount) {
 		this.leaveCount = leaveCount;
 	}
 
@@ -59,7 +60,7 @@ public class LeaveType extends Leaves {
 	
 	}
 
-	public LeaveType(String leaveType, String leaveDuration, int leaveCount,
+	public LeaveType(String leaveType, String leaveDuration, String leaveCount,
 			String leavePayment) {
 		super();
 		this.leaveType = leaveType;
@@ -83,7 +84,7 @@ public class LeaveType extends Leaves {
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, data.getLeaveType());
 			ps.setString(2, data.getLeaveDuration());
-			ps.setInt(3, data.getLeaveCount());
+			ps.setString(3, data.getLeaveCount());
 			ps.setString(4, data.getLeavePayment());
 		
 			insertStatus = ps.executeUpdate();
@@ -120,39 +121,40 @@ public class LeaveType extends Leaves {
 	}
 
 	@Override
-	public Object find(int empEpf) throws SQLException, Exception {
+	public Object find(int leaveid) throws SQLException, Exception {
 		// TODO Auto-generated method stub
-		return super.find(empEpf);
+		return super.find(leaveid);
 	}
 
 	@Override
-	public List find(String empIdenti) throws SQLException, Exception {
+	public List<Object> find(String empIdenti) throws SQLException, Exception {
 		// TODO Auto-generated method stub
-		return super.find(empIdenti);
+		return null;
 	}
 
 	@Override
 	public Object findByEpf(String empEpf) {
 		// TODO Auto-generated method stub
-		return super.findByEpf(empEpf);
+		return null;
 	}
 
 	@Override
 	public String getId(String id) {
 		// TODO Auto-generated method stub
-		return super.getId(id);
+		return null;
 	}
 
 	@Override
-	public List getAll() {
+	public List<Object> getAll() {
 		// TODO Auto-generated method stub
-		return super.getAll();
+		return null;
 	}
 
 	@Override
 	public boolean isValidObject(Object object) {
 		// TODO Auto-generated method stub
-		return super.isValidObject(object);
+		return false;
 	}
+
 	
 }

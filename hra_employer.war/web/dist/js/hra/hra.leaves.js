@@ -15,7 +15,6 @@ function loadleaveTypesdetails() {
 
 // Get data and sent to leaveController.java.
 function addLeaveTypesDetails() {
-	alert("fffff");
 	var leaveType = $("#leavetypename").val();
 	var leaveDuration = $("#leavesduration").val();
 	var leavescount = $("#leavescount").val();
@@ -63,10 +62,11 @@ function addLeaveTypesDetails() {
 }
 
 function clearLeaveTypeform() {
-	$("#leaveTypename").val("");
-	$("#leavesduaration").val("");
+	$("#leavetypename").val("");
+	$("#leavesduration").val("");
 	$("#leavescount").val("");
-	
+	$('#leaveNoPay').removeAttr('checked');
+	$('#leavePay').removeAttr('checked');
 }
 
 //Check with pay or no pay and returns Value

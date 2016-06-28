@@ -43,8 +43,7 @@ public class AddLeaveTypes implements ICommandAJX {
 		String message = "";
 		LeaveType leave = null;
 		try {
-			leave = gson.fromJson(gsonData, LeaveType.class);	
-			System.out.print(leave.getLeaveType()+" "+leave.getLeaveDuration()+" "+leave.getLeaveCount()+"  inside extractFromJason");
+			leave = gson.fromJson(gsonData, LeaveType.class);
 		} catch (Exception ex) {
 			System.out.print("Error in extractFromJson");
 			 message = MessageList.ERROR.message();;
@@ -62,12 +61,10 @@ public class AddLeaveTypes implements ICommandAJX {
 		if (!validator.isValidString(leaveType.getLeaveType())) {
 			message = message + MessageList.EMPTYFIELD.message() +" ";
 		}
-		if (!validator.isValidString((leaveType.getLeaveDuration()))) {
+		if (!validator.isNumber((leaveType.getLeaveDuration()))) {
 			message = message + MessageList.EMPTYFIELD.message() +" ";
 		}
-		if (!validator.isValidInt((leaveType.getLeaveCount()))) {
-			message = message + MessageList.EMPTYFIELD.message() +" ";
-		}if (!validator.isDigit((leaveType.getLeaveCount()+""))) {
+		if (!validator.isValidString((leaveType.getLeaveCount()))) {
 			message = message + MessageList.EMPTYFIELD.message() +" ";
 		}
 		return message;
@@ -85,9 +82,9 @@ public class AddLeaveTypes implements ICommandAJX {
 		return null;
 	}	
 	private LeaveType getLeaveTypedetails(String data) {
-		System.out.print("okk");
+		/*System.out.print("okk");
 		log.info("Hello");
-		System.out.println("getLeaveTypedetails(String data) "+data);
+		System.out.println("getLeaveTypedetails(String data) "+data);*/
 		LeaveType leavetype = (LeaveType) extractFromJason(data);
 		
 		return leavetype;
