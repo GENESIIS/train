@@ -41,7 +41,9 @@ public enum Operation {
 	GET_FAMILY_MEMBER("GFM"),
 	ADD_STUDY_PROGRAM("ASP"),
 	UPDATE_STUDY_PROGRAM("USP"),
-	GET_STUDY_PROGRAM("GSP");
+	GET_STUDY_PROGRAM("GSP"),
+	
+	
 	
 	private final String value;
 

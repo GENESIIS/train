@@ -27,22 +27,27 @@
 <script src="dist/editablesearch/source/jquery-latest.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h2>HRA System</h2>
-		<form class="form-signin">
-			<label for="inputUserName" class="sr-only">User Name or EPF
-				No</label> <input type="email" id="inputUserName" class="form-control"
-				placeholder="User Name or EPF No" required="" autofocus="">
-			<label for="inputPassword" class="sr-only">Password</label> <input
-				type="password" id="inputPassword" class="form-control"
-				placeholder="Password" required="" autofocus="">
-			<div>
-				<button class="btn btn-lg btn-primary btn-block" type="submit"
-					href="index.jsp">Sign in</button>
+	<center>
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<h2>HRA System</h2>
+				<form class="form-signin">
+					<label for="inputUserName" class="sr-only">User Name or EPF
+						No</label> <input type="email" id="inputUserName" class="form-control"
+						placeholder="User Name or EPF No" required="" autofocus="">
+					<label for="inputPassword" class="sr-only">Password</label> <input
+						type="password" id="inputPassword" class="form-control"
+						placeholder="Password" required="" autofocus="">
+					<div>
+						<button class="btn btn-lg btn-primary btn-block" onclick= "" 
+							href="index.jsp">Sign in</button>
+					</div>
+
+				</form>
 			</div>
 
-		</form>
-	</div>
+		</div>
+	</center>
 
 </body>
 </html>
