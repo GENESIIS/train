@@ -72,8 +72,11 @@ public class FileUploadController extends HttpServlet {
 	}
 
 	private static String getSubmittedFileName(Part part) {
+		log.info("content-disposition ======"+part.getHeader("content-disposition"));  //  added for testing
 		for (String cd : part.getHeader("content-disposition").split(";")) {
-			if (cd.trim().startsWith("filename")) {
+			log.info("File Part in getSubmittedFileName====="+ cd.toString());  // added for testing purpose
+			
+			if (cd.trim().startsWith("filename")) { 
 				String fileName = cd.substring(cd.indexOf('=') + 1).trim()
 						.replace("\"", "");
 				return fileName.substring(fileName.lastIndexOf('/') + 1)
@@ -93,7 +96,8 @@ public class FileUploadController extends HttpServlet {
 			
 			
 			FileUploader fileUploader = new FileUploader();
-			Part filePart = req.getPart("file");
+			Part filePart = req.getPart("file"); 
+			
 			
 			InputStream fileContent = filePart.getInputStream();
 			String fileName = getSubmittedFileName(filePart);

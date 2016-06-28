@@ -132,7 +132,7 @@ function addMedicalhistorydetails() {
 
 $(document).on("click", "#upload", function() {
 
-	alert("INSIDE");
+	
 	var noError = true;
 	var message = "";
 
@@ -142,17 +142,41 @@ $(document).on("click", "#upload", function() {
 	
 	// Getting the properties of file from file field
 	//var reportUpload = $("#avatar").prop("files")[0];  // commented 2016/06/27 for accepting multiple files
-	var reportUpload = $("#avatar")[0].files;	// files are selected stored in an array
-	for (var i = 0; i < files.length; i++)
-	    alert(files[i].name);
+
+	
+	var uploadedFilnameList = $("#avatar")[0].files;	// files are selected stored in an array
+	var reportUpload ="";
+	var formData = new FormData();
+	
+	for (var i = 0; i < uploadedFilnameList.length; i++){	    
+	  alert("printing file names---"+ i);
+	 
+	  if(uploadedFilnameList.length > 1){
+		  alert("inside image multiple");
+		  //reportUpload=reportUpload +"-"+ uploadedFilnameList[i] ;//this is a file object
+		  formData.append("file[]", uploadedFilnameList[i],"file"+i);
+		  
+		   alert(reportUpload);
+	 }
+	  formData.append("file[]", uploadedFilnameList[i],"file"+i);
+	  alert(reportUpload);
+	}
+	
+	
+	
+	
+	
+	    
 	// Creating object of FormData class 
 	// and appending every attributes
-	var formData = new FormData();
-	formData.append("file", reportUpload);
+	//var formData = new FormData();
+	//formData.append("file", reportUpload);  
 	formData.append("reportDescription", reportDescription);
 	formData.append("task", "AMR");
 	formData.append("ehReferencemodby", ehReferencemodby);
 	formData.append("employeeId", employeeId);
+	
+	 alert(formData);
 
 	var hasReportdescription = isEmpty(reportDescription);
 	var hasReportupload = isValidImage();
@@ -168,7 +192,7 @@ $(document).on("click", "#upload", function() {
 		noError = false;
 		alert(message);
 	}
-
+	alert("11########################");
 	if (noError) {
 
 //		var formData2 = {
@@ -178,6 +202,7 @@ $(document).on("click", "#upload", function() {
 //			"medicalHistorycrtby" : ehReferencemodby,
 //			"employeeId" : employeeId,
 //		};
+		alert("2########################");
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
@@ -192,6 +217,7 @@ $(document).on("click", "#upload", function() {
 			processData : false,
 			dataType : "JSON",
 			success : function(data) {
+				
 				alert(data);
 
 				clearMedicalHisory();

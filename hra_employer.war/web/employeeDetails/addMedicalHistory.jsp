@@ -79,7 +79,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<!--  label for="reportDescription">Report Description</label--> 
+												<label for="reportDescription">Report Description</label> 
 												<input type="text" class="form-control" id="reportDescription" name="reportDescription" placeholder="Report Description" maxlength="100" >
 											</div>
 										</div>
@@ -95,16 +95,23 @@
 																  
 																  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 																  
-																  <div>
-																	    <span class="btn btn-default btn-file">
+																  <div id="images-to-upload">
+																  
+																	    <!--span class="btn btn-default btn-file">    ## commented on 2016/06/28 ##
 																	    			<span class="fileinput-new">Select image</span>
 																	    			<span class="fileinput-exists">Change</span>
 																					<input type="file"  id="avatar" name="file" multiple="multiple">
-																		</span>
+																		</span-->
 																		
-																   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+																		<!--  added for HRA-46 adding multiple reports by dn -->
+																		
+																		<input type="file" name="images[]" id="avatar" multiple>
+																		<label> <b>NOTE</b> Select Multiple Reports by pressing Ctrl</label>	
+																		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>															   		
 																   								   		
-															  	  </div>
+															  	  </div> <!-- end of #imagges-to-upload -->
+															  	  
+															  	 
 
 													       
 													    </div>

@@ -97,11 +97,14 @@
 																  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 																  
 																  <div>
-																	    <span class="btn btn-default btn-file">
+																	    <!-- span class="btn btn-default btn-file">
 																	    			<span class="fileinput-new">Select image</span>
 																	    			<span class="fileinput-exists">Change</span>
 																					<input type="file"  id="avatar" name="file">
-																		</span>
+																		</span-->
+																		<!--  added for HRA-46 adding multiple reports by dn -->
+																		<input type="file" name="images[]" id="avatar" multiple>
+																		<label> <b>NOTE</b> Select Mltiple Reports by pressing Ctrl</label>	
 																		
 																   		<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 																   								   		
