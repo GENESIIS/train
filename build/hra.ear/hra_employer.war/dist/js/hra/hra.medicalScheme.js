@@ -34,13 +34,12 @@ $(document).on("click", "#uploadBill", function() {
 		noError = false;
 		alert(message);
 	} else if (hasBillupload) {
-		message = "Please upload your file";
+		message = "Please upload your file(s)";
 		noError = false;
 		alert(message);
 	}
 
 	if (noError) {
-
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
