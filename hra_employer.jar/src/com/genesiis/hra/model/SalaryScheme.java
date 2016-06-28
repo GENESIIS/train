@@ -153,7 +153,7 @@ public class SalaryScheme implements ICrud {
 
 			//get each component id s and add it in to schema table with schema id
 			for (String c_id : comp_id) {
-				log.info(c_id+"...............................................................");
+				log.info(c_id);
 				ps.setInt(1, scheme_id);
 				ps.setString(2, c_id);
 				ps.setString(3, "Prabath");

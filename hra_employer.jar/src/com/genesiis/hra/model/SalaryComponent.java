@@ -239,7 +239,7 @@ public class SalaryComponent implements ICrud {
 					conn.close();
 				}				
 			} catch (SQLException e) {
-				log.info("find methode "+ e.toString());
+				log.error("find methode "+ e.toString());
 			}
 		}
 		return componentList;
