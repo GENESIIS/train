@@ -15,31 +15,28 @@ public abstract class Leaves implements ICrud{
 
 
 	public int add(Object object) {
-		// TODO Auto-generated method stub
 		return -1;
 	}
 
 	public int update(Object object, String epf) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int delete(Object object) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Object find(int empEpf) throws SQLException, Exception {
+	public Object find(int leaveid) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List find(String empIdenti) throws SQLException, Exception {
+	public List find(String leaveID) throws SQLException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object findByEpf(String empEpf) {
+	public Object findByEpf(String leaveName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

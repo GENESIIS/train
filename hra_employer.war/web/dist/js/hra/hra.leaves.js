@@ -15,28 +15,32 @@ function loadleaveTypesdetails() {
 
 // Get data and sent to leaveController.java.
 function addLeaveTypesDetails() {
-	var leaveTypenumber = $("#leavetypenumber").val();
-	var leaveTypename = $("#leavetypename").val();
-	var leaverPeryear = $("#leavesperyear").val();
-	var checkWithyayOrNopay = checkWithpayOrNopay();
+	alert("fffff");
+	var leaveType = $("#leavetypename").val();
+	var leaveDuration = $("#leavesduration").val();
+	var leavescount = $("#leavescount").val();
+	
+	var leavePayment = checkWithyayOrNopay();
 
 	
-	var leaveTypenumbererror = $("#leaveTypenumbererror").text();
-	var leaveTypenameerror = $("#leaveTypenameerror").text();
-
+	/*var leaveTypenumbererror = $("#leaveTypenumbererror").text();
+	var leaveTypenameerror = $("#leaveTypenameerror").text();*/
+	
 	var jsonData = {
-		"leaveTypenumber" : leaveTypenumber,
-		"leaveTypename" : leaveTypename,
-		"leaverPeryear" : leaverPeryear
-		
+			
+		"leaveType" : leaveType,
+		"leaveDuration" : leaveDuration,
+		"leaveCount" : leavescount,
+		"leavePayment" : leavePayment
 	};
-
-	if ((leaveTypenumber == "") || (leaveTypename == "")) {
+	if ((leaveType == "") || (leaveDuration == "")|| (leavescount == "")) {
 		alert("Please fill the Empty fields.");
-	} else if ((leaveTypenumbererror != "") || (leaveTypenameerror)) {
-		alert("Please fill the details correctly.");
+		/*} else if ((leaveTypenumbererror != "") || (leaveTypenameerror)) {
+		alert("Please fill the details correctly.");*/
 	} else {
+		
 		$.ajax({
+			
 			type : "POST",
 			url : 'LeaveController',
 			data : {
@@ -47,7 +51,7 @@ function addLeaveTypesDetails() {
 			success : function(data) {
 				alert(data);
 				if (data == "Details added successfully.") {
-					clearDepartmentform();
+					clearLeaveTypeform();
 				}
 			},
 			error : function(e) {
@@ -58,13 +62,24 @@ function addLeaveTypesDetails() {
 	}
 }
 
+function clearLeaveTypeform() {
+	$("#leaveTypename").val("");
+	$("#leavesduaration").val("");
+	$("#leavescount").val("");
+	
+}
+
 //Check with pay or no pay and returns Value
-function checkWithpayOrNopay() {
+function checkWithyayOrNopay() {
+	
 	 if (document.getElementById('leavePay').checked) {
+	
 		return 1;
 	} else if (document.getElementById('leaveNoPay').checked) {
+		
 		return 2;
 	} else {
+	
 		return 3;
 	}
 }

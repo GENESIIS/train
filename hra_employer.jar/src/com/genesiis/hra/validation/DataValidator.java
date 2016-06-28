@@ -92,6 +92,22 @@ public class DataValidator {
 		return status;
 	}
 
+	public boolean isDigit(String text) {
+		boolean status = false;		
+		if ((text.isEmpty() == false) && text != null) {
+			   try {
+				   Double number = Double.parseDouble(text) ;
+			} catch (NumberFormatException e) {
+				// TODO: handle exception
+				return false;
+			}catch ( Exception s){
+				return false;
+			}
+			status = true;
+		}
+		log.info("isNumber" +status);
+		return status;
+	}
 	//
 	public boolean isValidInt(int text) {
 		boolean status = false;

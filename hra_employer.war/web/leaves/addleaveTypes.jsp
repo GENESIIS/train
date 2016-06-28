@@ -111,11 +111,11 @@
 					<i class="glyphicon glyphicon-floppy-disk"></i> Save
 				</button>
 				<button type="button" class="btn btn-warning pull-left"
-					onclick="clearDepartmentform()">
+					onclick="">
 					<i class="glyphicon glyphicon-refresh"></i> Clear
 				</button>
 				<button type="button" class="btn btn-danger pull-left"
-					data-dismiss="modal" onclick="clearDepartmentform()">
+					data-dismiss="modal" onclick="">
 					<i class="glyphicon glyphicon-floppy-remove"></i> Cancel
 				</button>
 			</div>

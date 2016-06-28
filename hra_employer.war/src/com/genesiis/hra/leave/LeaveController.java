@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import com.genesiis.hra.command.AddLeaveTypes;
 import com.genesiis.hra.command.ICommandAJX;
 import com.genesiis.hra.validation.MessageList;
@@ -23,7 +24,7 @@ import com.google.gson.Gson;
 import org.jboss.logging.Logger;
 
 /**
- * 20160524 PN created PayrollController.java class. doPost() method created.
+ * 20160628 CM created LeaveController.java class. doPost() method created.
  */
 @WebServlet("/LeaveController")
 public class LeaveController extends HttpServlet {
@@ -53,10 +54,10 @@ public class LeaveController extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String details = request.getParameter("data");
+		String details = request.getParameter("jsonData");
 		String task = request.getParameter("task");
 		String message = "";
-
+		
 		// Get the retrieve the operation from the task.
 		Operation o = Operation.BAD_OPERATION;
 

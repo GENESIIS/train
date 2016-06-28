@@ -20,7 +20,7 @@ public class LeaveType extends Leaves {
 	private String leaveDuration;
 	private int leaveCount;
 	private String leavePayment;
-	private int leaveID;
+	
 
 	public String getLeaveType() {
 		return leaveType;
@@ -55,33 +55,29 @@ public class LeaveType extends Leaves {
 		this.leavePayment = leavePayment;
 	}
 
-	public int getLeaveID() {
-		return leaveID;
-	}
-
-	public void setLeaveID(int leaveID) {
-		this.leaveID = leaveID;
+	public LeaveType() {
+	
 	}
 
 	public LeaveType(String leaveType, String leaveDuration, int leaveCount,
-			String leavePayment, int leaveID) {
+			String leavePayment) {
 		super();
 		this.leaveType = leaveType;
 		this.leaveDuration = leaveDuration;
 		this.leaveCount = leaveCount;
 		this.leavePayment = leavePayment;
-		this.leaveID = leaveID;
+		
 	}
 
 	public int add(Object object) {
 		String query = "INSERT INTO [HRA.LEAVETYPE] (LEAVETYPE, LEAVEDURATION, "
-				+ "LEAVECOUNT, WITHPAYORNOPAY, ID) " + "VALUES (?, ?, ?, ?,?)";
+				+ "LEAVECOUNT, WITHPAYORNOPAY) VALUES (?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		LeaveType data = (LeaveType) object;
 		int insertStatus = 0;
-
+		/*System.out.print(data.getLeaveType()+" "+data.getLeaveDuration()+" "+data.getLeaveCount()+" inside query");*/
 		try {
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -89,14 +85,8 @@ public class LeaveType extends Leaves {
 			ps.setString(2, data.getLeaveDuration());
 			ps.setInt(3, data.getLeaveCount());
 			ps.setString(4, data.getLeavePayment());
-			ps.setInt(5, data.getLeaveID());
-
+		
 			insertStatus = ps.executeUpdate();
-
-			// if (rowsInserted > 0) {
-			// insertStatus = 1;// when valid insert
-			// }
-
 			rs = ps.getGeneratedKeys();
 
 		} catch (SQLException exception) {
@@ -116,4 +106,53 @@ public class LeaveType extends Leaves {
 
 		return insertStatus;
 	}
+
+	@Override
+	public int update(Object object, String epf) {
+		// TODO Auto-generated method stub
+		return super.update(object, epf);
+	}
+
+	@Override
+	public int delete(Object object) {
+		// TODO Auto-generated method stub
+		return super.delete(object);
+	}
+
+	@Override
+	public Object find(int empEpf) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return super.find(empEpf);
+	}
+
+	@Override
+	public List find(String empIdenti) throws SQLException, Exception {
+		// TODO Auto-generated method stub
+		return super.find(empIdenti);
+	}
+
+	@Override
+	public Object findByEpf(String empEpf) {
+		// TODO Auto-generated method stub
+		return super.findByEpf(empEpf);
+	}
+
+	@Override
+	public String getId(String id) {
+		// TODO Auto-generated method stub
+		return super.getId(id);
+	}
+
+	@Override
+	public List getAll() {
+		// TODO Auto-generated method stub
+		return super.getAll();
+	}
+
+	@Override
+	public boolean isValidObject(Object object) {
+		// TODO Auto-generated method stub
+		return super.isValidObject(object);
+	}
+	
 }
