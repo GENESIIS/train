@@ -36,6 +36,9 @@ function addLeaveTypesDetails() {
 		alert("Please fill the Empty fields.");
 		/*} else if ((leaveTypenumbererror != "") || (leaveTypenameerror)) {
 		alert("Please fill the details correctly.");*/
+	}else if(!$('input[name=leavePay]:checked').val()){
+		alert("Please check radio button.");
+		
 	} else {
 		
 		$.ajax({

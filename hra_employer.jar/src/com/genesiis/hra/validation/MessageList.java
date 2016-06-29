@@ -53,7 +53,9 @@ public enum MessageList {
 	EHUPDATE("EHUPDATE"),//EMPLOYE HISTORY UPDATE
 	EHGET("EHGET"),//EMPLOYE HISTORY UPDATE
 	EHDELETE("EHDELETE"),//EMPLOYE HISTORY DELETE
-	EHFIND("EHFIND");
+	EHFIND("EHFIND"),
+	INCORRECTLEAVEDATA("Invalid Data Formats"),
+	INCORRECTDATACOMBINATION("Bad leave duration and leave count combination");
 	
 	private String message;
 

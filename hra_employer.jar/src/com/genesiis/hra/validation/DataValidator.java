@@ -91,6 +91,41 @@ public class DataValidator {
 		log.info("isNumber" +status);
 		return status;
 	}
+	// check add minus munbers 
+	public boolean isNumberNotMinus(String text) {
+		boolean status = false;	
+		Integer number = Integer.parseInt(text) ;
+		if (number>0) {
+			   try {
+				   
+			} catch (NumberFormatException e) {
+				// TODO: handle exception
+				return false;
+			}catch ( Exception s){
+				return false;
+			}
+			status = true;
+		}
+		log.info("isNumber" +status);
+		return status;
+	} 
+	//check number is int or double
+	public boolean isNumberOrDecimal(String text) {
+		boolean status = false;		
+		if ((text.isEmpty() == false) && text != null) {
+			   try {
+				   Double number = Double.parseDouble(text) ;
+			} catch (NumberFormatException e) {
+				// TODO: handle exception
+				return false;
+			}catch ( Exception s){
+				return false;
+			}
+			status = true;
+		}
+		log.info("isNumber" +status);
+		return status;
+	}
 
 	//
 	public boolean isValidInt(int text) {
