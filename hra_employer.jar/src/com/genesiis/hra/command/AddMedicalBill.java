@@ -1,3 +1,10 @@
+
+
+/**
+ * AddMedicalBill.java 2016/06/27
+ * @JH
+ */
+
 package com.genesiis.hra.command;
 
 import java.util.HashMap;
@@ -16,7 +23,7 @@ public class AddMedicalBill implements ICommandAJX {
 
 	public String execute(String gsonData) {
 
-		// insert fiels validation
+		// insert fields validation
 		MessageList message = MessageList.ERROR;
 		boolean hasError = false;
 
@@ -30,18 +37,19 @@ public class AddMedicalBill implements ICommandAJX {
 
 			// validating map return error map
 			hasError = validateValue(attributeMap);
+				
 
 			// return error map is empty -> no errors
 			if (!hasError) {
 
-				// adding medical reports to database table
+				// adding medical bill to database table
 				int hasInserted = medicalBill.add(medicalBill);
 
-				// adding medical reports to database table pass
+				// adding medical bill to database table pass
 				if (hasInserted == 1) {
 					message = MessageList.ADDED;
 				} else {
-					// adding medical history to database table fail
+					// adding medical bill to database table fail
 					message = MessageList.NOTADDED;
 				}
 
@@ -58,7 +66,7 @@ public class AddMedicalBill implements ICommandAJX {
 		return message.message();
 	}
 
-	// @tr - extracting Gson data to object for save
+	// extracting Gson data to object for save
 	public Object extractFromJason(String data) {
 
 		Gson gson = new Gson();
@@ -74,7 +82,7 @@ public class AddMedicalBill implements ICommandAJX {
 		return medicalReport;
 	}
 
-	// @TR - converting Gson string to map for check errors
+	// converting Gson string to map for check errors
 	public Map<String, String> jsonToMap(String t) {
 
 		// local initialization
@@ -92,7 +100,7 @@ public class AddMedicalBill implements ICommandAJX {
 		return map;
 	}
 
-	// @TR - validation according to the form fields
+	// validation according to the form fields
 	public boolean validateValue(Map<String, String> entiytMap) {
 
 		// get isValidString()
@@ -118,6 +126,7 @@ public class AddMedicalBill implements ICommandAJX {
 		}
 		return hasError;
 	}
+	
 
 	public String execute(String gsonData, String employeeEpf) {
 		// TODO Auto-generated method stub

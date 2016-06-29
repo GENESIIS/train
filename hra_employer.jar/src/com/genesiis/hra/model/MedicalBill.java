@@ -12,7 +12,7 @@ import com.genesiis.hra.utill.MaskValidator;
 import com.genesiis.hra.validation.MessageList;
 
 public class MedicalBill {
-	static Logger log = Logger.getLogger(MedicalHistory.class.getName());
+	static Logger log = Logger.getLogger(MedicalBill.class.getName());
 
 	private String medicalBillId;
 	private String medicalBillEmployeeId;
@@ -74,7 +74,6 @@ public class MedicalBill {
 			conn = ConnectionManager.getConnection();
 			ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-			//ps.setString(1, "4");
 			ps.setString(1, medicalBill.getMedicalBillEmployeeId());
 			ps.setString(2, medicalBill.getMedicalBillDescription());
 			ps.setString(3, medicalBill.getMedicalBillPath());

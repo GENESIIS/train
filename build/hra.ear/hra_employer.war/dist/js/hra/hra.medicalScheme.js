@@ -1,9 +1,21 @@
 /**
  * file - hra.medicalScheme.js 20160627
+ * 
  * @JH
  * 
  */
 
+// check the file fo null value
+function isValidImage() {
+	if (document.getElementById("avatar").files.length == 0) {
+		return true;
+	}
+}
+
+//check the bill description is empty
+function isEmpty(value) {
+	return (value == null || value.length === 0);
+}
 
 $(document).on("click", "#uploadBill", function() {
 
@@ -15,12 +27,12 @@ $(document).on("click", "#uploadBill", function() {
 	var employeeId = $("#employeeId").val();
 
 	// Getting the properties of file from file field
-	var reportUpload = $("#avatar").prop("files")[0];
+	var billUpload = $("#avatar").prop("files")[0];
 
 	// Creating object of FormData class
 	// and appending every attributes
 	var formData = new FormData();
-	formData.append("file", reportUpload);
+	formData.append("file", billUpload);
 	formData.append("billDescription", billDescription);
 	formData.append("task", "AMB");
 	formData.append("ehReferencemodby", ehReferencemodby);
@@ -43,9 +55,9 @@ $(document).on("click", "#uploadBill", function() {
 		$.ajax({
 			type : "POST",
 			url : "EmployerController",
-			//task : "AMB",
+			// task : "AMB",
 			data : formData, // Setting the data attribute of ajax with
-								// file_data
+			// file_data
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -54,7 +66,7 @@ $(document).on("click", "#uploadBill", function() {
 				alert(data);
 
 				clearMedicalHisory();
-				if (data == "Details added successfully.") {
+				if (data == "File uploaded successfully.") {
 					// clearMedicalBills();
 				}
 			},

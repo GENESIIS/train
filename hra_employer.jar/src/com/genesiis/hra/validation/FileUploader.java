@@ -9,19 +9,18 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Logger;
 
-
-
-public class FileUploader{
+public class FileUploader {
 
 	static Logger log = Logger.getLogger(FileUploader.class.getName());
-
 	
+
 	public String setFileToBeUpload(InputStream inputStream,String filename,String folder){
 		
 		String path =null;
 		
 		//folder name is employee id
 		String filePath = "C:/sdb/ctxdeploy/hras.war/"+folder+"/";
+	
 		
 		OutputStream outputStream = null;
 		try {
@@ -33,6 +32,8 @@ public class FileUploader{
 			
 			//home folder creation
 			boolean folderCreated = createFolder(filePath);
+			
+			
 
 			//folder exists
 			if(folderCreated){
@@ -90,37 +91,33 @@ public class FileUploader{
 
 		return path;
 	}
-	
-	
-	
-	public boolean createFolder(String path){
-		
+
+	public boolean createFolder(String path) {
+
 		boolean created = true;
-		try{
+		try {
 			File theDir = new File(path);
 
 			// if the directory does not exist, create it
 			if (!theDir.exists()) {
-			    try{
-			        theDir.mkdir();
-			        created = true;
-			    } 
-			    catch(SecurityException se){
-			    	 created = false;
-			        log.info("Directory not created"+se.getMessage());
-			    }
-			    catch(Exception se){
-			    	 created = false;
-			        log.info("Directory not created"+se.getMessage());
-			    }
-			    if(created) {    
-			    	log.info("Directory created");  
-			    }
+				try {
+					theDir.mkdir();
+					created = true;
+				} catch (SecurityException se) {
+					created = false;
+					log.info("Directory not created" + se.getMessage());
+				} catch (Exception se) {
+					created = false;
+					log.info("Directory not created" + se.getMessage());
+				}
+				if (created) {
+					log.info("Directory created");
+				}
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return created;
 	}
-	
+
 }

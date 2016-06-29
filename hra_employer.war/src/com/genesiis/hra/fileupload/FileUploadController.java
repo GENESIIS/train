@@ -80,6 +80,22 @@ public class FileUploadController extends HttpServlet {
 		}
 		return null;
 	}
+	
+	
+	// @JH - validate image for null value
+	private boolean isEmptyImage(Part filePart){
+		boolean isEmpty = false;
+		
+		if(filePart.getSize() == 0){
+			isEmpty = false;
+			log.info("IS EMPTY");
+		}else{
+			log.info("NOT EMPTY");
+			isEmpty = true;
+		}
+
+		return isEmpty;
+	}
 
 	/**
 	 * @PARM req,res
@@ -124,17 +140,26 @@ public class FileUploadController extends HttpServlet {
 
 	}
 /**
- * to upload medical bill
+ * to upload medical bill - @JH
  * @param req
  * @return details
  */
 	public String fileUploadBill(HttpServletRequest req) {
+		
+		
 
 		String details = "";
 		try {
 
 			FileUploader fileUploader = new FileUploader();
 			Part filePart = req.getPart("file");
+			
+			// @JH - validate image for null value
+			if(filePart.getSize() == 0 ){
+				log.info("IS EMPTY");
+			}else{
+				log.info("IS NOT EMPTY");
+			}
 
 			InputStream fileContent = filePart.getInputStream();
 			String fileName = getSubmittedFileName(filePart);
