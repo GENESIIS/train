@@ -6,7 +6,10 @@ package com.genesiis.hra.command;
 
 import org.jboss.logging.Logger;
 
+import com.genesiis.hra.model.LoginDetails;
+import com.genesiis.hra.model.SalaryComponent;
 import com.genesiis.hra.validation.MessageList;
+import com.google.gson.Gson;
 
 public class UserLogin {
 
@@ -20,4 +23,21 @@ public class UserLogin {
 
 		return message.message();
 	}
+	
+	private LoginDetails getLogon (String Data){
+		LoginDetails loginDetails = (LoginDetails) extractFromJason(Data);
+		return loginDetails;
+	}
+	
+	public Object extractFromJason(String data) {
+		Gson gson = new Gson();
+		SalaryComponent component = null;
+		try {
+			component = gson.fromJson(data, SalaryComponent.class);
+		} catch (Exception e) {
+			log.info("ExtractFromgson - Exception " + e);
+		}
+		return component;
+	}
+
 }

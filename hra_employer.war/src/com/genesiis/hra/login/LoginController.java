@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
-
-import java.io.InputStream;
-
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,14 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.jboss.logging.Logger;
 
 import com.genesiis.hra.command.ICommandAJX;
-
-import com.genesiis.hra.command.SerchEmployee;
+import com.genesiis.hra.command.UserLogin;
 
 import javax.servlet.http.Part;
 
-import com.genesiis.hra.fileupload.FileUploadController;
-
-import com.genesiis.hra.validation.MessageList;
 import com.genesiis.hra.validation.Operation;
 import com.google.gson.Gson;
 
@@ -57,13 +50,9 @@ public class LoginController extends HttpServlet {
 		String details = request.getParameter("jsonData");
 
 		log.info(details);
-
-		String inputValue = request.getParameter("inputValue");
-	
-		Gson gson = new Gson();
+		// Gson gson = new Gson();
 		String message = "";
-
-	
+		message = new UserLogin().execute(details);
 		response.getWriter().close();
 
 	}
@@ -80,18 +69,6 @@ public class LoginController extends HttpServlet {
 			response.getWriter().close();
 		}
 
-	}
-
-	private static String getSubmittedFileName(Part part) {
-		for (String cd : part.getHeader("content-disposition").split(";")) {
-			if (cd.trim().startsWith("filename")) {
-				String fileName = cd.substring(cd.indexOf('=') + 1).trim()
-						.replace("\"", "");
-				return fileName.substring(fileName.lastIndexOf('/') + 1)
-						.substring(fileName.lastIndexOf('\\') + 1);
-			}
-		}
-		return null;
 	}
 
 }
