@@ -2,7 +2,7 @@
 <!DOCTYPE project>
 
 <project name="hra" default="all" basedir=".">
-		
+	<!--	test comment -->
 	
 	<!-- edit this property file to localise your properties.  Properties for all users set in .template file under VC -->
 	<property file="build.properties"/>
